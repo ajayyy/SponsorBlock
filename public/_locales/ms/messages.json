@@ -126,7 +126,7 @@
         "message": "Tutup Pop timbul"
     },
     "closeIcon": {
-        "message": "Tutup Icon"
+        "message": "Tutup Ikon"
     },
     "SubmitTimes": {
         "message": "Hantar Segmen"
@@ -256,7 +256,7 @@
         "message": "Tunjuk kategori dalam menu penghantaran walaupun tanpa kebenaran penghantaran"
     },
     "whatShowCategoryWithoutPermission": {
-        "message": "Beberapa kategori memerlukan kebenaran untuk menghantar disebabkan oleh keperluan reputasi minimum"
+        "message": "Beberapa kategori memerlukan kebenaran untuk hantar disebabkan keperluan reputasi minimum"
     },
     "showNotice": {
         "message": "Tunjukkan Notis Lagi"
@@ -271,10 +271,16 @@
         "message": "Saiz Penuh Langkau Notis"
     },
     "noticeVisibilityMode1": {
-        "message": "Notis Langkau Kecik untuk Auto Langkau"
+        "message": "Notis Langkau Kecil untuk Auto Langkau"
     },
     "noticeVisibilityMode2": {
-        "message": "Kecik Semua Langkau Notis"
+        "message": "Semua Kecil Notis Langkau"
+    },
+    "noticeVisibilityMode3": {
+        "message": "Notis Langkau Pudar untuk Auto Langkau"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Semua Pudar Notis Langkau"
     },
     "longDescription": {
         "message": "SponsorBlock membolehkan anda melewati penaja, intro, outro, peringatan langganan, dan bahagian lain dari video YouTube yang menjengkelkan. SponsorBlock adalah pelanjutan penyemak imbas yang banyak untuk membolehkan sesiapa sahaja menghantar segmen tajaan dan masa tayangan dari segmen video YouTube yang lain. Setelah satu orang menyerahkan maklumat ini, semua orang yang mempunyai pelanjutan ini akan melangkau segmen yang ditaja. Anda juga boleh melangkau bahagian muzik video muzik bukan.",
@@ -414,6 +420,12 @@
     "statusReminder": {
         "message": "Periksa status.sponsor.ajay.app untuk status pelayan."
     },
+    "changeUserID": {
+        "message": "Import/Eksport PenggunaID Persendirian Anda"
+    },
+    "whatChangeUserID": {
+        "message": "Ini patut dirahsiakan. Ini seperti kata laluan dan tidak patut untuk dikongsi dengan sesiapa. Jika seseorang mempunyai ini, mereka boleh menyamar sebagai anda. Jika anda sedang mencari untuk penggunaID awam anda, tekan ikon papan keratan di dalam pop timbul."
+    },
     "setUserID": {
         "message": "Tetapkan PenggunaanID Peribadi"
     },
@@ -456,8 +468,14 @@
     "minDurationDescription": {
         "message": "Segmen yang lebih pendek daripada nilai yang ditetapkan tidak akan dilangkau atau ditunjukkan dalam pemain."
     },
+    "whatManualSkipOnFullVideo": {
+        "message": "Untuk orang yang ingin menonton video penuh tanpa gangguan jika ia adalah ditaja sepenuhnya atau promosi diri."
+    },
     "skipNoticeDuration": {
         "message": "Tenpoh masa notis langkau (saat):"
+    },
+    "skipNoticeDurationDescription": {
+        "message": "Notis langkau akan kekal di skrin untuk sekurang-kurangnya beberapa saat ini. Untuk melangkau secara manual, ia mungkin dilihat lebih lama."
     },
     "shortCheck": {
         "message": "Penyerahan berikut lebih pendek daripada pilihan tempoh minimum anda. Ini mungkin bermaksud ini sudah dihantar, dan hanya diabaikan kerana pilihan ini. Adakah anda pasti mahu menghantar?"
@@ -500,6 +518,9 @@
     },
     "exportOptionsUpload": {
         "message": "Muatkan dari fail"
+    },
+    "whatExportOptions": {
+        "message": "Ini adalah keseluruhan konfigurasi anda dalam JSON. Ini termasuk PenggunaanID Persendirian anda, jadi pastikan untuk kongsi ini dengan bijak."
     },
     "setOptions": {
         "message": "Tetapkan Pilihan"
@@ -546,6 +567,9 @@
     "copyDebugInformationComplete": {
         "message": "Maklumat debug telah disalin ke papan klip. Jangan ragu untuk membuang maklumat yang anda tidak mahu kongsi Simpan ini dalam fail teks atau tampal ke laporan pepijat."
     },
+    "keyAlreadyUsed": {
+        "message": "Pintasan ini terikat kepada tindakan lain. Sila pilih yang lain."
+    },
     "to": {
         "message": "ke",
         "description": "Used between segments. Example: 1:20 to 1:30"
@@ -580,6 +604,9 @@
     },
     "category_selfpromo_guideline1": {
         "message": "Dermaan, keahlian dan barangan tersuai"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Shoutout percuma yang tidak menambah kepada video"
     },
     "category_exclusive_access": {
         "message": "Akses Eksklusif"
@@ -689,6 +716,9 @@
     },
     "category_chapter_guideline1": {
         "message": "Jangan menyebut nama jenama penaja"
+    },
+    "category_chapter_guideline3": {
+        "message": "Kandungan yang lebih kecil boleh diletakkan di dalam yang lebih besar"
     },
     "category_livestream_messages": {
         "message": "Strim Langsung: Bacaan Derma / Mesej"
@@ -1097,6 +1127,10 @@
     },
     "enterLicenseKey": {
         "message": "Masukkan Kunci Lesen"
+    },
+    "chaptersPage2": {
+        "message": "Nota: Kebenaran untuk hantar kandungan masih berdasarkan oleh reputasi yang dikira. Membeli lesen hanya membenarkan anda untuk melihat kandungan yang dihantar oleh orang lain",
+        "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "unsubmittedSegmentCounts": {
         "message": "Anda pada masa ini mempunyai {0} di {1}",
