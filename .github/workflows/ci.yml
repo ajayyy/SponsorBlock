@@ -10,8 +10,8 @@ jobs:
 
     steps:
       # Initialization
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
       - run: npm ci
@@ -25,7 +25,7 @@ jobs:
       # Create Chrome artifacts
       - name: Create Chrome artifacts
         run: npm run build:chrome
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ChromeExtension
           path: dist
@@ -37,7 +37,7 @@ jobs:
       # Create Firefox artifacts
       - name: Create Firefox artifacts
         run: npm run build:firefox
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: FirefoxExtension
           path: dist
@@ -48,7 +48,7 @@ jobs:
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
         run: npm run build:chrome -- --env stream=beta
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ChromeExtensionBeta
           path: dist
@@ -58,7 +58,7 @@ jobs:
 
       - name: Create Firefox Beta artifacts
         run: npm run build:firefox -- --env stream=beta
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: FirefoxExtensionBeta
           path: dist
