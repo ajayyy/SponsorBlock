@@ -526,6 +526,9 @@ function createPreviewBar(): void {
             // For Youtube Music
             // there are two sliders, one for volume and one for progress - both called #progressContainer
             selector: "#progress-bar>#sliderContainer>div>#sliderBar>#progressContainer",
+        }, {
+            // For piped
+            selector: ".shaka-ad-markers",
             isVisibleCheck: false
         }
     ];
