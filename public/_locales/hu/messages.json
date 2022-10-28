@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Kapcsolódási probléma merült fel. Hibakód: "
     },
+    "segmentsStillLoading": {
+        "message": "Szegmensek betöltése folyamatban..."
+    },
     "clearTimes": {
         "message": "Szegmensek törlése"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Megosztás linkként"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Figyelem: A szerver még nem válaszolt szegmensekkel. Elképzelhető, hogy már vannak beküldött szegmensek ezen a videón, csak még nem töltődtek be szerver-problémák miatt."
     }
 }
