@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
     },
+    "segmentsStillLoading": {
+        "message": "Segments toujours en cours de chargement..."
+    },
     "clearTimes": {
         "message": "Effacer les segments"
     },
