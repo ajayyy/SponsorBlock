@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Došlo k chybě připojení. Kód chyby: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenty se stále načítají..."
+    },
     "clearTimes": {
         "message": "Vymazat segmenty"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Sdílet jako URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Varování: Server zatím neodpověděl se segmenty. U tohoto videa se již mohou nacházet odeslané segmenty, ale vy jste je neobdrželi kvůli chybě na serveru."
     }
 }
