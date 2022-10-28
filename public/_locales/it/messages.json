@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenti in caricamento..."
+    },
     "clearTimes": {
         "message": "Rimuovi i segmenti"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Condividi URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Attenzione: il server non ha ancora fornito i segmenti. Questo video potrebbe avere dei segmenti inviati, ma forse non sono stati ricevuti a causa di problemi del server."
     }
 }
