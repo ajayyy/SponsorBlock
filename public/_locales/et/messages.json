@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ühendusega esines tõrge. Veakood: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmendid on veel laadimas..."
+    },
     "clearTimes": {
         "message": "Tühjenda segmendid"
     },
