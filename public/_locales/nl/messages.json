@@ -36,7 +36,7 @@
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
-        "message": "Huidige segment naast video tijd weergeven"
+        "message": "Huidig segment weergeven naast videotijd"
     },
     "upvoteButtonInfo": {
         "message": "Stemmen op deze inzending"
@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenten worden nog steeds geladen..."
+    },
     "clearTimes": {
         "message": "Segmenten verwijderen"
     },
@@ -126,7 +129,7 @@
         "message": "Pop-up sluiten"
     },
     "closeIcon": {
-        "message": "Sluit icoon"
+        "message": "Pictogram voor sluiten"
     },
     "SubmitTimes": {
         "message": "Segmenten indienen"
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Delen als URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Waarschuwing: de server heeft nog niet gereageerd met segmenten. Misschien zijn er al segmenten van deze video ingediend, maar heeft u ze nog niet ontvangen door problemen met de server."
     }
 }
