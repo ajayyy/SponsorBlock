@@ -717,7 +717,7 @@ function getVirtualTime(): number {
     const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
         (performance.now() - lastKnownVideoTime.preciseTime) * video.playbackRate / 1000 + lastKnownVideoTime.videoTime : null);
 
-    if (Config.config.useVirtualTime && !isSafari() && virtualTime 
+    if (Config.config.useVirtualTime && !utils.isFirefox() && !isSafari() && virtualTime 
             && Math.abs(virtualTime - video.currentTime) < 0.6 && video.currentTime !== 0) {
         return virtualTime;
     } else {
