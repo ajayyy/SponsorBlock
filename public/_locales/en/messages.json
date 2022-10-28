@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "A connection error has occurred. Error code: "
     },
+    "segmentsStillLoading": {
+        "message": "Segments still loading..."
+    },
     "clearTimes": {
         "message": "Clear Segments"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Share as URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Warning: The server hasn't responded with segments yet. There might actually be segments on this video already submitted but you just haven't recieved them due to issues with the server."
     }
 }

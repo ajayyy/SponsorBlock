@@ -56,6 +56,7 @@ let sponsorVideoID: VideoID = null;
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
 let retryFetchTimeout: NodeJS.Timeout = null;
+let shownSegmentFailedToFetchWarning = false;
 
 // JSON video info
 let videoInfo: VideoInfo = null;
@@ -344,6 +345,8 @@ function resetValues() {
     sponsorTimes = [];
     existingChaptersImported = false;
     sponsorSkipped = [];
+    lastResponseStatus = 0;
+    shownSegmentFailedToFetchWarning = false;
 
     sponsorVideoID = null;
     videoInfo = null;
@@ -1922,6 +1925,12 @@ function startOrEndTimingNewSegment() {
     updateSponsorTimesSubmitting(false);
 
     importExistingChapters(false);
+
+    if (lastResponseStatus !== 200 && !shownSegmentFailedToFetchWarning) {
+        alert(chrome.i18n.getMessage("segmentFetchFailureWarning"));
+
+        shownSegmentFailedToFetchWarning = true;
+    }
 }
 
 function getIncompleteSegment(): SponsorTime {

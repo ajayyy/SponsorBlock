@@ -456,7 +456,12 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.videoFound.innerHTML = chrome.i18n.getMessage("sponsor404");
                 PageElements.issueReporterImportExport.classList.remove("hidden");
             } else {
-                PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
+                if (request.status) {
+                    PageElements.videoFound.innerHTML = chrome.i18n.getMessage("connectionError") + request.status;
+                } else {
+                    PageElements.videoFound.innerHTML = chrome.i18n.getMessage("segmentsStillLoading");
+                }
+                
                 PageElements.issueReporterImportExport.classList.remove("hidden");
             }
         }
