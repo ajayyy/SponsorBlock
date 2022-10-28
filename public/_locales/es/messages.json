@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ha ocurrido un error de conexión. Código de error: "
     },
+    "segmentsStillLoading": {
+        "message": "Los segmentos aún se están cargando..."
+    },
     "clearTimes": {
         "message": "Borrar Segmentos"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Compartir como URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Advertencia: El servidor aún no ha respondido con segmentos. Es posible que haya segmentos en este video ya enviados, pero no los ha recibido debido a problemas con el servidor."
     }
 }
