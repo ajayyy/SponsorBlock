@@ -117,7 +117,7 @@
         "message": "Yhteysvirhe on tapahtunut. Virhekoodi: "
     },
     "segmentsStillLoading": {
-        "message": "Osiot yhä lataavat..."
+        "message": "Osioita ladataan yhä..."
     },
     "clearTimes": {
         "message": "Tyhjennä osiot"
@@ -1248,6 +1248,6 @@
         "message": "Jaa URL-osoitteena"
     },
     "segmentFetchFailureWarning": {
-        "message": "Varoitus: Palvelu ei ole vielä vastannut osioilla. Tässä videossa saattaa olla jo lähetettyjä osioita, mutta et ole vielä saanut niitä palvelun ongelmien takia."
+        "message": "Varoitus: Palvelin ei ole vielä toimittanut osiotietoja. Video saattaa sisältää jo lähetettyjä osioita, mutta et vain ole vielä vastaanottanut niitä palvelinongelmien takia."
     }
 }
