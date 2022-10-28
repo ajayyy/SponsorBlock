@@ -369,7 +369,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} stumm geschaltet",
+        "message": "{0} stummgeschalten",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -1214,7 +1214,7 @@
         "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
-        "message": "Alle Segmente löschen",
+        "message": "Lösche alle Segmente",
         "description": "Label for a button in settings"
     },
     "clearUnsubmittedSegmentsConfirm": {
