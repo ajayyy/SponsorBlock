@@ -281,7 +281,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
     utils.asyncRequestToServer("GET", "/api/userInfo", {
-        userID: Config.config.userID,
+        publicUserID: await utils.getHash(Config.config.userID),
         values
     }).then((res) => {
         if (res.status === 200) {
@@ -461,7 +461,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 } else {
                     PageElements.videoFound.innerHTML = chrome.i18n.getMessage("segmentsStillLoading");
                 }
-                
+
                 PageElements.issueReporterImportExport.classList.remove("hidden");
             }
         }

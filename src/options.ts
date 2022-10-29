@@ -532,7 +532,7 @@ function activatePrivateTextChange(element: HTMLElement) {
         case "userID":
             if (Config.config[option]) {
                 utils.asyncRequestToServer("GET", "/api/userInfo", {
-                    userID: Config.config[option],
+                    publicUserID: utils.getHash(Config.config[option]),
                     values: ["warnings", "banned"]
                 }).then((result) => {
                     const userInfo = JSON.parse(result.responseText);
