@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ralat sambungan telah berlaku. Kod salah: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmen masih dimuatkan..."
+    },
     "clearTimes": {
         "message": "Kosongkan Segmen"
     },
@@ -608,6 +611,9 @@
     "category_selfpromo_guideline2": {
         "message": "Shoutout percuma yang tidak menambah kepada video"
     },
+    "category_selfpromo_guideline3": {
+        "message": "Bukan untuk produk reka bentuk korporat dan barang dagangan"
+    },
     "category_exclusive_access": {
         "message": "Akses Eksklusif"
     },
@@ -669,8 +675,14 @@
     "category_preview_description": {
         "message": "Koleksi klip yang menunjukkan apa yang akan datang di dalam video ini atau video lain di dalam siri di mana semua maklumat diulang kemudian di dalam video."
     },
+    "category_preview_guideline1": {
+        "message": "Klip yang muncul kemudian, atau di dalam video masa depan"
+    },
     "category_preview_guideline2": {
         "message": "Imbas kembali video sebelum ini"
+    },
+    "category_preview_guideline3": {
+        "message": "Bukan untuk bahagian yang menambah kandungan tambahan"
     },
     "category_filler": {
         "message": "Tangen Pengisi/Lawak"
@@ -695,6 +707,9 @@
     },
     "category_music_offtopic_short": {
         "message": "Bukan Muzik"
+    },
+    "category_music_offtopic_guideline1": {
+        "message": "Bahagian bukan dalam keluaran rasmi"
     },
     "category_music_offtopic_guideline2": {
         "message": "Bukan muzik di dalam persembahan secara langsung"
@@ -1186,5 +1201,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Kongsi sebagai URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Amaran: Pelayan belum membalas dengan segmen lagi. Mungkin sebenarnya ada segmen di video ini sudah dihantar tetapi anda hanya belum menerimanya kerana isu dengan pelayan."
     }
 }
