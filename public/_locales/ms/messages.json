@@ -441,6 +441,10 @@
     "supportOtherSites": {
         "message": "Sokong Pihak Ke-3 Laman YouTube"
     },
+    "supportOtherSitesDescription": {
+        "message": "Sokong klien pihak ketiga YouTube. Untuk membolehkan sokong, anda perlu menerima kebenaran tambahan. Ini TIDAK berfungsi dalam inkognito pada Chrome dan varian Chromium lain.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Laman Disokong: "
     },
@@ -449,6 +453,9 @@
     },
     "addInvidiousInstance": {
         "message": "Tambah Pihak Ke-3 Contoh Klien"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Tambah contoh tersuai. Ini mesti diformat HANYA dengan domain. Contoh: invidious.ajay.app"
     },
     "add": {
         "message": "Tambah"
@@ -470,6 +477,9 @@
     },
     "minDurationDescription": {
         "message": "Segmen yang lebih pendek daripada nilai yang ditetapkan tidak akan dilangkau atau ditunjukkan dalam pemain."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Gunakan langkau manual apabila label video penuh wujud"
     },
     "whatManualSkipOnFullVideo": {
         "message": "Untuk orang yang ingin menonton video penuh tanpa gangguan jika ia adalah ditaja sepenuhnya atau promosi diri."
@@ -687,6 +697,9 @@
     "category_filler": {
         "message": "Tangen Pengisi/Lawak"
     },
+    "category_filler_description": {
+        "message": "Adegan tangensial ditambah hanya untuk pengisi atau jenaka yang tidak diperlukan untuk memahami kandungan utama daripada video tersebut. Ini tidak patutnya termasuk segmen yang menyediakan konteks atau butiran latar belakang. Ini kategori yang sangat aggresif dimaksudkan apabila kamu tiada mood untuk \"seronok\"."
+    },
     "category_filler_short": {
         "message": "Pengisi"
     },
@@ -717,6 +730,9 @@
     "category_poi_highlight": {
         "message": "Sorotan"
     },
+    "category_poi_highlight_description": {
+        "message": "Bahagian video yang kebanyakan orang sedang mencari. Sama seperti komen \"Video bermula pada x\"."
+    },
     "category_poi_highlight_guideline1": {
         "message": "Bahagian kebanyakan orang sedang mencari"
     },
@@ -729,8 +745,14 @@
     "category_chapter": {
         "message": "Bab"
     },
+    "category_chapter_description": {
+        "message": "Nama bab tersuai menerangkan bahagian utama video."
+    },
     "category_chapter_guideline1": {
         "message": "Jangan menyebut nama jenama penaja"
+    },
+    "category_chapter_guideline2": {
+        "message": "Gunakan bab lebih besar untuk bahagian umum"
     },
     "category_chapter_guideline3": {
         "message": "Kandungan yang lebih kecil boleh diletakkan di dalam yang lebih besar"
@@ -835,6 +857,10 @@
     },
     "manuallyHidden": {
         "message": "disembunyikan secara manual"
+    },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "ID saluran tidak dimuatkan lagi. Jika anda menggunakan video terbenam, cuba gunakan laman utama YouTube sebaliknya. Ini juga boleh disebabkan perubahan di dalam susun atur YouTube, jika anda fikir begitu, buat komen di sini:"
     },
     "invidiousPermissionRefresh": {
         "message": "Pelayar telah membatalkan kebenaran diperlukan untuk berfungsi di Invidious dan laman pihak ke-3 yang lain. Sila tekan butang di bawah untuk aktifkan semula kebenaran ini."
@@ -966,6 +992,9 @@
     "helpPageSubmitting1": {
         "message": "Menghantar boleh dilakukan sama ada di dalam pop timbul dengan menekan butang \"Segmen Bermula Sekarang\" atau di dalam pemain video dengan menggunakan butang di pemain."
     },
+    "helpPageSubmitting2": {
+        "message": "Menekan butang main menunjukkan permulaan segmen dan menekan ikon berhenti menunjukkan tamat. Anda boleh sediakan berbilang sponsor sebelum menekan hantar. Menekan butang muat turun akan hantar. Menekan tong sampah akan padam."
+    },
     "Editing": {
         "message": "Menyunting"
     },
@@ -980,6 +1009,9 @@
     },
     "helpPageCopyOfDatabase": {
         "message": "Bolehkah saya mendapat salinan pangkalan data? Apakah akan terjadi jika anda hilang?"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "Pangkalan data ialah awam dan boleh didapati di"
     },
     "helpPageCopyOfDatabase2": {
         "message": "Kod sumber tersedia secara percuma. Jadi, walaupun sesuatu berlaku pada saya, penghantaran anda tidak hilang."
@@ -1117,6 +1149,9 @@
     "noDiscount": {
         "message": "Anda tidak layak untuk diskaun"
     },
+    "discountLink": {
+        "message": "Pautan Diskaun (Lihat harga pink)"
+    },
     "selectYourCountry": {
         "message": "Pilih negara anda"
     },
@@ -1143,9 +1178,19 @@
     "enterLicenseKey": {
         "message": "Masukkan Kunci Lesen"
     },
+    "chaptersPage1": {
+        "message": "Fitur kandungan sumber awam SponsorBlock hanya tersedia untuk orang yang membeli lesen atau untuk orang yang diberikan akses secara percuma kerana sumbangan lepas"
+    },
     "chaptersPage2": {
         "message": "Nota: Kebenaran untuk hantar kandungan masih berdasarkan oleh reputasi yang dikira. Membeli lesen hanya membenarkan anda untuk melihat kandungan yang dihantar oleh orang lain",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Fitur Baharu: Kandungan sumber awam tersuai. Ini adalah bahagian dinamakan tersuai dalam video yang boleh bertindan untuk mendapatkan lebih dan lebih tepat. Beli lesen untuk melihat kandungan dihantar pada video seperti ini: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Fitur Baharu: Kandungan sumber awam tersuai. Ini adalah bahagian dinamakan tersuai dalam video yang boleh bertindan untuk mendapatkan lebih dan lebih tepat. Anda mempunyai akses secara percuma, membolehkannya di pilihan."
     },
     "unsubmittedSegmentCounts": {
         "message": "Anda pada masa ini mempunyai {0} di {1}",
