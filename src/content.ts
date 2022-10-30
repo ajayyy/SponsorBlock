@@ -1926,7 +1926,7 @@ function startOrEndTimingNewSegment() {
 
     importExistingChapters(false);
 
-    if (lastResponseStatus !== 200 && !shownSegmentFailedToFetchWarning) {
+    if (lastResponseStatus !== 200 && lastResponseStatus !== 404 && !shownSegmentFailedToFetchWarning) {
         alert(chrome.i18n.getMessage("segmentFetchFailureWarning"));
 
         shownSegmentFailedToFetchWarning = true;
