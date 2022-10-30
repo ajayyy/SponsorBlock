@@ -728,8 +728,8 @@ class PreviewBar {
 
     private getPartialChapterSectionStyle(element: HTMLElement, param: string): number {
         const data = element.style[param];
-        if (data?.includes("100%")) {
-            return 0;
+        if (data?.includes("%")) {
+            return this.customChaptersBar.clientWidth * (parseFloat(data.replace("%", "")) / 100);
         } else {
             return parseInt(element.style[param].match(/\d+/g)?.[0]) || 0;
         }
