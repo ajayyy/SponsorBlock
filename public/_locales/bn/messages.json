@@ -625,6 +625,9 @@
     "category_intro_short": {
         "message": "ইন্টারমিশন"
     },
+    "category_intro_guideline1": {
+        "message": "মূল কনটেন্ট ব্যতীত ব্যবধান"
+    },
     "category_outro": {
         "message": "এন্ডকার্ডস/ক্রেডিট"
     },
@@ -633,6 +636,9 @@
     },
     "category_preview": {
         "message": "প্রিভিউ/রিক্যাপ"
+    },
+    "category_preview_guideline2": {
+        "message": "আগের ভিডিওর রিক্যাপ"
     },
     "category_filler": {
         "message": "ফিলার ট্যানজেন্ট/জোকস"
@@ -654,6 +660,9 @@
     },
     "category_poi_highlight_description": {
         "message": "ভিডিওর অংশটি যা বেশিরভাগ লোকেরা খুঁজছেন। \"ভিডিওটি x এ শুরু হয়\" মন্তব্যের মতো।"
+    },
+    "category_chapter": {
+        "message": "অধ্যায়"
     },
     "category_livestream_messages": {
         "message": "লাইভস্ট্রিম: অনুদান/বার্তা পাঠ"
@@ -684,6 +693,9 @@
     },
     "showOverlay_full": {
         "message": "লেবেল দেখান"
+    },
+    "showOverlay_chapter": {
+        "message": "অধ্যায়গুলো দেখান"
     },
     "autoSkipOnMusicVideos": {
         "message": "যখন অ-সংগীত বিভাগ থাকে তখন স্বয়ংক্রিয়ভাবে সমস্ত বিভাগগুলি এড়িয়ে যান"
@@ -740,6 +752,10 @@
     "bracketEnd": {
         "message": "(শেষ)"
     },
+    "End": {
+        "message": "সমাপ্ত",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "লুক্কায়িতঃ ডাউনভোট"
     },
@@ -776,6 +792,13 @@
     },
     "downvoteDescription": {
         "message": "সময় ভুল দেওয়া হয়েছে"
+    },
+    "incorrectVote": {
+        "message": "সঠিক নয়"
+    },
+    "harmfulVote": {
+        "message": "ক্ষতিকর",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "বিভাগ পরিবর্তন করুন"
