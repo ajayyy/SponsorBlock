@@ -71,7 +71,8 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
 
     const chapters: SponsorTime[] = [];
     // .ytp-timed-markers-container indicates that key-moments are present, which should not be divided
-    if (chaptersBox && !(document.querySelector(".ytp-timed-markers-container")?.childElementCount > 0)) {
+    if (chaptersBox && !(getControls()?.parentElement?.parentElement
+            ?.querySelector(".ytp-timed-markers-container")?.childElementCount > 0)) {
         let lastSegment: SponsorTime = null;
         const links = chaptersBox.querySelectorAll("ytd-macro-markers-list-item-renderer > a");
         for (const link of links) {
