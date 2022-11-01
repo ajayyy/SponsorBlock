@@ -66,6 +66,11 @@ div:hover > #previewbar.sbNotInvidious {
 	transform: translateY(-1em) !important;
 }
 
+/* Pull up for precise seeking */
+.ytp-tooltip.sponsorCategoryTooltipVisible .ytp-tooltip-edu {
+	transform: translateY(-1em) !important;
+}
+
 .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
 	transform: translateY(-2em) !important;
 }
@@ -84,6 +89,11 @@ div:hover > #previewbar.sbNotInvidious {
 
 #movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
 	transform: translateY(2em) !important;
+}
+
+/* Pull up for precise seeking */
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips .ytp-tooltip-edu {
+	transform: translateY(-2em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
