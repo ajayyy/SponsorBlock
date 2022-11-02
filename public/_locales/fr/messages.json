@@ -1246,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Partager un URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Attention : Le serveur n'a pas encore répondu avec les segments. Il se peut qu'il y ait des segments sur cette vidéo déjà soumise, mais vous ne les avez tout simplement pas reçus en raison de problèmes avec le serveur."
     }
 }
