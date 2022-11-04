@@ -155,6 +155,9 @@ let isAdPlaying = false;
 let lastResponseStatus: number;
 let retryCount = 0;
 
+// flips between true/false on server request failure
+let fallbackServer = false;
+
 // Contains all of the functions and variables needed by the skip notice
 const skipNoticeContentContainer: ContentContainer = () => ({
     vote,
@@ -1008,9 +1011,8 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
-
     const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4) as VideoID & HashedValue;
-    const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
+    const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, fallbackServer, {
         categories,
         actionTypes: getEnabledActionTypes(showChapterMessage),
         userAgent: `${chrome.runtime.id}`,
@@ -1019,7 +1021,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
     // store last response status
     lastResponseStatus = response?.status;
-
     if (response?.ok) {
         let recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === sponsorVideoID)
@@ -1170,7 +1171,7 @@ function getEnabledActionTypes(forceFullVideo = false): ActionType[] {
 
 async function lockedCategoriesLookup(): Promise<void> {
     const hashPrefix = (await utils.getHash(sponsorVideoID, 1)).slice(0, 4);
-    const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
+    const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix, fallbackServer);
 
     if (response.ok) {
         try {
@@ -1192,9 +1193,16 @@ function retryFetch(errorCode: number): void {
         return;
     }
 
+    fallbackServer = retryCount % 2 === 0 
     retryCount++;
-
-    const delay = errorCode === 404 ? (30000 + Math.random() * 30000) : (2000 + Math.random() * 10000);
+    let delay: number;
+    switch (errorCode) {
+        case 404:
+            delay = (30000 + Math.random() * 30000);
+            break;
+        default:
+            delay = retryCount <= 2 ? 0 : (2000 + Math.random() * 10000);
+    }
     retryFetchTimeout = setTimeout(() => {
         if (sponsorVideoID && sponsorTimes?.length === 0
                 || sponsorTimes.every((segment) => segment.source !== SponsorSourceType.Server)) {
@@ -1630,7 +1638,7 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
                 counted = true;
             }
 
-            if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
+            if (fullSkip) utils.asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID, false);
         }
     }
 }
@@ -2236,7 +2244,7 @@ async function sendSubmitMessage() {
         }
     }
 
-    const response = await utils.asyncRequestToServer("POST", "/api/skipSegments", {
+    const response = await utils.asyncRequestToServer("POST", "/api/skipSegments", false, {
         videoID: sponsorVideoID,
         userID: Config.config.userID,
         segments: sponsorTimesSubmitting,

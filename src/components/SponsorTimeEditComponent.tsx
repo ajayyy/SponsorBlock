@@ -696,11 +696,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.saveEditTimes();
     }
 
-    async fetchSuggestions(description: string): Promise<void> {
+    async fetchSuggestions(description: string, fallbackServer = false): Promise<void> {
         if (this.props.contentContainer().channelIDInfo.status !== ChannelIDStatus.Found) return;
-
         this.fetchingSuggestions = true;
-        const result = await utils.asyncRequestToServer("GET", "/api/chapterNames", {
+        const result = await utils.asyncRequestToServer("GET", "/api/chapterNames", fallbackServer, {
             description,
             channelID: this.props.contentContainer().channelIDInfo.id
         });
@@ -713,7 +712,11 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         label: n.description
                     }))
                 });
-            } catch (e) {} //eslint-disable-line no-empty
+            } catch (e) {
+                if (!fallbackServer) {
+                    this.fetchSuggestions(description, true);
+                }
+            } 
         }
 
         this.fetchingSuggestions = false;

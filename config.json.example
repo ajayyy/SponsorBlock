@@ -1,7 +1,9 @@
 {
     "serverAddress": "https://sponsor.ajay.app",
     "testingServerAddress": "https://sponsor.ajay.app/test",
+    "fallbackServerAddress": "",
     "serverAddressComment": "This specifies the default SponsorBlock server to connect to",
+    "fallbackAddressComment": "This specifies the server SponsorBlock will attempt to connect to if the primary one fails.",
     "categoryList": ["sponsor", "selfpromo", "exclusive_access", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "chapter", "music_offtopic"],
     "categorySupport": {
         "sponsor": ["skip", "mute", "full"],

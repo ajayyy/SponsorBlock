@@ -319,7 +319,6 @@ export default class Utils {
                 return selection;
             }
         }
-        return { name: "None", option: 0} as CategorySelection;
     }
 
     /**
@@ -365,11 +364,17 @@ export default class Utils {
      * 
      * @param type The request type. "GET", "POST", etc.
      * @param address The address to add to the SponsorBlock server address
+     * @param fallback Use the fallback server URL if true.
      * @param callback 
      */    
-    async asyncRequestToServer(type: string, address: string, data = {}): Promise<FetchResponse> {
-        const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
-
+    async asyncRequestToServer(type: string, address: string, fallback = false, data = {}): Promise<FetchResponse> {
+        let serverAddress = Config.config.serverAddress;
+        if (Config.config.testingServer){
+            serverAddress = CompileConfig.testingServerAddress;
+        } else if (fallback && Config.config.fallbackServerAddress) {
+            serverAddress = Config.config.fallbackServerAddress;
+        }        
+        
         return await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
     }
 
