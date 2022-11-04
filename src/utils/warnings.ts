@@ -13,7 +13,7 @@ export interface ChatConfig {
 
 export async function openWarningDialog(contentContainer: ContentContainer): Promise<void> {
     const userInfo = await utils.asyncRequestToServer("GET", "/api/userInfo", {
-        userID: Config.config.userID,
+        publicUserID: await utils.getHash(Config.config.userID),
         values: ["warningReason"]
     });
 

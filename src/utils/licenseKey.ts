@@ -15,7 +15,7 @@ export async function checkLicenseKey(licenseKey: string): Promise<boolean> {
             Config.config.showChapterInfoMessage = false;
             Config.config.payments.lastCheck = Date.now();
             Config.forceSyncUpdate("payments");
-            
+
             return true;
         }
     } catch (e) { } //eslint-disable-line no-empty
@@ -43,7 +43,7 @@ export async function fetchingChaptersAllowed(): Promise<boolean> {
             return licensePromise;
         }
     }
-    
+
     if (Config.config.payments.chaptersAllowed) return true;
 
     if (Config.config.payments.lastCheck === 0 && Date.now() - Config.config.payments.lastFreeCheck > 2 * 24 * 60 * 60 * 1000) {
@@ -53,7 +53,7 @@ export async function fetchingChaptersAllowed(): Promise<boolean> {
         // Check for free access if no license key, and it is the first time
         const result = await utils.asyncRequestToServer("GET", "/api/userInfo", {
             value: "freeChaptersAccess",
-            userID: Config.config.userID
+            publicUserID: await utils.getHash(Config.config.userID)
         });
 
         try {
@@ -66,7 +66,7 @@ export async function fetchingChaptersAllowed(): Promise<boolean> {
                     Config.config.payments.chaptersAllowed = true;
                     Config.config.showChapterInfoMessage = false;
                     Config.forceSyncUpdate("payments");
-    
+
                     return true;
                 }
             }
