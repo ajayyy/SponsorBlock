@@ -142,6 +142,10 @@ export class SkipButtonControlBar {
         this.enabled = false;
     }
 
+    isEnabled(): boolean {
+        return this.enabled;
+    }
+
     toggleSkip(): void {
         this.skip(this.segment);
         this.disableText();

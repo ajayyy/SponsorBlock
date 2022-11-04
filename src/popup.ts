@@ -698,6 +698,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             voteButtonsContainer.appendChild(downvoteButton);
             voteButtonsContainer.appendChild(uuidButton);
             if (downloadedTimes[i].actionType === ActionType.Skip || downloadedTimes[i].actionType === ActionType.Mute
+                    || downloadedTimes[i].actionType === ActionType.Poi
                     && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
                 voteButtonsContainer.appendChild(hideButton);
             }
