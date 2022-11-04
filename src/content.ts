@@ -383,12 +383,12 @@ function resetValues() {
     // Reset advert playing flag
     isAdPlaying = false;
 
+    skipButtonControlBar?.disable();
+    categoryPill?.setVisibility(false);
+
     for (let i = 0; i < skipNotices.length; i++) {
         skipNotices.pop()?.close();
     }
-
-    skipButtonControlBar?.disable();
-    categoryPill?.setVisibility(false);
 }
 
 async function videoIDChange(id: string): Promise<void> {

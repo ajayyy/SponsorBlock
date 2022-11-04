@@ -102,6 +102,7 @@ export class SkipButtonControlBar {
         this.enabled = true;
 
         this.refreshText();
+        this.container?.classList?.remove("textDisabled");
         this.textContainer?.classList?.remove("hidden");
         AnimationUtils.disableAutoHideAnimation(this.skipIcon);
 
@@ -134,7 +135,6 @@ export class SkipButtonControlBar {
 
     disable(): void {
         this.container.classList.add("hidden");
-        this.textContainer?.classList?.remove("hidden");
 
         this.chapterText?.classList?.remove("hidden");
         this.getChapterPrefix()?.classList?.remove("hidden");
