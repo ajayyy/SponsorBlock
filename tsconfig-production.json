@@ -3,6 +3,8 @@
         "module": "commonjs",
         "target": "es6",
         "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
         "sourceMap": false,
         "outDir": "dist/js",
         "noEmitOnError": false,

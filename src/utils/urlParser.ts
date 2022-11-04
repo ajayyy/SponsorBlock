@@ -22,5 +22,7 @@ export function urlTimeToSeconds(time: string): number {
         return hours * 3600 + minutes * 60 + seconds;
     } else if (/\d+/.test(time)) {
         return parseInt(time, 10);
+    } else {
+        return 0;
     }
 }

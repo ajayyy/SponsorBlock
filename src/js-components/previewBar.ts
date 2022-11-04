@@ -744,7 +744,7 @@ class PreviewBar {
                 chaptersContainer.style.display = "none";
             }
 
-            return;
+            return [];
         }
 
         segments ??= [];
