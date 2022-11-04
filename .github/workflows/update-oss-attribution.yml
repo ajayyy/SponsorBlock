@@ -12,9 +12,8 @@ jobs:
   update-oss:
     runs-on: ubuntu-latest 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
       - name: Install and generate attribution
@@ -25,7 +24,8 @@ jobs:
           mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
 
       - name: Create pull request to update list
-        uses: peter-evans/create-pull-request@923ad837f191474af6b1721408744feb989a4c27
+        uses: peter-evans/create-pull-request@b4d51739f96fca8047ad065eccef63442d8e99f7
+        # v4.2.0
         with:
           commit-message: Update OSS Attribution
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
