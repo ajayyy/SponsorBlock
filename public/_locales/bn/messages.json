@@ -35,6 +35,9 @@
         "message": "অংশসমূহকে অধ্যায়সমূহতে পরিণত করুন",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "ভিডিও সময়ের পাশে বর্তমান সেগমেন্ট দেখান"
+    },
     "upvoteButtonInfo": {
         "message": "এই জমাটিকে সমর্থন করুন"
     },
@@ -121,6 +124,9 @@
     },
     "closePopup": {
         "message": "পপআপ বন্ধ করুন"
+    },
+    "closeIcon": {
+        "message": "বন্ধ করার চিহ্ন"
     },
     "SubmitTimes": {
         "message": "সেগমেন্ট জমা দিন"
@@ -414,8 +420,17 @@
     "statusReminder": {
         "message": "সার্ভারের স্ট্যাটাস এর জন্য status.sponsor.ajay.app দেখুন করুন।"
     },
+    "changeUserID": {
+        "message": "‌আপনার ব্যক্তিগত ব্যবহারকারী আইডি ইম্পোর্ট/এক্সপোর্ট করুন"
+    },
     "whatChangeUserID": {
         "message": "এটি ব্যক্তিগত রাখা উচিত। এটি একটি পাসওয়ার্ডের মতো এবং কারও সাথে ভাগ করা উচিত নয়। কারও যদি এটি থাকে তবে তারা আপনার ছদ্মবেশ ধারণ করতে পারে। আপনি যদি আপনার পাবলিক ইউজারআইডি খুঁজছেন তবে পপআপে ক্লিপবোর্ড আইকনটি ক্লিক করুন।"
+    },
+    "setUserID": {
+        "message": "ব্যক্তিগত ব্যবহারকারী আইডি সেট করুন"
+    },
+    "userIDChangeWarning": {
+        "message": "সতর্কতা: ব্যক্তিগত ব্যবহারকারী আইডি পরিবর্তন চিরস্থায়ী। আপনি কি নিশ্চিত যে আপনি এটি করত এ চান? এক্ষেত্রে আপনার পুরাতন আইডির ব্যাকআপ নিশ্চিত করুন। "
     },
     "createdBy": {
         "message": "সৃষ্টি করেছেন"
@@ -563,11 +578,18 @@
         "message": "থেকে",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "কপি হয়েছে!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "category_sponsor": {
         "message": "স্পন্সর"
     },
     "category_sponsor_description": {
         "message": "পেইড প্রমোশন, পেইড রেফারেল এবং সরাসরি বিজ্ঞাপন। নিজের পছন্দসই কারণ/স্রষ্টা/ওয়েবসাইট/পণ্যগুলিতে স্ব-প্রচার বা বিনামূল্যে প্রচারের জন্য নয়।"
+    },
+    "category_sponsor_guideline1": {
+        "message": "পেইড প্রচারণা"
     },
     "category_selfpromo": {
         "message": "বিনা অর্থপ্রাপ্ত/স্ব-প্রচার"
@@ -603,6 +625,9 @@
     "category_intro_short": {
         "message": "ইন্টারমিশন"
     },
+    "category_intro_guideline1": {
+        "message": "মূল কনটেন্ট ব্যতীত ব্যবধান"
+    },
     "category_outro": {
         "message": "এন্ডকার্ডস/ক্রেডিট"
     },
@@ -611,6 +636,9 @@
     },
     "category_preview": {
         "message": "প্রিভিউ/রিক্যাপ"
+    },
+    "category_preview_guideline2": {
+        "message": "আগের ভিডিওর রিক্যাপ"
     },
     "category_filler": {
         "message": "ফিলার ট্যানজেন্ট/জোকস"
@@ -632,6 +660,9 @@
     },
     "category_poi_highlight_description": {
         "message": "ভিডিওর অংশটি যা বেশিরভাগ লোকেরা খুঁজছেন। \"ভিডিওটি x এ শুরু হয়\" মন্তব্যের মতো।"
+    },
+    "category_chapter": {
+        "message": "অধ্যায়"
     },
     "category_livestream_messages": {
         "message": "লাইভস্ট্রিম: অনুদান/বার্তা পাঠ"
@@ -662,6 +693,9 @@
     },
     "showOverlay_full": {
         "message": "লেবেল দেখান"
+    },
+    "showOverlay_chapter": {
+        "message": "অধ্যায়গুলো দেখান"
     },
     "autoSkipOnMusicVideos": {
         "message": "যখন অ-সংগীত বিভাগ থাকে তখন স্বয়ংক্রিয়ভাবে সমস্ত বিভাগগুলি এড়িয়ে যান"
@@ -718,6 +752,10 @@
     "bracketEnd": {
         "message": "(শেষ)"
     },
+    "End": {
+        "message": "সমাপ্ত",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "লুক্কায়িতঃ ডাউনভোট"
     },
@@ -754,6 +792,13 @@
     },
     "downvoteDescription": {
         "message": "সময় ভুল দেওয়া হয়েছে"
+    },
+    "incorrectVote": {
+        "message": "সঠিক নয়"
+    },
+    "harmfulVote": {
+        "message": "ক্ষতিকর",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "বিভাগ পরিবর্তন করুন"

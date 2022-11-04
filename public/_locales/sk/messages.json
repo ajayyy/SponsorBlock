@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Nastala chyba pripojenia. Kód chyby: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenty sa ešte nahrávajú..."
+    },
     "clearTimes": {
         "message": "Zmazať segmenty"
     },
@@ -1060,5 +1063,8 @@
     "chapterNewFeature": {
         "message": "Nová funkcia: Crowd-sourcované vlastné kapitoly. Toto sú sekcie videa s vlastnými názvami, ktoré môžu byť pre väčšiu presnosť vyskladané. Ak si kúpite licenciu, uvidíte kapitoly v tomto videu, ako napr.: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Varovanie: Zo servera sa ešte nenahrali segmenty. V tomto videu už môžu byť vytvorené segmenty, ale vzhľadom na problémy so serverom ešte nemuseli byť nahraté."
     }
 }

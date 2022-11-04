@@ -36,7 +36,7 @@
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
-        "message": "Mostra il Segmento Corrente Affianco al Tempo del Video"
+        "message": "Mostra il Segmento Corrente Affianco alla Durata del Video"
     },
     "upvoteButtonInfo": {
         "message": "Vota questo contributo"
@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Si è verificato un errore durante la connessione. Codice errore: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenti in caricamento..."
+    },
     "clearTimes": {
         "message": "Rimuovi i segmenti"
     },
@@ -132,7 +135,7 @@
         "message": "Invia i segmenti"
     },
     "sortSegments": {
-        "message": "Ordina segmenti"
+        "message": "Ordina Segmenti"
     },
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
@@ -235,7 +238,7 @@
         "message": "Memorizza i voti negativi del segmento"
     },
     "whatTrackDownvotes": {
-        "message": "Segmenti votati negativamente rimarranno nascosti anche dopo aver ricaricato la pagina"
+        "message": "I segmenti votati negativamente rimarranno nascosti anche dopo aver ricaricato la pagina"
     },
     "trackDownvotesWarning": {
         "message": "Attenzione: Disabilitarlo eliminerà tutti i voti negativi precedentemente memorizzati"
@@ -256,7 +259,7 @@
         "message": "Mostra le categorie nel menu d'invio anche senza l'autorizzazione all'invio"
     },
     "whatShowCategoryWithoutPermission": {
-        "message": "Alcune categorie richiedono l'autorizzazione all'invio a causa dei requisiti di reputazione minimi"
+        "message": "Alcune categorie richiedono l'autorizzazione all'invio a causa dei requisiti sulla reputazione minima"
     },
     "showNotice": {
         "message": "Mostra di nuovo l'avviso"
@@ -307,11 +310,11 @@
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "Inizia/Finisci segmento",
+        "message": "Inizio/Fine segmento",
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
-        "message": "Invia i segmenti",
+        "message": "Invia segmenti",
         "description": "Keybind label"
     },
     "nextChapterKeybind": {
@@ -323,7 +326,7 @@
         "description": "Keybind label"
     },
     "keybindDescription": {
-        "message": "Seleziona un tasto digitandolo e scegli qualsiasi tasto modificatore che desideri utilizzare."
+        "message": "Seleziona un tasto digitandolo e spunta qualsiasi tasto modificatore che desideri utilizzare."
     },
     "0": {
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
@@ -479,7 +482,7 @@
         "message": "Usa il salto manuale quando esiste un'etichetta del video completo"
     },
     "whatManualSkipOnFullVideo": {
-        "message": "Per le persone che vogliono guardare il video senza interruzioni se contiene sponsorizzazioni o auto-promozioni."
+        "message": "Per le persone che vogliono guardare il video senza interruzioni se contiene sponsorizzazioni o autopromozioni."
     },
     "skipNoticeDuration": {
         "message": "Salta durata avviso (secondi):"
@@ -578,7 +581,7 @@
         "message": "Le informazioni di debug sono state copiate nel clip board. Sentiti libero di rimuovere tutte le informazioni che preferisci non condividere. Salva in un file di testo o incollale nella segnalazione di bug."
     },
     "keyAlreadyUsed": {
-        "message": "Questa scorciatoia è associata ad un'altra azione. Selezionane una diversa."
+        "message": "Questa scorciatoia è associata a un'altra azione. Selezionane una diversa."
     },
     "to": {
         "message": "a",
@@ -592,7 +595,7 @@
         "message": "Includi transizioni"
     },
     "generic_guideline2": {
-        "message": "Riproduci come se nulla fosse stato saltato"
+        "message": "Riprodotto come se non ci fossero salti"
     },
     "category_sponsor": {
         "message": "Sponsorizzazione"
@@ -613,22 +616,22 @@
         "message": "Simile alle \"sponsorizzazioni\" tranne che per promozioni non pagate o autopromozioni. Ciò include sezioni riguardanti vendita di merce, donazioni o informazioni in merito a collaboratori."
     },
     "category_selfpromo_guideline1": {
-        "message": "Donazioni, abbonamenti e merce personalizzata"
+        "message": "Donazioni, abbonamenti e merchandise personalizzato"
     },
     "category_selfpromo_guideline2": {
         "message": "Shoutout non pagati che non aggiungono nulla al video"
     },
     "category_selfpromo_guideline3": {
-        "message": "Non per prodotti progettati da aziende e merce"
+        "message": "Non per prodotti aziendali e merchandise"
     },
     "category_exclusive_access": {
         "message": "Accesso Esclusivo"
     },
     "category_exclusive_access_description": {
-        "message": "Solo per etichettare interi video. Usato quando un video mostra un prodotto, un servizio o un posto che hanno ricevuto gratuitamente o a cui hanno avuto un accesso sovvenzionato."
+        "message": "Solo per etichettare interi video. Usato quando un video mostra un prodotto, un servizio o un luogo che è stato ricevuto gratuitamente o a cui si ha avuto un accesso sovvenzionato."
     },
     "category_exclusive_access_pill": {
-        "message": "Questo video mostra un prodotto, un servizio o un posto che hanno ricevuto gratuitamente o a cui hanno avuto un accesso sovvenzionato",
+        "message": "Questo video mostra un prodotto, un servizio o un luogo che è stato ricevuto gratuitamente o a cui si ha avuto un accesso sovvenzionato",
         "description": "Short description for this category"
     },
     "category_exclusive_access_guideline1": {
@@ -641,13 +644,13 @@
         "message": "Quando nel punto centrale del contenuto è presente un breve promemoria per like, iscrizione o follow. Se dovesse risultare esteso o riguardante qualcosa di specifico, potrebbe essere auto-promozione."
     },
     "category_interaction_guideline1": {
-        "message": "Brevi promemoria per mi piace, iscrizioni o follow"
+        "message": "Brevi inviti a mettere mi piace, follow o iscriversi"
     },
     "category_interaction_guideline2": {
-        "message": "Include promemoria indiretti al commento"
+        "message": "Include inviti indiretti a commentare"
     },
     "category_interaction_guideline3": {
-        "message": "Non per promozione generale, solo chiamata all'azione"
+        "message": "Non per promozione generale, solo inviti all'interazione"
     },
     "category_interaction_short": {
         "message": "Promemoria d'Interazione"
@@ -662,7 +665,7 @@
         "message": "Intermezzo"
     },
     "category_intro_guideline1": {
-        "message": "Intervallo senza contenuto effettivo"
+        "message": "Sezione senza contenuto effettivo"
     },
     "category_intro_guideline2": {
         "message": "Non per transizioni con informazioni"
@@ -680,13 +683,13 @@
         "message": "Anteprima/Riepilogo"
     },
     "category_preview_description": {
-        "message": "Raccolta di clip che mostra cosa succederà in questo video o altri video in una serie, in cui tutte le informazioni sono ripetute in seguito nel video."
+        "message": "Raccolta di clip che mostra cosa succederà in questo video o altri video in una serie, tutte le informazioni sono ripetute in seguito nel video."
     },
     "category_preview_guideline1": {
-        "message": "Clip che appaiono più tardi in questo video, oppure in un video futuro"
+        "message": "Clip che appaiono in seguito in questo video, oppure in un video futuro"
     },
     "category_preview_guideline2": {
-        "message": "Riepilogo o riassunto di un video precedente"
+        "message": "Riepilogo di un video precedente"
     },
     "category_preview_guideline3": {
         "message": "Non per sezioni che aggiungono contenuti in più"
@@ -695,16 +698,16 @@
         "message": "Riempitivi irrilevanti/Battute"
     },
     "category_filler_description": {
-        "message": "Scene tangenziali aggiunte solo come riempimento o per umorismo, non necessarie alla comprensione del contenuto principale del video. Questo non dovrebbe includere i segmenti che forniscono contesto o dettagli di background. Questa è una categoria molto aggressiva, pensata per quanto non hai voglia di \"divertirti\"."
+        "message": "Scene tangenziali aggiunte solo come riempimento o per umorismo, non necessarie alla comprensione del contenuto principale del video. Non dovrebbe includere i segmenti che forniscono contesto o dettagli di background. Questa è una categoria molto aggressiva, pensata per quanto non si è in un mood \"divertente\"."
     },
     "category_filler_short": {
         "message": "Filler"
     },
     "category_filler_guideline1": {
-        "message": "Scene non correlate usate solo per filler o umorismo"
+        "message": "Scene non correlate usate solo come filler o umorismo"
     },
     "category_filler_guideline2": {
-        "message": "Distrazioni, blooper, replay"
+        "message": "Distrazioni, bloopers, replay"
     },
     "category_filler_guideline3": {
         "message": "Non per scene necessarie a capire l'argomento"
@@ -737,7 +740,7 @@
         "message": "Può ignorare il contesto"
     },
     "category_poi_highlight_guideline3": {
-        "message": "Può portare al titolo o alla miniatura del video"
+        "message": "Può saltare al contenuto del titolo o dell'anteprima"
     },
     "category_chapter": {
         "message": "Capitolo"
@@ -752,7 +755,7 @@
         "message": "Usa capitoli più grandi per le sezioni generali"
     },
     "category_chapter_guideline3": {
-        "message": "I capitoli più piccoli possono essere collocati all'interno di quelli più grandi"
+        "message": "Dei capitoli più piccoli possono essere collocati all'interno di quelli più grandi"
     },
     "category_livestream_messages": {
         "message": "Livestream: Donazione/Letture dei Messaggi"
@@ -794,7 +797,7 @@
         "message": "Silenzia i segmenti invece di saltarli, quando possibile"
     },
     "fullVideoSegments": {
-        "message": "Mostra un'icona quando un video è interamente una pubblicità",
+        "message": "Mostra un'icona quando un video è interamente promozionale",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
@@ -853,7 +856,7 @@
         "message": "nascosto: troppo corto"
     },
     "manuallyHidden": {
-        "message": "nascosta manualmente"
+        "message": "nascosto manualmente"
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
@@ -878,7 +881,7 @@
         "message": "Forza controllo canale prima di andare avanti"
     },
     "whatForceChannelCheck": {
-        "message": "Di default, verranno saltati i segmenti subito, anche prima che si sappia il canale. Di default, alcuni segmenti all'inizio del video potrebbero essere saltati sui canali nella whitelist. L'attivazione di questa opzione eviterà che ciò accada, ma ogni salto avrà un leggero ritardo in quanto ottenere l'ID del canale può richiedere un certo tempo. Questo ritardo potrebbe essere impercettibile se si dispone di una connessione internet veloce."
+        "message": "Di default, verranno saltati i segmenti immediatamente, anche prima di verificare se il canale è in whitelist. Di default, alcuni segmenti all'inizio del video potrebbero essere saltati anche sui canali in whitelist. L'attivazione di questa opzione eviterà che ciò accada, ma ogni salto avrà un leggero ritardo in quanto ottenere l'ID del canale può richiedere un certo tempo. Questo ritardo potrebbe essere impercettibile con una connessione internet veloce."
     },
     "forceChannelCheckPopup": {
         "message": "Considera l'Attivazione dell'opzione \"Forza la Verifica del Canale Prima del Salto\""
@@ -887,10 +890,10 @@
         "message": "Tempo Non Corretto/Errato"
     },
     "incorrectVote": {
-        "message": "Non corretto"
+        "message": "Errato"
     },
     "harmfulVote": {
-        "message": "Dannoso",
+        "message": "Offensivo",
         "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
@@ -923,10 +926,10 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "Questo segmento è grande. Se l'intero video è su un argomento, passa da \"Salta\" a \"Video Completo\". Vedi le linee guida per ulteriori informazioni."
+        "message": "Questo segmento è grande. Se l'intero video è su un unico argomento, passa da \"Salta\" a \"Video Completo\". Vedi le linee guida per ulteriori informazioni."
     },
     "categoryPillTitleText": {
-        "message": "Questo intero video è etichettato come questa categoria ed è troppo integrato per poterlo separarare"
+        "message": "Questo intero video è etichettato con questa categoria ed è troppo integrato per poterlo separare"
     },
     "chapterNameTooltipWarning": {
         "message": "Uno dei nomi dei tuoi capitoli è simile a una categoria. Quando possibile dovresti usare le categorie."
@@ -939,10 +942,10 @@
         "message": "Nascondi per sempre"
     },
     "warningChatInfo": {
-        "message": "Abbiamo notato che stavi facendo alcuni errori comuni che non sono dannosi"
+        "message": "Abbiamo notato che stavi facendo alcuni errori comuni che non sono intenzionali"
     },
     "warningTitle": {
-        "message": "Hai ricevuto un avviso"
+        "message": "Hai ricevuto un avvertimento"
     },
     "questionButton": {
         "message": "Ho una domanda"
@@ -957,7 +960,7 @@
         "message": "Dona"
     },
     "considerDonating": {
-        "message": "Contribuisci allo sviluppo del fondo"
+        "message": "Aiuta a finanziare lo sviluppo"
     },
     "hideDonationLink": {
         "message": "Nascondi Link di Donazione"
@@ -1093,7 +1096,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "Salta l'aspetto del preavviso",
+        "message": "Aspetto dell'avviso di skip",
         "description": "Option label"
     },
     "unbind": {
@@ -1119,13 +1122,13 @@
         "message": "Ripristina le impostazioni predefinite"
     },
     "confirmResetToDefault": {
-        "message": "Sei sicuro di voler reimpostare tutte le impostazioni ai valori predefiniti? Questo non può essere annullato."
+        "message": "Sei sicuro di voler reimpostare tutte le impostazioni ai valori predefiniti? Questa azione è irreversibile."
     },
     "exportSegments": {
         "message": "Esporta segmenti"
     },
     "importSegments": {
-        "message": "Importa i segmenti"
+        "message": "Importa segmenti"
     },
     "Import": {
         "message": "Importa",
@@ -1144,7 +1147,7 @@
         "message": "Scegli un paese"
     },
     "noDiscount": {
-        "message": "Non ti qualifichi per uno sconto"
+        "message": "Non hai diritto a uno sconto"
     },
     "discountLink": {
         "message": "Link Sconto (Vedi il prezzo rosa)"
@@ -1153,11 +1156,11 @@
         "message": "Seleziona il tuo paese"
     },
     "alreadyDonated": {
-        "message": "Se hai donato qualsiasi importo prima di ora, puoi riscattare l'accesso gratuito contattando:",
+        "message": "Se hai donato qualsiasi importo in passato, puoi riscattare l'accesso gratuito mandando una mail a:",
         "description": "After the colon is an email address"
     },
     "cantAfford": {
-        "message": "Se non puoi permetterti di acquistare una licenza, premi {here} per vedere se hai diritto a uno sconto",
+        "message": "Se non puoi permetterti di acquistare una licenza, premi {here} per verificare se hai diritto a uno sconto",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
@@ -1176,18 +1179,18 @@
         "message": "Inserisci chiave di licenza"
     },
     "chaptersPage1": {
-        "message": "La funzionalità dei capitoli in crowd-sourcing di SponsorBlock è disponibile soltanto a coloro che acquistano una licenza o a coloro aventi l'accesso garantito gratuitamente grazie ai loro contributi passati"
+        "message": "La funzionalità dei capitoli in crowd-sourcing di SponsorBlock è disponibile soltanto a chi acquista una licenza o a chi viene premiato con l'accesso gratuito grazie ai contributi passati"
     },
     "chaptersPage2": {
         "message": "Nota: L'autorizzazione a inviare i capitoli si basa ancora sulla reputazione calcolata. Acquistare una licenza ti consente di visualizzare soltanto i capitoli inviati dagli altri",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "chapterNewFeature": {
-        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato nei video, che possono esser impilate per essere sempre più precise. Acquista una licenza per visualizzare i capitoli inviati in questo video come: ",
+        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato che possono esser sovrapposte per essere sempre più precise. Acquista una licenza per visualizzare i capitoli inviati in questo video come ad esempio: ",
         "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
-        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato nei video, che possono esser impilate per essere sempre più precise. Hai accesso gratuitamente, abilitalo nelle opzioni."
+        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato, che possono esser sovrapposte per essere sempre più precise. Hai accesso gratuitamente, abilitalo nelle opzioni."
     },
     "unsubmittedSegmentCounts": {
         "message": "Al momento hai {0} su {1}",
@@ -1214,7 +1217,7 @@
         "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     },
     "clearUnsubmittedSegments": {
-        "message": "Elimina tutti i segmenti",
+        "message": "Cancella tutti i segmenti",
         "description": "Label for a button in settings"
     },
     "clearUnsubmittedSegmentsConfirm": {
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Condividi URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Attenzione: il server non ha ancora fornito i segmenti. Questo video potrebbe avere dei segmenti inviati, ma forse non sono stati ricevuti a causa di problemi del server."
     }
 }

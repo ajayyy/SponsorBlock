@@ -35,6 +35,9 @@
         "message": "Affiche les segments en tant que chapitre",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Afficher le segment actuel à côté de du temps de la vidéo"
+    },
     "upvoteButtonInfo": {
         "message": "Voter pour cette entrée"
     },
@@ -113,6 +116,9 @@
     "connectionError": {
         "message": "Erreur de connexion. Code d'erreur : "
     },
+    "segmentsStillLoading": {
+        "message": "Segments toujours en cours de chargement..."
+    },
     "clearTimes": {
         "message": "Effacer les segments"
     },
@@ -121,6 +127,9 @@
     },
     "closePopup": {
         "message": "Fermer le Popup"
+    },
+    "closeIcon": {
+        "message": "Icône \"Fermer\""
     },
     "SubmitTimes": {
         "message": "Soumettre des segments"
@@ -245,6 +254,12 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Si la vidéo vient de sortir et qu'aucun segment n'a été encore trouvé, SponsorBlock en cherchera durant la lecture de la vidéo."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Afficher les catégories dans le menu des contributions, même celles sans autorisation"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Certaines catégories nécessitent une autorisation en raison d'exigences minimales de réputation"
     },
     "showNotice": {
         "message": "Afficher la notification"
@@ -408,8 +423,17 @@
     "statusReminder": {
         "message": "Vérifiez status.sponsor.ajay.app pour le status du serveur."
     },
+    "changeUserID": {
+        "message": "Importer/Exporter Votre ID privé d'utilisateur"
+    },
     "whatChangeUserID": {
         "message": "Il doit rester privé. 0 l'instar d'un mot de passe, il ne doit être partagé avec personne. Si une autre personne est en possession de cette information, elle peut usurper votre identité SponsorBlock. Si vous cherchez votre UserID public, cliquez sur l'icône du presse-papiers dans l'encart."
+    },
+    "setUserID": {
+        "message": "Définir l'ID privé d'utilisateur"
+    },
+    "userIDChangeWarning": {
+        "message": "Avertissement : La modification de l'ID privé d'utilisateur est permanente. Êtes-vous sûr de vouloir faire ça ? Assurez-vous de sauvegarder l'ancien au cas où."
     },
     "createdBy": {
         "message": "Créé par"
@@ -507,6 +531,9 @@
     },
     "exportOptionsUpload": {
         "message": "Charger à partir du fichier"
+    },
+    "whatExportOptions": {
+        "message": "Contient toute votre configuration au format JSON. Inclut votre ID privé d'utilisateur, donc ne le partagez pas."
     },
     "setOptions": {
         "message": "Définir les options"
@@ -669,6 +696,9 @@
     },
     "category_filler": {
         "message": "Digressions/Blagues"
+    },
+    "category_filler_description": {
+        "message": "Digressions ajoutées uniquement dans un but de remplissage ou de l'humour non requis pour comprendre le sujet principal de la vidéo. Ne dois pas inclure des segments fournissant du contexte ou des détails de fond. Il s'agit d'une catégorie très agressive destinée aux moments qui ne sont pas \"pour le fun\"."
     },
     "category_filler_short": {
         "message": "Remplissage"
@@ -1025,6 +1055,12 @@
     "hideSegment": {
         "message": "Cacher le segment"
     },
+    "skipSegment": {
+        "message": "Passer le segment"
+    },
+    "playChapter": {
+        "message": "Jouer le chapitre"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Utilisez la molette de votre souris en survolant la boîte d'édition pour ajuster rapidement le minutage. Les combinaisons de touches ctrl ou maj peuvent être utilisées pour affiner les modifications."
     },
@@ -1145,9 +1181,16 @@
     "chaptersPage1": {
         "message": "La fonctionnalité participative des chapitres de SponsorBlock n'est disponible que pour les personnes qui achètent une licence, ou pour les personnes qui en ont l'accès gratuitement grâce à leurs contributions passées"
     },
+    "chaptersPage2": {
+        "message": "Remarque : l'autorisation d'envoyer des chapitres est toujours basée sur la réputation calculée. L'achat d'une licence vous permet uniquement de voir les chapitres envoyés par d'autres",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
     "chapterNewFeature": {
         "message": "Nouvelle fonctionnalité : Chapitres personnalisés crowd-sourcés. Ce sont des sections dans les vidéos avec un nom personnalisé qui s'améliore au fur et à mesure. Achetez une licence pour voir les chapitres soumis sur cette vidéo tels que: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nouvelle fonctionnalité : Chapitres personnalisés crowd-sourcés. Ce sont des sections dans les vidéos avec un nom personnalisé qui peuvent s'additionner pour être de plus en plus précis. Vous y avez accès gratuitement, activez la dans les options."
     },
     "unsubmittedSegmentCounts": {
         "message": "Vous avez actuellement {0} sur {1}",
@@ -1203,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Partager un URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Attention : Le serveur n'a pas encore répondu avec les segments. Il se peut qu'il y ait des segments sur cette vidéo déjà soumise, mais vous ne les avez tout simplement pas reçus en raison de problèmes avec le serveur."
     }
 }

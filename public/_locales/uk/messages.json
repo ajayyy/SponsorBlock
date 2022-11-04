@@ -35,6 +35,9 @@
         "message": "Показувати сегменти як розділи",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Показати поточний сегмент поруч із часом відео"
+    },
     "upvoteButtonInfo": {
         "message": "Проголосувати за цей сегмент"
     },
@@ -113,6 +116,9 @@
     "connectionError": {
         "message": "Помилка з'єднання. Код помилки: "
     },
+    "segmentsStillLoading": {
+        "message": "Сегмент все ще завантажується..."
+    },
     "clearTimes": {
         "message": "Очистити сегменти"
     },
@@ -121,6 +127,9 @@
     },
     "closePopup": {
         "message": "Закрити вікно"
+    },
+    "closeIcon": {
+        "message": "Закрити іконку"
     },
     "SubmitTimes": {
         "message": "Надіслати сегменти"
@@ -245,6 +254,12 @@
     },
     "whatRefetchWhenNotFound": {
         "message": "Якщо відео нове і для нього не знайдено сегментів, то інформація про них буде оновлюватися кожні пару хвилин, поки ви дивитеся відео."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Показувати категорії в меню подання навіть без дозволу на подання"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Деякі категорії потребують дозволу на подання через мінімальні вимоги до репутації"
     },
     "showNotice": {
         "message": "Показувати сповіщення знову"
@@ -408,8 +423,17 @@
     "statusReminder": {
         "message": "Дивіться стан сервера на status.sponsor.ajay.app."
     },
+    "changeUserID": {
+        "message": "Імпорт/експорт вашого приватного UserID"
+    },
     "whatChangeUserID": {
         "message": "Тримайте його в таємниці. Ставтеся до нього як до паролю і не передавайте нікому. Якщо хтось їм заволодіє, то зможе видати себе за вас. Якщо ви шукаєте публічний ID користувача, натисніть значок буфера обміну у спливаючому вікні."
+    },
+    "setUserID": {
+        "message": "Встан. приватний UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Попередження: зміна приватного UserID є постійною. Ви впевнені, що хочете це зробити? Про всяк випадок обов’язково зробіть резервну копію свого старого."
     },
     "createdBy": {
         "message": "Створено"
@@ -453,6 +477,12 @@
     },
     "minDurationDescription": {
         "message": "Сегменти коротше цього значення не будуть пропускатися і не будуть показані в плеєрі."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Використовуйте ручний пропуск, якщо існує повна мітка відео"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Для людей, які хочуть дивитися відео без перерв, якщо воно повністю спонсороване або самореклама."
     },
     "skipNoticeDuration": {
         "message": "Тривалість повідомлення пропуску (в секундах):"
@@ -501,6 +531,9 @@
     },
     "exportOptionsUpload": {
         "message": "Завантажити з файлу"
+    },
+    "whatExportOptions": {
+        "message": "Вся ваша конфігурація в JSON. Це включає ваш приватний UserID, тому використовуйте з розумом."
     },
     "setOptions": {
         "message": "Встановити параметри"
@@ -573,11 +606,23 @@
     "category_sponsor_guideline1": {
         "message": "Платні акції"
     },
+    "category_sponsor_guideline2": {
+        "message": "Не для пожертвувань чи товарів на замовлення"
+    },
     "category_selfpromo": {
         "message": "Самореклама/рекомендація"
     },
     "category_selfpromo_description": {
         "message": "Схоже на \"Спонсора\", але для безкоштовної реклами і самореклами. Включає себе вставки про мерчендайз, пожертвування або інформацію про тих, разом з ким було зроблено відео."
+    },
+    "category_selfpromo_guideline1": {
+        "message": "Пожертвування, членства та мерч"
+    },
+    "category_selfpromo_guideline2": {
+        "message": "Безкоштовні вітання, які не додають до відео"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "Не для корпоративних продуктів і мерча"
     },
     "category_exclusive_access": {
         "message": "Ексклюзивний доступ"
@@ -589,11 +634,23 @@
         "message": "Це відео демонструє продукт, послугу або місцеположення, до яких автори отримали безоплатний або субсидований доступ",
         "description": "Short description for this category"
     },
+    "category_exclusive_access_guideline1": {
+        "message": "У відео демонструють щось із безкоштовним або субсидованим доступом"
+    },
     "category_interaction": {
         "message": "Нагадування про взаємодію (підписка)"
     },
     "category_interaction_description": {
         "message": "Коли є коротке нагадування поставити лайк, підписатися на канал або в соцмережах в середині вмісту. Якщо ця вставка тривала або про щось конкретне, вона повинна класифікуватися як самореклама."
+    },
+    "category_interaction_guideline1": {
+        "message": "Короткі нагадування поставити лайк, підписатися"
+    },
+    "category_interaction_guideline2": {
+        "message": "Включає в себе непрямі нагадування про коментарі"
+    },
+    "category_interaction_guideline3": {
+        "message": "Не для загального просування, лише для закликів до дії"
     },
     "category_interaction_short": {
         "message": "Нагадування про взаємодію"
@@ -607,11 +664,20 @@
     "category_intro_short": {
         "message": "Заставка"
     },
+    "category_intro_guideline1": {
+        "message": "Інтервал без реального змісту"
+    },
+    "category_intro_guideline2": {
+        "message": "Не для переходів з інформацією"
+    },
     "category_outro": {
         "message": "Кінцева заставка/титри"
     },
     "category_outro_description": {
         "message": "Титри або час появи кінцевих заставок YouTube. Не для підведення підсумків сказаного у відео."
+    },
+    "category_outro_guideline1": {
+        "message": "Не включайте вміст, навіть якщо на екрані є кінцеві картки"
     },
     "category_preview": {
         "message": "Попередній перегляд/короткий зміст"
@@ -619,11 +685,32 @@
     "category_preview_description": {
         "message": "Колекція кліпів, які показують, що відбувається в цьому відео або інших відео в серії, де вся інформація повторюється пізніше у відео."
     },
+    "category_preview_guideline1": {
+        "message": "Кліпи, які з’являться пізніше або в майбутньому відео"
+    },
+    "category_preview_guideline2": {
+        "message": "Повторення попереднього відео"
+    },
+    "category_preview_guideline3": {
+        "message": "Не для розділів, які додають додатковий вміст"
+    },
     "category_filler": {
         "message": "Дотичне наповнення/Жарти"
     },
+    "category_filler_description": {
+        "message": "Дотичні сцени додані лише для наповнення або гумору, які не потрібні для розуміння основного вмісту відео. Це не повинно включати сегменти, що надають контекст або передісторію\". Це дуже агресивна категорія, призначена для випадків, коли ви не в настрої «розважатися»."
+    },
     "category_filler_short": {
         "message": "Наповнення"
+    },
+    "category_filler_guideline1": {
+        "message": "Дотичні сцени лише для наповнення чи гумору"
+    },
+    "category_filler_guideline2": {
+        "message": "Відволікання, ляпи, повтори"
+    },
+    "category_filler_guideline3": {
+        "message": "Не для сцен, які потрібні для розуміння теми"
     },
     "category_music_offtopic": {
         "message": "Музика: Сегмент без музики"
@@ -634,6 +721,9 @@
     "category_music_offtopic_short": {
         "message": "Без музики"
     },
+    "category_music_offtopic_guideline1": {
+        "message": "Розділів немає в офіційних випусках"
+    },
     "category_music_offtopic_guideline2": {
         "message": "Не музика під час виступу наживо"
     },
@@ -643,6 +733,9 @@
     "category_poi_highlight_description": {
         "message": "Частина відео яку шукає більшість людей (Аналогічно коментарю \"Відео починається з Х:ХХ\")."
     },
+    "category_poi_highlight_guideline1": {
+        "message": "Розділ, який шукають більшість людей"
+    },
     "category_poi_highlight_guideline2": {
         "message": "Може пропустити контекст"
     },
@@ -651,6 +744,18 @@
     },
     "category_chapter": {
         "message": "Розділ"
+    },
+    "category_chapter_description": {
+        "message": "Розділи з іменами користувача, що описують основні розділи відео."
+    },
+    "category_chapter_guideline1": {
+        "message": "Не згадуйте про торгові марки спонсорів"
+    },
+    "category_chapter_guideline2": {
+        "message": "Використовуйте більші розділи для загальних розділів"
+    },
+    "category_chapter_guideline3": {
+        "message": "Менші розділи можна розмістити всередині великих"
     },
     "category_livestream_messages": {
         "message": "Прямі трансляції: пожертвування/читання повідомлення"
@@ -826,6 +931,9 @@
     "categoryPillTitleText": {
         "message": "Все відео позначене цією категорією, воно є її уособленням, тож категорію неможливо виокремити."
     },
+    "chapterNameTooltipWarning": {
+        "message": "Одна з назв ваших розділів схожа на категорію. Ви повинні використовувати категорії, коли це можливо."
+    },
     "experiementOptOut": {
         "message": "Відмова від усіх майбутніх експериментів",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -947,6 +1055,12 @@
     "hideSegment": {
         "message": "Приховати сегмент"
     },
+    "skipSegment": {
+        "message": "Пропустити сегмент"
+    },
+    "playChapter": {
+        "message": "Відтворити розділ"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Навівши курсор на поле редагування, користуйтеся колесом прокрутки, щоб швидко відрегулювати час. Комбінації клавіш ctrl або shift можуть бути використані для точнішої настройки змін."
     },
@@ -1013,21 +1127,47 @@
     "exportSegments": {
         "message": "Експортувати сегменти"
     },
+    "importSegments": {
+        "message": "Імпорт сегмента"
+    },
     "Import": {
         "message": "Імпорт",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemSuccess": {
+        "message": "Купон успішно!"
+    },
     "redeemFailed": {
         "message": "Ліцензійний ключ недійсний"
+    },
+    "hideUpsells": {
+        "message": "Опції приховування недоступні без додаткової оплати"
     },
     "chooseACountry": {
         "message": "Виберіть країну"
     },
+    "noDiscount": {
+        "message": "Ви не відповідаєте вимогам на знижку"
+    },
+    "discountLink": {
+        "message": "Посилання на знижку (див. рожеву ціну)"
+    },
     "selectYourCountry": {
         "message": "Виберіть вашу країну"
     },
+    "alreadyDonated": {
+        "message": "Якщо ви вже пожертвували будь-яку суму, ви можете отримати безкоштовний доступ, надіславши електронний лист:\nВажливо:Після двокрапки вказується адреса електронної пошти",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "Якщо ви не можете дозволити собі придбати ліцензію, натисніть {тут}, щоб дізнатися, чи маєте ви право на знижку",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
     "patreonSignIn": {
         "message": "Вхід через Patreon"
+    },
+    "redeem": {
+        "message": "Купон"
     },
     "joinOnPatreon": {
         "message": "Підписатися на Patreon"
@@ -1037,6 +1177,20 @@
     },
     "enterLicenseKey": {
         "message": "Введіть ліцензійний ключ"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock функція краудсорсингу розділів доступна лише для людей, які придбали ліцензію, або для людей, яким надано безкоштовний доступ через їхні попередні внески"
+    },
+    "chaptersPage2": {
+        "message": "Примітка: Дозвіл надсилати глави все ще базується на обчисленій репутації. Придбання ліцензії дозволяє лише переглядати розділи, надіслані іншими",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Нова функція: краудсорсингові користувацькі розділи. Це розділи у відео зі спеціальними назвами, які можна складати, щоб отримати точніші результати. Придбайте ліцензію, щоб переглядати розділи цього відео, наприклад: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Нова функція: краудсорсингові користувацькі розділи. Це розділи у відео зі спеціальними назвами, які можна складати, щоб отримати точніші результати. Ви маєте безкоштовний доступ, увімкніть параметр."
     },
     "unsubmittedSegmentCounts": {
         "message": "Наразі у вас є {0} на {1}",
@@ -1092,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Поділитися посиланням"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Попередження: сервер ще не завантажив сегменти. Можливо, у цьому відео вже є сегменти, але ви просто не отримали їх через проблеми з сервером."
     }
 }

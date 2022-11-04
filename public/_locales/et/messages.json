@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ühendusega esines tõrge. Veakood: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmendid on veel laadimas..."
+    },
     "clearTimes": {
         "message": "Tühjenda segmendid"
     },
@@ -706,6 +709,9 @@
     "category_chapter": {
         "message": "Peatükk"
     },
+    "category_chapter_guideline1": {
+        "message": "Ära maini sponsorite brändi nimesid"
+    },
     "category_livestream_messages": {
         "message": "Otseülekanne: annetuste ja sõnumite lugemine"
     },
@@ -913,6 +919,9 @@
     },
     "helpPageReviewOptions": {
         "message": "Palun vaata allolevad valikud üle"
+    },
+    "helpPageFeatureDisclaimer": {
+        "message": "Paljud funktsioonid on vaikimisi välja lülitatud. Kui sa soovid jätta vahele vaheaejad, kasutada Invidioust jms, lülita need allpool sisse. Sa saad ka peita/kuvada kasutajaliidese elemente."
     },
     "helpPageHowSkippingWorks": {
         "message": "Kuidas vahelejätmine töötab"
@@ -1140,5 +1149,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Jaga URLina"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Hoiatus: Server ei ole veel segmentidega vastanud. Sellel videol võivad juba olla saadetud segmendid, aga sa ei ole veel neid serveri vea tõttu saanud."
     }
 }

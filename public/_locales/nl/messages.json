@@ -35,6 +35,9 @@
         "message": "Segmenten weergeven als hoofdstukken",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "Huidig segment weergeven naast videotijd"
+    },
     "upvoteButtonInfo": {
         "message": "Stemmen op deze inzending"
     },
@@ -113,6 +116,9 @@
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenten worden nog steeds geladen..."
+    },
     "clearTimes": {
         "message": "Segmenten verwijderen"
     },
@@ -121,6 +127,9 @@
     },
     "closePopup": {
         "message": "Pop-up sluiten"
+    },
+    "closeIcon": {
+        "message": "Pictogram voor sluiten"
     },
     "SubmitTimes": {
         "message": "Segmenten indienen"
@@ -1046,6 +1055,12 @@
     "hideSegment": {
         "message": "Segment verbergen"
     },
+    "skipSegment": {
+        "message": "Segment overslaan"
+    },
+    "playChapter": {
+        "message": "Hoofdstuk afspelen"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gebruik het muiswiel terwijl u over het invoerveld beweegt om de tijd snel aan te passen. Combinaties van de ctrl- of shift-toets kunnen worden gebruikt om de wijzigingen te verfijnen."
     },
@@ -1231,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Delen als URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Waarschuwing: de server heeft nog niet gereageerd met segmenten. Misschien zijn er al segmenten van deze video ingediend, maar heeft u ze nog niet ontvangen door problemen met de server."
     }
 }

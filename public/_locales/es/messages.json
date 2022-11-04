@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ha ocurrido un error de conexión. Código de error: "
     },
+    "segmentsStillLoading": {
+        "message": "Los segmentos aún se están cargando..."
+    },
     "clearTimes": {
         "message": "Borrar Segmentos"
     },
@@ -1135,7 +1138,7 @@
         "message": "¡Canje exitoso!"
     },
     "redeemFailed": {
-        "message": "La clave de la licencia no es válida"
+        "message": "La clave de la licencia es inválida"
     },
     "hideUpsells": {
         "message": "Ocultar opciones no disponibles sin pago extra"
@@ -1153,18 +1156,18 @@
         "message": "Seleccione su país"
     },
     "alreadyDonated": {
-        "message": "Si has donado cualquier cantidad antes del presente, puedes canjear el acceso gratuito vía correo electrónico:",
+        "message": "Si has donado cualquier cantidad antes de ahora, puedes canjear el acceso gratuito vía correo electrónico:",
         "description": "After the colon is an email address"
     },
     "cantAfford": {
-        "message": "Si no puedes permitirte comprar una licencia, haz clic en {here} para ver si eres elegible para un descuento",
+        "message": "Si no puedes permitirte comprar una licencia, haz clic {aquí} para ver si eres elegible para un descuento",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "Iniciar sesión con Patreon"
     },
     "redeem": {
-        "message": "Canje"
+        "message": "Canjear"
     },
     "joinOnPatreon": {
         "message": "Danos tu apoyo en Patreon"
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Compartir como URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Advertencia: El servidor aún no ha respondido con segmentos. Es posible que haya segmentos en este video ya enviados, pero no los ha recibido debido a problemas con el servidor."
     }
 }

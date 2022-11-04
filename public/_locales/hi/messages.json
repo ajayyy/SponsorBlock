@@ -25,23 +25,142 @@
     "Segments": {
         "message": "खंडों"
     },
+    "SegmentsCap": {
+        "message": "खंड"
+    },
+    "Chapters": {
+        "message": "चैप्टर"
+    },
+    "renderAsChapters": {
+        "message": "खंडो को चैप्टर के रूप में दिखाएँ",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "वीडियो समय के अलावा वर्तमान खंड दिखाएँ"
+    },
+    "upvoteButtonInfo": {
+        "message": "इस प्रस्तुतीकरण को वॉट दें"
+    },
+    "reportButtonTitle": {
+        "message": "रिपोर्ट"
+    },
+    "reportButtonInfo": {
+        "message": "इस प्रस्तुतीकरण को गलत रिपोर्ट करें"
+    },
     "Dismiss": {
         "message": "रद्द करें"
     },
     "Loading": {
         "message": "लोड कर रहा है..."
     },
+    "Hide": {
+        "message": "कभी नही दिखाएँ"
+    },
+    "hitGoBack": {
+        "message": "जहाँ से आप आये थी वहां पर जाने के लिए अनस्किप दबाएं।"
+    },
+    "unskip": {
+        "message": "अनस्किप"
+    },
+    "reskip": {
+        "message": "रिस्किप"
+    },
+    "unmute": {
+        "message": "अनम्यूट"
+    },
     "paused": {
         "message": "रुका हुआ"
+    },
+    "manualPaused": {
+        "message": "टाइम रुका"
+    },
+    "confirmMSG": {
+        "message": "अलग-अलग मानों को संपादित करने या हटाने के लिए, जानकारी बटन पर क्लिक करें या ऊपरी दाएं कोने में एक्सटेंशन आइकन पर क्लिक करके एक्सटेंशन पॉपअप खोलें।"
     },
     "clearThis": {
         "message": "क्या आप वाकई इसे साफ़ करना चाहते हैं?\n\n"
     },
+    "Unknown": {
+        "message": "आपका प्रायोजक समय सबमिट करने में एक त्रुटि हुई, कृपया बाद में पुन: प्रयास करें।"
+    },
+    "sponsorFound": {
+        "message": "इस वीडियो के खंड डेटाबेस में हैं!"
+    },
+    "sponsor404": {
+        "message": "कोई खंड नहीं मिले"
+    },
+    "sponsorStart": {
+        "message": "खंड अभी शुरू करें"
+    },
     "sponsorEnd": {
         "message": "खंड अब समाप्त होता है"
     },
+    "sponsorCancel": {
+        "message": "खंड बनाना रद्द करें"
+    },
+    "noVideoID": {
+        "message": "कोई YouTube वीडियो नही मिली।\nअगर यह गलत है, तो इस तब को रिफ्रेश कीजिये।"
+    },
+    "refreshSegments": {
+        "message": "खंड रिफ्रेश करें"
+    },
     "success": {
         "message": "सफल!"
+    },
+    "voted": {
+        "message": "वॉट किया!"
+    },
+    "serverDown": {
+        "message": "ऐसा लगता है की सर्वर डाउन है। कृपया डेवलपर से तुरंत संपर्क करें।"
+    },
+    "connectionError": {
+        "message": "एक संपर्क गलती हो गयी है। गलती कूट: "
+    },
+    "clearTimes": {
+        "message": "खंड हटाएँ"
+    },
+    "openPopup": {
+        "message": "SponsorBlock पॉपअप खोलें"
+    },
+    "closePopup": {
+        "message": "पॉपअप बंद करें"
+    },
+    "closeIcon": {
+        "message": "आइकॉन बंद करें"
+    },
+    "SubmitTimes": {
+        "message": "खंड दर्ज करें"
+    },
+    "sortSegments": {
+        "message": "खंड छांटें"
+    },
+    "submitCheck": {
+        "message": "क्या आप वाकई इसे दर्ज करना चाहते हैं?"
+    },
+    "whitelistChannel": {
+        "message": "चैनल व्हाइटलिस्ट करें"
+    },
+    "removeFromWhitelist": {
+        "message": "चैनल को व्हाइटलिस्ट से हटाएँ"
+    },
+    "voteOnTime": {
+        "message": "एक खंड को वॉट करें"
+    },
+    "Submissions": {
+        "message": "प्रविष्टियां"
+    },
+    "savedPeopleFrom": {
+        "message": "आपने लोगो को बचाया है "
+    },
+    "viewLeaderboard": {
+        "message": "लीडरबोर्ड"
+    },
+    "recordTimesDescription": {
+        "message": "दर्ज करें"
+    },
+    "submissionEditHint": {
+        "message": "सबमिट पर क्लिक करने के बाद अनुभाग सम्पादन दिखाई देगा",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "Options": {
         "message": "विकल्प"

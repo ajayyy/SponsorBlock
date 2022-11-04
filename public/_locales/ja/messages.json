@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "接続エラーが発生しました。 エラーコード: "
     },
+    "segmentsStillLoading": {
+        "message": "セグメントがまだ読み込み中です..."
+    },
     "clearTimes": {
         "message": "セグメントを消去"
     },
