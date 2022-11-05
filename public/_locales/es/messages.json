@@ -1197,7 +1197,7 @@
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
     },
     "unsubmittedSegmentCountsZero": {
-        "message": "Actualmente no tiene segmentos no enviados",
+        "message": "Actualmente no tiene segmentos sin enviar",
         "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
     },
     "unsubmittedSegmentsSingular": {
