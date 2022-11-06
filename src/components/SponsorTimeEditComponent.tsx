@@ -595,7 +595,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     this.props.contentContainer().updateEditButtonsOnPlayer();
                 }
             }
-        } else if (this.state.sponsorTimeEdits[1] === null && category === "outro") {
+        } else if (this.state.sponsorTimeEdits[1] === null && category === "outro" && !sponsorTimesSubmitting[this.props.index].segment[1]) {
             sponsorTimesSubmitting[this.props.index].segment[1] = this.props.contentContainer().v.duration;
             this.props.contentContainer().updateEditButtonsOnPlayer();
         }
