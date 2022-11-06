@@ -153,7 +153,7 @@
         "message": "提案数"
     },
     "savedPeopleFrom": {
-        "message": "みんなの時間をこれだけ節約しました: "
+        "message": "あなたが節約したみんなの時間: "
     },
     "viewLeaderboard": {
         "message": "リーダーボード"
@@ -1246,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "URLとして共有"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "警告: サーバーがまだセグメントで応答していません。この動画に対するセグメントはすでに提出されているものの、サーバーの問題によりそれが受信できていないだけという可能性があります。"
     }
 }
