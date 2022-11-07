@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "একটি সংযোগ ত্রুটি ঘটেছে. ভুল সংকেত: "
     },
+    "segmentsStillLoading": {
+        "message": "সেগমেন্ট এখনো লোড হচ্ছে..."
+    },
     "clearTimes": {
         "message": "বিভাগগুলি পরিষ্কার করুন"
     },
@@ -842,6 +845,12 @@
     "hideForever": {
         "message": "চিরকালের জন্য এই বিষয়বস্তু লুকান"
     },
+    "questionButton": {
+        "message": "আমার একটি প্রশ্ন আছে"
+    },
+    "warningConfirmButton": {
+        "message": "আমি কারণ বুঝেছি"
+    },
     "Donate": {
         "message": "অনুদান"
     },
@@ -914,6 +923,9 @@
     "LearnMore": {
         "message": "আরও জানুন"
     },
+    "FullDetails": {
+        "message": "সম্পূর্ণ বিস্তারিত"
+    },
     "CopyDownvoteButtonInfo": {
         "message": "ডাউনভোট করে আপনার জন্য পুনরায় জমা দেওয়ার জন্য একটি স্থানীয় অনুলিপি তৈরি করে"
     },
@@ -937,6 +949,12 @@
     },
     "hideSegment": {
         "message": "অংশ আড়াল করুন"
+    },
+    "skipSegment": {
+        "message": "সেগমেন্ট এড়িয়ে যান"
+    },
+    "playChapter": {
+        "message": "অধ্যায় চালু করুন"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "দ্রুত সময়টি পরিবর্কতন করতে সম্পাদনা বাক্সে ঘুরে দেখার সময় আপনার মাউস এর হুইয়িলটি ব্যবহার করুন। কন্ট্রল বা শিফট কী এর সংমিশ্রণগুলি পরিবর্তনগুলি আরো নিখুতভাবে টিউন করতে ব্যবহার করা যেতে পারে।"
@@ -994,5 +1012,33 @@
     },
     "openOptionsPage": {
         "message": "বিকল্প পাতা খুলুন"
+    },
+    "resetToDefault": {
+        "message": "সেটিংস ডিফল্টে ফিরিয়ে নিন"
+    },
+    "exportSegments": {
+        "message": "সেগমেন্ট রপ্তানি করুন"
+    },
+    "importSegments": {
+        "message": "সেগমেন্ট আমদানী করুন"
+    },
+    "Import": {
+        "message": "আমদানী",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "chooseACountry": {
+        "message": "দেশ নির্বাচন করুন"
+    },
+    "videosSingular": {
+        "message": "ভিডিও",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "ভিডিওগুলি",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "সকল সেগমেন্ট পরিস্কার করুন",
+        "description": "Label for a button in settings"
     }
 }

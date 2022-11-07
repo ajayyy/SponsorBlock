@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ein Verbindungsfehler ist aufgetreten. Fehlermeldung: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmente werden noch geladen..."
+    },
     "clearTimes": {
         "message": "Alle Segmente löschen"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Als URL teilen"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Warnung: Der Server hat noch nicht mit Segmenten geantwortet. Möglicherweise gibt es bereits Segmente zu diesem Video, aber du hast sie aufgrund von Problemen mit dem Server noch nicht erhalten."
     }
 }
