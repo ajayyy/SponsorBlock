@@ -31,6 +31,13 @@
     "Chapters": {
         "message": "פרקים"
     },
+    "renderAsChapters": {
+        "message": "עיבוד מקטעים כפרקים",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "הצגת מקטע נוכחי לצד זמן וידאו"
+    },
     "upvoteButtonInfo": {
         "message": "הצבע לדיווח הזה"
     },
@@ -109,6 +116,9 @@
     "connectionError": {
         "message": "התקבלה שגיאת חיבור. קוד השגיאה: "
     },
+    "segmentsStillLoading": {
+        "message": "מקטע עדיין נטען..."
+    },
     "clearTimes": {
         "message": "נקה מקטעים"
     },
@@ -118,8 +128,14 @@
     "closePopup": {
         "message": "סגור חלון"
     },
+    "closeIcon": {
+        "message": "סגירת סמליל"
+    },
     "SubmitTimes": {
         "message": "הגש מקטעים"
+    },
+    "sortSegments": {
+        "message": "מיון מקטעים"
     },
     "submitCheck": {
         "message": "אתה בטוח שאתה רוצה להזין את זה?"
@@ -169,6 +185,9 @@
     },
     "copyPublicID": {
         "message": "העתק קוד משתמש פומבי"
+    },
+    "copySegmentID": {
+        "message": "העתקת מזהה מקטע"
     },
     "discordAdvert": {
         "message": "הצטרף לשרת הדיסקורד הרשמי כדי לביא הצעות וחוות דעת!"
@@ -221,9 +240,18 @@
         "message": "הפרק הבא",
         "description": "Keybind label"
     },
+    "disableSkipping": {
+        "message": "דילוג מופעל"
+    },
+    "enableSkipping": {
+        "message": "דילוג מושבת"
+    },
     "yourWork": {
         "message": "העבודה שלך",
         "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "נראה שהשרת עמוס יתר על המידה. יש לנסות שוב בעוד מספר שניות."
     },
     "errorCode": {
         "message": "קוד שגיאה: "
@@ -234,8 +262,43 @@
     "mute": {
         "message": "השתק"
     },
+    "full": {
+        "message": "וידיאו מלא",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
+    "skip_category": {
+        "message": "דילוג {0}?"
+    },
     "mute_category": {
         "message": "השתק {0}?"
+    },
+    "skip_to_category": {
+        "message": "דילוג אל {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} דולג",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} מושתק",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "דילוג אל {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
+    "disableAutoSkip": {
+        "message": "השבתת דילוג אוטומטי"
+    },
+    "enableAutoSkip": {
+        "message": "הפעלת דילוג אוטומטי"
+    },
+    "audioNotification": {
+        "message": "הודעת שמע בעת דילוג"
+    },
+    "youHaveSkipped": {
+        "message": "דילגת "
     },
     "minLower": {
         "message": "דקה"
@@ -312,11 +375,18 @@
         "message": "עד ל",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "הועתק!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "category_sponsor": {
         "message": "נותן חסות"
     },
     "category_exclusive_access": {
         "message": "גישה אקסקלוסיבית"
+    },
+    "category_filler_short": {
+        "message": "מסנן"
     },
     "category_music_offtopic": {
         "message": "מוזיקה: קטעים ללא מוזיקה"
@@ -327,6 +397,9 @@
     "category_poi_highlight": {
         "message": "קטע חשוב"
     },
+    "category_chapter": {
+        "message": "פרק"
+    },
     "autoSkip": {
         "message": "דילוג אוטומטי"
     },
@@ -335,6 +408,9 @@
     },
     "showOverlay": {
         "message": "הראה בטיימליין"
+    },
+    "disable": {
+        "message": "מושבת"
     },
     "showOverlay_POI": {
         "message": "הראה בטיימליין"
@@ -358,8 +434,15 @@
     "bracketEnd": {
         "message": "(סוף)"
     },
+    "End": {
+        "message": "סוף",
+        "description": "Button that skips to the end of a segment"
+    },
     "downvoteDescription": {
         "message": "זמן שגוי/לא נכון"
+    },
+    "incorrectVote": {
+        "message": "שגוי"
     },
     "incorrectCategory": {
         "message": "שנה קטגוריה"
