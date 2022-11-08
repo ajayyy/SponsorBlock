@@ -140,16 +140,17 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
     }
 
     private openTooltip(): void {
-        const tooltipMount = document.querySelector("ytd-video-primary-info-renderer > #container") as HTMLElement;
+        const tooltipMount = document.querySelector("#above-the-fold") as HTMLElement;
         if (tooltipMount) {
             this.tooltip = new Tooltip({
                 text: this.getTitleText(),
                 referenceNode: tooltipMount,
-                bottomOffset: "70px",
+                bottomOffset: "0px",
                 opacity: 0.95,
                 displayTriangle: false,
                 showLogo: false,
-                showGotIt: false
+                showGotIt: false,
+                prependElement: tooltipMount.firstElementChild as HTMLElement
             });
         }
     }
