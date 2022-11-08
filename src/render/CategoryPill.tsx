@@ -43,8 +43,10 @@ export class CategoryPill {
             this.root.render(<CategoryPillComponent ref={this.ref} vote={vote} />);
 
             if (this.unsavedState) {
-                this.ref.current?.setState(this.unsavedState);
-                this.unsavedState = null;
+                GenericUtils.wait(() => this.ref.current).then(() => {
+                    this.ref.current?.setState(this.unsavedState);
+                    this.unsavedState = null;
+                });
             }
 
             if (onMobileYouTube) {
