@@ -1567,6 +1567,13 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
     const includedTimes: ScheduledTime[] = [];
     const scheduledTimes: number[] = [];
 
+    const shouldIncludeTime = (segment: ScheduledTime ) => (minimum === undefined
+        || ((includeNonIntersectingSegments && segment.scheduledTime >= minimum)
+            || (includeIntersectingSegments && segment.scheduledTime < minimum && segment.segment[1] > minimum)))
+        && (!hideHiddenSponsors || segment.hidden === SponsorHideType.Visible)
+        && segment.segment.length === 2
+        && segment.actionType !== ActionType.Poi;
+
     const possibleTimes = sponsorTimes.map((sponsorTime) => ({
         ...sponsorTime,
         scheduledTime: sponsorTime.segment[0]
@@ -1574,7 +1581,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
 
     // Schedule at the end time to know when to unmute and remove title from seek bar
     sponsorTimes.forEach(sponsorTime => {
-        if (!possibleTimes.some((time) => sponsorTime.segment[1] === time.scheduledTime)
+        if (!possibleTimes.some((time) => sponsorTime.segment[1] === time.scheduledTime && shouldIncludeTime(time))
             && (minimum === undefined || sponsorTime.segment[1] > minimum)) {
             possibleTimes.push({
                 ...sponsorTime,
@@ -1584,13 +1591,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
     });
 
     for (let i = 0; i < possibleTimes.length; i++) {
-        if ((minimum === undefined
-                || ((includeNonIntersectingSegments && possibleTimes[i].scheduledTime >= minimum)
-                    || (includeIntersectingSegments && possibleTimes[i].scheduledTime < minimum && possibleTimes[i].segment[1] > minimum)))
-                && (!hideHiddenSponsors || possibleTimes[i].hidden === SponsorHideType.Visible)
-                && possibleTimes[i].segment.length === 2
-                && possibleTimes[i].actionType !== ActionType.Poi) {
-
+        if (shouldIncludeTime(possibleTimes[i])) {
             scheduledTimes.push(possibleTimes[i].scheduledTime);
             includedTimes.push(possibleTimes[i]);
         }
