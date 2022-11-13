@@ -372,7 +372,7 @@ export default class Utils {
 
         let response = await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
 
-        if(/*response.status >= 500 && response.status <= 599 &&*/ Config.config.backupServerAddress != undefined && Config.config.backupServerAddress.replace(/\/+$/, "").startsWith("http"))
+        if(response.status >= 500 && response.status <= 599 && Config.config.backupServerAddress != undefined && Config.config.backupServerAddress.replace(/\/+$/, "").startsWith("http"))
         {
             response = await (this.asyncRequestToCustomServer(type, Config.config.backupServerAddress + address, data));
         }
