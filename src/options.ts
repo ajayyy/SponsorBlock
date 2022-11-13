@@ -175,6 +175,7 @@ async function init() {
                 textChangeSetButton.addEventListener("click", async () => {
                     // See if anything extra must be done
                     switch (option) {
+                        case "backupServerAddress":
                         case "serverAddress": {
                             const result = validateServerAddress(textChangeInput.value);
 

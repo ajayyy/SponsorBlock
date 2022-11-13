@@ -370,7 +370,14 @@ export default class Utils {
     async asyncRequestToServer(type: string, address: string, data = {}): Promise<FetchResponse> {
         const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
-        return await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
+        let response = await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
+
+        if(/*response.status >= 500 && response.status <= 599 &&*/ Config.config.backupServerAddress != undefined && Config.config.backupServerAddress.replace(/\/+$/, "").startsWith("http"))
+        {
+            response = await (this.asyncRequestToCustomServer(type, Config.config.backupServerAddress + address, data));
+        }
+
+        return response;
     }
 
     /**
