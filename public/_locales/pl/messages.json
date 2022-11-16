@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Wystąpił błąd połączenia. Kod błędu: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenty nadal się ładują..."
+    },
     "clearTimes": {
         "message": "Wyczyść segmenty"
     },
@@ -1243,5 +1246,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "Udostępnij jako adres URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Ostrzeżenie: Serwer nie odpowiedział jeszcze na segmenty. Być może segmenty na tym filmie są już wysłane, ale po prostu nie otrzymałeś ich z powodu problemów z serwerem."
     }
 }
