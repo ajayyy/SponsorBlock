@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "连接错误。错误代码： "
     },
+    "segmentsStillLoading": {
+        "message": "片段仍在加载中..."
+    },
     "clearTimes": {
         "message": "清除片段"
     },
@@ -130,6 +133,9 @@
     },
     "SubmitTimes": {
         "message": "提交片段"
+    },
+    "sortSegments": {
+        "message": "分类段"
     },
     "submitCheck": {
         "message": "您确定要提交它吗？"
@@ -177,6 +183,9 @@
     "setUsername": {
         "message": "设定用户名"
     },
+    "copyPublicID": {
+        "message": "复制公共用户ID"
+    },
     "copySegmentID": {
         "message": "复制片段 ID"
     },
@@ -197,6 +206,9 @@
     },
     "hideButtonsDescription": {
         "message": "这将隐藏在 YouTube 播放器上提交赞助商广告的按钮。我了解这个东西打扰到了某些人。除了使用那个按钮，这个弹窗也可以用来提交赞助商广告。 要隐藏出现的通知，请使用通知中显示的写着 ”不再显示“ 的按钮。您可以在以后再次启用这些设置。"
+    },
+    "showSkipButton": {
+        "message": "保持播放器上的跳过高亮按钮"
     },
     "showInfoButton": {
         "message": "在 Youtube 播放器上显示信息按钮"
@@ -219,6 +231,18 @@
     "whatViewTracking": {
         "message": "此功能追踪您跳过了哪些片段，以让用户知道他们提交的信息帮助了多少人，并与点赞一同作为依据，来确保垃圾信息不会进入数据库。在您每次跳过片段时，此扩展都会向服务器发送一条消息。希望大部分人不要改变此设置，以使观看数字准确。:)"
     },
+    "enableViewTrackingInPrivate": {
+        "message": "在私人/隐身标签中启用跳过计数跟踪"
+    },
+    "enableTrackDownvotes": {
+        "message": "商店部分的下线"
+    },
+    "whatTrackDownvotes": {
+        "message": "任何被你降权的片段，即使在刷新后也会保持隐藏状态"
+    },
+    "trackDownvotesWarning": {
+        "message": "警告。禁用此功能将删除所有先前存储的降级投票"
+    },
     "enableQueryByHashPrefix": {
         "message": "按哈希前缀查询"
     },
@@ -231,11 +255,35 @@
     "whatRefetchWhenNotFound": {
         "message": "如果视频是新的且没有发现可跳片段，将在您观看时每隔几分钟再次获取信息。"
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "在提交菜单中显示类别，即使没有提交权限"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "一些类别由于有最低信誉要求，需要得到许可才能提交"
+    },
     "showNotice": {
         "message": "重新显示通知"
     },
     "showSkipNotice": {
         "message": "在跳过片段后显示通知"
+    },
+    "showCategoryGuidelines": {
+        "message": "显示类别帮助"
+    },
+    "noticeVisibilityMode0": {
+        "message": "全尺寸的跳过通知"
+    },
+    "noticeVisibilityMode1": {
+        "message": "自动跳车的小跳车通知"
+    },
+    "noticeVisibilityMode2": {
+        "message": "所有的小跳槽通知"
+    },
+    "noticeVisibilityMode3": {
+        "message": "褪色的自动跳车通知书"
+    },
+    "noticeVisibilityMode4": {
+        "message": "所有褪色的跳过通知"
     },
     "longDescription": {
         "message": "SponsorBlock 可帮您跳过 YouTube 视频中的赞助商广告、开场、结尾、订阅提醒和其他烦人片段。SponsorBlock 是一个众包的浏览器扩展，可以让任何人提交 YouTube 视频的赞助商广告和其他片段的开始和结束时间。若有一人提交了信息，其他所有使用此扩展的人都能直接跳过赞助商广告片段。您也可以跳过音乐视频中的非音乐部分。",
@@ -256,6 +304,18 @@
     "noticeUpdate2": {
         "message": "如果您依然不喜欢它，请按下不再显示按钮。",
         "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "跳过部分",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "启动/停止部分",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "提交片段",
+        "description": "Keybind label"
     },
     "0": {
         "message": "连接超时。请检查您的网络连接。如果您的网络运行正常，则可能是服务器过载或宕机。"
