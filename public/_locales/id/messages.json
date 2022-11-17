@@ -1006,5 +1006,25 @@
     },
     "confirmResetToDefault": {
         "message": "Apakah Anda yakin ingin mengatur ulang semua pengaturan ke nilai bawaan?\nTindakan ini tidak dapat diurungkan."
+    },
+    "chooseACountry": {
+        "message": "Pilih negara"
+    },
+    "selectYourCountry": {
+        "message": "Pilih negaramu"
+    },
+    "patreonSignIn": {
+        "message": "Masuk dengan Patreon"
+    },
+    "enterLicenseKey": {
+        "message": "Masukkan Kode Lisensi"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "video",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
     }
 }
