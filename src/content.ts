@@ -1396,12 +1396,12 @@ function updatePreviewBar(): void {
 
     if (Config.config.showTimeWithSkips) {
         const skippedDuration = utils.getTimestampsDuration(previewBarSegments
-            .filter(({actionType}) => actionType !== ActionType.Chapter)
+            .filter(({actionType}) => ![ActionType.Mute, ActionType.Chapter].includes(actionType))
             .map(({segment}) => segment));
 
         showTimeWithoutSkips(skippedDuration);
     }
-
+ 
     // Update last video id
     lastPreviewBarUpdate = sponsorVideoID;
 }
