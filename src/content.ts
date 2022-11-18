@@ -1401,7 +1401,7 @@ function updatePreviewBar(): void {
 
         showTimeWithoutSkips(skippedDuration);
     }
- 
+
     // Update last video id
     lastPreviewBarUpdate = sponsorVideoID;
 }
