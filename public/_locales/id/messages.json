@@ -25,6 +25,12 @@
     "Segments": {
         "message": "segmen"
     },
+    "SegmentsCap": {
+        "message": "Segmen"
+    },
+    "Chapters": {
+        "message": "Bab"
+    },
     "upvoteButtonInfo": {
         "message": "Upvote submisi ini"
     },
@@ -103,6 +109,9 @@
     "connectionError": {
         "message": "Kesalahan koneksi terjadi. Kode kesalahan: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmen masih dimuat..."
+    },
     "clearTimes": {
         "message": "Hapus Segmen"
     },
@@ -112,8 +121,14 @@
     "closePopup": {
         "message": "Tutup Popup"
     },
+    "closeIcon": {
+        "message": "Tutup Ikon"
+    },
     "SubmitTimes": {
         "message": "Kirim Segmen"
+    },
+    "sortSegments": {
+        "message": "Urutkan Segmen"
     },
     "submitCheck": {
         "message": "Apakah anda yakin ingin mengirim ini?"
@@ -287,6 +302,14 @@
     },
     "setSubmitKeybind": {
         "message": "Kirim segmen",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Bab selanjutnya",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Bab sebelumnya",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -536,6 +559,10 @@
         "message": "sampai",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Tersalin!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline1": {
         "message": "Tampilkan transisi segue"
     },
@@ -681,6 +708,9 @@
     "category_poi_highlight_guideline3": {
         "message": "Dapat melewati ke judul atau thumbnail"
     },
+    "category_chapter": {
+        "message": "Bab"
+    },
     "category_livestream_messages": {
         "message": "Livestream: Baca Pesan/Donasi"
     },
@@ -710,6 +740,9 @@
     },
     "showOverlay_full": {
         "message": "Tampilkan Label"
+    },
+    "showOverlay_chapter": {
+        "message": "Tampilkan Bab"
     },
     "autoSkipOnMusicVideos": {
         "message": "Lewati semua segmen secara otomatis ketika ada segmen non-music"
@@ -766,6 +799,10 @@
     "bracketEnd": {
         "message": "(Selesai)"
     },
+    "End": {
+        "message": "Akhir",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "disembunyikan: voting rendah"
     },
@@ -802,6 +839,13 @@
     },
     "downvoteDescription": {
         "message": "Salah, Waktu Tidak Tepat"
+    },
+    "incorrectVote": {
+        "message": "Salah"
+    },
+    "harmfulVote": {
+        "message": "Berbahaya",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "Ubah Kategori"
@@ -944,6 +988,12 @@
     "hideSegment": {
         "message": "Sembunyikan segmen"
     },
+    "skipSegment": {
+        "message": "Lewati segmen"
+    },
+    "playChapter": {
+        "message": "Mulai bab"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Gunakan roda mouse ketika berada di kotak edit untuk mengatur waktu dengan cepat. Kombinasi dengan tombol [Ctrl + Shift] bisa digunakan untuk perubahan yang halus."
     },
@@ -1007,8 +1057,27 @@
     "confirmResetToDefault": {
         "message": "Apakah Anda yakin ingin mengatur ulang semua pengaturan ke nilai bawaan?\nTindakan ini tidak dapat diurungkan."
     },
+    "exportSegments": {
+        "message": "Ekspor segmen"
+    },
+    "importSegments": {
+        "message": "Impor segmen"
+    },
+    "Import": {
+        "message": "Impor",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Penukaran Berhasil!"
+    },
+    "redeemFailed": {
+        "message": "Kunci lisensi tidak valid"
+    },
     "chooseACountry": {
         "message": "Pilih negara"
+    },
+    "discountLink": {
+        "message": "Tautan Diskon (Lihat harga pink)"
     },
     "selectYourCountry": {
         "message": "Pilih negaramu"
@@ -1016,8 +1085,21 @@
     "patreonSignIn": {
         "message": "Masuk dengan Patreon"
     },
+    "redeem": {
+        "message": "Tukar"
+    },
+    "joinOnPatreon": {
+        "message": "Gabung di Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "Pembelian satu kali"
+    },
     "enterLicenseKey": {
         "message": "Masukkan Kode Lisensi"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "Kamu mempunyai {0} dalam {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
     },
     "videosSingular": {
         "message": "video",
@@ -1026,5 +1108,36 @@
     "videosPlural": {
         "message": "video",
         "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Hapus semua segmen",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Yakin ingin menghapus semua segmen yang belum disubmit?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Tampilkan Segmen",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Sembunyikan segmen",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID Video",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Jumlah Segmen",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Tindakan",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Bagikan sebagai Tautan"
     }
 }
