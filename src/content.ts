@@ -1198,7 +1198,7 @@ function retryFetch(errorCode: number): void {
     retryFetchTimeout = setTimeout(() => {
         if (sponsorVideoID && sponsorTimes?.length === 0
                 || sponsorTimes.every((segment) => segment.source !== SponsorSourceType.Server)) {
-            sponsorsLookup();
+            // sponsorsLookup();
         }
     }, delay);
 }
