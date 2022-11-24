@@ -33,6 +33,7 @@ type WindowMessage = StartMessage | FinishMessage | AdMessage | VideoData;
 // global playerClient - too difficult to type
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let playerClient: any;
+let lastVideo = "";
 
 const sendMessage = (message: WindowMessage): void => {
     window.postMessage({ source: "sponsorblock", ...message }, "/");
@@ -87,7 +88,8 @@ function navigateFinishSend(event: CustomEvent): void {
 function sendVideoData(): void {
     if (!playerClient) return;
     const videoData = playerClient.getVideoData();
-    if (videoData) {
+    if (videoData && videoData.video_id !== lastVideo) {
+        lastVideo = videoData.video_id;
         sendMessage({ type: "data", videoID: videoData.video_id, isLive: videoData.isLive, isPremiere: videoData.isPremiere } as VideoData);
     }
 }
