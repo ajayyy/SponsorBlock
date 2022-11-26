@@ -71,12 +71,14 @@ let channelIDInfo: ChannelIDInfo;
 // Locked Categories in this tab, like: ["sponsor","intro","outro"]
 let lockedCategories: Category[] = [];
 // Used to calculate a more precise "virtual" video time
-let lastKnownVideoTime: { videoTime: number; preciseTime: number } = {
+const lastKnownVideoTime: { videoTime: number; preciseTime: number; fromPause: boolean; approximateDelay: number } = {
     videoTime: null,
-    preciseTime: null
+    preciseTime: null,
+    fromPause: false,
+    approximateDelay: null,
 };
 // It resumes with a slightly later time on chromium
-let lastTimeFromWaitingEvent = null;
+let lastTimeFromWaitingEvent: number = null;
 const lastNextChapterKeybind = {
     time: 0,
     date: 0
@@ -87,6 +89,7 @@ const lastNextChapterKeybind = {
 // Skips are canceled every seeking event
 let currentSkipSchedule: NodeJS.Timeout = null;
 let currentSkipInterval: NodeJS.Timeout = null;
+let currentVirtualTimeInterval: NodeJS.Timeout = null;
 
 /** Has the sponsor been skipped */
 let sponsorSkipped: boolean[] = [];
@@ -600,6 +603,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
     if (currentTime === undefined || currentTime === null) {
         currentTime = getVirtualTime();
     }
+    clearWaitingTime();
     lastTimeFromWaitingEvent = null;
 
     updateActiveSegment(currentTime);
@@ -704,11 +708,23 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
             // Use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = performance.now();
             const startVideoTime = Math.max(currentTime, video.currentTime);
+            
+            let startWaitingForReportedTimeToChange = true;
+            const reportedVideoTimeAtStart = video.currentTime;
             logDebug(`Starting setInterval skipping ${video.currentTime} to skip at ${skipTime[0]}`);
 
             currentSkipInterval = setInterval(() => {
+                // Estimate delay, but only take the current time right after a change
+                // Current time remains the same for many "frames" on Firefox
+                if (utils.isFirefox() && !lastKnownVideoTime.fromPause && startWaitingForReportedTimeToChange 
+                        && reportedVideoTimeAtStart !== video.currentTime) {
+                    startWaitingForReportedTimeToChange = false;
+                    const delay = getVirtualTime() - video.currentTime;
+                    if (delay > 0) lastKnownVideoTime.approximateDelay = delay;
+                }
+
                 const intervalDuration = performance.now() - startIntervalTime;
-                if (intervalDuration >= delayTime || video.currentTime >= skipTime[0]) {
+                if (intervalDuration + skipBuffer * 1000 >= delayTime || video.currentTime >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
                     if (!utils.isFirefox() && !video.muted) {
                         // Workaround for more accurate skipping on Chromium
@@ -716,7 +732,7 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
                         video.muted = false;
                     }
 
-                    skippingFunction(Math.max(video.currentTime, startVideoTime + video.playbackRate * intervalDuration / 1000));
+                    skippingFunction(Math.max(video.currentTime, startVideoTime + video.playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
             }, 1);
         } else {
@@ -729,11 +745,11 @@ function startSponsorSchedule(includeIntersectingSegments = false, currentTime?:
 }
 
 function getVirtualTime(): number {
-    const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime ?
+    const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime !== null ?
         (performance.now() - lastKnownVideoTime.preciseTime) * video.playbackRate / 1000 + lastKnownVideoTime.videoTime : null);
 
-    if (Config.config.useVirtualTime && !utils.isFirefox() && !isSafari() && virtualTime 
-            && Math.abs(virtualTime - video.currentTime) < 0.6 && video.currentTime !== 0) {
+    if (Config.config.useVirtualTime && !isSafari() && virtualTime 
+            && Math.abs(virtualTime - video.currentTime) < 0.2 && video.currentTime !== 0) {
         return virtualTime;
     } else {
         return video.currentTime;
@@ -878,13 +894,15 @@ function setupVideoListeners() {
             }
         });
         video.addEventListener('seeking', () => {
+            lastKnownVideoTime.fromPause = false;
+
             if (!video.paused){
                 // Reset lastCheckVideoTime
                 lastCheckTime = Date.now();
                 lastCheckVideoTime = video.currentTime;
 
                 updateVirtualTime();
-                lastTimeFromWaitingEvent = null;
+                clearWaitingTime();
 
                 startSponsorSchedule();
             } else {
@@ -897,36 +915,38 @@ function setupVideoListeners() {
         });
         video.addEventListener('ratechange', () => {
             updateVirtualTime();
-            lastTimeFromWaitingEvent = null;
+            clearWaitingTime();
 
             startSponsorSchedule();
         });
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
         video.addEventListener('videoSpeed_ratechange', () => {
             updateVirtualTime();
-            lastTimeFromWaitingEvent = null;
+            clearWaitingTime();
 
             startSponsorSchedule();
         });
-        const paused = () => {
+        const stoppedPlayback = () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
             lastCheckTime = 0;
 
-            lastKnownVideoTime = {
-                videoTime: null,
-                preciseTime: null
-            }
-            lastTimeFromWaitingEvent = video.currentTime;
+            lastKnownVideoTime.videoTime = null;
+            lastKnownVideoTime.preciseTime = null;
+            updateWaitingTime();
 
             cancelSponsorSchedule();
         };
-        video.addEventListener('pause', () => paused());
+        video.addEventListener('pause', () => {
+            lastKnownVideoTime.fromPause = true;
+
+            stoppedPlayback();
+        });
         video.addEventListener('waiting', () => {
             logDebug("[SB] Not skipping due to buffering");
             startedWaiting = true;
 
-            paused();
+            stoppedPlayback();
         });
 
         startSponsorSchedule();
@@ -934,10 +954,43 @@ function setupVideoListeners() {
 }
 
 function updateVirtualTime() {
-    lastKnownVideoTime = {
-        videoTime: video.currentTime,
-        preciseTime: performance.now()
-    };
+    if (currentVirtualTimeInterval) clearInterval(currentVirtualTimeInterval);
+
+    lastKnownVideoTime.videoTime = video.currentTime;
+    lastKnownVideoTime.preciseTime = performance.now();
+
+    // If on Firefox, wait for the second time change (time remains fixed for many "frames" for privacy reasons)
+    if (utils.isFirefox()) {
+        let count = 0;
+        let lastTime = lastKnownVideoTime.videoTime;
+        if (lastKnownVideoTime.fromPause) {
+            currentVirtualTimeInterval = setInterval(() => {
+                if (lastTime !== video.currentTime) {
+                    count++;
+                    lastTime = video.currentTime;
+                }
+
+                if (count > 1) {
+                    const delay = lastKnownVideoTime.fromPause && lastKnownVideoTime.approximateDelay ? 
+                        lastKnownVideoTime.approximateDelay : 0;
+                    
+                    lastKnownVideoTime.videoTime = video.currentTime + delay;
+                    lastKnownVideoTime.preciseTime = performance.now();
+        
+                    clearInterval(currentVirtualTimeInterval);
+                    currentVirtualTimeInterval = null;
+                }
+            }, 1);
+        }
+    }
+}
+
+function updateWaitingTime(): void {
+    lastTimeFromWaitingEvent = video.currentTime;
+}
+
+function clearWaitingTime(): void {
+    lastTimeFromWaitingEvent = null;
 }
 
 function setupSkipButtonControlBar() {
