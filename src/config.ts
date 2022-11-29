@@ -69,6 +69,7 @@ interface SBConfig {
     showSegmentNameInChapterBar: boolean;
     useVirtualTime: boolean;
     showSegmentFailedToFetchWarning: boolean;
+    allowScrollingToEdit: boolean;
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -204,6 +205,7 @@ const Config: SBObject = {
         showSegmentNameInChapterBar: true,
         useVirtualTime: true,
         showSegmentFailedToFetchWarning: true,
+        allowScrollingToEdit: true,
 
         categoryPillColors: {},
 

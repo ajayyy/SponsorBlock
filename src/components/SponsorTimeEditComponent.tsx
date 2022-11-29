@@ -320,6 +320,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     }
 
     changeTimesWhenScrolling(index: number, e: React.WheelEvent, sponsorTime: SponsorTime): void {
+        if (!Config.config.allowScrollingToEdit) return;
         let step = 0;
         // shift + ctrl = 1
         // ctrl = 0.1

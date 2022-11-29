@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Warning: The server hasn't responded with segments yet. There might actually be segments on this video already submitted but you just haven't recieved them due to issues with the server."
+    },
+    "allowScrollingToEdit": {
+        "message": "Allow Scrolling To Edit Times"
     }
 }
