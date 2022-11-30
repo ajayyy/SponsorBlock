@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Varoitus: Palvelin ei ole vielä toimittanut osiotietoja. Video saattaa sisältää jo lähetettyjä osioita, mutta et vain ole vielä vastaanottanut niitä palvelinongelmien takia."
+    },
+    "allowScrollingToEdit": {
+        "message": "Salli aikojen muokkaaminen skrollaamalla"
     }
 }
