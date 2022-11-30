@@ -410,8 +410,17 @@
     "statusReminder": {
         "message": "Cek status.sponsor.ajay.app untuk status server."
     },
+    "changeUserID": {
+        "message": "Impor/Ekspor UserID pribadi anda"
+    },
     "whatChangeUserID": {
         "message": "Ini harus dirahasiakan. Ini seperti kata sandi dan tidak boleh dibagikan kepada siapa pun. Jika seseorang mempunyai ini, mereka bisa menyamar jadi anda. Jika anda mencari UserID publik anda, klik ikon papan tulis di popup."
+    },
+    "setUserID": {
+        "message": "Atur UserID pribadi"
+    },
+    "userIDChangeWarning": {
+        "message": "Peringatan: Mengubah UserID pribadi bersifat permanen. Apakah anda yakin ingin melakukan ini? Pastikan kamu sudah mencadangkan yang lama untuk berjaga-jaga."
     },
     "createdBy": {
         "message": "Dibuat Oleh"
@@ -888,6 +897,9 @@
     },
     "hideForever": {
         "message": "Sembunyikan selamanya"
+    },
+    "questionButton": {
+        "message": "Saya memiliki pertanyaan"
     },
     "Donate": {
         "message": "Donasi"
