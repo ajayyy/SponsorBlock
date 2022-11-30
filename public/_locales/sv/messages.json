@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Varning: Servern har inte skickat ut några segment. Det kan faktiskt finnas segment på den här videon som redan skickats in, men du har inte mottagit dem ännu på grund av problem med servern."
+    },
+    "allowScrollingToEdit": {
+        "message": "Tillåt rullning för att redigera tiden"
     }
 }
