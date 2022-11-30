@@ -1152,5 +1152,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Hoiatus: Server ei ole veel segmentidega vastanud. Sellel videol võivad juba olla saadetud segmendid, aga sa ei ole veel neid serveri vea tõttu saanud."
+    },
+    "allowScrollingToEdit": {
+        "message": "Luba aegade muutmiseks kerimine"
     }
 }
