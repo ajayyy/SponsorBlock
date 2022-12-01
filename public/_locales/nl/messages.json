@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Waarschuwing: de server heeft nog niet gereageerd met segmenten. Misschien zijn er al segmenten van deze video ingediend, maar heeft u ze nog niet ontvangen door problemen met de server."
+    },
+    "allowScrollingToEdit": {
+        "message": "Scrollen toestaan om tijdstippen te bewerken"
     }
 }
