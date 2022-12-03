@@ -31,6 +31,13 @@
     "Chapters": {
         "message": "Bab"
     },
+    "renderAsChapters": {
+        "message": "Jadikan segmen sebagai bab",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "Tampilkan Segmen Saat Ini di Samping Waktu Video"
+    },
     "upvoteButtonInfo": {
         "message": "Upvote submisi ini"
     },
