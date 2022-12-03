@@ -298,6 +298,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     PageElements.sponsorTimesViewsDisplayEndWord.innerText = chrome.i18n.getMessage("Segment");
                 }
                 PageElements.sponsorTimesViewsDisplay.innerText = viewCount.toLocaleString();
+                PageElements.totalSegmentsSavedandSkippedDisplay.innerText = (viewCount + Config.config.skipCount).toLocaleString();
                 PageElements.sponsorTimesViewsContainer.style.display = "block";
             }
 
