@@ -2262,8 +2262,10 @@ function submitSponsorTimes() {
 //send the message to the background js
 //called after all the checks have been made that it's okay to do so
 async function sendSubmitMessage() {
+    // check if all segments are full video
+    const onlyFullVideo = sponsorTimesSubmitting.every((segment) => segment.actionType === ActionType.Full);
     // Block if submitting on a running livestream or premiere
-    if (isLivePremiere || isVisible(document.querySelector(".ytp-live-badge"))) {
+    if (!onlyFullVideo && (isLivePremiere || isVisible(document.querySelector(".ytp-live-badge")))) {
         alert(chrome.i18n.getMessage("liveOrPremiere"));
         return;
     }
