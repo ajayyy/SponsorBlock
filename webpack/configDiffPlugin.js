@@ -10,7 +10,7 @@ function partialDeepEquals (actual, expected, logger) {
   // loop over key, value of expected
   let failed = false;
   for (const [ key, value ] of Object.entries(expected)) {
-    if (key === "serverAddress" || key === "testingServerAddress" || key === "serverAddressComment") continue
+    if (key === "serverAddress" || key === "testingServerAddress" || key === "serverAddressComment" || key === "freeChapterAccess") continue
     // if value is object, recurse
     const actualValue = actual?.[key]
     if (typeof value !== "string" && Array.isArray(value)) {
