@@ -68,6 +68,8 @@ export function getHashParams(): Record<string, unknown> {
 
 export function getExistingChapters(currentVideoID: VideoID, duration: number): SponsorTime[] {
     const chaptersBox = document.querySelector("ytd-macro-markers-list-renderer");
+    const title = document.querySelector("[target-id=engagement-panel-macro-markers-auto-chapters] #title-text");
+    if (title?.textContent?.includes("Key moment")) return [];
 
     const chapters: SponsorTime[] = [];
     // .ytp-timed-markers-container indicates that key-moments are present, which should not be divided
@@ -101,11 +103,6 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
             lastSegment.segment[1] = duration;
             chapters.push(lastSegment);
         }
-    }
-
-    if (chapters[0] && chapters[0].segment[0] !== 0) {
-        // This is key moments instead of chapters, don't import as they are not full sections
-        return [];
     }
 
     return chapters;
