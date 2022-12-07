@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Advertencia: El servidor aún no ha respondido con segmentos. Es posible que haya segmentos en este video ya enviados, pero no los ha recibido debido a problemas con el servidor."
+    },
+    "allowScrollingToEdit": {
+        "message": "Permitir desplazamiento para editar tiempos"
     }
 }
