@@ -120,6 +120,7 @@ let lastCheckVideoTime = -1;
 
 //is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
+let waitingForChannelID = false;
 
 let previewBar: PreviewBar = null;
 // Skip to highlight button
@@ -1470,6 +1471,7 @@ async function whitelistCheck() {
     const whitelistedChannels = Config.config.whitelistedChannels;
 
     try {
+        waitingForChannelID = true;
         await utils.wait(() => channelIDInfo.status === ChannelIDStatus.Found, 6000, 20);
 
         // If found, continue on, it was set by the listener
@@ -1493,6 +1495,8 @@ async function whitelistCheck() {
             };
         }
     }
+
+    waitingForChannelID = false;
 
     //see if this is a whitelisted channel
     if (whitelistedChannels != undefined &&
@@ -2392,6 +2396,10 @@ function windowListenerHandler(event: MessageEvent): void {
                 id: data.channelID,
                 status: ChannelIDStatus.Found
             };
+
+            if (!waitingForChannelID) {
+                whitelistCheck();
+            }
         }
 
         videoIDChange(data.videoID);
