@@ -374,26 +374,24 @@ class PreviewBar {
             return;
         }
 
-        if (remakingBar) {
-            const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
-            if (filteredSegments) {
-                let groups = this.unfilteredChapterGroups;
-                if (filteredSegments.length !== segments.length) {
-                    groups = this.createChapterRenderGroups(filteredSegments);
-                }
-                this.chapterGroups = groups.filter((segment) => this.chapterGroupFilter(segment));
+        const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
+        if (filteredSegments) {
+            let groups = this.unfilteredChapterGroups;
+            if (filteredSegments.length !== segments.length) {
+                groups = this.createChapterRenderGroups(filteredSegments);
+            }
+            this.chapterGroups = groups.filter((segment) => this.chapterGroupFilter(segment));
 
-                if (groups.length !== this.chapterGroups.length) {
-                    // Fix missing sections due to filtered segments
-                    for (let i = 1; i < this.chapterGroups.length; i++) {
-                        if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
-                            this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
-                        }
+            if (groups.length !== this.chapterGroups.length) {
+                // Fix missing sections due to filtered segments
+                for (let i = 1; i < this.chapterGroups.length; i++) {
+                    if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
+                        this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
                     }
                 }
-            } else {
-                this.chapterGroups = this.unfilteredChapterGroups;
             }
+        } else {
+            this.chapterGroups = this.unfilteredChapterGroups;
         }
 
         if (!this.chapterGroups || this.chapterGroups.length <= 0) {
