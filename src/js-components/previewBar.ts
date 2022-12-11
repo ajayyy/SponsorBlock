@@ -581,6 +581,7 @@ class PreviewBar {
             for (const mutation of mutations) {
                 if (mutation.type === "childList") {
                     this.update();
+                    break;
                 }
             }
 
