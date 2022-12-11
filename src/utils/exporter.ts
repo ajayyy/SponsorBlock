@@ -85,3 +85,8 @@ export function exportTimesAsHashParam(segments: SponsorTime[]): string {
 
     return `#segments=${JSON.stringify(hashparamSegments)}`;
 }
+
+
+export function normalizeChapterName(description: string): string {
+    return description.toLowerCase().replace(/\.|:|-/g, "").replace(/\s+/g, " ");
+}

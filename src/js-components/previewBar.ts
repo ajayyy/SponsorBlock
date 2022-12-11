@@ -10,6 +10,7 @@ import { ChapterVote } from "../render/ChapterVote";
 import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceType, SponsorTime } from "../types";
 import { partition } from "../utils/arrayUtils";
 import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
+import { normalizeChapterName } from "../utils/exporter";
 import { GenericUtils } from "../utils/genericUtils";
 import { findValidElement } from "../utils/pageUtils";
 
@@ -92,6 +93,7 @@ class PreviewBar {
         this.chapterTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
 
         const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
+        const originalTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip)") as HTMLElement;
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 
         // Grab the tooltip from the text wrapper as the tooltip doesn't have its classes on init
@@ -118,8 +120,9 @@ class PreviewBar {
         const observer = new MutationObserver((mutations) => {
             if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer) return;
 
-            // If the mutation observed is only for our tooltip text, ignore
-            if (mutations.some((mutation) => (mutation.target as HTMLElement).classList.contains("sponsorCategoryTooltip"))) {
+            // Only care about mutations to time tooltip
+            console.log(mutations)
+            if (!mutations.some((mutation) => (mutation.target as HTMLElement).classList.contains("ytp-tooltip-text"))) {
                 return;
             }
 
@@ -138,7 +141,11 @@ class PreviewBar {
                 if (timeInSeconds !== null) break;
             }
 
-            if (timeInSeconds === null) return;
+            if (timeInSeconds === null) {
+                originalTooltip.style.removeProperty("display");
+
+                return;
+            }
 
             // Find the segment at that location, using the shortest if multiple found
             const [normalSegments, chapterSegments] = 
@@ -153,6 +160,7 @@ class PreviewBar {
 
             if (mainSegment === null && secondarySegment === null) {
                 this.categoryTooltipContainer.classList.remove(TOOLTIP_VISIBLE_CLASS);
+                originalTooltip.style.removeProperty("display");
             } else {
                 this.categoryTooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
                 if (mainSegment !== null && secondarySegment !== null) {
@@ -163,6 +171,15 @@ class PreviewBar {
 
                 this.setTooltipTitle(mainSegment, this.categoryTooltip);
                 this.setTooltipTitle(secondarySegment, this.chapterTooltip);
+
+                if (normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.categoryTooltip.textContent)
+                        || normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.chapterTooltip.textContent)) {
+                            console.log("Hiding original tooltip")
+                    if (originalTooltip.style.display !== "none") originalTooltip.style.display = "none";
+                    noYoutubeChapters = true;
+                } else if (originalTooltip.style.display === "none") {
+                    originalTooltip.style.removeProperty("display");
+                }
 
                 // Used to prevent overlapping
                 this.categoryTooltip.classList.toggle("ytp-tooltip-text-no-title", noYoutubeChapters);
