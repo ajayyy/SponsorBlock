@@ -930,7 +930,7 @@ class PreviewBar {
         return this.videoDuration * (showLarger ? 0.006 : 0.003);
     }
 
-    // Name used for cache
+    // Name parameter used for cache
     private getSmallestSegment(timeInSeconds: number, segments: PreviewBarSegment[], name?: string): PreviewBarSegment | null {
         const proposedIndex = name ? this.lastSmallestSegment[name]?.index : null;
         const startSearchIndex = proposedIndex && segments[proposedIndex] === this.lastSmallestSegment[name].segment ? proposedIndex : 0;
