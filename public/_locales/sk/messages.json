@@ -134,6 +134,9 @@
     "SubmitTimes": {
         "message": "Odoslať segmenty"
     },
+    "sortSegments": {
+        "message": "Triedenie segmentov"
+    },
     "submitCheck": {
         "message": "Naozaj to chcete odoslať?"
     },
@@ -231,6 +234,15 @@
     "enableViewTrackingInPrivate": {
         "message": "Zapnúť počítanie preskočení v inkognito oknách"
     },
+    "enableTrackDownvotes": {
+        "message": "Uložiť segmenty, ktoré boli downvotované"
+    },
+    "whatTrackDownvotes": {
+        "message": "Všetky segmenty, ktoré znížite, zostanú skryté aj po obnovení"
+    },
+    "trackDownvotesWarning": {
+        "message": "Varovanie: Vypnutím tejto funkcie sa vymažú všetky predtým uložené downvoty"
+    },
     "enableQueryByHashPrefix": {
         "message": "Dopyt podľa hash prefixu"
     },
@@ -293,6 +305,18 @@
         "message": "Ak sa vám to stále nepáčí, stlačte tlačidlo Nikdy nezobrazovať.",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
+    "setSkipShortcut": {
+        "message": "Preskočiť segment",
+        "description": "Keybind label"
+    },
+    "setStartSponsorShortcut": {
+        "message": "Segment štart/stop",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Odoslať segmenty",
+        "description": "Keybind label"
+    },
     "nextChapterKeybind": {
         "message": "Ďalšia kapitola",
         "description": "Keybind label"
@@ -300,6 +324,9 @@
     "previousChapterKeybind": {
         "message": "Predošlá kapitola",
         "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Vyberte kláves jeho zadaním a vyberte všetky modifikačné klávesy, ktoré chcete použiť."
     },
     "0": {
         "message": "Spojenie vypršalo. Skontrolujte svoje internetové pripojenie. Ak vám internet funguje, server je pravdepodobne preťažený alebo nefunkčný."
@@ -396,8 +423,17 @@
     "statusReminder": {
         "message": "Stav servera skontrolujete na status.sponsor.ajay.app."
     },
+    "changeUserID": {
+        "message": "Import/export vášho súkromného ID používateľa"
+    },
     "whatChangeUserID": {
         "message": "Toto si starostlivo uchovajte. Podobne ako heslo by ste to nemali s nikým zdieľať. Ak by to získal niekto ďalší, mohol by vám uškodiť. Ak hľadáte vaše verejné ID používateľa, stlačte ikonu schránky v podokne."
+    },
+    "setUserID": {
+        "message": "Nastavenie súkromného identifikátora používateľa"
+    },
+    "userIDChangeWarning": {
+        "message": "Varovanie: Zmena súkromného ID používateľa je trvalá. Ste si istí, že to chcete urobiť? Pre istotu si zálohujte svoje staré."
     },
     "createdBy": {
         "message": "Vytvoril"
@@ -442,6 +478,12 @@
     "minDurationDescription": {
         "message": "Segmenty kratšie ako nastavená hodnota nebudú preskočené ani zobrazené v prehrávači."
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "Používanie manuálneho preskočenia, ak existuje úplný štítok videa"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Pre ľudí, ktorí chcú sledovať video bez prerušenia, ak je plne sponzorované alebo ide o vlastnú propagáciu."
+    },
     "skipNoticeDuration": {
         "message": "Trvanie oznámenia o preskočení (v sekundách):"
     },
@@ -480,6 +522,18 @@
     },
     "exportOptions": {
         "message": "Import/export všetkých nastavení"
+    },
+    "exportOptionsCopy": {
+        "message": "Upraviť/kopírovať"
+    },
+    "exportOptionsDownload": {
+        "message": "Uložiť do súboru"
+    },
+    "exportOptionsUpload": {
+        "message": "Načítanie do súboru"
+    },
+    "whatExportOptions": {
+        "message": "Toto je celá vaša konfigurácia vo formáte JSON. Zahŕňa vaše súkromné ID používateľa, preto ho nezabudnite rozumne zdieľať."
     },
     "setOptions": {
         "message": "Nastaviť Nastavenia"
@@ -525,6 +579,9 @@
     },
     "copyDebugInformationComplete": {
         "message": "Debug informácie boli skopírované do schránky. Ak chcete, môžete odstrániť akékoľvek informácie, ktoré nechcete zdieľať. Uložte si ich do textového súboru alebo ich vložte do nahlásenia chyby."
+    },
+    "keyAlreadyUsed": {
+        "message": "Táto skratka je viazaná na inú akciu. Vyberte inú."
     },
     "to": {
         "message": "do",
@@ -636,6 +693,12 @@
     },
     "category_preview_guideline3": {
         "message": "Nie pre sekcie, ktoré majú dodatočný obsah"
+    },
+    "category_filler": {
+        "message": "Výplň Tangent / Vtipy"
+    },
+    "category_filler_description": {
+        "message": "Vedľajšie scény pridané len ako výplň alebo humor, ktoré nie sú potrebné na pochopenie hlavného obsahu videa. Nemali by sem patriť segmenty poskytujúce kontext alebo detaily pozadia. Toto je veľmi agresívna kategória určená na to, keď nemáte náladu na \"zábavu\"."
     },
     "category_filler_short": {
         "message": "Odbočka"
@@ -792,6 +855,9 @@
     "hiddenDueToDuration": {
         "message": "skryté: príliš krátke"
     },
+    "manuallyHidden": {
+        "message": "ručne skryté"
+    },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
         "message": "ID kanála sa ešte nenačítalo. Ak pozeráte video vložené na stránke, skúste ísť radšej priamo na YouTube. Problém mohli spôsobiť zmeny na YouTube. Ak je tomu tak, zanechajte komentár:"
@@ -893,8 +959,14 @@
     "Donate": {
         "message": "Prispieť"
     },
+    "considerDonating": {
+        "message": "Zvážte darovanie"
+    },
     "hideDonationLink": {
         "message": "Skryť možnosti prispenia"
+    },
+    "darkModeOptionsPage": {
+        "message": "Tmavý režim na stránke s možnosťami"
     },
     "helpPageThanksForInstalling": {
         "message": "Ďakujeme za inštaláciu SponsorBlock-u."
@@ -1003,18 +1075,67 @@
         "message": "h",
         "description": "100h"
     },
+    "optionsTabBehavior": {
+        "message": "Správanie",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "Rozhranie",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "Klávesové skratky",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "Zálohovanie/obnova",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "Rôzne",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "Preskočiť vzhľad oznámenia",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "Zrušenie väzby",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "Nie je nastavené"
+    },
+    "change": {
+        "message": "Zmena"
+    },
+    "youtubeKeybindWarning": {
+        "message": "Toto je zabudovaná skratka YouTube. Ste si istí, že ju chcete použiť?"
+    },
     "betaServerWarning": {
         "message": "Je zapnutý BETA server!"
     },
     "openOptionsPage": {
         "message": "Otvoriť stránku s nastaveniami"
     },
+    "resetToDefault": {
+        "message": "Obnovenie predvolených nastavení"
+    },
+    "confirmResetToDefault": {
+        "message": "Ste si istí, že chcete obnoviť všetky nastavenia na predvolené hodnoty? To sa nedá vrátiť späť."
+    },
     "exportSegments": {
         "message": "Exportovať segmenty"
+    },
+    "importSegments": {
+        "message": "Import segmentov"
     },
     "Import": {
         "message": "Import",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "Úspešne vykúpiť!"
     },
     "redeemFailed": {
         "message": "Licenčný kľúč nie je platný"
@@ -1060,9 +1181,60 @@
     "chaptersPage1": {
         "message": "Crowd-sourcované kapitovly v SponsorBlock-u sú dostupné len po zakúpení licencie alebo zadarmo pre ľudí, ktorí už v minulosti prispeli"
     },
+    "chaptersPage2": {
+        "message": "Poznámka: Povolenie na predkladanie kapitol je stále založené na vypočítanej reputácii. Zakúpenie licencie vám umožní iba prezerať kapitoly, ktoré odoslali iní",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
     "chapterNewFeature": {
         "message": "Nová funkcia: Crowd-sourcované vlastné kapitoly. Toto sú sekcie videa s vlastnými názvami, ktoré môžu byť pre väčšiu presnosť vyskladané. Ak si kúpite licenciu, uvidíte kapitoly v tomto videu, ako napr.: ",
         "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Nová funkcia: Vlastné kapitoly z verejných zdrojov. Ide o vlastnoručne pomenované časti vo videách, ktoré sa dajú ukladať na seba a spresňovať. Prístup máte zadarmo, povoľte v možnostiach."
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "V súčasnosti máte {0} na {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "V súčasnosti nemáte žiadne neodoslané segmenty",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "neodoslaný segment",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "nezaslané segmenty",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "v",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "Vymazať všetky segmenty",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "Ste si istí, že chcete vymazať všetky neodoslané segmenty?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "Zobraziť segmenty",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Skryť segmenty",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
     },
     "segmentFetchFailureWarning": {
         "message": "Varovanie: Zo servera sa ešte nenahrali segmenty. V tomto videu už môžu byť vytvorené segmenty, ale vzhľadom na problémy so serverom ešte nemuseli byť nahraté."

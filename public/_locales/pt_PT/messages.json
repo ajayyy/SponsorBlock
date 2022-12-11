@@ -25,6 +25,19 @@
     "Segments": {
         "message": "segmentos"
     },
+    "SegmentsCap": {
+        "message": "Segmentos"
+    },
+    "Chapters": {
+        "message": "Capítulos"
+    },
+    "renderAsChapters": {
+        "message": "Renderizar segmentos como capítulos",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "Mostrar segmento atual ao lado do tempo do vídeo"
+    },
     "upvoteButtonInfo": {
         "message": "Votar positivamente esta submissão"
     },
@@ -103,6 +116,9 @@
     "connectionError": {
         "message": "Deu-se um erro de conecção: Código: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmentos ainda a carregar..."
+    },
     "clearTimes": {
         "message": "Limpar Segmentos"
     },
@@ -114,6 +130,9 @@
     },
     "SubmitTimes": {
         "message": "Submeter Segmentos"
+    },
+    "sortSegments": {
+        "message": "Ordenar Segmentos"
     },
     "submitCheck": {
         "message": "Tem a certeza que pretende submeter?"
@@ -256,6 +275,21 @@
         "message": "Código-fonte",
         "description": "Used on Firefox Store Page"
     },
+    "setStartSponsorShortcut": {
+        "message": "Iniciar/parar segmento",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Próximo capítulo",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Capítulo anterior",
+        "description": "Keybind label"
+    },
+    "502": {
+        "message": "O servidor parece estar sobrecarregado. Tente novamente em alguns segundos."
+    },
     "errorCode": {
         "message": "Código de erro: "
     },
@@ -306,6 +340,21 @@
     "youHaveSavedTimeEnd": {
         "message": " das suas vidas",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "setUserID": {
+        "message": "Definir UserID Privado"
+    },
+    "createdBy": {
+        "message": "Criado por"
+    },
+    "supportedSites": {
+        "message": "Sites suportados: "
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "Adicione uma instância personalizada. Isso deve ser formatado APENAS com o domínio. Exemplo: invidious.ajay.app"
+    },
+    "addInvidiousInstanceError": {
+        "message": "Este é um domínio inválido. Isto deve APENAS incluir a parte do domínio. Exemplo: invidious.ajay.app"
     },
     "areYouSureReset": {
         "message": "Tem certeza que deseja redefinir?"

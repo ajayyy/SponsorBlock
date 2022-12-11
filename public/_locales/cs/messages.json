@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Varování: Server zatím neodpověděl se segmenty. U tohoto videa se již mohou nacházet odeslané segmenty, ale vy jste je neobdrželi kvůli chybě na serveru."
+    },
+    "allowScrollingToEdit": {
+        "message": "Povolit skrolování k časům úprav"
     }
 }

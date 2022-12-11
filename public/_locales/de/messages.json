@@ -524,7 +524,7 @@
         "message": "Alle Einstellungen importieren/exportieren"
     },
     "exportOptionsCopy": {
-        "message": "Bearbeiten/kopieren"
+        "message": "Bearbeiten/Kopieren"
     },
     "exportOptionsDownload": {
         "message": "Als Datei speichern"
@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Warnung: Der Server hat noch nicht mit Segmenten geantwortet. Möglicherweise gibt es bereits Segmente zu diesem Video, aber du hast sie aufgrund von Problemen mit dem Server noch nicht erhalten."
+    },
+    "allowScrollingToEdit": {
+        "message": "Scrollen zum Bearbeiten von Zeiten erlauben"
     }
 }

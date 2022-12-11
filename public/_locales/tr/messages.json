@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Bağlantı hatası oluştu. Hata kodu: "
     },
+    "segmentsStillLoading": {
+        "message": "Bölümler hala yükleniyor..."
+    },
     "clearTimes": {
         "message": "Kısımları temizle"
     },
@@ -1243,5 +1246,11 @@
     },
     "exportSegmentsAsURL": {
         "message": "URL olarak paylaş"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Uyarı: Sunucu henüz bölümlerle yanıt vermedi. Aslında bu videoda zaten gönderilmiş bölümler olabilir, ancak sunucudaki sorunlar nedeniyle bunları almadınız."
+    },
+    "allowScrollingToEdit": {
+        "message": "Zamanları Düzenlemek İçin Kaydırmaya İzin Ver"
     }
 }

@@ -111,10 +111,13 @@
         "message": "투표 완료!"
     },
     "serverDown": {
-        "message": "서버가 다운된 것 같아요. 개발자분께 연락해주세요."
+        "message": "서버가 다운된 것 같아요. 개발자에게 연락해주세요."
     },
     "connectionError": {
         "message": "연결 오류가 발생했어요. 오류 코드: "
+    },
+    "segmentsStillLoading": {
+        "message": "구간을 여전히 불러오는 중이에요..."
     },
     "clearTimes": {
         "message": "구간 초기화"
@@ -1243,5 +1246,11 @@
     },
     "exportSegmentsAsURL": {
         "message": "URL로 공유"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "경고: 아직 서버로부터 구간 정보를 받지 못했습니다. 동영상에 이미 제출된 구간이 있지만 서버의 문제로 수신하지 못했을 수 있습니다."
+    },
+    "allowScrollingToEdit": {
+        "message": "스크롤하여 시간 수정"
     }
 }

@@ -241,7 +241,7 @@
         "message": "Negatiivisesti äänestämäsi osiot pysyvät piilotettuina myös päivityksen jälkeen"
     },
     "trackDownvotesWarning": {
-        "message": "Varoitus: Tämän poistaminen käytöstä poistaa kaikki aiemmin tallennetut alaäänet"
+        "message": "Varoitus: Tämän käytöstä poisto poistaa kaikki aiemmat negatiiviset äänet"
     },
     "enableQueryByHashPrefix": {
         "message": "Kysely tiiviste-etuliittellä"
@@ -890,7 +890,7 @@
         "message": "Virheellinen/väärä aika"
     },
     "incorrectVote": {
-        "message": "Väärä"
+        "message": "Virheellinen"
     },
     "harmfulVote": {
         "message": "Haitallinen",
@@ -942,7 +942,7 @@
         "message": "Piilota ikuisesti"
     },
     "warningChatInfo": {
-        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole tahalleen tehtyjä"
+        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole haitallisia"
     },
     "warningTitle": {
         "message": "Sait varoituksen"
@@ -1100,7 +1100,7 @@
         "description": "Option label"
     },
     "unbind": {
-        "message": "Poista kytkös",
+        "message": "Poista liitos",
         "description": "Unbind keyboard shortcut"
     },
     "notSet": {
@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Varoitus: Palvelin ei ole vielä toimittanut osiotietoja. Video saattaa sisältää jo lähetettyjä osioita, mutta et vain ole vielä vastaanottanut niitä palvelinongelmien takia."
+    },
+    "allowScrollingToEdit": {
+        "message": "Salli aikojen muokkaaminen skrollaamalla"
     }
 }

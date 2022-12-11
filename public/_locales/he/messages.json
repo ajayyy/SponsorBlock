@@ -31,6 +31,13 @@
     "Chapters": {
         "message": "פרקים"
     },
+    "renderAsChapters": {
+        "message": "עיבוד מקטעים כפרקים",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
+    "showSegmentNameInChapterBar": {
+        "message": "הצגת מקטע נוכחי לצד זמן וידאו"
+    },
     "upvoteButtonInfo": {
         "message": "הצבע לדיווח הזה"
     },
@@ -95,7 +102,7 @@
         "message": "לא נמצא סרטון יוטיוב.\nאם זה לא נכון, רענן את הכרטיסייה."
     },
     "refreshSegments": {
-        "message": "רענן מקטעים"
+        "message": "ריענון מקטעים"
     },
     "success": {
         "message": "הצלחה!"
@@ -109,6 +116,9 @@
     "connectionError": {
         "message": "התקבלה שגיאת חיבור. קוד השגיאה: "
     },
+    "segmentsStillLoading": {
+        "message": "מקטע עדיין נטען..."
+    },
     "clearTimes": {
         "message": "נקה מקטעים"
     },
@@ -118,8 +128,14 @@
     "closePopup": {
         "message": "סגור חלון"
     },
+    "closeIcon": {
+        "message": "סגירת סמליל"
+    },
     "SubmitTimes": {
         "message": "הגש מקטעים"
+    },
+    "sortSegments": {
+        "message": "מיון מקטעים"
     },
     "submitCheck": {
         "message": "אתה בטוח שאתה רוצה להזין את זה?"
@@ -153,43 +169,46 @@
         "message": "רמז: אתה יכול להגדיר קיצורים מהמקלדת דרך תפריט אפשרויות כדי להזין זמנים"
     },
     "clearTimesButton": {
-        "message": "נקה זמנים"
+        "message": "ניקוי זמנים"
     },
     "submitTimesButton": {
-        "message": "הגש זמנים"
+        "message": "הגשת זמנים"
     },
     "publicStats": {
-        "message": "זה משומש בעמוד הסטטים הפומביים כדי להראות כמה תרמת. צפה בזה"
+        "message": "זה משמש בדף הסטטיסטיקה הציבורי כדי להראות כמה תרמת. ניתן לצפות בזה"
     },
     "Username": {
         "message": "שם משתמש"
     },
     "setUsername": {
-        "message": "הגדר שם משתמש"
+        "message": "הגדרת שם משתמש"
     },
     "copyPublicID": {
-        "message": "העתק קוד משתמש פומבי"
+        "message": "העתקת מזהה משתמש פומבי"
+    },
+    "copySegmentID": {
+        "message": "העתקת מזהה מקטע"
     },
     "discordAdvert": {
-        "message": "הצטרף לשרת הדיסקורד הרשמי כדי לביא הצעות וחוות דעת!"
+        "message": "הצטרפות לשרת הדיסקורד הרשמי כדי לביא הצעות וחוות דעת!"
     },
     "hideThis": {
-        "message": "הסתר"
+        "message": "להסתיר את זה"
     },
     "Options": {
         "message": "אפשרויות"
     },
     "showButtons": {
-        "message": "הראה כפתורים על הנגן של יוטיוב"
+        "message": "הצגת כפתורים על הנגן של יוטיוב"
     },
     "hideButtons": {
-        "message": "הסתר כפתורים על הנגן של יוטיוב"
+        "message": "הסתרת כפתורים על הנגן של יוטיוב"
     },
     "hideButtonsDescription": {
         "message": "זה מחביא את הכפתורים שמופיעים בנגן YouTube להגיש מקטעי דילוג."
     },
     "showSkipButton": {
-        "message": "השאר את כפתור הדילוג לשיא הסרטון על הנגן באופן קבוע"
+        "message": "השארת כפתור הדילוג להדגשה על הנגן"
     },
     "showInfoButton": {
         "message": "הראה כפתור מידע בנגן YouTube"
@@ -198,16 +217,16 @@
         "message": "החבא כפתור מידע בנגן YouTube"
     },
     "autoHideInfoButton": {
-        "message": "הסתר אוטומטית כפתורי אינפורמציה"
+        "message": "הסתרה אוטומטית של כפתורי אינפורמציה"
     },
     "hideDeleteButton": {
-        "message": "הסתר כפתור מחיקה על הנגן של יוטיוב"
+        "message": "הסתרת כפתור מחיקה על הנגן של יוטיוב"
     },
     "showDeleteButton": {
-        "message": "הצג כפתור מחיקה על הנגן של יוטיוב"
+        "message": "הצגת כפתור מחיקה על הנגן של יוטיוב"
     },
     "whatViewTracking": {
-        "message": "הפיצ'ר הזה עוקב אחרי מקטעים שדילגת עליהם בכדי ליידע משתמשים אחרים כמה ההגשות שלך עזרו לאחרים ושומשו כמטריקה יחד עם ההצבעות בעד בכדי להבטיח שלא ייכנס ספאם אל תוך המערכת. ההרחבה שולחת הודעה לשרת בכל פעם שאתה מדלג על מקטע. התקווה היא שרוב האנשים לא ישנו את ההגדרה הזו כדי שהמספרי צפייה יהיו מדוייקים :)"
+        "message": "תכונה זו עוקבת אחר אילו מקטעים דילגת כדי לאפשר למשתמשים לדעת עד כמה ההגשה שלהם עזרה לאחרים והשתמשה כמדד יחד עם הצבעות בעד כדי להבטיח שספאם לא ייכנס למסד הנתונים. התוסף שולח הודעה לשרת בכל פעם שאתה מדלג על קטע. אני מקווה שרוב האנשים לא ישנו את ההגדרה הזו כדי שמספרי התצוגה יהיו מדויקים. :)"
     },
     "website": {
         "message": "אתר",
@@ -221,21 +240,65 @@
         "message": "הפרק הבא",
         "description": "Keybind label"
     },
+    "disableSkipping": {
+        "message": "דילוג מופעל"
+    },
+    "enableSkipping": {
+        "message": "דילוג מושבת"
+    },
     "yourWork": {
         "message": "העבודה שלך",
         "description": "Used to describe the section that will show you the statistics from your submissions."
+    },
+    "502": {
+        "message": "נראה שהשרת עמוס יתר על המידה. יש לנסות שוב בעוד מספר שניות."
     },
     "errorCode": {
         "message": "קוד שגיאה: "
     },
     "skip": {
-        "message": "דלג"
+        "message": "דילוג"
     },
     "mute": {
-        "message": "השתק"
+        "message": "השתקה"
+    },
+    "full": {
+        "message": "וידיאו מלא",
+        "description": "Used for the name of the option to label an entire video as sponsor or self promotion."
+    },
+    "skip_category": {
+        "message": "דילוג {0}?"
     },
     "mute_category": {
         "message": "השתק {0}?"
+    },
+    "skip_to_category": {
+        "message": "דילוג אל {0}?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} דולג",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} מושתק",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "דילוג אל {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
+    "disableAutoSkip": {
+        "message": "השבתת דילוג אוטומטי"
+    },
+    "enableAutoSkip": {
+        "message": "הפעלת דילוג אוטומטי"
+    },
+    "audioNotification": {
+        "message": "הודעת שמע בעת דילוג"
+    },
+    "youHaveSkipped": {
+        "message": "דילגת "
     },
     "minLower": {
         "message": "דקה"
@@ -266,35 +329,38 @@
     "add": {
         "message": "הוסף"
     },
+    "showUploadButton": {
+        "message": "הצגת כפתור העלאה"
+    },
     "save": {
-        "message": "שמור"
+        "message": "שמירה"
     },
     "reset": {
-        "message": "אתחל"
+        "message": "איתחול"
     },
     "exportOptionsCopy": {
-        "message": "ערוך/העתק"
+        "message": "עריכה/העתקה"
     },
     "exportOptionsDownload": {
-        "message": "שמור לקובץ"
+        "message": "שמירה לקובץ"
     },
     "exportOptionsUpload": {
-        "message": "טען מקובץ"
+        "message": "טעינה מקובץ"
     },
     "setOptions": {
-        "message": "הגדר אפשרויות"
+        "message": "הגדרת אפשרויות"
     },
     "confirmNoticeTitle": {
-        "message": "הגש מקטע"
+        "message": "הגשת מקטע"
     },
     "submit": {
-        "message": "הגש"
+        "message": "הגשה"
     },
     "cancel": {
         "message": "ביטול"
     },
     "delete": {
-        "message": "מחק"
+        "message": "מחיקה"
     },
     "preview": {
         "message": "תצוגה מקדימה"
@@ -303,7 +369,7 @@
         "message": "לא מוגש"
     },
     "inspect": {
-        "message": "סקור"
+        "message": "סקירה"
     },
     "edit": {
         "message": "עריכה"
@@ -312,11 +378,18 @@
         "message": "עד ל",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "הועתק!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "category_sponsor": {
         "message": "נותן חסות"
     },
     "category_exclusive_access": {
         "message": "גישה אקסקלוסיבית"
+    },
+    "category_filler_short": {
+        "message": "מסנן"
     },
     "category_music_offtopic": {
         "message": "מוזיקה: קטעים ללא מוזיקה"
@@ -327,17 +400,29 @@
     "category_poi_highlight": {
         "message": "קטע חשוב"
     },
+    "category_chapter": {
+        "message": "פרק"
+    },
     "autoSkip": {
         "message": "דילוג אוטומטי"
     },
     "manualSkip": {
-        "message": "דלג ידנית"
+        "message": "דילוג ידני"
     },
     "showOverlay": {
-        "message": "הראה בטיימליין"
+        "message": "הראה בשורת חיפוש"
+    },
+    "disable": {
+        "message": "מושבת"
     },
     "showOverlay_POI": {
-        "message": "הראה בטיימליין"
+        "message": "הראה בשורת חיפוש"
+    },
+    "showOverlay_full": {
+        "message": "הצגת תוית"
+    },
+    "showOverlay_chapter": {
+        "message": "הצגת פרקים"
     },
     "category": {
         "message": "קטגוריה"
@@ -353,16 +438,23 @@
         "message": "עוד קטגוריות"
     },
     "chooseACategory": {
-        "message": "בחר קטגוריה"
+        "message": "בחירת קטגוריה"
     },
     "bracketEnd": {
         "message": "(סוף)"
     },
+    "End": {
+        "message": "סוף",
+        "description": "Button that skips to the end of a segment"
+    },
     "downvoteDescription": {
         "message": "זמן שגוי/לא נכון"
     },
+    "incorrectVote": {
+        "message": "שגוי"
+    },
     "incorrectCategory": {
-        "message": "שנה קטגוריה"
+        "message": "שינוי קטגוריה"
     },
     "multipleSegments": {
         "message": "מספר מקטעים"
@@ -389,22 +481,34 @@
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
     },
     "hideForever": {
-        "message": "הסתר לעד"
+        "message": "הסתרה לעד"
+    },
+    "questionButton": {
+        "message": "יש לי שאלה נוספת"
+    },
+    "warningConfirmButton": {
+        "message": "הבנתי את הסיכונים"
+    },
+    "warningError": {
+        "message": "שגיאה בעת ניסיון לאשר אזהרה:"
     },
     "Donate": {
-        "message": "תרום"
+        "message": "תרומה"
     },
     "considerDonating": {
         "message": "עזרו לממן את הפיתוח"
     },
     "hideDonationLink": {
-        "message": "הסתר כפתור תרומה"
+        "message": "הסתרת כפתור תרומה"
+    },
+    "darkModeOptionsPage": {
+        "message": "מצב כהה בדף האפשרויות"
     },
     "helpPageThanksForInstalling": {
         "message": "תודה שהתקנת את ספונסרבלוק."
     },
     "helpPageReviewOptions": {
-        "message": "אנא סקור את האפשרויות הבאות"
+        "message": "נא לסקור את האפשרויות הבאות"
     },
     "helpPageHowSkippingWorks": {
         "message": "כיצד דילוג עובד"
@@ -433,14 +537,38 @@
     "LearnMore": {
         "message": "למידע נוסף"
     },
+    "FullDetails": {
+        "message": "פרטים מלאים"
+    },
+    "CopyDownvoteButtonInfo": {
+        "message": "הצבעה שלילית ויצירת עותק מקומי שניתן לשלוח מחדש"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "פתיחת דף הוויקי של קטגוריה זו."
+    },
     "CopyAndDownvote": {
-        "message": "העתק ועשה דיסלייק"
+        "message": "העתקה ודירוג שלילי"
     },
     "ContinueVoting": {
-        "message": "המשך להצביע"
+        "message": "המשך הצבעה"
     },
     "ChangeCategoryTooltip": {
         "message": "זה מיידית ישפיע על כל המקטעים שלך"
+    },
+    "downvote": {
+        "message": "דירוג שלילי"
+    },
+    "upvote": {
+        "message": "דירוג חיובי"
+    },
+    "hideSegment": {
+        "message": "הסתרת מקטע"
+    },
+    "skipSegment": {
+        "message": "דילוכ מקטע"
+    },
+    "playChapter": {
+        "message": "הפעלת פרק"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "השתמש בגלגלת בזמן שהעכבר מעל הזמן בשלב העריכה על מנת לשנות את הזמן יותר מהר. שילוב של הלחצן Ctrl/Shift יכולים לשנות את מהירות השינוי."
@@ -449,11 +577,11 @@
         "message": "חדש! ראה מתי וידאו בשלמותו הוא פרסומת או פרסום עצמי"
     },
     "dayAbbreviation": {
-        "message": "ימים",
+        "message": "י",
         "description": "100d"
     },
     "hourAbbreviation": {
-        "message": "שעות",
+        "message": "ש'",
         "description": "100h"
     },
     "optionsTabBehavior": {
@@ -472,6 +600,18 @@
         "message": "גיבוי/שחזור",
         "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
+    "optionsTabAdvanced": {
+        "message": "שונות",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "דילוג על הופעת הודעה",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "ביטול איגוד",
+        "description": "Unbind keyboard shortcut"
+    },
     "notSet": {
         "message": "לא הוגדר"
     },
@@ -480,5 +620,143 @@
     },
     "youtubeKeybindWarning": {
         "message": "זה הוא קיצור דרך מובנה ביוטיוב. האם אתה בטוח שאתה רוצה להשתמש בו?"
+    },
+    "betaServerWarning": {
+        "message": "שרת ביטא מופעל!"
+    },
+    "openOptionsPage": {
+        "message": "פתיחת דף האפשרויות"
+    },
+    "resetToDefault": {
+        "message": "איפוס הגדרות לברירת המחדל"
+    },
+    "confirmResetToDefault": {
+        "message": "האם בוודאות ברצונך לאפס את כל ההגדרות לערכי ברירת המחדל שלהן? אי אפשר לבטל את זה."
+    },
+    "exportSegments": {
+        "message": "ייצוא מקטעים"
+    },
+    "importSegments": {
+        "message": "ייבוא מקטעים"
+    },
+    "Import": {
+        "message": "ייבוא",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "המימוש הצליח!"
+    },
+    "redeemFailed": {
+        "message": "רשיון מפתח שגוי"
+    },
+    "hideUpsells": {
+        "message": "הסתרת אפשרויות שאינן זמינות ללא תשלום נוסף"
+    },
+    "chooseACountry": {
+        "message": "בחירת מדינה"
+    },
+    "noDiscount": {
+        "message": "לא נמצאה זכאות להנחה"
+    },
+    "discountLink": {
+        "message": "קישור להנחה (ראה מחיר ורוד)"
+    },
+    "selectYourCountry": {
+        "message": "בחירת מדינתך"
+    },
+    "alreadyDonated": {
+        "message": "אם תרמת סכום כלשהו בעבר, ניתן לממש גישה בחינם באמצעות דואר אלקטרוני:",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "אם אינך יכול להרשות לעצמך לרכוש רישיון, יש ללחוץ {here} כדי לראות אם קיימת זכאות להנחה",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
+    },
+    "patreonSignIn": {
+        "message": "כניסה באמצעות Patreon"
+    },
+    "redeem": {
+        "message": "מימוש"
+    },
+    "joinOnPatreon": {
+        "message": "מינוי באמצעות Patreon"
+    },
+    "oneTimePurchase": {
+        "message": "רכישה חד פעמית"
+    },
+    "enterLicenseKey": {
+        "message": "הזנת מפתח רישיון"
+    },
+    "chaptersPage1": {
+        "message": "התכונה חסימת פרקים במקור המונים זמינה רק לאנשים שרוכשים רישיון, או לאנשים שקיבלו גישה בחינם עקב תרומותיהם בעבר"
+    },
+    "chaptersPage2": {
+        "message": "הערה: ההרשאה להגשת פרקים עדיין מבוססת על מוניטין מחושב. רכישת רישיון מאפשרת לך לראות רק פרקים שהוגשו על ידי אחרים",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "תכונה חדשה: פרקים מותאמים אישית ממקור המונים. אלו הם מקטעים בעלי שמות מותאמים אישית בסרטונים שניתן לערום כדי לקבל יותר ויותר דיוק. רכישת רישיון לצפייה בפרקים שנשלחו בסרטון זה כגון: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "תכונה חדשה: פרקים מותאמים אישית ממקור המונים. אלו הם קטעים בעלי שמות מותאמים אישית בסרטונים שניתן לערום כדי לקבל יותר ויותר דיוק. יש לך גישה בחינם, יש להפעיל באפשרויות."
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "כרגע יש לך {0} ב-{1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "אין לך כרגע מקטעים שלא הוגשו",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "מקטע שלא הוגש",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "מקטעים שלא הוגשו",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "סרטון",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "סרטונים",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "ניקוי כל המקטעים",
+        "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "האם בוודאות ברצונך למחוק את כל המקטעים שלא הוגשוו?",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
+    },
+    "showUnsubmittedSegments": {
+        "message": "הצגת מקטעים",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "הסתרת מקטעים",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "מזהה סרטון",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "ספירת מקטעים",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "פעולות",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "שיתוף כקישור"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "אזהרה: השרת עדיין לא הגיב עם מקטעים. ייתכן שלמעשה יש מקטעים בסרטון הזה שכבר נשלחו אבל פשוט לא קיבלת אותם בגלל בעיות בשרת."
     }
 }

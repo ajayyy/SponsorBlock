@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Attenzione: il server non ha ancora fornito i segmenti. Questo video potrebbe avere dei segmenti inviati, ma forse non sono stati ricevuti a causa di problemi del server."
+    },
+    "allowScrollingToEdit": {
+        "message": "Usa la Rotella per Modificare i Tempi"
     }
 }
