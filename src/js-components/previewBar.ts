@@ -171,6 +171,8 @@ class PreviewBar {
                 // To prevent offset issue
                 this.categoryTooltip.style.right = titleTooltip.style.right;
                 this.chapterTooltip.style.right = titleTooltip.style.right;
+                this.categoryTooltip.style.textAlign = titleTooltip.style.textAlign;
+                this.chapterTooltip.style.textAlign = titleTooltip.style.textAlign;
             }
         });
 
