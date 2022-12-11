@@ -62,6 +62,7 @@ class PreviewBar {
     originalChapterBar: HTMLElement;
     originalChapterBarBlocks: NodeListOf<HTMLElement>;
     chapterMargin: number;
+    lastRenderedSegments: PreviewBarSegment[];
     unfilteredChapterGroups: ChapterGroup[];
     chapterGroups: ChapterGroup[];
 
@@ -308,6 +309,8 @@ class PreviewBar {
             this.container.appendChild(bar);
         }
 
+        console.log(this.segments)
+        console.trace()
         this.createChaptersBar(this.segments.sort((a, b) => a.segment[0] - b.segment[0]));
 
         if (chapterChevron) {
@@ -356,8 +359,10 @@ class PreviewBar {
             return;
         }
 
-        // Merge overlapping chapters
-        this.unfilteredChapterGroups = this.createChapterRenderGroups(segments);
+        if (segments !== this.lastRenderedSegments) {
+            // Merge overlapping chapters
+            this.unfilteredChapterGroups = this.createChapterRenderGroups(segments);
+        }
 
         if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
             || (!Config.config.renderSegmentsAsChapters 
@@ -368,24 +373,28 @@ class PreviewBar {
             return;
         }
 
-        const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
-        if (filteredSegments) {
-            let groups = this.unfilteredChapterGroups;
-            if (filteredSegments.length !== segments.length) {
-                groups = this.createChapterRenderGroups(filteredSegments);
-            }
-            this.chapterGroups = groups.filter((segment) => this.chapterGroupFilter(segment));
+        if (segments !== this.lastRenderedSegments) {
+            this.lastRenderedSegments = segments;
 
-            if (groups.length !== this.chapterGroups.length) {
-                // Fix missing sections due to filtered segments
-                for (let i = 1; i < this.chapterGroups.length; i++) {
-                    if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
-                        this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
+            const filteredSegments = segments?.filter((segment) => this.chapterFilter(segment));
+            if (filteredSegments) {
+                let groups = this.unfilteredChapterGroups;
+                if (filteredSegments.length !== segments.length) {
+                    groups = this.createChapterRenderGroups(filteredSegments);
+                }
+                this.chapterGroups = groups.filter((segment) => this.chapterGroupFilter(segment));
+
+                if (groups.length !== this.chapterGroups.length) {
+                    // Fix missing sections due to filtered segments
+                    for (let i = 1; i < this.chapterGroups.length; i++) {
+                        if (this.chapterGroups[i].segment[0] !== this.chapterGroups[i - 1].segment[1]) {
+                            this.chapterGroups[i - 1].segment[1] = this.chapterGroups[i].segment[0]
+                        }
                     }
                 }
+            } else {
+                this.chapterGroups = this.unfilteredChapterGroups;
             }
-        } else {
-            this.chapterGroups = this.unfilteredChapterGroups;
         }
 
         if (!this.chapterGroups || this.chapterGroups.length <= 0) {
