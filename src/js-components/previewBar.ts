@@ -531,7 +531,7 @@ class PreviewBar {
                 const nextSegment = segments[index + 1];
                 const nextTime = nextSegment ? nextSegment.segment[0] : this.videoDuration;
                 const lastTime = result[result.length - 1]?.segment[1] || segment.segment[1];
-                if (this.intervalToDecimal(lastTime, nextTime) > MIN_CHAPTER_SIZE) {
+                if (this.fastIntervalToDecimal(lastTime, nextTime) > MIN_CHAPTER_SIZE) {
                     result.push({
                         segment: [lastTime, nextTime],
                         originalDuration: 0,
@@ -866,7 +866,7 @@ class PreviewBar {
     }
 
     private chapterGroupFilter(segment: SegmentContainer): boolean {
-        return segment.segment.length === 2 && this.intervalToDecimal(segment.segment[0], segment.segment[1]) > MIN_CHAPTER_SIZE;
+        return segment.segment.length === 2 && this.fastIntervalToDecimal(segment.segment[0], segment.segment[1]) > MIN_CHAPTER_SIZE;
     }
 
     intervalToPercentage(startTime: number, endTime: number) {
@@ -875,6 +875,10 @@ class PreviewBar {
 
     intervalToDecimal(startTime: number, endTime: number) {
         return (this.timeToDecimal(endTime) - this.timeToDecimal(startTime));
+    }
+
+    fastIntervalToDecimal(startTime: number, endTime: number) {
+        return (this.fastTimeToDecimal(endTime) - this.fastTimeToDecimal(startTime));
     }
 
     timeToPercentage(time: number): string {
@@ -912,6 +916,10 @@ class PreviewBar {
             }
         }
 
+        return this.fastTimeToDecimal(time);
+    }
+
+    fastTimeToDecimal(time: number): number {
         return Math.min(1, time / this.videoDuration);
     }
 
