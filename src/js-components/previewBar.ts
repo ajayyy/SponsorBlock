@@ -38,6 +38,10 @@ class PreviewBar {
     categoryTooltip?: HTMLDivElement;
     categoryTooltipContainer?: HTMLElement;
     chapterTooltip?: HTMLDivElement;
+    lastSmallestSegment: Record<string, {
+        index: number;
+        segment: PreviewBarSegment;
+    }> = {};
 
     parent: HTMLElement;
     onMobileYouTube: boolean;
@@ -121,7 +125,6 @@ class PreviewBar {
             if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer) return;
 
             // Only care about mutations to time tooltip
-            console.log(mutations)
             if (!mutations.some((mutation) => (mutation.target as HTMLElement).classList.contains("ytp-tooltip-text"))) {
                 return;
             }
@@ -151,8 +154,8 @@ class PreviewBar {
             const [normalSegments, chapterSegments] = 
                 partition(this.segments.filter((s) => s.source !== SponsorSourceType.YouTube), 
                     (segment) => segment.actionType !== ActionType.Chapter);
-            let mainSegment = this.getSmallestSegment(timeInSeconds, normalSegments);
-            let secondarySegment = this.getSmallestSegment(timeInSeconds, chapterSegments);
+            let mainSegment = this.getSmallestSegment(timeInSeconds, normalSegments, "normal");
+            let secondarySegment = this.getSmallestSegment(timeInSeconds, chapterSegments, "chapter");
             if (mainSegment === null && secondarySegment !== null) {
                 mainSegment = secondarySegment;
                 secondarySegment = this.getSmallestSegment(timeInSeconds, chapterSegments.filter((s) => s !== secondarySegment));
@@ -174,7 +177,6 @@ class PreviewBar {
 
                 if (normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.categoryTooltip.textContent)
                         || normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.chapterTooltip.textContent)) {
-                            console.log("Hiding original tooltip")
                     if (originalTooltip.style.display !== "none") originalTooltip.style.display = "none";
                     noYoutubeChapters = true;
                 } else if (originalTooltip.style.display === "none") {
@@ -920,11 +922,18 @@ class PreviewBar {
         return this.videoDuration * (showLarger ? 0.006 : 0.003);
     }
 
-    private getSmallestSegment(timeInSeconds: number, segments: PreviewBarSegment[]): PreviewBarSegment | null {
-        let segment: PreviewBarSegment | null = null;
-        let currentSegmentLength = Infinity;
+    // Name used for cache
+    private getSmallestSegment(timeInSeconds: number, segments: PreviewBarSegment[], name?: string): PreviewBarSegment | null {
+        const proposedIndex = name ? this.lastSmallestSegment[name]?.index : null;
+        const startSearchIndex = proposedIndex && segments[proposedIndex] === this.lastSmallestSegment[name].segment ? proposedIndex : 0;
+        const direction = startSearchIndex > 0 && timeInSeconds < this.lastSmallestSegment[name].segment.segment[0] ? -1 : 1;
 
-        for (const seg of segments) { //
+        let segment: PreviewBarSegment | null = null;
+        let index = -1;
+        let currentSegmentLength = Infinity;
+        
+        for (let i = startSearchIndex; i < segments.length && i >= 0; i += direction) {
+            const seg = segments[i];
             const segmentLength = seg.segment[1] - seg.segment[0];
             const minSize = this.getMinimumSize(seg.showLarger);
 
@@ -934,8 +943,21 @@ class PreviewBar {
                 if (segmentLength < currentSegmentLength) {
                     currentSegmentLength = segmentLength;
                     segment = seg;
+                    index = i;
                 }
             }
+
+            if ((direction === 1 && timeInSeconds > seg.segment[1])
+                || (direction === -1 && timeInSeconds < seg.segment[0])) {
+                break;
+            }
+        }
+
+        if (segment) {
+            this.lastSmallestSegment[name] = {
+                index: index,
+                segment: segment
+            };
         }
 
         return segment;
