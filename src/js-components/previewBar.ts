@@ -955,8 +955,7 @@ class PreviewBar {
                 }
             }
 
-            if ((direction === 1 && timeInSeconds > seg.segment[1])
-                || (direction === -1 && timeInSeconds < seg.segment[0])) {
+            if (direction === 1 && seg.segment[0] > timeInSeconds) {
                 break;
             }
         }
