@@ -250,7 +250,7 @@
         "message": "Místo žádání o segmenty ze serveru pomocí videoID jsou poslány první 4 charaktery hashe ve videoID. Tento server odešle zpět data pro všechna videa s podobnými hashy."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Refetovat segmenty na nových videích"
+        "message": "Automaticky znovu načítat segmenty na nových videích"
     },
     "whatRefetchWhenNotFound": {
         "message": "Pokud je video nové a nejsou nalezeny žádné segmenty, bude rozšíření každých několik minut refetchovat data, zatímco sledujete video."
