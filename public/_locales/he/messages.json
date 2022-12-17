@@ -26,17 +26,17 @@
         "message": "מקטעים"
     },
     "SegmentsCap": {
-        "message": "מקטעים"
+        "message": "קטעים"
     },
     "Chapters": {
         "message": "פרקים"
     },
     "renderAsChapters": {
-        "message": "עיבוד מקטעים כפרקים",
+        "message": "עיבוד קטעים כפרקים",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
-        "message": "הצגת מקטע נוכחי לצד זמן וידאו"
+        "message": "הצגת קטע נוכחי לצד זמן וידאו"
     },
     "upvoteButtonInfo": {
         "message": "הצבע לדיווח הזה"
@@ -96,13 +96,13 @@
         "message": "מקטע נגמר עכשיו"
     },
     "sponsorCancel": {
-        "message": "ביטול יצירת מקטע"
+        "message": "ביטול יצירת קטע"
     },
     "noVideoID": {
         "message": "לא נמצא סרטון יוטיוב.\nאם זה לא נכון, רענן את הכרטיסייה."
     },
     "refreshSegments": {
-        "message": "ריענון מקטעים"
+        "message": "ריענון קטעים"
     },
     "success": {
         "message": "הצלחה!"
@@ -117,7 +117,7 @@
         "message": "התקבלה שגיאת חיבור. קוד השגיאה: "
     },
     "segmentsStillLoading": {
-        "message": "מקטע עדיין נטען..."
+        "message": "קטעים עדיין נטענים..."
     },
     "clearTimes": {
         "message": "נקה מקטעים"
@@ -227,6 +227,30 @@
     },
     "whatViewTracking": {
         "message": "תכונה זו עוקבת אחר אילו מקטעים דילגת כדי לאפשר למשתמשים לדעת עד כמה ההגשה שלהם עזרה לאחרים והשתמשה כמדד יחד עם הצבעות בעד כדי להבטיח שספאם לא ייכנס למסד הנתונים. התוסף שולח הודעה לשרת בכל פעם שאתה מדלג על קטע. אני מקווה שרוב האנשים לא ישנו את ההגדרה הזו כדי שמספרי התצוגה יהיו מדויקים. :)"
+    },
+    "enableTrackDownvotes": {
+        "message": "שמור דירוג קטעים"
+    },
+    "whatTrackDownvotes": {
+        "message": "כל קטע שידורג על ידך יישאר חבוי, גם לאחר רענון"
+    },
+    "trackDownvotesWarning": {
+        "message": "אזהרה: ביטול השמירה ימחק את הדירוגים שנשמרו"
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "השג מקטעים של סרטונים חדשים"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "אם הסרטון חדש, ואין בו אף מקטע, הוא יחפש מחדש מקטעים כל כמה דקות בהן תצפה/י בסרטון."
+    },
+    "enableShowCategoryWithoutPermission": {
+        "message": "הצג קטגוריה בתפריט ההגשה גם ללא הרשאת הגשה"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "ישנן קטגוריות שדורשות הרשאת הגשה בגלל דרישות מינימום נקודות רפוטציה"
+    },
+    "showNotice": {
+        "message": "הראה הודעה שוב"
     },
     "website": {
         "message": "אתר",
