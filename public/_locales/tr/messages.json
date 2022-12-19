@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Asla gösterme"
     },
-    "warningChatInfo": {
-        "message": "Kötü amaçlı olmayan bazı yaygın hatalar yaptığınızı fark ettik"
-    },
     "warningTitle": {
         "message": "Bir uyarı aldın"
     },
