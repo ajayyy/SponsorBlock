@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Schowaj na zawsze"
     },
-    "warningChatInfo": {
-        "message": "Zauważyliśmy, że popełniałeś pewne powszechne błędy, które nie są złośliwe"
-    },
     "warningTitle": {
         "message": "Otrzymałeś ostrzeżenie"
     },
