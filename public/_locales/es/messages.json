@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Ocultar para siempre"
     },
-    "warningChatInfo": {
-        "message": "Hemos notado que has estado cometiendo algunos errores comunes que no son maliciosos"
-    },
     "warningTitle": {
         "message": "Tienes una advertencia"
     },
