@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "다시 보지 않음"
     },
-    "warningChatInfo": {
-        "message": "악의적인 의도는 없었던 듯 보이지만 제출하신 구간 중에 일부 문제가 있는 것 같아요."
-    },
     "warningTitle": {
         "message": "경고를 받으셨어요"
     },
