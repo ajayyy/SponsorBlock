@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Piilota ikuisesti"
     },
-    "warningChatInfo": {
-        "message": "Huomasimme, että teit joitakin yleisiä virheitä, jotka eivät ole haitallisia"
-    },
     "warningTitle": {
         "message": "Sait varoituksen"
     },
