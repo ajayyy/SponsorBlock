@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Cacher pour toujours"
     },
-    "warningChatInfo": {
-        "message": "Nous avons remarqué que vous faisiez des erreurs courantes qui ne sont pas intentionnelles"
-    },
     "warningTitle": {
         "message": "Vous avez reçu un avertissement"
     },
