@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Skjul for evigt"
     },
-    "warningChatInfo": {
-        "message": "Vi bemærkede, at du lavede nogle almindelige fejl, som ikke er ondsindede"
-    },
     "warningTitle": {
         "message": "Du fik en advarsel"
     },
