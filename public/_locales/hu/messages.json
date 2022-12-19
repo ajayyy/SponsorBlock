@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "Eltüntetés örökre"
     },
-    "warningChatInfo": {
-        "message": "Észrevettük, hogy néhány nem rossz szándékú, gyakran előforduló hibát ejtettél"
-    },
     "warningTitle": {
         "message": "Figyelmeztetést kaptál"
     },
