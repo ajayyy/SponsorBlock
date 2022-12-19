@@ -887,9 +887,6 @@
     "hideForever": {
         "message": "Peida igaveseks"
     },
-    "warningChatInfo": {
-        "message": "Panime tähele, et tegid teatud sagedasi vigu, mis ei olnud pahatahtlikud"
-    },
     "warningTitle": {
         "message": "Sa said hoiatuse"
     },
