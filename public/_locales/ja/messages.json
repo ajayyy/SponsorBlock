@@ -941,9 +941,6 @@
     "hideForever": {
         "message": "二度と表示しない"
     },
-    "warningChatInfo": {
-        "message": "悪意によるものではないよくある間違いを犯していたようです"
-    },
     "warningTitle": {
         "message": "警告を付与されました"
     },
