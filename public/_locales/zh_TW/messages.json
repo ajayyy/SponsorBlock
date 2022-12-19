@@ -911,9 +911,6 @@
     "hideForever": {
         "message": "永久隱藏"
     },
-    "warningChatInfo": {
-        "message": "我們注意到你犯下了一些不帶有惡意的常見錯誤"
-    },
     "warningTitle": {
         "message": "你收到了一支警告"
     },
