@@ -941,6 +941,9 @@
     "hideForever": {
         "message": "Skrýt napořád"
     },
+    "warningChatInfo": {
+        "message": "Všimli jsme si, že děláte některé běžné chyby. Velmi si vážíme vaší dosavadní práce, ale snažíme se zde o dokonalost, takže i na velmi malých chybách záleží :)"
+    },
     "warningTitle": {
         "message": "Dostali jste varování"
     },
