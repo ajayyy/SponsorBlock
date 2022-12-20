@@ -941,6 +941,9 @@
     "hideForever": {
         "message": "Dauerhaft verbergen"
     },
+    "warningChatInfo": {
+        "message": "Wir haben festgestellt, dass du einige häufig gemacht Fehler machst. Wir schätzen deine bisherige Arbeit sehr, streben aber hier aber auch nach Perfektion, sodass es auch wichtig ist kleine Fehler zu korrigieren :)"
+    },
     "warningTitle": {
         "message": "Du hast eine Verwarnung erhalten"
     },
