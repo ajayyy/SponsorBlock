@@ -964,25 +964,23 @@ function updateVirtualTime() {
     if (utils.isFirefox()) {
         let count = 0;
         let lastTime = lastKnownVideoTime.videoTime;
-        if (lastKnownVideoTime.fromPause) {
-            currentVirtualTimeInterval = setInterval(() => {
-                if (lastTime !== video.currentTime) {
-                    count++;
-                    lastTime = video.currentTime;
-                }
+        currentVirtualTimeInterval = setInterval(() => {
+            if (lastTime !== video.currentTime) {
+                count++;
+                lastTime = video.currentTime;
+            }
 
-                if (count > 1) {
-                    const delay = lastKnownVideoTime.fromPause && lastKnownVideoTime.approximateDelay ? 
-                        lastKnownVideoTime.approximateDelay : 0;
-                    
-                    lastKnownVideoTime.videoTime = video.currentTime + delay;
-                    lastKnownVideoTime.preciseTime = performance.now();
-        
-                    clearInterval(currentVirtualTimeInterval);
-                    currentVirtualTimeInterval = null;
-                }
-            }, 1);
-        }
+            if (count > 1) {
+                const delay = lastKnownVideoTime.fromPause && lastKnownVideoTime.approximateDelay ? 
+                    lastKnownVideoTime.approximateDelay : 0;
+
+                lastKnownVideoTime.videoTime = video.currentTime + delay;
+                lastKnownVideoTime.preciseTime = performance.now();
+    
+                clearInterval(currentVirtualTimeInterval);
+                currentVirtualTimeInterval = null;
+            }
+        }, 1);
     }
 }
 
