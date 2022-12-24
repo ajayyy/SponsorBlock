@@ -5,7 +5,8 @@
   "main": "background.js",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@ajayyy/maze-utils": "^1.0.3"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.199",

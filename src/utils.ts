@@ -3,7 +3,7 @@ import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContaine
 
 import * as CompileConfig from "../config.json";
 import { findValidElement, findValidElementFromSelector } from "./utils/pageUtils";
-import { GenericUtils } from "./utils/genericUtils";
+import { waitFor } from "@ajayyy/maze-utils";
 
 export default class Utils {
     
@@ -31,7 +31,7 @@ export default class Utils {
     }
 
     async wait<T>(condition: () => T, timeout = 5000, check = 100): Promise<T> {
-        return GenericUtils.wait(condition, timeout, check);
+        return waitFor(condition, timeout, check);
     }
 
     /* Uses a mutation observer to wait asynchronously */

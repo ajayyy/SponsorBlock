@@ -39,6 +39,8 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { Tooltip } from "./render/Tooltip";
 import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
+import { waitFor } from "@ajayyy/maze-utils";
+import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 
 const utils = new Utils();
 
@@ -1203,7 +1205,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
 function importExistingChapters(wait: boolean) {
     if (!existingChaptersImported) {
-        GenericUtils.wait(() => video?.duration && getExistingChapters(sponsorVideoID, video.duration),
+        waitFor(() => video?.duration && getExistingChapters(sponsorVideoID, video.duration),
             wait ? 5000 : 0, 100, (c) => c?.length > 0).then((chapters) => {
                 if (!existingChaptersImported && chapters?.length > 0) {
                     sponsorTimes = (sponsorTimes ?? []).concat(...chapters).sort((a, b) => a.segment[0] - b.segment[0]);
@@ -2364,7 +2366,7 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 
     for (let i = 0; i < sponsorTimes.length; i++) {
         for (let s = 0; s < sponsorTimes[i].segment.length; s++) {
-            let timeMessage = GenericUtils.getFormattedTime(sponsorTimes[i].segment[s]);
+            let timeMessage = getFormattedTime(sponsorTimes[i].segment[s]);
             //if this is an end time
             if (s == 1) {
                 timeMessage = " " + chrome.i18n.getMessage("to") + " " + timeMessage;
@@ -2592,7 +2594,7 @@ function showTimeWithoutSkips(skippedDuration: number): void {
         display.appendChild(duration);
     }
 
-    const durationAfterSkips = GenericUtils.getFormattedTime(video?.duration - skippedDuration);
+    const durationAfterSkips = getFormattedTime(video?.duration - skippedDuration);
 
     duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
 }

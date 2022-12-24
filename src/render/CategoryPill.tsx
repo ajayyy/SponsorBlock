@@ -4,8 +4,9 @@ import CategoryPillComponent, { CategoryPillState } from "../components/Category
 import Config from "../config";
 import { VoteResponse } from "../messageTypes";
 import { Category, SegmentUUID, SponsorTime } from "../types";
-import { GenericUtils } from "../utils/genericUtils";
 import { Tooltip } from "./Tooltip";
+import { waitFor } from "@ajayyy/maze-utils";
+import { getYouTubeTitleNode } from "@ajayyy/maze-utils/lib/elements";
 
 export class CategoryPill {
     container: HTMLElement;
@@ -23,9 +24,7 @@ export class CategoryPill {
     async attachToPage(onMobileYouTube: boolean, onInvidious: boolean,
             vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>): Promise<void> {
         const referenceNode = 
-            await GenericUtils.wait(() => 
-                // New YouTube Title, YouTube, Mobile YouTube, Invidious
-                document.querySelector("#title h1, .ytd-video-primary-info-renderer.title, .slim-video-information-title, #player-container + .h-box > h1") as HTMLElement);
+            await waitFor(() => getYouTubeTitleNode());
 
         if (referenceNode && !referenceNode.contains(this.container)) {
             this.container = document.createElement('span');
@@ -43,7 +42,7 @@ export class CategoryPill {
             this.root.render(<CategoryPillComponent ref={this.ref} vote={vote} />);
 
             if (this.unsavedState) {
-                GenericUtils.wait(() => this.ref.current).then(() => {
+                waitFor(() => this.ref.current).then(() => {
                     this.ref.current?.setState(this.unsavedState);
                     this.unsavedState = null;
                 });
@@ -99,7 +98,7 @@ export class CategoryPill {
             if (!Config.config.categoryPillUpdate) {
                 Config.config.categoryPillUpdate = true;
 
-                const watchDiv = await GenericUtils.wait(() => document.querySelector("#info.ytd-watch-flexy") as HTMLElement);
+                const watchDiv = await waitFor(() => document.querySelector("#info.ytd-watch-flexy") as HTMLElement);
                 if (watchDiv) {
                     new Tooltip({
                         text: chrome.i18n.getMessage("categoryPillNewFeature"),

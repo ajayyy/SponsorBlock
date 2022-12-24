@@ -11,8 +11,8 @@ import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceT
 import { partition } from "../utils/arrayUtils";
 import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
 import { normalizeChapterName } from "../utils/exporter";
-import { GenericUtils } from "../utils/genericUtils";
 import { findValidElement } from "../utils/pageUtils";
+import { getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -140,7 +140,7 @@ class PreviewBar {
                 const tooltipText = tooltipTextElement.textContent;
                 if (tooltipText === null || tooltipText.length === 0) continue;
 
-                timeInSeconds = GenericUtils.getFormattedTimeToSeconds(tooltipText);
+                timeInSeconds = getFormattedTimeToSeconds(tooltipText);
 
                 if (timeInSeconds !== null) break;
             }

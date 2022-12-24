@@ -2,6 +2,7 @@ import { ActionType, Category, SegmentUUID, SponsorSourceType, SponsorTime } fro
 import { shortCategoryName } from "./categoryUtils";
 import { GenericUtils } from "./genericUtils";
 import * as CompileConfig from "../../config.json";
+import { getFormattedTime, getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
 
 const inTest = typeof chrome === "undefined";
 
@@ -26,9 +27,9 @@ export function exportTimes(segments: SponsorTime[]): string {
 function exportTime(segment: SponsorTime): string {
     const name = segment.description || shortCategoryName(segment.category);
 
-    return `${GenericUtils.getFormattedTime(segment.segment[0], true)}${
+    return `${getFormattedTime(segment.segment[0], true)}${
         segment.segment[1] && segment.segment[0] !== segment.segment[1] 
-            ? ` - ${GenericUtils.getFormattedTime(segment.segment[1], true)}` : ""} ${name}`;
+            ? ` - ${getFormattedTime(segment.segment[1], true)}` : ""} ${name}`;
 }
 
 export function importTimes(data: string, videoDuration: number): SponsorTime[] {
@@ -37,7 +38,7 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
     for (const line of lines) {
         const match = line.match(/(?:((?:\d+:)?\d+:\d+)+(?:\.\d+)?)|(?:\d+(?=s| second))/g);
         if (match) {
-            const startTime = GenericUtils.getFormattedTimeToSeconds(match[0]);
+            const startTime = getFormattedTimeToSeconds(match[0]);
             if (startTime !== null) {
                 // Remove "seconds", "at", special characters, and ")" if there was a "("
                 const specialCharsMatcher = /^(?:\s+seconds?)?[-:()\s]*|(?:\s+at)?[-:(\s]+$|(?<=^\s*\(.+)[-:()\s]*$/g
@@ -51,7 +52,7 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
                     const determinedCategory = chapterNames.find(c => c.names.includes(title))?.code as Category;
 
                     const segment: SponsorTime = {
-                        segment: [startTime, GenericUtils.getFormattedTimeToSeconds(match[1])],
+                        segment: [startTime, getFormattedTimeToSeconds(match[1])],
                         category: determinedCategory ?? ("chapter" as Category),
                         actionType: determinedCategory ? ActionType.Skip : ActionType.Chapter,
                         description: title,

@@ -27,6 +27,7 @@ import { localizeHtmlPage } from "./utils/pageUtils";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
 import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
+import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 
 const utils = new Utils();
 
@@ -593,9 +594,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             if (downloadedTimes[i].actionType === ActionType.Full) {
                 segmentTimeFromToNode.innerText = chrome.i18n.getMessage("full");
             } else {
-                segmentTimeFromToNode.innerText = GenericUtils.getFormattedTime(downloadedTimes[i].segment[0], true) +
+                segmentTimeFromToNode.innerText = getFormattedTime(downloadedTimes[i].segment[0], true) +
                         (actionType !== ActionType.Poi
-                            ? " " + chrome.i18n.getMessage("to") + " " + GenericUtils.getFormattedTime(downloadedTimes[i].segment[1], true)
+                            ? " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(downloadedTimes[i].segment[1], true)
                             : "");
             }
 

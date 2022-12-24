@@ -1,5 +1,5 @@
 import { ActionType, Category, SponsorSourceType, SponsorTime, VideoID } from "../types";
-import { GenericUtils } from "./genericUtils";
+import { getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
 
 export function getControls(): HTMLElement {
     const controlsSelectors = [
@@ -80,7 +80,7 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
             const timeElement = link.querySelector("#time") as HTMLElement;
             const description = link.querySelector("#details h4") as HTMLElement;
             if (timeElement && description?.innerText?.length > 0 && link.getAttribute("href")?.includes(currentVideoID)) {
-                const time = GenericUtils.getFormattedTimeToSeconds(timeElement.innerText);
+                const time = getFormattedTimeToSeconds(timeElement.innerText);
                 if (time === null) return [];
                 
                 if (lastSegment) {
