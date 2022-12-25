@@ -27,39 +27,40 @@ export class CategoryPill {
             await waitFor(() => getYouTubeTitleNode());
 
         if (referenceNode && !referenceNode.contains(this.container)) {
-            this.container = document.createElement('span');
-            this.container.id = "categoryPill";
-            this.container.style.display = "relative";
+            if (!this.container) {
+                this.container = document.createElement('span');
+                this.container.id = "categoryPill";
+                this.container.style.display = "relative";
 
-            referenceNode.prepend(this.container);
-            referenceNode.style.display = "flex";
+                this.root = createRoot(this.container);
+                this.root.render(<CategoryPillComponent ref={this.ref} vote={vote} />);
 
-            if (this.ref.current) {
-                this.unsavedState = this.ref.current.state;
+                if (onMobileYouTube) {
+                    if (this.mutationObserver) {
+                        this.mutationObserver.disconnect();
+                    }
+                    
+                    this.mutationObserver = new MutationObserver((changes) => {
+                        if (changes.some((change) => change.removedNodes.length > 0)) {
+                            this.attachToPage(onMobileYouTube, onInvidious, vote);
+                        }
+                    });
+    
+                    this.mutationObserver.observe(referenceNode, { 
+                        childList: true,
+                        subtree: true
+                    });
+                }
             }
-
-            this.root = createRoot(this.container);
-            this.root.render(<CategoryPillComponent ref={this.ref} vote={vote} />);
 
             if (this.unsavedState) {
                 waitFor(() => this.ref.current).then(() => {
                     this.ref.current?.setState(this.unsavedState);
-                    this.unsavedState = null;
                 });
             }
-
-            if (onMobileYouTube) {
-                if (this.mutationObserver) {
-                    this.mutationObserver.disconnect();
-                }
-                
-                this.mutationObserver = new MutationObserver(() => this.attachToPage(onMobileYouTube, onInvidious, vote));
-
-                this.mutationObserver.observe(referenceNode, { 
-                    childList: true,
-                    subtree: true
-                });
-            }
+            
+            referenceNode.prepend(this.container);
+            referenceNode.style.display = "flex";
         }
     }
 
@@ -79,6 +80,8 @@ export class CategoryPill {
         } else {
             this.unsavedState = newState;
         }
+
+        console.log(this.unsavedState, this.ref.current?.state, "visible");
     }
 
     async setSegment(segment: SponsorTime): Promise<void> {
