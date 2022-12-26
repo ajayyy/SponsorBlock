@@ -41,11 +41,16 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
             const startTime = getFormattedTimeToSeconds(match[0]);
             if (startTime !== null) {
                 // Remove "seconds", "at", special characters, and ")" if there was a "("
-                const specialCharsMatcher = /^(?:\s+seconds?)?[-:()\s]*|(?:\s+at)?[-:(\s]+$|(?<=^\s*\(.+)[-:()\s]*$/g
-                const titleLeft = line.split(match[0])[0].replace(specialCharsMatcher, "");
+                const specialCharMatchers = [{
+                    matcher: /^(?:\s+seconds?)?[-:()\s]*|(?:\s+at)?[-:(\s]+$/g
+                }, {
+                    matcher: /[-:()\s]*$/g,
+                    condition: (value) => !!value.match(/^\s*\(/)
+                }];
+                const titleLeft = removeIf(line.split(match[0])[0], specialCharMatchers);
                 let titleRight = null;
                 const split2 = line.split(match[1] || match[0]);
-                titleRight = split2[split2.length - 1].replace(specialCharsMatcher, "");
+                titleRight = removeIf(split2[split2.length - 1], specialCharMatchers)
 
                 const title = titleLeft?.length > titleRight?.length ? titleLeft : titleRight;
                 if (title) {
@@ -72,6 +77,17 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
 
     if (result.length > 0 && result[result.length - 1].segment[1] === null) {
         result[result.length - 1].segment[1] = videoDuration;
+    }
+
+    return result;
+}
+
+function removeIf(value: string, matchers: Array<{ matcher: RegExp, condition?: (value: string) => boolean }>): string {
+    let result = value;
+    for (const matcher of matchers) {
+        if (!matcher.condition || matcher.condition(value)) {
+            result = result.replace(matcher.matcher, "");
+        }
     }
 
     return result;
