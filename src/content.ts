@@ -1435,7 +1435,7 @@ function updatePreviewBar(): void {
                 showLarger: segment.actionType === ActionType.Poi,
                 description: segment.description,
                 source: segment.source,
-                requiredSegment: requiredSegment && segment.UUID === requiredSegment || segment.UUID.startsWith(requiredSegment)
+                requiredSegment: requiredSegment && (segment.UUID === requiredSegment || segment.UUID.startsWith(requiredSegment))
             });
         });
     }
