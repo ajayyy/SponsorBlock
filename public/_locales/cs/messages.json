@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Přeskoč sponzorství, žadonění o odběr a další v YouTube videích. Nahlaš sponzorované segmenty na videích co sleduješ a ušetři ostatním čas.",
+        "message": "Přeskočte sponzorství, žádosti o odběr a další ve videích na YouTube. Nahlaste sponzorované segmenty ve videích, která sledujete a ušetřete ostatním čas.",
         "description": "Description of the extension."
     },
     "400": {
