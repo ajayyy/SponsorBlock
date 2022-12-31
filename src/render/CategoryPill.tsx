@@ -80,8 +80,6 @@ export class CategoryPill {
         } else {
             this.unsavedState = newState;
         }
-
-        console.log(this.unsavedState, this.ref.current?.state, "visible");
     }
 
     async setSegment(segment: SponsorTime): Promise<void> {
