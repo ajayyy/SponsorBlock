@@ -852,5 +852,24 @@
     },
     "enterLicenseKey": {
         "message": "Upiši licencni ključ"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videa",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "videoID": {
+        "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Radnje",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Dijeli kao URL"
     }
 }
