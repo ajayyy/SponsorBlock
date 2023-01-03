@@ -69,8 +69,11 @@
         "icons/PlayerInfoIconSponsorBlocker.svg",
         "icons/PlayerDeleteIconSponsorBlocker.svg",
         "popup.html",
+        "popup.css",
         "content.css",
-        "js/document.js"
+        "shared.css",
+        "js/document.js",
+        "libs/Source+Sans+Pro.css"
     ],
     "permissions": [
         "storage",

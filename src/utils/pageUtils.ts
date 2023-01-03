@@ -9,6 +9,8 @@ export function getControls(): HTMLElement {
         ".player-controls-top",
         // Invidious/videojs video element's controls element
         ".vjs-control-bar",
+        // Piped shaka player
+        ".shaka-bottom-controls"
     ];
 
     for (const controlsSelector of controlsSelectors) {
