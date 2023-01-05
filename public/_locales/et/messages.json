@@ -255,6 +255,12 @@
     "whatRefetchWhenNotFound": {
         "message": "Kui video on uus ning segmente ei leitud, proovitakse vaatamise ajal iga paari minuti tagant uuesti segmente tuua."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Näita kategooriaid segmentide menüüs isegi ilma segmendi esitamise loata"
+    },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Osade kategooriate esitamiseks on minimaalse reputatsiooni nõuete tõttu vajalik luba"
+    },
     "showNotice": {
         "message": "Kuva märkus uuesti"
     },
@@ -318,6 +324,9 @@
     "previousChapterKeybind": {
         "message": "Eelmine peatükk",
         "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Valige klahv vajutades sellele, seejärel valige need teisendklahvid, mida soovite kasutada."
     },
     "0": {
         "message": "Ühenduse ajalõpp. Kontrolli oma võrguühendust. Kui internet töötab, on ilmselt server ülekoormatud või maas."
@@ -414,8 +423,17 @@
     "statusReminder": {
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
     },
+    "changeUserID": {
+        "message": "Impordi/ekspordi oma isiklik UserID"
+    },
     "whatChangeUserID": {
         "message": "Seda tuleks privaatsena hoida. See on nagu parool ning seda ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda.\nKui otsid avalikku UserID'd, klõpsa hüpikus olevat lõikelaua ikooni."
+    },
+    "setUserID": {
+        "message": "Muutke oma isiklik UserID"
+    },
+    "userIDChangeWarning": {
+        "message": "Tähelepanu: Isikliku UserID muutmine on lõplik. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
     },
     "createdBy": {
         "message": "Autor"
@@ -459,6 +477,12 @@
     },
     "minDurationDescription": {
         "message": "Segmendid, mis on lühemad kui määratud väärtus ei jäeta vahele või ei kuvata mängijal."
+    },
+    "enableManualSkipOnFullVideo": {
+        "message": "Jäta käsitsi vahele, kui täis video pealkiri on saadaval"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "Inimestele, kes soovivad vaadata (enese-)reklaami sisaldavat videot segamatult."
     },
     "skipNoticeDuration": {
         "message": "Vahelejätmise teavituse kestus (sekundites):"
