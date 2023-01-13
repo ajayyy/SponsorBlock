@@ -99,7 +99,7 @@
         "message": "Zrušit vytváření segmentu"
     },
     "noVideoID": {
-        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
+        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte kartu."
     },
     "refreshSegments": {
         "message": "Aktualizovat segmenty"
@@ -111,7 +111,7 @@
         "message": "Hlasováno!"
     },
     "serverDown": {
-        "message": "Zdá se, že server nefunguje. Obraťte se okamžitě na vývojáře."
+        "message": "Zdá se, že server je offline. Okamžitě kontaktujte vývojáře."
     },
     "connectionError": {
         "message": "Došlo k chybě připojení. Kód chyby: "
