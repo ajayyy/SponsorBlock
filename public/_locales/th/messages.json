@@ -25,6 +25,9 @@
     "Segments": {
         "message": "ส่วน"
     },
+    "SegmentsCap": {
+        "message": "ส่วน"
+    },
     "upvoteButtonInfo": {
         "message": "เห็นด้วยกับรายงานนี้"
     },
