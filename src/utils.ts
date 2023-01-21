@@ -401,14 +401,15 @@ export default class Utils {
             "#player-container", // Preview on hover
             "#main-panel.ytmusic-player-page", // YouTube music
             "#player-container .video-js", // Invidious
-            ".main-video-section > .video-container" // Cloudtube  
+            ".main-video-section > .video-container", // Cloudtube
+            ".shaka-video-container" // Piped
         ];
 
         let referenceNode = findValidElementFromSelector(selectors)
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");
-            referenceNode = player.firstChild as HTMLElement;
+            referenceNode = player?.firstChild as HTMLElement;
             if (referenceNode) {
                 let index = 1;
 

@@ -526,6 +526,9 @@ function createPreviewBar(): void {
             // For Youtube Music
             // there are two sliders, one for volume and one for progress - both called #progressContainer
             selector: "#progress-bar>#sliderContainer>div>#sliderBar>#progressContainer",
+        }, {
+            // For piped
+            selector: ".shaka-ad-markers",
             isVisibleCheck: false
         }
     ];
@@ -2096,19 +2099,33 @@ function openInfoMenu() {
     frame.src = chrome.extension.getURL("popup.html");
     popup.appendChild(frame);
 
-    const parentNodes = document.querySelectorAll("#secondary-inner");
-    let parentNode = null;
-    for (let i = 0; i < parentNodes.length; i++) {
-        if (parentNodes[i].firstElementChild !== null) {
-            parentNode = parentNodes[i];
+    const elemHasChild = (elements: NodeListOf<HTMLElement>): Element => {
+        let parentNode: Element;
+        for (const node of elements) {
+            if (node.firstElementChild !== null) {
+                parentNode = node;
+            }
         }
-    }
-    if (parentNode == null) {
-        //old youtube theme
-        parentNode = document.getElementById("watch7-sidebar-contents");
+        return parentNode
     }
 
-    parentNode.insertBefore(popup, parentNode.firstChild);
+    const parentNodeOptions = [{
+        // YouTube 
+        selector: "#secondary-inner",
+        hasChildCheck: true
+    }, {
+        // old youtube theme
+        selector: "#watch7-sidebar-contents",
+    }];
+    for (const option of parentNodeOptions) {
+        const allElements = document.querySelectorAll(option.selector) as NodeListOf<HTMLElement>;
+        const el = option.hasChildCheck ? elemHasChild(allElements) : allElements[0];
+
+        if (el) {
+            if (option.hasChildCheck) el.insertBefore(popup, el.firstChild);
+            break;
+        }
+    }
 }
 
 function closeInfoMenu() {
@@ -2484,6 +2501,12 @@ function addPageListeners(): void {
 
     document.addEventListener("yt-navigate-start", resetValues);
     document.addEventListener("yt-navigate-finish", refreshListners);
+    // piped player init
+    window.addEventListener("playerInit", () => {
+        if (!document.querySelector('meta[property="og:title"][content="Piped"]')) return
+        previewBar = null; // remove old previewbar
+        createPreviewBar()
+    });
     window.addEventListener("message", windowListenerHandler);
 }
 
