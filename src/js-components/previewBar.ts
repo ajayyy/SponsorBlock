@@ -314,7 +314,7 @@ class PreviewBar {
         if (chapterChevron) {
             if (this.segments.some((segment) => segment.source === SponsorSourceType.YouTube)) {
                 chapterChevron.style.removeProperty("display");
-            } else {
+            } else if (this.segments) {
                 chapterChevron.style.display = "none";
             }
         }
