@@ -942,7 +942,7 @@
         "message": "Navždy skryť"
     },
     "warningChatInfo": {
-        "message": "Zaznamenali sme, že robíte omylom chyby"
+        "message": "Zaznamenali sme, že ste urobili obvyklú chybu. Vážime si vašej práce, ale ide nám o presnosť, takže aj na malých chybách záleží."
     },
     "warningTitle": {
         "message": "Dostali ste varovanie"
@@ -954,7 +954,7 @@
         "message": "Rozumiem dôvodu"
     },
     "warningError": {
-        "message": "Chyb a pri pokuse o súhlas s upozornením:"
+        "message": "Chyba pri pokuse o súhlas s upozornením:"
     },
     "Donate": {
         "message": "Prispieť"

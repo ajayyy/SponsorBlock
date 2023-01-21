@@ -942,7 +942,7 @@
         "message": "Ocultar para siempre"
     },
     "warningChatInfo": {
-        "message": "Hemos notado que has estado cometiendo algunos errores comunes que no son maliciosos"
+        "message": "Nos hemos dado cuenta de que cometías algunos errores comunes. Apreciamos mucho tu trabajo hasta ahora, pero aquí nos esforzamos por alcanzar la perfección, así que incluso los errores más pequeños importan :)"
     },
     "warningTitle": {
         "message": "Tienes una advertencia"
@@ -1197,7 +1197,7 @@
         "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
     },
     "unsubmittedSegmentCountsZero": {
-        "message": "Actualmente no tiene segmentos sin enviar",
+        "message": "Actualmente, no tiene segmentos sin enviar",
         "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
     },
     "unsubmittedSegmentsSingular": {

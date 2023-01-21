@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Přeskoč sponzorství, žadonění o odběr a další v YouTube videích. Nahlaš sponzorované segmenty na videích co sleduješ a ušetři ostatním čas.",
+        "message": "Přeskočte sponzorství, žádosti o odběr a další ve videích na YouTube. Nahlaste sponzorované segmenty ve videích, která sledujete a ušetřete ostatním čas.",
         "description": "Description of the extension."
     },
     "400": {
@@ -99,7 +99,7 @@
         "message": "Zrušit vytváření segmentu"
     },
     "noVideoID": {
-        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte záložku."
+        "message": "Nebylo nalezeno žádné YouTube video.\nPokud je to špatně, obnovte kartu."
     },
     "refreshSegments": {
         "message": "Aktualizovat segmenty"
@@ -111,7 +111,7 @@
         "message": "Hlasováno!"
     },
     "serverDown": {
-        "message": "Zdá se, že server nefunguje. Obraťte se okamžitě na vývojáře."
+        "message": "Zdá se, že server je offline. Okamžitě kontaktujte vývojáře."
     },
     "connectionError": {
         "message": "Došlo k chybě připojení. Kód chyby: "
@@ -250,7 +250,7 @@
         "message": "Místo žádání o segmenty ze serveru pomocí videoID jsou poslány první 4 charaktery hashe ve videoID. Tento server odešle zpět data pro všechna videa s podobnými hashy."
     },
     "enableRefetchWhenNotFound": {
-        "message": "Refetovat segmenty na nových videích"
+        "message": "Automaticky znovu načítat segmenty na nových videích"
     },
     "whatRefetchWhenNotFound": {
         "message": "Pokud je video nové a nejsou nalezeny žádné segmenty, bude rozšíření každých několik minut refetchovat data, zatímco sledujete video."
@@ -942,7 +942,7 @@
         "message": "Skrýt napořád"
     },
     "warningChatInfo": {
-        "message": "Všimli jsme si, že děláte některé běžné chyby, které nejsou úmyslně zlé"
+        "message": "Všimli jsme si, že děláte některé běžné chyby. Velmi si vážíme vaší dosavadní práce, ale snažíme se zde o dokonalost, takže i na velmi malých chybách záleží :)"
     },
     "warningTitle": {
         "message": "Dostali jste varování"

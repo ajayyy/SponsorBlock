@@ -113,6 +113,9 @@
     "connectionError": {
         "message": "Dogodija se greška u povezivanju. Kod pogreške: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmenti se učitavaju..."
+    },
     "clearTimes": {
         "message": "Očisti isječke"
     },
@@ -383,6 +386,12 @@
     "statusReminder": {
         "message": "Provjerite status.sponsor.ajay.app za status poslužitelja."
     },
+    "changeUserID": {
+        "message": "Uvezi/Izvezi svoj privatni UserID"
+    },
+    "setUserID": {
+        "message": "Postavi Privatni UserID"
+    },
     "createdBy": {
         "message": "Izradio"
     },
@@ -482,6 +491,12 @@
     "edit": {
         "message": "Uredi"
     },
+    "copyDebugInformation": {
+        "message": "Kopiraj Informaciju Za Otklanjanje Pogrešaka U Međuspremnik"
+    },
+    "copyDebugInformationFailed": {
+        "message": "Pisanje u međuspremnik nije uspjelo"
+    },
     "copyDebugInformationOptions": {
         "message": "Kopira informacije u međuspremnik koje treba dati razvojnom programeru kada otkrije grešku / kada to programer zatraži. Osjetljive informacije kao što su vaš korisnički ID, kanali s popisa dopuštenih i prilagođena adresa poslužitelja uklonjeni su. Međutim, sadrži informacije kao što su vaš korisnički agent, preglednik, operativni sustav i broj verzije proširenja. "
     },
@@ -517,6 +532,9 @@
     "category_selfpromo_description": {
         "message": "Slično kao „sponzor”, osim za neplaćenu promociju i samopromociju. To uključuje odlomke marketinga, donacija ili informacija o tome, s kim su surađivali."
     },
+    "category_selfpromo_guideline1": {
+        "message": "Donacije, članarine i roba"
+    },
     "category_exclusive_access": {
         "message": "Eksluzivni pristup"
     },
@@ -538,6 +556,9 @@
     "category_intro_short": {
         "message": "Stanka"
     },
+    "category_intro_guideline1": {
+        "message": "Interval bez stvarnog sadržaja"
+    },
     "category_outro": {
         "message": "Završni kadrovi/Zasluge"
     },
@@ -546,6 +567,9 @@
     },
     "category_preview_description": {
         "message": "Zbirka isječaka koji pokazuju što dolazi u ovom videu ili drugim videima u nizu gdje se sve informacije kasnije ponavljaju u videu."
+    },
+    "category_filler": {
+        "message": "Nepotrebna Popuna/Šale"
     },
     "category_filler_short": {
         "message": "Popuna"
@@ -647,6 +671,9 @@
         "message": "Kraj",
         "description": "Button that skips to the end of a segment"
     },
+    "hiddenDueToDuration": {
+        "message": "sakriveno: redak je prekratak"
+    },
     "manuallyHidden": {
         "message": "ručno skriveno"
     },
@@ -701,14 +728,32 @@
     "hideForever": {
         "message": "Sakrij zauvijek"
     },
+    "warningChatInfo": {
+        "message": "Primjetili smo da ste radili neke uobičajene pogreške. Mi cijenimo vaš trud, ali ovdje težimo perfekciji, pa i jako male pogreške su važne :)"
+    },
+    "warningTitle": {
+        "message": "Dobili ste upozorenje"
+    },
+    "questionButton": {
+        "message": "Imam pitanje"
+    },
+    "warningConfirmButton": {
+        "message": "Razumijem razlog"
+    },
     "Donate": {
         "message": "Doniraj"
+    },
+    "darkModeOptionsPage": {
+        "message": "Tamni Način Na Stranici Opcija"
     },
     "helpPageThanksForInstalling": {
         "message": "Hvala na instaliranju SponsorBlocka."
     },
     "helpPageFeatureDisclaimer": {
         "message": "Mnoge funkcije su standardno deaktivirane. Ako želiš preskočiti uvode, završne dijelove, koristiti Invidious, itd., aktiviraj ih niže dolje. Također možeš sakriti/prikazati elemente korisničkog sučelja."
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "Kako preskakanje radi"
     },
     "Submitting": {
         "message": "Slanje"
@@ -745,6 +790,9 @@
     },
     "hideSegment": {
         "message": "Sakri odsječak"
+    },
+    "skipSegment": {
+        "message": "Preskoči odsječak"
     },
     "dayAbbreviation": {
         "message": "d",
@@ -852,5 +900,24 @@
     },
     "enterLicenseKey": {
         "message": "Upiši licencni ključ"
+    },
+    "videosSingular": {
+        "message": "video",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "videa",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "videoID": {
+        "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "Radnje",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "Dijeli kao URL"
     }
 }

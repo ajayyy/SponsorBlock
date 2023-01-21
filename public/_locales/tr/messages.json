@@ -479,7 +479,7 @@
         "message": "Ayarlanan değerden daha kısa kısımlar atlanmayacak veya oynatıcıda gösterilmeyecektir."
     },
     "enableManualSkipOnFullVideo": {
-        "message": "Tam bir video etiketi mevcut olduğunda manuel atlama özelliğini kullanın"
+        "message": "Bütün video etiketi mevcut olduğunda manuel atlama özelliğini kullanın"
     },
     "whatManualSkipOnFullVideo": {
         "message": "Video boyunca sponsorlu veya kendi reklamını yapıyorsa videoyu kesintisiz izlemek isteyenler için."
@@ -942,7 +942,7 @@
         "message": "Asla gösterme"
     },
     "warningChatInfo": {
-        "message": "Kötü amaçlı olmayan bazı yaygın hatalar yaptığınızı fark ettik"
+        "message": "Yaygın hataları sıkça yaptığınız anlaşılıyor. Çabalarınız için sağolun fakat burada mükemmel bir sonuç istiyoruz, küçük hatalar bile fark ediyor :)"
     },
     "warningTitle": {
         "message": "Bir uyarı aldın"

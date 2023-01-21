@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "Ocorreu um erro de conexão. Código de erro: "
     },
+    "segmentsStillLoading": {
+        "message": "Segmentos ainda carregando..."
+    },
     "clearTimes": {
         "message": "Limpar Segmentos"
     },
@@ -911,9 +914,6 @@
     },
     "hideForever": {
         "message": "Ocultar para sempre"
-    },
-    "warningChatInfo": {
-        "message": "Percebemos que você estava cometendo alguns erros comuns que não são prejudiciais"
     },
     "Donate": {
         "message": "Doar"

@@ -116,6 +116,9 @@
     "connectionError": {
         "message": "A apărut o eroare de conexiune. Cod de eroare: "
     },
+    "segmentsStillLoading": {
+        "message": "Încă se încarcă segmentele..."
+    },
     "clearTimes": {
         "message": "Curăță segmentele"
     },
@@ -939,7 +942,7 @@
         "message": "Ascunde pentru totdeauna"
     },
     "warningChatInfo": {
-        "message": "Am observat că făceați niște greșeli comune care nu sunt răuvoitoare"
+        "message": "Am observat că faci niște greșeli comune. Apreciem foarte mult munca ta de până acum, însă noi tindem spre perfecțiune aici, așa că fiecare mică greșeală contează :)"
     },
     "warningTitle": {
         "message": "Ai primit o avertizare"
@@ -1243,5 +1246,11 @@
     },
     "exportSegmentsAsURL": {
         "message": "Distribuie ca URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Atenție: Serverul nu a răspuns încă cu segmente. Ar putea fi segmente în acest videoclip deja trimise, dar pur și simplu nu le-ai primit din cauza problemelor cu serverul."
+    },
+    "allowScrollingToEdit": {
+        "message": "Permite derularea la Editarea Timpilor"
     }
 }

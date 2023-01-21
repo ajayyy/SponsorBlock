@@ -942,7 +942,7 @@
         "message": "Cacher pour toujours"
     },
     "warningChatInfo": {
-        "message": "Nous avons remarqué que vous faisiez des erreurs courantes qui ne sont pas intentionnelles"
+        "message": "Nous avons remarqué que vous commettiez des erreurs courantes. Nous apprécions votre travail jusqu'à présent, mais nous recherchons la perfection, donc même de petites erreurs comptent :)"
     },
     "warningTitle": {
         "message": "Vous avez reçu un avertissement"
@@ -1249,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Attention : Le serveur n'a pas encore répondu avec les segments. Il se peut qu'il y ait des segments sur cette vidéo déjà soumise, mais vous ne les avez tout simplement pas reçus en raison de problèmes avec le serveur."
+    },
+    "allowScrollingToEdit": {
+        "message": "Autoriser l'utilisation de la molette pour modifier les temps"
     }
 }

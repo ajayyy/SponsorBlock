@@ -208,7 +208,7 @@
         "message": "Ini akan menyembunyikan tombol yang muncul di pemutar YouTube untuk mengirimkan segmen yang dilewati."
     },
     "showSkipButton": {
-        "message": "Tetap lewati ke tombol Highlight di Pemutar"
+        "message": "Biarkan Tombol Lewati ke Sorotan Tetap Tampil di Pemutar"
     },
     "showInfoButton": {
         "message": "Tampilkan Tombol Info Di Pemutar Video YouTube"
@@ -682,6 +682,9 @@
     "category_preview": {
         "message": "Pratinjau/Rekap"
     },
+    "category_preview_description": {
+        "message": "Koleksi klip yang menampilkan hal yang akan hadir di video ini atau video lain dalam suatu seri, di mana segala informasinya diulang dalam video tersebut."
+    },
     "category_preview_guideline1": {
         "message": "Klip yang ditampilkan nanti, atau di video di masa mendatang"
     },
@@ -693,6 +696,9 @@
     },
     "category_filler": {
         "message": "Pengisi Tak berkaitan/Lawakan"
+    },
+    "category_filler_description": {
+        "message": "Adegan tangensial ditambahkan hanya untuk pengisi atau humor yang tidak diperlukan untuk memahami isi utama video. Ini tidak boleh mencakup segmen yang memberikan detail konteks atau latar belakang. Ini adalah kategori sangat agresif yang ditujukan saat Anda tidak sedang ingin \"bersenang-senang\"."
     },
     "category_filler_short": {
         "message": "Isian"
@@ -936,7 +942,7 @@
         "message": "Sembunyikan selamanya"
     },
     "warningChatInfo": {
-        "message": "Kami melihat Anda membuat beberapa kesalahan umum yang tidak tersengaja"
+        "message": "Kami perhatikan Anda membuat beberapa kesalahan umum. Kami hargai sekali yang Anda kerjakan sejauh ini, tapi di sini kami berjuang mencapai sempurna, sehingga kesalahan sangat kecil pun berarti :)"
     },
     "warningTitle": {
         "message": "Anda mendapatkan peringatan"
@@ -1172,9 +1178,19 @@
     "enterLicenseKey": {
         "message": "Masukkan Kode Lisensi"
     },
+    "chaptersPage1": {
+        "message": "Fitur bab yang diurun-dayakan SponsorBlock hanya tersedia bagi pembeli lisensi, atau penerima akses gratis berkat kontribusinya di masa lalu"
+    },
     "chaptersPage2": {
         "message": "Catatan: Izin untuk mengirim bab tetap bedasarkan reputasi yang diperhitungkan. Membeli lisensi hanya memperbolehkan Anda untuk melihat bab yang dikirim oleh orang lain",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "Fitur Baru: Bab ubah suai yang diurun daya. Ini adalah beberapa bagian video yang secara khusus diberi nama dan dapat ditumpuk untuk mendapat ketepatan yang lebih. Beli lisensi untuk menampilkan bab yang dikirimkan untuk video ini seperti: ",
+        "description": "After the comma, a list of chapters for this video will appear"
+    },
+    "chapterNewFeature2": {
+        "message": "Fitur Baru: Bab ubah suai yang diurun daya. Ini adalah beberapa bagian video yang secara khusus diberi nama dan dapat ditumpuk untuk mendapat ketepatan yang lebih. Anda memiliki akses gratis yang aktif di opsi."
     },
     "unsubmittedSegmentCounts": {
         "message": "Kamu mempunyai {0} dalam {1}",

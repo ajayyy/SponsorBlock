@@ -25,6 +25,16 @@
     "Segments": {
         "message": "phân đoạn"
     },
+    "SegmentsCap": {
+        "message": "Phân đoạn"
+    },
+    "Chapters": {
+        "message": "Chương"
+    },
+    "renderAsChapters": {
+        "message": "Coi phân đoạn như chương",
+        "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
+    },
     "upvoteButtonInfo": {
         "message": "Tán thành phân đoạn này"
     },
@@ -103,6 +113,9 @@
     "connectionError": {
         "message": "Đã xảy ra lỗi kết nối. Mã lỗi: "
     },
+    "segmentsStillLoading": {
+        "message": "Phân đoạn vẫn đang tải..."
+    },
     "clearTimes": {
         "message": "Xóa các phân đoạn"
     },
@@ -114,6 +127,9 @@
     },
     "SubmitTimes": {
         "message": "Gửi phân đoạn"
+    },
+    "sortSegments": {
+        "message": "Sắp xếp phân đoạn"
     },
     "submitCheck": {
         "message": "Bạn có chắc chắn muốn gửi không?"
@@ -287,6 +303,14 @@
     },
     "setSubmitKeybind": {
         "message": "Gửi phân đoạn",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "Chương tiếp",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "Chương trước",
         "description": "Keybind label"
     },
     "keybindDescription": {
@@ -533,6 +557,10 @@
         "message": "đến",
         "description": "Used between segments. Example: 1:20 to 1:30"
     },
+    "CopiedExclamation": {
+        "message": "Đã sao chép!",
+        "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
+    },
     "generic_guideline2": {
         "message": "Chơi như thể không có gì bị bỏ qua"
     },
@@ -669,6 +697,9 @@
     "category_poi_highlight_guideline3": {
         "message": "Có thể bỏ qua để đến tiêu đề hoặc hình thu nhỏ"
     },
+    "category_chapter": {
+        "message": "Chương"
+    },
     "category_livestream_messages": {
         "message": "Luồng phát trực tiếp: Đọc Quyên góp/Tin nhắn"
     },
@@ -754,6 +785,10 @@
     "bracketEnd": {
         "message": "(Kết thúc)"
     },
+    "End": {
+        "message": "Kết thúc",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "đã ẩn: hạ bình chọn"
     },
@@ -790,6 +825,9 @@
     },
     "downvoteDescription": {
         "message": "Chỉnh thời gian sai/không đúng"
+    },
+    "incorrectVote": {
+        "message": "Sai"
     },
     "incorrectCategory": {
         "message": "Đổi danh mục"
@@ -941,6 +979,9 @@
     "hideSegment": {
         "message": "Ẩn phân đoạn"
     },
+    "skipSegment": {
+        "message": "Bỏ qua phân đoạn"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "Sử dụng con lăn chuột của bạn khi di chuột qua hộp chỉnh sửa để nhanh chóng điều chỉnh thời gian. Kết hợp phím ctrl hoặc shift có thể được sử dụng để tinh chỉnh các thay đổi."
     },
@@ -1003,5 +1044,24 @@
     },
     "confirmResetToDefault": {
         "message": "Bạn chắc chắn muốn đặt lại cài đặt về mặc định? Điều này sẽ không thể hoàn tác được."
+    },
+    "chooseACountry": {
+        "message": "Chọn một quốc gia"
+    },
+    "selectYourCountry": {
+        "message": "Chọn quốc gia"
+    },
+    "patreonSignIn": {
+        "message": "Đăng nhập bằng Patreon"
+    },
+    "joinOnPatreon": {
+        "message": "Đăng ký trên Patreon"
+    },
+    "enterLicenseKey": {
+        "message": "Nhập mã bản quyền"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "Ẩn các phân đoạn",
+        "description": "Show/hide button for the unsubmitted segments list"
     }
 }
