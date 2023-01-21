@@ -2489,6 +2489,12 @@ function addPageListeners(): void {
 
 function addHotkeyListener(): void {
     document.addEventListener("keydown", hotkeyListener);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Allow us to stop propagation to YouTube by being deeper
+        document.removeEventListener("keydown", hotkeyListener);
+        document.body.addEventListener("keydown", hotkeyListener);
+    });
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
@@ -2520,9 +2526,11 @@ function hotkeyListener(e: KeyboardEvent): void {
         submitSponsorTimes();
         return;
     } else if (keybindEquals(key, nextChapterKey)) {
+        if (sponsorTimes.length > 0) e.stopPropagation();
         nextChapter();
         return;
     } else if (keybindEquals(key, previousChapterKey)) {
+        if (sponsorTimes.length > 0) e.stopPropagation();
         previousChapter();
         return;
     }
