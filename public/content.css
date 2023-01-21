@@ -585,6 +585,7 @@ input::-webkit-inner-spin-button {
 	font-size: 14px;
 
 	-moz-appearance: textfield;
+	appearance: textfield;
 }
 
 .sponsorTimeEditInput {

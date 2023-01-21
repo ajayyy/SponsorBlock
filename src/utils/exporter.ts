@@ -82,7 +82,7 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
     return result;
 }
 
-function removeIf(value: string, matchers: Array<{ matcher: RegExp, condition?: (value: string) => boolean }>): string {
+function removeIf(value: string, matchers: Array<{ matcher: RegExp; condition?: (value: string) => boolean }>): string {
     let result = value;
     for (const matcher of matchers) {
         if (!matcher.condition || matcher.condition(value)) {
