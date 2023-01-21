@@ -124,7 +124,7 @@ class KeybindDialogComponent extends React.Component<KeybindDialogProps, Keybind
         let youtubeShortcuts: Keybind[];
         if (/[a-zA-Z0-9,.+\-\][:]/.test(this.state.key.key)) {
             youtubeShortcuts = [{key: "k"}, {key: "j"}, {key: "l"}, {key: "p", shift: true}, {key: "n", shift: true}, {key: ","}, {key: "."}, {key: ",", shift: true}, {key: ".", shift: true},
-                {key: "ArrowRight"}, {key: "ArrowLeft"}, {key: "ArrowUp"}, {key: "ArrowDown"}, {key: "ArrowRight", ctrl: true}, {key: "ArrowLeft", ctrl: true}, {key: "c"}, {key: "o"},
+                {key: "ArrowRight"}, {key: "ArrowLeft"}, {key: "ArrowUp"}, {key: "ArrowDown"}, {key: "c"}, {key: "o"},
                 {key: "w"}, {key: "+"}, {key: "-"}, {key: "f"}, {key: "t"}, {key: "i"}, {key: "m"}, {key: "a"}, {key: "s"}, {key: "d"}, {key: "Home"}, {key: "End"},
                 {key: "0"}, {key: "1"}, {key: "2"}, {key: "3"}, {key: "4"}, {key: "5"}, {key: "6"}, {key: "7"}, {key: "8"}, {key: "9"}, {key: "]"}, {key: "["}];
         } else {
