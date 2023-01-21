@@ -313,7 +313,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         }
         case "keydown":
-            document.dispatchEvent(new KeyboardEvent('keydown', {
+            (document.body || document).dispatchEvent(new KeyboardEvent('keydown', {
                 key: request.key,
                 keyCode: request.keyCode,
                 code: request.code,
