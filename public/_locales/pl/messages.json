@@ -941,6 +941,9 @@
     "hideForever": {
         "message": "Schowaj na zawsze"
     },
+    "warningChatInfo": {
+        "message": "Zauważyliśmy, że popełniłeś pewne powszechne błędy. Bardzo doceniamy dotychczasową pracę, ale dążymy tutaj do doskonałości, więc nawet bardzo małe błędy mają znaczenie :)"
+    },
     "warningTitle": {
         "message": "Otrzymałeś ostrzeżenie"
     },
@@ -1246,5 +1249,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Ostrzeżenie: Serwer nie odpowiedział jeszcze na segmenty. Być może segmenty na tym filmie są już wysłane, ale po prostu nie otrzymałeś ich z powodu problemów z serwerem."
+    },
+    "allowScrollingToEdit": {
+        "message": "Zezwalaj na scroll'owanie do edycji czasów"
     }
 }
