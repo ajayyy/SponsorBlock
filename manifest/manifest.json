@@ -73,7 +73,11 @@
         "content.css",
         "shared.css",
         "js/document.js",
-        "libs/Source+Sans+Pro.css"
+        "libs/Source+Sans+Pro.css",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRduz8A.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBduz8A.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBduz8A.woff2"
     ],
     "permissions": [
         "storage",
