@@ -424,7 +424,7 @@
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
     "changeUserID": {
-        "message": "Importar/Exportar su ID de usuario Privado"
+        "message": "Importar/Exportar su ID de Usuario Privado"
     },
     "whatChangeUserID": {
         "message": "Esto se debería mantener privado. Esto es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, puede suplantarte. Si estás buscando tu ID de usuario Público, haz clic en el icono de portapapeles en la ventana emergente."
