@@ -18,7 +18,8 @@ export default class Utils {
     css = [
         "content.css",
         "./libs/Source+Sans+Pro.css",
-        "popup.css"
+        "popup.css",
+        "shared.css"
     ];
 
     /* Used for waitForElement */
