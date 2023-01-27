@@ -125,6 +125,9 @@
     "closePopup": {
         "message": "Zatvori izbornik"
     },
+    "closeIcon": {
+        "message": "Ikona za zatvaranje"
+    },
     "SubmitTimes": {
         "message": "Podnesi isječke"
     },
@@ -788,6 +791,12 @@
     "ChangeCategoryTooltip": {
         "message": "Ovo će se odmah primijeniti na vaše isječke"
     },
+    "downvote": {
+        "message": "Glasaj protiv"
+    },
+    "upvote": {
+        "message": "Glasaj za"
+    },
     "hideSegment": {
         "message": "Sakri odsječak"
     },
@@ -911,6 +920,10 @@
     },
     "videoID": {
         "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Broj segmenata",
         "description": "Header of the unsubmitted segments list"
     },
     "actions": {
