@@ -1092,98 +1092,88 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                         source: SponsorSourceType.Server
                     }))
                     ?.sort((a, b) => a.segment[0] - b.segment[0]);
-        if (!recievedSegments || !recievedSegments.length) {
-            // return if no video found
-            chrome.runtime.sendMessage({
-                message: "infoUpdated",
-                found: false,
-                status: lastResponseStatus,
-                sponsorTimes: sponsorTimes,
-                time: video.currentTime,
-                onMobileYouTube
-            });
+        if (recievedSegments && recievedSegments.length) {
+            if (showChapterMessage) {
+                const chapterSegments = recievedSegments.filter((s) => s.actionType === ActionType.Chapter);
+                if (chapterSegments.length > 3) {
+                    const prependElement = document.querySelector(".ytp-chrome-bottom") as HTMLElement;
+                    if (prependElement) {
+                        Config.config.showChapterInfoMessage = false;
+                        new Tooltip({
+                            text: `🟨${chrome.i18n.getMessage("chapterNewFeature")}${chapterSegments.slice(0, 3).map((s) => s.description).join(", ")}`,
+                            linkOnClick: () => void chrome.runtime.sendMessage({ "message": "openUpsell" }),
+                            referenceNode: prependElement.parentElement,
+                            prependElement,
+                            timeout: 1500,
+                            leftOffset: "20px",
+                            positionRealtive: false
+                        });
+                    }
+                }
+    
+                recievedSegments = recievedSegments.filter((s) => s.actionType !== ActionType.Chapter);
+            }
+    
+            sponsorDataFound = true;
+    
+            // Check if any old submissions should be kept
+            if (sponsorTimes !== null && keepOldSubmissions) {
+                for (let i = 0; i < sponsorTimes.length; i++) {
+                    if (sponsorTimes[i].source === SponsorSourceType.Local)  {
+                        // This is a user submission, keep it
+                        recievedSegments.push(sponsorTimes[i]);
+                    }
+                }
+            }
+    
+            const oldSegments = sponsorTimes || [];
+            sponsorTimes = recievedSegments;
+            existingChaptersImported = false;
+    
+            // Hide all submissions smaller than the minimum duration
+            if (Config.config.minDuration !== 0) {
+                for (const segment of sponsorTimes) {
+                    const duration = segment.segment[1] - segment.segment[0];
+                    if (duration > 0 && duration < Config.config.minDuration) {
+                        segment.hidden = SponsorHideType.MinimumDuration;
+                    }
+                }
+            }
+    
+            if (keepOldSubmissions) {
+                for (const segment of oldSegments) {
+                    const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
+                    if (otherSegment) {
+                        // If they downvoted it, or changed the category, keep it
+                        otherSegment.hidden = segment.hidden;
+                        otherSegment.category = segment.category;
+                    }
+                }
+            }
+    
+            // See if some segments should be hidden
+            const downvotedData = Config.local.downvotedSegments[hashPrefix];
+            if (downvotedData) {
+                for (const segment of sponsorTimes) {
+                    const hashedUUID = await utils.getHash(segment.UUID, 1);
+                    const segmentDownvoteData = downvotedData.segments.find((downvote) => downvote.uuid === hashedUUID);
+                    if (segmentDownvoteData) {
+                        segment.hidden = segmentDownvoteData.hidden;
+                    }
+                }
+            }
+    
+            startSkipScheduleCheckingForStartSponsors();
+    
+            //update the preview bar
+            //leave the type blank for now until categories are added
+            if (lastPreviewBarUpdate == sponsorVideoID || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
+                //set it now
+                //otherwise the listener can handle it
+                updatePreviewBar();
+            }
+        } else {
             retryFetch(404);
-            return;
-        }
-
-        if (showChapterMessage) {
-            const chapterSegments = recievedSegments.filter((s) => s.actionType === ActionType.Chapter);
-            if (chapterSegments.length > 3) {
-                const prependElement = document.querySelector(".ytp-chrome-bottom") as HTMLElement;
-                if (prependElement) {
-                    Config.config.showChapterInfoMessage = false;
-                    new Tooltip({
-                        text: `🟨${chrome.i18n.getMessage("chapterNewFeature")}${chapterSegments.slice(0, 3).map((s) => s.description).join(", ")}`,
-                        linkOnClick: () => void chrome.runtime.sendMessage({ "message": "openUpsell" }),
-                        referenceNode: prependElement.parentElement,
-                        prependElement,
-                        timeout: 1500,
-                        leftOffset: "20px",
-                        positionRealtive: false
-                    });
-                }
-            }
-
-            recievedSegments = recievedSegments.filter((s) => s.actionType !== ActionType.Chapter);
-        }
-
-        sponsorDataFound = true;
-
-        // Check if any old submissions should be kept
-        if (sponsorTimes !== null && keepOldSubmissions) {
-            for (let i = 0; i < sponsorTimes.length; i++) {
-                if (sponsorTimes[i].source === SponsorSourceType.Local)  {
-                    // This is a user submission, keep it
-                    recievedSegments.push(sponsorTimes[i]);
-                }
-            }
-        }
-
-        const oldSegments = sponsorTimes || [];
-        sponsorTimes = recievedSegments;
-        existingChaptersImported = false;
-
-        // Hide all submissions smaller than the minimum duration
-        if (Config.config.minDuration !== 0) {
-            for (const segment of sponsorTimes) {
-                const duration = segment.segment[1] - segment.segment[0];
-                if (duration > 0 && duration < Config.config.minDuration) {
-                    segment.hidden = SponsorHideType.MinimumDuration;
-                }
-            }
-        }
-
-        if (keepOldSubmissions) {
-            for (const segment of oldSegments) {
-                const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
-                if (otherSegment) {
-                    // If they downvoted it, or changed the category, keep it
-                    otherSegment.hidden = segment.hidden;
-                    otherSegment.category = segment.category;
-                }
-            }
-        }
-
-        // See if some segments should be hidden
-        const downvotedData = Config.local.downvotedSegments[hashPrefix];
-        if (downvotedData) {
-            for (const segment of sponsorTimes) {
-                const hashedUUID = await utils.getHash(segment.UUID, 1);
-                const segmentDownvoteData = downvotedData.segments.find((downvote) => downvote.uuid === hashedUUID);
-                if (segmentDownvoteData) {
-                    segment.hidden = segmentDownvoteData.hidden;
-                }
-            }
-        }
-
-        startSkipScheduleCheckingForStartSponsors();
-
-        //update the preview bar
-        //leave the type blank for now until categories are added
-        if (lastPreviewBarUpdate == sponsorVideoID || (lastPreviewBarUpdate == null && !isNaN(video.duration))) {
-            //set it now
-            //otherwise the listener can handle it
-            updatePreviewBar();
         }
     } else {
         retryFetch(lastResponseStatus);
