@@ -18,8 +18,8 @@ jobs:
         run: npm run ci:invidious
 
       - name: Create pull request to update list
-        uses: peter-evans/create-pull-request@b4d51739f96fca8047ad065eccef63442d8e99f7
-        # v4.2.0
+        uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04
+        # v4.2.3
         with:
           commit-message: Update Invidious List
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
