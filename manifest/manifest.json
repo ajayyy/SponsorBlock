@@ -92,8 +92,8 @@
         "default_icon": {
             "16": "icons/IconSponsorBlocker16px.png",
             "32": "icons/IconSponsorBlocker32px.png",
-            "64": "icons/LogoSponsorBlocker64px.png",
-            "128": "icons/LogoSponsorBlocker128px.png"
+            "64": "icons/IconSponsorBlocker64px.png",
+            "128": "icons/IconSponsorBlocker128px.png"
         },
         "theme_icons": [
             {
@@ -107,13 +107,13 @@
                 "size": 32
             },
             {
-                "light": "icons/LogoSponsorBlocker64px.png",
-                "dark": "icons/LogoSponsorBlocker64px.png",
+                "light": "icons/IconSponsorBlocker64px.png",
+                "dark": "icons/IconSponsorBlocker64px.png",
                 "size": 64
             },
             {
-                "light": "icons/LogoSponsorBlocker128px.png",
-                "dark": "icons/LogoSponsorBlocker128px.png",
+                "light": "icons/IconSponsorBlocker128px.png",
+                "dark": "icons/IconSponsorBlocker128px.png",
                 "size": 128
             }
         ]
@@ -127,11 +127,11 @@
     "icons": {
         "16": "icons/IconSponsorBlocker16px.png",
         "32": "icons/IconSponsorBlocker32px.png",
-        "64": "icons/LogoSponsorBlocker64px.png",
-        "128": "icons/LogoSponsorBlocker128px.png",
-        "256": "icons/LogoSponsorBlocker256px.png",
-        "512": "icons/LogoSponsorBlocker512px.png",
-        "1024": "icons/LogoSponsorBlocker1024px.png"
+        "64": "icons/IconSponsorBlocker64px.png",
+        "128": "icons/IconSponsorBlocker128px.png",
+        "256": "icons/IconSponsorBlocker256px.png",
+        "512": "icons/IconSponsorBlocker512px.png",
+        "1024": "icons/IconSponsorBlocker1024px.png"
     },
     "options_ui": {
         "page": "options/options.html",
