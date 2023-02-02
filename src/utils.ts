@@ -4,6 +4,7 @@ import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContaine
 import * as CompileConfig from "../config.json";
 import { findValidElement, findValidElementFromSelector } from "./utils/pageUtils";
 import { waitFor } from "@ajayyy/maze-utils";
+import { isSafari } from "./utils/configUtils";
 
 export default class Utils {
     
@@ -236,6 +237,8 @@ export default class Utils {
     }
 
     containsInvidiousPermission(): Promise<boolean> {
+        if (isSafari()) return Promise.resolve(true);
+
         return new Promise((resolve) => {
             let permissions = ["declarativeContent"];
             if (this.isFirefox()) permissions = [];
