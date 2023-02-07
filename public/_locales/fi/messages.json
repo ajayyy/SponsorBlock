@@ -442,7 +442,7 @@
         "message": "Tue kolmansien osapuolien YouTube-sivustoja"
     },
     "supportOtherSitesDescription": {
-        "message": "Tue kolmannen osapuolen YouTube-asiakasohjelmia. Jotta voit ottaa käyttöön tuen, sinun täytyy hyväksyä lisäkäyttöoikeudet. Tämä EI toimi incognitossa Chromessa ja muissa Chromium varianteissa.",
+        "message": "Tue kolmannen osapuolen YouTube-sovelluksia. Ottaaksesi tuen käyttöön, sinun on hyväksyttävä tarvittavat käyttöoikeudet.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
