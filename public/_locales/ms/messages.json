@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Sokong Pihak Ke-3 Laman YouTube"
     },
-    "supportOtherSitesDescription": {
-        "message": "Sokong klien pihak ketiga YouTube. Untuk membolehkan sokong, anda perlu menerima kebenaran tambahan. Ini TIDAK berfungsi dalam inkognito pada Chrome dan varian Chromium lain.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Laman Disokong: "
     },
