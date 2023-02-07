@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Sprijină Site-uri YouTube 3rd Party"
     },
-    "supportOtherSitesDescription": {
-        "message": "Sprijină Clienți YouTube 3rd party. Pentru a activa setarea, trebuie să acceptați permisiunile suprimentare. Această funcție NU funcționează în incognito pe Chrome sau în alte variante Chromium.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Site-uri cu Sprijin: "
     },
