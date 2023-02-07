@@ -442,7 +442,7 @@
         "message": "3. Taraf Youtube Sitelerini Destekle"
     },
     "supportOtherSitesDescription": {
-        "message": "Üçüncü taraf YouTube istemci desteği. Desteği etkinleştirmek için özel izinleri kabul etmelisiniz. Bu özellik Chrome ve diğer Chromium tarayıcılarda gizli modda çalışmaz.",
+        "message": "3. taraflarca yazılmış YouTube istemcileri desteği. Kullanabilmek için ilave izinler vermelisiniz.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
