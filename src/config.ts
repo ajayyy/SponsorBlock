@@ -180,7 +180,7 @@ const Config: SBObject = {
         hideDiscordLaunches: 0,
         hideDiscordLink: false,
         invidiousInstances: ["invidious.snopyta.org"], // leave as default
-        supportInvidious: isSafari(),
+        supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
         minDuration: 0,
         skipNoticeDuration: 4,

@@ -3,8 +3,6 @@
 const webpack = require("webpack");
 const path = require('path');
 const { validate } = require('schema-utils');
-const invidiousList = require("../ci/invidiouslist.json");
-
 const fs = require('fs');
 
 const manifest = require("../manifest/manifest.json");
@@ -50,11 +48,6 @@ class BuildManifest {
             mergeObjects(manifest, chromeManifestExtra);
         }  else if (this.options.browser.toLowerCase() === "safari") {
             mergeObjects(manifest, safariManifestExtra);
-
-            // Add all invidious instances as options for the content script
-            for (const instance of invidiousList) {
-                manifest.content_scripts[0].matches.push(`*://*.${instance}/*`);
-            }
         }
 
         if (this.options.stream === "beta") {
