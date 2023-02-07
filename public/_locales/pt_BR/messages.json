@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Suporte a Sites do YouTube de Terceiros"
     },
-    "supportOtherSitesDescription": {
-        "message": "Suporte a clientes de terceiros do YouTube. Para habilitar o suporte, você deve aceitar as permissões extras. Isso NÃO funciona em incógnito no Chrome e outras variantes do Chromium.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Sites Suportados: "
     },
