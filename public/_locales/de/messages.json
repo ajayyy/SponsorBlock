@@ -442,7 +442,7 @@
         "message": "Unterstütze Drittanbieter YouTube-Seiten"
     },
     "supportOtherSitesDescription": {
-        "message": "Unterstütze Drittanbieter YouTube Clients. Zum unterstützen müssen zusätzlichliche Berechtigungen akzeptiert werden. Dies funktioniert NICHT im Incognitomodus auf Chrome oder anderen Chromium Varianten.",
+        "message": "Unterstütze YouTube-Clients von Drittanbietern. Um die Unterstützung zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
