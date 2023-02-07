@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Toeta 3. osapoole YouTube-saite"
     },
-    "supportOtherSitesDescription": {
-        "message": "Kolmanda osapoole YouTube'i klientide tugi. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Toetatud saidid: "
     },
