@@ -390,10 +390,6 @@
     "supportOtherSites": {
         "message": "3 வது தரப்பு YouTube-தளங்களை ஆதரிக்கவும்"
     },
-    "supportOtherSitesDescription": {
-        "message": "மூன்றாம் தரப்பு YouTube தளங்களை ஆதரிக்கவும். ஆதரவை இயக்க, நீங்கள் கூடுதல் அனுமதிகளை ஏற்க வேண்டும். இது Chrome மற்றும் பிற Chromium வகைகளில் தனிப்பட்ட தாவல்களில் வேலை செய்யாது.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "ஆதரிக்கப்படும் தளங்கள்: "
     },
