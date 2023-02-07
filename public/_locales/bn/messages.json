@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "এটি ৩য় পক্ষের ইউটইউব সাইট সাপোর্ট করে"
     },
-    "supportOtherSitesDescription": {
-        "message": "তৃতীয় পক্ষের ইউটিউব ক্লায়েন্টদের সমর্থন করুন। সমর্থন সক্ষম করতে, আপনাকে অবশ্যই অতিরিক্ত অনুমতিগুলি গ্রহণ করতে হবে। এটি ক্রোম এবং অন্যান্য ক্রোমিয়াম ভেরিয়েন্টগুলিতে ছদ্মবেশে কাজ করে না।",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "সমর্থিত সাইটসমুহ:"
     },
