@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Podpora alternatívnych Youtube webov"
     },
-    "supportOtherSitesDescription": {
-        "message": "Podpora alternatívnych Youtube klientov. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje v anonymnom režime v prehliadači Chrome ani v Chromium variantoch.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Podporované weby: "
     },
