@@ -2,6 +2,7 @@ import * as CompileConfig from "../config.json";
 
 import Config from "./config";
 import { Registration } from "./types";
+import registerContentScript from 'content-scripts-register-polyfill/ponyfill.js';
 
 // Make the config public for debugging purposes
 
@@ -20,11 +21,9 @@ const popupPort: Record<string, chrome.runtime.Port> = {};
 const contentScriptRegistrations = {};
 
 // Register content script if needed
-if (utils.isFirefox()) {
-    utils.wait(() => Config.config !== null).then(function() {
-        if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
-    });
-}
+utils.wait(() => Config.config !== null).then(function() {
+    if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
+});
 
 function onTabUpdatedListener(tabId: number) {
     chrome.tabs.sendMessage(tabId, {
@@ -167,7 +166,7 @@ function registerFirefoxContentScript(options: Registration) {
     const oldRegistration = contentScriptRegistrations[options.id];
     if (oldRegistration) oldRegistration.unregister();
 
-    browser.contentScripts.register({
+    registerContentScript({
         allFrames: options.allFrames,
         js: options.js,
         css: options.css,
@@ -181,8 +180,10 @@ function registerFirefoxContentScript(options: Registration) {
  *
  */
 function unregisterFirefoxContentScript(id: string) {
-    contentScriptRegistrations[id].unregister();
-    delete contentScriptRegistrations[id];
+    if (contentScriptRegistrations[id]) {
+        contentScriptRegistrations[id].unregister();
+        delete contentScriptRegistrations[id];
+    }
 }
 
 async function submitVote(type: number, UUID: string, category: string) {

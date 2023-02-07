@@ -120,8 +120,8 @@ export default class Utils {
      */
     setupExtraSitePermissions(callback: (granted: boolean) => void): void {
         // Request permission
-        let permissions = ["declarativeContent"];
-        if (this.isFirefox()) permissions = [];        
+        let permissions = ["declarativeContent", "webNavigation"];
+        if (this.isFirefox() && !isSafari()) permissions = [];        
 
         chrome.permissions.request({
             origins: this.getPermissionRegex(),
@@ -145,52 +145,28 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        if (this.isFirefox()) {
-            const firefoxJS = [];
-            for (const file of this.js) {
-                firefoxJS.push({file});
-            }
-            const firefoxCSS = [];
-            for (const file of this.css) {
-                firefoxCSS.push({file});
-            }
+        const firefoxJS = [];
+        for (const file of this.js) {
+            firefoxJS.push({file});
+        }
+        const firefoxCSS = [];
+        for (const file of this.css) {
+            firefoxCSS.push({file});
+        }
 
-            const registration: Registration = {
-                message: "registerContentScript",
-                id: "invidious",
-                allFrames: true,
-                js: firefoxJS,
-                css: firefoxCSS,
-                matches: this.getPermissionRegex()
-            };
+        const registration: Registration = {
+            message: "registerContentScript",
+            id: "invidious",
+            allFrames: true,
+            js: firefoxJS,
+            css: firefoxCSS,
+            matches: this.getPermissionRegex()
+        };
 
-            if (this.backgroundScriptContainer) {
-                this.backgroundScriptContainer.registerFirefoxContentScript(registration);
-            } else {
-                chrome.runtime.sendMessage(registration);
-            }
+        if (this.backgroundScriptContainer) {
+            this.backgroundScriptContainer.registerFirefoxContentScript(registration);
         } else {
-            chrome.declarativeContent.onPageChanged.removeRules(["invidious"], () => {
-                const conditions = [];
-                for (const regex of this.getPermissionRegex()) {
-                    conditions.push(new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { urlMatches: regex }
-                    }));
-                }
-
-                // Add page rule
-                const rule = {
-                    id: "invidious",
-                    conditions,
-                    actions: [new chrome.declarativeContent.RequestContentScript({
-                        allFrames: true,
-                        js: this.js,
-                        css: this.css
-                    })]
-                };
-                
-                chrome.declarativeContent.onPageChanged.addRules([rule]);
-            });
+            chrome.runtime.sendMessage(registration);
         }
     }
 
@@ -198,18 +174,18 @@ export default class Utils {
      * Removes the permission and content script registration.
      */
     removeExtraSiteRegistration(): void {
-        if (this.isFirefox()) {
-            const id = "invidious";
+        const id = "invidious";
 
-            if (this.backgroundScriptContainer) {
-                this.backgroundScriptContainer.unregisterFirefoxContentScript(id);
-            } else {
-                chrome.runtime.sendMessage({
-                    message: "unregisterContentScript",
-                    id: id
-                });
-            }
-        } else if (chrome.declarativeContent) {
+        if (this.backgroundScriptContainer) {
+            this.backgroundScriptContainer.unregisterFirefoxContentScript(id);
+        } else {
+            chrome.runtime.sendMessage({
+                message: "unregisterContentScript",
+                id: id
+            });
+        }
+
+        if (!this.isFirefox() && chrome.declarativeContent) {
             // Only if we have permission
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }

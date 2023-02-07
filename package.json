@@ -4,9 +4,10 @@
   "description": "",
   "main": "background.js",
   "dependencies": {
+    "@ajayyy/maze-utils": "^1.0.3",
+    "content-scripts-register-polyfill": "^4.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@ajayyy/maze-utils": "^1.0.3"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.199",
