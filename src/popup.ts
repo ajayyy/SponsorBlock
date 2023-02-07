@@ -283,7 +283,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
     if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
-    utils.asyncRequestToServer("GET", "/api/userInfo", {
+    utils.asyncRequestToServer("GET", "/api/userInfo", false,{
         publicUserID: await utils.getHash(Config.config.userID),
         values
     }).then((res) => {

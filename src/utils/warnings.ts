@@ -12,8 +12,8 @@ export interface ChatConfig {
 }
 
 export async function openWarningDialog(contentContainer: ContentContainer): Promise<void> {
-    const userInfo = await utils.asyncRequestToServer("GET", "/api/userInfo", {
-        publicUserID: await utils.getHash(Config.config.userID),
+    const userInfo = await utils.asyncRequestToServer("GET", "/api/userInfo", false, {
+        userID: Config.config.userID,
         values: ["warningReason"]
     });
 
@@ -42,7 +42,7 @@ export async function openWarningDialog(contentContainer: ContentContainer): Pro
                 {
                     name: chrome.i18n.getMessage("warningConfirmButton"),
                     listener: async () => {
-                        const result = await utils.asyncRequestToServer("POST", "/api/warnUser", {
+                        const result = await utils.asyncRequestToServer("POST", "/api/warnUser", false, {
                             userID: Config.config.userID,
                             enabled: false
                         });

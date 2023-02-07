@@ -175,7 +175,8 @@ async function init() {
                 textChangeSetButton.addEventListener("click", async () => {
                     // See if anything extra must be done
                     switch (option) {
-                        case "serverAddress": {
+                        case "serverAddress":
+                        case "fallbackServerAddress": {
                             const result = validateServerAddress(textChangeInput.value);
 
                             if (result !== null) {
@@ -531,8 +532,8 @@ function activatePrivateTextChange(element: HTMLElement) {
     switch (option) {
         case "userID":
             if (Config.config[option]) {
-                utils.asyncRequestToServer("GET", "/api/userInfo", {
-                    publicUserID: utils.getHash(Config.config[option]),
+                utils.asyncRequestToServer("GET", "/api/userInfo", false, {
+                    userID: Config.config[option],
                     values: ["warnings", "banned"]
                 }).then((result) => {
                     const userInfo = JSON.parse(result.responseText);

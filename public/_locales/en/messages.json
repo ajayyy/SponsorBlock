@@ -505,6 +505,12 @@
     "customServerAddressDescription": {
         "message": "The address SponsorBlock uses to make calls to the server.\nUnless you have your own server instance, this should not be changed."
     },
+    "fallbackServerAddress": {
+        "message": "SponsorBlock Fallback Server Address"
+    },
+    "fallbackServerAddressDescription": {
+        "message": "The address SponsorBlock uses to make calls to the server if the main server is down."
+    },
     "save": {
         "message": "Save"
     },
