@@ -417,10 +417,6 @@
     "supportOtherSites": {
         "message": "支援第三方的 YouTube 網站"
     },
-    "supportOtherSitesDescription": {
-        "message": "支援第三方的 YouTube 客戶端。若要啟用，您必須同意額外的權限。這在 Chrome 中的無痕模式和其他 Chromium 分支無效。",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "支援的網站："
     },
