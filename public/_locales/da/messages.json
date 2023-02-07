@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Understøtter tredjeparts YouTube sider"
     },
-    "supportOtherSitesDescription": {
-        "message": "Understøt tredjeparts YouTube klienter. For at aktivere understøttelse, skal du acceptere de ekstra tilladelser. Dette virker IKKE i inkognito på Chrome og andre Chromium varianter.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Understøttede Sider: "
     },
