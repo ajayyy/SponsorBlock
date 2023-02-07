@@ -441,10 +441,6 @@
     "supportOtherSites": {
         "message": "Ondersteuning voor YouTube-sites van derden"
     },
-    "supportOtherSitesDescription": {
-        "message": "Ondersteuning voor YouTube-clients van derden. Om ondersteuning in te schakelen moet u de extra machtigingen accepteren. Dit werkt NIET in incognito in Chrome en andere Chromium-varianten.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
-    },
     "supportedSites": {
         "message": "Ondersteunde sites: "
     },
