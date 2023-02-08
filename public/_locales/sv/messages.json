@@ -441,6 +441,10 @@
     "supportOtherSites": {
         "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
+    "supportOtherSitesDescription": {
+        "message": "Stöd tredjeparts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Webbplatser som stöds: "
     },
