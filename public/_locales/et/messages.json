@@ -441,6 +441,10 @@
     "supportOtherSites": {
         "message": "Toeta 3. osapoole YouTube-saite"
     },
+    "supportOtherSitesDescription": {
+        "message": "Kolmanda osapoole YouTube'i klientide tugi. Selle toe lubamiseks pead nõustuma lisalubadega.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Toetatud saidid: "
     },
