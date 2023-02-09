@@ -441,6 +441,10 @@
     "supportOtherSites": {
         "message": "Podpora pro weby YouTube třetích stran"
     },
+    "supportOtherSitesDescription": {
+        "message": "Podporovat klienty YouTube třetích stran. Pro povolení podpory musíte přijmout dodatečná oprávnění.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Podporované weby: "
     },
