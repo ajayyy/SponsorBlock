@@ -505,6 +505,12 @@
     "customServerAddressDescription": {
         "message": "The address SponsorBlock uses to make calls to the server.\nUnless you have your own server instance, this should not be changed."
     },
+    "customBackupServerAddress": {
+        "message": "SponsorBlock Bacup Server Address"
+    },
+    "customBackupServerAddressDescription": {
+        "message": "The bacup address SponsorBlock uses to make calls to the server when the primariy Server is unavailable.\nUnless you have your own server instance, this should not be changed."
+    },
     "save": {
         "message": "Save"
     },

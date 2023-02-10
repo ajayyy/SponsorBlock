@@ -1,5 +1,6 @@
 {
     "serverAddress": "https://sponsor.ajay.app",
+    "backupServerAddress": "REPLACETHISWITHABACKUPSERVERURL",
     "testingServerAddress": "https://sponsor.ajay.app/test",
     "serverAddressComment": "This specifies the default SponsorBlock server to connect to",
     "categoryList": ["sponsor", "selfpromo", "exclusive_access", "interaction", "poi_highlight", "intro", "outro", "preview", "filler", "chapter", "music_offtopic"],

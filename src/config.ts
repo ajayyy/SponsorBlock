@@ -41,6 +41,7 @@ interface SBConfig {
     invidiousInstances: string[];
     supportInvidious: boolean;
     serverAddress: string;
+    backupServerAddress: string;
     minDuration: number;
     skipNoticeDuration: number;
     audioNotificationOnSkip: boolean;
@@ -182,6 +183,7 @@ const Config: SBObject = {
         invidiousInstances: ["invidious.snopyta.org"], // leave as default
         supportInvidious: false,
         serverAddress: CompileConfig.serverAddress,
+        backupServerAddress: CompileConfig.backupServerAddress,
         minDuration: 0,
         skipNoticeDuration: 4,
         audioNotificationOnSkip: false,
