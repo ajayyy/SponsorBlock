@@ -442,7 +442,7 @@
         "message": "제3자 YouTube 사이트 지원"
     },
     "supportOtherSitesDescription": {
-        "message": "제3자 YouTube 클라이언트에서도 기능을 지원하도록 해요. 이 기능을 사용하려면 추가 권한을 허용해야 해요.",
+        "message": "제삼자 YouTube 클라이언트에서도 기능을 지원하도록 해요. 이 기능을 사용하려면 추가 권한을 허용해야 해요.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
