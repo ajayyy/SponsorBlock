@@ -441,6 +441,10 @@
     "supportOtherSites": {
         "message": "Obsługa stron YouTube firm trzecich"
     },
+    "supportOtherSitesDescription": {
+        "message": "Obsługa zewnętrznych klientów YouTube. Aby włączyć obsługę, należy zaakceptować dodatkowe uprawnienia.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "Wspierane strony: "
     },
