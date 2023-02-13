@@ -2,9 +2,9 @@ import Config, { VideoDownvotes } from "./config";
 import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
 
 import * as CompileConfig from "../config.json";
-import { findValidElement, findValidElementFromSelector } from "./utils/pageUtils";
 import { waitFor } from "@ajayyy/maze-utils";
 import { isSafari } from "./utils/configUtils";
+import { findValidElementFromSelector } from "@ajayyy/maze-utils/lib/dom";
 
 export default class Utils {
     
@@ -23,85 +23,12 @@ export default class Utils {
         "shared.css"
     ];
 
-    /* Used for waitForElement */
-    creatingWaitingMutationObserver = false;
-    waitingMutationObserver: MutationObserver = null;
-    waitingElements: { selector: string; visibleCheck: boolean; callback: (element: Element) => void }[] = [];
-
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
     async wait<T>(condition: () => T, timeout = 5000, check = 100): Promise<T> {
         return waitFor(condition, timeout, check);
-    }
-
-    /* Uses a mutation observer to wait asynchronously */
-    async waitForElement(selector: string, visibleCheck = false): Promise<Element> {
-        return await new Promise((resolve) => {
-            const initialElement = this.getElement(selector, visibleCheck);
-            if (initialElement) {
-                resolve(initialElement);
-                return;
-            }
-
-            this.waitingElements.push({
-                selector,
-                visibleCheck,
-                callback: resolve
-            });
-
-            if (!this.creatingWaitingMutationObserver) {
-                this.creatingWaitingMutationObserver = true;
-
-                if (document.body) {
-                    this.setupWaitingMutationListener();
-                } else {
-                    window.addEventListener("DOMContentLoaded", () => {
-                        this.setupWaitingMutationListener();
-                    });
-                }
-            }
-        });
-    }
-
-    private setupWaitingMutationListener(): void {
-        if (!this.waitingMutationObserver) {
-            const checkForObjects = () => {
-                const foundSelectors = [];
-                for (const { selector, visibleCheck, callback } of this.waitingElements) {
-                    const element = this.getElement(selector, visibleCheck);
-                    if (element) {
-                        callback(element);
-                        foundSelectors.push(selector);
-                    }
-                }
-
-                this.waitingElements = this.waitingElements.filter((element) => !foundSelectors.includes(element.selector));
-                
-                if (this.waitingElements.length === 0) {
-                    this.waitingMutationObserver?.disconnect();
-                    this.waitingMutationObserver = null;
-                    this.creatingWaitingMutationObserver = false;
-                }
-            };
-
-            // Do an initial check over all objects
-            checkForObjects();
-
-            if (this.waitingElements.length > 0) {
-                this.waitingMutationObserver = new MutationObserver(checkForObjects);
-
-                this.waitingMutationObserver.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
-            }
-        }
-    }
-
-    private getElement(selector: string, visibleCheck: boolean) {
-        return visibleCheck ? findValidElement(document.querySelectorAll(selector)) : document.querySelector(selector);
     }
 
     containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {

@@ -28,25 +28,6 @@ export function isVisible(element: HTMLElement): boolean {
     return element && element.offsetWidth > 0 && element.offsetHeight > 0;
 }
 
-export function findValidElementFromSelector(selectors: string[]): HTMLElement {
-    return findValidElementFromGenerator(selectors, (selector) => document.querySelector(selector));
-}
-
-export function findValidElement(elements: HTMLElement[] | NodeListOf<HTMLElement>): HTMLElement {
-    return findValidElementFromGenerator(elements);
-}
-
-function findValidElementFromGenerator<T>(objects: T[] | NodeListOf<HTMLElement>, generator?: (obj: T) => HTMLElement): HTMLElement {
-    for (const obj of objects) {
-        const element = generator ? generator(obj as T) : obj as HTMLElement;
-        if (element && isVisible(element)) {
-            return element;
-        }
-    }
-
-    return null;
-}
-
 export function getHashParams(): Record<string, unknown> {
     const windowHash = window.location.hash.slice(1);
     if (windowHash) {

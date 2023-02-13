@@ -7,7 +7,6 @@ import {
     SponsorHideType,
     SponsorSourceType,
     SponsorTime,
-    StorageChangesObject,
 } from "./types";
 import {
     GetChannelIDResponse,
@@ -28,6 +27,7 @@ import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
 import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
+import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 
 const utils = new Utils();
 

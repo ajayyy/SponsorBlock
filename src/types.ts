@@ -194,8 +194,6 @@ export interface VideoInfo {
 
 export type VideoID = string;
 
-export type StorageChangesObject = { [key: string]: chrome.storage.StorageChange };
-
 export type UnEncodedSegmentTimes = [string, SponsorTime[]][];
 
 export enum ChannelIDStatus {
@@ -237,15 +235,6 @@ export type Keybind = {
     ctrl?: boolean;
     alt?: boolean;
     shift?: boolean;
-}
-
-export enum PageType {
-    Shorts = "shorts",
-    Watch = "watch",
-    Search = "search",
-    Browse = "browse",
-    Channel = "channel",
-    Embed = "embed"
 }
 
 export interface ButtonListener {

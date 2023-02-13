@@ -14,7 +14,7 @@ import UnsubmittedVideos from "./render/UnsubmittedVideos";
 import KeybindComponent from "./components/options/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
-import { StorageChangesObject } from "./types";
+import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 const utils = new Utils();
 let embed = false;
 
