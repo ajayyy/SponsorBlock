@@ -8,14 +8,19 @@ import { Tooltip } from "./Tooltip";
 import { waitFor } from "@ajayyy/maze-utils";
 import { getYouTubeTitleNode } from "@ajayyy/maze-utils/lib/elements";
 
+const id = "categoryPill";
+
 export class CategoryPill {
     container: HTMLElement;
     ref: React.RefObject<CategoryPillComponent>;
     root: Root;
 
-    unsavedState: CategoryPillState;
+    lastState: CategoryPillState;
 
     mutationObserver?: MutationObserver;
+    onMobileYouTube: boolean;
+    onInvidious: boolean;
+    vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
     
     constructor() {
         this.ref = React.createRef();
@@ -23,26 +28,35 @@ export class CategoryPill {
 
     async attachToPage(onMobileYouTube: boolean, onInvidious: boolean,
             vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>): Promise<void> {
+        this.onMobileYouTube = onMobileYouTube;
+        this.onInvidious = onInvidious;
+        this.vote = vote;
+
+        this.attachToPageInternal();
+    }
+
+    private async attachToPageInternal(): Promise<void> {
         const referenceNode = 
             await waitFor(() => getYouTubeTitleNode());
 
         if (referenceNode && !referenceNode.contains(this.container)) {
             if (!this.container) {
                 this.container = document.createElement('span');
-                this.container.id = "categoryPill";
+                this.container.id = id;
                 this.container.style.display = "relative";
 
                 this.root = createRoot(this.container);
-                this.root.render(<CategoryPillComponent ref={this.ref} vote={vote} />);
+                this.ref = React.createRef();
+                this.root.render(<CategoryPillComponent ref={this.ref} vote={this.vote} />);
 
-                if (onMobileYouTube) {
+                if (this.onMobileYouTube) {
                     if (this.mutationObserver) {
                         this.mutationObserver.disconnect();
                     }
                     
                     this.mutationObserver = new MutationObserver((changes) => {
                         if (changes.some((change) => change.removedNodes.length > 0)) {
-                            this.attachToPage(onMobileYouTube, onInvidious, vote);
+                            this.attachToPageInternal();
                         }
                     });
     
@@ -53,13 +67,18 @@ export class CategoryPill {
                 }
             }
 
-            if (this.unsavedState) {
+            if (this.lastState) {
                 waitFor(() => this.ref.current).then(() => {
-                    this.ref.current?.setState(this.unsavedState);
+                    this.ref.current?.setState(this.lastState);
                 });
             }
-            
-            referenceNode.prepend(this.container);
+
+            // Use a parent because YouTube does weird things to the top level object
+            // react would have to rerender if container was the top level
+            const parent = document.createElement("span");
+            parent.appendChild(this.container);
+
+            referenceNode.prepend(parent);
             referenceNode.style.display = "flex";
         }
     }
@@ -75,11 +94,8 @@ export class CategoryPill {
             open: show ? this.ref.current?.state.open : false
         };
 
-        if (this.ref.current) {
-            this.ref.current?.setState(newState);
-        } else {
-            this.unsavedState = newState;
-        }
+        this.ref.current?.setState(newState);
+        this.lastState = newState;
     }
 
     async setSegment(segment: SponsorTime): Promise<void> {
@@ -90,11 +106,8 @@ export class CategoryPill {
                 open: false
             };
 
-            if (this.ref.current) {
-                this.ref.current?.setState(newState);
-            } else {
-                this.unsavedState = newState;
-            }
+            this.ref.current?.setState(newState);
+            this.lastState = newState;
 
             if (!Config.config.categoryPillUpdate) {
                 Config.config.categoryPillUpdate = true;
@@ -112,6 +125,10 @@ export class CategoryPill {
                     });
                 }
             }
+        }
+
+        if (this.onMobileYouTube && !document.contains(this.container)) {
+            this.attachToPageInternal();
         }
     }
 }
