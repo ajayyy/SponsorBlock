@@ -3,6 +3,8 @@ import * as CompileConfig from "../config.json";
 import Config from "./config";
 import { Registration } from "./types";
 import registerContentScript from 'content-scripts-register-polyfill/ponyfill.js';
+import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@ajayyy/maze-utils/lib/background-request-proxy";
+import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
 
 // Make the config public for debugging purposes
 
@@ -10,7 +12,6 @@ window.SB = Config;
 
 import Utils from "./utils";
 import { GenericUtils } from "./utils/genericUtils";
-import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@ajayyy/maze-utils/lib/background-request-proxy";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -27,6 +28,7 @@ utils.wait(() => Config.config !== null).then(function() {
 });
 
 setupBackgroundRequestProxy();
+setupTabUpdates(Config);
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch(request.message) {
