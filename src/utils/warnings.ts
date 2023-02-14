@@ -1,8 +1,8 @@
+import { objectToURI } from "@ajayyy/maze-utils";
 import Config from "../config";
 import GenericNotice, { NoticeOptions } from "../render/GenericNotice";
 import { ContentContainer } from "../types";
 import Utils from "../utils";
-import { GenericUtils } from "./genericUtils";
 const utils = new Utils();
 
 export interface ChatConfig {
@@ -62,5 +62,5 @@ export async function openWarningDialog(contentContainer: ContentContainer): Pro
 }
 
 export function openChat(config: ChatConfig): void {
-    window.open("https://chat.sponsor.ajay.app/#" + GenericUtils.objectToURI("", config, false));
+    window.open("https://chat.sponsor.ajay.app/#" + objectToURI("", config, false));
 }

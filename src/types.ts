@@ -26,12 +26,6 @@ export interface ContentContainer {
     };
 }
 
-export interface FetchResponse {
-    responseText: string;
-    status: number;
-    ok: boolean;
-}
-
 export type HashedValue = string & { __hashBrand: unknown };
 
 export interface VideoDurationResponse {

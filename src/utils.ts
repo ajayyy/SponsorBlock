@@ -1,10 +1,11 @@
 import Config, { VideoDownvotes } from "./config";
-import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
+import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
 
 import * as CompileConfig from "../config.json";
 import { waitFor } from "@ajayyy/maze-utils";
 import { isSafari } from "./utils/configUtils";
 import { findValidElementFromSelector } from "@ajayyy/maze-utils/lib/dom";
+import { FetchResponse, sendRequestToCustomServer } from "@ajayyy/maze-utils/lib/background-request-proxy"
 
 export default class Utils {
     
@@ -251,18 +252,8 @@ export default class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */    
-    async asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
-        return new Promise((resolve) => {
-            // Ask the background script to do the work
-            chrome.runtime.sendMessage({
-                message: "sendRequest",
-                type,
-                url,
-                data
-            }, (response) => {
-                resolve(response);
-            });
-        });
+    asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
+        return sendRequestToCustomServer(type, url, data);
     }
 
     /**
