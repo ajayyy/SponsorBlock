@@ -411,6 +411,9 @@
     "whatChangeUserID": {
         "message": "密鑰應被保密。它就像是密碼，不應與他人分享。若密鑰落入他人手中，他人將可以冒充你。若你在尋找你的公開使用者ID，點擊彈出視窗上的剪貼簿圖示"
     },
+    "userIDChangeWarning": {
+        "message": "警告：更改用戶 ID 是永久性的。您確定要這麼做嗎？請務必備份您的舊用戶 ID 來以防萬一。"
+    },
     "createdBy": {
         "message": "作者"
     },
@@ -1017,6 +1020,9 @@
     },
     "hideSegment": {
         "message": "隱藏片段"
+    },
+    "skipSegment": {
+        "message": "略過片段"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "在滑鼠鼠標放在編輯框上時使用滾輪以快速調製時間。Ctrl和Shift可以用於精密調整"
