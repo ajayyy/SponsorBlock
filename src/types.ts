@@ -26,8 +26,6 @@ export interface ContentContainer {
     };
 }
 
-export type HashedValue = string & { __hashBrand: unknown };
-
 export interface VideoDurationResponse {
     duration: number;
 }

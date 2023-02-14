@@ -28,6 +28,7 @@ import GenericNotice from "./render/GenericNotice";
 import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
+import { getHash } from "@ajayyy/maze-utils/lib/hash";
 
 const utils = new Utils();
 
@@ -231,7 +232,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.optionsButton.addEventListener("click", openOptions);
     PageElements.helpButton.addEventListener("click", openHelp);
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
-    PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => copyToClipboard(await utils.getHash(Config.config.userID)));
+    PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => copyToClipboard(await getHash(Config.config.userID)));
 
     // Forward click events
     if (window !== window.top) {
@@ -284,7 +285,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
     utils.asyncRequestToServer("GET", "/api/userInfo", {
-        publicUserID: await utils.getHash(Config.config.userID),
+        publicUserID: await getHash(Config.config.userID),
         values
     }).then((res) => {
         if (res.status === 200) {

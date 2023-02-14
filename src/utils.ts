@@ -1,6 +1,7 @@
 import Config, { VideoDownvotes } from "./config";
-import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
+import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType } from "./types";
 
+import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import * as CompileConfig from "../config.json";
 import { waitFor } from "@ajayyy/maze-utils";
 import { isSafari } from "./utils/configUtils";
@@ -336,25 +337,11 @@ export default class Utils {
         return typeof(browser) !== "undefined";
     }
 
-    async getHash<T extends string>(value: T, times = 5000): Promise<T & HashedValue> {
-        if (times <= 0) return "" as T & HashedValue;
-
-        let hashHex: string = value;
-        for (let i = 0; i < times; i++) {
-            const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(hashHex).buffer);
-
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        return hashHex as T & HashedValue;
-    }
-
     async addHiddenSegment(videoID: VideoID, segmentUUID: string, hidden: SponsorHideType) {
         if (chrome.extension.inIncognitoContext || !Config.config.trackDownvotes) return;
 
-        const hashedVideoID = (await this.getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
-        const UUIDHash = await this.getHash(segmentUUID, 1);
+        const hashedVideoID = (await getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
+        const UUIDHash = await getHash(segmentUUID, 1);
 
         const allDownvotes = Config.local.downvotedSegments;
         const currentVideoData = allDownvotes[hashedVideoID] || { segments: [], lastAccess: 0 };

@@ -1,4 +1,5 @@
 import { objectToURI } from "@ajayyy/maze-utils";
+import { getHash } from "@ajayyy/maze-utils/lib/hash";
 import Config from "../config";
 import GenericNotice, { NoticeOptions } from "../render/GenericNotice";
 import { ContentContainer } from "../types";
@@ -13,7 +14,7 @@ export interface ChatConfig {
 
 export async function openWarningDialog(contentContainer: ContentContainer): Promise<void> {
     const userInfo = await utils.asyncRequestToServer("GET", "/api/userInfo", {
-        publicUserID: await utils.getHash(Config.config.userID),
+        publicUserID: await getHash(Config.config.userID),
         values: ["warningReason"]
     });
 
@@ -21,7 +22,7 @@ export async function openWarningDialog(contentContainer: ContentContainer): Pro
         const warningReason = JSON.parse(userInfo.responseText)?.warningReason;
         const userNameData = await utils.asyncRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID);
         const userName = userNameData.ok ? JSON.parse(userNameData.responseText).userName : "";
-        const publicUserID = await utils.getHash(Config.config.userID);
+        const publicUserID = await getHash(Config.config.userID);
 
         let notice: GenericNotice = null;
         const options: NoticeOptions = {

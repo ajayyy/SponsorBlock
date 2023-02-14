@@ -15,6 +15,7 @@ import KeybindComponent from "./components/options/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
+import { getHash } from "@ajayyy/maze-utils/lib/hash";
 const utils = new Utils();
 let embed = false;
 
@@ -532,7 +533,7 @@ function activatePrivateTextChange(element: HTMLElement) {
         case "userID":
             if (Config.config[option]) {
                 utils.asyncRequestToServer("GET", "/api/userInfo", {
-                    publicUserID: utils.getHash(Config.config[option]),
+                    publicUserID: getHash(Config.config[option]),
                     values: ["warnings", "banned"]
                 }).then((result) => {
                     const userInfo = JSON.parse(result.responseText);

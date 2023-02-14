@@ -6,7 +6,6 @@ import {
     ChannelIDInfo,
     ChannelIDStatus,
     ContentContainer,
-    HashedValue,
     Keybind,
     ScheduledTime,
     SegmentUUID,
@@ -42,6 +41,7 @@ import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { setupVideoMutationListener, getChannelIDInfo, getVideo, refreshVideoAttachments, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
+import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 
 const utils = new Utils();
 
@@ -977,7 +977,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
-    const hashPrefix = (await utils.getHash(getVideoID(), 1)).slice(0, 4) as VideoID & HashedValue;
+    const hashPrefix = (await getHash(getVideoID(), 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
         actionTypes: getEnabledActionTypes(showChapterMessage),
@@ -1060,7 +1060,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
             const downvotedData = Config.local.downvotedSegments[hashPrefix];
             if (downvotedData) {
                 for (const segment of sponsorTimes) {
-                    const hashedUUID = await utils.getHash(segment.UUID, 1);
+                    const hashedUUID = await getHash(segment.UUID, 1);
                     const segmentDownvoteData = downvotedData.segments.find((downvote) => downvote.uuid === hashedUUID);
                     if (segmentDownvoteData) {
                         segment.hidden = segmentDownvoteData.hidden;
@@ -1127,7 +1127,7 @@ function getEnabledActionTypes(forceFullVideo = false): ActionType[] {
 }
 
 async function lockedCategoriesLookup(): Promise<void> {
-    const hashPrefix = (await utils.getHash(getVideoID(), 1)).slice(0, 4);
+    const hashPrefix = (await getHash(getVideoID(), 1)).slice(0, 4);
     const response = await utils.asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
 
     if (response.ok) {
