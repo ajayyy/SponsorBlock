@@ -135,7 +135,7 @@
         "message": "提交片段"
     },
     "sortSegments": {
-        "message": "分类段"
+        "message": "排序片段"
     },
     "submitCheck": {
         "message": "您确定要提交它吗？"
@@ -184,7 +184,7 @@
         "message": "设定用户名"
     },
     "copyPublicID": {
-        "message": "复制公共用户ID"
+        "message": "复制公开的用户ID"
     },
     "copySegmentID": {
         "message": "复制片段 ID"
@@ -208,7 +208,7 @@
         "message": "这将隐藏在 YouTube 播放器上提交赞助商广告的按钮。我了解这个东西打扰到了某些人。除了使用那个按钮，这个弹窗也可以用来提交赞助商广告。 要隐藏出现的通知，请使用通知中显示的写着 ”不再显示“ 的按钮。您可以在以后再次启用这些设置。"
     },
     "showSkipButton": {
-        "message": "保持播放器上的跳过高亮按钮"
+        "message": "播放器显示跳至精华片段按钮"
     },
     "showInfoButton": {
         "message": "在 Youtube 播放器上显示信息按钮"
@@ -235,13 +235,13 @@
         "message": "在私人/隐身标签中启用跳过计数跟踪"
     },
     "enableTrackDownvotes": {
-        "message": "商店部分的下线"
+        "message": "保存差评片段"
     },
     "whatTrackDownvotes": {
-        "message": "任何被你降权的片段，即使在刷新后也会保持隐藏状态"
+        "message": "任何被你差评的片段，即使在刷新后也会保持隐藏"
     },
     "trackDownvotesWarning": {
-        "message": "警告。禁用此功能将删除所有先前存储的降级投票"
+        "message": "警告：禁用此功能将删除所有先前保存的差评"
     },
     "enableQueryByHashPrefix": {
         "message": "按哈希前缀查询"
@@ -274,16 +274,16 @@
         "message": "全尺寸的跳过通知"
     },
     "noticeVisibilityMode1": {
-        "message": "自动跳车的小跳车通知"
+        "message": "缩小自动跳过的提醒"
     },
     "noticeVisibilityMode2": {
-        "message": "所有的小跳槽通知"
+        "message": "缩小所有的跳过提醒"
     },
     "noticeVisibilityMode3": {
-        "message": "褪色的自动跳车通知书"
+        "message": "减弱自动跳过的提醒"
     },
     "noticeVisibilityMode4": {
-        "message": "所有褪色的跳过通知"
+        "message": "减弱所有的跳过提醒"
     },
     "longDescription": {
         "message": "SponsorBlock 可帮您跳过 YouTube 视频中的赞助商广告、开场、结尾、订阅提醒和其他烦人片段。SponsorBlock 是一个众包的浏览器扩展，可以让任何人提交 YouTube 视频的赞助商广告和其他片段的开始和结束时间。若有一人提交了信息，其他所有使用此扩展的人都能直接跳过赞助商广告片段。您也可以跳过音乐视频中的非音乐部分。",
@@ -306,15 +306,23 @@
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
-        "message": "跳过部分",
+        "message": "跳过片段",
         "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
-        "message": "启动/停止部分",
+        "message": "片段开始/停止",
         "description": "Keybind label"
     },
     "setSubmitKeybind": {
         "message": "提交片段",
+        "description": "Keybind label"
+    },
+    "nextChapterKeybind": {
+        "message": "下一章节",
+        "description": "Keybind label"
+    },
+    "previousChapterKeybind": {
+        "message": "上一章节",
         "description": "Keybind label"
     },
     "0": {
@@ -505,7 +513,7 @@
         "message": "复制到剪贴板失败"
     },
     "copyDebugInformationOptions": {
-        "message": "复制信息到剪贴板，在提交错误或开发者需要时提供给他。 敏感信息如：您的用户ID，白名单频道和自定义服务器地址等已被删除。然而，它仍然包含诸如您的 useragent ，浏览器，操作系统和扩展版本号等信息。 "
+        "message": "复制信息到剪贴板，在提交错误或开发者需要时提供给他。 敏感信息如：您的用户ID，白名单频道和自定义服务器地址等已被删除。然而，它仍然包含诸如您的 useragent ，浏览器，操作系统和插件版本号等信息。 "
     },
     "copyDebugInformationComplete": {
         "message": "调试信息已复制到剪切板中。 您可以随意移除任何您不想分享的信息。请将其另存为 .txt 文件或粘贴到错误报告中。"
@@ -534,7 +542,7 @@
         "message": "捐赠或自制周边不属于此项"
     },
     "category_selfpromo": {
-        "message": "未收钱的/自我推销"
+        "message": "未收钱的/自我推广"
     },
     "category_selfpromo_description": {
         "message": "类似于 “赞助商广告” ，但为无报酬或自我推广。包括有关商品、捐赠的部分或合作者的信息。"
@@ -575,6 +583,9 @@
     "category_music_offtopic_short": {
         "message": "无音乐"
     },
+    "category_chapter": {
+        "message": "章节"
+    },
     "category_livestream_messages": {
         "message": "直播：捐赠/消息阅读"
     },
@@ -588,13 +599,19 @@
         "message": "手动跳过"
     },
     "showOverlay": {
-        "message": "在搜索栏中显示"
+        "message": "在进度条中显示"
     },
     "disable": {
         "message": "禁用"
     },
+    "showOverlay_full": {
+        "message": "显示标签"
+    },
+    "showOverlay_chapter": {
+        "message": "显示章节"
+    },
     "seekBarColor": {
-        "message": "拖动条颜色"
+        "message": "进度条颜色"
     },
     "category": {
         "message": "类别"
@@ -631,6 +648,10 @@
     "bracketEnd": {
         "message": "（结束）"
     },
+    "End": {
+        "message": "结束",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "隐藏：差评"
     },
@@ -655,6 +676,13 @@
     "downvoteDescription": {
         "message": "不正确/错误的时间"
     },
+    "incorrectVote": {
+        "message": "不正确"
+    },
+    "harmfulVote": {
+        "message": "有害的",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
     "nonMusicCategoryOnMusic": {
         "message": "此视频的分类为音乐。 您确定其中包含赞助商广告吗？如果这是“非音乐片段”，请打开扩展选项并启用此类别。 之后，您可以以“非音乐”而不是赞助商广告类别提交此片段。如果您不太明白，请阅读指南。"
     },
@@ -672,9 +700,177 @@
         "message": "类别在这里！"
     },
     "categoryUpdate2": {
-        "message": "打开选项，跳过开头，结尾，商业等。"
+        "message": "开启选项以跳过开头、结尾和商业等内容。"
     },
     "help": {
         "message": "帮助"
+    },
+    "GotIt": {
+        "message": "明白了",
+        "description": "Used as the button to dismiss a tooltip"
+    },
+    "hideForever": {
+        "message": "永远隐藏"
+    },
+    "helpPageTooSlow": {
+        "message": "太慢了"
+    },
+    "Credits": {
+        "message": "鸣谢"
+    },
+    "LearnMore": {
+        "message": "了解详情"
+    },
+    "FullDetails": {
+        "message": "全部细节"
+    },
+    "CopyAndDownvote": {
+        "message": "复制并差评"
+    },
+    "ContinueVoting": {
+        "message": "继续投票"
+    },
+    "downvote": {
+        "message": "差评"
+    },
+    "upvote": {
+        "message": "点赞"
+    },
+    "hideSegment": {
+        "message": "隐藏片段"
+    },
+    "skipSegment": {
+        "message": "跳过片段"
+    },
+    "playChapter": {
+        "message": "播放章节"
+    },
+    "dayAbbreviation": {
+        "message": "天",
+        "description": "100d"
+    },
+    "hourAbbreviation": {
+        "message": "小时",
+        "description": "100h"
+    },
+    "optionsTabBehavior": {
+        "message": "行为",
+        "description": "Appears in Options as a tab header for options related to categories and skipping behavior. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabInterface": {
+        "message": "界面",
+        "description": "Appears in Options as a tab header for options related to GUI and sounds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabKeyBinds": {
+        "message": "快捷键",
+        "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabBackup": {
+        "message": "备份/恢复",
+        "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "optionsTabAdvanced": {
+        "message": "其他",
+        "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
+    },
+    "noticeVisibilityLabel": {
+        "message": "跳过提醒外观",
+        "description": "Option label"
+    },
+    "unbind": {
+        "message": "解除绑定",
+        "description": "Unbind keyboard shortcut"
+    },
+    "notSet": {
+        "message": "未设置"
+    },
+    "change": {
+        "message": "更改"
+    },
+    "betaServerWarning": {
+        "message": "测试服务器已启用！"
+    },
+    "openOptionsPage": {
+        "message": "打开选项页面"
+    },
+    "exportSegments": {
+        "message": "导出片段"
+    },
+    "importSegments": {
+        "message": "导入片段"
+    },
+    "Import": {
+        "message": "导入",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "redeemSuccess": {
+        "message": "兑换成功！"
+    },
+    "redeemFailed": {
+        "message": "注册码无效"
+    },
+    "chooseACountry": {
+        "message": "选择国家/地区"
+    },
+    "selectYourCountry": {
+        "message": "选择所在国家/地区"
+    },
+    "patreonSignIn": {
+        "message": "使用 Patreon 登录"
+    },
+    "redeem": {
+        "message": "兑换"
+    },
+    "joinOnPatreon": {
+        "message": "在 Patreon 上支持我"
+    },
+    "oneTimePurchase": {
+        "message": "一次性购买"
+    },
+    "enterLicenseKey": {
+        "message": "输入注册码"
+    },
+    "unsubmittedSegmentsSingular": {
+        "message": "未提交的片段",
+        "description": "Example: You currently have 1 *unsubmitted segment* on 1 video"
+    },
+    "unsubmittedSegmentsPlural": {
+        "message": "未提交的片段",
+        "description": "Example: You currently have 12 *unsubmitted segments* on 5 videos"
+    },
+    "videosSingular": {
+        "message": "视频",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "视频",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "clearUnsubmittedSegments": {
+        "message": "清除所有片段",
+        "description": "Label for a button in settings"
+    },
+    "showUnsubmittedSegments": {
+        "message": "显示片段",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "hideUnsubmittedSegments": {
+        "message": "隐藏片段",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "视频ID",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "片段数",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "操作",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "分享链接"
     }
 }
