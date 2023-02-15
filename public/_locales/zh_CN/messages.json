@@ -357,6 +357,25 @@
     "skip_category": {
         "message": "跳过{0}？"
     },
+    "mute_category": {
+        "message": "要静音 {0} 吗?"
+    },
+    "skip_to_category": {
+        "message": "要跳到 {0} 吗?",
+        "description": "Used for skipping to things (Skip to Highlight)"
+    },
+    "skipped": {
+        "message": "{0} 已跳过",
+        "description": "Example: Sponsor Skipped"
+    },
+    "muted": {
+        "message": "{0} 已静音",
+        "description": "Example: Sponsor Muted"
+    },
+    "skipped_to_category": {
+        "message": "已跳至 {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "disableAutoSkip": {
         "message": "禁用自动跳过"
     },
@@ -400,6 +419,9 @@
     },
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"
+    },
+    "setUserID": {
+        "message": "设置私人用户ID"
     },
     "createdBy": {
         "message": "创建者"
@@ -550,6 +572,9 @@
     "category_selfpromo_guideline1": {
         "message": "捐赠、会员和自制周边"
     },
+    "category_exclusive_access": {
+        "message": "专属限定"
+    },
     "category_interaction": {
         "message": "互动提醒（订阅）"
     },
@@ -574,6 +599,9 @@
     "category_outro_description": {
         "message": "鸣谢画面或出现 YouTube 片尾画面。不应用于包含信息的结尾。"
     },
+    "category_preview": {
+        "message": "预览/概要"
+    },
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
     },
@@ -582,6 +610,9 @@
     },
     "category_music_offtopic_short": {
         "message": "无音乐"
+    },
+    "category_poi_highlight": {
+        "message": "精彩时刻"
     },
     "category_chapter": {
         "message": "章节"
@@ -604,11 +635,24 @@
     "disable": {
         "message": "禁用"
     },
+    "autoSkip_POI": {
+        "message": "跳至开始位置"
+    },
+    "manualSkip_POI": {
+        "message": "视频加载时询问"
+    },
+    "showOverlay_POI": {
+        "message": "在进度条中显示"
+    },
     "showOverlay_full": {
         "message": "显示标签"
     },
     "showOverlay_chapter": {
         "message": "显示章节"
+    },
+    "previewColor": {
+        "message": "未提交颜色",
+        "description": "Referring to submissions that have not been sent to the server yet."
     },
     "seekBarColor": {
         "message": "进度条颜色"
@@ -658,11 +702,17 @@
     "hiddenDueToDuration": {
         "message": "隐藏：过短"
     },
+    "manuallyHidden": {
+        "message": "手动隐藏"
+    },
     "acceptPermission": {
         "message": "接受权限"
     },
     "permissionRequestSuccess": {
         "message": "权限请求成功！"
+    },
+    "permissionRequestFailed": {
+        "message": "权限请求失败，您是否点击拒绝？"
     },
     "forceChannelCheck": {
         "message": "跳过前强制进行频道检查"
@@ -682,6 +732,9 @@
     "harmfulVote": {
         "message": "有害的",
         "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
+    },
+    "incorrectCategory": {
+        "message": "更改类别"
     },
     "nonMusicCategoryOnMusic": {
         "message": "此视频的分类为音乐。 您确定其中包含赞助商广告吗？如果这是“非音乐片段”，请打开扩展选项并启用此类别。 之后，您可以以“非音乐”而不是赞助商广告类别提交此片段。如果您不太明白，请阅读指南。"
@@ -712,8 +765,47 @@
     "hideForever": {
         "message": "永远隐藏"
     },
+    "warningTitle": {
+        "message": "你收到了警告"
+    },
+    "questionButton": {
+        "message": "我有疑问"
+    },
+    "warningConfirmButton": {
+        "message": "我理解原因"
+    },
+    "Donate": {
+        "message": "捐赠"
+    },
+    "considerDonating": {
+        "message": "资助开发"
+    },
+    "hideDonationLink": {
+        "message": "隐藏捐赠链接"
+    },
+    "darkModeOptionsPage": {
+        "message": "深色模式选项页面"
+    },
+    "helpPageThanksForInstalling": {
+        "message": "感谢安装 SponsorBlock。"
+    },
+    "helpPageReviewOptions": {
+        "message": "请查看下面的选项"
+    },
+    "helpPageHowSkippingWorks": {
+        "message": "跳过是如何运作的"
+    },
+    "Submitting": {
+        "message": "提交中"
+    },
+    "Editing": {
+        "message": "正在编辑"
+    },
     "helpPageTooSlow": {
         "message": "太慢了"
+    },
+    "helpPageCopyOfDatabase1": {
+        "message": "数据库是公开的，在此访问："
     },
     "Credits": {
         "message": "鸣谢"
@@ -723,6 +815,9 @@
     },
     "FullDetails": {
         "message": "全部细节"
+    },
+    "OpenCategoryWikiPage": {
+        "message": "打开此类别的百科页面。"
     },
     "CopyAndDownvote": {
         "message": "复制并差评"
