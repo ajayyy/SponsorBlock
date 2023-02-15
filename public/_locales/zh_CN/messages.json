@@ -325,6 +325,9 @@
         "message": "上一章节",
         "description": "Keybind label"
     },
+    "keybindDescription": {
+        "message": "请按下想绑定的按键。如果您想使用组合快捷键，请勾选左侧的选项。"
+    },
     "0": {
         "message": "连接超时。请检查您的网络连接。如果您的网络运行正常，则可能是服务器过载或宕机。"
     },
@@ -420,8 +423,17 @@
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 检查服务器状态。"
     },
+    "changeUserID": {
+        "message": "导入/导出您的私人用户ID"
+    },
+    "whatChangeUserID": {
+        "message": "这应该被保密。这就像一个密码，且不应该告诉任何人。如果有人拥有它，他就可以冒充您。如果您要找的是公开用户ID，请单击弹出窗口中的剪贴板图标。"
+    },
     "setUserID": {
         "message": "设置私人用户ID"
+    },
+    "userIDChangeWarning": {
+        "message": "警告：更改私人用户 ID 是永久性的。您确定要这么做吗？请务必备份您的旧用户 ID 以防万一。"
     },
     "createdBy": {
         "message": "创建者"
@@ -429,11 +441,21 @@
     "supportOtherSites": {
         "message": "支持第三方 YouTube 网站"
     },
+    "supportOtherSitesDescription": {
+        "message": "支持第三方 YouTube 客户端。要启用支持，您必须允许额外的权限。",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "支持的站点： "
     },
     "optionsInfo": {
         "message": "启用 Invidious 支持，禁用自动跳过，隐藏按钮等等。"
+    },
+    "addInvidiousInstance": {
+        "message": "添加第三方客户端实例"
+    },
+    "addInvidiousInstanceDescription": {
+        "message": "添加自定义实例。它必须只包含域名。例如：invidious.ajay.app"
     },
     "add": {
         "message": "添加"
@@ -456,8 +478,23 @@
     "minDurationDescription": {
         "message": "短于设定值的片段将不会被跳过或显示在播放器中。"
     },
+    "enableManualSkipOnFullVideo": {
+        "message": "当整个视频都是相同内容时使用手动跳过"
+    },
+    "whatManualSkipOnFullVideo": {
+        "message": "用于在观看整个视频都是赞助商广告或自我推广时不受打扰"
+    },
+    "skipNoticeDuration": {
+        "message": "跳过提醒持续时间（秒）："
+    },
+    "skipNoticeDurationDescription": {
+        "message": "跳过提醒将显示至少这么多秒。手动跳过的提醒可能会显示更久。"
+    },
     "shortCheck": {
         "message": "以下的提交短于您的最小持续时间选项。这代表它们可能已经被提交，只是由于该选项被忽略了。您确定要提交吗？"
+    },
+    "liveOrPremiere": {
+        "message": "无法在进行中的直播或首播提交片段。请等待直播结束后刷新页面并确认片段仍然有效，再次提交。"
     },
     "showUploadButton": {
         "message": "显示上传按钮"
@@ -494,6 +531,9 @@
     },
     "exportOptionsUpload": {
         "message": "从文件加载"
+    },
+    "whatExportOptions": {
+        "message": "这是您所有设置的 JSON 格式。它包含了您的私人用户 ID ，所以您一定要谨慎的保管它。"
     },
     "setOptions": {
         "message": "设定选项"
@@ -551,6 +591,12 @@
         "message": "复制成功！",
         "description": "Used after something has been copied to the clipboard. Example: 'Copied!'"
     },
+    "generic_guideline1": {
+        "message": "包括衔接转场"
+    },
+    "generic_guideline2": {
+        "message": "装成没有跳过内容一样播放"
+    },
     "category_sponsor": {
         "message": "赞助商广告"
     },
@@ -564,7 +610,7 @@
         "message": "捐赠或自制周边不属于此项"
     },
     "category_selfpromo": {
-        "message": "未收钱的/自我推广"
+        "message": "无偿的/自我推广"
     },
     "category_selfpromo_description": {
         "message": "类似于 “赞助商广告” ，但为无报酬或自我推广。包括有关商品、捐赠的部分或合作者的信息。"
@@ -572,14 +618,39 @@
     "category_selfpromo_guideline1": {
         "message": "捐赠、会员和自制周边"
     },
+    "category_selfpromo_guideline2": {
+        "message": "与视频无关的免费推广"
+    },
+    "category_selfpromo_guideline3": {
+        "message": "不是公司设计的产品和周边"
+    },
     "category_exclusive_access": {
-        "message": "专属限定"
+        "message": "独家限定"
+    },
+    "category_exclusive_access_description": {
+        "message": "仅用于标记整个视频。当视频展示了免费或被帮助以获得产品、服务或访问地点时使用。"
+    },
+    "category_exclusive_access_pill": {
+        "message": "此视频展示了免费或被帮助以获得产品、服务或访问地点",
+        "description": "Short description for this category"
+    },
+    "category_exclusive_access_guideline1": {
+        "message": "整个视频都在展示免费/受助以获得和访问的事物"
     },
     "category_interaction": {
         "message": "互动提醒（订阅）"
     },
     "category_interaction_description": {
         "message": "视频中间简短提醒观众来点赞、订阅或关注。 如果片段较长，或是关于某个具体事物，则应分类为自我推广。"
+    },
+    "category_interaction_guideline1": {
+        "message": "短暂提醒要喜欢、订阅或关注"
+    },
+    "category_interaction_guideline2": {
+        "message": "包括提醒发表评论，即使是间接的"
+    },
+    "category_interaction_guideline3": {
+        "message": "不是常见的推广互动，只是行动呼吁"
     },
     "category_interaction_short": {
         "message": "互动提醒"
@@ -593,14 +664,47 @@
     "category_intro_short": {
         "message": "过场"
     },
+    "category_intro_guideline1": {
+        "message": "无实际内容的片段"
+    },
+    "category_intro_guideline2": {
+        "message": "不包括含有信息的转场"
+    },
     "category_outro": {
         "message": "结束画面/结尾职员表"
     },
     "category_outro_description": {
         "message": "鸣谢画面或出现 YouTube 片尾画面。不应用于包含信息的结尾。"
     },
+    "category_outro_guideline1": {
+        "message": "不应包含内容，即使结尾演职员表已经出现。"
+    },
     "category_preview": {
         "message": "预览/概要"
+    },
+    "category_preview_guideline1": {
+        "message": "在之后或未来视频会出现的片段"
+    },
+    "category_preview_guideline2": {
+        "message": "往期视频的回顾总结"
+    },
+    "category_preview_guideline3": {
+        "message": "不含有新添加的内容"
+    },
+    "category_filler": {
+        "message": "离题的闲聊/笑话"
+    },
+    "category_filler_short": {
+        "message": "离题"
+    },
+    "category_filler_guideline1": {
+        "message": "拖时间/无意义笑话等离题片段"
+    },
+    "category_filler_guideline2": {
+        "message": "分心、花絮、重播"
+    },
+    "category_filler_guideline3": {
+        "message": "不需要理解主题的片段"
     },
     "category_music_offtopic": {
         "message": "音乐：非音乐部分"
@@ -609,13 +713,40 @@
         "message": "仅用于音乐视频。此分类只能用于音乐视频中未包括于其他分类的部分。"
     },
     "category_music_offtopic_short": {
-        "message": "无音乐"
+        "message": "非音乐"
+    },
+    "category_music_offtopic_guideline1": {
+        "message": "不在官方版本中的部分"
+    },
+    "category_music_offtopic_guideline2": {
+        "message": "现场表演中的非音乐片段"
     },
     "category_poi_highlight": {
         "message": "精彩时刻"
     },
+    "category_poi_highlight_description": {
+        "message": "大部分人都在寻找的视频片段。类似于“封面在12:34”的评论。"
+    },
+    "category_poi_highlight_guideline1": {
+        "message": "大部分人想看的片段"
+    },
+    "category_poi_highlight_guideline2": {
+        "message": "可以帮助略过之前的内容"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "可以跳到标题或封面"
+    },
     "category_chapter": {
         "message": "章节"
+    },
+    "category_chapter_guideline1": {
+        "message": "不要提到赞助商品牌名称"
+    },
+    "category_chapter_guideline2": {
+        "message": "在一般普通的环节使用较长的章节"
+    },
+    "category_chapter_guideline3": {
+        "message": "小章节可以放在大章节内"
     },
     "category_livestream_messages": {
         "message": "直播：捐赠/消息阅读"
@@ -649,6 +780,16 @@
     },
     "showOverlay_chapter": {
         "message": "显示章节"
+    },
+    "autoSkipOnMusicVideos": {
+        "message": "自动跳过所有非音乐片段"
+    },
+    "muteSegments": {
+        "message": "允许静音的片段而不是跳过"
+    },
+    "fullVideoSegments": {
+        "message": "当整个视频都是广告时显示图标",
+        "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "previewColor": {
         "message": "未提交颜色",
@@ -686,6 +827,9 @@
         "message": "要提交“{0}”类别的片段，您必须在选项中启用此类别。现在将重定向到选项。",
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
+    "poiOnlyOneSegment": {
+        "message": "警告：此类型的片段一次最多只能使用一个。提交多个片段将随机显示。"
+    },
     "youMustSelectACategory": {
         "message": "您必须为所有您要提交的片段选择类别！"
     },
@@ -705,6 +849,13 @@
     "manuallyHidden": {
         "message": "手动隐藏"
     },
+    "channelDataNotFound": {
+        "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
+        "message": "未检测到频道ID。如果您正在使用嵌入式视频播放器，请转到 Youtube 网站观看。也可能是 Youtube 更改了页面布局，如果您认为是此问题，请在此评论："
+    },
+    "invidiousPermissionRefresh": {
+        "message": "浏览器已撤销在 Invidious 及其他第三方网站运行所需的权限。请点击下方按钮重新激活权限。"
+    },
     "acceptPermission": {
         "message": "接受权限"
     },
@@ -713,6 +864,9 @@
     },
     "permissionRequestFailed": {
         "message": "权限请求失败，您是否点击拒绝？"
+    },
+    "adblockerIssueWhitelist": {
+        "message": "如果您无法解决这个问题，请禁用“跳过前强制进行频道检查”选项，因为 SponsorBlock 无法获得此视频的频道信息"
     },
     "forceChannelCheck": {
         "message": "跳过前强制进行频道检查"
@@ -762,8 +916,21 @@
         "message": "明白了",
         "description": "Used as the button to dismiss a tooltip"
     },
+    "fullVideoTooltipWarning": {
+        "message": "片段过长。如果整个视频都是关于同一个主题，请将“跳过”改成“整个视频”标签。查看指南了解详情。"
+    },
+    "categoryPillTitleText": {
+        "message": "整个视频都被标记为此分类且内容过于紧凑，无法分开。"
+    },
+    "experiementOptOut": {
+        "message": "关闭所有实验性功能",
+        "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
+    },
     "hideForever": {
         "message": "永远隐藏"
+    },
+    "warningChatInfo": {
+        "message": "我们注意到你犯了一些常见错误。我们非常赞赏你迄今所做的工作，但我们努力追求完美，所以即使是非常小的错误，也需要重视:)"
     },
     "warningTitle": {
         "message": "你收到了警告"
@@ -773,6 +940,9 @@
     },
     "warningConfirmButton": {
         "message": "我理解原因"
+    },
+    "warningError": {
+        "message": "尝试确认警告时发生错误："
     },
     "Donate": {
         "message": "捐赠"
@@ -792,20 +962,50 @@
     "helpPageReviewOptions": {
         "message": "请查看下面的选项"
     },
+    "helpPageFeatureDisclaimer": {
+        "message": "许多功能默认禁用。如果您想跳过开头、结尾或使用 Invidious 等，请在下方开启。您也可以显示/隐藏界面内容。"
+    },
     "helpPageHowSkippingWorks": {
         "message": "跳过是如何运作的"
+    },
+    "helpPageHowSkippingWorks1": {
+        "message": "视频片段如果在数据库中存在将被自动跳过。您可以点击插件图标打开弹窗查看预览。"
+    },
+    "helpPageHowSkippingWorks2": {
+        "message": "当跳过片段时，您会收到提醒。如果时间不对，请点击差评！您也可以在插件弹窗中投票。"
     },
     "Submitting": {
         "message": "提交中"
     },
+    "helpPageSubmitting1": {
+        "message": "您可以使用插件弹窗中的“片段现在开始”按钮或播放器中的按钮提交片段。"
+    },
     "Editing": {
         "message": "正在编辑"
+    },
+    "helpPageEditing1": {
+        "message": "如果您选错了，您可以点击左侧箭头按钮编辑或删除您的片段。"
     },
     "helpPageTooSlow": {
         "message": "太慢了"
     },
+    "helpPageTooSlow1": {
+        "message": "常用功能支持快捷键。按下分号键“；”标记赞助商广告片段开始和结束，按下撇号“ ’ ”提交。可以在选项中更改按键。如果您使用的不是QWERTY序列键盘，您可能需要更改键位绑定。"
+    },
+    "helpPageCopyOfDatabase": {
+        "message": "我可以下载数据库吗？如果你人没了会怎样？"
+    },
     "helpPageCopyOfDatabase1": {
         "message": "数据库是公开的，在此访问："
+    },
+    "helpPageCopyOfDatabase2": {
+        "message": "源代码是免费公开的。所以即使我出了什么事，你的提交也不会丢失。"
+    },
+    "helpPageNews": {
+        "message": "新闻和更新记录"
+    },
+    "helpPageSourceCode": {
+        "message": "在哪里可以获得源代码？"
     },
     "Credits": {
         "message": "鸣谢"
@@ -816,6 +1016,9 @@
     "FullDetails": {
         "message": "全部细节"
     },
+    "CopyDownvoteButtonInfo": {
+        "message": "差评并创建本地副本供您再次提交"
+    },
     "OpenCategoryWikiPage": {
         "message": "打开此类别的百科页面。"
     },
@@ -824,6 +1027,9 @@
     },
     "ContinueVoting": {
         "message": "继续投票"
+    },
+    "ChangeCategoryTooltip": {
+        "message": "这会立即应用到您所有的片段"
     },
     "downvote": {
         "message": "差评"
@@ -839,6 +1045,9 @@
     },
     "playChapter": {
         "message": "播放章节"
+    },
+    "categoryPillNewFeature": {
+        "message": "新功能！知道视频是否完全是赞助广告或自我推广"
     },
     "dayAbbreviation": {
         "message": "天",
@@ -882,11 +1091,20 @@
     "change": {
         "message": "更改"
     },
+    "youtubeKeybindWarning": {
+        "message": "这是 Youtube 内置的快捷方式。您确定要使用吗？"
+    },
     "betaServerWarning": {
         "message": "测试服务器已启用！"
     },
     "openOptionsPage": {
         "message": "打开选项页面"
+    },
+    "resetToDefault": {
+        "message": "重置所有设置"
+    },
+    "confirmResetToDefault": {
+        "message": "您确定要将所有设置重置为默认值吗？此操作无法撤销。"
     },
     "exportSegments": {
         "message": "导出片段"
@@ -904,11 +1122,28 @@
     "redeemFailed": {
         "message": "注册码无效"
     },
+    "hideUpsells": {
+        "message": "隐藏需要额外付费才能使用的选项"
+    },
     "chooseACountry": {
         "message": "选择国家/地区"
     },
+    "noDiscount": {
+        "message": "您无法使用折扣"
+    },
+    "discountLink": {
+        "message": "优惠折扣链接（查看粉色价格）"
+    },
     "selectYourCountry": {
         "message": "选择所在国家/地区"
+    },
+    "alreadyDonated": {
+        "message": "如果您以前曾捐赠过任何金额，您可以通过电子邮件联系以获得使用权限：",
+        "description": "After the colon is an email address"
+    },
+    "cantAfford": {
+        "message": "如果您无法负担得起许可证的价格，请点击 {here} 查看您是否有资格获得折扣",
+        "description": "Keep the curly braces. The word 'here' should be translated as well."
     },
     "patreonSignIn": {
         "message": "使用 Patreon 登录"
@@ -924,6 +1159,21 @@
     },
     "enterLicenseKey": {
         "message": "输入注册码"
+    },
+    "chaptersPage1": {
+        "message": "SponsorBlock 的众包章节功能仅供付费或贡献突出的用户使用"
+    },
+    "chaptersPage2": {
+        "message": "注意：提交章节的权限仍然基于信誉积分。购买许可证只允许您查看他人提交的章节",
+        "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "您在 {1} 中有 {0}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "unsubmittedSegmentCountsZero": {
+        "message": "您目前没有未提交的片段",
+        "description": "Replaces 'unsubmittedSegmentCounts' string when there are no unsubmitted segments"
     },
     "unsubmittedSegmentsSingular": {
         "message": "未提交的片段",
@@ -944,6 +1194,10 @@
     "clearUnsubmittedSegments": {
         "message": "清除所有片段",
         "description": "Label for a button in settings"
+    },
+    "clearUnsubmittedSegmentsConfirm": {
+        "message": "您确定要清除所有未提交的片段吗？",
+        "description": "Confirmation message for the Clear unsubmitted segments button"
     },
     "showUnsubmittedSegments": {
         "message": "显示片段",
@@ -967,5 +1221,11 @@
     },
     "exportSegmentsAsURL": {
         "message": "分享链接"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "警告：服务器未响应。片段可能已提交，只是由于服务器问题您未收到回应。"
+    },
+    "allowScrollingToEdit": {
+        "message": "允许滚动编辑时间"
     }
 }
