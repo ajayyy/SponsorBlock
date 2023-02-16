@@ -697,6 +697,9 @@
     "category_filler": {
         "message": "离题的闲聊/笑话"
     },
+    "category_filler_description": {
+        "message": "离题片段标签仅在出现不需要理解视频主要内容的拖时间/无关笑话片段时使用。此标签不能包含有意义的内容或背景细节。这是非常激进的类别，代表您没有心情娱乐。"
+    },
     "category_filler_short": {
         "message": "离题"
     },
@@ -741,6 +744,9 @@
     },
     "category_chapter": {
         "message": "章节"
+    },
+    "category_chapter_description": {
+        "message": "自定义命名章节描述了视频的主要部分。"
     },
     "category_chapter_guideline1": {
         "message": "不要提到赞助商品牌名称"
@@ -925,6 +931,9 @@
     "categoryPillTitleText": {
         "message": "整个视频都被标记为此分类且内容过于紧凑，无法分开。"
     },
+    "chapterNameTooltipWarning": {
+        "message": "提交的章节名称与现有类别名称相似。如果已经存在分类，您应该优先使用它。"
+    },
     "experiementOptOut": {
         "message": "关闭所有实验性功能",
         "description": "This is used in a popup about a new experiment to get a list of unlisted videos to back up since all unlisted videos uploaded before 2017 will be set to private."
@@ -982,6 +991,9 @@
     },
     "helpPageSubmitting1": {
         "message": "您可以使用插件弹窗中的“片段现在开始”按钮或播放器中的按钮提交片段。"
+    },
+    "helpPageSubmitting2": {
+        "message": "点击播放按钮标记片段开始，点击停止按钮标记片段结束。您可以一次提交多个片段。点击上传按钮会提交片段。点击垃圾桶按钮会删除片段。"
     },
     "Editing": {
         "message": "正在编辑"
@@ -1048,6 +1060,9 @@
     },
     "playChapter": {
         "message": "播放章节"
+    },
+    "SponsorTimeEditScrollNewFeature": {
+        "message": "将鼠标悬停在编辑框上，操作鼠标滚轮可以快速调整时间。包含 Ctrl 和 Shift 的组合快捷键可以微调时间。"
     },
     "categoryPillNewFeature": {
         "message": "新功能！知道视频是否完全是赞助广告或自我推广"
@@ -1169,6 +1184,10 @@
     "chaptersPage2": {
         "message": "注意：提交章节的权限仍然基于信誉积分。购买许可证只允许您查看他人提交的章节",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature": {
+        "message": "新功能：众包自定义章节。这些视频中自定义命名的部分可以叠加并获得更精确的信息。购买许可证以查看此视频的章节，例如：",
+        "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
         "message": "新功能：众包自定义章节。这些视频中自定义命名的部分可以叠加并获得更精确的信息。您有免费使用权限，请在选项中开启。"
