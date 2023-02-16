@@ -682,6 +682,9 @@
     "category_preview": {
         "message": "预览/概要"
     },
+    "category_preview_description": {
+        "message": "展示此视频或同系列后续视频将出现的画面集锦，所有内容都将在之后再次出现。"
+    },
     "category_preview_guideline1": {
         "message": "在之后或未来视频会出现的片段"
     },
@@ -1166,6 +1169,9 @@
     "chaptersPage2": {
         "message": "注意：提交章节的权限仍然基于信誉积分。购买许可证只允许您查看他人提交的章节",
         "description": "On the chapters page for getting access to the paid chapters feature"
+    },
+    "chapterNewFeature2": {
+        "message": "新功能：众包自定义章节。这些视频中自定义命名的部分可以叠加并获得更精确的信息。您有免费使用权限，请在选项中开启。"
     },
     "unsubmittedSegmentCounts": {
         "message": "您在 {1} 中有 {0}",
