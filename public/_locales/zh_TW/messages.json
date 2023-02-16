@@ -35,6 +35,9 @@
         "message": "以章節渲染片段",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "在影片時間旁顯示目前片段"
+    },
     "upvoteButtonInfo": {
         "message": "為這個提交按讚"
     },
@@ -113,6 +116,9 @@
     "connectionError": {
         "message": "已發生連線錯誤。錯誤碼： "
     },
+    "segmentsStillLoading": {
+        "message": "片段還在載入..."
+    },
     "clearTimes": {
         "message": "清除片段"
     },
@@ -121,6 +127,9 @@
     },
     "closePopup": {
         "message": "關閉彈出視窗"
+    },
+    "closeIcon": {
+        "message": "關閉圖示"
     },
     "SubmitTimes": {
         "message": "提交分段"
@@ -1037,6 +1046,9 @@
     "skipSegment": {
         "message": "略過片段"
     },
+    "playChapter": {
+        "message": "播放章節"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "在滑鼠鼠標放在編輯框上時使用滾輪以快速調製時間。Ctrl和Shift可以用於精密調整"
     },
@@ -1102,6 +1114,9 @@
     },
     "exportSegments": {
         "message": "匯出片段"
+    },
+    "importSegments": {
+        "message": "匯入片段"
     },
     "Import": {
         "message": "匯入",
