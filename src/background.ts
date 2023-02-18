@@ -5,13 +5,13 @@ import { Registration } from "./types";
 import registerContentScript from 'content-scripts-register-polyfill/ponyfill.js';
 import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@ajayyy/maze-utils/lib/background-request-proxy";
 import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
+import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 
 // Make the config public for debugging purposes
 
 window.SB = Config;
 
 import Utils from "./utils";
-import { GenericUtils } from "./utils/genericUtils";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -106,7 +106,7 @@ chrome.runtime.onInstalled.addListener(function () {
             chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
             //generate a userID
-            const newUserID = GenericUtils.generateUserID();
+            const newUserID = generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
 
@@ -157,7 +157,7 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     if (userID == undefined || userID === "undefined") {
         //generate one
-        userID = GenericUtils.generateUserID();
+        userID = generateUserID();
         Config.config.userID = userID;
     }
 
