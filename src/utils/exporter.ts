@@ -1,8 +1,8 @@
 import { ActionType, Category, SegmentUUID, SponsorSourceType, SponsorTime } from "../types";
 import { shortCategoryName } from "./categoryUtils";
-import { GenericUtils } from "./genericUtils";
 import * as CompileConfig from "../../config.json";
 import { getFormattedTime, getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
+import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 
 const inTest = typeof chrome === "undefined";
 
@@ -62,7 +62,7 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
                         actionType: determinedCategory ? ActionType.Skip : ActionType.Chapter,
                         description: title,
                         source: SponsorSourceType.Local,
-                        UUID: GenericUtils.generateUserID() as SegmentUUID
+                        UUID: generateUserID() as SegmentUUID
                     };
 
                     if (result.length > 0 && result[result.length - 1].segment[1] === null) {

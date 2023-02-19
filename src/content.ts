@@ -42,6 +42,7 @@ import { setupVideoMutationListener, getChannelIDInfo, getVideo, refreshVideoAtt
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
+import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 
 const utils = new Utils();
 
@@ -1786,7 +1787,7 @@ function startOrEndTimingNewSegment() {
     if (!isSegmentCreationInProgress()) {
         sponsorTimesSubmitting.push({
             segment: [roundedTime],
-            UUID: GenericUtils.generateUserID() as SegmentUUID,
+            UUID: generateUserID() as SegmentUUID,
             category: Config.config.defaultCategory,
             actionType: ActionType.Skip,
             source: SponsorSourceType.Local
@@ -2393,7 +2394,7 @@ function checkForPreloadedSegment() {
                 if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === s.segment[1])) {
                     sponsorTimesSubmitting.push({
                         segment: segment.segment,
-                        UUID: GenericUtils.generateUserID() as SegmentUUID,
+                        UUID: generateUserID() as SegmentUUID,
                         category: segment.category ? segment.category : Config.config.defaultCategory,
                         actionType: segment.actionType ? segment.actionType : ActionType.Skip,
                         description: segment.description ?? "",
