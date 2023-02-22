@@ -41,7 +41,7 @@ test("Selenium Chrome test", async () => {
         // Save file incase there is a layout change
         const source = await driver.getPageSource();
 
-        fs.mkdirSync("./test-results"); 
+        if (!fs.existsSync("./test-results")) fs.mkdirSync("./test-results"); 
         fs.writeFileSync("./test-results/source.html", source);
         
         throw e;
@@ -55,7 +55,7 @@ async function setup(): Promise<WebDriver> {
     options.addArguments("--load-extension=" + Path.join(__dirname, "../dist/"));
     options.addArguments("--mute-audio");
     options.addArguments("--disable-features=PreloadMediaEngagementData, MediaEngagementBypassAutoplayPolicies");
-    options.addArguments("--headless=chrome");
+    options.addArguments("--headless=new");
     options.addArguments("--window-size=1920,1080");
 
     const driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
