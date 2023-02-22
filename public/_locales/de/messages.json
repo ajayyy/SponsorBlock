@@ -372,7 +372,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} stummgeschalten",
+        "message": "{0} stummgeschaltet",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
