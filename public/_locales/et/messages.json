@@ -36,7 +36,7 @@
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
-        "message": "Kuva Praegune Segment Video Kestvuse Kõrval"
+        "message": "Kuva praegune segment video aja kõrval"
     },
     "upvoteButtonInfo": {
         "message": "Anna segmendile poolthääl"
@@ -424,16 +424,16 @@
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
     },
     "changeUserID": {
-        "message": "Impordi/ekspordi oma isiklik UserID"
+        "message": "Impordi/ekspordi oma privaatne UserID"
     },
     "whatChangeUserID": {
         "message": "Seda tuleks privaatsena hoida. See on nagu parool ning seda ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda.\nKui otsid avalikku UserID'd, klõpsa hüpikus olevat lõikelaua ikooni."
     },
     "setUserID": {
-        "message": "Muutke oma isiklik UserID"
+        "message": "Määra privaatne UserID"
     },
     "userIDChangeWarning": {
-        "message": "Tähelepanu: Isikliku UserID muutmine on lõplik. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
+        "message": "Tähelepanu: privaatse UserID muutmine on lõplik. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
     },
     "createdBy": {
         "message": "Autor"
@@ -533,7 +533,7 @@
         "message": "Laadi failist"
     },
     "whatExportOptions": {
-        "message": "See on teie seadistusinformatsioon JSON-formaadis. See sisaldab teie isiklikku UserID-d, seega olge tähelepanelik, kellega seda jagate."
+        "message": "See on sinu terve seadistus JSON-formaadis. See sisaldab sinu privaatset UserID-d, seega ole tähelepanelik, kellega seda jagad."
     },
     "setOptions": {
         "message": "Määra valikud"
