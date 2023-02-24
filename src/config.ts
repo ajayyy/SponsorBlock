@@ -232,8 +232,8 @@ function migrateOldSyncFormats(config: SBConfig) {
     }
 
     // populate invidiousInstances with new instances if 3p support is **DISABLED**
-    if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
-        config["invidiousInstances"] = invidiousList;
+    if (!config["supportInvidious"] && config["invidiousInstances"].length < invidiousList.length) {
+        config["invidiousInstances"] = [...new Set([...invidiousList, ...config["invidiousInstances"]])];
     }
 
     if (config["lastIsVipUpdate"]) {
