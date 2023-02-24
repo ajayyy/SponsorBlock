@@ -1,7 +1,7 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, Keybind, VideoID, SponsorHideType } from "./types";
-import { isSafari, keybindEquals } from "./utils/configUtils";
+import { keybindEquals } from "./utils/configUtils";
 import { ProtoConfig } from "@ajayyy/maze-utils/lib/config";
 import { HashedValue } from "@ajayyy/maze-utils/lib/hash";
 
@@ -232,8 +232,7 @@ function migrateOldSyncFormats(config: SBConfig) {
     }
 
     // populate invidiousInstances with new instances if 3p support is **DISABLED**
-    // for safari, update it immediately
-    if ((isSafari() || !config["supportInvidious"]) && config["invidiousInstances"].length !== invidiousList.length) {
+    if (!config["supportInvidious"] && config["invidiousInstances"].length !== invidiousList.length) {
         config["invidiousInstances"] = invidiousList;
     }
 
