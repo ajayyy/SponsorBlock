@@ -431,7 +431,7 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
             let instanceList = Config.config[option];
             if (!instanceList) instanceList = [];
 
-            instanceList.push(textBox.value);
+            instanceList.push(textBox.value.trim().toLowerCase());
 
             Config.config[option] = instanceList;
 
