@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Icône \"Fermer\""
     },
-    "SubmitTimes": {
-        "message": "Soumettre des segments"
-    },
     "sortSegments": {
         "message": "Trier les segments"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
-    },
-    "submitTimesButton": {
-        "message": "Soumettre les temps"
     },
     "publicStats": {
         "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
