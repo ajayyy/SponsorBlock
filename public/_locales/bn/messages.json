@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "বন্ধ করার চিহ্ন"
     },
-    "SubmitTimes": {
-        "message": "সেগমেন্ট জমা দিন"
-    },
     "sortSegments": {
         "message": "সংক্ষিপ্ত অংশ"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "সময় মুছুন"
-    },
-    "submitTimesButton": {
-        "message": "সময় জমা দিন"
     },
     "publicStats": {
         "message": "আপনি কতটা অবদান রেখেছেন তা দেখানোর জন্য এটি সর্বজনীন পরিসংখ্যান পৃষ্ঠায় ব্যবহার করা হয়। এটা দেখ"
