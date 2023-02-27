@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "關閉圖示"
     },
-    "SubmitTimes": {
-        "message": "提交分段"
-    },
     "sortSegments": {
         "message": "排序片段"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "清除時間"
-    },
-    "submitTimesButton": {
-        "message": "提交時間"
     },
     "publicStats": {
         "message": "這會被公開的統計頁面來展示您的貢獻。查看它"
