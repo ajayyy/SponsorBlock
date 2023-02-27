@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Sulgemisikoon"
     },
-    "SubmitTimes": {
-        "message": "Esita segmendid"
-    },
     "sortSegments": {
         "message": "Sorteeri segmendid"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Tühjenda ajad"
-    },
-    "submitTimesButton": {
-        "message": "Saada ajad"
     },
     "publicStats": {
         "message": "Seda kasutatakse avaliku statistika lehel, et näidata välja, kui palju oled panustanud. Vaata seda"
