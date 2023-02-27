@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Stäng ikon"
     },
-    "SubmitTimes": {
-        "message": "Skicka in segment"
+    "OpenSubmissionMenu": {
+        "message": "Öppna inlämningsmenyn"
     },
     "sortSegments": {
         "message": "Sortera segment"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Rensa tider"
-    },
-    "submitTimesButton": {
-        "message": "Skicka in tider"
     },
     "publicStats": {
         "message": "Detta används på den offentliga statistiksidan för att visa hur mycket du har bidragit. Ta en titt"
