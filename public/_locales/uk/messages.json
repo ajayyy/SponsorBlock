@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Закрити іконку"
     },
-    "SubmitTimes": {
-        "message": "Надіслати сегменти"
-    },
     "sortSegments": {
         "message": "Сортувати сегменти"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Очистити час"
-    },
-    "submitTimesButton": {
-        "message": "Надіслати час"
     },
     "publicStats": {
         "message": "Воно використовується на публічній сторінці статистики, щоб показати Ваш внесок. Її можна подивитися"
