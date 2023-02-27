@@ -128,9 +128,6 @@
     "closePopup": {
         "message": "Fechar Popup"
     },
-    "SubmitTimes": {
-        "message": "Submeter Segmentos"
-    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
@@ -167,9 +164,6 @@
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
-    },
-    "submitTimesButton": {
-        "message": "Submeter Intervalos"
     },
     "publicStats": {
         "message": "Isto é usado na página pública de estatísticas que mostra o quanto já contríbuíu. Veje-a"
