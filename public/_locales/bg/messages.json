@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Икона - затваряне"
     },
-    "SubmitTimes": {
-        "message": "Изпращане на сегментите"
+    "OpenSubmissionMenu": {
+        "message": "Отваряне на менюто за изпращане"
     },
     "sortSegments": {
         "message": "Сортиране на сегментите"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Изчистване на времената"
-    },
-    "submitTimesButton": {
-        "message": "Изпращане на времената"
     },
     "publicStats": {
         "message": "Това се използва на страницата с публичната статистика, за да покаже колко сте допринесли. Вижте го"
