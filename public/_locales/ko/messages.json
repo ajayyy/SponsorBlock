@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "닫기 아이콘"
     },
-    "SubmitTimes": {
-        "message": "구간 제출"
-    },
     "sortSegments": {
         "message": "구간 정렬"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "구간 초기화"
-    },
-    "submitTimesButton": {
-        "message": "구간 제출"
     },
     "publicStats": {
         "message": "얼마나 기여했는지 확인할 수 있는 공개 통계 페이지로 다음에서 확인하실 수 있어요."
