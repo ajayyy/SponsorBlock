@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Icono de cerrar"
     },
-    "SubmitTimes": {
-        "message": "Enviar Segmentos"
-    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
-    },
-    "submitTimesButton": {
-        "message": "Enviar Tiempos"
     },
     "publicStats": {
         "message": "Esto se utiliza en la página de estadísticas públicas para mostrar cuánto has contribuido. Véala"
