@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Kapat Simgesi"
     },
-    "SubmitTimes": {
-        "message": "Kısımları gönder"
-    },
     "sortSegments": {
         "message": "Kısımları Sırala"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Süreleri Temizle"
-    },
-    "submitTimesButton": {
-        "message": "Süreleri Gönder"
     },
     "publicStats": {
         "message": "Bu, ne kadar katkı sağladığınızı göstermek için herkese açık istatistik sayfasında kullanılacaktır. Görün"
