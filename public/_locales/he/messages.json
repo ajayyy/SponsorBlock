@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "סגירת סמליל"
     },
-    "SubmitTimes": {
-        "message": "הגש מקטעים"
-    },
     "sortSegments": {
         "message": "מיון מקטעים"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "ניקוי זמנים"
-    },
-    "submitTimesButton": {
-        "message": "הגשת זמנים"
     },
     "publicStats": {
         "message": "זה משמש בדף הסטטיסטיקה הציבורי כדי להראות כמה תרמת. ניתן לצפות בזה"
