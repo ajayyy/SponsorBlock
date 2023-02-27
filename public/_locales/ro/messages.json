@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Închide pictograma"
     },
-    "SubmitTimes": {
-        "message": "Trimite segmente"
-    },
     "sortSegments": {
         "message": "Sortare Segmente"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"
-    },
-    "submitTimesButton": {
-        "message": "Trimite Timpii"
     },
     "publicStats": {
         "message": "Acest lucru este folosit pe pagina publică de statistici pentru a arăta cât de mult ai contribuit. Vezi pagina"
