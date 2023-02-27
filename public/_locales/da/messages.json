@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Luk ikon"
     },
-    "SubmitTimes": {
-        "message": "Indsend Segmenter"
-    },
     "sortSegments": {
         "message": "Sortér Segmenter"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Ryd Tider"
-    },
-    "submitTimesButton": {
-        "message": "Indsend Tider"
     },
     "publicStats": {
         "message": "Dette bruges på siden med offentlige statistikker til at vise, hvor meget du har bidraget. Se det"
