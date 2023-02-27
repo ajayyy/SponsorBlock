@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Close Icon"
     },
-    "SubmitTimes": {
-        "message": "Submit Segments"
+    "OpenSubmissionMenu": {
+        "message": "Open Submission Menu"
     },
     "sortSegments": {
         "message": "Sort Segments"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Clear Times"
-    },
-    "submitTimesButton": {
-        "message": "Submit Times"
     },
     "publicStats": {
         "message": "This is used on the public stats page to show off how much you've contributed. See it"

@@ -1695,7 +1695,7 @@ async function createButtons(): Promise<void> {
     createButton("startSegment", "sponsorStart", () => startOrEndTimingNewSegment(), "PlayerStartIconSponsorBlocker.svg");
     createButton("cancelSegment", "sponsorCancel", () => cancelCreatingSegment(), "PlayerCancelSegmentIconSponsorBlocker.svg");
     createButton("delete", "clearTimes", () => clearSponsorTimes(), "PlayerDeleteIconSponsorBlocker.svg");
-    createButton("submit", "SubmitTimes", () => submitSponsorTimes(), "PlayerUploadIconSponsorBlocker.svg");
+    createButton("submit", "OpenSubmissionMenu", () => submitSponsorTimes(), "PlayerUploadIconSponsorBlocker.svg");
     createButton("info", "openPopup", () => openInfoMenu(), "PlayerInfoIconSponsorBlocker.svg");
 
     const controlsContainer = getControls();
