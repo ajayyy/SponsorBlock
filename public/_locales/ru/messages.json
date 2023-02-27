@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Кнопка закрытия"
     },
-    "SubmitTimes": {
-        "message": "Отправить сегменты"
+    "OpenSubmissionMenu": {
+        "message": "Открыть меню отправки"
     },
     "sortSegments": {
         "message": "Сортировать сегменты"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Очистить время"
-    },
-    "submitTimesButton": {
-        "message": "Отправить сегменты"
     },
     "publicStats": {
         "message": "Оно используется на публичной странице статистики, чтобы показать Ваш вклад. Её можно посмотреть "
