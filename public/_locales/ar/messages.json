@@ -121,9 +121,6 @@
     "closeIcon": {
         "message": "أيقونة الإغلاق"
     },
-    "SubmitTimes": {
-        "message": "إرسال الأجزاء"
-    },
     "sortSegments": {
         "message": "ترتيب الأجزاء"
     },
@@ -160,9 +157,6 @@
     },
     "clearTimesButton": {
         "message": "مسح الأوقات"
-    },
-    "submitTimesButton": {
-        "message": "إرسال الأوقات"
     },
     "publicStats": {
         "message": "يستخدم هذا في صفحة الإحصائيات العامة لإظهار مقدار مساهمتك. قم برؤيتها"
