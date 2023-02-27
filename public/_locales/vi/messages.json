@@ -125,9 +125,6 @@
     "closePopup": {
         "message": "Đóng bảng popup"
     },
-    "SubmitTimes": {
-        "message": "Gửi phân đoạn"
-    },
     "sortSegments": {
         "message": "Sắp xếp phân đoạn"
     },
@@ -164,9 +161,6 @@
     },
     "clearTimesButton": {
         "message": "Xóa thời gian"
-    },
-    "submitTimesButton": {
-        "message": "Gửi thời gian"
     },
     "publicStats": {
         "message": "Tên này được dùng tại trang thông tin công khai để thể hiện lượng đóng góp của bạn. Xem"
