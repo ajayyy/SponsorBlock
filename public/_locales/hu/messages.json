@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Bezárás ikon"
     },
-    "SubmitTimes": {
-        "message": "Szegmensek beküldése"
+    "OpenSubmissionMenu": {
+        "message": "Beküldés menü megnyitása"
     },
     "sortSegments": {
         "message": "Szegmensek rendezése"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
-    },
-    "submitTimesButton": {
-        "message": "Időpontok beküldése"
     },
     "publicStats": {
         "message": "Ez a nyilvános ranglistán használatos, ami mutatja, mennyit segítettél. Nézd meg"
