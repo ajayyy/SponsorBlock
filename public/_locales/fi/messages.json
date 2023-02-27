@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Sulkukuvake"
     },
-    "SubmitTimes": {
-        "message": "Lähetä osiot"
+    "OpenSubmissionMenu": {
+        "message": "Avaa Lähetykset-valikko"
     },
     "sortSegments": {
         "message": "Järjestä osiot"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Tyhjennä ajat"
-    },
-    "submitTimesButton": {
-        "message": "Lähetä ajat"
     },
     "publicStats": {
         "message": "Tätä käytetään julkisella tilastosivulla näyttääksesi kuinka paljon olet osallistunut. Näytä"
