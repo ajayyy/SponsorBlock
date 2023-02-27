@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "关闭图标"
     },
-    "SubmitTimes": {
-        "message": "提交片段"
-    },
     "sortSegments": {
         "message": "排序片段"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "清除时间"
-    },
-    "submitTimesButton": {
-        "message": "提交时间"
     },
     "publicStats": {
         "message": "这被用于在公开统计页面上展示您的贡献。查看它"
