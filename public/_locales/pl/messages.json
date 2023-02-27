@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Wyłącz ikonę"
     },
-    "SubmitTimes": {
-        "message": "Prześlij segmenty"
-    },
     "sortSegments": {
         "message": "Sortuj segmenty"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Usuń czasy"
-    },
-    "submitTimesButton": {
-        "message": "Wyślij czasy"
     },
     "publicStats": {
         "message": "Ten dane są używane na naszej stronie żeby pokazać twój wkład. Zobacz to"
