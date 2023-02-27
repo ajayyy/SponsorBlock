@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Symbol schließen"
     },
-    "SubmitTimes": {
-        "message": "Senden"
+    "OpenSubmissionMenu": {
+        "message": "Einreichungsmenü öffnen"
     },
     "sortSegments": {
         "message": "Segmente sortieren"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
-    },
-    "submitTimesButton": {
-        "message": "Zeiten übermitteln"
     },
     "publicStats": {
         "message": "So wirst du in der öffentlichen Rangliste angezeigt. Siehe"
