@@ -109,9 +109,6 @@
     "closePopup": {
         "message": "بستن پنجره"
     },
-    "SubmitTimes": {
-        "message": "ثبت بخش‌ها"
-    },
     "submitCheck": {
         "message": "مطمئن هستید که میخواهید این را ثبت کنید؟"
     },
@@ -138,9 +135,6 @@
     },
     "clearTimesButton": {
         "message": "حذف دفعات"
-    },
-    "submitTimesButton": {
-        "message": "ثبت دفعات"
     },
     "Username": {
         "message": "نام‌کاربری"
