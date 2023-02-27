@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Tutup Ikon"
     },
-    "SubmitTimes": {
-        "message": "Hantar Segmen"
-    },
     "sortSegments": {
         "message": "Susun Segmen"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Jelas Masa"
-    },
-    "submitTimesButton": {
-        "message": "Hantar Masa"
     },
     "publicStats": {
         "message": "Ini digunakan di halaman statistik awam untuk menunjukkan berapa banyak yang anda sumbangkan. Lihatlah"
