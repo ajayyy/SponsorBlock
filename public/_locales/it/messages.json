@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Icona Chiudi"
     },
-    "SubmitTimes": {
-        "message": "Invia i segmenti"
-    },
     "sortSegments": {
         "message": "Ordina Segmenti"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Cancella minutaggio"
-    },
-    "submitTimesButton": {
-        "message": "Invia minutaggio"
     },
     "publicStats": {
         "message": "Questo è usato nelle pagine pubbliche delle statistiche per mostrare quanto hai contribuito. Vedilo"
