@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Tutup Ikon"
     },
-    "SubmitTimes": {
-        "message": "Kirim Segmen"
-    },
     "sortSegments": {
         "message": "Urutkan Segmen"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Hapus Waktu"
-    },
-    "submitTimesButton": {
-        "message": "Kirim Waktu"
     },
     "publicStats": {
         "message": "Ini digunakan di halaman statistik publik untuk menampilkan berapa banyak anda berkontribusi. Lihat disini"
