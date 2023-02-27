@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Ikona pre zatvorenie"
     },
-    "SubmitTimes": {
-        "message": "Odoslať segmenty"
-    },
     "sortSegments": {
         "message": "Triedenie segmentov"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Vymazať časy"
-    },
-    "submitTimesButton": {
-        "message": "Odoslať časy"
     },
     "publicStats": {
         "message": "Toto sa používa vo verejnom rebríčku pre zobrazenie vášho príspevku. Pozrite si ho"
