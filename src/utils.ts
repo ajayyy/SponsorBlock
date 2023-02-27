@@ -349,7 +349,11 @@ export default class Utils {
         currentVideoData.lastAccess = Date.now();
         const existingData = currentVideoData.segments.find((segment) => segment.uuid === UUIDHash);
         if (hidden === SponsorHideType.Visible) {
-            delete allDownvotes[hashedVideoID];
+            currentVideoData.segments.splice(currentVideoData.segments.indexOf(existingData), 1);
+
+            if (currentVideoData.segments.length === 0) {
+                delete allDownvotes[hashedVideoID];
+            }
         } else {
             if (existingData) {
                 existingData.hidden = hidden;
