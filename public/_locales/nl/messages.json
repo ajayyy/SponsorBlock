@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Pictogram voor sluiten"
     },
-    "SubmitTimes": {
-        "message": "Segmenten indienen"
-    },
     "sortSegments": {
         "message": "Segmenten sorteren"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Tijdstippen wissen"
-    },
-    "submitTimesButton": {
-        "message": "Tijdstippen indienen"
     },
     "publicStats": {
         "message": "Dit wordt gebruikt op de publieke statistiekenpagina om te laten zien hoeveel u heeft bijgedragen. Bekijk het"
