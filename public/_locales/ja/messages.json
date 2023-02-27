@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "閉じるアイコン"
     },
-    "SubmitTimes": {
-        "message": "セグメントを送信"
-    },
     "sortSegments": {
         "message": "セグメントを並び替え"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "時間を消去"
-    },
-    "submitTimesButton": {
-        "message": "時間を提出"
     },
     "publicStats": {
         "message": "これは公開の統計ページであなたがどれだけ貢献したかを示すために使用され、ここで確認することができます: "
