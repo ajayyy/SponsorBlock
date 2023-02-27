@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Ikona pro zavření"
     },
-    "SubmitTimes": {
-        "message": "Odeslat segmenty"
-    },
     "sortSegments": {
         "message": "Seřadit segmenty"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Vymazat časy"
-    },
-    "submitTimesButton": {
-        "message": "Odeslat časy"
     },
     "publicStats": {
         "message": "Toto se používá ve veřejném žebříčku k ukázání jak moc jste přispěli. Podívejte se na něj"
