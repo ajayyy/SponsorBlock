@@ -555,7 +555,6 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         currentTime = getVirtualTime();
     }
     clearWaitingTime();
-    lastTimeFromWaitingEvent = null;
 
     updateActiveSegment(currentTime);
 
