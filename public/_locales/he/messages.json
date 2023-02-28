@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "סגירת סמליל"
     },
+    "OpenSubmissionMenu": {
+        "message": "פתיחת תפריט הגשה"
+    },
     "sortSegments": {
         "message": "מיון מקטעים"
     },
