@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Icône \"Fermer\""
     },
+    "OpenSubmissionMenu": {
+        "message": "Ouvrir le menu Contribution"
+    },
     "sortSegments": {
         "message": "Trier les segments"
     },
@@ -434,6 +437,10 @@
     },
     "supportOtherSites": {
         "message": "Support de sites tiers YouTube"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Soutenez les clients tiers pour YouTube. Pour activer le soutien, vous devez accepter les autorisations supplémentaires.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Sites pris en charge : "
