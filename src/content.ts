@@ -654,11 +654,17 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
     if (timeUntilSponsor < skipBuffer) {
         skippingFunction(currentTime);
     } else {
-        const delayTime = timeUntilSponsor * 1000 * (1 / getVideo().playbackRate);
+        let delayTime = timeUntilSponsor * 1000 * (1 / getVideo().playbackRate);
         if (delayTime < 300) {
+            let forceStartIntervalTime: number | null = null;
+            if (utils.isFirefox() && !isSafari() && delayTime > 100) {
+                forceStartIntervalTime = await waitForNextTimeChange();
+            }
+
             // Use interval instead of timeout near the end to combat imprecise video time
-            const startIntervalTime = performance.now();
+            const startIntervalTime = forceStartIntervalTime || performance.now();
             const startVideoTime = Math.max(currentTime, getVideo().currentTime);
+            delayTime = (skipTime?.[0] - startVideoTime) * 1000 * (1 / getVideo().playbackRate);
             
             let startWaitingForReportedTimeToChange = true;
             const reportedVideoTimeAtStart = getVideo().currentTime;
@@ -689,10 +695,36 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         } else {
             logDebug(`Starting timeout to skip ${getVideo().currentTime} to skip at ${skipTime[0]}`);
 
+            const offset = (utils.isFirefox() && !isSafari ? 300 : 150);
             // Schedule for right before to be more precise than normal timeout
-            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - 150));
+            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - offset));
         }
     }
+}
+
+/**
+ * Used on Firefox only, waits for the next animation frame until
+ * the video time has changed
+ */
+function waitForNextTimeChange(): Promise<DOMHighResTimeStamp | null> {
+    const startVideoTime = getVideo().currentTime;
+    let tries = 0;
+    return new Promise((resolve) => {
+        const callback = (timestamp: DOMHighResTimeStamp) => {
+            tries++;
+            if (startVideoTime !== getVideo().currentTime) {
+                resolve(timestamp);
+                return;
+            } else if (tries > 4) {
+                // Give up
+                resolve(null);
+            } else {
+                requestAnimationFrame(callback);
+            }
+        }
+
+        requestAnimationFrame(callback);
+    });
 }
 
 function getVirtualTime(): number {
@@ -701,7 +733,7 @@ function getVirtualTime(): number {
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime 
             && Math.abs(virtualTime - getVideo().currentTime) < 0.2 && getVideo().currentTime !== 0) {
-        return virtualTime;
+        return Math.max(virtualTime, getVideo().currentTime);
     } else {
         return getVideo().currentTime;
     }
@@ -874,10 +906,19 @@ function updateVirtualTime() {
     // If on Firefox, wait for the second time change (time remains fixed for many "frames" for privacy reasons)
     if (utils.isFirefox()) {
         let count = 0;
+        let rawCount = 0;
         let lastTime = lastKnownVideoTime.videoTime;
+        let lastPerformanceTime = performance.now();
+
         currentVirtualTimeInterval = setInterval(() => {
+            const frameTime = performance.now() - lastPerformanceTime;
             if (lastTime !== getVideo().currentTime) {
-                count++;
+                rawCount++;
+                
+                // If there is lag, give it another shot at finding a good change time
+                if (frameTime < 20 || rawCount > 30) {
+                    count++;
+                }
                 lastTime = getVideo().currentTime;
             }
 
@@ -891,6 +932,8 @@ function updateVirtualTime() {
                 clearInterval(currentVirtualTimeInterval);
                 currentVirtualTimeInterval = null;
             }
+
+            lastPerformanceTime = performance.now();
         }, 1);
     }
 }
