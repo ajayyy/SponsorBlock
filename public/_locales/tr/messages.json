@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Kapat Simgesi"
     },
+    "OpenSubmissionMenu": {
+        "message": "Gönderiler Menüsünü Aç"
+    },
     "sortSegments": {
         "message": "Kısımları Sırala"
     },
