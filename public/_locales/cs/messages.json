@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Ikona pro zavření"
     },
+    "OpenSubmissionMenu": {
+        "message": "Otevřít nabídku příspěvků"
+    },
     "sortSegments": {
         "message": "Seřadit segmenty"
     },
