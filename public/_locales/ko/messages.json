@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "닫기 아이콘"
     },
+    "OpenSubmissionMenu": {
+        "message": "제출 메뉴 열기"
+    },
     "sortSegments": {
         "message": "구간 정렬"
     },
