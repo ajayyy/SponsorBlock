@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Pictogram voor sluiten"
     },
+    "OpenSubmissionMenu": {
+        "message": "Inzending-menu openen"
+    },
     "sortSegments": {
         "message": "Segmenten sorteren"
     },
