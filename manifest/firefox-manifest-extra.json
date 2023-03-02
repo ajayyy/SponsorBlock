@@ -1,5 +1,6 @@
 {
-  "browser_specific_settings": {
+  
+  "applications": {
     "gecko": {
       "id": "sponsorBlocker@ajay.app"
     }

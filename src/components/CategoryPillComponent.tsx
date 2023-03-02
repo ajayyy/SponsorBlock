@@ -50,7 +50,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                 onMouseLeave={() => this.closeTooltip()}>
                 <span className="sponsorBlockCategoryPillTitleSection">
                     <img className="sponsorSkipLogo sponsorSkipObject"
-                        src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
+                        src={chrome.runtime.getURL("icons/IconSponsorBlocker256px.png")}>
                     </img>
                     <span className="sponsorBlockCategoryPillTitle">
                         {chrome.i18n.getMessage("category_" + this.state.segment?.category)}
@@ -79,7 +79,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                 )}
 
                 {/* Close Button */}
-                <img src={chrome.extension.getURL("icons/close.png")}
+                <img src={chrome.runtime.getURL("icons/close.png")}
                     className="categoryPillClose"
                     onClick={() => this.setState({ show: false })}>
                 </img>

@@ -63,7 +63,7 @@ export class Tooltip {
                 <div>
                     {props.showLogo ? 
                         <img className="sponsorSkipLogo sponsorSkipObject"
-                            src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
+                            src={chrome.runtime.getURL("icons/IconSponsorBlocker256px.png")}>
                         </img>
                     : null}
                     {this.text ? 

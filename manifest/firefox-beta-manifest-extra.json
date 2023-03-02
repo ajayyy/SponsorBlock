@@ -1,8 +1,8 @@
 {
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "sponsorBlockerBETA@ajay.app"
-        }
-    }
-}
   
+    "applications": {
+      "gecko": {
+        "id": "sponsorBlockerBETA@ajay.app"
+      }
+    }
+  }

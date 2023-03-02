@@ -103,7 +103,7 @@ chrome.runtime.onInstalled.addListener(function () {
         // If there is no userID, then it is the first install.
         if (!userID){
             //open up the install page
-            chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
+            chrome.tabs.create({url: chrome.runtime.getURL("/help/index.html")});
 
             //generate a userID
             const newUserID = generateUserID();
@@ -116,7 +116,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
         if (Config.config.supportInvidious) {
             if (!(await utils.containsInvidiousPermission())) {
-                chrome.tabs.create({url: chrome.extension.getURL("/permissions/index.html")});
+                chrome.tabs.create({url: chrome.runtime.getURL("/permissions/index.html")});
             }
         }
     }, 1500);
