@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "বন্ধ করার চিহ্ন"
     },
+    "OpenSubmissionMenu": {
+        "message": "সাবমিশন মেন্যু খুলুন"
+    },
     "sortSegments": {
         "message": "সংক্ষিপ্ত অংশ"
     },
@@ -434,6 +437,10 @@
     },
     "supportOtherSites": {
         "message": "এটি ৩য় পক্ষের ইউটইউব সাইট সাপোর্ট করে"
+    },
+    "supportOtherSitesDescription": {
+        "message": "তৃতীয় পক্ষ YouTube ক্লায়েন্ট সমর্থন করে। এটি চালু করার জন্য আপনাকে কিছু অতিরিক্ত পারমিশনে সম্মতি দিতে হবে।",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "সমর্থিত সাইটসমুহ:"
@@ -1016,8 +1023,17 @@
         "message": "আমদানী",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemFailed": {
+        "message": "লাইসেন্স কী অবৈধ"
+    },
     "chooseACountry": {
         "message": "দেশ নির্বাচন করুন"
+    },
+    "discountLink": {
+        "message": "মূল্যছাড় লিঙ্ক (পিংক মূল্য দেখুন)"
+    },
+    "selectYourCountry": {
+        "message": "আপনার দেশ নির্বাচন করুন"
     },
     "videosSingular": {
         "message": "ভিডিও",
