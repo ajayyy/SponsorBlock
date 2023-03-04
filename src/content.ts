@@ -56,6 +56,7 @@ let sponsorDataFound = false;
 //the actual sponsorTimes if loaded and UUIDs associated with them
 let sponsorTimes: SponsorTime[] = [];
 let existingChaptersImported = false;
+let importingChaptersWaitingForFocus = false;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
@@ -1146,14 +1147,25 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
 function importExistingChapters(wait: boolean) {
     if (!existingChaptersImported) {
-        waitFor(() => getVideo()?.duration && getExistingChapters(getVideoID(), getVideo().duration),
-            wait ? 15000 : 0, 400, (c) => c?.length > 0).then((chapters) => {
-                if (!existingChaptersImported && chapters?.length > 0) {
-                    sponsorTimes = (sponsorTimes ?? []).concat(...chapters).sort((a, b) => a.segment[0] - b.segment[0]);
-                    existingChaptersImported = true;
-                    updatePreviewBar();
-                }
-            }).catch(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
+        const waitCondition = () => getVideo()?.duration && getExistingChapters(getVideoID(), getVideo().duration);
+
+        if (!waitCondition() && wait && !document.hasFocus() && !importingChaptersWaitingForFocus) {
+            importingChaptersWaitingForFocus = true;
+            const listener = () => {
+                importExistingChapters(wait);
+                window.removeEventListener("focus", listener);
+            };
+            window.addEventListener("focus", listener);
+        } else {
+            waitFor(waitCondition,
+                wait ? 15000 : 0, 400, (c) => c?.length > 0).then((chapters) => {
+                    if (!existingChaptersImported && chapters?.length > 0) {
+                        sponsorTimes = (sponsorTimes ?? []).concat(...chapters).sort((a, b) => a.segment[0] - b.segment[0]);
+                        existingChaptersImported = true;
+                        updatePreviewBar();
+                    }
+                }).catch(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
+        }
     }
 }
 
