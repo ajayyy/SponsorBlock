@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Tutup Ikon"
     },
-    "SubmitTimes": {
-        "message": "Kirim Segmen"
-    },
     "sortSegments": {
         "message": "Urutkan Segmen"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Hapus Waktu"
-    },
-    "submitTimesButton": {
-        "message": "Kirim Waktu"
     },
     "publicStats": {
         "message": "Ini digunakan di halaman statistik publik untuk menampilkan berapa banyak anda berkontribusi. Lihat disini"
@@ -440,10 +434,6 @@
     },
     "supportOtherSites": {
         "message": "Dukung Situs Youtube Pihak Ketiga"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Dukung klien YouTube pihak ketiga. Untuk mengaktifkan dukungan, Anda harus menerima izin tambahan. Ini tidak akan bekerja di Mode Samaran di Chrome dan varian Chromium lainnya.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Situs yang didukung: "

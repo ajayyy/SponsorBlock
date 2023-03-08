@@ -125,8 +125,8 @@
     "closePopup": {
         "message": "Zatvori izbornik"
     },
-    "SubmitTimes": {
-        "message": "Podnesi isječke"
+    "closeIcon": {
+        "message": "Ikona za zatvaranje"
     },
     "sortSegments": {
         "message": "Razvrstaj isječke"
@@ -164,9 +164,6 @@
     },
     "clearTimesButton": {
         "message": "Očisti vremena"
-    },
-    "submitTimesButton": {
-        "message": "Unesi vremena"
     },
     "publicStats": {
         "message": "Ovo se koristi na stranici sa javnim statistikama da se pokaže koliko se pridonijeli. Pogledajte"
@@ -788,6 +785,12 @@
     "ChangeCategoryTooltip": {
         "message": "Ovo će se odmah primijeniti na vaše isječke"
     },
+    "downvote": {
+        "message": "Glasaj protiv"
+    },
+    "upvote": {
+        "message": "Glasaj za"
+    },
     "hideSegment": {
         "message": "Sakri odsječak"
     },
@@ -911,6 +914,10 @@
     },
     "videoID": {
         "message": "ID videa",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "segmentCount": {
+        "message": "Broj segmenata",
         "description": "Header of the unsubmitted segments list"
     },
     "actions": {

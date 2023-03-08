@@ -112,9 +112,6 @@
     "closePopup": {
         "message": "பாப்அப்பை மூடு"
     },
-    "SubmitTimes": {
-        "message": "பிரிவுகளைச் சமர்ப்பிக்கவும்"
-    },
     "submitCheck": {
         "message": "இதை நிச்சயமாக சமர்ப்பிக்க விரும்புகிறீர்களா?"
     },
@@ -148,9 +145,6 @@
     },
     "clearTimesButton": {
         "message": "நேரங்களை அழி"
-    },
-    "submitTimesButton": {
-        "message": "நேரங்களைச் சமர்ப்பிக்கவும்"
     },
     "publicStats": {
         "message": "நீங்கள் எவ்வளவு பங்களித்தீர்கள் என்பதைக் காட்ட இது பொது புள்ளிவிவரங்கள் பக்கத்தில் பயன்படுத்தப்படுகிறது. அதை பார்"
@@ -389,10 +383,6 @@
     },
     "supportOtherSites": {
         "message": "3 வது தரப்பு YouTube-தளங்களை ஆதரிக்கவும்"
-    },
-    "supportOtherSitesDescription": {
-        "message": "மூன்றாம் தரப்பு YouTube தளங்களை ஆதரிக்கவும். ஆதரவை இயக்க, நீங்கள் கூடுதல் அனுமதிகளை ஏற்க வேண்டும். இது Chrome மற்றும் பிற Chromium வகைகளில் தனிப்பட்ட தாவல்களில் வேலை செய்யாது.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "ஆதரிக்கப்படும் தளங்கள்: "

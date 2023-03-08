@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Pictogram voor sluiten"
     },
-    "SubmitTimes": {
-        "message": "Segmenten indienen"
+    "OpenSubmissionMenu": {
+        "message": "Inzending-menu openen"
     },
     "sortSegments": {
         "message": "Segmenten sorteren"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Tijdstippen wissen"
-    },
-    "submitTimesButton": {
-        "message": "Tijdstippen indienen"
     },
     "publicStats": {
         "message": "Dit wordt gebruikt op de publieke statistiekenpagina om te laten zien hoeveel u heeft bijgedragen. Bekijk het"
@@ -442,7 +439,7 @@
         "message": "Ondersteuning voor YouTube-sites van derden"
     },
     "supportOtherSitesDescription": {
-        "message": "Ondersteuning voor YouTube-clients van derden. Om ondersteuning in te schakelen moet u de extra machtigingen accepteren. Dit werkt NIET in incognito in Chrome en andere Chromium-varianten.",
+        "message": "YouTube-clients van derden ondersteunen. Om ondersteuning in te schakelen, moet u de extra machtigingen accepteren.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

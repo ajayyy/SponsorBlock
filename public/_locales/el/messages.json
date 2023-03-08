@@ -122,9 +122,6 @@
     "closePopup": {
         "message": "Κλείσιμο αναδυόμενου παραθύρου"
     },
-    "SubmitTimes": {
-        "message": "Υποβολή Τμημάτων"
-    },
     "sortSegments": {
         "message": "Ταξινόμηση Τμημάτων"
     },
@@ -161,9 +158,6 @@
     },
     "clearTimesButton": {
         "message": "Σβήσιμο τμημάτων"
-    },
-    "submitTimesButton": {
-        "message": "Υποβολή τμημάτων"
     },
     "publicStats": {
         "message": "Χρησιμοποιείται στη δημόσια σελίδα στατιστικών για να αναδειχθεί πόσο έχετε συμβάλει. Δείτε το"
@@ -408,10 +402,6 @@
     },
     "supportOtherSites": {
         "message": "Υποστήριξη 3των ιστοσελίδων τύπου YouTube"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Υποστήριξη 3των πελατών διακομιστή YouTube. Για να ενεργοποιήσετε την υποστήριξη πρέπει να αποδεχτείτε επιπλέον άδειες. Αυτό ΔΕ λειτουργεί σε καρτέλες ανώνυμης περιήγησης του Chrome ή άλλων Chromium εκδοχών.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Υποστηριζόμενες Ιστοσελίδες: "

@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Кнопка закрытия"
     },
-    "SubmitTimes": {
-        "message": "Отправить сегменты"
+    "OpenSubmissionMenu": {
+        "message": "Открыть меню отправки"
     },
     "sortSegments": {
         "message": "Сортировать сегменты"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Очистить время"
-    },
-    "submitTimesButton": {
-        "message": "Отправить сегменты"
     },
     "publicStats": {
         "message": "Оно используется на публичной странице статистики, чтобы показать Ваш вклад. Её можно посмотреть "
@@ -442,7 +439,7 @@
         "message": "Поддерживать сторонние YouTube-сайты"
     },
     "supportOtherSitesDescription": {
-        "message": "Поддерживать сторонние клиенты для YouTube. Чтобы включить поддержку, Вам понадобится принять дополнительные разрешения. Эта функция НЕ работает в режиме \"инкогнито\" в Chrome и браузерах, основанных на Chromium.",
+        "message": "Поддержка сторонних клиентов YouTube. Чтобы включить поддержку, вы должны принять дополнительные разрешения.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -1141,7 +1138,7 @@
         "message": "Ключ лицензии недействителен"
     },
     "hideUpsells": {
-        "message": "Скрыть опции, не доступные без дополнительной платы"
+        "message": "Скрыть опции, недоступные без дополнительной платы"
     },
     "chooseACountry": {
         "message": "Выберите страну"

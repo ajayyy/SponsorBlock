@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Icona Chiudi"
     },
-    "SubmitTimes": {
-        "message": "Invia i segmenti"
-    },
     "sortSegments": {
         "message": "Ordina Segmenti"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Cancella minutaggio"
-    },
-    "submitTimesButton": {
-        "message": "Invia minutaggio"
     },
     "publicStats": {
         "message": "Questo è usato nelle pagine pubbliche delle statistiche per mostrare quanto hai contribuito. Vedilo"
@@ -442,7 +436,7 @@
         "message": "Supporta siti di YouTube di terze parti"
     },
     "supportOtherSitesDescription": {
-        "message": "Supporta client YouTube di terze parti. Per abilitare il supporto, devi accettare i permessi aggiuntivi. Questo NON funziona in incognito su Chrome e altre varianti di Chromium.",
+        "message": "Supporta client YouTube di terze parti. Per abilitare il supporto, devi accettare i permessi aggiuntivi.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

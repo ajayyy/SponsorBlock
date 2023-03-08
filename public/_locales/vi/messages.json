@@ -125,9 +125,6 @@
     "closePopup": {
         "message": "Đóng bảng popup"
     },
-    "SubmitTimes": {
-        "message": "Gửi phân đoạn"
-    },
     "sortSegments": {
         "message": "Sắp xếp phân đoạn"
     },
@@ -164,9 +161,6 @@
     },
     "clearTimesButton": {
         "message": "Xóa thời gian"
-    },
-    "submitTimesButton": {
-        "message": "Gửi thời gian"
     },
     "publicStats": {
         "message": "Tên này được dùng tại trang thông tin công khai để thể hiện lượng đóng góp của bạn. Xem"
@@ -419,10 +413,6 @@
     },
     "supportOtherSites": {
         "message": "Hỗ trợ các trang web Youtube thuộc bên thứ 3"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Bật hỗ trợ các ứng dụng/trang web Youtube của bên thứ ba. Để bật hỗ trợ cho ứng dụng này, bạn phải chấp nhận các yêu cầu cho phép bổ sung. Nó KHÔNG CÓ tác dụng trong chế độ ẩn danh của Chrome và các trình duyệt có nền tảng Chromium.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Các trang web được hỗ trợ: "

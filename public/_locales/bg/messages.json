@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Икона - затваряне"
     },
-    "SubmitTimes": {
-        "message": "Изпращане на сегментите"
+    "OpenSubmissionMenu": {
+        "message": "Отваряне на менюто за изпращане"
     },
     "sortSegments": {
         "message": "Сортиране на сегментите"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Изчистване на времената"
-    },
-    "submitTimesButton": {
-        "message": "Изпращане на времената"
     },
     "publicStats": {
         "message": "Това се използва на страницата с публичната статистика, за да покаже колко сте допринесли. Вижте го"
@@ -442,7 +439,7 @@
         "message": "Поддръжка на YouTube-сайтове на трети страни"
     },
     "supportOtherSitesDescription": {
-        "message": "Поддръжка на клиенти за YouTube на трети страни. За да активирате поддръжката, трябва да приемете допълнителните разрешения. Това НЕ работи в режим инкогнито в Chrome и други варианти на Chromium.",
+        "message": "Поддръжка на клиенти на трети страни за YouTube. За да активирате поддръжката, трябва да приемете допълнителните разрешения.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

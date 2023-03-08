@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Icône \"Fermer\""
     },
-    "SubmitTimes": {
-        "message": "Soumettre des segments"
+    "OpenSubmissionMenu": {
+        "message": "Ouvrir le menu Contribution"
     },
     "sortSegments": {
         "message": "Trier les segments"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Supprimer les temps"
-    },
-    "submitTimesButton": {
-        "message": "Soumettre les temps"
     },
     "publicStats": {
         "message": "Votre pseudo est inscrit dans le classement public pour afficher vos contributions. Le consulter"
@@ -235,7 +232,7 @@
         "message": "Activer le suivi du nombre de sauts dans les onglets privés/incognito"
     },
     "enableTrackDownvotes": {
-        "message": "Enregistrer les segments contre lesquels vous avez voté"
+        "message": "Enregistrer les segments votés négativement"
     },
     "whatTrackDownvotes": {
         "message": "Tous les segments votés négativement resteront cachés même après rafraîchissement de la page"
@@ -442,7 +439,7 @@
         "message": "Support de sites tiers YouTube"
     },
     "supportOtherSitesDescription": {
-        "message": "Support de clients YouTube tierces. Pour habiliter le support, vous devez accepter les autorisations supplémentaires. Cela ne fonctionne PAS en incognito sur Chrome et d'autres variantes de Chromium.",
+        "message": "Soutenez les clients tiers pour YouTube. Pour activer le soutien, vous devez accepter les autorisations supplémentaires.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

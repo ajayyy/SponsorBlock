@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Wyłącz ikonę"
     },
-    "SubmitTimes": {
-        "message": "Prześlij segmenty"
-    },
     "sortSegments": {
         "message": "Sortuj segmenty"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Usuń czasy"
-    },
-    "submitTimesButton": {
-        "message": "Wyślij czasy"
     },
     "publicStats": {
         "message": "Ten dane są używane na naszej stronie żeby pokazać twój wkład. Zobacz to"
@@ -442,7 +436,7 @@
         "message": "Obsługa stron YouTube firm trzecich"
     },
     "supportOtherSitesDescription": {
-        "message": "Wspieraj nieoficjalne klienty YouTube'a. Aby włączyć dla nich wsparcie, musisz przyznać dodatkowe uprawnienia. Ta opcja nie działa w trybie incognito w Chrome i innych przeglądarkach bazujących na Chromium.",
+        "message": "Obsługa zewnętrznych klientów YouTube. Aby włączyć obsługę, należy zaakceptować dodatkowe uprawnienia.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -941,6 +935,9 @@
     "hideForever": {
         "message": "Schowaj na zawsze"
     },
+    "warningChatInfo": {
+        "message": "Zauważyliśmy, że popełniłeś pewne powszechne błędy. Bardzo doceniamy dotychczasową pracę, ale dążymy tutaj do doskonałości, więc nawet bardzo małe błędy mają znaczenie :)"
+    },
     "warningTitle": {
         "message": "Otrzymałeś ostrzeżenie"
     },
@@ -1246,5 +1243,8 @@
     },
     "segmentFetchFailureWarning": {
         "message": "Ostrzeżenie: Serwer nie odpowiedział jeszcze na segmenty. Być może segmenty na tym filmie są już wysłane, ale po prostu nie otrzymałeś ich z powodu problemów z serwerem."
+    },
+    "allowScrollingToEdit": {
+        "message": "Zezwalaj na scroll'owanie do edycji czasów"
     }
 }

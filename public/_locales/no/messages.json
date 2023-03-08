@@ -112,9 +112,6 @@
     "closePopup": {
         "message": "Lukk oppsprett"
     },
-    "SubmitTimes": {
-        "message": "Send inn segmenter"
-    },
     "submitCheck": {
         "message": "Er du sikker på at du vil sende inn dette?"
     },
@@ -148,9 +145,6 @@
     },
     "clearTimesButton": {
         "message": "Tøm tidspunkter"
-    },
-    "submitTimesButton": {
-        "message": "Send inn tidspunkter"
     },
     "publicStats": {
         "message": "Dette brukes på den offentlige statistikksiden for å vise hvor mye du har bidratt med. Se den"
@@ -380,10 +374,6 @@
     },
     "supportOtherSites": {
         "message": "Støtt tredjeparts YouTube-nettsteder"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Støtt tredjeparts YouTube-klienter. For å aktivere støtte må du akseptere ytterlige vilkår. Dette fungerer IKKE i inkognitomodus i Chrome og andre Chromium-varianter.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Støttede nettsteder: "

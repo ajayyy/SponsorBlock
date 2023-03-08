@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Închide pictograma"
     },
-    "SubmitTimes": {
-        "message": "Trimite segmente"
-    },
     "sortSegments": {
         "message": "Sortare Segmente"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Șterge Timpii"
-    },
-    "submitTimesButton": {
-        "message": "Trimite Timpii"
     },
     "publicStats": {
         "message": "Acest lucru este folosit pe pagina publică de statistici pentru a arăta cât de mult ai contribuit. Vezi pagina"
@@ -440,10 +434,6 @@
     },
     "supportOtherSites": {
         "message": "Sprijină Site-uri YouTube 3rd Party"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Sprijină Clienți YouTube 3rd party. Pentru a activa setarea, trebuie să acceptați permisiunile suprimentare. Această funcție NU funcționează în incognito pe Chrome sau în alte variante Chromium.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Site-uri cu Sprijin: "

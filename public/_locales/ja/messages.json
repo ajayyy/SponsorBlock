@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "閉じるアイコン"
     },
-    "SubmitTimes": {
-        "message": "セグメントを送信"
-    },
     "sortSegments": {
         "message": "セグメントを並び替え"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "時間を消去"
-    },
-    "submitTimesButton": {
-        "message": "時間を提出"
     },
     "publicStats": {
         "message": "これは公開の統計ページであなたがどれだけ貢献したかを示すために使用され、ここで確認することができます: "
@@ -440,10 +434,6 @@
     },
     "supportOtherSites": {
         "message": "第三者製のYouTube関連サイトに対応"
-    },
-    "supportOtherSitesDescription": {
-        "message": "第三者製のYouTubeクライアントに対応しました。有効にするには，追加の権限を受け入れる必要があります。これはChromeやその他のChromium系列の匿名閲覧状態では動作しません。",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "対応サイト: "

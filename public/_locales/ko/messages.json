@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "닫기 아이콘"
     },
-    "SubmitTimes": {
-        "message": "구간 제출"
+    "OpenSubmissionMenu": {
+        "message": "제출 메뉴 열기"
     },
     "sortSegments": {
         "message": "구간 정렬"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "구간 초기화"
-    },
-    "submitTimesButton": {
-        "message": "구간 제출"
     },
     "publicStats": {
         "message": "얼마나 기여했는지 확인할 수 있는 공개 통계 페이지로 다음에서 확인하실 수 있어요."
@@ -442,7 +439,7 @@
         "message": "제3자 YouTube 사이트 지원"
     },
     "supportOtherSitesDescription": {
-        "message": "제3자 YouTube 클라이언트에서도 기능을 지원하도록 해요. 이 기능을 사용하려면 추가 권한을 허용해야 해요. Chrome 및 다른 Chromium 계열 브라우저의 시크릿 모드에서는 작동하지 않아요. ",
+        "message": "제삼자 YouTube 클라이언트에서도 기능을 지원하도록 해요. 이 기능을 사용하려면 추가 권한을 허용해야 해요.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

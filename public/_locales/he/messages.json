@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "סגירת סמליל"
     },
-    "SubmitTimes": {
-        "message": "הגש מקטעים"
+    "OpenSubmissionMenu": {
+        "message": "פתיחת תפריט הגשה"
     },
     "sortSegments": {
         "message": "מיון מקטעים"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "ניקוי זמנים"
-    },
-    "submitTimesButton": {
-        "message": "הגשת זמנים"
     },
     "publicStats": {
         "message": "זה משמש בדף הסטטיסטיקה הציבורי כדי להראות כמה תרמת. ניתן לצפות בזה"
@@ -225,8 +222,14 @@
     "showDeleteButton": {
         "message": "הצגת כפתור מחיקה על הנגן של יוטיוב"
     },
+    "enableViewTracking": {
+        "message": "אפשר מעקב ספירת דילוגים"
+    },
     "whatViewTracking": {
         "message": "תכונה זו עוקבת אחר אילו מקטעים דילגת כדי לאפשר למשתמשים לדעת עד כמה ההגשה שלהם עזרה לאחרים והשתמשה כמדד יחד עם הצבעות בעד כדי להבטיח שספאם לא ייכנס למסד הנתונים. התוסף שולח הודעה לשרת בכל פעם שאתה מדלג על קטע. אני מקווה שרוב האנשים לא ישנו את ההגדרה הזו כדי שמספרי התצוגה יהיו מדויקים. :)"
+    },
+    "enableViewTrackingInPrivate": {
+        "message": "אפשר מעקב ספירת דילוגים בכרטיסיות גלישה פרטית/גלישה בסתר"
     },
     "enableTrackDownvotes": {
         "message": "שמור דירוג קטעים"
@@ -236,6 +239,9 @@
     },
     "trackDownvotesWarning": {
         "message": "אזהרה: ביטול השמירה ימחק את הדירוגים שנשמרו"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "במקום לבקש מקטעים מהשרת לפי מזהה סרטון, נשלחים ארבעת התווים הראשונים של ה-hash של מזהה הסרטון. שרת זה ישלח בחזרה נתונים לכל הסרטונים עם hash מתאים."
     },
     "enableRefetchWhenNotFound": {
         "message": "השג מקטעים של סרטונים חדשים"
@@ -251,6 +257,12 @@
     },
     "showNotice": {
         "message": "הראה הודעה שוב"
+    },
+    "showSkipNotice": {
+        "message": "הצג הודעה לאחר דילוג על מקטע"
+    },
+    "showCategoryGuidelines": {
+        "message": "הצג עזרה לקטגוריה"
     },
     "website": {
         "message": "אתר",

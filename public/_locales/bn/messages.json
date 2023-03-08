@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "বন্ধ করার চিহ্ন"
     },
-    "SubmitTimes": {
-        "message": "সেগমেন্ট জমা দিন"
+    "OpenSubmissionMenu": {
+        "message": "সাবমিশন মেন্যু খুলুন"
     },
     "sortSegments": {
         "message": "সংক্ষিপ্ত অংশ"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "সময় মুছুন"
-    },
-    "submitTimesButton": {
-        "message": "সময় জমা দিন"
     },
     "publicStats": {
         "message": "আপনি কতটা অবদান রেখেছেন তা দেখানোর জন্য এটি সর্বজনীন পরিসংখ্যান পৃষ্ঠায় ব্যবহার করা হয়। এটা দেখ"
@@ -442,7 +439,7 @@
         "message": "এটি ৩য় পক্ষের ইউটইউব সাইট সাপোর্ট করে"
     },
     "supportOtherSitesDescription": {
-        "message": "তৃতীয় পক্ষের ইউটিউব ক্লায়েন্টদের সমর্থন করুন। সমর্থন সক্ষম করতে, আপনাকে অবশ্যই অতিরিক্ত অনুমতিগুলি গ্রহণ করতে হবে। এটি ক্রোম এবং অন্যান্য ক্রোমিয়াম ভেরিয়েন্টগুলিতে ছদ্মবেশে কাজ করে না।",
+        "message": "তৃতীয় পক্ষ YouTube ক্লায়েন্ট সমর্থন করে। এটি চালু করার জন্য আপনাকে কিছু অতিরিক্ত পারমিশনে সম্মতি দিতে হবে।",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -1026,8 +1023,17 @@
         "message": "আমদানী",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
     },
+    "redeemFailed": {
+        "message": "লাইসেন্স কী অবৈধ"
+    },
     "chooseACountry": {
         "message": "দেশ নির্বাচন করুন"
+    },
+    "discountLink": {
+        "message": "মূল্যছাড় লিঙ্ক (পিংক মূল্য দেখুন)"
+    },
+    "selectYourCountry": {
+        "message": "আপনার দেশ নির্বাচন করুন"
     },
     "videosSingular": {
         "message": "ভিডিও",

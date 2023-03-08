@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Luk ikon"
     },
-    "SubmitTimes": {
-        "message": "Indsend Segmenter"
-    },
     "sortSegments": {
         "message": "Sortér Segmenter"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Ryd Tider"
-    },
-    "submitTimesButton": {
-        "message": "Indsend Tider"
     },
     "publicStats": {
         "message": "Dette bruges på siden med offentlige statistikker til at vise, hvor meget du har bidraget. Se det"
@@ -440,10 +434,6 @@
     },
     "supportOtherSites": {
         "message": "Understøtter tredjeparts YouTube sider"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Understøt tredjeparts YouTube klienter. For at aktivere understøttelse, skal du acceptere de ekstra tilladelser. Dette virker IKKE i inkognito på Chrome og andre Chromium varianter.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Understøttede Sider: "

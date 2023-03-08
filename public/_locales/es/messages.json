@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Icono de cerrar"
     },
-    "SubmitTimes": {
-        "message": "Enviar Segmentos"
-    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Eliminar Tiempos"
-    },
-    "submitTimesButton": {
-        "message": "Enviar Tiempos"
     },
     "publicStats": {
         "message": "Esto se utiliza en la página de estadísticas públicas para mostrar cuánto has contribuido. Véala"
@@ -424,16 +418,16 @@
         "message": "Comprueba status.sponsor.ajay.app para ver el estado del servidor."
     },
     "changeUserID": {
-        "message": "Importar/Exportar su ID de usuario Privado"
+        "message": "Importar/Exportar su ID de usuario privado"
     },
     "whatChangeUserID": {
         "message": "Esto se debería mantener privado. Esto es como una contraseña y no debe ser compartido con nadie. Si alguien tiene esto, puede suplantarte. Si estás buscando tu ID de usuario Público, haz clic en el icono de portapapeles en la ventana emergente."
     },
     "setUserID": {
-        "message": "Establecer ID de usuario Privado"
+        "message": "Establecer ID de usuario privado"
     },
     "userIDChangeWarning": {
-        "message": "Advertencia: El cambio del ID de usuario Privado es permanente. ¿Está seguro/a de que desea hacer esto? Asegúrese de respaldar el antiguo por si acaso."
+        "message": "Advertencia: El cambio del ID de usuario privado es permanente. ¿Está seguro/a de que desea hacer esto? Asegúrese de respaldar el antiguo por si acaso."
     },
     "createdBy": {
         "message": "Creado Por"
@@ -442,7 +436,7 @@
         "message": "Soportar sitios de YouTube de terceros"
     },
     "supportOtherSitesDescription": {
-        "message": "Soportar clientes de YouTube de terceros. Para habilitar el soporte, debes aceptar los permisos extra. Esto NO funciona en incógnito en Chrome y otras variantes de Chromium.",
+        "message": "Admite clientes de YouTube de terceros. Para activar la compatibilidad, debes aceptar los permisos adicionales.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -595,7 +589,7 @@
         "message": "Incluye transiciones entre segmentos"
     },
     "generic_guideline2": {
-        "message": "Se reproduce como si no se hubiera omitido nada"
+        "message": "Reproduce como si nada se omitiera"
     },
     "category_sponsor": {
         "message": "Sponsor"
@@ -607,7 +601,7 @@
         "message": "Promociones pagadas"
     },
     "category_sponsor_guideline2": {
-        "message": "No para donaciones o mercancía personalizada"
+        "message": "No para donaciones o merchandising"
     },
     "category_selfpromo": {
         "message": "Promoción Propia/No Remunerada"
@@ -616,13 +610,13 @@
         "message": "Similar a \"sponsor\", excepto que para la promoción propia o no remunerada. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
     "category_selfpromo_guideline1": {
-        "message": "Donaciones, membresías y mercancía personalizada"
+        "message": "Donaciones, afiliaciones y merchandising"
     },
     "category_selfpromo_guideline2": {
-        "message": "Agradecimientos gratuitos que no contribuyen al video"
+        "message": "Comentarios inútiles que no aportan nada al vídeo"
     },
     "category_selfpromo_guideline3": {
-        "message": "No para productos ni mercancía diseñados por empresas"
+        "message": "No para productos y merchandising de empresas"
     },
     "category_exclusive_access": {
         "message": "Acceso Exclusivo"
@@ -644,13 +638,13 @@
         "message": "Cuando hay un breve recordatorio para dar me gusta, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo promoción propia en su lugar."
     },
     "category_interaction_guideline1": {
-        "message": "Breve recordatorio para dar me gusta, suscribirse o seguir"
+        "message": "Recordatorios breves para darle a me gusta, suscribirse o seguir"
     },
     "category_interaction_guideline2": {
         "message": "Incluye recordatorios indirectos para comentar"
     },
     "category_interaction_guideline3": {
-        "message": "No para promoción general, solo llamadas a la acción"
+        "message": "No para promoción general, solo peticiones de actuación"
     },
     "category_interaction_short": {
         "message": "Recordatorio de Interacción"
@@ -677,19 +671,19 @@
         "message": "Créditos o cuando aparecen las tarjetas finales de YouTube. No para conclusiones con información."
     },
     "category_outro_guideline1": {
-        "message": "No incluyas contenido, aun si las tarjetas finales están en pantalla"
+        "message": "No incluyas contenido, aunque se estén mostrando las tarjetas finales"
     },
     "category_preview": {
         "message": "Vista previa/Recapitulación"
     },
     "category_preview_description": {
-        "message": "Colección de clips que muestran lo que vendrá en este video u otros videos en una serie en la cual toda la información es repetida en el video."
+        "message": "Colección de vídeos que muestran lo que se verá en este vídeo o en otros vídeos de una serie en la que toda esta información se repite más adelante en el vídeo."
     },
     "category_preview_guideline1": {
-        "message": "Clips que aparecen más tarde o en un video futuro"
+        "message": "Vídeos que aparecen más tarde, o en un vídeo futuro"
     },
     "category_preview_guideline2": {
-        "message": "Recapitulación de un video anterior"
+        "message": "Recopilación de un vídeo anterior"
     },
     "category_preview_guideline3": {
         "message": "No para secciones que añaden contenido adicional"
@@ -698,7 +692,7 @@
         "message": "Tangentes de Relleno/Chistes"
     },
     "category_filler_description": {
-        "message": "Escenas tangenciales añadidas solo de relleno o humor que no son necesarias para entender el contenido principal del video. Esto no debe incluir segmentos que proporcionen contexto o detalles de fondo. Esta es una categoría muy agresiva para cuando no está de humor para la \"diversión\"."
+        "message": "Escenas tangenciales añadidas solo como relleno o humor que no son necesarias para entender el contenido principal del vídeo. Esto no debería incluir segmentos que proporcionen contexto o detalles de fondo. Es una categoría muy agresiva pensada para cuando no se está de humor para «divertirse»."
     },
     "category_filler_short": {
         "message": "Relleno"
@@ -707,7 +701,7 @@
         "message": "Escenas tangenciales solo de relleno o humor"
     },
     "category_filler_guideline2": {
-        "message": "Distracciones, bloopers, repeticiones"
+        "message": "Distracciones, meteduras de pata, repeticiones"
     },
     "category_filler_guideline3": {
         "message": "No para escenas requeridas para entender el tema"
@@ -725,7 +719,7 @@
         "message": "Secciones que no están en versiones oficiales"
     },
     "category_music_offtopic_guideline2": {
-        "message": "Secciones sin música en un espectáculo en vivo"
+        "message": "Sin música en un espectáculo en directo"
     },
     "category_poi_highlight": {
         "message": "Destacado"
@@ -734,7 +728,7 @@
         "message": "La parte del video que la mayoría de gente está buscando. Similar a los comentarios que dicen \"El video comienza en x\"."
     },
     "category_poi_highlight_guideline1": {
-        "message": "La sección que la mayoría de personas están buscando"
+        "message": "Sección que busca la mayoría"
     },
     "category_poi_highlight_guideline2": {
         "message": "Puede omitir contexto"
@@ -1170,7 +1164,7 @@
         "message": "Canjear"
     },
     "joinOnPatreon": {
-        "message": "Danos tu apoyo en Patreon"
+        "message": "Suscríbete en Patreon"
     },
     "oneTimePurchase": {
         "message": "Compra única"
@@ -1179,18 +1173,18 @@
         "message": "Ingresar clave de licencia"
     },
     "chaptersPage1": {
-        "message": "La característica de los capítulos de origen de SponsorBlock sólo está disponible para personas que compran una licencia, o para las personas a las que se les concede acceso gratis debido a sus contribuciones anteriores"
+        "message": "La función de capítulos colaborativos de SponsorBlock solo está disponible para las personas que adquieran una licencia o para aquellas a las que se les conceda acceso gratuito debido a sus contribuciones anteriores"
     },
     "chaptersPage2": {
-        "message": "Nota: El permiso para enviar capítulos todavía está basado en la reputación calculada. Comprar una licencia solo le permite ver los capítulos enviados por otros",
+        "message": "Nota: el permiso para enviar capítulos sigue basándose en la reputación calculada. La compra de una licencia solo te permite ver los capítulos enviados por otros usuarios",
         "description": "On the chapters page for getting access to the paid chapters feature"
     },
     "chapterNewFeature": {
-        "message": "Nueva Función: Capítulos personalizados marcados por la comunidad. Estos son secciones con nombres personalizados en los videos que pueden ser acumulados para ser cada vez más precisos. Compre una licencia para ver los capítulos enviados en este video, como: ",
+        "message": "Nueva función: capítulos personalizados creados por la comunidad. Se trata de secciones con nombres personalizados que se pueden superponer en los vídeos para obtener una mayor precisión. Adquiere una licencia para ver los capítulos presentados en este vídeo como: ",
         "description": "After the comma, a list of chapters for this video will appear"
     },
     "chapterNewFeature2": {
-        "message": "Nueva Función: Capítulos personalizados marcados por la comunidad. Estos son secciones con nombres personalizados en los videos que pueden ser acumulados para ser cada vez más precisos. Tiene acceso gratuito, habilítelo en opciones."
+        "message": "Nueva función: capítulos personalizados creados por la comunidad. Se trata de secciones con nombres personalizados que se pueden superponer en los vídeos para obtener una mayor precisión. Tienes acceso de forma gratuita, se activa en las opciones."
     },
     "unsubmittedSegmentCounts": {
         "message": "Actualmente tienes {0} en {1}",

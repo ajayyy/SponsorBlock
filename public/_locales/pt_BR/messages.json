@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Ícone de Fechar"
     },
-    "SubmitTimes": {
-        "message": "Enviar Segmentos"
-    },
     "sortSegments": {
         "message": "Organizar Segmentos"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
-    },
-    "submitTimesButton": {
-        "message": "Enviar Intervalos"
     },
     "publicStats": {
         "message": "Isso é usado na página pública de estatísticas que mostra o quanto você já contribuiu. Veja-a"
@@ -440,10 +434,6 @@
     },
     "supportOtherSites": {
         "message": "Suporte a Sites do YouTube de Terceiros"
-    },
-    "supportOtherSitesDescription": {
-        "message": "Suporte a clientes de terceiros do YouTube. Para habilitar o suporte, você deve aceitar as permissões extras. Isso NÃO funciona em incógnito no Chrome e outras variantes do Chromium.",
-        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Sites Suportados: "
@@ -1000,7 +990,7 @@
         "message": "Copiar e dar voto negativo"
     },
     "ContinueVoting": {
-        "message": "Continuar Votando"
+        "message": "Continuar votando"
     },
     "ChangeCategoryTooltip": {
         "message": "Isto irá aplicar instantaneamente seus segmentos"

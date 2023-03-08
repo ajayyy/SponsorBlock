@@ -128,9 +128,6 @@
     "closePopup": {
         "message": "Fechar Popup"
     },
-    "SubmitTimes": {
-        "message": "Submeter Segmentos"
-    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
@@ -167,9 +164,6 @@
     },
     "clearTimesButton": {
         "message": "Limpar Intervalos"
-    },
-    "submitTimesButton": {
-        "message": "Submeter Intervalos"
     },
     "publicStats": {
         "message": "Isto é usado na página pública de estatísticas que mostra o quanto já contríbuíu. Veje-a"
@@ -252,11 +246,17 @@
     "whatRefetchWhenNotFound": {
         "message": "Se o vídeo for novo e nenhum segmento for encontrado, continuaremos a monitorizar enquanto assiste."
     },
+    "whatShowCategoryWithoutPermission": {
+        "message": "Algumas categorias requerem permissão para submeter devido aos requisitos mínimos de reputação"
+    },
     "showNotice": {
         "message": "Mostrar notificação outra vez"
     },
     "showSkipNotice": {
         "message": "Mostrar aviso após um segmento ser ignorado"
+    },
+    "showCategoryGuidelines": {
+        "message": "Mostrar Categoria de Ajuda"
     },
     "noticeVisibilityMode0": {
         "message": "Avisos de ignorar em tamanho inteiro"
@@ -277,6 +277,10 @@
     },
     "setStartSponsorShortcut": {
         "message": "Iniciar/parar segmento",
+        "description": "Keybind label"
+    },
+    "setSubmitKeybind": {
+        "message": "Enviar segmentos",
         "description": "Keybind label"
     },
     "nextChapterKeybind": {
@@ -346,6 +350,10 @@
     },
     "createdBy": {
         "message": "Criado por"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Apoie clientes de terceiros do YouTube. Para ativar o suporte, deve aceitar as permissões adicionais.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Sites suportados: "

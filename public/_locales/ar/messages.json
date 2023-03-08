@@ -25,6 +25,9 @@
     "Segments": {
         "message": "أجزاء"
     },
+    "SegmentsCap": {
+        "message": "أجزاء من المقطع"
+    },
     "Chapters": {
         "message": "الفصول"
     },
@@ -115,8 +118,11 @@
     "closePopup": {
         "message": "إغلاق النافذة المنبثقة"
     },
-    "SubmitTimes": {
-        "message": "إرسال الأجزاء"
+    "closeIcon": {
+        "message": "أيقونة الإغلاق"
+    },
+    "sortSegments": {
+        "message": "ترتيب الأجزاء"
     },
     "submitCheck": {
         "message": "هل أنت متأكد أنك تريد إرسال هذا؟"
@@ -151,9 +157,6 @@
     },
     "clearTimesButton": {
         "message": "مسح الأوقات"
-    },
-    "submitTimesButton": {
-        "message": "إرسال الأوقات"
     },
     "publicStats": {
         "message": "يستخدم هذا في صفحة الإحصائيات العامة لإظهار مقدار مساهمتك. قم برؤيتها"
@@ -321,11 +324,23 @@
     "add": {
         "message": "أضِف"
     },
+    "showUploadButton": {
+        "message": "إظهار زر الرفع"
+    },
     "save": {
         "message": "حفظ"
     },
     "reset": {
         "message": "إعادة تعيين"
+    },
+    "areYouSureReset": {
+        "message": "هل أنت متيقِّن من رغبتك في إعادة تعيين هذا؟"
+    },
+    "mobileUpdateInfo": {
+        "message": "m.youtube.com مدعوم الآن"
+    },
+    "exportOptions": {
+        "message": "إستيراد/تصدير جميع الإعدادات"
     },
     "exportOptionsCopy": {
         "message": "تعديل/نسخ"
@@ -394,6 +409,9 @@
     "category_preview": {
         "message": "معاينة/خلاصة"
     },
+    "category_preview_guideline2": {
+        "message": "موجز الفيديو السابق"
+    },
     "category_filler_short": {
         "message": "حشو"
     },
@@ -405,6 +423,15 @@
     },
     "category_poi_highlight": {
         "message": "ابراز"
+    },
+    "category_poi_highlight_guideline3": {
+        "message": "يمكن التخطي إلى عنوان المقطع أو الصورة المصغرة"
+    },
+    "category_chapter": {
+        "message": "فصل"
+    },
+    "category_chapter_guideline1": {
+        "message": "لا تذكر أسماء العلامة التجارية الراعية"
     },
     "category_livestream_messages_short": {
         "message": "قراءة الرسالة"
@@ -462,6 +489,10 @@
     "bracketEnd": {
         "message": "(النهاية)"
     },
+    "End": {
+        "message": "النهاية",
+        "description": "Button that skips to the end of a segment"
+    },
     "hiddenDueToDownvote": {
         "message": "مخفي: تصويت سلبي"
     },
@@ -471,14 +502,30 @@
     "manuallyHidden": {
         "message": "مخفي يدوياً"
     },
+    "acceptPermission": {
+        "message": "قَبُول الإذن"
+    },
     "permissionRequestSuccess": {
         "message": "نجح طلب الإذن!"
     },
     "permissionRequestFailed": {
         "message": "فشل طلب الإذن ، هل نقرت على رفض؟"
     },
+    "adblockerIssueWhitelist": {
+        "message": "إذا كنت غير قادر على حل هذا، عطل إعداد \"فرض قناة التحقق قبل التخطي\"، لأن SponsorBlock غير قادر على استرداد معلومات القناة لهذا المقطع"
+    },
+    "forceChannelCheck": {
+        "message": "إجبار القناة على التحقق قبل التخطي"
+    },
     "downvoteDescription": {
         "message": "خاطئ/التوقيت غير صحيح"
+    },
+    "incorrectVote": {
+        "message": "غير صحيح"
+    },
+    "harmfulVote": {
+        "message": "ضار",
+        "description": "Used for chapter segments when the text is harmful/offensive to remove it faster"
     },
     "incorrectCategory": {
         "message": "تغيير الفئة"
@@ -533,6 +580,9 @@
     "helpPageReviewOptions": {
         "message": "يرجى مراجعة الخيارات أدناه"
     },
+    "helpPageFeatureDisclaimer": {
+        "message": "العديد من الميزات معطلة بشكل تلقائي. إذا كنت ترغب في تخطي المقدمة و الخاتمة و استخدام الدعوات و إلخ. يمكنك تمكين هذه الميزات بالأسفل. يمكنك أيضًا إخفاء و إظهار عناصر واجهة المستخدم."
+    },
     "helpPageHowSkippingWorks": {
         "message": "كيف يعمل التخطي"
     },
@@ -557,6 +607,9 @@
     "helpPageSourceCode": {
         "message": "أين يمكنني الحصول على شفرة المصدر؟"
     },
+    "Credits": {
+        "message": "المساهمون في العمل"
+    },
     "LearnMore": {
         "message": "معرفة المزيد"
     },
@@ -580,6 +633,9 @@
     },
     "hideSegment": {
         "message": "إخفاء المقطع"
+    },
+    "playChapter": {
+        "message": "شغل الفصل"
     },
     "SponsorTimeEditScrollNewFeature": {
         "message": "استخدم عجلة الماوس أثناء التمرير فوق مربع التعديل لضبط الوقت بسرعة. يمكن استخدام مجموعات مفتاح ctrl أو Shift لضبط التغييرات."
@@ -640,5 +696,55 @@
     },
     "confirmResetToDefault": {
         "message": "هل أنت متأكد من أنك تريد إعادة تعيين كافة الإعدادات إلى حالتها الافتراضية؟ لا يمكنك التراجع عن ذلك."
+    },
+    "Import": {
+        "message": "استورد",
+        "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
+    },
+    "chooseACountry": {
+        "message": "اختر البلد"
+    },
+    "noDiscount": {
+        "message": "أنت لست مؤهلاً للحصول على خصم"
+    },
+    "discountLink": {
+        "message": "رابط الخصم (انظر إلى السعر الوردي)"
+    },
+    "selectYourCountry": {
+        "message": "اختر بلدك"
+    },
+    "alreadyDonated": {
+        "message": "إذا تبرعت بأي مبلغ قبل الآن، يمكنك الحصول على إمكانية الوصول عبر التواصل مع البريد الإلكتروني:",
+        "description": "After the colon is an email address"
+    },
+    "patreonSignIn": {
+        "message": "سجل مع بيتريون (Patreon)"
+    },
+    "unsubmittedSegmentCounts": {
+        "message": "لديك حاليا {0} على {1}",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 videos"
+    },
+    "videosSingular": {
+        "message": "مقطع",
+        "description": "Example: You currently have 3 unsubmitted segments on 1 *video*"
+    },
+    "videosPlural": {
+        "message": "مقاطع",
+        "description": "Example: You currently have 12 unsubmitted segments on 5 *videos*"
+    },
+    "showUnsubmittedSegments": {
+        "message": "أظهر الأجزاء",
+        "description": "Show/hide button for the unsubmitted segments list"
+    },
+    "videoID": {
+        "message": "معرف المقطع",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "actions": {
+        "message": "قائمة الأوامر",
+        "description": "Header of the unsubmitted segments list"
+    },
+    "exportSegmentsAsURL": {
+        "message": "شارك كرابط"
     }
 }

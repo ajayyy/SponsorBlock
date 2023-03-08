@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Bezárás ikon"
     },
-    "SubmitTimes": {
-        "message": "Szegmensek beküldése"
+    "OpenSubmissionMenu": {
+        "message": "Beküldés menü megnyitása"
     },
     "sortSegments": {
         "message": "Szegmensek rendezése"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Időpontok törlése"
-    },
-    "submitTimesButton": {
-        "message": "Időpontok beküldése"
     },
     "publicStats": {
         "message": "Ez a nyilvános ranglistán használatos, ami mutatja, mennyit segítettél. Nézd meg"
@@ -442,7 +439,7 @@
         "message": "Harmadik fél Youtube oldalainak támogatása"
     },
     "supportOtherSitesDescription": {
-        "message": "Harmadik fél YouTube oldalainak támogatása. A támogatás bekapcsolásához el kell fogadnod az extra engedélyeket. NEM működik inkognitó módban Chrome-ban és egyéb Chromium változatokban.",
+        "message": "Harmadik fél YouTube klienseineik támogatása. A támogatáshoz el kell fogadni az extra engedélyeket.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

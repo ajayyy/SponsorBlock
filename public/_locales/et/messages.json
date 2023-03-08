@@ -36,7 +36,7 @@
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
-        "message": "Kuva Praegune Segment Video Kestvuse Kõrval"
+        "message": "Kuva praegune segment video aja kõrval"
     },
     "upvoteButtonInfo": {
         "message": "Anna segmendile poolthääl"
@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Sulgemisikoon"
     },
-    "SubmitTimes": {
-        "message": "Esita segmendid"
-    },
     "sortSegments": {
         "message": "Sorteeri segmendid"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Tühjenda ajad"
-    },
-    "submitTimesButton": {
-        "message": "Saada ajad"
     },
     "publicStats": {
         "message": "Seda kasutatakse avaliku statistika lehel, et näidata välja, kui palju oled panustanud. Vaata seda"
@@ -424,16 +418,16 @@
         "message": "Serveri oleku saamiseks vaata status.sponsor.ajay.app"
     },
     "changeUserID": {
-        "message": "Impordi/ekspordi oma isiklik UserID"
+        "message": "Impordi/ekspordi oma privaatne UserID"
     },
     "whatChangeUserID": {
         "message": "Seda tuleks privaatsena hoida. See on nagu parool ning seda ei tohiks kellegagi jagada. Kui kellelgi see on, saavad nad sinuna esineda.\nKui otsid avalikku UserID'd, klõpsa hüpikus olevat lõikelaua ikooni."
     },
     "setUserID": {
-        "message": "Muutke oma isiklik UserID"
+        "message": "Määra privaatne UserID"
     },
     "userIDChangeWarning": {
-        "message": "Tähelepanu: Isikliku UserID muutmine on lõplik. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
+        "message": "Tähelepanu: privaatse UserID muutmine on lõplik. Kas soovid kindlasti seda teha? Igaks juhuks soovitame eelmise UserID varundada."
     },
     "createdBy": {
         "message": "Autor"
@@ -442,7 +436,7 @@
         "message": "Toeta 3. osapoole YouTube-saite"
     },
     "supportOtherSitesDescription": {
-        "message": "Kolmanda osapoole YouTube'i klientide tugi. Selle toe lubamiseks pead nõustuma lisalubadega. See EI tööta inkognito-režiimis nii Chromes kui ka teistes Chromiumi brauserites.",
+        "message": "Kolmanda osapoole YouTube'i klientide tugi. Selle toe lubamiseks pead nõustuma lisalubadega.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -533,7 +527,7 @@
         "message": "Laadi failist"
     },
     "whatExportOptions": {
-        "message": "See on teie seadistusinformatsioon JSON-formaadis. See sisaldab teie isiklikku UserID-d, seega olge tähelepanelik, kellega seda jagate."
+        "message": "See on sinu terve seadistus JSON-formaadis. See sisaldab sinu privaatset UserID-d, seega ole tähelepanelik, kellega seda jagad."
     },
     "setOptions": {
         "message": "Määra valikud"

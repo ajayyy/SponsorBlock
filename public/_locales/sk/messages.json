@@ -131,9 +131,6 @@
     "closeIcon": {
         "message": "Ikona pre zatvorenie"
     },
-    "SubmitTimes": {
-        "message": "Odoslať segmenty"
-    },
     "sortSegments": {
         "message": "Triedenie segmentov"
     },
@@ -170,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "Vymazať časy"
-    },
-    "submitTimesButton": {
-        "message": "Odoslať časy"
     },
     "publicStats": {
         "message": "Toto sa používa vo verejnom rebríčku pre zobrazenie vášho príspevku. Pozrite si ho"
@@ -442,7 +436,7 @@
         "message": "Podpora alternatívnych Youtube webov"
     },
     "supportOtherSitesDescription": {
-        "message": "Podpora alternatívnych Youtube klientov. Pre zapnutie podpory musíte povoliť zvláštne oprávnenia. Nefunguje v anonymnom režime v prehliadači Chrome ani v Chromium variantoch.",
+        "message": "Podpora Youtube aplikácií tretích strán. Pre jej zapnutie musíte odsúhlasiť zvláštne oprávnenia.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

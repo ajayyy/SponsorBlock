@@ -112,9 +112,6 @@
     "closePopup": {
         "message": "Tanca la finestra"
     },
-    "SubmitTimes": {
-        "message": "Envia els segments"
-    },
     "submitCheck": {
         "message": "Segur que voleu enviar això?"
     },
@@ -148,9 +145,6 @@
     },
     "clearTimesButton": {
         "message": "Esborra temps"
-    },
-    "submitTimesButton": {
-        "message": "Envia temps"
     },
     "publicStats": {
         "message": "Això s'utilitza a la pàgina d'estadístiques pública per fatxendejar de quant heu contribuït. Vegeu"

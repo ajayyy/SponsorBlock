@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Symbol schließen"
     },
-    "SubmitTimes": {
-        "message": "Senden"
+    "OpenSubmissionMenu": {
+        "message": "Einreichungsmenü öffnen"
     },
     "sortSegments": {
         "message": "Segmente sortieren"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Zeiten löschen"
-    },
-    "submitTimesButton": {
-        "message": "Zeiten übermitteln"
     },
     "publicStats": {
         "message": "So wirst du in der öffentlichen Rangliste angezeigt. Siehe"
@@ -372,7 +369,7 @@
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} stummgeschalten",
+        "message": "{0} stummgeschaltet",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -442,7 +439,7 @@
         "message": "Unterstütze Drittanbieter YouTube-Seiten"
     },
     "supportOtherSitesDescription": {
-        "message": "Unterstütze Drittanbieter YouTube Clients. Zum unterstützen müssen zusätzlichliche Berechtigungen akzeptiert werden. Dies funktioniert NICHT im Incognitomodus auf Chrome oder anderen Chromium Varianten.",
+        "message": "Unterstütze YouTube-Clients von Drittanbietern. Um die Unterstützung zu aktivieren, müssen Sie die zusätzlichen Berechtigungen akzeptieren.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {

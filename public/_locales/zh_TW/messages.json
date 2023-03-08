@@ -35,6 +35,9 @@
         "message": "以章節渲染片段",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
+    "showSegmentNameInChapterBar": {
+        "message": "在影片時間旁顯示目前片段"
+    },
     "upvoteButtonInfo": {
         "message": "為這個提交按讚"
     },
@@ -113,6 +116,9 @@
     "connectionError": {
         "message": "已發生連線錯誤。錯誤碼： "
     },
+    "segmentsStillLoading": {
+        "message": "片段還在載入..."
+    },
     "clearTimes": {
         "message": "清除片段"
     },
@@ -122,8 +128,8 @@
     "closePopup": {
         "message": "關閉彈出視窗"
     },
-    "SubmitTimes": {
-        "message": "提交分段"
+    "closeIcon": {
+        "message": "關閉圖示"
     },
     "sortSegments": {
         "message": "排序片段"
@@ -161,9 +167,6 @@
     },
     "clearTimesButton": {
         "message": "清除時間"
-    },
-    "submitTimesButton": {
-        "message": "提交時間"
     },
     "publicStats": {
         "message": "這會被公開的統計頁面來展示您的貢獻。查看它"
@@ -408,8 +411,17 @@
     "statusReminder": {
         "message": "在 status.sponsor.ajay.app 檢查伺服器狀態"
     },
+    "changeUserID": {
+        "message": "匯入/匯出您的密鑰 ID"
+    },
     "whatChangeUserID": {
         "message": "密鑰應被保密。它就像是密碼，不應與他人分享。若密鑰落入他人手中，他人將可以冒充你。若你在尋找你的公開使用者ID，點擊彈出視窗上的剪貼簿圖示"
+    },
+    "setUserID": {
+        "message": "設定密鑰 ID"
+    },
+    "userIDChangeWarning": {
+        "message": "警告：更改用戶 ID 是永久性的。您確定要這麼做嗎？請務必備份您的舊用戶 ID 來以防萬一。"
     },
     "createdBy": {
         "message": "作者"
@@ -507,6 +519,9 @@
     },
     "exportOptionsUpload": {
         "message": "從檔案載入"
+    },
+    "whatExportOptions": {
+        "message": "這是您全部設定的 JSON 格式。它包含了您的密鑰 ID ，所以您一定要謹慎的保管它。"
     },
     "setOptions": {
         "message": "設定選項"
@@ -833,7 +848,7 @@
         "message": "未偵測到頻道ID，如果您正在使用嵌入式YouTube播放器，請移至YouTube網站上觀看本影片。此問題亦有可能是由於YouTube改變了系統架構，如果你認為這是造成此問題的原因，請留言告訴我們："
     },
     "invidiousPermissionRefresh": {
-        "message": "瀏覽器已收回存取第三方網頁 (例如 Invidious) 的權限，請點擊下方按鈕以重新給予此權限。"
+        "message": "瀏覽器已撤銷在 Invidious 和其他第三方網站上運行所需的權限。請點擊下方按鈕以重新給予此權限。"
     },
     "acceptPermission": {
         "message": "允許權限"
@@ -1022,6 +1037,12 @@
     "hideSegment": {
         "message": "隱藏片段"
     },
+    "skipSegment": {
+        "message": "略過片段"
+    },
+    "playChapter": {
+        "message": "播放章節"
+    },
     "SponsorTimeEditScrollNewFeature": {
         "message": "在滑鼠鼠標放在編輯框上時使用滾輪以快速調製時間。Ctrl和Shift可以用於精密調整"
     },
@@ -1088,6 +1109,9 @@
     "exportSegments": {
         "message": "匯出片段"
     },
+    "importSegments": {
+        "message": "匯入片段"
+    },
     "Import": {
         "message": "匯入",
         "description": "Button to initiate importing segments. Appears under the textbox where they paste in the data"
@@ -1108,13 +1132,13 @@
         "message": "你不能使用優惠"
     },
     "discountLink": {
-        "message": "優惠連結 (看粉色的價格)"
+        "message": "優惠連結（看粉色的價格）"
     },
     "selectYourCountry": {
         "message": "選擇國家"
     },
     "alreadyDonated": {
-        "message": "如果你在之前捐獻過 (任何金額)，你可以發送電子郵件到以下地址以獲得免費存取權：",
+        "message": "如果你在之前捐獻過任何金額，你可以發送電子郵件到以下地址以獲得免費存取權：",
         "description": "After the colon is an email address"
     },
     "cantAfford": {
@@ -1180,7 +1204,7 @@
         "description": "Show/hide button for the unsubmitted segments list"
     },
     "videoID": {
-        "message": "影片ID",
+        "message": "影片 ID",
         "description": "Header of the unsubmitted segments list"
     },
     "segmentCount": {
@@ -1193,5 +1217,8 @@
     },
     "exportSegmentsAsURL": {
         "message": "分享連結"
+    },
+    "allowScrollingToEdit": {
+        "message": "允許在編輯時滾動"
     }
 }

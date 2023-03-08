@@ -131,8 +131,8 @@
     "closeIcon": {
         "message": "Stäng ikon"
     },
-    "SubmitTimes": {
-        "message": "Skicka in segment"
+    "OpenSubmissionMenu": {
+        "message": "Öppna inlämningsmenyn"
     },
     "sortSegments": {
         "message": "Sortera segment"
@@ -170,9 +170,6 @@
     },
     "clearTimesButton": {
         "message": "Rensa tider"
-    },
-    "submitTimesButton": {
-        "message": "Skicka in tider"
     },
     "publicStats": {
         "message": "Detta används på den offentliga statistiksidan för att visa hur mycket du har bidragit. Ta en titt"
@@ -442,7 +439,7 @@
         "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
     "supportOtherSitesDescription": {
-        "message": "Stöd tredjeparts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna. Detta fungerar INTE i inkognito på Chrome och andra Chromium-varianter.",
+        "message": "Stöd tredjeparts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
