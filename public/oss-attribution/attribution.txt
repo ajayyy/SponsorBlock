@@ -1,5 +1,5 @@
 @ajayyy/maze-utils
-1.1.0 <https://github.com/ajayyy/SponsorBlock>
+1.1.7 <https://github.com/ajayyy/SponsorBlock>
                    GNU LESSER GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
