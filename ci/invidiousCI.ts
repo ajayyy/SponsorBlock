@@ -16,10 +16,10 @@ if (!existsSync(join(__dirname, "data.json"))) {
 import * as data from "../ci/data.json";
 
 type instanceMap = {
-  name: string,
-  url: string,
-  dailyRatios: {ratio: string, label: string }[],
-  thirtyDayUptime: string
+  name: string;
+  url: string;
+  dailyRatios: {ratio: string; label: string }[];
+  thirtyDayUptime: string;
 }[]
 
 // only https servers
