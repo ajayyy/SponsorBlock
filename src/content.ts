@@ -43,11 +43,16 @@ import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
+import { setThumbnailListener, updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
+import { labelThumbnails, setupThumbnailPageLoadListener } from "./utils/thumbnails";
 
 const utils = new Utils();
 
-// Hack to get the CSS loaded on permission-based sites (Invidious)
-utils.wait(() => Config.isReady(), 5000, 10).then(addCSS);
+utils.wait(() => Config.isReady(), 5000, 10).then(() => {
+    // Hack to get the CSS loaded on permission-based sites (Invidious)
+    addCSS();
+    setCategoryColorCSSVariables();
+});
 
 const skipBuffer = 0.003;
 
@@ -108,6 +113,8 @@ setupVideoModule({
     },
     resetValues
 }, () => Config);
+setThumbnailListener(labelThumbnails);
+setupThumbnailPageLoadListener();
 
 //the video id of the last preview bar update
 let lastPreviewBarUpdate: VideoID;
@@ -331,6 +338,12 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 break;
             case "categorySelections":
                 sponsorsLookup();
+                break;
+            case "barTypes":
+                setCategoryColorCSSVariables();
+                break;
+            case "fullVideoSegments":
+                updateAll();
                 break;
         }
     }
@@ -2466,4 +2479,25 @@ function checkForPreloadedSegment() {
         Config.config.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
         Config.forceSyncUpdate("unsubmittedSegments");
     }
+}
+
+// Generate and inject a stylesheet that creates CSS variables with configured category colors
+function setCategoryColorCSSVariables() {
+    let styleContainer = document.getElementById("sbCategoryColorStyle");
+    if (!styleContainer) {
+        styleContainer = document.createElement("style");
+        styleContainer.id = "sbCategoryColorStyle";
+        document.head.appendChild(styleContainer)
+    }
+
+    let css = ":root {"
+    for (const [category, config] of Object.entries(Config.config.barTypes)) {
+        css += `--sb-category-${category}: ${config.color};`;
+
+        const luminance = GenericUtils.getLuminance(config.color);
+        css += `--sb-category-text-${category}: ${luminance > 128 ? "black" : "white"};`;
+    }
+    css += "}";
+
+    styleContainer.innerText = css;
 }
