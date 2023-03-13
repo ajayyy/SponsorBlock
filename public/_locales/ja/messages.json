@@ -435,6 +435,10 @@
     "supportOtherSites": {
         "message": "第三者製のYouTube関連サイトに対応"
     },
+    "supportOtherSitesDescription": {
+        "message": "第三者が作成した YouTube クライアントに対応します。対応を有効化するには、追加の権限に承諾する必要があります。",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
+    },
     "supportedSites": {
         "message": "対応サイト: "
     },
