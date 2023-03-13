@@ -32,7 +32,7 @@
         "message": "チャプター"
     },
     "renderAsChapters": {
-        "message": "セグメントをチャプターとしてレンダリングする",
+        "message": "セグメントをチャプターとして描画する",
         "description": "Refers to drawing segments on the YouTube seek bar as split up chapters, similar to the existing chapter system"
     },
     "showSegmentNameInChapterBar": {
@@ -135,7 +135,7 @@
         "message": "セグメントを並び替え"
     },
     "submitCheck": {
-        "message": "本当に提出してよろしいですか？"
+        "message": "提出しますか？"
     },
     "whitelistChannel": {
         "message": "チャンネルをホワイトリストに追加"
@@ -296,7 +296,7 @@
         "description": "The first line of the message displayed after the notice was upgraded."
     },
     "noticeUpdate2": {
-        "message": "もしそれでも気に入らない場合は、再度表示しないボタンをクリックしてください。",
+        "message": "それでも気に入らない場合、「再び表示しない」ボタンを押してください。",
         "description": "The second line of the message displayed after the notice was upgraded."
     },
     "setSkipShortcut": {
@@ -476,7 +476,7 @@
         "message": "動画全体のラベルが存在する場合は手動スキップを使用する"
     },
     "whatManualSkipOnFullVideo": {
-        "message": "動画全体がスポンサー付きまたはセルフプロモーションである場合に、動画を邪魔されずに観たい方向け。"
+        "message": "動画全体がスポンサー付きまたは自己宣伝の時に、動画を途切れなく観たい方向け。"
     },
     "skipNoticeDuration": {
         "message": "スキップ通知の表示時間（秒）:"
@@ -527,7 +527,7 @@
         "message": "ファイルから読み込み"
     },
     "whatExportOptions": {
-        "message": "これがJSON形式の設定項目全体になります。これにはあなたのプライベートユーザーIDが含まれているので、共有するときは注意してください。"
+        "message": "これがJSON形式の設定項目全体になります。これにはあなたの非公開のユーザーIDが含まれているので、共有するときは注意してください。"
     },
     "setOptions": {
         "message": "オプション設定"
@@ -629,7 +629,7 @@
         "description": "Short description for this category"
     },
     "category_exclusive_access_guideline1": {
-        "message": "動画全体が無料または補助金を受けてアクセスしたものを紹介するものである"
+        "message": "動画全体が無料または補助金を受けてアクセスしたものを紹介している"
     },
     "category_interaction": {
         "message": "行動を促すメッセージ(チャンネル登録)"
@@ -659,10 +659,10 @@
         "message": "インターミッション"
     },
     "category_intro_guideline1": {
-        "message": "実際のコンテンツを含まないインターバル"
+        "message": "実際のコンテンツではない間の部分"
     },
     "category_intro_guideline2": {
-        "message": "情報を含むトランジションには使用しない"
+        "message": "情報を含む場面転換には使用しない"
     },
     "category_outro": {
         "message": "エンドカード/クレジット"
@@ -743,7 +743,7 @@
         "message": "動画の主要なセクションを説明するカスタムのチャプター名"
     },
     "category_chapter_guideline1": {
-        "message": "スポンサーのブランド名には言及しない"
+        "message": "広告主のブランド名には言及しない"
     },
     "category_chapter_guideline2": {
         "message": "全般的なセクションには大きなチャプターを使用する"
@@ -831,7 +831,7 @@
         "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
     },
     "poiOnlyOneSegment": {
-        "message": "警告: このタイプのセグメントは一度に最大一つだけ有効にすることができます。複数送信するとランダムなものが表示されます。"
+        "message": "警告: この種類のセグメントは一度に最大一つだけ有効にすることができます。複数送信するとランダムなものが表示されます。"
     },
     "youMustSelectACategory": {
         "message": "送信するすべてのセグメントにカテゴリを選択する必要があります！"
@@ -920,7 +920,7 @@
         "description": "Used as the button to dismiss a tooltip"
     },
     "fullVideoTooltipWarning": {
-        "message": "このセグメントは大きすぎます。動画全体が一つのトピックに当てはまる場合は「スキップ」を「動画全体」に変更してください。詳細はガイドラインを参照してください。"
+        "message": "このセグメントは大きすぎます。動画全体が一つの話題に言及しているなら「スキップ」を「動画全体」に変更してください。詳細はガイドラインを参照してください。"
     },
     "categoryPillTitleText": {
         "message": "この動画は全体がこのカテゴリーとして指定されており、密に結合されているため分割することができません"
@@ -1059,7 +1059,7 @@
         "message": "編集ボックスにカーソルを合わせながらマウスホイールを使用すると、時間をすばやく調整できます。 CtrlキーまたはShiftキーの組み合わせを使用して変更を微調整できます。"
     },
     "categoryPillNewFeature": {
-        "message": "新機能！動画全体がスポンサー付きもしくはセルフプロモーションかがわかります"
+        "message": "新機能！動画全体がスポンサー付きもしくは自己宣伝かがわかります"
     },
     "dayAbbreviation": {
         "message": "日",
