@@ -262,7 +262,7 @@
         "message": "Afficher la notification"
     },
     "showSkipNotice": {
-        "message": "Notifier après qu'un segment ait été sauté"
+        "message": "Notifier après qu'un segment a été sauté"
     },
     "showCategoryGuidelines": {
         "message": "Affiche l'aide de la catégorie"
