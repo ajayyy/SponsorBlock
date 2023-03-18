@@ -797,6 +797,10 @@
         "message": "동영상 전체가 광고인 경우 아이콘 표시",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "동영상 미리 보기 사진에도 라벨 표시",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "미제출 색상",
         "description": "Referring to submissions that have not been sent to the server yet."
