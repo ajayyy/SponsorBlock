@@ -2,7 +2,7 @@ import * as CompileConfig from "../config.json";
 
 import Config from "./config";
 import { Registration } from "./types";
-import registerContentScript from 'content-scripts-register-polyfill/ponyfill.js';
+import "content-scripts-register-polyfill";
 import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@ajayyy/maze-utils/lib/background-request-proxy";
 import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
@@ -132,7 +132,7 @@ function registerFirefoxContentScript(options: Registration) {
     const oldRegistration = contentScriptRegistrations[options.id];
     if (oldRegistration) oldRegistration.unregister();
 
-    registerContentScript({
+    chrome.contentScripts.register({
         allFrames: options.allFrames,
         js: options.js,
         css: options.css,

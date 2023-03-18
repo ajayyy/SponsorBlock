@@ -24,7 +24,7 @@ jobs:
           mv ./oss-attribution/attribution.txt ./public/oss-attribution/attribution.txt
       - name: Prettify attributions
         run: |
-          cd ci && ts-node prettify.ts
+          cd ci && npx ts-node prettify.ts
 
       - name: Create pull request to update list
         uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04
