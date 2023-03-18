@@ -797,6 +797,10 @@
         "message": "Показване на икона, когато видеоклипът е изцяло реклама",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Показване на етикети на миниатюрите на видеоклиповете",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Цвят на неизпратен сегмент",
         "description": "Referring to submissions that have not been sent to the server yet."
