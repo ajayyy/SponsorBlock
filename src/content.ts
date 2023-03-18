@@ -45,6 +45,7 @@ import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 import { setThumbnailListener, updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
 import { labelThumbnails, setupThumbnailPageLoadListener } from "./utils/thumbnails";
+import * as documentScript from "../dist/js/document.js";
 
 const utils = new Utils();
 
@@ -111,7 +112,8 @@ setupVideoModule({
         updatePreviewBar();
         updateVisibilityOfPlayerControlsButton();
     },
-    resetValues
+    resetValues,
+    documentScript
 }, () => Config);
 setThumbnailListener(labelThumbnails);
 setupThumbnailPageLoadListener();
