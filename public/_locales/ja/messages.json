@@ -530,7 +530,7 @@
         "message": "ファイルから読み込み"
     },
     "whatExportOptions": {
-        "message": "これがJSON形式の設定項目全体になります。これにはあなたの非公開のユーザーIDが含まれているので、共有するときは注意してください。"
+        "message": "これがJSON形式の設定項目全体になります。これにはあなたのプライベートユーザーIDが含まれているので、共有するときは注意してください。"
     },
     "setOptions": {
         "message": "オプションを設定"
@@ -796,6 +796,10 @@
     "fullVideoSegments": {
         "message": "動画全体が広告の場合にアイコンを表示",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "動画のサムネイル上にもラベルを表示",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
         "message": "未確定の色",
