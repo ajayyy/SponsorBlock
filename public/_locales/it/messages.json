@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Icona Chiudi"
     },
+    "OpenSubmissionMenu": {
+        "message": "Apri Menu Invio"
+    },
     "sortSegments": {
         "message": "Ordina Segmenti"
     },
@@ -793,6 +796,10 @@
     "fullVideoSegments": {
         "message": "Mostra un'icona quando un video è interamente promozionale",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Mostra le etichette anche sulle copertine dei video",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
         "message": "Segmento non inviato",
