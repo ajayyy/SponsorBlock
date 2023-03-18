@@ -797,6 +797,10 @@
         "message": "Afficher une icône lorsqu'une vidéo est entièrement promotionnelle",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Afficher également les étiquettes sur les vignettes de la vidéo",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Couleur non soumise",
         "description": "Referring to submissions that have not been sent to the server yet."
