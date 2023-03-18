@@ -1,8 +1,5 @@
 {
   "optional_permissions": [
     "declarativeContent"
-  ],
-  "background": {
-    "persistent": false
-  }
+  ]
 }
