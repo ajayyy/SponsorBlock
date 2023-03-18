@@ -797,6 +797,10 @@
         "message": "Visa en ikon när hela videon är en annons",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Visa även etiketter på videominiatyrbilder",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Färg på oinskickade",
         "description": "Referring to submissions that have not been sent to the server yet."
