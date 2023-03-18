@@ -115,28 +115,15 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
     }
 
     private getColor(): string {
-        const configObject = Config.config.barTypes["preview-" + this.state.segment?.category] 
-            || Config.config.barTypes[this.state.segment?.category];
-        return configObject?.color;
+        // Handled by setCategoryColorCSSVariables() of content.ts
+        const category = this.state.segment?.category;
+        return `var(--sb-category-preview-${category}, var(--sb-category-${category}))`;
     }
 
     private getTextColor(): string {
-        const color = this.getColor();
-        if (!color) return null;
-
-        const existingCalculatedColor = Config.config.categoryPillColors[this.state.segment?.category];
-        if (existingCalculatedColor && existingCalculatedColor.lastColor === color) {
-            return existingCalculatedColor.textColor;
-        } else {
-            const luminance = GenericUtils.getLuminance(color);
-            const textColor = luminance > 128 ? "black" : "white";
-            Config.config.categoryPillColors[this.state.segment?.category] = {
-                lastColor: color,
-                textColor
-            };
-
-            return textColor;
-        }
+        // Handled by setCategoryColorCSSVariables() of content.ts
+        const category = this.state.segment?.category;
+        return `var(--sb-category-text-preview-${category}, var(--sb-category-text-${category}))`;
     }
 
     private openTooltip(): void {

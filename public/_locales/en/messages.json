@@ -797,6 +797,10 @@
         "message": "Show an icon when a video is entirely an advertisement",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Show labels on video thumbnails as well",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Unsubmitted Color",
         "description": "Referring to submissions that have not been sent to the server yet."

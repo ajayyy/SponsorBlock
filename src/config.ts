@@ -27,6 +27,7 @@ interface SBConfig {
     disableSkipping: boolean;
     muteSegments: boolean;
     fullVideoSegments: boolean;
+    fullVideoLabelsOnThumbnails: boolean;
     manualSkipOnFullVideo: boolean;
     trackViewCount: boolean;
     trackViewCountInPrivate: boolean;
@@ -258,6 +259,7 @@ const syncDefaults = {
     disableSkipping: false,
     muteSegments: true,
     fullVideoSegments: true,
+    fullVideoLabelsOnThumbnails: true,
     manualSkipOnFullVideo: false,
     trackViewCount: true,
     trackViewCountInPrivate: true,
