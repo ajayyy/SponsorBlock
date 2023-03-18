@@ -815,7 +815,7 @@ input::-webkit-inner-spin-button {
 	border-radius: 2em;
 	z-index: 1000;
 	background-color: var(--category-color, #000);
-	opacity: 70%;
+	opacity: 0.7;
 	box-shadow: 0 0 8px 2px #333;
 }
 
@@ -837,6 +837,7 @@ input::-webkit-inner-spin-button {
 
 .sponsorThumbnailLabel:hover {
 	border-radius: 0.25em;
+	opacity: 1;
 }
 
 .sponsorThumbnailLabel:hover span {
