@@ -78,7 +78,7 @@
 					</div>
 				</div>
 				
-				<div data-type="toggle" data-sync="fullVideoSegments">
+				<div data-type="toggle" data-sync="fullVideoSegments" class="no-bottom-border">
 					<div class="switch-container">
 						<label class="switch">
 							<input id="fullVideoSegments" type="checkbox" checked>
@@ -86,6 +86,19 @@
 						</label>
 						<label class="switch-label" for="fullVideoSegments">
 							__MSG_fullVideoSegments__
+						</label>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-sync="fullVideoLabelsOnThumbnails" 
+						data-dependent-on="fullVideoSegments">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="fullVideoLabelsOnThumbnails" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="fullVideoLabelsOnThumbnails">
+							__MSG_fullVideoLabelsOnThumbnails__
 						</label>
 					</div>
 				</div>

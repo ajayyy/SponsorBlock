@@ -697,3 +697,8 @@ svg {
     cursor: pointer;
     vertical-align: middle;
 }
+
+.no-bottom-border {
+    border: none !important;
+    padding: 20px 0px 0px 0px !important;
+}

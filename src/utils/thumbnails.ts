@@ -9,7 +9,7 @@ export async function labelThumbnails(thumbnails: HTMLImageElement[]): Promise<v
 }
 
 export async function labelThumbnail(thumbnail: HTMLImageElement): Promise<HTMLElement | null> {
-    if (!Config.config?.fullVideoSegments) {
+    if (!Config.config?.fullVideoSegments || !Config.config?.fullVideoLabelsOnThumbnails) {
         hideThumbnailLabel(thumbnail);
         return null;
     }

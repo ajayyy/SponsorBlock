@@ -345,6 +345,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 setCategoryColorCSSVariables();
                 break;
             case "fullVideoSegments":
+            case "fullVideoLabelsOnThumbnails":
                 updateAll();
                 break;
         }
