@@ -794,6 +794,10 @@
         "message": "Mostrar un icono cuando un video es enteramente un anuncio",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Mostrar también etiquetas en miniaturas de vídeo",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Color No Enviado",
         "description": "Referring to submissions that have not been sent to the server yet."
