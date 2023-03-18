@@ -15,7 +15,6 @@ export default class Utils {
 
     // Used to add content scripts and CSS required
     js = [
-        "./js/vendor.js",
         "./js/content.js"
     ];
     css = [

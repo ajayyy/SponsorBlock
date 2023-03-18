@@ -13,7 +13,6 @@
         ],
         "all_frames": true,
         "js": [
-            "./js/vendor.js",
             "./js/content.js"
         ],
         "css": [
@@ -121,7 +120,6 @@
     }, 
     "background": {
         "scripts":[
-        "./js/vendor.js",
         "./js/background.js"
         ]
     },
