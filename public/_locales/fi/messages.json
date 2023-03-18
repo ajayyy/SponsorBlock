@@ -797,6 +797,10 @@
         "message": "Näytä kuvake, kun video on kokonaan mainos",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Näytä tunnisteet myös videoiden pienoiskuvissa",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Lähettämättömien väri",
         "description": "Referring to submissions that have not been sent to the server yet."
