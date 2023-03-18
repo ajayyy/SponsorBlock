@@ -60,6 +60,15 @@ function createOrGetThumbnail(thumbnail: HTMLImageElement): { overlay: HTMLEleme
 
     const overlay = document.createElement("div") as HTMLElement;
     overlay.classList.add("sponsorThumbnailLabel");
+    // Disable hover autoplay
+    overlay.addEventListener("pointerenter", (e) => {
+        e.stopPropagation();
+        thumbnail.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true }));
+    });
+    overlay.addEventListener("pointerleave", (e) => {
+        e.stopPropagation();
+        thumbnail.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true }));
+    });
 
     const icon = createSBIconElement();
     const text = document.createElement("span");
