@@ -114,7 +114,7 @@ export function setupThumbnailPageLoadListener(): void {
         insertSBIconDefinition();
 
         // Label thumbnails on load if on Invidious (wait for variable initialization before checking)
-        waitFor(() => isOnInvidious() !== undefined).then(() => {
+        waitFor(() => isOnInvidious() !== null).then(() => {
             if (isOnInvidious()) newThumbnails();
         });
     };
