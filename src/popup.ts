@@ -25,7 +25,6 @@ import { shortCategoryName } from "./utils/categoryUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
-import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { getHash } from "@ajayyy/maze-utils/lib/hash";
@@ -282,7 +281,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
-    if (!Config.config.payments.freeAccess && !noRefreshFetchingChaptersAllowed()) values.push("freeChaptersAccess");
 
     utils.asyncRequestToServer("GET", "/api/userInfo", {
         publicUserID: await getHash(Config.config.userID),
@@ -317,13 +315,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             Config.config.isVip = userInfo.vip;
             Config.config.permissions = userInfo.permissions;
-
-            if (userInfo.freeChaptersAccess) {
-                Config.config.payments.chaptersAllowed = userInfo.freeChaptersAccess;
-                Config.config.payments.freeAccess = userInfo.freeChaptersAccess;
-                Config.config.payments.lastCheck = Date.now();
-                Config.forceSyncUpdate("payments");
-            }
         }
     });
 

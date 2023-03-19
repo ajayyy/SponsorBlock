@@ -1156,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Select your country"
     },
-    "alreadyDonated": {
-        "message": "If you've donated any amount before now, you may redeem free access by emailing:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "If you can't afford to purchase a license, click {here} to see if you are eligible for a discount",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1178,17 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Enter License Key"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock crowd-sourced chapters feature is only available to people who purchase a license, or for people who are granted access for free due their past contributions"
-    },
-    "chaptersPage2": {
-        "message": "Note: Permission to submit chapters is still based on calculated reputation. Purchasing a license only allows you to view chapters submitted by others",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "New Feature: Crowd-sourced custom chapters. These are custom-named sections in videos that can be stacked to get more and more precise. Purchase a license to view the chapters submitted on this video such as: ",
-        "description": "After the comma, a list of chapters for this video will appear"
     },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",

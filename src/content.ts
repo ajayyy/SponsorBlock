@@ -34,8 +34,6 @@ import { logDebug } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
-import { Tooltip } from "./render/Tooltip";
-import { noRefreshFetchingChaptersAllowed } from "./utils/licenseKey";
 import { waitFor } from "@ajayyy/maze-utils";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { setupVideoMutationListener, getChannelIDInfo, getVideo, refreshVideoAttachments, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
@@ -1002,14 +1000,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
     setupVideoMutationListener();
 
-    const showChapterMessage = Config.config.showUpsells
-        && Config.config.payments.lastCheck !== 0
-        && !noRefreshFetchingChaptersAllowed()
-        && Config.config.showChapterInfoMessage
-        && Config.config.skipCount > 200;
-
     const categories: string[] = Config.config.categorySelections.map((category) => category.name);
-    if (showChapterMessage && !categories.includes("chapter")) categories.push("chapter");
 
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
@@ -1018,7 +1009,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const hashPrefix = (await getHash(getVideoID(), 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await utils.asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
-        actionTypes: getEnabledActionTypes(showChapterMessage),
+        actionTypes: getEnabledActionTypes(),
         userAgent: `${chrome.runtime.id}`,
         ...extraRequestData
     });
@@ -1027,7 +1018,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     lastResponseStatus = response?.status;
 
     if (response?.ok) {
-        let recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
+        const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === getVideoID())
                     ?.map((video) => video.segments)?.[0]
                     ?.map((segment) => ({
@@ -1036,27 +1027,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                     }))
                     ?.sort((a, b) => a.segment[0] - b.segment[0]);
         if (recievedSegments && recievedSegments.length) {
-            if (showChapterMessage) {
-                const chapterSegments = recievedSegments.filter((s) => s.actionType === ActionType.Chapter);
-                if (chapterSegments.length > 3) {
-                    const prependElement = document.querySelector(".ytp-chrome-bottom") as HTMLElement;
-                    if (prependElement) {
-                        Config.config.showChapterInfoMessage = false;
-                        new Tooltip({
-                            text: `🟨${chrome.i18n.getMessage("chapterNewFeature")}${chapterSegments.slice(0, 3).map((s) => s.description).join(", ")}`,
-                            linkOnClick: () => void chrome.runtime.sendMessage({ "message": "openUpsell" }),
-                            referenceNode: prependElement.parentElement,
-                            prependElement,
-                            timeout: 1500,
-                            leftOffset: "20px",
-                            positionRealtive: false
-                        });
-                    }
-                }
-    
-                recievedSegments = recievedSegments.filter((s) => s.actionType !== ActionType.Chapter);
-            }
-    
             sponsorDataFound = true;
     
             // Check if any old submissions should be kept

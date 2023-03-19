@@ -6,7 +6,6 @@ import Utils from "../utils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
-import { noRefreshFetchingChaptersAllowed } from "../utils/licenseKey";
 import { DEFAULT_CATEGORY } from "../utils/categoryUtils";
 import { getFormattedTime, getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
 
@@ -420,7 +419,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             // If permission not loaded, treat it like we have permission except chapter
             const defaultBlockCategories = ["chapter"];
             const permission = (Config.config.showCategoryWithoutPermission
-                || Config.config.permissions[category as Category]) && (category !== "chapter" || noRefreshFetchingChaptersAllowed());
+                || Config.config.permissions[category as Category]);
             if ((defaultBlockCategories.includes(category) 
                 || (permission !== undefined && !Config.config.showCategoryWithoutPermission)) && !permission) continue;
 
