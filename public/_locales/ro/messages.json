@@ -1145,10 +1145,6 @@
     "selectYourCountry": {
         "message": "Selectaţi ţara"
     },
-    "alreadyDonated": {
-        "message": "Dacă ai donat orice sumă înainte, poți revendica acces gratuit prin e-mail:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Dacă nu vă puteți permite să achiziționați o licență, faceți clic pe {aici} pentru a vedea dacă sunteți eligibil pentru o reducere",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1167,20 +1163,6 @@
     },
     "enterLicenseKey": {
         "message": "Introdu cheia de licență"
-    },
-    "chaptersPage1": {
-        "message": "Funcția SponsorBlock crowd-sourted capitol este disponibilă doar pentru persoanele care achiziționează o licență, fie persoanelor cărora li se acordă acces gratuit la contribuţiile lor anterioare"
-    },
-    "chaptersPage2": {
-        "message": "Notă: Permisiunea de a trimite capitole este încă bazată pe reputația calculată. Achiziționarea unei licențe vă permite doar să vizualizați capitolele prezentate de alții",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Funcție nouă: Capitole personalizate din surse colective. Acestea sunt secțiuni personalizate în videoclipuri care pot fi stivuite pentru a deveni din ce în ce mai precise. Cumpără o licență pentru a vizualiza capitolele trimise pe acest videoclip, cum ar fi: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Funcție nouă: Capitole personalizate din surse colective. Acestea sunt secțiuni personalizate în videoclipuri care pot fi stivuite pentru a deveni din ce în ce mai precise. Ai acces gratuit, activeaz-o in opțiuni."
     },
     "unsubmittedSegmentCounts": {
         "message": "Ai în prezent {0} pe {1}",
