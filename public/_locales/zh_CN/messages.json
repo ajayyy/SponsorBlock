@@ -797,6 +797,10 @@
         "message": "当整个视频都是广告时显示图标",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "在视频缩略图上也显示标签",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "未提交颜色",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "选择所在国家/地区"
     },
-    "alreadyDonated": {
-        "message": "如果您以前曾捐赠过任何金额，您可以通过电子邮件联系以获得使用权限：",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "如果您无法负担得起许可证的价格，请点击 {here} 查看您是否有资格获得折扣",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "输入注册码"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock 的众包章节功能仅供付费或贡献突出的用户使用"
-    },
-    "chaptersPage2": {
-        "message": "注意：提交章节的权限仍然基于信誉积分。购买许可证只允许您查看他人提交的章节",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "新功能：众包自定义章节。这些视频中自定义命名的部分可以叠加并获得更精确的信息。购买许可证以查看此视频的章节，例如：",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "新功能：众包自定义章节。这些视频中自定义命名的部分可以叠加并获得更精确的信息。您有免费使用权限，请在选项中开启。"
     },
     "unsubmittedSegmentCounts": {
         "message": "您在 {1} 中有 {0}",
