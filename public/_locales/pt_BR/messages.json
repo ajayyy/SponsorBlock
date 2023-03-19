@@ -797,6 +797,10 @@
         "message": "Mostrar um ícone quando um vídeo é inteiramente um anúncio",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Mostrar rótulos nas miniaturas de vídeo também",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Cor não enviada",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Selecione o seu país"
     },
-    "alreadyDonated": {
-        "message": "Se você já doou qualquer quantia antes, pode resgatar o acesso gratuito enviando um e-mail para:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Se você não puder comprar uma licença, clique {aqui} para ver se você tem direito a um desconto",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Inserir chave de licença"
-    },
-    "chaptersPage1": {
-        "message": "O recurso de capítulos de colaboração coletiva do SponsorBlock está disponível apenas para pessoas que compram uma licença ou para pessoas que recebem acesso gratuito devido a suas contribuições anteriores"
-    },
-    "chaptersPage2": {
-        "message": "Nota: A permissão para enviar capítulos ainda é baseada na reputação calculada. A compra de uma licença permite apenas ver os capítulos enviados por outras pessoas",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Novo recurso: Capítulos personalizados de colaboração coletiva. Essas são seções com nomes personalizados em vídeos que podem ser empilhadas para ficarem cada vez mais precisas. Adquira uma licença para visualizar os capítulos enviados neste vídeo, como: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Novo recurso: Capítulos personalizados de colaboração coletiva. Essas são seções com nomes personalizados em vídeos que podem ser empilhadas para ficarem cada vez mais precisas. Você tem acesso gratuito, ative nas opções."
     },
     "unsubmittedSegmentCounts": {
         "message": "Você tem atualmente {0} em {1}",
