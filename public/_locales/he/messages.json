@@ -700,10 +700,6 @@
     "selectYourCountry": {
         "message": "בחירת מדינתך"
     },
-    "alreadyDonated": {
-        "message": "אם תרמת סכום כלשהו בעבר, ניתן לממש גישה בחינם באמצעות דואר אלקטרוני:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "אם אינך יכול להרשות לעצמך לרכוש רישיון, יש ללחוץ {here} כדי לראות אם קיימת זכאות להנחה",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -722,20 +718,6 @@
     },
     "enterLicenseKey": {
         "message": "הזנת מפתח רישיון"
-    },
-    "chaptersPage1": {
-        "message": "התכונה חסימת פרקים במקור המונים זמינה רק לאנשים שרוכשים רישיון, או לאנשים שקיבלו גישה בחינם עקב תרומותיהם בעבר"
-    },
-    "chaptersPage2": {
-        "message": "הערה: ההרשאה להגשת פרקים עדיין מבוססת על מוניטין מחושב. רכישת רישיון מאפשרת לך לראות רק פרקים שהוגשו על ידי אחרים",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "תכונה חדשה: פרקים מותאמים אישית ממקור המונים. אלו הם מקטעים בעלי שמות מותאמים אישית בסרטונים שניתן לערום כדי לקבל יותר ויותר דיוק. רכישת רישיון לצפייה בפרקים שנשלחו בסרטון זה כגון: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "תכונה חדשה: פרקים מותאמים אישית ממקור המונים. אלו הם קטעים בעלי שמות מותאמים אישית בסרטונים שניתן לערום כדי לקבל יותר ויותר דיוק. יש לך גישה בחינם, יש להפעיל באפשרויות."
     },
     "unsubmittedSegmentCounts": {
         "message": "כרגע יש לך {0} ב-{1}",
