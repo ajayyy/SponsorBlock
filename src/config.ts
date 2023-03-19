@@ -145,6 +145,19 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
+    if (!config["chapterCategoryAdded"]) {
+        config["chapterCategoryAdded"] = true;
+
+        if (!config.categorySelections.some((s) => s.name === "chapter")) {
+            config.categorySelections.push({
+                name: "chapter" as Category,
+                option: CategorySkipOption.ShowOverlay
+            });
+    
+            config.categorySelections = config.categorySelections;
+        }
+    }
+
     if (config["segmentTimes"]) {
         const unsubmittedSegments = {};
         for (const item of config["segmentTimes"]) {
@@ -324,6 +337,9 @@ const syncDefaults = {
         option: CategorySkipOption.ManualSkip
     }, {
         name: "exclusive_access" as Category,
+        option: CategorySkipOption.ShowOverlay
+    }, {
+        name: "chapter" as Category,
         option: CategorySkipOption.ShowOverlay
     }],
 
