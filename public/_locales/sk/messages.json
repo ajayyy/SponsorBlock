@@ -1149,10 +1149,6 @@
     "selectYourCountry": {
         "message": "Vyberte krajinu"
     },
-    "alreadyDonated": {
-        "message": "Ak ste už v minulosti prispeli, získajte voľný prístup napísaním emailu:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Ak si nemôžete dovoliť kúpiť licenciu, kliknite {sem} a zistite, či máte nárok na zľavu",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1171,20 +1167,6 @@
     },
     "enterLicenseKey": {
         "message": "Zadajte licenčný kľúč"
-    },
-    "chaptersPage1": {
-        "message": "Crowd-sourcované kapitovly v SponsorBlock-u sú dostupné len po zakúpení licencie alebo zadarmo pre ľudí, ktorí už v minulosti prispeli"
-    },
-    "chaptersPage2": {
-        "message": "Poznámka: Povolenie na predkladanie kapitol je stále založené na vypočítanej reputácii. Zakúpenie licencie vám umožní iba prezerať kapitoly, ktoré odoslali iní",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Nová funkcia: Crowd-sourcované vlastné kapitoly. Toto sú sekcie videa s vlastnými názvami, ktoré môžu byť pre väčšiu presnosť vyskladané. Ak si kúpite licenciu, uvidíte kapitoly v tomto videu, ako napr.: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Nová funkcia: Vlastné kapitoly z verejných zdrojov. Ide o vlastnoručne pomenované časti vo videách, ktoré sa dajú ukladať na seba a spresňovať. Prístup máte zadarmo, povoľte v možnostiach."
     },
     "unsubmittedSegmentCounts": {
         "message": "V súčasnosti máte {0} na {1}",
