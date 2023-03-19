@@ -797,6 +797,10 @@
         "message": "Zobrazit ikonu, když je celé video reklama",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Zobrazit štítky i u náhledů videí",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Barva neodeslaného segmentu",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Vyberte vaši zemi"
     },
-    "alreadyDonated": {
-        "message": "Pokud jste již přispěli jakoukoli částkou, můžete získat bezplatný přístup odesláním e-mailu na:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Pokud si nemůžete dovolit zakoupení licence, klikněte {sem}, abyste zjistili, zda máte nárok na slevu",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Zadejte licenční klíč"
-    },
-    "chaptersPage1": {
-        "message": "Funkce komunitních kapitol je dostupná pouze lidem, kteří si zakoupili licenci, nebo lidem, kteří získali přístup zdarma díky jejich příspěvkům"
-    },
-    "chaptersPage2": {
-        "message": "Poznámka: Oprávnění k odesílání kapitol je stále založené na vypočítané reputaci. Zakoupení licence vám pouze umožní zobrazit si kapitoly odeslané ostatními uživateli",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Nová funkce: komunitní vlastní kapitoly. Jedná se o komunitou vytvořené sekce ve videích, které lze slučovat, aby byly stále přesnější. Zakupte si licenci pro zobrazení kapitol u tohoto videa, jako například: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Nová funkce: komunitní vlastní kapitoly. Jedná se o komunitou vytvořené sekce ve videích, které lze slučovat, aby byly stále přesnější. Přístup máte zdarma, povolte jej v možnostech."
     },
     "unsubmittedSegmentCounts": {
         "message": "Momentálně máte {0} na {1}",
