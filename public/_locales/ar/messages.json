@@ -713,10 +713,6 @@
     "selectYourCountry": {
         "message": "اختر بلدك"
     },
-    "alreadyDonated": {
-        "message": "إذا تبرعت بأي مبلغ قبل الآن، يمكنك الحصول على إمكانية الوصول عبر التواصل مع البريد الإلكتروني:",
-        "description": "After the colon is an email address"
-    },
     "patreonSignIn": {
         "message": "سجل مع بيتريون (Patreon)"
     },
