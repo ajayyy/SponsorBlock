@@ -797,6 +797,10 @@
         "message": "Mutasson egy ikont, amikor egy videó egésze reklám",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Címkék megjelenítése a videók indexképein is",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Beküldetlen színe",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Válaszd ki az országodat"
     },
-    "alreadyDonated": {
-        "message": "Ha korábban már támogattad a bővítményt, kérhetsz ingyenes hozzáférést emailben:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Ha nem engedheted meg magadnak a licenc megvásárlását, kattints {ide}, hogy megtudd, jogosult vagy-e kedvezményre",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Add meg a licenc kulcsot"
-    },
-    "chaptersPage1": {
-        "message": "A SponsorBlock közösség által karbantartott fejezetek funkció csak azok számára érhető el, akik licencet vásárolnak, vagy ingyenes hozzáférést kaptak múltbeli hozzájárulásaikért"
-    },
-    "chaptersPage2": {
-        "message": "Fontos: A fejezetek beküldésére való engedély még mindig a számolt hírnévtől függ. A megvásárolt licenc csak a mások által beküldött fejezetek megtekintésére vonatkozik.",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Új funkció: Közösség által karbantartott fejezetek. Ezek egyedileg elnevezett részei a videóknak, amiket egymásba is lehet ágyazni, hogy egyre pontosabbak lehessenek. Vásárolj licencet, hogy láthasd az ezen a videón beküldött fejezeteket, mint: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Új funkció: Közösség által karbantartott fejezetek. Ezek egyedileg elnevezett részei a videóknak, amiket egymásba is lehet ágyazni, hogy egyre pontosabbak lehessenek. Neked van igyenes hozzáférésed, engedélyezd a beállításokban."
     },
     "unsubmittedSegmentCounts": {
         "message": "Jelenleg {0} van {1}",
