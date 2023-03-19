@@ -1152,10 +1152,6 @@
     "selectYourCountry": {
         "message": "Selecteer uw land"
     },
-    "alreadyDonated": {
-        "message": "Als u al eerder een bedrag hebt gedoneerd, kunt u gratis toegang krijgen door een e-mail te sturen:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Als u het zich niet kunt veroorloven om een licentie aan te schaffen, klik dan {hier} om te zien of u in aanmerking komt voor een korting",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1170,6 @@
     },
     "enterLicenseKey": {
         "message": "Licentiesleutel invoeren"
-    },
-    "chaptersPage1": {
-        "message": "De SponsorBlock-functie voor crowd-sourced hoofdstukken is alleen beschikbaar voor mensen die een licentie kopen of voor mensen die gratis toegang krijgen vanwege hun bijdragen in het verleden"
-    },
-    "chaptersPage2": {
-        "message": "Opmerking: toestemming om hoofdstukken in te dienen is nog steeds gebaseerd op berekende reputatie. Door een licentie te kopen kunt u enkel hoofdstukken bekijken die door anderen zijn ingediend",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Nieuwe functie: gecrowdsourcete aangepaste hoofdstukken. Dit zijn hoofdstukken met een eigen naam in video's die gestapeld kunnen worden om steeds preciezer te worden. Koop een licentie om de ingezonden hoofdstukken op deze video te bekijken, zoals: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Nieuwe functie: gecrowdsourcete aangepaste hoofdstukken. Dit zijn hoofdstukken met een eigen naam in video's die gestapeld kunnen worden om steeds preciezer te worden. U heeft gratis toegang. In te schakelen via de opties."
     },
     "unsubmittedSegmentCounts": {
         "message": "U hebt momenteel {0} in {1}",
