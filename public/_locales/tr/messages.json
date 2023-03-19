@@ -1152,10 +1152,6 @@
     "selectYourCountry": {
         "message": "Ülkenizi seçin"
     },
-    "alreadyDonated": {
-        "message": "Şimdiye kadar herhangi bir miktarda bağış yaptıysanız, bu adrese e-posta göndererek ücretsiz erişim hakkına sahip olabilirsin:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Lisans satın almaya gücünüz yetmiyorsa, indirim almaya uygun olup olmadığınızı görmek için {here} tıklayın",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1170,6 @@
     },
     "enterLicenseKey": {
         "message": "Lisans Anahtarını Girin"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock'un topluluk kaynaklı bölümler özelliği yalnızca lisans satın alan veya geçmiş katkılarından dolayı ücretsiz erişim hakkı verilen kişiler tarafından kullanılabilir"
-    },
-    "chaptersPage2": {
-        "message": "Not: Bölüm gönderme izni hala hesaplanan itibara dayanmaktadır. Bir lisans satın almak, yalnızca başkaları tarafından gönderilen bölümleri görüntülemenize izin verir",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Yeni Özellik: Topluluk kaynaklı özel bölümler. Bunlar, giderek daha doğru hale gelmek için istiflenebilen videolardaki özel adlandırılmış bölümlerdir. Bu videodaki gibi gönderilen bölümleri görüntülemek için bir lisans satın alın: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Yeni Özellik: Topluluk kaynaklı özel bölümler. Bunlar, giderek daha doğru hale gelmek için istiflenebilen videolardaki özel adlandırılmış bölümlerdir. Ücretsiz erişiminiz var, seçeneklerden etkinleştirin."
     },
     "unsubmittedSegmentCounts": {
         "message": "Şu anda {1} da {0} var",
