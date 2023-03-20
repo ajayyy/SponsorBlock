@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Icono de cerrar"
     },
+    "OpenSubmissionMenu": {
+        "message": "Abrir Menú de Envíos"
+    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
