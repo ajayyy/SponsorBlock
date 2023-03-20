@@ -798,7 +798,7 @@
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "fullVideoLabelsOnThumbnails": {
-        "message": "Mostrar también etiquetas en miniaturas de vídeo",
+        "message": "También mostrar etiquetas en las miniaturas de los vídeos",
         "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
