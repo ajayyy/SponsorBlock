@@ -1461,7 +1461,8 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
 
     const shouldIncludeTime = (segment: ScheduledTime ) => (minimum === undefined
         || ((includeNonIntersectingSegments && segment.scheduledTime >= minimum)
-            || (includeIntersectingSegments && segment.scheduledTime < minimum && segment.segment[1] > minimum)))
+            || (includeIntersectingSegments && segment.scheduledTime < minimum 
+                    && segment.segment[1] > minimum && shouldSkip(segment)))) // Only include intersecting skippable segments
         && (!hideHiddenSponsors || segment.hidden === SponsorHideType.Visible)
         && segment.segment.length === 2
         && segment.actionType !== ActionType.Poi;
