@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Wyłącz ikonę"
     },
+    "OpenSubmissionMenu": {
+        "message": "Otwórz menu zgłoszenia"
+    },
     "sortSegments": {
         "message": "Sortuj segmenty"
     },
@@ -793,6 +796,10 @@
     "fullVideoSegments": {
         "message": "Pokaż ikonę, gdy film jest w całości reklamą",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Pokaż etykiety również na miniaturach filmów",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
         "message": "Kolor nieprzesłanego segmentu",
