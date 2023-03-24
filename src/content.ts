@@ -766,12 +766,13 @@ function inMuteSegment(currentTime: number, includeOverlap: boolean): boolean {
  */
 function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boolean {
     const currentVideoID = getYouTubeVideoID();
-    if (currentVideoID !== (videoID || getVideoID()) || (sponsorTime
+    const recordedVideoID = videoID || getVideoID();
+    if (currentVideoID !== recordedVideoID || (sponsorTime
             && (!sponsorTimes || !sponsorTimes?.some((time) => time.segment === sponsorTime.segment))
             && !sponsorTimesSubmitting.some((time) => time.segment === sponsorTime.segment))) {
         // Something has really gone wrong
         console.error("[SponsorBlock] The videoID recorded when trying to skip is different than what it should be.");
-        console.error("[SponsorBlock] VideoID recorded: " + getVideoID() + ". Actual VideoID: " + currentVideoID);
+        console.error("[SponsorBlock] VideoID recorded: " + recordedVideoID + ". Actual VideoID: " + currentVideoID);
 
         // Video ID change occured
         checkVideoIDChange();
