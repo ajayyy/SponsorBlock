@@ -684,6 +684,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             const reportedVideoTimeAtStart = getVideo().currentTime;
             logDebug(`Starting setInterval skipping ${getVideo().currentTime} to skip at ${skipTime[0]}`);
 
+            if (currentSkipInterval !== null) clearInterval(currentSkipInterval);
             currentSkipInterval = setInterval(() => {
                 // Estimate delay, but only take the current time right after a change
                 // Current time remains the same for many "frames" on Firefox
