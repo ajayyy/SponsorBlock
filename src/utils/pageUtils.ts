@@ -14,14 +14,18 @@ export function getControls(): HTMLElement {
     ];
 
     for (const controlsSelector of controlsSelectors) {
-        const controls = document.querySelectorAll(controlsSelector);
+        const controls = Array.from(document.querySelectorAll(controlsSelector)).filter(el => !isInPreviewPlayer(el));
 
-        if (controls && controls.length > 0) {
+        if (controls.length > 0) {
             return <HTMLElement> controls[controls.length - 1];
         }
     }
 
     return null;
+}
+
+export function isInPreviewPlayer(element: Element): boolean {
+    return !!element.closest("#inline-preview-player");
 }
 
 export function isVisible(element: HTMLElement): boolean {
@@ -65,12 +69,12 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
             if (timeElement && description?.innerText?.length > 0 && link.getAttribute("href")?.includes(currentVideoID)) {
                 const time = getFormattedTimeToSeconds(timeElement.innerText.replace(".", ":"));
                 if (time === null) return [];
-                
+
                 if (lastSegment) {
                     lastSegment.segment[1] = time;
                     chapters.push(lastSegment);
                 }
-                
+
                 lastSegment = {
                     segment: [time, null],
                     category: "chapter" as Category,
