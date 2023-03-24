@@ -41,8 +41,8 @@ import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
-import { setThumbnailListener, updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
-import { labelThumbnails, setupThumbnailPageLoadListener } from "./utils/thumbnails";
+import { updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
+import { setupThumbnailListener } from "./utils/thumbnails";
 import * as documentScript from "../dist/js/document.js";
 
 const utils = new Utils();
@@ -113,8 +113,7 @@ setupVideoModule({
     resetValues,
     documentScript
 }, () => Config);
-setThumbnailListener(labelThumbnails);
-setupThumbnailPageLoadListener();
+setupThumbnailListener();
 
 //the video id of the last preview bar update
 let lastPreviewBarUpdate: VideoID;

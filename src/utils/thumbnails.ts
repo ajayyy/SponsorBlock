@@ -1,8 +1,7 @@
-import { waitFor } from "@ajayyy/maze-utils";
-import { newThumbnails } from "@ajayyy/maze-utils/lib/thumbnailManagement";
 import { isOnInvidious, parseYouTubeVideoIDFromURL } from "@ajayyy/maze-utils/lib/video";
 import Config from "../config";
 import { getVideoLabel } from "./videoLabels";
+import { setThumbnailListener } from "@ajayyy/maze-utils/lib/thumbnailManagement";
 
 export async function labelThumbnails(thumbnails: HTMLImageElement[]): Promise<void> {
     await Promise.all(thumbnails.map((t) => labelThumbnail(t)));
@@ -109,23 +108,8 @@ function insertSBIconDefinition() {
     document.body.appendChild(container.children[0]);
 }
 
-export function setupThumbnailPageLoadListener(): void {
-    const onLoad = () => {
+export function setupThumbnailListener(): void {
+    setThumbnailListener(labelThumbnails, () => {
         insertSBIconDefinition();
-
-        // Label thumbnails on load if on Invidious (wait for variable initialization before checking)
-        waitFor(() => isOnInvidious() !== null).then(() => {
-            if (isOnInvidious()) newThumbnails();
-        });
-    };
-
-    if (document.readyState === "complete") {
-        onLoad();
-    } else {
-        window.addEventListener("load", onLoad);
-    }
-
-    waitFor(() => Config.isReady(), 5000, 10).then(() => {
-        newThumbnails();
-    });
+    }, () => Config.isReady());
 }
