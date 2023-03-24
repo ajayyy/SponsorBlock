@@ -152,8 +152,8 @@ class PreviewBar {
             }
 
             // Find the segment at that location, using the shortest if multiple found
-            const [normalSegments, chapterSegments] = 
-                partition(this.segments.filter((s) => s.source !== SponsorSourceType.YouTube), 
+            const [normalSegments, chapterSegments] =
+                partition(this.segments.filter((s) => s.source !== SponsorSourceType.YouTube),
                     (segment) => segment.actionType !== ActionType.Chapter);
             let mainSegment = this.getSmallestSegment(timeInSeconds, normalSegments, "normal");
             let secondarySegment = this.getSmallestSegment(timeInSeconds, chapterSegments, "chapter");
@@ -292,7 +292,7 @@ class PreviewBar {
         if (this.originalChapterBar) {
             this.originalChapterBarBlocks = this.originalChapterBar.querySelectorAll(":scope > div") as NodeListOf<HTMLElement>
             this.existingChapters = this.segments.filter((s) => s.source === SponsorSourceType.YouTube).sort((a, b) => a.segment[0] - b.segment[0]);
-        
+
             if (this.existingChapters?.length > 0) {
                 const margin = parseFloat(this.originalChapterBarBlocks?.[0]?.style?.marginRight?.replace("px", ""));
                 if (margin) this.chapterMargin = margin;
@@ -337,13 +337,16 @@ class PreviewBar {
 
         bar.style.position = "absolute";
         const duration = Math.min(segment[1], this.videoDuration) - segment[0];
+        const startTime = segment[1] ? Math.min(this.videoDuration, segment[0]) : segment[0];
+        const endTime = Math.min(this.videoDuration, segment[1]);
+        bar.style.left = this.timeToPercentage(startTime);
+
         if (duration > 0) {
-            bar.style.width = `calc(${this.intervalToPercentage(segment[0], segment[1])}${
-                this.chapterFilter(barSegment) && segment[1] < this.videoDuration ? ` - ${this.chapterMargin}px` : ''})`;
+            bar.style.right = this.timeToPercentage(this.videoDuration - endTime);
         }
-        
-        const time = segment[1] ? Math.min(this.videoDuration, segment[0]) : segment[0];
-        bar.style.left = this.timeToPercentage(time);
+        if (this.chapterFilter(barSegment) && segment[1] < this.videoDuration) {
+            bar.style.marginRight = `${this.chapterMargin}px`;
+        }
 
         return bar;
     }
@@ -366,9 +369,9 @@ class PreviewBar {
             this.unfilteredChapterGroups = this.createChapterRenderGroups(segments);
         }
 
-        if (segments.every((segments) => segments.source === SponsorSourceType.YouTube) 
-            || (!Config.config.renderSegmentsAsChapters 
-                && segments.every((segment) => segment.actionType !== ActionType.Chapter 
+        if (segments.every((segments) => segments.source === SponsorSourceType.YouTube)
+            || (!Config.config.renderSegmentsAsChapters
+                && segments.every((segment) => segment.actionType !== ActionType.Chapter
                     || segment.source === SponsorSourceType.YouTube))) {
             if (this.customChaptersBar) this.customChaptersBar.style.display = "none";
             this.originalChapterBar.style.removeProperty("display");
@@ -463,7 +466,7 @@ class PreviewBar {
             const latestChapter = result[result.length - 1];
             if (latestChapter && latestChapter.segment[1] > segment.segment[0]) {
                 const segmentDuration = segment.segment[1] - segment.segment[0];
-                if (segment.segment[0] < latestChapter.segment[0] 
+                if (segment.segment[0] < latestChapter.segment[0]
                         || segmentDuration < latestChapter.originalDuration) {
                     // Remove latest if it starts too late
                     let latestValidChapter = latestChapter;
@@ -665,7 +668,7 @@ class PreviewBar {
                         if (changedData.scale !== null) {
                             const transformScale = (changedData.scale) / progressBar.clientWidth;
 
-                            customChangedElement.style.transform = 
+                            customChangedElement.style.transform =
                                 `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / fullSectionWidth - calculatedLeft))}`;
                             if (firstUpdate) {
                                 customChangedElement.style.transition = "none";
@@ -682,7 +685,7 @@ class PreviewBar {
                 cursor += sectionWidthDecimal;
             }
 
-            if (sections.length !== 0 && sections.length !== this.existingChapters?.length 
+            if (sections.length !== 0 && sections.length !== this.existingChapters?.length
                     && Date.now() - this.lastChapterUpdate > 3000) {
                 this.lastChapterUpdate = Date.now();
                 this.updateExistingChapters();
@@ -690,7 +693,7 @@ class PreviewBar {
         }
     }
 
-    private findLeftAndScale(selector: string, currentElement: HTMLElement, progressBar: HTMLElement): 
+    private findLeftAndScale(selector: string, currentElement: HTMLElement, progressBar: HTMLElement):
             { left: number; scale: number } {
         const sections = currentElement.parentElement.parentElement.parentElement.children;
         let currentWidth = 0;
@@ -708,7 +711,7 @@ class PreviewBar {
             const section = sections[i] as HTMLElement;
             const checkElement = section.querySelector(selector) as HTMLElement;
             const currentSectionWidthNoMargin = this.getPartialChapterSectionStyle(section, "width") ?? progressBar.clientWidth;
-            const currentSectionWidth = currentSectionWidthNoMargin 
+            const currentSectionWidth = currentSectionWidthNoMargin
                 + this.getPartialChapterSectionStyle(section, "marginRight");
 
             // First check for left
@@ -751,8 +754,8 @@ class PreviewBar {
             currentWidth += lastWidth;
         }
 
-        return { 
-            left: left + leftPosition, 
+        return {
+            left: left + leftPosition,
             scale: scale !== null ? scale * scaleWidth + scalePosition : null
         };
     }
@@ -767,7 +770,7 @@ class PreviewBar {
     }
 
     updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): SponsorTime[] {
-        if (!Config.config.showSegmentNameInChapterBar 
+        if (!Config.config.showSegmentNameInChapterBar
                 || ((!segments || segments.length <= 0) && submittingSegments?.length <= 0)) {
             const chaptersContainer = this.getChaptersContainer();
             const chapterButton = this.getChapterButton(chaptersContainer);
@@ -781,7 +784,7 @@ class PreviewBar {
         segments ??= [];
         if (submittingSegments?.length > 0) segments = segments.concat(submittingSegments);
         const activeSegments = segments.filter((segment) => {
-            return segment.hidden === SponsorHideType.Visible 
+            return segment.hidden === SponsorHideType.Visible
                 && segment.segment[0] <= currentTime && segment.segment[1] > currentTime
                 && segment.category !== DEFAULT_CATEGORY;
         });
@@ -838,7 +841,7 @@ class PreviewBar {
                         if (oldVoteContainers.length > 0) {
                             oldVoteContainers.forEach((oldVoteContainer) => oldVoteContainer.remove());
                         }
-                        
+
                         chapterButton.insertBefore(chapterVoteContainer, this.getChapterChevron());
                     }
 
@@ -914,7 +917,7 @@ class PreviewBar {
             for (let i = 0; i < this.originalChapterBarBlocks.length; i++) {
                 const chapterElement = this.originalChapterBarBlocks[i];
                 const widthPixels = parseFloat(chapterElement.style.width.replace("px", ""));
-                
+
                 if (time >= this.existingChapters[i].segment[1]) {
                     const marginPixels = chapterElement.style.marginRight ? parseFloat(chapterElement.style.marginRight.replace("px", "")) : 0;
                     pixelOffset += widthPixels + marginPixels;
@@ -929,8 +932,8 @@ class PreviewBar {
             if (latestChapter) {
                 const latestWidth = parseFloat(this.originalChapterBarBlocks[lastCheckedChapter + 1].style.width.replace("px", ""));
                 const latestChapterDuration = latestChapter.segment[1] - latestChapter.segment[0];
-    
-                const percentageInCurrentChapter = (time - latestChapter.segment[0]) / latestChapterDuration; 
+
+                const percentageInCurrentChapter = (time - latestChapter.segment[0]) / latestChapterDuration;
                 const sizeOfCurrentChapter = latestWidth / totalPixels;
                 return Math.min(1, ((pixelOffset / totalPixels) + (percentageInCurrentChapter * sizeOfCurrentChapter)));
             }
@@ -955,7 +958,7 @@ class PreviewBar {
         let segment: PreviewBarSegment | null = null;
         let index = -1;
         let currentSegmentLength = Infinity;
-        
+
         for (let i = startSearchIndex; i < segments.length && i >= 0; i += direction) {
             const seg = segments[i];
             const segmentLength = seg.segment[1] - seg.segment[0];
