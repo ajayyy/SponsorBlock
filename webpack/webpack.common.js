@@ -117,7 +117,7 @@ module.exports = env => {
                     }
                 },
                 {
-                    test: /js\/document\.js$/,
+                    test: /js(\/|\\)document\.js$/,
                     type: 'asset/source'
                 }
             ]
@@ -141,7 +141,7 @@ module.exports = env => {
                         },
                         context: './public',
                         filter: async (path) => {
-                            if (path.match(/\/_locales\/.+/)) {
+                            if (path.match(/(\/|\\)_locales(\/|\\).+/)) {
                                 if (env.browser.toLowerCase() === "edge" 
                                         && !edgeLanguages.includes(path.match(/(?<=\/_locales\/)[^/]+(?=\/[^/]+$)/)[0])) {
                                     return false;
@@ -156,7 +156,7 @@ module.exports = env => {
                             }
                         },
                         transform(content, path) {
-                            if (path.match(/\/_locales\/.+/)) {
+                            if (path.match(/(\/|\\)_locales(\/|\\).+/)) {
                                 const parsed = JSON.parse(content.toString());
                                 if (env.browser.toLowerCase() === "safari") {
                                     parsed.fullName.message = parsed.fullName.message.match(/^.+(?= -)/)?.[0] || parsed.fullName.message;
