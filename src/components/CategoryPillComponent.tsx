@@ -43,7 +43,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
 
         return (
             <span style={style}
-                className={"sponsorBlockCategoryPill"} 
+                className={"sponsorBlockCategoryPill"}
                 aria-label={this.getTitleText()}
                 onClick={(e) => this.toggleOpen(e)}
                 onMouseEnter={() => this.openTooltip()}
@@ -104,8 +104,8 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
             await stopAnimation();
 
             if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
-                this.setState({ 
-                    open: false, 
+                this.setState({
+                    open: false,
                     show: type === 1
                 });
             } else if (response.statusCode !== 403) {
@@ -117,13 +117,13 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
     private getColor(): string {
         // Handled by setCategoryColorCSSVariables() of content.ts
         const category = this.state.segment?.category;
-        return `var(--sb-category-preview-${category}, var(--sb-category-${category}))`;
+        return category == null ? null : `var(--sb-category-preview-${category}, var(--sb-category-${category}))`;
     }
 
     private getTextColor(): string {
         // Handled by setCategoryColorCSSVariables() of content.ts
         const category = this.state.segment?.category;
-        return `var(--sb-category-text-preview-${category}, var(--sb-category-text-${category}))`;
+        return category == null ? null : `var(--sb-category-text-preview-${category}, var(--sb-category-text-${category}))`;
     }
 
     private openTooltip(): void {
