@@ -473,7 +473,7 @@
         "message": "Segmendid, mis on lühemad kui määratud väärtus ei jäeta vahele või ei kuvata mängijal."
     },
     "enableManualSkipOnFullVideo": {
-        "message": "Jäta käsitsi vahele, kui täis video pealkiri on saadaval"
+        "message": "Jäta käsitsi vahele, kui eksisteerib terve video silt"
     },
     "whatManualSkipOnFullVideo": {
         "message": "Inimestele, kes soovivad vaadata (enese-)reklaami sisaldavat videot segamatult."
