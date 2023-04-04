@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Sulgemisikoon"
     },
+    "OpenSubmissionMenu": {
+        "message": "Ava saatmise menüü"
+    },
     "sortSegments": {
         "message": "Sorteeri segmendid"
     },
@@ -250,7 +253,7 @@
         "message": "Kui video on uus ning segmente ei leitud, proovitakse vaatamise ajal iga paari minuti tagant uuesti segmente tuua."
     },
     "enableShowCategoryWithoutPermission": {
-        "message": "Näita kategooriaid segmentide menüüs isegi ilma segmendi esitamise loata"
+        "message": "Näita segmentide menüüs ka ilma saatmise loata kategooriaid"
     },
     "whatShowCategoryWithoutPermission": {
         "message": "Osade kategooriate esitamiseks on minimaalse reputatsiooni nõuete tõttu vajalik luba"
@@ -793,6 +796,10 @@
     "fullVideoSegments": {
         "message": "Kuva ikoon, kui terve video on reklaam",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Kuva silte ka videote pisipiltidel",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
         "message": "Saatmata värv",
