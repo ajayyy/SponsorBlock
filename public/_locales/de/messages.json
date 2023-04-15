@@ -794,7 +794,7 @@
         "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "fullVideoSegments": {
-        "message": "Zeige ein Icon, wenn ein ganzes Video Werbung ist",
+        "message": "Ein Symbol anzeigen, wenn ein Video vollständig aus Werbung besteht",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
     "fullVideoLabelsOnThumbnails": {
