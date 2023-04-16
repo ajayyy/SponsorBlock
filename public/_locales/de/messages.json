@@ -238,7 +238,7 @@
         "message": "Alle von dir negativ bewerteten Segmente bleiben auch nach neu laden der Seite verborgen"
     },
     "trackDownvotesWarning": {
-        "message": "Warnung: Das Deaktivieren wird alle zuvor gespeicherten negativen Bewertungen löschen"
+        "message": "Warnung: Das Deaktivieren dieser Option wird alle zuvor gespeicherten negativen Bewertungen löschen"
     },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
@@ -256,7 +256,7 @@
         "message": "Zeige Kategorien im Einsendungsmenü auch ohne Einreichungsberechtigungen"
     },
     "whatShowCategoryWithoutPermission": {
-        "message": "Einige Kategorien benötigen Erlaubnis zum Übermitteln aufgrund von Mindestanforderungen an Reputation"
+        "message": "Einige Kategorien erfordern eine Freigabe zur Einreichung aufgrund von Mindestanforderungen an die Reputation"
     },
     "showNotice": {
         "message": "Hinweis erneut anzeigen"
