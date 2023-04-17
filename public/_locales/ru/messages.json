@@ -117,7 +117,7 @@
         "message": "Ошибка соединения. Код ошибки: "
     },
     "segmentsStillLoading": {
-        "message": "Сегменты все еще загружаются..."
+        "message": "Сегменты всё ещё загружаются..."
     },
     "clearTimes": {
         "message": "Очистить сегменты"
@@ -162,7 +162,7 @@
         "message": "Отправить"
     },
     "submissionEditHint": {
-        "message": "Редактирование сегментов появится после нажатия на кнопку \"Отправить\"",
+        "message": "Редактирование сегментов появится после нажатия на кнопку «Отправить»",
         "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
@@ -205,7 +205,7 @@
         "message": "Эта настройка скрывает кнопки для отправки сегментов, расположенные в плеере YouTube."
     },
     "showSkipButton": {
-        "message": "Не скрывать кнопку \"Пропустить до важного\" в плеере YouTube"
+        "message": "Не скрывать кнопку «Пропустить до важного» в плеере YouTube"
     },
     "showInfoButton": {
         "message": "Показывать кнопку информации в плеере YouTube"
@@ -214,7 +214,7 @@
         "message": "Скрыть кнопку информации в плеере YouTube"
     },
     "autoHideInfoButton": {
-        "message": "Автоматически скрывать кнопку Информация"
+        "message": "Автоматически скрывать кнопку информации"
     },
     "hideDeleteButton": {
         "message": "Скрыть кнопку удаления в плеере YouTube"
@@ -386,7 +386,7 @@
         "message": "Аудио уведомление при пропуске"
     },
     "audioNotificationDescription": {
-        "message": "Аудио уведомление о пропуске будет воспроизводиться каждый раз, когда сегмент пропущен. Если отключено (или автоматический пропуск отключён), звук не будет воспроизводиться."
+        "message": "Звуковое уведомление при пропуске будет воспроизводиться каждый раз, когда сегмент пропущен. Если отключено (или автоматический пропуск отключён), звук не будет воспроизводиться."
     },
     "showTimeWithSkips": {
         "message": "Показывать длительность без сегментов"
@@ -797,6 +797,10 @@
         "message": "Показывать иконку, когда всё видео является рекламой",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Также показывать категории на превью",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Цвет неотправленного сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1085,7 +1089,7 @@
         "description": "Appears in Options as a tab header for keybinds. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabBackup": {
-        "message": "Бэкап/Восстановление",
+        "message": "Копия/Восстановление",
         "description": "Appears in Options as a tab header for options related to saving/restoring your settings. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "optionsTabAdvanced": {
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Выберите вашу страну"
     },
-    "alreadyDonated": {
-        "message": "Если вы когда-то жертвовали любую сумму, вы можете получить доступ, отправив электронное письмо сюда:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Если вы не можете позволить себе приобрести лицензию, нажмите {сюда}, чтобы узнать, имеете ли вы право на скидку",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Введите лицензионный ключ"
-    },
-    "chaptersPage1": {
-        "message": "Функция SponsorBlock \"эпизоды от сообщества\" доступна только для тех, кто приобрёл лицензию, и тех, кому был предоставлен бесплатный доступ благодаря их прошлым вкладам"
-    },
-    "chaptersPage2": {
-        "message": "Примечание: разрешение на отправку эпизодов все еще основывается на рассчитываемой репутации. Приобретая лицензию, вы можете просматривать только эпизоды, отправленные другими",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Новая функция: эпизоды от сообщества. Это разделы видео с пользовательскими названиями, которые могут быть помещены внутри других эпизодов для более точной разметки. Приобретите лицензию, чтобы видеть названия эпизодов, как, например, эпизоды в этом видео: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Новая функция: эпизоды от сообщества. Это разделы видео с пользовательскими названиями, которые могут быть помещены внутри других эпизодов для более точной разметки. У вас есть бесплатный доступ к этой функции, включите её в настройках."
     },
     "unsubmittedSegmentCounts": {
         "message": "Сейчас у вас есть {0} в {1}",

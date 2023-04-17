@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Icona Chiudi"
     },
+    "OpenSubmissionMenu": {
+        "message": "Apri Menu Invio"
+    },
     "sortSegments": {
         "message": "Ordina Segmenti"
     },
@@ -794,6 +797,10 @@
         "message": "Mostra un'icona quando un video è interamente promozionale",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Mostra le etichette anche sulle copertine dei video",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Segmento non inviato",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1149,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Seleziona il tuo paese"
     },
-    "alreadyDonated": {
-        "message": "Se hai donato qualsiasi importo in passato, puoi riscattare l'accesso gratuito mandando una mail a:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Se non puoi permetterti di acquistare una licenza, premi {here} per verificare se hai diritto a uno sconto",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1171,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Inserisci chiave di licenza"
-    },
-    "chaptersPage1": {
-        "message": "La funzionalità dei capitoli in crowd-sourcing di SponsorBlock è disponibile soltanto a chi acquista una licenza o a chi viene premiato con l'accesso gratuito grazie ai contributi passati"
-    },
-    "chaptersPage2": {
-        "message": "Nota: L'autorizzazione a inviare i capitoli si basa ancora sulla reputazione calcolata. Acquistare una licenza ti consente di visualizzare soltanto i capitoli inviati dagli altri",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato che possono esser sovrapposte per essere sempre più precise. Acquista una licenza per visualizzare i capitoli inviati in questo video come ad esempio: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Nuova Funzionalità: Capitoli personalizzati in crowdsourcing. Sono sezioni dal nome personalizzato, che possono esser sovrapposte per essere sempre più precise. Hai accesso gratuitamente, abilitalo nelle opzioni."
     },
     "unsubmittedSegmentCounts": {
         "message": "Al momento hai {0} su {1}",

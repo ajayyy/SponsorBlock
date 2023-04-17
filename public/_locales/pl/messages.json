@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Wyłącz ikonę"
     },
+    "OpenSubmissionMenu": {
+        "message": "Otwórz menu zgłoszenia"
+    },
     "sortSegments": {
         "message": "Sortuj segmenty"
     },
@@ -794,6 +797,10 @@
         "message": "Pokaż ikonę, gdy film jest w całości reklamą",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Pokaż etykiety również na miniaturach filmów",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Kolor nieprzesłanego segmentu",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1149,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Wybierz swój kraj"
     },
-    "alreadyDonated": {
-        "message": "Jeśli do tej pory przekazałeś jakąkolwiek darowiznę, możesz odebrać darmowy dostęp poprzez wysyłanie maila do:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Jeśli nie możesz sobie pozwolić na zakup licencji, kliknij {tutaj} aby sprawdzić, czy kwalifikujesz się do zniżki",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1171,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Wprowadź klucz licencyjny"
-    },
-    "chaptersPage1": {
-        "message": "Funkcja społecznościowych rozdziałów SponsorBlock jest dostępna tylko dla osób, które wykupią licencję, albo którym przyznano dostęp za darmo ze względu na swoje wcześniejszy wkład"
-    },
-    "chaptersPage2": {
-        "message": "Uwaga: Przesyłanie rozdziałów jest nadal oparte na skalkulowanej reputacji. Kupowanie licencji pozwala tylko przeglądać rozdziały przesłane przez innych",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny. Kup licencję, aby wyświetlić rozdziały przedstawione na tym filmie, takie jak: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Nowa funkcja: niestandardowe rozdziały ze źródeł społecznościowych. Są to sekcje niestandardowo nazwane w filmach, które mogą być ustawione w sposób bardziej precyzyjny."
     },
     "unsubmittedSegmentCounts": {
         "message": "Aktualnie masz {0} na {1}",

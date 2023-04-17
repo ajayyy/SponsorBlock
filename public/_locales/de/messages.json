@@ -238,7 +238,7 @@
         "message": "Alle von dir negativ bewerteten Segmente bleiben auch nach neu laden der Seite verborgen"
     },
     "trackDownvotesWarning": {
-        "message": "Warnung: Das Deaktivieren wird alle zuvor gespeicherten negativen Bewertungen löschen"
+        "message": "Warnung: Das Deaktivieren dieser Option wird alle zuvor gespeicherten negativen Bewertungen löschen"
     },
     "enableQueryByHashPrefix": {
         "message": "Abfrage nach Hash-Präfix"
@@ -256,7 +256,7 @@
         "message": "Zeige Kategorien im Einsendungsmenü auch ohne Einreichungsberechtigungen"
     },
     "whatShowCategoryWithoutPermission": {
-        "message": "Einige Kategorien benötigen Erlaubnis zum Übermitteln aufgrund von Mindestanforderungen an Reputation"
+        "message": "Einige Kategorien erfordern eine Freigabe zur Einreichung aufgrund von Mindestanforderungen an die Reputation"
     },
     "showNotice": {
         "message": "Hinweis erneut anzeigen"
@@ -794,8 +794,12 @@
         "message": "Segmente zulassen, die den Ton ausschalten anstatt zu überspringen"
     },
     "fullVideoSegments": {
-        "message": "Zeige ein Icon, wenn ein ganzes Video Werbung ist",
+        "message": "Ein Symbol anzeigen, wenn ein Video vollständig aus Werbung besteht",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Label auch auf Video-Thumbnails anzeigen",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
         "message": "Nicht eingereichte Farbe",
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Wähle dein Land"
     },
-    "alreadyDonated": {
-        "message": "Wenn du zuvor etwas gespendet hast, kannst du einen kostenlosen Zugang per E-Mail einlösen:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Wenn du dir keine Lizenz leisten kannst, klicke {hier} um zu sehen, ob du für einen Rabatt in Frage kommen",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Lizenzschlüssel eingeben"
-    },
-    "chaptersPage1": {
-        "message": "Die Crowd-sourced Kapitel-Funktion von SponsorBlock ist nur für Personen verfügbar, welche eine Lizenz kaufen, oder gratis Zugriff für Ihre bisherigen Beiträge erhalten haben"
-    },
-    "chaptersPage2": {
-        "message": "Hinweis: Erlaubnis zum Einreichen von Kapiteln basiert immer noch auf dem berechneten Ruf. Der kauf einer Lizenz berechtigt dich nur, die eingereichten Kapitel der anderen zu sehen",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Neues Feature: Crowdsourced benutzerdefinierte Kapitel. Dies sind benutzerdefinierte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Kauf eine Lizenz, um Kapitel, die in diesem Video eingereicht wurden, anzusehen: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Neues Feature: Crowd-gesourcte benutzerdefinierte Kapitel. Dies sind benutzerdefiniert benannte Abschnitte in Videos, die gestapelt werden können, um mehr und mehr präzise zu werden. Du hast kostenlosen Zugang, aktiviere es in den Optionen."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du hast derzeit {0} in {1}",

@@ -797,6 +797,10 @@
         "message": "Näytä kuvake, kun video on kokonaan mainos",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Näytä tunnisteet myös videoiden pienoiskuvissa",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Lähettämättömien väri",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Valitse maasi"
     },
-    "alreadyDonated": {
-        "message": "Jos olet aiemmin lahjoittanut jonkin summan, voit lunastaa käyttöoikeuden veloituksetta sähköpostitse:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Jos sinulla ei ole varaa lisenssiin, paina {tästä} nähdäksesi oletko oikeutettu alennukseen",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Syötä lisenssiavain"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlockin joukkolähteinen kappaletoiminto on vain lisenssin ostaneiden tai aiempien tukien perusteella veloituksettoman käyttöoikeuden saaneiden henkilöiden käytettävissä"
-    },
-    "chaptersPage2": {
-        "message": "Huomioi: Kappaleiden lähetysoikeus perustuu edelleen laskettuun maineeseen. Lisenssin hankinta sallii sinun ainoastaan tarkastella muiden lähettämiä kappaleita",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Uusi ominaisuus: Joukkolähteisesti nimetyt kappaleet. Nämä ovat nimettyjä osia videoissa, joita voi pinota yhä paremman tarkkuuden saavuttamiseksi. Osta lisenssi nähdäksesi tähän videoon lisätyt kappaleet, kuten: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Uusi ominaisuus: Joukkolähteisesti nimetyt kappaleet. Nämä ovat nimettyjä osia videoissa, joita voi pinota yhä paremman tarkkuuden saavuttamiseksi. Sinulla on pääsy ominaisuuteen ilmaiseksi, ota se käyttöön asetuksissa."
     },
     "unsubmittedSegmentCounts": {
         "message": "Sinulla on tällä hetkellä {0} {1}",

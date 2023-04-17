@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Sulgemisikoon"
     },
+    "OpenSubmissionMenu": {
+        "message": "Ava saatmise menüü"
+    },
     "sortSegments": {
         "message": "Sorteeri segmendid"
     },
@@ -250,7 +253,7 @@
         "message": "Kui video on uus ning segmente ei leitud, proovitakse vaatamise ajal iga paari minuti tagant uuesti segmente tuua."
     },
     "enableShowCategoryWithoutPermission": {
-        "message": "Näita kategooriaid segmentide menüüs isegi ilma segmendi esitamise loata"
+        "message": "Näita segmentide menüüs ka ilma saatmise loata kategooriaid"
     },
     "whatShowCategoryWithoutPermission": {
         "message": "Osade kategooriate esitamiseks on minimaalse reputatsiooni nõuete tõttu vajalik luba"
@@ -473,7 +476,7 @@
         "message": "Segmendid, mis on lühemad kui määratud väärtus ei jäeta vahele või ei kuvata mängijal."
     },
     "enableManualSkipOnFullVideo": {
-        "message": "Jäta käsitsi vahele, kui täis video pealkiri on saadaval"
+        "message": "Jäta käsitsi vahele, kui eksisteerib terve video silt"
     },
     "whatManualSkipOnFullVideo": {
         "message": "Inimestele, kes soovivad vaadata (enese-)reklaami sisaldavat videot segamatult."
@@ -793,6 +796,10 @@
     "fullVideoSegments": {
         "message": "Kuva ikoon, kui terve video on reklaam",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Kuva silte ka videote pisipiltidel",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "previewColor": {
         "message": "Saatmata värv",
@@ -1149,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Vali oma riik"
     },
-    "alreadyDonated": {
-        "message": "Kui olete annetanud ükskõik millise summa, saate lunastada oma tasuta ligipääsu saates kirja e-postile:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Kui te ei saa lubada endale litsensi soetamist, vajutage {here}, et uurida, kas kvalifitseerute allahindluse saamisele",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1171,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Sisesta litsentsivõti"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlocki kogukonna-loodud peatükkide funktsioon on saadaval vaid inimestele, kes ostavad litsentsi või neile, kes saavad tasuta ligipääsu varasemate panuste tõttu"
-    },
-    "chaptersPage2": {
-        "message": "NB: Teie luba peatükke esitada on jätkuvalt põhinev reputatsiooni arvutustel. Litsensi soetamine lubab vaid teiste inimeste peatükke näha",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Uus Funktsioon: Rahva poolt rahastatavad isikupärased peatükid. Need on isikupärastatava pealikirjaga peatükid videos, mis on samuti ühildatavad, et näidata täpsemat segmendi pikkust. Soetage litsents, et näha selle video jaoks esitatud peatükke, nt: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Uus Funktsioon: Rahva poolt rahastatavad isikupärased peatükid. Need on isikupärastatava pealikirjaga peatükid videos, mis on samuti ühildatavad, et näidata täpsemat segmendi pikkust. Teil on tasuta ligipääs, lülitage see seadetest sisse."
     },
     "unsubmittedSegmentCounts": {
         "message": "Sul on hetkel {0} {1}",

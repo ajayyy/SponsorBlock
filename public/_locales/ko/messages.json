@@ -797,6 +797,10 @@
         "message": "동영상 전체가 광고인 경우 아이콘 표시",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "동영상 미리 보기 사진에도 라벨 표시",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "미제출 색상",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "국가를 선택하세요"
     },
-    "alreadyDonated": {
-        "message": "이전에 후원한 이력이 있다면, 메일을 보내 라이선스를 등록하실 수 있어요. 문의 주소:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "요금을 결제할 여력이 아니시라면, {여기}서 할인 혜택을 받을 수 있는지 확인해 보세요",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "라이선스 키를 입력하세요"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock 사용자 참여 챕터 기능은 라이선스 결제 사용자나, 이전 기여를 통해 접근을 허가받은 사용자만 사용할 수 있어요"
-    },
-    "chaptersPage2": {
-        "message": "참고: 여전히 챕터 제출 권한은 산정된 평판만을 바탕으로 부여돼요. 라이선스를 결제하면 다른 분이 제출한 챕터를 확인하는 기능만 추가로 사용할 수 있어요",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 이 동영상에 제출된 챕터를 보려면 라이선스를 결제하세요. 챕터 목록 미리보기: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "새로운 기능: 사용자 참여 챕터 기능. 챕터는 사용자가 직접 이름을 지정할 수 있고 중첩시킬 수 있어 더욱 더 정확해요. 설정에서 사용해서 무료로 사용할 수 있어요."
     },
     "unsubmittedSegmentCounts": {
         "message": "You currently have {0} on {1}",

@@ -1145,10 +1145,6 @@
     "selectYourCountry": {
         "message": "Pilih negaramu"
     },
-    "alreadyDonated": {
-        "message": "Jika Anda pernah meyumbangkan jumlah berapapun, Anda dapat menebus akses gratis dengan menyurel:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Jika Anda tidak mampu membeli lisensi, klik {here} untuk melihat jika Anda memenuhi syarat untuk mendapatkan diskon",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1167,20 +1163,6 @@
     },
     "enterLicenseKey": {
         "message": "Masukkan Kode Lisensi"
-    },
-    "chaptersPage1": {
-        "message": "Fitur bab yang diurun-dayakan SponsorBlock hanya tersedia bagi pembeli lisensi, atau penerima akses gratis berkat kontribusinya di masa lalu"
-    },
-    "chaptersPage2": {
-        "message": "Catatan: Izin untuk mengirim bab tetap bedasarkan reputasi yang diperhitungkan. Membeli lisensi hanya memperbolehkan Anda untuk melihat bab yang dikirim oleh orang lain",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Fitur Baru: Bab ubah suai yang diurun daya. Ini adalah beberapa bagian video yang secara khusus diberi nama dan dapat ditumpuk untuk mendapat ketepatan yang lebih. Beli lisensi untuk menampilkan bab yang dikirimkan untuk video ini seperti: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Fitur Baru: Bab ubah suai yang diurun daya. Ini adalah beberapa bagian video yang secara khusus diberi nama dan dapat ditumpuk untuk mendapat ketepatan yang lebih. Anda memiliki akses gratis yang aktif di opsi."
     },
     "unsubmittedSegmentCounts": {
         "message": "Kamu mempunyai {0} dalam {1}",

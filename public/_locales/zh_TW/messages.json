@@ -1137,10 +1137,6 @@
     "selectYourCountry": {
         "message": "選擇國家"
     },
-    "alreadyDonated": {
-        "message": "如果你在之前捐獻過任何金額，你可以發送電子郵件到以下地址以獲得免費存取權：",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "若你無法購買授權，請點 {here} 以檢查你是否可用優惠",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1159,9 +1155,6 @@
     },
     "enterLicenseKey": {
         "message": "請輸入授權金鑰"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock 僅供有購買授權或在過去有貢獻者使用"
     },
     "unsubmittedSegmentCounts": {
         "message": "你現在在 {1} 上有 {0}",

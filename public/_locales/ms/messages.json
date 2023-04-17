@@ -1142,10 +1142,6 @@
     "selectYourCountry": {
         "message": "Pilih negara anda"
     },
-    "alreadyDonated": {
-        "message": "Jika anda telah menderma apa-apa jumlah sebelum ini, anda boleh tebus akses percuma dengan menghantar emel:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Jika anda tidak mampu untuk membeli lesen, tekan {sini} untuk melihat sama ada anda layak untuk diskaun",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1164,20 +1160,6 @@
     },
     "enterLicenseKey": {
         "message": "Masukkan Kunci Lesen"
-    },
-    "chaptersPage1": {
-        "message": "Fitur kandungan sumber awam SponsorBlock hanya tersedia untuk orang yang membeli lesen atau untuk orang yang diberikan akses secara percuma kerana sumbangan lepas"
-    },
-    "chaptersPage2": {
-        "message": "Nota: Kebenaran untuk hantar kandungan masih berdasarkan oleh reputasi yang dikira. Membeli lesen hanya membenarkan anda untuk melihat kandungan yang dihantar oleh orang lain",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Fitur Baharu: Kandungan sumber awam tersuai. Ini adalah bahagian dinamakan tersuai dalam video yang boleh bertindan untuk mendapatkan lebih dan lebih tepat. Beli lesen untuk melihat kandungan dihantar pada video seperti ini: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Fitur Baharu: Kandungan sumber awam tersuai. Ini adalah bahagian dinamakan tersuai dalam video yang boleh bertindan untuk mendapatkan lebih dan lebih tepat. Anda mempunyai akses secara percuma, membolehkannya di pilihan."
     },
     "unsubmittedSegmentCounts": {
         "message": "Anda pada masa ini mempunyai {0} di {1}",

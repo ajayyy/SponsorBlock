@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Icono de cerrar"
     },
+    "OpenSubmissionMenu": {
+        "message": "Abrir Menú de Envíos"
+    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
@@ -794,6 +797,10 @@
         "message": "Mostrar un icono cuando un video es enteramente un anuncio",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "También mostrar etiquetas en las miniaturas de los vídeos",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Color No Enviado",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1149,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Seleccione su país"
     },
-    "alreadyDonated": {
-        "message": "Si has donado cualquier cantidad antes de ahora, puedes canjear el acceso gratuito vía correo electrónico:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Si no puedes permitirte comprar una licencia, haz clic {aquí} para ver si eres elegible para un descuento",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1171,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Ingresar clave de licencia"
-    },
-    "chaptersPage1": {
-        "message": "La función de capítulos colaborativos de SponsorBlock solo está disponible para las personas que adquieran una licencia o para aquellas a las que se les conceda acceso gratuito debido a sus contribuciones anteriores"
-    },
-    "chaptersPage2": {
-        "message": "Nota: el permiso para enviar capítulos sigue basándose en la reputación calculada. La compra de una licencia solo te permite ver los capítulos enviados por otros usuarios",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Nueva función: capítulos personalizados creados por la comunidad. Se trata de secciones con nombres personalizados que se pueden superponer en los vídeos para obtener una mayor precisión. Adquiere una licencia para ver los capítulos presentados en este vídeo como: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Nueva función: capítulos personalizados creados por la comunidad. Se trata de secciones con nombres personalizados que se pueden superponer en los vídeos para obtener una mayor precisión. Tienes acceso de forma gratuita, se activa en las opciones."
     },
     "unsubmittedSegmentCounts": {
         "message": "Actualmente tienes {0} en {1}",

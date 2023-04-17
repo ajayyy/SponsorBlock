@@ -797,6 +797,10 @@
         "message": "Показване на икона, когато видеоклипът е изцяло реклама",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Показване на етикети на миниатюрите на видеоклиповете",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Цвят на неизпратен сегмент",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Изберете вашата държава"
     },
-    "alreadyDonated": {
-        "message": "Ако сте дарили някаква сума преди, можете да осребрите безплатен достъп чрез имейл:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Ако не можете да си позволите да закупите лиценз, щракнете {тук}, за да видите дали отговаряте на условията за отстъпка",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Въведете лицензния ключ"
-    },
-    "chaptersPage1": {
-        "message": "Функцията за групови глави на SponsorBlock е достъпна само за хора, закупили лиценз, или за хора, на които е предоставен безплатен достъп поради техния минал принос"
-    },
-    "chaptersPage2": {
-        "message": "Забележка: Разрешението за изпращане на глави все още се основава на изчислена репутация. Закупуването на лиценз ви позволява само да преглеждате глави, изпратени от други",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Нова функция: Персонализирани глави с краудсорсинг. Това са секции с персонализирани имена във видеоклипове, които могат да бъдат подредени, за да станат все по-прецизни. Закупете лиценз, за ​​да видите главите, изпратени в това видео, като например: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Нова функция: Персонализирани глави с краудсорсинг. Това са секции с персонализирани имена във видеоклипове, които могат да бъдат подредени, за да станат все по-прецизни. Имате безплатен достъп, активирайте в опциите."
     },
     "unsubmittedSegmentCounts": {
         "message": "В момента имате {0} в {1}",

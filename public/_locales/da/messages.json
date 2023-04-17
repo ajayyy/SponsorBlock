@@ -1142,10 +1142,6 @@
     "selectYourCountry": {
         "message": "Vælg dit land"
     },
-    "alreadyDonated": {
-        "message": "Hvis du har doneret et beløb før, kan du indløse gratis adgang via e-mail:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Hvis du ikke har råd til at købe en licens, så klik på {here} for at se, om du er berettiget til en rabat",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1164,20 +1160,6 @@
     },
     "enterLicenseKey": {
         "message": "Indtast Licensnøgle"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock crowd-sourced kapitler funktion er kun tilgængelig for personer, der køber en licens, eller for personer, der har fået gratis adgang på grund af deres tidligere bidrag"
-    },
-    "chaptersPage2": {
-        "message": "Bemærk: Tilladelse til at indsende kapitler er stadig baseret på beregnet omdømme. Indkøb af en licens giver dig kun mulighed for at se kapitler indsendt af andre",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Ny funktion: Crowd-sourced brugerdefinerede kapitler. Disse er brugerdefinerede sektioner i videoer, der kan stables for at få mere og mere præcise. Køb en licens til at se kapitlerne indsendt på denne video såsom: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Ny funktion: Crowd-sourced brugerdefinerede kapitler. Disse er brugerdefinerede sektioner i videoer, der kan stables for at få mere og mere præcise. Du har gratis adgang, aktiver i indstillinger."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du har lige nu {0} på {1}",

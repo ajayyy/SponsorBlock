@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "Закрити іконку"
     },
+    "OpenSubmissionMenu": {
+        "message": "Відкрити меню надсилання"
+    },
     "sortSegments": {
         "message": "Сортувати сегменти"
     },
@@ -434,6 +437,10 @@
     },
     "supportOtherSites": {
         "message": "Підтримувати сторонні YouTube-сайти"
+    },
+    "supportOtherSitesDescription": {
+        "message": "Підтримка сторонніх клієнтів YouTube. Щоб увімкнути підтримку, ви повинні прийняти додаткові дозволи.",
+        "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
         "message": "Підтримувані сайти: "
@@ -790,6 +797,10 @@
         "message": "Показувати значок, коли все відео є рекламою",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Показувати мітки на мініатюрах відео",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Колір не надісланого сегмента",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1145,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Виберіть вашу країну"
     },
-    "alreadyDonated": {
-        "message": "Якщо ви вже пожертвували будь-яку суму, ви можете отримати безкоштовний доступ, надіславши електронний лист:\nВажливо:Після двокрапки вказується адреса електронної пошти",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Якщо ви не можете дозволити собі придбати ліцензію, натисніть {тут}, щоб дізнатися, чи маєте ви право на знижку",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1167,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Введіть ліцензійний ключ"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock функція краудсорсингу розділів доступна лише для людей, які придбали ліцензію, або для людей, яким надано безкоштовний доступ через їхні попередні внески"
-    },
-    "chaptersPage2": {
-        "message": "Примітка: Дозвіл надсилати глави все ще базується на обчисленій репутації. Придбання ліцензії дозволяє лише переглядати розділи, надіслані іншими",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Нова функція: краудсорсингові користувацькі розділи. Це розділи у відео зі спеціальними назвами, які можна складати, щоб отримати точніші результати. Придбайте ліцензію, щоб переглядати розділи цього відео, наприклад: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Нова функція: краудсорсингові користувацькі розділи. Це розділи у відео зі спеціальними назвами, які можна складати, щоб отримати точніші результати. Ви маєте безкоштовний доступ, увімкніть параметр."
     },
     "unsubmittedSegmentCounts": {
         "message": "Наразі у вас є {0} на {1}",

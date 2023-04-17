@@ -439,7 +439,7 @@
         "message": "Stöd för tredjeparts YouTube-webbplatser"
     },
     "supportOtherSitesDescription": {
-        "message": "Stöd tredjeparts YouTube-klienter. För att aktivera support måste du acceptera de extra behörigheterna.",
+        "message": "Stöd tredjeparts YouTube-klienter. För att aktivera stöd måste du acceptera de extra behörigheterna.",
         "description": "This replaces the 'supports Invidious' option because it now works on other YouTube sites such as Cloudtube"
     },
     "supportedSites": {
@@ -797,6 +797,10 @@
         "message": "Visa en ikon när hela videon är en annons",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Visa även etiketter på videominiatyrbilder",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Färg på oinskickade",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1152,10 +1156,6 @@
     "selectYourCountry": {
         "message": "Välj ditt land"
     },
-    "alreadyDonated": {
-        "message": "Om du har donerat tidigare kan du lösa in fri åtkomst genom att skicka e-post till:",
-        "description": "After the colon is an email address"
-    },
     "cantAfford": {
         "message": "Om du inte har råd att köpa en licens kan du klicka {här} för att se om du är berättigad till rabatt",
         "description": "Keep the curly braces. The word 'here' should be translated as well."
@@ -1174,20 +1174,6 @@
     },
     "enterLicenseKey": {
         "message": "Ange licensnyckel"
-    },
-    "chaptersPage1": {
-        "message": "SponsorBlock crowd-sourced kapitelfunktionen är endast tillgänglig för personer som köper en licens eller för de personer som beviljats gratis tillgång på grund av att de bidragit tidigare"
-    },
-    "chaptersPage2": {
-        "message": "Obs: Tillstånd att skicka in kapitel är fortfarande baserat på beräknat rykte. Köpa en licens låter dig bara visa kapitel som lämnats in av andra",
-        "description": "On the chapters page for getting access to the paid chapters feature"
-    },
-    "chapterNewFeature": {
-        "message": "Ny funktion: Crowd-sourced anpassade kapitel. Dessa är anpassade namngivna avsnitt i videor som kan staplas för att få mer och mer exakt. Köp en licens för att se de kapitel som lämnats på denna video såsom: ",
-        "description": "After the comma, a list of chapters for this video will appear"
-    },
-    "chapterNewFeature2": {
-        "message": "Ny funktion: Crowd-sourced anpassade kapitel. Dessa är anpassade namngivna avsnitt i videor som kan staplas för att få mer och mer exakt. För dig är det gratis, aktivera det i alternativen."
     },
     "unsubmittedSegmentCounts": {
         "message": "Du har för närvarande {0} på {1}",

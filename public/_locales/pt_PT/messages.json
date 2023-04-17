@@ -128,6 +128,12 @@
     "closePopup": {
         "message": "Fechar Popup"
     },
+    "closeIcon": {
+        "message": "Ícone de Fechar"
+    },
+    "OpenSubmissionMenu": {
+        "message": "Abrir Menu de Envio"
+    },
     "sortSegments": {
         "message": "Ordenar Segmentos"
     },
@@ -436,6 +442,10 @@
     },
     "disable": {
         "message": "Desativar"
+    },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Mostrar etiquetas nas miniaturas de vídeo também",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
     },
     "category": {
         "message": "Categoria"
