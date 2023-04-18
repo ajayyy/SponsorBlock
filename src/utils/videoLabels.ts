@@ -1,4 +1,4 @@
-import { Category, VideoID } from "../types";
+import { Category, CategorySkipOption, VideoID } from "../types";
 import { getHash } from "@ajayyy/maze-utils/lib/hash";
 import Utils from "../utils";
 import { logWarn } from "./logger";
@@ -58,7 +58,12 @@ export async function getVideoLabel(videoID: VideoID): Promise<Category | null> 
     const result = await getLabelHashBlock(prefix);
 
     if (result) {
-        return result.videos[videoID] ?? null;
+        const category = result.videos[videoID];
+        if (category && utils.getCategorySelection(category).option !== CategorySkipOption.Disabled) {
+            return category;
+        } else {
+            return null;
+        }
     }
 
     return null;

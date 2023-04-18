@@ -1,5 +1,5 @@
 import Config, { VideoDownvotes } from "./config";
-import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType } from "./types";
+import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType, CategorySkipOption } from "./types";
 
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import * as CompileConfig from "../config.json";
@@ -225,7 +225,7 @@ export default class Utils {
                 return selection;
             }
         }
-        return { name: "None", option: 0} as CategorySelection;
+        return { name: category, option: CategorySkipOption.Disabled} as CategorySelection;
     }
 
     /**
