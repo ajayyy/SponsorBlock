@@ -783,6 +783,10 @@ input::-webkit-inner-spin-button {
 	align-items: center;
 }
 
+.sponsorBlockCategoryPillTitle {
+	white-space: nowrap;
+}
+
 .categoryPillClose {
 	display: none;
 	height: 10px;
