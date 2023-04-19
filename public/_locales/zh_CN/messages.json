@@ -1230,9 +1230,6 @@
     "exportSegmentsAsURL": {
         "message": "分享链接"
     },
-    "segmentFetchFailureWarning": {
-        "message": "警告：服务器未响应。片段可能已提交，只是由于服务器问题您未收到回应。"
-    },
     "allowScrollingToEdit": {
         "message": "允许滚动编辑时间"
     }
