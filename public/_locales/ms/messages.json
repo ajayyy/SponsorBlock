@@ -1215,8 +1215,5 @@
     },
     "exportSegmentsAsURL": {
         "message": "Kongsi sebagai URL"
-    },
-    "segmentFetchFailureWarning": {
-        "message": "Amaran: Pelayan belum membalas dengan segmen lagi. Mungkin sebenarnya ada segmen di video ini sudah dihantar tetapi anda hanya belum menerimanya kerana isu dengan pelayan."
     }
 }
