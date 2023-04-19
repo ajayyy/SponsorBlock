@@ -1019,7 +1019,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     lastResponseStatus = response?.status;
 
     if (response?.ok) {
-        const recievedSegments: SponsorTime[] = JSON.parse(response.responseText)
+        const receivedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === getVideoID())
                     ?.map((video) => video.segments)?.[0]
                     ?.map((segment) => ({
@@ -1027,7 +1027,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                         source: SponsorSourceType.Server
                     }))
                     ?.sort((a, b) => a.segment[0] - b.segment[0]);
-        if (recievedSegments && recievedSegments.length) {
+        if (receivedSegments && receivedSegments.length) {
             sponsorDataFound = true;
 
             // Check if any old submissions should be kept
@@ -1035,13 +1035,13 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                 for (let i = 0; i < sponsorTimes.length; i++) {
                     if (sponsorTimes[i].source === SponsorSourceType.Local)  {
                         // This is a user submission, keep it
-                        recievedSegments.push(sponsorTimes[i]);
+                        receivedSegments.push(sponsorTimes[i]);
                     }
                 }
             }
 
             const oldSegments = sponsorTimes || [];
-            sponsorTimes = recievedSegments;
+            sponsorTimes = receivedSegments;
             existingChaptersImported = false;
 
             // Hide all submissions smaller than the minimum duration
@@ -2165,10 +2165,10 @@ async function sendSubmitMessage() {
 
         const newSegments = sponsorTimesSubmitting;
         try {
-            const recievedNewSegments = JSON.parse(response.responseText);
-            if (recievedNewSegments?.length === newSegments.length) {
-                for (let i = 0; i < recievedNewSegments.length; i++) {
-                    newSegments[i].UUID = recievedNewSegments[i].UUID;
+            const receivedNewSegments = JSON.parse(response.responseText);
+            if (receivedNewSegments?.length === newSegments.length) {
+                for (let i = 0; i < receivedNewSegments.length; i++) {
+                    newSegments[i].UUID = receivedNewSegments[i].UUID;
                     newSegments[i].source = SponsorSourceType.Server;
                 }
             }
