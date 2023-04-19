@@ -1215,8 +1215,5 @@
     },
     "exportSegmentsAsURL": {
         "message": "Del som URL"
-    },
-    "segmentFetchFailureWarning": {
-        "message": "Advarsel: Serveren har endnu ikke svaret med segmenter. Der kan faktisk være segmenter på denne video, der allerede er indsendt, men du har bare ikke modtaget dem på grund af problemer med serveren."
     }
 }
