@@ -252,6 +252,9 @@
     "whatRefetchWhenNotFound": {
         "message": "Se o vídeo for novo e nenhum segmento for encontrado, continuaremos a monitorizar enquanto assiste."
     },
+    "enableShowCategoryWithoutPermission": {
+        "message": "Mostrar categorias no menu de submissão mesmo sem permissão de submissão"
+    },
     "whatShowCategoryWithoutPermission": {
         "message": "Algumas categorias requerem permissão para submeter devido aos requisitos mínimos de reputação"
     },
@@ -273,6 +276,16 @@
     "noticeVisibilityMode2": {
         "message": "Todos os avisos de ignorar em tamanho pequeno"
     },
+    "noticeVisibilityMode3": {
+        "message": "Avisos pequenos quando ignorado automaticamente"
+    },
+    "noticeVisibilityMode4": {
+        "message": "Todos os avisos de ignorar em tamanho pequeno"
+    },
+    "longDescription": {
+        "message": "SponsorBlock permite-lhe ignorar os patrocinadores, intros, outros, lembretes de subscrição, e outras partes irritantes dos vídeos do YouTube. SponsorBlock é uma extensão de browser de origem pública que permite a qualquer pessoa submeter o tempo de início e fim dos segmentos patrocinados e outros segmentos dos vídeos do YouTube. Uma vez que uma pessoa submeta esta informação, todos os outros com esta extensão saltarão diretamente sobre o segmento patrocinado. Também se pode saltar sobre secções não musicais de vídeos musicais.",
+        "description": "Full description of the extension on the store pages."
+    },
     "website": {
         "message": "Site",
         "description": "Used on Firefox Store Page"
@@ -280,6 +293,18 @@
     "sourceCode": {
         "message": "Código-fonte",
         "description": "Used on Firefox Store Page"
+    },
+    "noticeUpdate": {
+        "message": "O aviso foi atualizado!",
+        "description": "The first line of the message displayed after the notice was upgraded."
+    },
+    "noticeUpdate2": {
+        "message": "Se mesmo assim não gostar, carregue no botão nunca mostrar.",
+        "description": "The second line of the message displayed after the notice was upgraded."
+    },
+    "setSkipShortcut": {
+        "message": "Saltar segmento",
+        "description": "Keybind label"
     },
     "setStartSponsorShortcut": {
         "message": "Iniciar/parar segmento",
@@ -296,6 +321,22 @@
     "previousChapterKeybind": {
         "message": "Capítulo anterior",
         "description": "Keybind label"
+    },
+    "keybindDescription": {
+        "message": "Selecione uma chave digitando-a e escolha qualquer chave modificadora que deseje utilizar."
+    },
+    "0": {
+        "message": "Tempo limite de conexão. Verifique a sua conexão com a internet. Se a sua internet está a funcionar, o servidor provavelmente está sobrecarregado ou desligado."
+    },
+    "disableSkipping": {
+        "message": "Saltar está ativado"
+    },
+    "enableSkipping": {
+        "message": "Saltar está desativado"
+    },
+    "yourWork": {
+        "message": "O seu trabalho",
+        "description": "Used to describe the section that will show you the statistics from your submissions."
     },
     "502": {
         "message": "O servidor parece estar sobrecarregado. Tente novamente em alguns segundos."
@@ -331,6 +372,10 @@
         "message": "{0} silenciado",
         "description": "Example: Sponsor Muted"
     },
+    "skipped_to_category": {
+        "message": "Avançar para {0}",
+        "description": "Used for skipping to things (Skipped to Highlight)"
+    },
     "minLower": {
         "message": "minuto"
     },
@@ -350,6 +395,9 @@
     "youHaveSavedTimeEnd": {
         "message": " das suas vidas",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
+    },
+    "statusReminder": {
+        "message": "Verificar status.sponsor.ajay.app para estado do servidor."
     },
     "setUserID": {
         "message": "Definir UserID Privado"
