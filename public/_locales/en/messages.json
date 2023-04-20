@@ -1236,7 +1236,7 @@
     "allowScrollingToEdit": {
         "message": "Allow Scrolling To Edit Times"
     },
-    "notice_time_after_skip": {
+    "NoticeTimeAfterSkip": {
         "message": "{seconds}s"
     }
 }
