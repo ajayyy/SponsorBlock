@@ -863,7 +863,12 @@ function setupVideoListeners() {
                 updateVirtualTime();
                 clearWaitingTime();
 
-                startSponsorSchedule();
+                // Sometimes looped videos loop back to almost zero, but not quite
+                if (getVideo().loop && getVideo().currentTime < 0.2) {
+                    startSponsorSchedule(false, 0);
+                } else {
+                    startSponsorSchedule();
+                }
             } else {
                 updateActiveSegment(getVideo().currentTime);
 
