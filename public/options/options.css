@@ -87,6 +87,7 @@ html, body {
 }
 
 .tab-heading {
+    user-select: none;
     font-size: 18px;
     height: 55px;
     line-height: 55px;
