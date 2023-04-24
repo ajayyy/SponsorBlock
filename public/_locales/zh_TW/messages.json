@@ -131,6 +131,9 @@
     "closeIcon": {
         "message": "關閉圖示"
     },
+    "OpenSubmissionMenu": {
+        "message": "開啟提交選單"
+    },
     "sortSegments": {
         "message": "排序片段"
     },
