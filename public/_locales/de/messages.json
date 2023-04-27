@@ -1231,7 +1231,7 @@
         "message": "Als URL teilen"
     },
     "segmentFetchFailureWarning": {
-        "message": "Warnung: Der Server hat noch nicht mit Segmenten geantwortet. Möglicherweise gibt es bereits Segmente zu diesem Video, aber du hast sie aufgrund von Problemen mit dem Server noch nicht erhalten."
+        "message": "Warnung: Der Server hat noch nicht mit Segmenten geantwortet. Möglicherweise gibt es in diesem Video bereits übermittelte Segmente, aber du hast sie aufgrund von Serverproblemen noch nicht erhalten."
     },
     "allowScrollingToEdit": {
         "message": "Scrollen zum Bearbeiten von Zeiten erlauben"

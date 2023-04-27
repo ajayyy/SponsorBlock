@@ -1219,9 +1219,6 @@
     "exportSegmentsAsURL": {
         "message": "Distribuie ca URL"
     },
-    "segmentFetchFailureWarning": {
-        "message": "Atenție: Serverul nu a răspuns încă cu segmente. Ar putea fi segmente în acest videoclip deja trimise, dar pur și simplu nu le-ai primit din cauza problemelor cu serverul."
-    },
     "allowScrollingToEdit": {
         "message": "Permite derularea la Editarea Timpilor"
     }

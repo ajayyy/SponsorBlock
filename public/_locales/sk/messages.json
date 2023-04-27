@@ -1211,8 +1211,5 @@
     "videoID": {
         "message": "ID videa",
         "description": "Header of the unsubmitted segments list"
-    },
-    "segmentFetchFailureWarning": {
-        "message": "Varovanie: Zo servera sa ešte nenahrali segmenty. V tomto videu už môžu byť vytvorené segmenty, ale vzhľadom na problémy so serverom ešte nemuseli byť nahraté."
     }
 }

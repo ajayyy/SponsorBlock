@@ -1230,9 +1230,6 @@
     "exportSegmentsAsURL": {
         "message": "Compartilhar como URL"
     },
-    "segmentFetchFailureWarning": {
-        "message": "Aviso: O servidor ainda não respondeu com segmentos. Na verdade, pode haver segmentos neste vídeo já enviados, mas você não os recebeu devido a problemas com o servidor."
-    },
     "allowScrollingToEdit": {
         "message": "Permitir rolagem para editar tempos"
     }

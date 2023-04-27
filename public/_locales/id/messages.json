@@ -1219,9 +1219,6 @@
     "exportSegmentsAsURL": {
         "message": "Bagikan sebagai Tautan"
     },
-    "segmentFetchFailureWarning": {
-        "message": "Peringatan: Server belum merespon dengan segmen. Mungkin sebenarnya sudah ada segmen di video ini namun Anda belum menerimanya karena ada masalah dengan server."
-    },
     "allowScrollingToEdit": {
         "message": "Izinkan Menggulir Untuk Menyunting Waktu"
     }

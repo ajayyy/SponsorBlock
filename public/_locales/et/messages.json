@@ -1230,9 +1230,6 @@
     "exportSegmentsAsURL": {
         "message": "Jaga URLina"
     },
-    "segmentFetchFailureWarning": {
-        "message": "Tähelepanu: Server ei ole veel segmente edastanud. Sellel videol võivad olla esitatud segmendid, aga te pole neid serveri tõrke tõttu kätte saanud."
-    },
     "allowScrollingToEdit": {
         "message": "Luba aegade muutmiseks kerimine"
     }

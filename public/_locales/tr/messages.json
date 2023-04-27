@@ -797,6 +797,10 @@
         "message": "Video bütünüyle bir reklamsa simge göster",
         "description": "Referring to the category pill that is now shown on videos that are entirely sponsor or entirely selfpromo"
     },
+    "fullVideoLabelsOnThumbnails": {
+        "message": "Etiketleri, video küçük resimlerinde de göster",
+        "description": "Referring to the category pill that is shown on videos that are entirely sponsor or entirely selfpromo on recommended videos, in searches or on the homepage."
+    },
     "previewColor": {
         "message": "Gönderilmemiş Renk",
         "description": "Referring to submissions that have not been sent to the server yet."
@@ -1227,7 +1231,7 @@
         "message": "URL olarak paylaş"
     },
     "segmentFetchFailureWarning": {
-        "message": "Uyarı: Sunucu henüz bölümlerle yanıt vermedi. Aslında bu videoda zaten gönderilmiş bölümler olabilir, ancak sunucudaki sorunlar nedeniyle bunları almadınız."
+        "message": "Dikkat: Sunucu henüz kısımlarla yanıt vermedi. Aslında bu videoda zaten gönderilmiş bölümler olabilir, ancak sunucudaki sorunlar nedeniyle bunları almadınız."
     },
     "allowScrollingToEdit": {
         "message": "Zamanları Düzenlemek İçin Kaydırmaya İzin Ver"

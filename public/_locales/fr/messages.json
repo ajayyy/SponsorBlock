@@ -153,7 +153,7 @@
         "message": "Soumissions"
     },
     "savedPeopleFrom": {
-        "message": "Vous avez sauvé les utilisateurices de "
+        "message": "Vous avez sauvé les utilisateurs de "
     },
     "viewLeaderboard": {
         "message": "Classement"
@@ -226,7 +226,7 @@
         "message": "Activer le suivi du nombre de sauts de segments"
     },
     "whatViewTracking": {
-        "message": "Cette fonctionnalité enregistre les segments que vous sautez, de manière à informer leur auteurice que leur soumission a été utile, et est également utilisée en complément des votes afin d'éviter l'enregistrement de spams dans la base de données. SponsorBlock envoie un message au serveur à chaque fois que vous passez un segment. Pour garder des statistiques représentatives, nous espérons que la plupart des gens ne modifiront pas ce paramètre. :)"
+        "message": "Cette fonctionnalité enregistre les segments que vous avez sautés afin d'informer leur auteur à quel point leur soumission a été utile. Elle est aussi utilisée en complément des votes positifs pour empêcher la soumission de spams dans la base de données. SponsorBlock envoie un message au serveur à chaque fois que vous passez un segment. Nous espérons que la plupart des utilisateurs ne modifieront pas ce paramètre afin de conserver des statistiques aussi représentatives que possible. :)"
     },
     "enableViewTrackingInPrivate": {
         "message": "Activer le décompte du nombre de segments sautés dans les onglets de navigation privée/incognito"
@@ -424,7 +424,7 @@
         "message": "Importer/Exporter Votre ID privé d'utilisateur"
     },
     "whatChangeUserID": {
-        "message": "Il doit rester privé. 0 l'instar d'un mot de passe, il ne doit être partagé avec personne. Si une autre personne est en possession de cette information, elle peut usurper votre identité SponsorBlock. Si vous cherchez votre UserID public, cliquez sur l'icône du presse-papiers dans l'encart."
+        "message": "Cela doit rester privé. À l'instar d'un mot de passe, il ne doit être partagé avec personne. Si une autre personne est en possession de cette donnée, elle peut usurper votre identité SponsorBlock. Si vous cherchez votre UserID public, cliquez sur l'icône du presse-papiers dans l'encart."
     },
     "setUserID": {
         "message": "Définir l'ID privé d'utilisateur"
@@ -1229,9 +1229,6 @@
     },
     "exportSegmentsAsURL": {
         "message": "Partager un URL"
-    },
-    "segmentFetchFailureWarning": {
-        "message": "Attention : Le serveur n'a pas encore répondu avec les segments. Il se peut qu'il y ait des segments sur cette vidéo déjà soumise, mais vous ne les avez tout simplement pas reçus en raison de problèmes avec le serveur."
     },
     "allowScrollingToEdit": {
         "message": "Autoriser l'utilisation de la molette pour modifier les temps"

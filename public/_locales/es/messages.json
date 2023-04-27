@@ -17,7 +17,7 @@
         "message": "Esto ya ha sido enviado antes"
     },
     "channelWhitelisted": {
-        "message": "¡Canal Permitido!"
+        "message": "¡Canal permitido!"
     },
     "Segment": {
         "message": "segmento"
@@ -604,7 +604,7 @@
         "message": "Promociones pagadas"
     },
     "category_sponsor_guideline2": {
-        "message": "No para donaciones o merchandising"
+        "message": "No para donaciones o mercancía personalizada"
     },
     "category_selfpromo": {
         "message": "Promoción Propia/No Remunerada"
@@ -613,13 +613,13 @@
         "message": "Similar a \"sponsor\", excepto que para la promoción propia o no remunerada. Esto incluye secciones sobre mercancía, donaciones o información sobre con quiénes colaboraron."
     },
     "category_selfpromo_guideline1": {
-        "message": "Donaciones, afiliaciones y merchandising"
+        "message": "Donaciones, membresías y mercancía personalizada"
     },
     "category_selfpromo_guideline2": {
-        "message": "Comentarios inútiles que no aportan nada al vídeo"
+        "message": "Agradecimientos gratuitos que no contribuyen al video"
     },
     "category_selfpromo_guideline3": {
-        "message": "No para productos y merchandising de empresas"
+        "message": "No para productos ni mercancía diseñados por empresas"
     },
     "category_exclusive_access": {
         "message": "Acceso Exclusivo"
@@ -641,13 +641,13 @@
         "message": "Cuando hay un breve recordatorio para dar me gusta, suscribirse o seguirlos en medio del contenido. Si es largo o sobre algo específico, debería estar bajo promoción propia en su lugar."
     },
     "category_interaction_guideline1": {
-        "message": "Recordatorios breves para darle a me gusta, suscribirse o seguir"
+        "message": "Recordatorios breves para darle me gusta, suscribirse o seguir"
     },
     "category_interaction_guideline2": {
         "message": "Incluye recordatorios indirectos para comentar"
     },
     "category_interaction_guideline3": {
-        "message": "No para promoción general, solo peticiones de actuación"
+        "message": "No para promoción general, solo llamadas a la acción"
     },
     "category_interaction_short": {
         "message": "Recordatorio de Interacción"
@@ -680,13 +680,13 @@
         "message": "Vista previa/Recapitulación"
     },
     "category_preview_description": {
-        "message": "Colección de vídeos que muestran lo que se verá en este vídeo o en otros vídeos de una serie en la que toda esta información se repite más adelante en el vídeo."
+        "message": "Colección de clips que muestran lo que vendrá en este video u otros videos en una serie en la cual toda la información es repetida en el video."
     },
     "category_preview_guideline1": {
-        "message": "Vídeos que aparecen más tarde, o en un vídeo futuro"
+        "message": "Clips que aparecen más tarde o en un video futuro"
     },
     "category_preview_guideline2": {
-        "message": "Recopilación de un vídeo anterior"
+        "message": "Recapitulación de un video anterior"
     },
     "category_preview_guideline3": {
         "message": "No para secciones que añaden contenido adicional"
@@ -722,7 +722,7 @@
         "message": "Secciones que no están en versiones oficiales"
     },
     "category_music_offtopic_guideline2": {
-        "message": "Sin música en un espectáculo en directo"
+        "message": "Secciones sin música en un espectáculo en vivo"
     },
     "category_poi_highlight": {
         "message": "Destacado"
