@@ -36,7 +36,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { waitFor } from "@ajayyy/maze-utils";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
-import { setupVideoMutationListener, getChannelIDInfo, getVideo, refreshVideoAttachments, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
@@ -993,7 +993,6 @@ function setupCategoryPill() {
 
 async function sponsorsLookup(keepOldSubmissions = true) {
     if (lookupWaiting) return;
-    if (!getVideo() || !isVisible(getVideo())) refreshVideoAttachments();
     //there is still no video here
     if (!getVideo()) {
         lookupWaiting = true;
@@ -1003,8 +1002,6 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         }, 100);
         return;
     }
-
-    setupVideoMutationListener();
 
     const categories: string[] = Config.config.categorySelections.map((category) => category.name);
 
