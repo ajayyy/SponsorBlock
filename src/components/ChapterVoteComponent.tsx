@@ -1,6 +1,6 @@
 import * as React from "react";
 import Config from "../config";
-import { Category, SegmentUUID, SponsorTime } from "../types";
+import { ActionType, Category, SegmentUUID, SponsorTime } from "../types";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
@@ -65,35 +65,39 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                                 this.tooltip.close();
                                 this.tooltip = null;
                             } else {
-                                const referenceNode = chapterNode?.parentElement?.parentElement;
-                                if (referenceNode) {
-                                    const outerBounding = referenceNode.getBoundingClientRect();
-                                    const buttonBounding = (e.target as HTMLElement)?.parentElement?.getBoundingClientRect();
-                                    
-                                    this.tooltip = new Tooltip({
-                                        referenceNode: chapterNode?.parentElement?.parentElement,
-                                        prependElement: chapterNode?.parentElement,
-                                        showLogo: false,
-                                        showGotIt: false,
-                                        bottomOffset: `${outerBounding.height + 25}px`,
-                                        leftOffset: `${buttonBounding.x - outerBounding.x}px`,
-                                        extraClass: "centeredSBTriangle",
-                                        buttons: [
-                                            {
-                                                name: chrome.i18n.getMessage("incorrectVote"),
-                                                listener: (event) => this.vote(event, 0, e.target as HTMLElement).then(() => {
-                                                    this.tooltip?.close();
-                                                    this.tooltip = null;
-                                                })
-                                            }, {
-                                                name: chrome.i18n.getMessage("harmfulVote"),
-                                                listener: (event) => this.vote(event, 30, e.target as HTMLElement).then(() => {
-                                                    this.tooltip?.close();
-                                                    this.tooltip = null;
-                                                })
-                                            }
-                                        ]
-                                    });
+                                if (this.state.segment?.actionType === ActionType.Chapter) {
+                                    const referenceNode = chapterNode?.parentElement?.parentElement;
+                                    if (referenceNode) {
+                                        const outerBounding = referenceNode.getBoundingClientRect();
+                                        const buttonBounding = (e.target as HTMLElement)?.parentElement?.getBoundingClientRect();
+                                        
+                                        this.tooltip = new Tooltip({
+                                            referenceNode: chapterNode?.parentElement?.parentElement,
+                                            prependElement: chapterNode?.parentElement,
+                                            showLogo: false,
+                                            showGotIt: false,
+                                            bottomOffset: `${outerBounding.height + 25}px`,
+                                            leftOffset: `${buttonBounding.x - outerBounding.x}px`,
+                                            extraClass: "centeredSBTriangle",
+                                            buttons: [
+                                                {
+                                                    name: chrome.i18n.getMessage("incorrectVote"),
+                                                    listener: (event) => this.vote(event, 0, e.target as HTMLElement).then(() => {
+                                                        this.tooltip?.close();
+                                                        this.tooltip = null;
+                                                    })
+                                                }, {
+                                                    name: chrome.i18n.getMessage("harmfulVote"),
+                                                    listener: (event) => this.vote(event, 30, e.target as HTMLElement).then(() => {
+                                                        this.tooltip?.close();
+                                                        this.tooltip = null;
+                                                    })
+                                                }
+                                            ]
+                                        });
+                                    }
+                                } else {
+                                    this.vote(e, 0, e.target as HTMLElement)
                                 }
                             }
                         }}>
