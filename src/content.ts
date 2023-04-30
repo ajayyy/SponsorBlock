@@ -1335,9 +1335,9 @@ function videoElementChange(newVideo: boolean): void {
     if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
         previewBar.remove();
         previewBar = null;
-
-        createPreviewBar();
     }
+
+    createPreviewBar();
 }
 
 /**
