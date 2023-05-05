@@ -274,7 +274,7 @@
         "message": "Avisos de pulo pequeno no pulo automático"
     },
     "noticeVisibilityMode2": {
-        "message": "Todos os avisos de pulo pequeno"
+        "message": "Todos avisos de pulo que forem pequenos"
     },
     "noticeVisibilityMode3": {
         "message": "Avisos de pulo semitransparente no pulo automático"
@@ -1229,6 +1229,9 @@
     },
     "exportSegmentsAsURL": {
         "message": "Compartilhar como URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Alerta: o servidor ainda não respondeu com segmentos. Pode ser que os segmentos desse vídeo já tenham sido enviados, mas ainda não foram recebidos devido a problemas do servidor."
     },
     "allowScrollingToEdit": {
         "message": "Permitir rolagem para editar tempos"
