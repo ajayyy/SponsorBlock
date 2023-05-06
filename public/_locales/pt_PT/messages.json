@@ -611,5 +611,8 @@
     },
     "openOptionsPage": {
         "message": "Abrir página de opções"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Aviso: O servidor ainda não respondeu com segmentos. Pode, na verdade, estarem segmentos já submetidos neste vídeo, mas não os tenha recebido devido a problemas com o servidor."
     }
 }
