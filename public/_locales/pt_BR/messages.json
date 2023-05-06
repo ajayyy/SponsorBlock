@@ -14,10 +14,10 @@
         "message": "Você enviou muitos segmentos para esse vídeo, tem certeza de que são tantos assim?"
     },
     "409": {
-        "message": "Isso já foi enviado antes"
+        "message": "Esse segmento já foi enviado."
     },
     "channelWhitelisted": {
-        "message": "Canal adicionado à lista branca!"
+        "message": "Canal adicionado à lista de permissões!"
     },
     "Segment": {
         "message": "segmento"
@@ -141,10 +141,10 @@
         "message": "Você tem certeza que deseja enviar isto?"
     },
     "whitelistChannel": {
-        "message": "Adicionar canal à lista branca"
+        "message": "Adicionar canal à lista de permissões"
     },
     "removeFromWhitelist": {
-        "message": "Remover canal da lista branca"
+        "message": "Remover canal da lista de permissões"
     },
     "voteOnTime": {
         "message": "Votar em um segmento"
@@ -342,7 +342,7 @@
         "message": "O servidor parece estar sobrecarregado. Tente novamente em alguns segundos."
     },
     "errorCode": {
-        "message": "Código de erro: "
+        "message": "Código do erro: "
     },
     "skip": {
         "message": "Pular"
@@ -572,7 +572,7 @@
         "message": "Erro ao copiar para a área de transferência"
     },
     "copyDebugInformationOptions": {
-        "message": "Copia informações para a área de transferência para serem fornecidas a um desenvolvedor quando houver um bug / quando solicitado pelo desenvolvedor. Informações sensíveis como seu ID de usuário, canais na lista de permissões e endereço personalizado do servidor foram removidos. No entanto, ele contém informações como seu useragent, navegador, sistema operacional e número de versão da extensão. "
+        "message": "Copia informações para a área de transferência para serem fornecidas a um desenvolvedor quando houver um bug ou quando solicitado por um desenvolvedor. Informações sensíveis como seu ID de usuário, canais na lista de permissões e endereço personalizado do servidor foram removidos. No entanto, ele contém informações como seu useragent, navegador, sistema operacional e número de versão da extensão. "
     },
     "copyDebugInformationComplete": {
         "message": "A informação de depuração foi copiada para a área de transferência. Sinta-se à vontade para remover qualquer informação que prefira não compartilhar. Salve em um arquivo de texto ou cole-a no relatório de erro."
@@ -716,7 +716,7 @@
         "message": "Apenas para uso em vídeos musicais. Deve ser usado exclusivamente para seções de vídeos musicais que já não pertençam à outra categoria."
     },
     "category_music_offtopic_short": {
-        "message": "Não Musical"
+        "message": "Sem música"
     },
     "category_music_offtopic_guideline1": {
         "message": "Seções que não estão nos lançamentos oficiais"
@@ -861,7 +861,7 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você acreditar que este é o caso, faça um comentário aqui:"
+        "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo incorporado, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se este for o caso, comente aqui:"
     },
     "invidiousPermissionRefresh": {
         "message": "O navegador revogou a permissão necessária para funcionar em Invidious e em outros sites de terceiros. Por favor, clique no botão abaixo para reativar essa permissão."
@@ -876,13 +876,13 @@
         "message": "Falha na solicitação de permissão, você clicou em negar?"
     },
     "adblockerIssueWhitelist": {
-        "message": "Se você não consegue resolver isso, desative a configuração 'Forçar verificação do canal antes de pular', pois o SponsorBlock não pode recuperar as informações deste vídeo"
+        "message": "Se você não consegue resolver isso, desative a opção 'Forçar verificação do canal antes de pular', pois o SponsorBlock não pode recuperar as informações deste vídeo"
     },
     "forceChannelCheck": {
         "message": "Forçar verificação do canal antes de pular"
     },
     "whatForceChannelCheck": {
-        "message": "Por padrão, isso pulará os segmentos imediatamente, mesmo antes de saber qual é o canal. Por padrão, alguns seguimentos no inicio do vídeo podem ser ignorados nos canais da lista branca. Habilitar esta opção evitará isso, mas fará com que todos os pulos tenham um ligeiro atraso, já que obter o ID do canal pode levar algum tempo. Este atraso pode não ser perceptível se você tiver internet rápida."
+        "message": "Por padrão, ele pulará segmentos imediatamente antes mesmo de saber qual é o canal. Alguns segmentos no início do vídeo podem ser ignorados nos canais da lista de permissões. A ativação dessa opção evitará isso, mas irá fazer com que todos os pulos tenham um pequeno atraso, pois a obtenção do ID do canal pode levar algum tempo. Esse atraso pode ser imperceptível se você possuir uma internet rápida."
     },
     "forceChannelCheckPopup": {
         "message": "Considere ativar \"Forçar verificação do canal antes de pular\""
