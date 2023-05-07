@@ -714,7 +714,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         } else {
             logDebug(`Starting timeout to skip ${getVideo().currentTime} to skip at ${skipTime[0]}`);
 
-            const offset = (utils.isFirefox() && !isSafari ? 300 : 150);
+            const offset = (utils.isFirefox() && !isSafari() ? 300 : 150);
             // Schedule for right before to be more precise than normal timeout
             currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - offset));
         }
