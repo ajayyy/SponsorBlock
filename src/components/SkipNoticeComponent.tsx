@@ -7,13 +7,13 @@ import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import Utils from "../utils";
 const utils = new Utils();
 import { getSkippingText } from "../utils/categoryUtils";
-import { keybindToString } from "../utils/configUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
+import { keybindToString } from "@ajayyy/maze-utils/lib/config";
 
 enum SkipButtonState {
     Undo, // Unskip

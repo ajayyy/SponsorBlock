@@ -3,10 +3,10 @@ import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration
 
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import * as CompileConfig from "../config.json";
-import { waitFor } from "@ajayyy/maze-utils";
-import { isSafari } from "./utils/configUtils";
+import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
 import { findValidElementFromSelector } from "@ajayyy/maze-utils/lib/dom";
 import { FetchResponse, sendRequestToCustomServer } from "@ajayyy/maze-utils/lib/background-request-proxy"
+import { isSafari } from "@ajayyy/maze-utils/lib/config";
 
 export default class Utils {
     
@@ -49,7 +49,7 @@ export default class Utils {
     setupExtraSitePermissions(callback: (granted: boolean) => void): void {
         let permissions = ["webNavigation"];
         if (!isSafari()) permissions.push("declarativeContent");
-        if (this.isFirefox() && !isSafari()) permissions = [];
+        if (isFirefoxOrSafari() && !isSafari()) permissions = [];
 
         chrome.permissions.request({
             origins: this.getPermissionRegex(),
@@ -113,7 +113,7 @@ export default class Utils {
             });
         }
 
-        if (!this.isFirefox() && chrome.declarativeContent) {
+        if (!isFirefoxOrSafari() && chrome.declarativeContent) {
             // Only if we have permission
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }
@@ -143,7 +143,7 @@ export default class Utils {
     containsInvidiousPermission(): Promise<boolean> {
         return new Promise((resolve) => {
             let permissions = ["declarativeContent"];
-            if (this.isFirefox()) permissions = [];
+            if (isFirefoxOrSafari()) permissions = [];
 
             chrome.permissions.contains({
                 origins: this.getPermissionRegex(),
@@ -328,13 +328,6 @@ export default class Utils {
 
     isHex(num: string): boolean {
         return Boolean(num.match(/^[0-9a-f]+$/i));
-    }
-
-    /**
-     * Is this Firefox (web-extensions)
-     */
-    isFirefox(): boolean {
-        return typeof(browser) !== "undefined";
     }
 
     async addHiddenSegment(videoID: VideoID, segmentUUID: string, hidden: SponsorHideType) {

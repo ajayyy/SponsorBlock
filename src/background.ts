@@ -79,6 +79,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 	}
 });
 
+chrome.runtime.onMessageExternal.addListener((request, sender, callback) => {
+    if (CompileConfig.extensionCommunicationAllowList.includes(sender.id)) {
+        if (request.message === "requestConfig") {
+            callback({
+                userID: Config.config.userID,
+                allowExpirements: Config.config.allowExpirements,
+                showDonationLink: Config.config.showDonationLink,
+                showUpsells: Config.config.showUpsells,
+                darkMode: Config.config.darkMode,
+            })
+        }
+    }
+});
+
 chrome.runtime.onConnect.addListener((port) => {
     if (port.name === "popup") {
         chrome.tabs.query({

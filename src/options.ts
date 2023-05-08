@@ -16,6 +16,7 @@ import { showDonationLink } from "./utils/configUtils";
 import { localizeHtmlPage } from "./utils/pageUtils";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { getHash } from "@ajayyy/maze-utils/lib/hash";
+import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
 const utils = new Utils();
 let embed = false;
 
@@ -186,7 +187,7 @@ async function init() {
                             }
 
                             // Permission needed on Firefox
-                            if (utils.isFirefox()) {
+                            if (isFirefoxOrSafari()) {
                                 const permissionSuccess = await new Promise((resolve) => {
                                     chrome.permissions.request({
                                         origins: [textChangeInput.value + "/"],

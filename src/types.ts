@@ -222,14 +222,6 @@ export enum NoticeVisbilityMode {
     FadedForAll = 4
 }
 
-export type Keybind = {
-    key: string;
-    code?: string;
-    ctrl?: boolean;
-    alt?: boolean;
-    shift?: boolean;
-}
-
 export interface ButtonListener {
     name: string;
     listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;

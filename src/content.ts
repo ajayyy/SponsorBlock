@@ -6,7 +6,6 @@ import {
     ChannelIDInfo,
     ChannelIDStatus,
     ContentContainer,
-    Keybind,
     ScheduledTime,
     SegmentUUID,
     SkipToTimeParams,
@@ -26,7 +25,6 @@ import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
 import { getStartTimeFromUrl } from "./utils/urlParser";
 import { getControls, getExistingChapters, getHashParams, isVisible } from "./utils/pageUtils";
-import { isSafari, keybindEquals } from "./utils/configUtils";
 import { CategoryPill } from "./render/CategoryPill";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
@@ -34,10 +32,10 @@ import { logDebug } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
-import { waitFor } from "@ajayyy/maze-utils";
+import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
-import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
+import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
@@ -675,7 +673,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         let delayTime = timeUntilSponsor * 1000 * (1 / getVideo().playbackRate);
         if (delayTime < 300) {
             let forceStartIntervalTime: number | null = null;
-            if (utils.isFirefox() && !isSafari() && delayTime > 100) {
+            if (isFirefoxOrSafari() && !isSafari() && delayTime > 100) {
                 forceStartIntervalTime = await waitForNextTimeChange();
             }
 
@@ -692,7 +690,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             currentSkipInterval = setInterval(() => {
                 // Estimate delay, but only take the current time right after a change
                 // Current time remains the same for many "frames" on Firefox
-                if (utils.isFirefox() && !lastKnownVideoTime.fromPause && startWaitingForReportedTimeToChange
+                if (isFirefoxOrSafari() && !lastKnownVideoTime.fromPause && startWaitingForReportedTimeToChange
                         && reportedVideoTimeAtStart !== getVideo().currentTime) {
                     startWaitingForReportedTimeToChange = false;
                     const delay = getVirtualTime() - getVideo().currentTime;
@@ -702,7 +700,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                 const intervalDuration = performance.now() - startIntervalTime;
                 if (intervalDuration + skipBuffer * 1000 >= delayTime || getVideo().currentTime >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
-                    if (!utils.isFirefox() && !getVideo().muted) {
+                    if (!isFirefoxOrSafari() && !getVideo().muted) {
                         // Workaround for more accurate skipping on Chromium
                         getVideo().muted = true;
                         getVideo().muted = false;
@@ -714,7 +712,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         } else {
             logDebug(`Starting timeout to skip ${getVideo().currentTime} to skip at ${skipTime[0]}`);
 
-            const offset = (utils.isFirefox() && !isSafari() ? 300 : 150);
+            const offset = (isFirefoxOrSafari() && !isSafari() ? 300 : 150);
             // Schedule for right before to be more precise than normal timeout
             currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - offset));
         }
@@ -929,7 +927,7 @@ function updateVirtualTime() {
     lastKnownVideoTime.preciseTime = performance.now();
 
     // If on Firefox, wait for the second time change (time remains fixed for many "frames" for privacy reasons)
-    if (utils.isFirefox()) {
+    if (isFirefoxOrSafari()) {
         let count = 0;
         let rawCount = 0;
         let lastTime = lastKnownVideoTime.videoTime;
@@ -1195,7 +1193,7 @@ function retryFetch(errorCode: number): void {
  */
 function startSkipScheduleCheckingForStartSponsors() {
 	// switchingVideos is ignored in Safari due to event fire order. See #1142
-    if ((!switchingVideos || isSafari) && sponsorTimes) {
+    if ((!switchingVideos || isSafari()) && sponsorTimes) {
         // See if there are any starting sponsors
         let startingSegmentTime = getStartTimeFromUrl(document.URL) || -1;
         let found = false;
@@ -2350,7 +2348,7 @@ function hotkeyListener(e: KeyboardEvent): void {
  * Adds the CSS to the page if needed. Required on optional sites with Chrome.
  */
 function addCSS() {
-    if (!utils.isFirefox() && Config.config.invidiousInstances.includes(new URL(document.URL).host)) {
+    if (!isFirefoxOrSafari() && Config.config.invidiousInstances.includes(new URL(document.URL).host)) {
         window.addEventListener("DOMContentLoaded", () => {
             const head = document.getElementsByTagName("head")[0];
 
