@@ -195,7 +195,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                         id={"skipNoticeTimerText" + this.idSuffix}
                         key="skipNoticeTimerText"
                         className={this.state.countdownMode !== CountdownMode.Timer ? "hidden" : ""} >
-                            {this.state.countdownTime + "s"}
+                            {chrome.i18n.getMessage("NoticeTimeAfterSkip").replace("{seconds}", this.state.countdownTime.toString())}
                     </span>
                 ),(
                     <img 
