@@ -18,7 +18,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: npm ci
       - name: Copy configuration
         run: cp config.json.example config.json
 
@@ -34,6 +33,8 @@ jobs:
           name: SourceCodeUseThisOne.zip
           path: ../builds/SourceCodeUseThisOne.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm ci
       
       # Create Chrome artifacts
       - name: Create Chrome artifacts
