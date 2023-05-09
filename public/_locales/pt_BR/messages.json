@@ -14,10 +14,10 @@
         "message": "Você enviou muitos segmentos para esse vídeo, tem certeza de que são tantos assim?"
     },
     "409": {
-        "message": "Isso já foi enviado antes"
+        "message": "Esse segmento já foi enviado."
     },
     "channelWhitelisted": {
-        "message": "Canal adicionado à lista branca!"
+        "message": "Canal adicionado à lista de permissões!"
     },
     "Segment": {
         "message": "segmento"
@@ -141,10 +141,10 @@
         "message": "Você tem certeza que deseja enviar isto?"
     },
     "whitelistChannel": {
-        "message": "Adicionar canal à lista branca"
+        "message": "Adicionar canal à lista de permissões"
     },
     "removeFromWhitelist": {
-        "message": "Remover canal da lista branca"
+        "message": "Remover canal da lista de permissões"
     },
     "voteOnTime": {
         "message": "Votar em um segmento"
@@ -181,7 +181,7 @@
         "message": "Definir nome de usuário"
     },
     "copyPublicID": {
-        "message": "Copiar ID pública de usuário"
+        "message": "Copiar ID de usuário pública"
     },
     "copySegmentID": {
         "message": "Copiar ID do segmento"
@@ -268,13 +268,13 @@
         "message": "Mostrar categoria de ajuda"
     },
     "noticeVisibilityMode0": {
-        "message": "Avisos de pulo em tamanho completo"
+        "message": "Avisos de pulo de duração normal"
     },
     "noticeVisibilityMode1": {
-        "message": "Avisos de pulo pequeno no pulo automático"
+        "message": "Avisos de pulo automático, mesmo pequenos"
     },
     "noticeVisibilityMode2": {
-        "message": "Todos os avisos de pulo pequeno"
+        "message": "Todos os avisos de pulo, mesmo de curta duração"
     },
     "noticeVisibilityMode3": {
         "message": "Avisos de pulo semitransparente no pulo automático"
@@ -342,7 +342,7 @@
         "message": "O servidor parece estar sobrecarregado. Tente novamente em alguns segundos."
     },
     "errorCode": {
-        "message": "Código de erro: "
+        "message": "Código do erro: "
     },
     "skip": {
         "message": "Pular"
@@ -365,11 +365,11 @@
         "description": "Used for skipping to things (Skip to Highlight)"
     },
     "skipped": {
-        "message": "{0} Pulado (a)",
+        "message": "{0} pulado",
         "description": "Example: Sponsor Skipped"
     },
     "muted": {
-        "message": "{0} Silenciado",
+        "message": "{0} silenciado",
         "description": "Example: Sponsor Muted"
     },
     "skipped_to_category": {
@@ -414,7 +414,7 @@
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "youHaveSavedTimeEnd": {
-        "message": " das vidas dos outros",
+        "message": " de suas vidas",
         "description": "You've saved people from 887,362 segments (236d 15h 5.3 minutes of their lives)."
     },
     "statusReminder": {
@@ -554,7 +554,7 @@
         "message": "Deletar"
     },
     "preview": {
-        "message": "Pré-visualizar"
+        "message": "Prévia"
     },
     "unsubmitted": {
         "message": "Não enviado"
@@ -572,7 +572,7 @@
         "message": "Erro ao copiar para a área de transferência"
     },
     "copyDebugInformationOptions": {
-        "message": "Copia informações para a área de transferência para serem fornecidas a um desenvolvedor quando houver um bug / quando solicitado pelo desenvolvedor. Informações sensíveis como seu ID de usuário, canais na lista de permissões e endereço personalizado do servidor foram removidos. No entanto, ele contém informações como seu useragent, navegador, sistema operacional e número de versão da extensão. "
+        "message": "Copia informações para a área de transferência para serem fornecidas a um desenvolvedor quando houver um bug ou quando solicitado por um desenvolvedor. Informações sensíveis como seu ID de usuário, canais na lista de permissões e endereço personalizado do servidor foram removidos. No entanto, ele contém informações como seu useragent, navegador, sistema operacional e número de versão da extensão. "
     },
     "copyDebugInformationComplete": {
         "message": "A informação de depuração foi copiada para a área de transferência. Sinta-se à vontade para remover qualquer informação que prefira não compartilhar. Salve em um arquivo de texto ou cole-a no relatório de erro."
@@ -607,7 +607,7 @@
         "message": "Não é para doações ou mercadoria personalizada"
     },
     "category_selfpromo": {
-        "message": "Não-pago/Auto-promoção"
+        "message": "Não-pago/Autopromoção"
     },
     "category_selfpromo_description": {
         "message": "Similar a \"patrocinador\", exceto para não-pago ou auto-promoção. Isso inclui seções sobre mercadorias, doações ou informações sobre com quem eles colaboraram."
@@ -622,7 +622,7 @@
         "message": "Não é para produtos de origem corporativa ou mercadorias"
     },
     "category_exclusive_access": {
-        "message": "Acesso Exclusivo"
+        "message": "Acesso exclusivo"
     },
     "category_exclusive_access_description": {
         "message": "Apenas para rotular vídeos inteiros. Usado quando um vídeo apresenta um produto, serviço ou local ao qual eles receberam acesso gratuito ou subsidiado."
@@ -635,7 +635,7 @@
         "message": "Todo o vídeo promove algo de acesso gratuito ou subsidiado"
     },
     "category_interaction": {
-        "message": "Lembrete de Interação (Inscrever-se)"
+        "message": "Lembrete de interação (inscrever-se)"
     },
     "category_interaction_description": {
         "message": "Quando houver um pequeno lembrete para curtir, inscrever-se ou seguir no meio do conteúdo. Se é longo ou sobre algo em específico, deveria estar sob auto-promoção."
@@ -650,10 +650,10 @@
         "message": "Não é para promoção geral, apenas um chamado para à ação"
     },
     "category_interaction_short": {
-        "message": "Lembrete de Interação"
+        "message": "Lembrete de interação"
     },
     "category_intro": {
-        "message": "Intervalo/Animação de Introdução"
+        "message": "Intervalo/Vinheta de abertura"
     },
     "category_intro_description": {
         "message": "Um intervalo sem conteúdo real. Pode ser uma pausa, um quadro estático, uma animação repetitiva. Isso não deve ser usado em transições que contenham informação."
@@ -677,7 +677,7 @@
         "message": "Não inclui conteúdo, mesmo que cartões de finalização estejam na tela"
     },
     "category_preview": {
-        "message": "Pré-visualização/Recapitulação"
+        "message": "Prévia/Recapitulação"
     },
     "category_preview_description": {
         "message": "Coleção de clipes que mostram o que está por vir neste vídeo ou em outros vídeos em uma série onde todas as informações são repetidas mais tarde no vídeo."
@@ -710,13 +710,13 @@
         "message": "Não é para cenas necessárias para o entendimento do tópico"
     },
     "category_music_offtopic": {
-        "message": "Música: Seção Não Musical"
+        "message": "Música: trecho sem música"
     },
     "category_music_offtopic_description": {
         "message": "Apenas para uso em vídeos musicais. Deve ser usado exclusivamente para seções de vídeos musicais que já não pertençam à outra categoria."
     },
     "category_music_offtopic_short": {
-        "message": "Não Musical"
+        "message": "Sem música"
     },
     "category_music_offtopic_guideline1": {
         "message": "Seções que não estão nos lançamentos oficiais"
@@ -767,7 +767,7 @@
         "message": "Pular manualmente"
     },
     "showOverlay": {
-        "message": "Mostrar barra de progresso"
+        "message": "Mostrar na barra de progresso"
     },
     "disable": {
         "message": "Desativar"
@@ -788,7 +788,7 @@
         "message": "Mostrar capítulos"
     },
     "autoSkipOnMusicVideos": {
-        "message": "Pular automaticamente todos os segmentos quando há um segmento não musical"
+        "message": "Pular automaticamente todos os segmentos quando houver trechos sem música"
     },
     "muteSegments": {
         "message": "Permitir segmentos que silenciem o áudio ao invés de pular"
@@ -822,7 +822,7 @@
         "message": "Seus envios e votos NÃO SERÃO ENVIADOS para o servidor principal. Use isso apenas para testes."
     },
     "testingServerWarning": {
-        "message": "Todas os envios e votos NÃO SERÃO ENVIADOS para o servidor principal enquanto se conecta ao servidor de teste. Certifique-se de desativar isso quando você quiser fazer envios reais."
+        "message": "Todos os envios e votos NÃO SERÃO ENVIADOS para o servidor principal quando conectado ao servidor de teste. Desative quando você quiser fazer envios reais."
     },
     "bracketNow": {
         "message": "(Agora)"
@@ -861,7 +861,7 @@
     },
     "channelDataNotFound": {
         "description": "This error appears in an alert when they try to whitelist a channel and the extension is unable to determine what channel they are looking at.",
-        "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo embutido, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se você acreditar que este é o caso, faça um comentário aqui:"
+        "message": "O ID do canal ainda não foi carregado. Se você estiver usando um vídeo incorporado, tente usar a página inicial do YouTube. Isso também pode ser causado por mudanças no layout do YouTube, se este for o caso, comente aqui:"
     },
     "invidiousPermissionRefresh": {
         "message": "O navegador revogou a permissão necessária para funcionar em Invidious e em outros sites de terceiros. Por favor, clique no botão abaixo para reativar essa permissão."
@@ -876,13 +876,13 @@
         "message": "Falha na solicitação de permissão, você clicou em negar?"
     },
     "adblockerIssueWhitelist": {
-        "message": "Se você não consegue resolver isso, desative a configuração 'Forçar verificação do canal antes de pular', pois o SponsorBlock não pode recuperar as informações deste vídeo"
+        "message": "Se você não consegue resolver isso, desative a opção 'Forçar verificação do canal antes de pular', pois o SponsorBlock não pode recuperar as informações deste vídeo"
     },
     "forceChannelCheck": {
         "message": "Forçar verificação do canal antes de pular"
     },
     "whatForceChannelCheck": {
-        "message": "Por padrão, isso pulará os segmentos imediatamente, mesmo antes de saber qual é o canal. Por padrão, alguns seguimentos no inicio do vídeo podem ser ignorados nos canais da lista branca. Habilitar esta opção evitará isso, mas fará com que todos os pulos tenham um ligeiro atraso, já que obter o ID do canal pode levar algum tempo. Este atraso pode não ser perceptível se você tiver internet rápida."
+        "message": "Por padrão, ele pulará segmentos imediatamente antes mesmo de saber qual é o canal. Alguns segmentos no início do vídeo podem ser ignorados nos canais da lista de permissões. A ativação dessa opção evitará isso, mas irá fazer com que todos os pulos tenham um pequeno atraso, pois a obtenção do ID do canal pode levar algum tempo. Esse atraso pode ser imperceptível se você possuir uma internet rápida."
     },
     "forceChannelCheckPopup": {
         "message": "Considere ativar \"Forçar verificação do canal antes de pular\""
@@ -901,7 +901,7 @@
         "message": "Mudar categoria"
     },
     "nonMusicCategoryOnMusic": {
-        "message": "Este vídeo é categorizado como musical. Tem certeza de que tem um patrocinador? Se este é realmente um \"Segmento Não Musical\", abra as opções da extensão e habilite esta categoria. Assim você pode enviar este segmento como \"Não Musical\" ao invés de patrocinador. Por favor leia as diretrizes se estiver confuso."
+        "message": "Esse vídeo é categorizado como música. Tem certeza de que é patrocinado? Se realmente for um trecho sem música, abra as opções da extensão e ative a categoria. Assim, você pode enviar esse segmento como \"sem música\" em vez de \"patrocinador\". Leia as diretrizes se tiver dúvidas."
     },
     "multipleSegments": {
         "message": "Múltiplos segmentos"
@@ -1097,7 +1097,7 @@
         "description": "Appears in Options as a tab header for advanced/niche options. To fit inside the button, it should not be longer than ~20-25 characters (depending on their width)."
     },
     "noticeVisibilityLabel": {
-        "message": "Aparência da notificação de pulo",
+        "message": "Quando mostrar aviso de pulo",
         "description": "Option label"
     },
     "unbind": {
@@ -1229,6 +1229,9 @@
     },
     "exportSegmentsAsURL": {
         "message": "Compartilhar como URL"
+    },
+    "segmentFetchFailureWarning": {
+        "message": "Alerta: o servidor ainda não respondeu com segmentos. Pode ser que os segmentos desse vídeo já tenham sido enviados, mas ainda não foram recebidos devido a problemas do servidor."
     },
     "allowScrollingToEdit": {
         "message": "Permitir rolagem para editar tempos"
