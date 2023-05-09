@@ -187,6 +187,10 @@ div:hover > .sponsorBlockChapterBar {
 	margin-right: var(--skip-notice-margin);
 }
 
+.sponsorSkipObjectFirst {
+	margin-left: 0;
+}
+
 .sponsorSkipLogo {
 	height: 18px;
 
