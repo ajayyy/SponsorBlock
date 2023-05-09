@@ -21,6 +21,19 @@ jobs:
       - run: npm ci
       - name: Copy configuration
         run: cp config.json.example config.json
+
+      # Create source artifact with submodule
+      - name: Zip Artifacts
+      - run: cd ..; mkdir ./builds
+      - name: Zip Artifacts
+        run: zip -r ../builds/SourceCodeUseThisOne.zip *
+      - name: Upload Source to release
+        uses: Shopify/upload-to-release@07611424e04f1475ddf550e1c0dd650b867d5467
+        with:
+          args: ../builds/SourceCodeUseThisOne.zip
+          name: SourceCodeUseThisOne.zip
+          path: ../builds/SourceCodeUseThisOne.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       
       # Create Chrome artifacts
       - name: Create Chrome artifacts
