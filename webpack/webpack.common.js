@@ -137,7 +137,7 @@ module.exports = env => {
                         from: '.',
                         to: '../',
                         globOptions: {
-                        ignore: ['manifest.json'],
+                            ignore: ['manifest.json', '**/.git/**', '**/crowdin.yml'],
                         },
                         context: './public',
                         filter: async (path) => {
