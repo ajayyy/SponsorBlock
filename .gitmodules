@@ -1,0 +1,3 @@
+[submodule "public/_locales"]
+	path = public/_locales
+	url = https://github.com/ajayyy/ExtensionTranslations
