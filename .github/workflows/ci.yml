@@ -11,6 +11,8 @@ jobs:
     steps:
       # Initialization
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - uses: actions/setup-node@v3
         with:
           node-version: '18'

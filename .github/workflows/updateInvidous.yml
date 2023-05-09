@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Download instance list
         run: |
           wget https://api.invidious.io/instances.json -O ci/data.json
