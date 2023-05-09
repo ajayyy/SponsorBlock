@@ -1,7 +1,7 @@
+import { localizeHtmlPage } from "@ajayyy/maze-utils/lib/setup";
 import Config from "./config";
 import { showDonationLink } from "./utils/configUtils";
 
-import { localizeHtmlPage } from "./utils/pageUtils";
 import { waitFor } from "@ajayyy/maze-utils";
 
 window.addEventListener('DOMContentLoaded', init);

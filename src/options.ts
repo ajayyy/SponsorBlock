@@ -13,7 +13,7 @@ import CategoryChooser from "./render/CategoryChooser";
 import UnsubmittedVideos from "./render/UnsubmittedVideos";
 import KeybindComponent from "./components/options/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
-import { localizeHtmlPage } from "./utils/pageUtils";
+import { localizeHtmlPage } from "@ajayyy/maze-utils/lib/setup";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { getHash } from "@ajayyy/maze-utils/lib/hash";
 import { isFirefoxOrSafari } from "@ajayyy/maze-utils";

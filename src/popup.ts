@@ -22,7 +22,7 @@ import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { GenericUtils } from "./utils/genericUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
-import { localizeHtmlPage } from "./utils/pageUtils";
+import { localizeHtmlPage } from "@ajayyy/maze-utils/lib/setup";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
 import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";

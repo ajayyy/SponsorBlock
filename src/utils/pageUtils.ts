@@ -94,26 +94,3 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
 
     return chapters;
 }
-
-export function localizeHtmlPage(): void {
-    //Localize by replacing __MSG_***__ meta tags
-    const localizedTitle = getLocalizedMessage(document.title);
-    if (localizedTitle) document.title = localizedTitle;
-
-    const body = document.querySelector(".sponsorBlockPageBody");
-    const localizedMessage = getLocalizedMessage(body.innerHTML.toString());
-    if (localizedMessage) body.innerHTML = localizedMessage;
-}
-
-export function getLocalizedMessage(text: string): string | false {
-    const valNewH = text.replace(/__MSG_(\w+)__/g, function(match, v1) {
-        return v1 ? chrome.i18n.getMessage(v1).replace(/</g, "&#60;")
-            .replace(/"/g, "&quot;").replace(/\n/g, "<br/>") : "";
-    });
-
-    if (valNewH != text) {
-        return valNewH;
-    } else {
-        return false;
-    }
-}
