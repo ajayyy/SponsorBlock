@@ -20,12 +20,11 @@ import {
 } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
-import { GenericUtils } from "./utils/genericUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
 import { localizeHtmlPage } from "@ajayyy/maze-utils/lib/setup";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
-import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
+import { getErrorMessage, getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
 import { getHash } from "@ajayyy/maze-utils/lib/hash";
 
@@ -815,7 +814,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
             } else {
-                PageElements.setUsernameStatus.innerText = GenericUtils.getErrorMessage(response.status, response.responseText);
+                PageElements.setUsernameStatus.innerText = getErrorMessage(response.status, response.responseText);
             }
         });
 
@@ -868,7 +867,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 //success (treat rate limits as a success)
                 addVoteMessage(chrome.i18n.getMessage("voted"), UUID);
             } else if (response.successType == -1) {
-                addVoteMessage(GenericUtils.getErrorMessage(response.statusCode, response.responseText), UUID);
+                addVoteMessage(getErrorMessage(response.statusCode, response.responseText), UUID);
             }
             setTimeout(() => removeVoteMessage(UUID), 1500);
         }

@@ -7,8 +7,8 @@ import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { VoteResponse } from "../messageTypes";
 import { AnimationUtils } from "../utils/animationUtils";
-import { GenericUtils } from "../utils/genericUtils";
 import { Tooltip } from "../render/Tooltip";
+import { getErrorMessage } from "@ajayyy/maze-utils/lib/formating";
 
 export interface CategoryPillProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
@@ -109,7 +109,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                     show: type === 1
                 });
             } else if (response.statusCode !== 403) {
-                alert(GenericUtils.getErrorMessage(response.statusCode, response.responseText));
+                alert(getErrorMessage(response.statusCode, response.responseText));
             }
         }
     }

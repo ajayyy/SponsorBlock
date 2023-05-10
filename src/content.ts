@@ -33,7 +33,7 @@ import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
-import { getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
+import { getErrorMessage, getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "@ajayyy/maze-utils/lib/config";
 import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
@@ -2016,7 +2016,7 @@ async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNo
                 if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a warning from a moderator.")) {
                     openWarningDialog(skipNoticeContentContainer);
                 } else {
-                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(GenericUtils.getErrorMessage(response.statusCode, response.responseText))
+                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(getErrorMessage(response.statusCode, response.responseText))
                 }
 
                 skipNotice.resetVoteButtonInfo.bind(skipNotice)();
@@ -2206,7 +2206,7 @@ async function sendSubmitMessage() {
         if (response.status === 403 && response.responseText.startsWith("Submission rejected due to a warning from a moderator.")) {
             openWarningDialog(skipNoticeContentContainer);
         } else {
-            alert(GenericUtils.getErrorMessage(response.status, response.responseText));
+            alert(getErrorMessage(response.status, response.responseText));
         }
     }
 }
