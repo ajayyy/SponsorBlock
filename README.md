@@ -62,17 +62,29 @@ You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Doc
 
 You must have [Node.js 16](https://nodejs.org/) and npm installed.
 
-1. Copy the file `config.json.example` to `config.json` and adjust configuration as desired.
+1. Clone with submodules
+
+```bash
+git clone https://github.com/ajayyy/SponsorBlock --recurse-submodules=yes
+```
+
+Or if you already cloned it, pull submodules with
+
+```bash
+git submodule update --init --recursive
+```
+
+2. Copy the file `config.json.example` to `config.json` and adjust configuration as desired.
 
     - You will need to repeat this step in the future if you get build errors related to `CompileConfig`. This can happen for example when a new category is added.
 
-2. Run `npm install` in the repository to install dependencies.
+3. Run `npm install` in the repository to install dependencies.
 
-3. Run `npm run build:dev` (for Chrome) or `npm run build:dev:firefox` (for Firefox) to generate a development version of the extension with source maps.
+4. Run `npm run build:dev` (for Chrome) or `npm run build:dev:firefox` (for Firefox) to generate a development version of the extension with source maps.
 
     - You can also run `npm run build` (for Chrome) or `npm run build:firefox` (for Firefox) to generate a production build.
 
-4. The built extension is now in `dist/`. You can load this folder directly in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest), or convert it to a zip file to load it as a [temporary extension](https://developer.mozilla.org/en-US/docs/Tools/about:debugging#loading_a_temporary_extension) in Firefox.
+5. The built extension is now in `dist/`. You can load this folder directly in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest), or convert it to a zip file to load it as a [temporary extension](https://developer.mozilla.org/en-US/docs/Tools/about:debugging#loading_a_temporary_extension) in Firefox.
 
 ### Developing with a clean profile and hot reloading
 
