@@ -40,7 +40,7 @@
    color: var(--sb-main-fg-color);
    background: transparent;
    width: fit-content;
-   padding: none;
+   padding: 0;
    border: none;
  }
 
@@ -522,7 +522,7 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0 8px 0 0;
-  max-width: 130px;
+  max-width: 165px;
 }
 /*
  * Set username form container with "expanded" state
