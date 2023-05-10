@@ -45,6 +45,7 @@ div:hover > #previewbar.sbNotInvidious {
 .previewbar {
 	display: inline-block;
 	height: 100%;
+	min-width: 1px;
 }
 
 .previewbar.requiredSegment {
@@ -254,7 +255,7 @@ div:hover > .sponsorBlockChapterBar {
 }
 
 .exportCopiedNotice .sponsorSkipNoticeTableContainer {
-	background-color: transparent; 
+	background-color: transparent;
 }
 
 .sponsorSkipNotice {
