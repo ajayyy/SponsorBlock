@@ -1555,6 +1555,12 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                     // MacOS will loop otherwise #1027
                     v.currentTime = v.duration - 0.001;
                 } else {
+                    if (inMuteSegment(skipTime[1], true)) {
+                        // Make sure not to mute if skipping into a mute segment
+                        v.muted = true;
+                        videoMuted = true;
+                    }
+
                     v.currentTime = skipTime[1];
                 }
 
