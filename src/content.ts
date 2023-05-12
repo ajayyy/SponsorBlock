@@ -700,7 +700,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                 const intervalDuration = performance.now() - startIntervalTime;
                 if (intervalDuration + skipBuffer * 1000 >= delayTime || getVideo().currentTime >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
-                    if (!isFirefoxOrSafari() && !getVideo().muted) {
+                    if (!isFirefoxOrSafari() && !getVideo().muted && !inMuteSegment(getVideo().currentTime, true)) {
                         // Workaround for more accurate skipping on Chromium
                         getVideo().muted = true;
                         getVideo().muted = false;
