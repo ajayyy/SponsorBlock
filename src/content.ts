@@ -675,7 +675,6 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             let forceStartIntervalTime: number | null = null;
             if (isFirefoxOrSafari() && !isSafari() && delayTime > 300) {
                 forceStartIntervalTime = await waitForNextTimeChange();
-                console.log("start", forceStartIntervalTime, performance.now())
             }
 
             // Use interval instead of timeout near the end to combat imprecise video time
