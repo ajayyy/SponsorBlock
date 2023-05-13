@@ -671,10 +671,11 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         skippingFunction(currentTime);
     } else {
         let delayTime = timeUntilSponsor * 1000 * (1 / getVideo().playbackRate);
-        if (delayTime < 300) {
+        if (delayTime < (isFirefoxOrSafari() && !isSafari() ? 750 : 300)) {
             let forceStartIntervalTime: number | null = null;
-            if (isFirefoxOrSafari() && !isSafari() && delayTime > 100) {
+            if (isFirefoxOrSafari() && !isSafari() && delayTime > 300) {
                 forceStartIntervalTime = await waitForNextTimeChange();
+                console.log("start", forceStartIntervalTime, performance.now())
             }
 
             // Use interval instead of timeout near the end to combat imprecise video time
@@ -708,11 +709,11 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
                     skippingFunction(Math.max(getVideo().currentTime, startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
-            }, 1);
+            }, 0);
         } else {
             logDebug(`Starting timeout to skip ${getVideo().currentTime} to skip at ${skipTime[0]}`);
 
-            const offset = (isFirefoxOrSafari() && !isSafari() ? 300 : 150);
+            const offset = (isFirefoxOrSafari() && !isSafari() ? 600 : 150);
             // Schedule for right before to be more precise than normal timeout
             currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - offset));
         }
@@ -724,23 +725,8 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
  * the video time has changed
  */
 function waitForNextTimeChange(): Promise<DOMHighResTimeStamp | null> {
-    const startVideoTime = getVideo().currentTime;
-    let tries = 0;
     return new Promise((resolve) => {
-        const callback = (timestamp: DOMHighResTimeStamp) => {
-            tries++;
-            if (startVideoTime !== getVideo().currentTime) {
-                resolve(timestamp);
-                return;
-            } else if (tries > 4) {
-                // Give up
-                resolve(null);
-            } else {
-                requestAnimationFrame(callback);
-            }
-        }
-
-        requestAnimationFrame(callback);
+        getVideo().addEventListener("timeupdate", () => resolve(performance.now()), { once: true });
     });
 }
 
