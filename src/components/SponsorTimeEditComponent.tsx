@@ -686,13 +686,13 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     descriptionUpdate(description: string): void {
         this.setState({
             description
+        }, () => {
+            this.saveEditTimes();
         });
 
         if (!this.fetchingSuggestions) {
             this.fetchSuggestions(description);
         }
-
-        this.saveEditTimes();
     }
 
     async fetchSuggestions(description: string): Promise<void> {
