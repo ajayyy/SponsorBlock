@@ -1320,6 +1320,13 @@ function videoElementChange(newVideo: boolean): void {
         setupCategoryPill();
     }
 
+    checkPreviewbarState();
+
+    // Incase the page is still transitioning, check again in a few seconds
+    setTimeout(checkPreviewbarState, 5000);
+}
+
+function checkPreviewbarState(): void {
     if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
         previewBar.remove();
         previewBar = null;
