@@ -498,7 +498,7 @@ function createPreviewBar(): void {
 
         if (el) {
             const chapterVote = new ChapterVote(voteAsync);
-            previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), chapterVote, () => importExistingChapters(false));
+            previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), chapterVote, () => importExistingChapters(true));
 
             updatePreviewBar();
 
