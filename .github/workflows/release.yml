@@ -22,9 +22,9 @@ jobs:
         run: cp config.json.example config.json
 
       # Create source artifact with submodule
-      - name: Zip Artifacts
-      - run: cd ..; mkdir ./builds
-      - name: Zip Artifacts
+      - name: Create directory
+        run: cd ..; mkdir ./builds
+      - name: Zip Source code
         run: zip -r ../builds/SourceCodeUseThisOne.zip *
       - name: Upload Source to release
         uses: Shopify/upload-to-release@07611424e04f1475ddf550e1c0dd650b867d5467
