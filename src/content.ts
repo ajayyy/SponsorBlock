@@ -1323,6 +1323,8 @@ function videoElementChange(newVideo: boolean): void {
     checkPreviewbarState();
 
     // Incase the page is still transitioning, check again in a few seconds
+    setTimeout(checkPreviewbarState, 100);
+    setTimeout(checkPreviewbarState, 1000);
     setTimeout(checkPreviewbarState, 5000);
 }
 
