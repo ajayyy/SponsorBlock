@@ -139,6 +139,12 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             case "autoSkip":
                 option = CategorySkipOption.AutoSkip;
 
+                if (this.props.category === "filler" && !Config.config.isVip) {
+                    if (!confirm(chrome.i18n.getMessage("FillerWarning"))) {
+                        event.target.value = "disable";
+                    }
+                }
+
                 break;
         }
 
