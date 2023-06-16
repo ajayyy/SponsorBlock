@@ -1928,6 +1928,7 @@ function openInfoMenu() {
     const frame = document.createElement("iframe");
     frame.width = "374";
     frame.height = "500";
+    frame.style.borderRadius = "12px";
     frame.addEventListener("load", () => frame.contentWindow.postMessage("", "*"));
     frame.src = chrome.extension.getURL("popup.html");
     popup.appendChild(frame);
