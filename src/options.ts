@@ -68,6 +68,12 @@ async function init() {
         donate.classList.add("hidden");
     }
 
+    // DeArrow promotion
+    if (Config.config.showNewFeaturePopups && Config.config.showUpsells) {
+        const deArrowPromotion = document.getElementById("deArrowPromotion");
+        deArrowPromotion.classList.remove("hidden");
+    }
+
     // Set all of the toggle options to the correct option
     const optionsContainer = document.getElementById("options");
     const optionsElements = optionsContainer.querySelectorAll("*");

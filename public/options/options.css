@@ -38,7 +38,7 @@
     --white: black;
 }
 
-.medium-description, .switch-container, .optionLabel, .categoryTableElement {
+.medium-description, .switch-container, .optionLabel, .categoryTableElement, .promotion-description {
     color: var(--white);
 }
 
@@ -701,4 +701,20 @@ svg {
 .no-bottom-border {
     border: none !important;
     padding: 20px 0px 0px 0px !important;
+}
+
+#deArrowPromotion {
+    width: fit-content;
+}
+
+.dearrow-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.dearrow-link > img {
+    width: 40px;
+    margin-right: 4px;
 }

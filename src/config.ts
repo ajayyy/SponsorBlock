@@ -54,6 +54,7 @@ interface SBConfig {
     showDonationLink: boolean;
     showPopupDonationCount: number;
     showUpsells: boolean;
+    showNewFeaturePopups: boolean;
     donateClicked: number;
     autoHideInfoButton: boolean;
     autoSkipOnMusicVideos: boolean;
@@ -292,6 +293,7 @@ const syncDefaults = {
     showDonationLink: true,
     showPopupDonationCount: 0,
     showUpsells: true,
+    showNewFeaturePopups: true,
     donateClicked: 0,
     autoHideInfoButton: true,
     autoSkipOnMusicVideos: false,
