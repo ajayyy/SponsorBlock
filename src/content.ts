@@ -36,12 +36,14 @@ import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
 import { getErrorMessage, getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
 import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "@ajayyy/maze-utils/lib/config";
-import { findValidElement } from "@ajayyy/maze-utils/lib/dom"
+import { findValidElement, waitForElement } from "@ajayyy/maze-utils/lib/dom"
 import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 import { updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
 import { setupThumbnailListener } from "./utils/thumbnails";
 import * as documentScript from "../dist/js/document.js";
+import { Tooltip } from "./render/Tooltip";
+import { isDeArrowInstalled } from "./utils/crossExtension";
 
 const utils = new Utils();
 
@@ -49,6 +51,42 @@ utils.wait(() => Config.isReady(), 5000, 10).then(() => {
     // Hack to get the CSS loaded on permission-based sites (Invidious)
     addCSS();
     setCategoryColorCSSVariables();
+
+    // DeArrow promotion
+    setTimeout(async () => {
+        if (document.URL === "https://www.youtube.com/"
+            && Config.config.showDeArrowPromotion
+            && Config.config.showUpsells 
+            && Config.config.showNewFeaturePopups
+            && Math.random() < 0.05) {
+
+            if (!await isDeArrowInstalled()) {
+                const element = await waitForElement("#contents") as HTMLElement;
+                if (element) {
+                    Config.config.showDeArrowPromotion = false;
+
+                    new Tooltip({
+                        text: chrome.i18n.getMessage("DeArrowPromotionMessage2"),
+                        linkOnClick: () => window.open("https://dearrow.ajay.app"),
+                        referenceNode: element,
+                        prependElement: element.firstElementChild as HTMLElement,
+                        timeout: 15000,
+                        positionRealtive: false,
+                        containerAbsolute: true,
+                        bottomOffset: "inherit",
+                        topOffset: "-82px",
+                        leftOffset: "0",
+                        rightOffset: "0",
+                        displayTriangle: false,
+                        center: true,
+                        opacity: 1
+                    });
+                }
+            } else {
+                Config.config.showDeArrowPromotion = false;
+            }
+        }
+    }, 5000)
 });
 
 const skipBuffer = 0.003;

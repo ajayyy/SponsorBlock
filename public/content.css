@@ -730,11 +730,12 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     padding: 10px;
     max-width: 300px;
+	width: max-content;
     white-space: normal;
     line-height: 1.5em;
 	color: white;
 	font-size: 12px;
-	z-index: 1000;
+	z-index: 10000;
 }
 
 .sponsorBlockTooltip a {

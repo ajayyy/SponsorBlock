@@ -1,6 +1,8 @@
 import * as React from "react";
 import { createRoot, Root } from 'react-dom/client';
 import { ButtonListener } from "../types";
+import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
+import { isSafari } from "@ajayyy/maze-utils/lib/config";
 
 export interface TooltipProps {
     text?: string; 
@@ -9,6 +11,7 @@ export interface TooltipProps {
     referenceNode: HTMLElement;
     prependElement?: HTMLElement; // Element to append before
     bottomOffset?: string;
+    topOffset?: string;
     leftOffset?: string;
     rightOffset?: string;
     timeout?: number;
@@ -17,7 +20,9 @@ export interface TooltipProps {
     extraClass?: string;
     showLogo?: boolean;
     showGotIt?: boolean;
+    center?: boolean;
     positionRealtive?: boolean;
+    containerAbsolute?: boolean;
     buttons?: ButtonListener[];
 }
 
@@ -30,6 +35,7 @@ export class Tooltip {
     
     constructor(props: TooltipProps) {
         props.bottomOffset ??= "70px";
+        props.topOffset ??= "inherit";
         props.leftOffset ??= "inherit";
         props.rightOffset ??= "inherit";
         props.opacity ??= 0.7;
@@ -38,11 +44,21 @@ export class Tooltip {
         props.showLogo ??= true;
         props.showGotIt ??= true;
         props.positionRealtive ??= true;
+        props.containerAbsolute ??= false;
+        props.center ??= false;
         this.text = props.text;
 
         this.container = document.createElement('div');
         this.container.id = "sponsorTooltip" + props.text;
         if (props.positionRealtive) this.container.style.position = "relative";
+        if (props.containerAbsolute) this.container.style.position = "absolute";
+        if (props.center) {
+            if (isFirefoxOrSafari() && !isSafari()) {
+                this.container.style.width = "-moz-available";
+            } else {
+                this.container.style.width = "-webkit-fill-available";
+            }
+        }
 
         if (props.prependElement) {
             props.referenceNode.insertBefore(this.container, props.prependElement);
@@ -58,8 +74,17 @@ export class Tooltip {
 
         this.root = createRoot(this.container);
         this.root.render(
-            <div style={{bottom: props.bottomOffset, left: props.leftOffset, right: props.rightOffset, backgroundColor}} 
-                className={"sponsorBlockTooltip" + (props.displayTriangle ? " sbTriangle" : "") + ` ${props.extraClass}`}>
+            <div style={{
+                    bottom: props.bottomOffset,
+                    top: props.topOffset,
+                    left: props.leftOffset,
+                    right: props.rightOffset,
+                    backgroundColor,
+                    margin: props.center ? "auto" : null
+                }} 
+                className={"sponsorBlockTooltip" +
+                    (props.displayTriangle ? " sbTriangle" : "") +
+                    ` ${props.extraClass}`}>
                 <div>
                     {props.showLogo ? 
                         <img className="sponsorSkipLogo sponsorSkipObject"

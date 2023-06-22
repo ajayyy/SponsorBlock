@@ -73,6 +73,8 @@ interface SBConfig {
     useVirtualTime: boolean;
     showSegmentFailedToFetchWarning: boolean;
     allowScrollingToEdit: boolean;
+    deArrowInstalled: boolean;
+    showDeArrowPromotion: boolean;
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -307,6 +309,8 @@ const syncDefaults = {
     useVirtualTime: true,
     showSegmentFailedToFetchWarning: true,
     allowScrollingToEdit: true,
+    deArrowInstalled: false,
+    showDeArrowPromotion: true,
 
     categoryPillColors: {},
 

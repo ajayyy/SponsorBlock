@@ -31,10 +31,16 @@
         "mute": "https://wiki.sponsor.ajay.app/w/Mute_Segment",
         "chapter": "https://wiki.sponsor.ajay.app/w/Chapter"
     },
-    "extensionCommunicationAllowList": [
-        "enamippconapkdmgfgjchkhakpfinmaj",
-        "deArrow@ajay.app",
-        "deArrowBETA@ajay.app",
-        "app.ajay.dearrow.extension"
-    ]
+    "extensionImportList": {
+        "chromium": [
+            "enamippconapkdmgfgjchkhakpfinmaj"
+        ],
+        "firefox": [
+            "deArrow@ajay.app",
+            "deArrowBETA@ajay.app"
+        ],
+        "safari": [
+            "app.ajay.dearrow.extension"
+        ]
+    }
 }
