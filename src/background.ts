@@ -48,6 +48,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "registerContentScript":
+            // Only allow messages from the extension.
+            if (t.origin !== location.origin) return false;
             registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript":
