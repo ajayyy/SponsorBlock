@@ -12,7 +12,18 @@ export default class Utils {
     
     // Contains functions needed from the background script
     backgroundScriptContainer: BackgroundScriptContainer | null;
-
+    
+    // Used to add content scripts and CSS required
+    js = [
+        "./js/content.js"
+    ];
+    css = [
+        "content.css",
+        "./libs/Source+Sans+Pro.css",
+        "popup.css",
+        "shared.css"
+    ];
+    
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
@@ -62,7 +73,8 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        const registration: Registration = {
+        const registration = {
+            message: "registerContentScript",
             matches: this.getPermissionRegex()
         };
 
