@@ -33,15 +33,16 @@ utils.wait(() => Config.config !== null).then(function() {
 setupBackgroundRequestProxy();
 setupTabUpdates(Config);
 
-// Only trust messages from extension pages.
 function isUnsafe(sender)  {
+    // Only trust messages from extension pages.
+    // https://chromium.googlesource.com/chromium/src/+/master/docs/security/compromised-renderers.md#Messaging
     if (sender.origin) {
         if (sender.origin === location.origin) return false;
-        logWarn(`Unsafe message from: ${sender.origin}`);
+        logWarn(`Unsafe message from: ${sender.origin} via MessageSender.origin`);
     } else if (sender.url && isFirefoxOrSafari()) {
         const senderOrigin = new URL(sender.url).origin;
         if (senderOrigin === location.origin) return false;
-        logWarn(`Unsafe message from: ${senderOrigin}`);
+        logWarn(`Unsafe message from: ${senderOrigin} via MessageSender.url`);
     }
     return true;
 }
