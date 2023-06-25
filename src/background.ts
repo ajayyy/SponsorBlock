@@ -7,7 +7,6 @@ import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@aja
 import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
-import { logWarn } from "./utils/logger";
 
 // Make the config public for debugging purposes
 
@@ -38,11 +37,11 @@ function isUnsafe(sender)  {
     // https://chromium.googlesource.com/chromium/src/+/master/docs/security/compromised-renderers.md#Messaging
     if (sender.origin) {
         if (sender.origin === location.origin) return false;
-        logWarn(`Unsafe message from: ${sender.origin} via MessageSender.origin`);
+        console.warn(`Unsafe message from: ${sender.origin} via MessageSender.origin`);
     } else if (sender.url && isFirefoxOrSafari()) {
         const senderOrigin = new URL(sender.url).origin;
         if (senderOrigin === location.origin) return false;
-        logWarn(`Unsafe message from: ${senderOrigin} via MessageSender.url`);
+        console.warn(`Unsafe message from: ${senderOrigin} via MessageSender.url`);
     }
     return true;
 }
