@@ -73,6 +73,15 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
+        const firefoxJS = [];
+        for (const file of this.js) {
+            firefoxJS.push({file});
+        }
+        const firefoxCSS = [];
+        for (const file of this.css) {
+            firefoxCSS.push({file});
+        }
+        
         const registration: Registration = {
             message: "registerContentScript",
             id: "invidious",
@@ -85,7 +94,7 @@ export default class Utils {
         if (this.backgroundScriptContainer) {
             this.backgroundScriptContainer.registerFirefoxContentScript(registration);
         } else {
-            chrome.runtime.sendMessage(registration);
+            chrome.runtime.sendMessage({message: "registerContentScript"});
         }
     }
 
