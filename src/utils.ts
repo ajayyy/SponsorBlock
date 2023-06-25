@@ -64,6 +64,24 @@ export default class Utils {
             callback(granted);
         });
     }
+    
+    /**
+     * Only works on Firefox.
+     * Firefox requires that it be applied after every extension restart.
+     *
+     * @param {JSON} options
+     */
+     registerFirefoxContentScript(options: Registration): void {
+        const oldRegistration = contentScriptRegistrations[options.id];
+        if (oldRegistration) oldRegistration.unregister();
+    
+        chrome.contentScripts.register({
+            allFrames: options.allFrames,
+            js: options.js,
+            css: options.css,
+            matches: options.matches
+        }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
+    }
 
     /**
      * Registers the content scripts for the extra sites.
@@ -91,11 +109,7 @@ export default class Utils {
             matches: this.getPermissionRegex()
         };
 
-        if (this.backgroundScriptContainer) {
-            this.backgroundScriptContainer.registerFirefoxContentScript(registration);
-        } else {
-            chrome.runtime.sendMessage({message: "registerContentScript"});
-        }
+        registerFirefoxContentScript(registration);
     }
 
     /**
