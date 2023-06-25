@@ -6,6 +6,7 @@ import "content-scripts-register-polyfill";
 import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@ajayyy/maze-utils/lib/background-request-proxy";
 import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
+import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
 
 // Make the config public for debugging purposes
 
@@ -31,6 +32,16 @@ utils.wait(() => Config.config !== null).then(function() {
 setupBackgroundRequestProxy();
 setupTabUpdates(Config);
 
+function isUnsafe(sender)  {
+    if (sender.origin) {
+        if (sender.origin === location.origin) return false;
+    } else if (sender.url && isFirefoxOrSafari()) {
+        const origin = new URL(sender.url).origin;
+        if (origin === location.origin) return false;
+    }
+    return true;
+}
+
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch(request.message) {
         case "openConfig":
@@ -49,7 +60,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             return true;
         case "registerContentScript":
             // Only allow messages from extension pages.
-            if (sender.origin !== location.origin) return false;
+            if (isUnsafe(sender)) return false;
             registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript":
@@ -57,7 +68,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             return false;
         case "tabs": {
             // Only allow messages from extension pages.
-            if (sender.origin !== location.origin) return false;
+            if (isUnsafe(sender)) return false;
             chrome.tabs.query({
                 active: true,
                 currentWindow: true
