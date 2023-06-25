@@ -7,7 +7,7 @@ import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@aja
 import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
-import { logWarn } from "./logger";
+import { logWarn } from "./utils/logger";
 
 // Make the config public for debugging purposes
 
