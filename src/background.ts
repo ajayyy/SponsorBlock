@@ -151,6 +151,24 @@ chrome.runtime.onInstalled.addListener(function () {
 
 /**
  * Only works on Firefox.
+ * Firefox requires that it be applied after every extension restart.
+ *
+ * @param {JSON} options
+ */
+function registerFirefoxContentScript(options: Registration) {
+    const oldRegistration = contentScriptRegistrations[options.id];
+    if (oldRegistration) oldRegistration.unregister();
+
+    chrome.contentScripts.register({
+        allFrames: options.allFrames,
+        js: options.js,
+        css: options.css,
+        matches: options.matches
+    }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
+}
+
+/**
+ * Only works on Firefox.
  * Firefox requires that this is handled by the background script
  *
  */
