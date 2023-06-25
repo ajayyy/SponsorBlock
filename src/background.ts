@@ -58,11 +58,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
 
             //this allows the callback to be called later
             return true;
-        case "registerContentScript":
-            // Only allow messages from extension pages.
-            if (isUnsafe(sender)) return false;
-            utils.setupExtraSiteContentScripts();
-            return false;
         case "unregisterContentScript":
             unregisterFirefoxContentScript(request.id)
             return false;
