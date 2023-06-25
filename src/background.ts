@@ -61,7 +61,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "registerContentScript":
             // Only allow messages from extension pages.
             if (isUnsafe(sender)) return false;
-            //registerFirefoxContentScript(request);
+            registerFirefoxContentScript(request);
             return false;
         case "unregisterContentScript":
             unregisterFirefoxContentScript(request.id)
@@ -158,11 +158,11 @@ chrome.runtime.onInstalled.addListener(function () {
 function registerFirefoxContentScript(options: Registration) {
     const oldRegistration = contentScriptRegistrations[options.id];
     if (oldRegistration) oldRegistration.unregister();
-
+    
     chrome.contentScripts.register({
-        allFrames: options.allFrames,
-        js: options.js,
-        css: options.css,
+        allFrames: true,
+        js: ["./js/content.js"],
+        css: ["content.css","./libs/Source+Sans+Pro.css","popup.css","shared.css"],
         matches: options.matches
     }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
 }
