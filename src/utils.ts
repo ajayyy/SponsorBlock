@@ -91,7 +91,11 @@ export default class Utils {
             matches: this.getPermissionRegex()
         };
 
-        this.backgroundScriptContainer.registerFirefoxContentScript(registration);
+        if (this.backgroundScriptContainer) {
+            this.backgroundScriptContainer.registerFirefoxContentScript(registration);
+        } else {
+            chrome.runtime.sendMessage(registration);
+        }
     }
 
     /**
