@@ -160,9 +160,9 @@ function registerFirefoxContentScript(options: Registration) {
     if (oldRegistration) oldRegistration.unregister();
     
     chrome.contentScripts.register({
-        allFrames: true,
-        js: ["./js/content.js"],
-        css: ["content.css","./libs/Source+Sans+Pro.css","popup.css","shared.css"],
+        allFrames: options.allFrames,
+        js: options.js,
+        css: options.css,
         matches: options.matches
     }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
 }
