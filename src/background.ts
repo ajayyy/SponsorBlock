@@ -61,7 +61,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "registerContentScript":
             // Only allow messages from extension pages.
             if (isUnsafe(sender)) return false;
-            registerFirefoxContentScript(request);
+            utils.setupExtraSiteContentScripts();
             return false;
         case "unregisterContentScript":
             unregisterFirefoxContentScript(request.id)
