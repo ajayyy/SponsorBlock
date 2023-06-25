@@ -7,6 +7,7 @@ import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@aja
 import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
 import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
 import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
+import { logWarn } from "./logger";
 
 // Make the config public for debugging purposes
 
@@ -32,12 +33,15 @@ utils.wait(() => Config.config !== null).then(function() {
 setupBackgroundRequestProxy();
 setupTabUpdates(Config);
 
+// Only trust messages from extension pages.
 function isUnsafe(sender)  {
     if (sender.origin) {
         if (sender.origin === location.origin) return false;
+        logWarn(`Unsafe message from: ${sender.origin}`);
     } else if (sender.url && isFirefoxOrSafari()) {
-        const origin = new URL(sender.url).origin;
-        if (origin === location.origin) return false;
+        const senderOrigin = new URL(sender.url).origin;
+        if (senderOrigin === location.origin) return false;
+        logWarn(`Unsafe message from: ${senderOrigin}`);
     }
     return true;
 }
@@ -59,15 +63,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "registerContentScript":
-            // Only allow messages from extension pages.
             if (isUnsafe(sender)) return false;
             utils.setupExtraSiteContentScripts();
             return false;
         case "unregisterContentScript":
+            if (isUnsafe(sender)) return false;
             unregisterFirefoxContentScript(request.id)
             return false;
         case "tabs": {
-            // Only allow messages from extension pages.
             if (isUnsafe(sender)) return false;
             chrome.tabs.query({
                 active: true,
