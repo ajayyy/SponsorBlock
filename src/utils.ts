@@ -12,7 +12,7 @@ export default class Utils {
     
     // Contains functions needed from the background script
     backgroundScriptContainer: BackgroundScriptContainer | null;
-    
+
     // Used to add content scripts and CSS required
     js = [
         "./js/content.js"
@@ -23,7 +23,7 @@ export default class Utils {
         "popup.css",
         "shared.css"
     ];
-    
+
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
@@ -64,24 +64,6 @@ export default class Utils {
             callback(granted);
         });
     }
-    
-    /**
-     * Only works on Firefox.
-     * Firefox requires that it be applied after every extension restart.
-     *
-     * @param {JSON} options
-     */
-     registerFirefoxContentScript(options: Registration): void {
-        const oldRegistration = contentScriptRegistrations[options.id];
-        if (oldRegistration) oldRegistration.unregister();
-    
-        chrome.contentScripts.register({
-            allFrames: options.allFrames,
-            js: options.js,
-            css: options.css,
-            matches: options.matches
-        }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
-    }
 
     /**
      * Registers the content scripts for the extra sites.
@@ -99,7 +81,7 @@ export default class Utils {
         for (const file of this.css) {
             firefoxCSS.push({file});
         }
-        
+
         const registration: Registration = {
             message: "registerContentScript",
             id: "invidious",
@@ -109,7 +91,11 @@ export default class Utils {
             matches: this.getPermissionRegex()
         };
 
-        registerFirefoxContentScript(registration);
+        if (this.backgroundScriptContainer) {
+            this.backgroundScriptContainer.registerFirefoxContentScript(registration);
+        } else {
+            chrome.runtime.sendMessage({message: "registerContentScript"});
+        }
     }
 
     /**
