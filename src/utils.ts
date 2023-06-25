@@ -73,8 +73,12 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        const registration = {
+        const registration: Registration = {
             message: "registerContentScript",
+            id: "invidious",
+            allFrames: true,
+            js: firefoxJS,
+            css: firefoxCSS,
             matches: this.getPermissionRegex()
         };
 
