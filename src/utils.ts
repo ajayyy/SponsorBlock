@@ -13,17 +13,6 @@ export default class Utils {
     // Contains functions needed from the background script
     backgroundScriptContainer: BackgroundScriptContainer | null;
 
-    // Used to add content scripts and CSS required
-    js = [
-        "./js/content.js"
-    ];
-    css = [
-        "content.css",
-        "./libs/Source+Sans+Pro.css",
-        "popup.css",
-        "shared.css"
-    ];
-
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
@@ -73,21 +62,7 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        const firefoxJS = [];
-        for (const file of this.js) {
-            firefoxJS.push({file});
-        }
-        const firefoxCSS = [];
-        for (const file of this.css) {
-            firefoxCSS.push({file});
-        }
-
         const registration: Registration = {
-            message: "registerContentScript",
-            id: "invidious",
-            allFrames: true,
-            js: firefoxJS,
-            css: firefoxCSS,
             matches: this.getPermissionRegex()
         };
 
