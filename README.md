@@ -65,7 +65,7 @@ You must have [Node.js 16](https://nodejs.org/) and npm installed.
 1. Clone with submodules
 
 ```bash
-git clone https://github.com/ajayyy/SponsorBlock --recurse-submodules=yes
+git clone --recursive https://github.com/ajayyy/SponsorBlock
 ```
 
 Or if you already cloned it, pull submodules with
