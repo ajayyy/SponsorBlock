@@ -24,7 +24,10 @@
         "no-self-assign": "off",
         "@typescript-eslint/no-empty-interface": "off",
         "react/prop-types": [2, { "ignore": ["children"] }],
-        "@typescript-eslint/member-delimiter-style": "warn"
+        "@typescript-eslint/member-delimiter-style": "warn",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-this-alias": "off"
     },
     "settings": {
         "react": {
