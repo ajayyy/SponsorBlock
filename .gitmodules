@@ -1,3 +1,6 @@
 [submodule "public/_locales"]
 	path = public/_locales
 	url = https://github.com/ajayyy/ExtensionTranslations
+[submodule "maze-utils"]
+	path = maze-utils
+	url = https://github.com/ajayyy/maze-utils
