@@ -3,9 +3,9 @@ import * as CompileConfig from "../config.json";
 import Config from "./config";
 import { Registration } from "./types";
 import "content-scripts-register-polyfill";
-import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "@ajayyy/maze-utils/lib/background-request-proxy";
-import { setupTabUpdates } from "@ajayyy/maze-utils/lib/tab-updates";
-import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
+import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "./maze-utils/background-request-proxy";
+import { setupTabUpdates } from "./maze-utils/tab-updates";
+import { generateUserID } from "./maze-utils/setup";
 
 // Make the config public for debugging purposes
 

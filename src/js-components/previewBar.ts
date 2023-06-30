@@ -11,8 +11,8 @@ import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceT
 import { partition } from "../utils/arrayUtils";
 import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
 import { normalizeChapterName } from "../utils/exporter";
-import { getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
-import { findValidElement } from "@ajayyy/maze-utils/lib/dom";
+import { getFormattedTimeToSeconds } from "../maze-utils/formating";
+import { findValidElement } from "../maze-utils/dom";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;

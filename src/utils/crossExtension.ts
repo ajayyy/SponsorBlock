@@ -1,8 +1,8 @@
 import * as CompileConfig from "../../config.json";
 
 import Config from "../config";
-import { isSafari } from "@ajayyy/maze-utils/lib/config";
-import { isFirefoxOrSafari } from "@ajayyy/maze-utils";
+import { isSafari } from "../maze-utils/config";
+import { isFirefoxOrSafari } from "../maze-utils";
 
 export function isDeArrowInstalled(): Promise<boolean> {
     if (Config.config.deArrowInstalled) {

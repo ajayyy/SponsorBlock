@@ -1,5 +1,5 @@
 import { ActionType, Category, SponsorSourceType, SponsorTime, VideoID } from "../types";
-import { getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
+import { getFormattedTimeToSeconds } from "../maze-utils/formating";
 
 export function getControls(): HTMLElement {
     const controlsSelectors = [

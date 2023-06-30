@@ -32,14 +32,14 @@ import { logDebug } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
-import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
-import { getErrorMessage, getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
-import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "@ajayyy/maze-utils/lib/config";
-import { findValidElement, waitForElement } from "@ajayyy/maze-utils/lib/dom"
-import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
-import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
-import { updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
+import { isFirefoxOrSafari, waitFor } from "./maze-utils";
+import { getErrorMessage, getFormattedTime } from "./maze-utils/formating";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "./maze-utils/video";
+import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "./maze-utils/config";
+import { findValidElement, waitForElement } from "./maze-utils/dom"
+import { getHash, HashedValue } from "./maze-utils/hash";
+import { generateUserID } from "./maze-utils/setup";
+import { updateAll } from "./maze-utils/thumbnailManagement";
 import { setupThumbnailListener } from "./utils/thumbnails";
 import * as documentScript from "../dist/js/document.js";
 import { Tooltip } from "./render/Tooltip";

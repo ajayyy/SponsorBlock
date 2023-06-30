@@ -1,12 +1,12 @@
 import Config, { VideoDownvotes } from "./config";
 import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType, CategorySkipOption } from "./types";
 
-import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
+import { getHash, HashedValue } from "./maze-utils/hash";
 import * as CompileConfig from "../config.json";
-import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
-import { findValidElementFromSelector } from "@ajayyy/maze-utils/lib/dom";
-import { FetchResponse, sendRequestToCustomServer } from "@ajayyy/maze-utils/lib/background-request-proxy"
-import { isSafari } from "@ajayyy/maze-utils/lib/config";
+import { isFirefoxOrSafari, waitFor } from "./maze-utils";
+import { findValidElementFromSelector } from "./maze-utils/dom";
+import { FetchResponse, sendRequestToCustomServer } from "./maze-utils/background-request-proxy"
+import { isSafari } from "./maze-utils/config";
 
 export default class Utils {
     

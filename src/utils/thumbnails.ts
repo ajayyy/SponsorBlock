@@ -1,7 +1,7 @@
-import { isOnInvidious, parseYouTubeVideoIDFromURL } from "@ajayyy/maze-utils/lib/video";
+import { isOnInvidious, parseYouTubeVideoIDFromURL } from "../maze-utils/video";
 import Config from "../config";
 import { getVideoLabel } from "./videoLabels";
-import { setThumbnailListener } from "@ajayyy/maze-utils/lib/thumbnailManagement";
+import { setThumbnailListener } from "../maze-utils/thumbnailManagement";
 
 export async function labelThumbnails(thumbnails: HTMLImageElement[]): Promise<void> {
     await Promise.all(thumbnails.map((t) => labelThumbnail(t)));

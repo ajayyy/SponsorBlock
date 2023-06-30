@@ -1,8 +1,8 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
-import { Keybind, ProtoConfig, keybindEquals } from "@ajayyy/maze-utils/lib/config";
-import { HashedValue } from "@ajayyy/maze-utils/lib/hash";
+import { Keybind, ProtoConfig, keybindEquals } from "./maze-utils/config";
+import { HashedValue } from "./maze-utils/hash";
 
 export interface Permission {
     canSubmit: boolean;
