@@ -703,7 +703,7 @@ svg {
     padding: 20px 0px 0px 0px !important;
 }
 
-#deArrowPromotion {
+.promotion-container {
     width: fit-content;
 }
 
