@@ -1,23 +1,6 @@
-/*
-This file is only ran by GitHub Actions in order to populate the Invidious instances list
-
-This file should not be shipped with the extension
-*/
-
-import { writeFile, existsSync } from "fs"
-import { join } from "path"
 import { InvidiousInstance, instanceMap } from "./invidiousType"
 
-// import file from https://api.invidious.io/instances.json
-if (!existsSync(join(__dirname, "data.json"))) {
-  process.exit(1);
-}
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import * as data from "../ci/data.json";
-
-// static non-invidious instances
-const staticInstances = ["www.youtubekids.com"];
+import * as data from "../ci/invidious_instances.json";
 
 // only https servers
 const mapped: instanceMap = data
@@ -33,7 +16,7 @@ const mapped: instanceMap = data
 
 // reliability and sanity checks
 const reliableCheck = mapped
-  .filter((instance) => {
+  .filter(instance => {
     // 30d uptime >= 90%
     const thirtyDayUptime = Number(instance.thirtyDayUptime) >= 90;
     // available for at least 80/90 days
@@ -41,15 +24,8 @@ const reliableCheck = mapped
     return thirtyDayUptime && dailyRatioCheck.length >= 80;
   })
   // url includes name
-  .filter((instance) => instance.url.includes(instance.name));
+  .filter(instance => instance.url.includes(instance.name));
 
-// finally map to array
-const result: string[] = reliableCheck.map((instance) => instance.name).sort();
-
-writeFile(
-  join(__dirname, "./invidiouslist.json"),
-  JSON.stringify([...staticInstances, ...result]),
-  (err) => {
-    if (err) return console.log(err);
-  }
-);
+export function getInvidiousList(): string[] {
+  return reliableCheck.map(instance => instance.name).sort()
+}
