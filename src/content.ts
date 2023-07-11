@@ -2388,7 +2388,7 @@ function hotkeyListener(e: KeyboardEvent): void {
  * Adds the CSS to the page if needed. Required on optional sites with Chrome.
  */
 function addCSS() {
-    if (!isFirefoxOrSafari() && Config.config.invidiousInstances.includes(new URL(document.URL).host)) {
+    if (!isFirefoxOrSafari() && Config.config.invidiousInstances.includes(new URL(document.URL).host.split(":")[0])) {
         window.addEventListener("DOMContentLoaded", () => {
             const head = document.getElementsByTagName("head")[0];
 
