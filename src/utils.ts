@@ -240,6 +240,8 @@ export default class Utils {
         for (const url of domains) {
             permissionRegex.push("https://*." + url + "/*");
             permissionRegex.push("http://*." + url + "/*");
+            permissionRegex.push("https://" + url + "/*");
+            permissionRegex.push("http://" + url + "/*");
         }
 
         return permissionRegex;
