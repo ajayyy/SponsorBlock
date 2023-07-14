@@ -47,7 +47,7 @@ export class CategoryPill {
 
                 this.root = createRoot(this.container);
                 this.ref = React.createRef();
-                this.root.render(<CategoryPillComponent ref={this.ref} vote={this.vote} />);
+                this.root.render(<CategoryPillComponent ref={this.ref} vote={this.vote} showTextByDefault={!this.onMobileYouTube} />);
 
                 if (this.onMobileYouTube) {
                     if (this.mutationObserver) {
@@ -76,6 +76,7 @@ export class CategoryPill {
             // Use a parent because YouTube does weird things to the top level object
             // react would have to rerender if container was the top level
             const parent = document.createElement("span");
+            parent.id = "categoryPillParent";
             parent.appendChild(this.container);
 
             referenceNode.prepend(parent);

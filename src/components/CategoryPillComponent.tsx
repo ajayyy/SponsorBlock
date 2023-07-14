@@ -12,6 +12,7 @@ import { getErrorMessage } from "../maze-utils/formating";
 
 export interface CategoryPillProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
+    showTextByDefault: boolean;
 }
 
 export interface CategoryPillState {
@@ -43,7 +44,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
 
         return (
             <span style={style}
-                className={"sponsorBlockCategoryPill"}
+                className={"sponsorBlockCategoryPill" + (!this.props.showTextByDefault ? " sbPillNoText" : "")}
                 aria-label={this.getTitleText()}
                 onClick={(e) => this.toggleOpen(e)}
                 onMouseEnter={() => this.openTooltip()}
@@ -52,9 +53,13 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                     <img className="sponsorSkipLogo sponsorSkipObject"
                         src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
                     </img>
-                    <span className="sponsorBlockCategoryPillTitle">
-                        {chrome.i18n.getMessage("category_" + this.state.segment?.category)}
-                    </span>
+
+                    {
+                        (this.props.showTextByDefault || this.state.open) &&
+                            <span className="sponsorBlockCategoryPillTitle">
+                                {chrome.i18n.getMessage("category_" + this.state.segment?.category)}
+                            </span>
+                    }
                 </span>
 
                 {this.state.open && (
