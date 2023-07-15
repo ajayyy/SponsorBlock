@@ -47,7 +47,11 @@ export class CategoryPill {
 
                 this.root = createRoot(this.container);
                 this.ref = React.createRef();
-                this.root.render(<CategoryPillComponent ref={this.ref} vote={this.vote} showTextByDefault={!this.onMobileYouTube} />);
+                this.root.render(<CategoryPillComponent 
+                        ref={this.ref}
+                        vote={this.vote} 
+                        showTextByDefault={!this.onMobileYouTube}
+                        showTooltipOnClick={this.onMobileYouTube} />);
 
                 if (this.onMobileYouTube) {
                     if (this.mutationObserver) {

@@ -13,6 +13,7 @@ import { getErrorMessage } from "../maze-utils/formating";
 export interface CategoryPillProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
     showTextByDefault: boolean;
+    showTooltipOnClick: boolean;
 }
 
 export interface CategoryPillState {
@@ -49,6 +50,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                 onClick={(e) => this.toggleOpen(e)}
                 onMouseEnter={() => this.openTooltip()}
                 onMouseLeave={() => this.closeTooltip()}>
+                
                 <span className="sponsorBlockCategoryPillTitleSection">
                     <img className="sponsorSkipLogo sponsorSkipObject"
                         src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
@@ -86,7 +88,10 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                 {/* Close Button */}
                 <img src={chrome.extension.getURL("icons/close.png")}
                     className="categoryPillClose"
-                    onClick={() => this.setState({ show: false })}>
+                    onClick={() => {
+                        this.setState({ show: false });
+                        this.closeTooltip();
+                    }}>
                 </img>
             </span>
         );
@@ -96,6 +101,14 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
         event.stopPropagation();
 
         if (this.state.show) {
+            if (this.props.showTooltipOnClick) {
+                if (this.state.open) {
+                    this.closeTooltip();
+                } else {
+                    this.openTooltip();
+                }
+            }
+
             this.setState({ open: !this.state.open });
         }
     }
@@ -113,6 +126,8 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
                     open: false,
                     show: type === 1
                 });
+
+                this.closeTooltip();
             } else if (response.statusCode !== 403) {
                 alert(getErrorMessage(response.statusCode, response.responseText));
             }
@@ -132,7 +147,11 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
     }
 
     private openTooltip(): void {
-        const tooltipMount = document.querySelector("#above-the-fold") as HTMLElement;
+        if (this.tooltip) {
+            this.tooltip.close();
+        }
+
+        const tooltipMount = document.querySelector("#above-the-fold, ytm-slim-owner-renderer") as HTMLElement;
         if (tooltipMount) {
             this.tooltip = new Tooltip({
                 text: this.getTitleText(),
@@ -148,7 +167,7 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
     }
 
     private closeTooltip(): void {
-        this.tooltip?.close();
+        this.tooltip?.close?.();
         this.tooltip = null;
     }
 
