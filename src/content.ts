@@ -524,7 +524,7 @@ function createPreviewBar(): void {
             selector: ".vjs-progress-holder",
             isVisibleCheck: false
         }, {
-            // For Youtube Music
+            // For Youtube Music and YTKids
             // there are two sliders, one for volume and one for progress - both called #progressContainer
             selector: "#progress-bar>#sliderContainer>div>#sliderBar>#progressContainer",
         }, {

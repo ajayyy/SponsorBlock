@@ -97,7 +97,8 @@ class PreviewBar {
         this.chapterTooltip = document.createElement("div");
         this.chapterTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
 
-        const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
+        // global chaper tooltip or duration tooltip
+        const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
         const originalTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip)") as HTMLElement;
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 

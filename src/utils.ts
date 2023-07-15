@@ -299,7 +299,8 @@ export default class Utils {
             "#main-panel.ytmusic-player-page", // YouTube music
             "#player-container .video-js", // Invidious
             ".main-video-section > .video-container", // Cloudtube
-            ".shaka-video-container" // Piped
+            ".shaka-video-container", // Piped
+            "#player-container.ytk-player", // YT Kids
         ];
 
         let referenceNode = findValidElementFromSelector(selectors)
