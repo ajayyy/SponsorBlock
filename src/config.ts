@@ -75,6 +75,7 @@ interface SBConfig {
     allowScrollingToEdit: boolean;
     deArrowInstalled: boolean;
     showDeArrowPromotion: boolean;
+    showZoomToFillError: boolean;
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -311,6 +312,7 @@ const syncDefaults = {
     allowScrollingToEdit: true,
     deArrowInstalled: false,
     showDeArrowPromotion: true,
+    showZoomToFillError: true,
 
     categoryPillColors: {},
 
