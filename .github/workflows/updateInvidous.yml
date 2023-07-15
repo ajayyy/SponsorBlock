@@ -11,9 +11,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: Download instance list
+      - name: Download instance lists
         run: |
-          wget https://api.invidious.io/instances.json -O ci/data.json
+          wget https://api.invidious.io/instances.json -O ci/invidious_instances.json
+          wget  https://github.com/TeamPiped/piped-uptime/raw/master/history/summary.json -O ci/piped_instances.json
       - name: Install dependencies
         run: npm ci
       - name: "Run CI"
@@ -24,7 +25,7 @@ jobs:
         # v4.2.3
         with:
           commit-message: Update Invidious List
-          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           branch: ci/update_invidious_list
           title: Update Invidious List
           body: Automated Invidious list update
