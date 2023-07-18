@@ -1,5 +1,5 @@
 import { Category, CategorySkipOption, VideoID } from "../types";
-import { getHash } from "@ajayyy/maze-utils/lib/hash";
+import { getHash } from "../maze-utils/hash";
 import Utils from "../utils";
 import { logWarn } from "./logger";
 

@@ -32,18 +32,19 @@ import { logDebug } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
-import { isFirefoxOrSafari, waitFor } from "@ajayyy/maze-utils";
-import { getErrorMessage, getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "@ajayyy/maze-utils/lib/video";
-import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "@ajayyy/maze-utils/lib/config";
-import { findValidElement, waitForElement } from "@ajayyy/maze-utils/lib/dom"
-import { getHash, HashedValue } from "@ajayyy/maze-utils/lib/hash";
-import { generateUserID } from "@ajayyy/maze-utils/lib/setup";
-import { updateAll } from "@ajayyy/maze-utils/lib/thumbnailManagement";
+import { isFirefoxOrSafari, waitFor } from "./maze-utils";
+import { getErrorMessage, getFormattedTime } from "./maze-utils/formating";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "./maze-utils/video";
+import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "./maze-utils/config";
+import { findValidElement, waitForElement } from "./maze-utils/dom"
+import { getHash, HashedValue } from "./maze-utils/hash";
+import { generateUserID } from "./maze-utils/setup";
+import { updateAll } from "./maze-utils/thumbnailManagement";
 import { setupThumbnailListener } from "./utils/thumbnails";
 import * as documentScript from "../dist/js/document.js";
 import { Tooltip } from "./render/Tooltip";
 import { isDeArrowInstalled } from "./utils/crossExtension";
+import { runCompatibilityChecks } from "./utils/compatibility";
 
 const utils = new Utils();
 
@@ -87,7 +88,9 @@ utils.wait(() => Config.isReady(), 5000, 10).then(() => {
                 Config.config.showDeArrowPromotion = false;
             }
         }
-    }, 5000)
+    }, 5000);
+
+    runCompatibilityChecks();
 });
 
 const skipBuffer = 0.003;
@@ -521,7 +524,7 @@ function createPreviewBar(): void {
             selector: ".vjs-progress-holder",
             isVisibleCheck: false
         }, {
-            // For Youtube Music
+            // For Youtube Music and YTKids
             // there are two sliders, one for volume and one for progress - both called #progressContainer
             selector: "#progress-bar>#sliderContainer>div>#sliderBar>#progressContainer",
         }, {
@@ -2388,7 +2391,7 @@ function hotkeyListener(e: KeyboardEvent): void {
  * Adds the CSS to the page if needed. Required on optional sites with Chrome.
  */
 function addCSS() {
-    if (!isFirefoxOrSafari() && Config.config.invidiousInstances.includes(new URL(document.URL).host)) {
+    if (!isFirefoxOrSafari() && Config.config.invidiousInstances.includes(new URL(document.URL).hostname)) {
         window.addEventListener("DOMContentLoaded", () => {
             const head = document.getElementsByTagName("head")[0];
 
@@ -2486,7 +2489,9 @@ function setCategoryColorCSSVariables() {
     if (!styleContainer) {
         styleContainer = document.createElement("style");
         styleContainer.id = "sbCategoryColorStyle";
-        document.head.appendChild(styleContainer)
+
+        const head = (document.head || document.documentElement);
+        head.appendChild(styleContainer)
     }
 
     let css = ":root {"

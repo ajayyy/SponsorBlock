@@ -221,8 +221,3 @@ export enum NoticeVisbilityMode {
     FadedForAutoSkip = 3,
     FadedForAll = 4
 }
-
-export interface ButtonListener {
-    name: string;
-    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}

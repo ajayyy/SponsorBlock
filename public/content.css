@@ -198,6 +198,11 @@ div:hover > .sponsorBlockChapterBar {
 	float: left;
 }
 
+#categoryPill .sbPillNoText .sponsorSkipLogo {
+	margin-top: calc(2.6rem - 18px);
+    margin-bottom: calc(2.6rem - 18px);
+}
+
 @keyframes fadeIn {
 	from { opacity: 0; }
 }
@@ -770,6 +775,14 @@ input::-webkit-inner-spin-button {
     min-height: 75px;
     white-space: normal;
     line-height: 1.5em;
+}
+
+#categoryPillParent {
+	height: fit-content;
+    margin-top: auto;
+	margin-bottom: auto;
+
+    position: relative;
 }
 
 .sponsorBlockCategoryPill {

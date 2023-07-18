@@ -21,12 +21,12 @@ import {
 import { showDonationLink } from "./utils/configUtils";
 import { AnimationUtils } from "./utils/animationUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
-import { localizeHtmlPage } from "@ajayyy/maze-utils/lib/setup";
+import { localizeHtmlPage } from "./maze-utils/setup";
 import { exportTimes } from "./utils/exporter";
 import GenericNotice from "./render/GenericNotice";
-import { getErrorMessage, getFormattedTime } from "@ajayyy/maze-utils/lib/formating";
-import { StorageChangesObject } from "@ajayyy/maze-utils/lib/config";
-import { getHash } from "@ajayyy/maze-utils/lib/hash";
+import { getErrorMessage, getFormattedTime } from "./maze-utils/formating";
+import { StorageChangesObject } from "./maze-utils/config";
+import { getHash } from "./maze-utils/hash";
 
 const utils = new Utils();
 

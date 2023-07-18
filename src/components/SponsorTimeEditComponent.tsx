@@ -7,7 +7,7 @@ import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
 import { DEFAULT_CATEGORY } from "../utils/categoryUtils";
-import { getFormattedTime, getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
+import { getFormattedTime, getFormattedTimeToSeconds } from "../maze-utils/formating";
 
 const utils = new Utils();
 

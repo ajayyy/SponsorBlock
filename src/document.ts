@@ -1,3 +1,3 @@
-import { init } from "@ajayyy/maze-utils/lib/injected/document";
+import { init } from "./maze-utils/injected/document";
 
 init();

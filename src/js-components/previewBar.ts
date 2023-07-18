@@ -11,8 +11,8 @@ import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceT
 import { partition } from "../utils/arrayUtils";
 import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
 import { normalizeChapterName } from "../utils/exporter";
-import { getFormattedTimeToSeconds } from "@ajayyy/maze-utils/lib/formating";
-import { findValidElement } from "@ajayyy/maze-utils/lib/dom";
+import { getFormattedTimeToSeconds } from "../maze-utils/formating";
+import { findValidElement } from "../maze-utils/dom";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -97,7 +97,8 @@ class PreviewBar {
         this.chapterTooltip = document.createElement("div");
         this.chapterTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
 
-        const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper");
+        // global chaper tooltip or duration tooltip
+        const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
         const originalTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip)") as HTMLElement;
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 
