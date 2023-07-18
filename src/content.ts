@@ -2489,7 +2489,9 @@ function setCategoryColorCSSVariables() {
     if (!styleContainer) {
         styleContainer = document.createElement("style");
         styleContainer.id = "sbCategoryColorStyle";
-        document.head.appendChild(styleContainer)
+
+        const head = (document.head || document.documentElement);
+        head.appendChild(styleContainer)
     }
 
     let css = ":root {"
