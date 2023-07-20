@@ -75,7 +75,7 @@ interface SBConfig {
     allowScrollingToEdit: boolean;
     deArrowInstalled: boolean;
     showDeArrowPromotion: boolean;
-    showZoomToFillError: boolean;
+    showZoomToFillError2: boolean;
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -148,6 +148,10 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
+    if (config["showZoomToFillError"]) {
+        chrome.storage.sync.remove("showZoomToFillError");
+    }
+
     if (!config["chapterCategoryAdded"]) {
         config["chapterCategoryAdded"] = true;
 
@@ -312,7 +316,7 @@ const syncDefaults = {
     allowScrollingToEdit: true,
     deArrowInstalled: false,
     showDeArrowPromotion: true,
-    showZoomToFillError: true,
+    showZoomToFillError2: true,
 
     categoryPillColors: {},
 
