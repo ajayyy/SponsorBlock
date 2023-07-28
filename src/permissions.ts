@@ -7,7 +7,11 @@ const utils = new Utils();
 // Probably due to cyclic dependencies
 Config.config;
 
-window.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "complete") {
+    init();
+} else {
+    document.addEventListener("DOMContentLoaded", init);
+}
 
 async function init() {
     localizeHtmlPage();

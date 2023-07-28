@@ -24,7 +24,11 @@ let embed = false;
 const categoryChoosers: CategoryChooser[] = [];
 const unsubmittedVideos: UnsubmittedVideos[] = [];
 
-window.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "complete") {
+    init();
+} else {
+    document.addEventListener("DOMContentLoaded", init);
+}
 
 async function init() {
     localizeHtmlPage();

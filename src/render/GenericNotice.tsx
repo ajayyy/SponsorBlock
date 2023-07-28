@@ -47,6 +47,7 @@ export default class GenericNotice {
         const referenceNode = options.referenceNode ?? utils.findReferenceNode();
     
         this.noticeElement = document.createElement("div");
+        this.noticeElement.className = "sponsorSkipNoticeContainer";
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
 
         referenceNode.prepend(this.noticeElement);

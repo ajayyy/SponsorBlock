@@ -4,7 +4,11 @@ import { showDonationLink } from "./utils/configUtils";
 
 import { waitFor } from "./maze-utils";
 
-window.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "complete") {
+    init();
+} else {
+    document.addEventListener("DOMContentLoaded", init);
+}
 
 async function init() {
     localizeHtmlPage();

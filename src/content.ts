@@ -45,6 +45,9 @@ import * as documentScript from "../dist/js/document.js";
 import { Tooltip } from "./render/Tooltip";
 import { isDeArrowInstalled } from "./utils/crossExtension";
 import { runCompatibilityChecks } from "./utils/compatibility";
+import { cleanPage } from "./utils/pageCleaner";
+
+cleanPage();
 
 const utils = new Utils();
 
@@ -1356,18 +1359,20 @@ async function channelIDChange(channelIDInfo: ChannelIDInfo) {
 }
 
 function videoElementChange(newVideo: boolean): void {
-    if (newVideo) {
-        setupVideoListeners();
-        setupSkipButtonControlBar();
-        setupCategoryPill();
-    }
-
-    checkPreviewbarState();
-
-    // Incase the page is still transitioning, check again in a few seconds
-    setTimeout(checkPreviewbarState, 100);
-    setTimeout(checkPreviewbarState, 1000);
-    setTimeout(checkPreviewbarState, 5000);
+    waitFor(() => Config.isReady()).then(() => {
+        if (newVideo) {
+            setupVideoListeners();
+            setupSkipButtonControlBar();
+            setupCategoryPill();
+        }
+    
+        checkPreviewbarState();
+    
+        // Incase the page is still transitioning, check again in a few seconds
+        setTimeout(checkPreviewbarState, 100);
+        setTimeout(checkPreviewbarState, 1000);
+        setTimeout(checkPreviewbarState, 5000);
+    })
 }
 
 function checkPreviewbarState(): void {
@@ -2331,11 +2336,17 @@ function previousChapter(): void {
 function addHotkeyListener(): void {
     document.addEventListener("keydown", hotkeyListener);
 
-    document.addEventListener("DOMContentLoaded", () => {
+    const onLoad = () => {
         // Allow us to stop propagation to YouTube by being deeper
         document.removeEventListener("keydown", hotkeyListener);
         document.body.addEventListener("keydown", hotkeyListener);
-    });
+    };
+
+    if (document.readyState === "complete") {
+        onLoad();
+    } else {
+        document.addEventListener("DOMContentLoaded", onLoad);
+    }
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
@@ -2392,7 +2403,7 @@ function hotkeyListener(e: KeyboardEvent): void {
  */
 function addCSS() {
     if (!isFirefoxOrSafari() && Config.config.invidiousInstances.includes(new URL(document.URL).hostname)) {
-        window.addEventListener("DOMContentLoaded", () => {
+        const onLoad = () => {
             const head = document.getElementsByTagName("head")[0];
 
             for (const file of utils.css) {
@@ -2404,7 +2415,13 @@ function addCSS() {
 
                 head.appendChild(fileref);
             }
-        });
+        };
+
+        if (document.readyState === "complete") {
+            onLoad();
+        } else {
+            document.addEventListener("DOMContentLoaded", onLoad);
+        }
     }
 }
 
