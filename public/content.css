@@ -867,3 +867,7 @@ input::-webkit-inner-spin-button {
 .sponsorThumbnailLabel:hover span {
 	display: inline;
 }
+
+.sponsorblock-chapter-visible {
+	display: inherit !important;
+}
