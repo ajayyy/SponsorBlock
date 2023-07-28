@@ -177,7 +177,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         ) : null;
 
         return (
-            <NoticeComponent noticeTitle={this.state.noticeTitle}
+            <NoticeComponent 
+                noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
                 showInSecondSlot={this.showInSecondSlot}
                 idSuffix={this.idSuffix}
@@ -191,6 +192,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 ref={this.noticeRef}
                 closeListener={() => this.closeListener()}
                 smaller={this.state.smaller}
+                logoFill={Config.config.barTypes[this.segments[0].category].color}
                 limitWidth={true}
                 firstColumn={firstColumn}
                 bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}

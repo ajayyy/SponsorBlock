@@ -1,5 +1,6 @@
 import * as React from "react";
 import Config from "../config";
+import SbSvg from "../svg-icons/sb_svg";
 
 enum CountdownMode {
     Timer,
@@ -28,6 +29,7 @@ export interface NoticeProps {
     extraClass?: string;
     hideLogo?: boolean;
     hideRightInfo?: boolean;
+    logoFill?: string;
 
     // Callback for when this is closed
     closeListener: () => void;
@@ -122,10 +124,10 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                                 <td className="noticeLeftIcon">
                                     {/* Logo */}
                                     {!this.props.hideLogo &&
-                                        <img id={"sponsorSkipLogo" + this.idSuffix} 
-                                            className="sponsorSkipLogo sponsorSkipObject"
-                                            src={chrome.extension.getURL("icons/IconSponsorBlocker256px.png")}>
-                                        </img>
+                                        <SbSvg
+                                            id={"sponsorSkipLogo" + this.idSuffix} 
+                                            fill={this.props.logoFill}
+                                            className="sponsorSkipLogo sponsorSkipObject"/>
                                     }
 
                                     <span id={"sponsorSkipMessage" + this.idSuffix}
