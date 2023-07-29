@@ -4,5 +4,8 @@
   ],
   "background": {
     "persistent": false
-  }
+  },
+  "permissions": [
+    "https://*.youtube.com/*"
+  ]
 }
