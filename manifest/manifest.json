@@ -81,7 +81,8 @@
     ],
     "permissions": [
         "storage",
-        "https://sponsor.ajay.app/*"
+        "https://sponsor.ajay.app/*",
+        "https://*.youtube.com/*"
     ],
     "optional_permissions": [
         "*://*/*",

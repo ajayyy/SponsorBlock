@@ -7,6 +7,7 @@ import { Category, SegmentUUID, SponsorTime } from "../types";
 import { Tooltip } from "./Tooltip";
 import { waitFor } from "../maze-utils";
 import { getYouTubeTitleNode } from "../maze-utils/elements";
+import { addCleanupListener } from "../maze-utils/cleanup";
 
 const id = "categoryPill";
 
@@ -24,6 +25,12 @@ export class CategoryPill {
     
     constructor() {
         this.ref = React.createRef();
+
+        addCleanupListener(() => {
+            if (this.mutationObserver) {
+                this.mutationObserver.disconnect();
+            }
+        });
     }
 
     async attachToPage(onMobileYouTube: boolean, onInvidious: boolean,

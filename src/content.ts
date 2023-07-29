@@ -46,6 +46,7 @@ import { Tooltip } from "./render/Tooltip";
 import { isDeArrowInstalled } from "./utils/crossExtension";
 import { runCompatibilityChecks } from "./utils/compatibility";
 import { cleanPage } from "./utils/pageCleaner";
+import { addCleanupListener } from "./maze-utils/cleanup";
 
 cleanPage();
 
@@ -476,6 +477,8 @@ function videoIDChange(): void {
 }
 
 function handleMobileControlsMutations(): void {
+    if (!chrome.runtime?.id) return;
+
     updateVisibilityOfPlayerControlsButton();
 
     skipButtonControlBar?.updateMobileControls();
@@ -815,10 +818,18 @@ function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boole
     }
 }
 
+let setupVideoListenersFirstTime = true;
 function setupVideoListeners() {
     //wait until it is loaded
     getVideo().addEventListener('loadstart', videoOnReadyListener)
     getVideo().addEventListener('durationchange', durationChangeListener);
+
+    if (setupVideoListenersFirstTime) {
+        addCleanupListener(() => {
+            getVideo().removeEventListener('loadstart', videoOnReadyListener);
+            getVideo().removeEventListener('durationchange', durationChangeListener);
+        });
+    }
 
     if (!Config.config.disableSkipping) {
         switchingVideos = false;
@@ -826,7 +837,7 @@ function setupVideoListeners() {
         let startedWaiting = false;
         let lastPausedAtZero = true;
 
-        getVideo().addEventListener('play', () => {
+        const playListener = () => {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
@@ -857,8 +868,10 @@ function setupVideoListeners() {
                 startSponsorSchedule();
             }
 
-        });
-        getVideo().addEventListener('playing', () => {
+        };
+        getVideo().addEventListener('play', playListener);
+
+        const playingListener = () => {
             updateVirtualTime();
             lastPausedAtZero = false;
 
@@ -884,8 +897,10 @@ function setupVideoListeners() {
 
                 startSponsorSchedule();
             }
-        });
-        getVideo().addEventListener('seeking', () => {
+        };
+        getVideo().addEventListener('playing', playingListener);
+        
+        const seekingListener = () => {
             lastKnownVideoTime.fromPause = false;
 
             if (!getVideo().paused){
@@ -909,20 +924,19 @@ function setupVideoListeners() {
                     lastPausedAtZero = true;
                 }
             }
-        });
-        getVideo().addEventListener('ratechange', () => {
+        };
+        getVideo().addEventListener('seeking', seekingListener);
+        
+        const rateChangeListener = () => {
             updateVirtualTime();
             clearWaitingTime();
 
             startSponsorSchedule();
-        });
+        };
+        getVideo().addEventListener('ratechange', () => rateChangeListener);
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
-        getVideo().addEventListener('videoSpeed_ratechange', () => {
-            updateVirtualTime();
-            clearWaitingTime();
+        getVideo().addEventListener('videoSpeed_ratechange', rateChangeListener);
 
-            startSponsorSchedule();
-        });
         const stoppedPlayback = () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
@@ -934,20 +948,36 @@ function setupVideoListeners() {
 
             cancelSponsorSchedule();
         };
-        getVideo().addEventListener('pause', () => {
+        const pauseListener = () => {
             lastKnownVideoTime.fromPause = true;
 
             stoppedPlayback();
-        });
-        getVideo().addEventListener('waiting', () => {
+        };
+        getVideo().addEventListener('pause', pauseListener);
+        const waitingListener = () => {
             logDebug("[SB] Not skipping due to buffering");
             startedWaiting = true;
 
             stoppedPlayback();
-        });
+        };
+        getVideo().addEventListener('waiting', waitingListener);
 
         startSponsorSchedule();
+
+        if (setupVideoListenersFirstTime) {
+            addCleanupListener(() => {
+                getVideo().removeEventListener('play', playListener);
+                getVideo().removeEventListener('playing', playingListener);
+                getVideo().removeEventListener('seeking', seekingListener);
+                getVideo().removeEventListener('ratechange', rateChangeListener);
+                getVideo().removeEventListener('videoSpeed_ratechange', rateChangeListener);
+                getVideo().removeEventListener('pause', pauseListener);
+                getVideo().removeEventListener('waiting', waitingListener);
+            });
+        }
     }
+
+    setupVideoListenersFirstTime = false;
 }
 
 function updateVirtualTime() {
@@ -1626,9 +1656,10 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
         beep.play();
         beep.addEventListener("ended", () => {
             navigator.mediaSession.metadata = null;
-            setTimeout(() =>
-                navigator.mediaSession.metadata = oldMetadata
-            );
+            setTimeout(() => {
+                navigator.mediaSession.metadata = oldMetadata;
+                beep.remove();
+            });
         })
     }
 
@@ -2342,6 +2373,10 @@ function addHotkeyListener(): void {
         // Allow us to stop propagation to YouTube by being deeper
         document.removeEventListener("keydown", hotkeyListener);
         document.body.addEventListener("keydown", hotkeyListener);
+
+        addCleanupListener(() => {
+            document.body.removeEventListener("keydown", hotkeyListener);
+        });
     };
 
     if (document.readyState === "complete") {

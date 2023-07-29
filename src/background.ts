@@ -13,6 +13,9 @@ window.SB = Config;
 
 import Utils from "./utils";
 import { getExtensionIdsToImportFrom } from "./utils/crossExtension";
+import { isFirefoxOrSafari } from "./maze-utils";
+import { injectUpdatedScripts } from "./maze-utils/cleanup";
+import { logWarn } from "./utils/logger";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -132,6 +135,11 @@ chrome.runtime.onInstalled.addListener(function () {
             }
         }
     }, 1500);
+
+    // Only do this once the old version understands how to clean itself up
+    if (!isFirefoxOrSafari() && chrome.runtime.getManifest().version !== "5.4.13") {
+        injectUpdatedScripts().catch(logWarn);
+    }
 });
 
 /**

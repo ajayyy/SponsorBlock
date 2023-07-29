@@ -13,6 +13,7 @@ import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
 import { normalizeChapterName } from "../utils/exporter";
 import { getFormattedTimeToSeconds } from "../maze-utils/formating";
 import { findValidElement } from "../maze-utils/dom";
+import { addCleanupListener } from "../maze-utils/cleanup";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -200,6 +201,10 @@ class PreviewBar {
         observer.observe(tooltipTextWrapper, {
             childList: true,
             subtree: true,
+        });
+
+        addCleanupListener(() => {
+            observer.disconnect();
         });
     }
 
@@ -625,6 +630,11 @@ class PreviewBar {
         // Only direct children, no subtree
         childListObserver.observe(this.originalChapterBar, {
             childList: true
+        });
+
+        addCleanupListener(() => {
+            attributeObserver.disconnect();
+            childListObserver.disconnect();
         });
     }
 
