@@ -94,3 +94,7 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
 
     return chapters;
 }
+
+export function isPlayingPlaylist() {
+    return !!document.URL.includes("&list=");
+}
