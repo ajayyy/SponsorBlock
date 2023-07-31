@@ -6,6 +6,7 @@ import "content-scripts-register-polyfill";
 import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "./maze-utils/background-request-proxy";
 import { setupTabUpdates } from "./maze-utils/tab-updates";
 import { generateUserID } from "./maze-utils/setup";
+import { isFirefoxOrSafari } from "./maze-utils/";
 
 // Make the config public for debugging purposes
 
@@ -34,6 +35,20 @@ utils.wait(() => Config.config !== null).then(function() {
 setupBackgroundRequestProxy();
 setupTabUpdates(Config);
 
+function isUnsafe(sender)  {
+    // Only trust messages from extension pages.
+    // https://chromium.googlesource.com/chromium/src/+/master/docs/security/compromised-renderers.md#Messaging
+    if (sender.origin) {
+        if (sender.origin === location.origin) return false;
+        console.warn(`Unsafe message from: ${sender.origin} via MessageSender.origin`);
+    } else if (sender.url && isFirefoxOrSafari()) {
+        const senderOrigin = new URL(sender.url).origin;
+        if (senderOrigin === location.origin) return false;
+        console.warn(`Unsafe message from: ${senderOrigin} via MessageSender.url`);
+    }
+    return true;
+}
+
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch(request.message) {
         case "openConfig":
@@ -51,12 +66,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             //this allows the callback to be called later
             return true;
         case "registerContentScript":
-            registerFirefoxContentScript(request);
+            if (isUnsafe(sender)) return false;
+            utils.setupExtraSiteContentScripts();
             return false;
         case "unregisterContentScript":
+            if (isUnsafe(sender)) return false;
             unregisterFirefoxContentScript(request.id)
             return false;
         case "tabs": {
+            if (isUnsafe(sender)) return false;
             chrome.tabs.query({
                 active: true,
                 currentWindow: true

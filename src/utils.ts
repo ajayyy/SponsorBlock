@@ -94,7 +94,7 @@ export default class Utils {
         if (this.backgroundScriptContainer) {
             this.backgroundScriptContainer.registerFirefoxContentScript(registration);
         } else {
-            chrome.runtime.sendMessage(registration);
+            chrome.runtime.sendMessage({message: "registerContentScript"});
         }
     }
 
