@@ -38,7 +38,7 @@
 
 SponsorBlock is an open-source crowdsourced browser extension to skip sponsor segments in YouTube videos. Users submit when a sponsor happens from the extension, and the extension automatically skips sponsors it knows about. It also supports skipping other categories, such as intros, outros and reminders to subscribe.
 
-It also supports Invidio.us.
+It also supports Invidious.
 
 **Translate:** [![Crowdin](https://badges.crowdin.net/sponsorblock/localized.svg)](https://crowdin.com/project/sponsorblock)
 
@@ -56,47 +56,14 @@ The dataset and API are now being used in some [ports](https://github.com/ajayyy
 
 # API
 
-You can read the API docs [here](https://wiki.sponsor.ajay.app/index.php/API_Docs).
+You can read the API docs [here](https://wiki.sponsor.ajay.app/w/API_Docs).
 
 # Building
-
-You must have [Node.js 16](https://nodejs.org/) and npm installed.
-
-1. Clone with submodules
-
-```bash
-git clone --recursive https://github.com/ajayyy/SponsorBlock
-```
-
-Or if you already cloned it, pull submodules with
-
-```bash
-git submodule update --init --recursive
-```
-
-2. Copy the file `config.json.example` to `config.json` and adjust configuration as desired.
-
-    - You will need to repeat this step in the future if you get build errors related to `CompileConfig`. This can happen for example when a new category is added.
-
-3. Run `npm install` in the repository to install dependencies.
-
-4. Run `npm run build:dev` (for Chrome) or `npm run build:dev:firefox` (for Firefox) to generate a development version of the extension with source maps.
-
-    - You can also run `npm run build` (for Chrome) or `npm run build:firefox` (for Firefox) to generate a production build.
-
-5. The built extension is now in `dist/`. You can load this folder directly in Chrome as an [unpacked extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest), or convert it to a zip file to load it as a [temporary extension](https://developer.mozilla.org/en-US/docs/Tools/about:debugging#loading_a_temporary_extension) in Firefox.
-
-### Developing with a clean profile and hot reloading
-
-Run `npm run dev` (for Chrome) or `npm run dev:firefox` (for Firefox) to run the extension using a clean browser profile with hot reloading. This uses [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#commands).
-
-Known chromium bug: Extension is not loaded properly on first start. Visit `chrome://extensions/` and reload the extension.
-
-For Firefox for Android, use `npm run dev:firefox-android -- --adb-device <ip-address of the device>`. See the [Firefox documentation](https://extensionworkshop.com/documentation/develop/developing-extensions-for-firefox-for-android/#debug-your-extension) for more information.
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Credit
 
-The awesome [Invidious API](https://docs.invidious.io/API.md) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
+The awesome [Invidious API](https://docs.invidious.io/) was previously used, and the server is now using [NewLeaf](https://git.sr.ht/~cadence/NewLeaf) as a to get video info from YouTube.
 
 Originally forked from [YTSponsorSkip](https://github.com/NDevTK/YTSponsorSkip), but very little code remains.
 
