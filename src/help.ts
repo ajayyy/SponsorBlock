@@ -1,8 +1,8 @@
-import { localizeHtmlPage } from "./maze-utils/setup";
+import { localizeHtmlPage } from "../maze-utils/src/setup";
 import Config from "./config";
 import { showDonationLink } from "./utils/configUtils";
 
-import { waitFor } from "./maze-utils";
+import { waitFor } from "../maze-utils/src";
 
 if (document.readyState === "complete") {
     init();

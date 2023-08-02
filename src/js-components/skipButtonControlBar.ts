@@ -2,7 +2,7 @@ import Config from "../config";
 import { SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
 import { AnimationUtils } from "../utils/animationUtils";
-import { keybindToString } from "../maze-utils/config";
+import { keybindToString } from "../../maze-utils/src/config";
 
 export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;

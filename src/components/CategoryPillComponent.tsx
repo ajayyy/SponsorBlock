@@ -8,7 +8,7 @@ import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { VoteResponse } from "../messageTypes";
 import { AnimationUtils } from "../utils/animationUtils";
 import { Tooltip } from "../render/Tooltip";
-import { getErrorMessage } from "../maze-utils/formating";
+import { getErrorMessage } from "../../maze-utils/src/formating";
 
 export interface CategoryPillProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;

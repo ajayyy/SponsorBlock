@@ -32,21 +32,21 @@ import { logDebug } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
-import { isFirefoxOrSafari, waitFor } from "./maze-utils";
-import { getErrorMessage, getFormattedTime } from "./maze-utils/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "./maze-utils/video";
-import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "./maze-utils/config";
-import { findValidElement, waitForElement } from "./maze-utils/dom"
-import { getHash, HashedValue } from "./maze-utils/hash";
-import { generateUserID } from "./maze-utils/setup";
-import { updateAll } from "./maze-utils/thumbnailManagement";
+import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
+import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "../maze-utils/src/video";
+import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "../maze-utils/src/config";
+import { findValidElement, waitForElement } from "../maze-utils/src/dom"
+import { getHash, HashedValue } from "../maze-utils/src/hash";
+import { generateUserID } from "../maze-utils/src/setup";
+import { updateAll } from "../maze-utils/src/thumbnailManagement";
 import { setupThumbnailListener } from "./utils/thumbnails";
 import * as documentScript from "../dist/js/document.js";
 import { Tooltip } from "./render/Tooltip";
 import { isDeArrowInstalled } from "./utils/crossExtension";
 import { runCompatibilityChecks } from "./utils/compatibility";
 import { cleanPage } from "./utils/pageCleaner";
-import { addCleanupListener } from "./maze-utils/cleanup";
+import { addCleanupListener } from "../maze-utils/src/cleanup";
 
 cleanPage();
 
