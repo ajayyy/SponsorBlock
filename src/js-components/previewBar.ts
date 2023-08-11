@@ -784,11 +784,13 @@ class PreviewBar {
         if (!Config.config.showSegmentNameInChapterBar
                 || ((!segments || segments.length <= 0) && submittingSegments?.length <= 0)) {
             const chaptersContainer = this.getChaptersContainer();
-            chaptersContainer.querySelector(".sponsorChapterText")?.remove();
-            const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content") as HTMLDivElement;
-
-            chapterTitle.style.removeProperty("display");
-            chaptersContainer.classList.remove("sponsorblock-chapter-visible");
+            if (chaptersContainer) {
+                chaptersContainer.querySelector(".sponsorChapterText")?.remove();
+                const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content") as HTMLDivElement;
+    
+                chapterTitle.style.removeProperty("display");
+                chaptersContainer.classList.remove("sponsorblock-chapter-visible");
+            }
 
             return [];
         }
