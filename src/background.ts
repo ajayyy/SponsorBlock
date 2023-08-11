@@ -27,7 +27,7 @@ const popupPort: Record<string, chrome.runtime.Port> = {};
 const contentScriptRegistrations = {};
 
 // Register content script if needed
-utils.wait(() => Config.config !== null).then(function() {
+utils.wait(() => Config.isReady()).then(function() {
     if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
 });
 
@@ -75,7 +75,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "infoUpdated":
         case "videoChanged":
             if (sender.tab) {
-                popupPort[sender.tab.id]?.postMessage(request);
+                try {
+                    popupPort[sender.tab.id]?.postMessage(request);
+                } catch (e) {
+                    // This can happen if the popup is closed
+                }
             }
             return false;
         default:
