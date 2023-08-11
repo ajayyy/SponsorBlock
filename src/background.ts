@@ -153,6 +153,27 @@ chrome.runtime.onInstalled.addListener(function () {
  * @param {JSON} options
  */
 async function registerFirefoxContentScript(options: Registration) {
+    if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
+        // Bug in Firefox where you need to use browser namespace for this call
+        const getContentScripts = async (filter: browser.scripting.ContentScriptFilter) => {
+            if (isFirefoxOrSafari()) {
+                return await browser.scripting.getRegisteredContentScripts(filter);
+            } else {
+                return await chrome.scripting.getRegisteredContentScripts(filter);
+            }
+        };
+
+        const existingRegistrations = await getContentScripts({
+            ids: [options.id]
+        });
+
+        if (existingRegistrations.length > 0 
+            && existingRegistrations[0].matches.every((match) => options.matches.includes(match))) {
+            // No need to register another script, already registered
+            return;
+        }
+    }
+
     await unregisterFirefoxContentScript(options.id);
 
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
@@ -180,25 +201,11 @@ async function registerFirefoxContentScript(options: Registration) {
  * Only works on Firefox.
  * Firefox requires that this is handled by the background script
  */
-async function unregisterFirefoxContentScript(id: string) {
+async function  unregisterFirefoxContentScript(id: string) {
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
-        // Bug in Firefox where you need to use browser namespace for this call
-        const getContentScripts = async (filter: browser.scripting.ContentScriptFilter) => {
-            if (isFirefoxOrSafari()) {
-                return await browser.scripting.getRegisteredContentScripts(filter);
-            } else {
-                return await chrome.scripting.getRegisteredContentScripts(filter);
-            }
-        };
-
-        const existingRegistrations = await getContentScripts({
+        await chrome.scripting.unregisterContentScripts({
             ids: [id]
         });
-        if (existingRegistrations?.length > 0) {
-            await chrome.scripting.unregisterContentScripts({
-                ids: existingRegistrations.map((script) => script.id),
-            });
-        }
     } else {
         if (contentScriptRegistrations[id]) {
             contentScriptRegistrations[id].unregister();

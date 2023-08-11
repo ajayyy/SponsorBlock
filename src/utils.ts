@@ -54,7 +54,6 @@ export default class Utils {
         if (!isFirefoxOrSafari() || isSafari()) {
             permissions.push("webNavigation");
         }
-        console.log(permissions)
 
         chrome.permissions.request({
             origins: this.getPermissionRegex(),
