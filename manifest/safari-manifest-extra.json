@@ -1,5 +1,8 @@
 {
   "background": {
     "persistent": false
-  }
+  },
+  "permissions": [
+    "scripting"
+  ]
 }

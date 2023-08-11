@@ -47,9 +47,14 @@ export default class Utils {
      * @param {CallableFunction} callback
      */
     setupExtraSitePermissions(callback: (granted: boolean) => void): void {
-        let permissions = ["webNavigation"];
-        if (!isSafari()) permissions.push("declarativeContent");
-        if (isFirefoxOrSafari() && !isSafari()) permissions = [];
+        const permissions = [];
+        if (!isFirefoxOrSafari()) {
+            permissions.push("declarativeContent");
+        }
+        if (!isFirefoxOrSafari() || isSafari()) {
+            permissions.push("webNavigation");
+        }
+        console.log(permissions)
 
         chrome.permissions.request({
             origins: this.getPermissionRegex(),
@@ -73,21 +78,12 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        const firefoxJS = [];
-        for (const file of this.js) {
-            firefoxJS.push({file});
-        }
-        const firefoxCSS = [];
-        for (const file of this.css) {
-            firefoxCSS.push({file});
-        }
-
         const registration: Registration = {
             message: "registerContentScript",
             id: "invidious",
             allFrames: true,
-            js: firefoxJS,
-            css: firefoxCSS,
+            js: this.js,
+            css: this.css,
             matches: this.getPermissionRegex()
         };
 

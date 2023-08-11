@@ -99,8 +99,8 @@ export interface Registration {
     message: string;
     id: string;
     allFrames: boolean;
-    js: browser.extensionTypes.ExtensionFileOrCode[];
-    css: browser.extensionTypes.ExtensionFileOrCode[];
+    js: string[];
+    css: string[];
     matches: string[];
 }
 
