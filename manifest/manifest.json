@@ -116,6 +116,21 @@
                 "light": "icons/IconSponsorBlocker128px.png",
                 "dark": "icons/IconSponsorBlocker128px.png",
                 "size": 128
+            },
+            {
+                "light": "icons/IconSponsorBlocker256px.png",
+                "dark": "icons/IconSponsorBlocker256px.png",
+                "size": 256
+            },
+            {
+                "light": "icons/IconSponsorBlocker512px.png",
+                "dark": "icons/IconSponsorBlocker512px.png",
+                "size": 512
+            },
+            {
+                "light": "icons/IconSponsorBlocker1024px.png",
+                "dark": "icons/IconSponsorBlocker1024px.png",
+                "size": 1024
             }
         ]
     }, 
