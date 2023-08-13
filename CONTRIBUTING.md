@@ -1,5 +1,8 @@
 If you make any contributions to SponsorBlock after this file was created, you are agreeing that any code you have contributed will be licensed under LGPL-3.0 or later.
 
+# Translations
+https://crowdin.com/project/sponsorblock
+
 # Building
 ## Building locally
 0. You must have [Node.js 16 or later](https://nodejs.org/) and npm installed. Works best on Linux
