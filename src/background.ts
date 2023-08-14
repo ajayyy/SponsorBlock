@@ -16,6 +16,7 @@ import { getExtensionIdsToImportFrom } from "./utils/crossExtension";
 import { isFirefoxOrSafari } from "../maze-utils/src";
 import { injectUpdatedScripts } from "../maze-utils/src/cleanup";
 import { logWarn } from "./utils/logger";
+import { chromeP } from "../maze-utils/src/browserApi";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -177,7 +178,7 @@ async function registerFirefoxContentScript(options: Registration) {
     await unregisterFirefoxContentScript(options.id);
 
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
-        await chrome.scripting.registerContentScripts([{
+        await chromeP.scripting.registerContentScripts([{
             id: options.id,
             runAt: "document_start",
             matches: options.matches,
@@ -203,7 +204,7 @@ async function registerFirefoxContentScript(options: Registration) {
  */
 async function  unregisterFirefoxContentScript(id: string) {
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
-        await chrome.scripting.unregisterContentScripts({
+        await chromeP.scripting.unregisterContentScripts({
             ids: [id]
         });
     } else {
