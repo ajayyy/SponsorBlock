@@ -819,6 +819,8 @@ function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boole
     }
 }
 
+let playbackRateCheckInterval: NodeJS.Timeout | null = null;
+let lastPlaybackSpeed = 1;
 let setupVideoListenersFirstTime = true;
 function setupVideoListeners() {
     //wait until it is loaded
@@ -907,6 +909,27 @@ function setupVideoListeners() {
 
                 startSponsorSchedule();
             }
+
+            if (playbackRateCheckInterval) clearInterval(playbackRateCheckInterval);
+            lastPlaybackSpeed = getVideo().playbackRate;
+
+            // Video speed controller compatibility
+            // That extension makes rate change events not propagate
+            if (document.body.classList.contains("vsc-initialized")) {
+                playbackRateCheckInterval = setInterval(() => {
+                    if ((!getVideoID() || getVideo().paused) && playbackRateCheckInterval) {
+                        // Video is gone, stop checking
+                        clearInterval(playbackRateCheckInterval);
+                        return;
+                    }
+    
+                    if (getVideo().playbackRate !== lastPlaybackSpeed) {
+                        lastPlaybackSpeed = getVideo().playbackRate;
+    
+                        rateChangeListener();
+                    }
+                }, 2000);
+            }
         };
         getVideo().addEventListener('playing', playingListener);
         
@@ -942,6 +965,8 @@ function setupVideoListeners() {
             lastCheckVideoTime = -1;
             lastCheckTime = 0;
 
+            if (playbackRateCheckInterval) clearInterval(playbackRateCheckInterval);
+
             lastKnownVideoTime.videoTime = null;
             lastKnownVideoTime.preciseTime = null;
             updateWaitingTime();
@@ -973,6 +998,8 @@ function setupVideoListeners() {
                 getVideo().removeEventListener('videoSpeed_ratechange', rateChangeListener);
                 getVideo().removeEventListener('pause', pauseListener);
                 getVideo().removeEventListener('waiting', waitingListener);
+
+                if (playbackRateCheckInterval) clearInterval(playbackRateCheckInterval);
             });
         }
     }
