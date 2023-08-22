@@ -838,6 +838,16 @@ function setupVideoListeners() {
         let startedWaiting = false;
         let lastPausedAtZero = true;
 
+        const rateChangeListener = () => {
+            updateVirtualTime();
+            clearWaitingTime();
+
+            startSponsorSchedule();
+        };
+        getVideo().addEventListener('ratechange', rateChangeListener);
+        // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
+        getVideo().addEventListener('videoSpeed_ratechange', rateChangeListener);
+
         const playListener = () => {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
@@ -868,7 +878,6 @@ function setupVideoListeners() {
 
                 startSponsorSchedule();
             }
-
         };
         getVideo().addEventListener('play', playListener);
 
@@ -928,16 +937,6 @@ function setupVideoListeners() {
         };
         getVideo().addEventListener('seeking', seekingListener);
         
-        const rateChangeListener = () => {
-            updateVirtualTime();
-            clearWaitingTime();
-
-            startSponsorSchedule();
-        };
-        getVideo().addEventListener('ratechange', () => rateChangeListener);
-        // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
-        getVideo().addEventListener('videoSpeed_ratechange', rateChangeListener);
-
         const stoppedPlayback = () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
