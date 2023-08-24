@@ -4,5 +4,8 @@
   },
   "permissions": [
     "scripting"
+  ],
+  "optional_permissions": [
+    "webNavigation"
   ]
 }

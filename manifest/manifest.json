@@ -84,8 +84,7 @@
         "https://sponsor.ajay.app/*"
     ],
     "optional_permissions": [
-        "*://*/*",
-        "webNavigation"
+        "*://*/*"
     ],
     "browser_action": {
         "default_title": "SponsorBlock",

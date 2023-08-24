@@ -1,6 +1,7 @@
 {
   "optional_permissions": [
-    "declarativeContent"
+    "declarativeContent",
+    "webNavigation"
   ],
   "background": {
     "persistent": false
