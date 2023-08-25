@@ -204,9 +204,13 @@ async function registerFirefoxContentScript(options: Registration) {
  */
 async function  unregisterFirefoxContentScript(id: string) {
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
-        await chromeP.scripting.unregisterContentScripts({
-            ids: [id]
-        });
+        try {
+            await chromeP.scripting.unregisterContentScripts({
+                ids: [id]
+            });
+        } catch (e) {
+            // Already registered
+        }
     } else {
         if (contentScriptRegistrations[id]) {
             contentScriptRegistrations[id].unregister();
