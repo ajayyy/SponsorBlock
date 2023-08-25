@@ -157,7 +157,7 @@ async function registerFirefoxContentScript(options: Registration) {
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
         const existingRegistrations = await chromeP.scripting.getRegisteredContentScripts({
             ids: [options.id]
-        });
+        }).catch(() => []);
 
         if (existingRegistrations.length > 0 
             && existingRegistrations[0].matches.every((match) => options.matches.includes(match))) {
