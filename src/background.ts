@@ -200,7 +200,7 @@ async function  unregisterFirefoxContentScript(id: string) {
                 ids: [id]
             });
         } catch (e) {
-            // Already registered
+            // Not registered yet
         }
     } else {
         if (contentScriptRegistrations[id]) {
