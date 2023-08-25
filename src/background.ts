@@ -155,16 +155,7 @@ chrome.runtime.onInstalled.addListener(function () {
  */
 async function registerFirefoxContentScript(options: Registration) {
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
-        // Bug in Firefox where you need to use browser namespace for this call
-        const getContentScripts = async (filter: browser.scripting.ContentScriptFilter) => {
-            if (isFirefoxOrSafari()) {
-                return await browser.scripting.getRegisteredContentScripts(filter);
-            } else {
-                return await chrome.scripting.getRegisteredContentScripts(filter);
-            }
-        };
-
-        const existingRegistrations = await getContentScripts({
+        const existingRegistrations = await chromeP.scripting.getRegisteredContentScripts({
             ids: [options.id]
         });
 
