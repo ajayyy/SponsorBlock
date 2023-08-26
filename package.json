@@ -4,9 +4,14 @@
   "description": "",
   "main": "background.js",
   "dependencies": {
-    "@ajayyy/content-scripts-register-polyfill": "^4.0.2-safari-fix",
+    "content-scripts-register-polyfill": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "overrides": {
+    "content-scripts-register-polyfill": {
+      "webext-content-scripts": "v2.5.5"
+    }
   },
   "devDependencies": {
     "@types/chrome": "^0.0.220",
