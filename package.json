@@ -4,7 +4,7 @@
   "description": "",
   "main": "background.js",
   "dependencies": {
-    "content-scripts-register-polyfill": "^4.0.2",
+    "@ajayyy/content-scripts-register-polyfill": "^4.0.2-safari-fix",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
