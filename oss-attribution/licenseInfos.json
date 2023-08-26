@@ -62,7 +62,7 @@
   "webext-content-scripts": {
     "ignore": false,
     "name": "webext-content-scripts",
-    "version": "2.5.2",
+    "version": "2.5.5",
     "authors": "Federico Brigante <me@fregante.com> (https://fregante.com)",
     "url": "https://github.com/fregante/webext-content-scripts",
     "license": "MIT",
@@ -80,7 +80,7 @@
   "webext-polyfill-kinda": {
     "ignore": false,
     "name": "webext-polyfill-kinda",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "authors": "Federico Brigante <me@fregante.com> (https://fregante.com)",
     "url": "https://github.com/fregante/webext-polyfill-kinda",
     "license": "MIT",
