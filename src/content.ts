@@ -843,8 +843,8 @@ function setupVideoListeners() {
         const rateChangeListener = () => {
             updateVirtualTime();
             clearWaitingTime();
-
             startSponsorSchedule();
+            updatePreviewBar();
         };
         getVideo().addEventListener('ratechange', rateChangeListener);
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
@@ -2525,8 +2525,8 @@ function showTimeWithoutSkips(skippedDuration: number): void {
 
         display.appendChild(duration);
     }
-
-    const durationAfterSkips = getFormattedTime(getVideo()?.duration - skippedDuration);
+    
+    const durationAfterSkips = getFormattedTime((getVideo()?.duration - skippedDuration)/(getVideo()?.playbackRate ?? 1));
 
     duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
 }
