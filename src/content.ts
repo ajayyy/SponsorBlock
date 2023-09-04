@@ -63,7 +63,7 @@ utils.wait(() => Config.isReady(), 5000, 10).then(() => {
             && Config.config.showDeArrowPromotion
             && Config.config.showUpsells 
             && Config.config.showNewFeaturePopups
-            && (Config.config.skipCount > 100 || !Config.config.trackViewCount)
+            && (Config.config.skipCount > 30 || !Config.config.trackViewCount)
             && Math.random() < 0.05) {
 
             if (!await isDeArrowInstalled()) {
