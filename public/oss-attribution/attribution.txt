@@ -164,7 +164,7 @@ SOFTWARE.
 ******************************
 
 webext-content-scripts
-2.5.2 <https://github.com/fregante/webext-content-scripts>
+2.5.5 <https://github.com/fregante/webext-content-scripts>
 MIT License
 
 Copyright (c) Federico Brigante <me@fregante.com> (https://fregante.com)
@@ -194,7 +194,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ******************************
 
 webext-polyfill-kinda
-1.0.0 <https://github.com/fregante/webext-polyfill-kinda>
+1.0.2 <https://github.com/fregante/webext-polyfill-kinda>
 MIT License
 
 Copyright (c) Federico Brigante <me@fregante.com> (https://fregante.com)
