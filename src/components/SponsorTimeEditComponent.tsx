@@ -138,6 +138,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             type="text"
                             style={{color: "inherit", backgroundColor: "inherit"}}
                             value={this.state.sponsorTimeEdits[0]}
+                            onKeyDown={(e) => e.stopPropagation()}
+                            onKeyUp={(e) => e.stopPropagation()}
                             onChange={(e) => this.handleOnChange(0, e, sponsorTime, e.target.value)}
                             onWheel={(e) => this.changeTimesWhenScrolling(0, e, sponsorTime)}>
                         </input>
