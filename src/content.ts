@@ -2526,7 +2526,8 @@ function showTimeWithoutSkips(skippedDuration: number): void {
         display.appendChild(duration);
     }
     
-    const durationAfterSkips = getFormattedTime((getVideo()?.duration - skippedDuration)/(getVideo()?.playbackRate ?? 1));
+    const playbackRate = Config.config.usePlaybackRate ? (getVideo()?.playbackRate ?? 1) : 1;
+    const durationAfterSkips = getFormattedTime((getVideo()?.duration - skippedDuration)/playbackRate);
 
     duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
 }

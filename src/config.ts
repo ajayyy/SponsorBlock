@@ -23,6 +23,7 @@ interface SBConfig {
     sponsorTimesContributed: number;
     submissionCountSinceCategories: number; // New count used to show the "Read The Guidelines!!" message
     showTimeWithSkips: boolean;
+    usePlaybackRate: boolean; // used to calculate showTimeWithSkips using the current playback rate
     disableSkipping: boolean;
     muteSegments: boolean;
     fullVideoSegments: boolean;
@@ -269,6 +270,7 @@ const syncDefaults = {
     sponsorTimesContributed: 0,
     submissionCountSinceCategories: 0,
     showTimeWithSkips: true,
+    usePlaybackRate: false,
     disableSkipping: false,
     muteSegments: true,
     fullVideoSegments: true,
