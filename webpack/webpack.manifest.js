@@ -3,7 +3,6 @@
 const webpack = require("webpack");
 const path = require('path');
 const { validate } = require('schema-utils');
-
 const fs = require('fs');
 
 const manifest = require("../manifest/manifest.json");

@@ -5,8 +5,9 @@ import NoticeComponent from "../components/NoticeComponent";
 import Utils from "../utils";
 const utils = new Utils();
 
-import { ButtonListener, ContentContainer } from "../types";
+import { ContentContainer } from "../types";
 import NoticeTextSelectionComponent from "../components/NoticeTextSectionComponent";
+import { ButtonListener } from "../../maze-utils/src/components/component-types";
 
 export interface TextBox {
     icon: string;
@@ -46,6 +47,7 @@ export default class GenericNotice {
         const referenceNode = options.referenceNode ?? utils.findReferenceNode();
     
         this.noticeElement = document.createElement("div");
+        this.noticeElement.className = "sponsorSkipNoticeContainer";
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
 
         referenceNode.prepend(this.noticeElement);

@@ -38,6 +38,7 @@ class SkipNotice {
         idSuffix += amountOfPreviousNotices;
 
         this.noticeElement = document.createElement("div");
+        this.noticeElement.className = "sponsorSkipNoticeContainer";
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
 
         referenceNode.prepend(this.noticeElement);

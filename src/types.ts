@@ -26,19 +26,12 @@ export interface ContentContainer {
     };
 }
 
-export interface FetchResponse {
-    responseText: string;
-    status: number;
-    ok: boolean;
-}
-
-export type HashedValue = string & { __hashBrand: unknown };
-
 export interface VideoDurationResponse {
     duration: number;
 }
 
 export enum CategorySkipOption {
+    Disabled = -1,
     ShowOverlay,
     ManualSkip,
     AutoSkip
@@ -106,8 +99,8 @@ export interface Registration {
     message: string;
     id: string;
     allFrames: boolean;
-    js: browser.extensionTypes.ExtensionFileOrCode[];
-    css: browser.extensionTypes.ExtensionFileOrCode[];
+    js: string[];
+    css: string[];
     matches: string[];
 }
 
@@ -194,8 +187,6 @@ export interface VideoInfo {
 
 export type VideoID = string;
 
-export type StorageChangesObject = { [key: string]: chrome.storage.StorageChange };
-
 export type UnEncodedSegmentTimes = [string, SponsorTime[]][];
 
 export enum ChannelIDStatus {
@@ -229,26 +220,4 @@ export enum NoticeVisbilityMode {
     MiniForAll = 2,
     FadedForAutoSkip = 3,
     FadedForAll = 4
-}
-
-export type Keybind = {
-    key: string;
-    code?: string;
-    ctrl?: boolean;
-    alt?: boolean;
-    shift?: boolean;
-}
-
-export enum PageType {
-    Shorts = "shorts",
-    Watch = "watch",
-    Search = "search",
-    Browse = "browse",
-    Channel = "channel",
-    Embed = "embed"
-}
-
-export interface ButtonListener {
-    name: string;
-    listener: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

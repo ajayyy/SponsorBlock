@@ -2,13 +2,21 @@ import * as CompileConfig from "../config.json";
 
 import Config from "./config";
 import { Registration } from "./types";
+import "content-scripts-register-polyfill";
+import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "../maze-utils/src/background-request-proxy";
+import { setupTabUpdates } from "../maze-utils/src/tab-updates";
+import { generateUserID } from "../maze-utils/src/setup";
 
 // Make the config public for debugging purposes
 
 window.SB = Config;
 
 import Utils from "./utils";
-import { GenericUtils } from "./utils/genericUtils";
+import { getExtensionIdsToImportFrom } from "./utils/crossExtension";
+import { isFirefoxOrSafari } from "../maze-utils/src";
+import { injectUpdatedScripts } from "../maze-utils/src/cleanup";
+import { logWarn } from "./utils/logger";
+import { chromeP } from "../maze-utils/src/browserApi";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -20,65 +28,24 @@ const popupPort: Record<string, chrome.runtime.Port> = {};
 const contentScriptRegistrations = {};
 
 // Register content script if needed
-if (utils.isFirefox()) {
-    utils.wait(() => Config.config !== null).then(function() {
-        if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
-    });
-}
-
-function onTabUpdatedListener(tabId: number) {
-    chrome.tabs.sendMessage(tabId, {
-        message: 'update',
-    }, () => void chrome.runtime.lastError ); // Suppress error on Firefox
-}
-
-function onNavigationApiAvailableChange(changes: {[key: string]: chrome.storage.StorageChange}) {
-    if (changes.navigationApiAvailable) {
-        if (changes.navigationApiAvailable.newValue) {
-            chrome.tabs.onUpdated.removeListener(onTabUpdatedListener);
-        } else {
-            chrome.tabs.onUpdated.addListener(onTabUpdatedListener);
-        }
-    }
-}
-
-// If Navigation API is not supported, then background has to inform content script about video change.
-// This happens on Safari, Firefox, and Chromium 101 (inclusive) and below.
-chrome.tabs.onUpdated.addListener(onTabUpdatedListener);
-utils.wait(() => Config.local !== null).then(() => {
-    if (Config.local.navigationApiAvailable) {
-        chrome.tabs.onUpdated.removeListener(onTabUpdatedListener);
-    }
+utils.wait(() => Config.isReady()).then(function() {
+    if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
 });
 
-if (!Config.configSyncListeners.includes(onNavigationApiAvailableChange)) {
-        Config.configSyncListeners.push(onNavigationApiAvailableChange);
-}
+setupBackgroundRequestProxy();
+setupTabUpdates(Config);
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
     switch(request.message) {
         case "openConfig":
             chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
-            return;
+            return false;
         case "openHelp":
             chrome.tabs.create({url: chrome.runtime.getURL('help/index.html')});
-            return;
-        case "openUpsell":
-            chrome.tabs.create({url: chrome.runtime.getURL('upsell/index.html')});
-            return;
+            return false;
         case "openPage":
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
-            return;
-        case "sendRequest":
-            sendRequestToCustomServer(request.type, request.url, request.data).then(async (response) => {
-                callback({
-                    responseText: await response.text(),
-                    status: response.status,
-                    ok: response.ok
-                });
-            });
-
-            return true;
+            return false;
         case "submitVote":
             submitVote(request.type, request.UUID, request.category).then(callback);
 
@@ -109,10 +76,30 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
         case "infoUpdated":
         case "videoChanged":
             if (sender.tab) {
-                popupPort[sender.tab.id]?.postMessage(request);
+                try {
+                    popupPort[sender.tab.id]?.postMessage(request);
+                } catch (e) {
+                    // This can happen if the popup is closed
+                }
             }
             return false;
+        default:
+            return false;
 	}
+});
+
+chrome.runtime.onMessageExternal.addListener((request, sender, callback) => {
+    if (getExtensionIdsToImportFrom().includes(sender.id)) {
+        if (request.message === "requestConfig") {
+            callback({
+                userID: Config.config.userID,
+                allowExpirements: Config.config.allowExpirements,
+                showDonationLink: Config.config.showDonationLink,
+                showUpsells: Config.config.showUpsells,
+                darkMode: Config.config.darkMode,
+            })
+        }
+    }
 });
 
 chrome.runtime.onConnect.addListener((port) => {
@@ -139,7 +126,7 @@ chrome.runtime.onInstalled.addListener(function () {
             chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
             //generate a userID
-            const newUserID = GenericUtils.generateUserID();
+            const newUserID = generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
 
@@ -153,6 +140,11 @@ chrome.runtime.onInstalled.addListener(function () {
             }
         }
     }, 1500);
+
+    // Only do this once the old version understands how to clean itself up
+    if (!isFirefoxOrSafari() && chrome.runtime.getManifest().version !== "5.4.13") {
+        injectUpdatedScripts().catch(logWarn);
+    }
 });
 
 /**
@@ -161,26 +153,61 @@ chrome.runtime.onInstalled.addListener(function () {
  *
  * @param {JSON} options
  */
-function registerFirefoxContentScript(options: Registration) {
-    const oldRegistration = contentScriptRegistrations[options.id];
-    if (oldRegistration) oldRegistration.unregister();
+async function registerFirefoxContentScript(options: Registration) {
+    if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
+        const existingRegistrations = await chromeP.scripting.getRegisteredContentScripts({
+            ids: [options.id]
+        }).catch(() => []);
 
-    browser.contentScripts.register({
-        allFrames: options.allFrames,
-        js: options.js,
-        css: options.css,
-        matches: options.matches
-    }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
+        if (existingRegistrations.length > 0 
+            && existingRegistrations[0].matches.every((match) => options.matches.includes(match))) {
+            // No need to register another script, already registered
+            return;
+        }
+    }
+
+    await unregisterFirefoxContentScript(options.id);
+
+    if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
+        await chromeP.scripting.registerContentScripts([{
+            id: options.id,
+            runAt: "document_start",
+            matches: options.matches,
+            allFrames: options.allFrames,
+            js: options.js,
+            css: options.css,
+            persistAcrossSessions: true,
+        }]);
+    } else {
+        chrome.contentScripts.register({
+            allFrames: options.allFrames,
+            js: options.js?.map?.(file => ({file})),
+            css: options.css?.map?.(file => ({file})),
+            matches: options.matches
+        }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
+    }
+
 }
 
 /**
  * Only works on Firefox.
  * Firefox requires that this is handled by the background script
- *
  */
-function unregisterFirefoxContentScript(id: string) {
-    contentScriptRegistrations[id].unregister();
-    delete contentScriptRegistrations[id];
+async function  unregisterFirefoxContentScript(id: string) {
+    if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
+        try {
+            await chromeP.scripting.unregisterContentScripts({
+                ids: [id]
+            });
+        } catch (e) {
+            // Not registered yet
+        }
+    } else {
+        if (contentScriptRegistrations[id]) {
+            contentScriptRegistrations[id].unregister();
+            delete contentScriptRegistrations[id];
+        }
+    }
 }
 
 async function submitVote(type: number, UUID: string, category: string) {
@@ -188,7 +215,7 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     if (userID == undefined || userID === "undefined") {
         //generate one
-        userID = GenericUtils.generateUserID();
+        userID = generateUserID();
         Config.config.userID = userID;
     }
 
@@ -219,35 +246,9 @@ async function submitVote(type: number, UUID: string, category: string) {
     }
 }
 
+
 async function asyncRequestToServer(type: string, address: string, data = {}) {
     const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
-    return await (sendRequestToCustomServer(type, serverAddress + address, data));
-}
-
-/**
- * Sends a request to the specified url
- *
- * @param type The request type "GET", "POST", etc.
- * @param address The address to add to the SponsorBlock server address
- * @param callback
- */
-async function sendRequestToCustomServer(type: string, url: string, data = {}) {
-    // If GET, convert JSON to parameters
-    if (type.toLowerCase() === "get") {
-        url = GenericUtils.objectToURI(url, data, true);
-
-        data = null;
-    }
-
-    const response = await fetch(url, {
-        method: type,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        body: data ? JSON.stringify(data) : null
-    });
-
-    return response;
+    return await (sendRealRequestToCustomServer(type, serverAddress + address, data));
 }

@@ -9,7 +9,6 @@
   
   <link href="options.css" rel="stylesheet"/>
 
-  <script src="../js/vendor.js"></script>
   <script src="../js/options.js"></script>
 </head>
 
@@ -66,6 +65,19 @@
 
 				</div>
 
+				<div id="deArrowPromotion" class="promotion-container" class="hidden">
+					<a class="dearrow-link"
+                        href="https://dearrow.ajay.app"
+                        target="_blank"
+                        rel="noreferrer">
+                        <img src="/icons/dearrow.svg"/>
+
+                        <span class="promotion-description">
+                            __MSG_DeArrowPromotionMessage__
+                        </span>
+                    </a>
+				</div>
+
 				<div data-type="toggle" data-sync="muteSegments">
 					<div class="switch-container">
 						<label class="switch">
@@ -78,7 +90,7 @@
 					</div>
 				</div>
 				
-				<div data-type="toggle" data-sync="fullVideoSegments">
+				<div data-type="toggle" data-sync="fullVideoSegments" class="no-bottom-border">
 					<div class="switch-container">
 						<label class="switch">
 							<input id="fullVideoSegments" type="checkbox" checked>
@@ -86,6 +98,19 @@
 						</label>
 						<label class="switch-label" for="fullVideoSegments">
 							__MSG_fullVideoSegments__
+						</label>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-sync="fullVideoLabelsOnThumbnails" 
+						data-dependent-on="fullVideoSegments">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="fullVideoLabelsOnThumbnails" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="fullVideoLabelsOnThumbnails">
+							__MSG_fullVideoLabelsOnThumbnails__
 						</label>
 					</div>
 				</div>
@@ -153,6 +178,20 @@
 					</div>
 	
 					<div class="small-description">__MSG_whatShowCategoryWithoutPermission__</div>
+				</div>
+
+				<div id="ytNeuterPromotion" class="promotion-container">
+					<a class="dearrow-link"
+                        href="https://github.com/mchangrh/yt-neuter/blob/main/docs/filters/sponsorblock.md#install"
+                        target="_blank"
+                        rel="noreferrer">
+
+                        <span class="promotion-description">
+                            __MSG_YtNeuterMessage__
+                        </span>
+                    </a>
+
+					<div class="small-description">__MSG_requiresUblock__</div>
 				</div>
 
 			</div>
@@ -277,6 +316,18 @@
 						</label>
 					</div>
 				</div>
+
+				<div data-type="toggle" data-sync="allowScrollingToEdit">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="allowScrollingToEdit" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="allowScrollingToEdit">
+							__MSG_allowScrollingToEdit__
+						</label>
+					</div>
+				</div>
 	
 				<div data-type="toggle" data-sync="audioNotificationOnSkip">
 					<div class="switch-container">
@@ -314,6 +365,18 @@
 						</label>
 						<label class="switch-label" for="darkMode">
 							__MSG_darkModeOptionsPage__
+						</label>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-toggle-type="reverse" data-sync="showNewFeaturePopups">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="showNewFeaturePopups" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="showNewFeaturePopups">
+							__MSG_hideNewFeatureUpdates__
 						</label>
 					</div>
 				</div>
@@ -430,7 +493,7 @@
 
 			<div id="advanced" class="option-group hidden">
 
-				<div id="support-invidious" data-type="toggle" data-sync="supportInvidious" data-no-safari="true">
+				<div id="support-invidious" data-type="toggle" data-sync="supportInvidious">
 					<div class="switch-container">
 						<label class="switch">
 							<input id="supportInvidious" type="checkbox">
@@ -441,11 +504,11 @@
 						</label>
 					</div>
 	
-					<div class="small-description">(__MSG_supportedSites__ Invidious, CloudTube)</div>
+					<div class="small-description">(__MSG_supportedSites__ Invidious, CloudTube, Piped, YouTube Kids)</div>
 					<div class="small-description">__MSG_supportOtherSitesDescription__ </div>
 				</div>
 	
-				<div data-type="private-text-change" data-sync="invidiousInstances" data-no-safari="true" data-dependent-on="supportInvidious">
+				<div data-type="private-text-change" data-sync="invidiousInstances" data-dependent-on="supportInvidious">
 					<div class="option-button trigger-button">
 						__MSG_addInvidiousInstance__
 					</div>

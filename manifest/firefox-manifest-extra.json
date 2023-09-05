@@ -3,5 +3,11 @@
     "gecko": {
       "id": "sponsorBlocker@ajay.app"
     }
-  }
+  },
+  "background": {
+    "persistent": false
+  },
+  "permissions": [
+    "scripting"
+  ]
 }

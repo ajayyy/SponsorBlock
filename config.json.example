@@ -30,5 +30,17 @@
         "guidelines": "https://wiki.sponsor.ajay.app/w/Guidelines",
         "mute": "https://wiki.sponsor.ajay.app/w/Mute_Segment",
         "chapter": "https://wiki.sponsor.ajay.app/w/Chapter"
+    },
+    "extensionImportList": {
+        "chromium": [
+            "enamippconapkdmgfgjchkhakpfinmaj"
+        ],
+        "firefox": [
+            "deArrow@ajay.app",
+            "deArrowBETA@ajay.app"
+        ],
+        "safari": [
+            "app.ajay.dearrow.extension"
+        ]
     }
 }

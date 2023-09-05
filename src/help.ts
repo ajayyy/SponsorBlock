@@ -1,15 +1,19 @@
+import { localizeHtmlPage } from "../maze-utils/src/setup";
 import Config from "./config";
 import { showDonationLink } from "./utils/configUtils";
 
-import { localizeHtmlPage } from "./utils/pageUtils";
-import { GenericUtils } from "./utils/genericUtils";
+import { waitFor } from "../maze-utils/src";
 
-window.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "complete") {
+    init();
+} else {
+    document.addEventListener("DOMContentLoaded", init);
+}
 
 async function init() {
     localizeHtmlPage();
 
-    await GenericUtils.wait(() => Config.config !== null);
+    await waitFor(() => Config.config !== null);
 
     if (!Config.config.darkMode) {
         document.documentElement.setAttribute("data-theme", "light");

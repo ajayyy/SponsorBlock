@@ -45,6 +45,7 @@ div:hover > #previewbar.sbNotInvidious {
 .previewbar {
 	display: inline-block;
 	height: 100%;
+	min-width: 1px;
 }
 
 .previewbar.requiredSegment {
@@ -66,6 +67,11 @@ div:hover > #previewbar.sbNotInvidious {
 	transform: translateY(-1em) !important;
 }
 
+/* Pull up for precise seeking */
+.ytp-tooltip.sponsorCategoryTooltipVisible .ytp-tooltip-edu {
+	transform: translateY(-1em) !important;
+}
+
 .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
 	transform: translateY(-2em) !important;
 }
@@ -84,6 +90,11 @@ div:hover > #previewbar.sbNotInvidious {
 
 #movie_player:not(.ytp-big-mode) .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
 	transform: translateY(2em) !important;
+}
+
+/* Pull up for precise seeking */
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips .ytp-tooltip-edu {
+	transform: translateY(-2em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper {
@@ -177,10 +188,19 @@ div:hover > .sponsorBlockChapterBar {
 	margin-right: var(--skip-notice-margin);
 }
 
+.sponsorSkipObjectFirst {
+	margin-left: 0;
+}
+
 .sponsorSkipLogo {
 	height: 18px;
 
 	float: left;
+}
+
+#categoryPill .sbPillNoText .sponsorSkipLogo {
+	margin-top: calc(2.6rem - 18px);
+    margin-bottom: calc(2.6rem - 18px);
 }
 
 @keyframes fadeIn {
@@ -240,7 +260,7 @@ div:hover > .sponsorBlockChapterBar {
 }
 
 .exportCopiedNotice .sponsorSkipNoticeTableContainer {
-	background-color: transparent; 
+	background-color: transparent;
 }
 
 .sponsorSkipNotice {
@@ -575,6 +595,7 @@ input::-webkit-inner-spin-button {
 	font-size: 14px;
 
 	-moz-appearance: textfield;
+	appearance: textfield;
 }
 
 .sponsorTimeEditInput {
@@ -714,11 +735,12 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     padding: 10px;
     max-width: 300px;
+	width: max-content;
     white-space: normal;
     line-height: 1.5em;
 	color: white;
 	font-size: 12px;
-	z-index: 1000;
+	z-index: 10000;
 }
 
 .sponsorBlockTooltip a {
@@ -755,6 +777,14 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 }
 
+#categoryPillParent {
+	height: fit-content;
+    margin-top: auto;
+	margin-bottom: auto;
+
+    position: relative;
+}
+
 .sponsorBlockCategoryPill {
     border-radius: 25px;
 	padding-left: 8px;
@@ -770,6 +800,10 @@ input::-webkit-inner-spin-button {
 .sponsorBlockCategoryPillTitleSection {
 	display: flex;
 	align-items: center;
+}
+
+.sponsorBlockCategoryPillTitle {
+	white-space: nowrap;
 }
 
 .categoryPillClose {
@@ -791,4 +825,49 @@ input::-webkit-inner-spin-button {
 	margin: 0px;
 	color: #fff;
 	opacity: .7;
+}
+
+/* full video labels on thumbnails */
+.sponsorThumbnailLabel {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0.5em;
+	margin: 0.5em;
+	border-radius: 2em;
+	z-index: 1000;
+	background-color: var(--category-color, #000);
+	opacity: 0.7;
+	box-shadow: 0 0 8px 2px #333;
+	font-size: 10px;
+}
+
+.sponsorThumbnailLabel.sponsorThumbnailLabelVisible {
+	display: flex;
+}
+
+.sponsorThumbnailLabel svg {
+	height: 2em;
+	fill: var(--category-text-color, #fff);
+}
+
+.sponsorThumbnailLabel span {
+	display: none;
+	padding-left: 0.25em;
+	font-size: 1.5em;
+	color: var(--category-text-color, #fff);
+}
+
+.sponsorThumbnailLabel:hover {
+	border-radius: 0.25em;
+	opacity: 1;
+}
+
+.sponsorThumbnailLabel:hover span {
+	display: inline;
+}
+
+.sponsorblock-chapter-visible {
+	display: inherit !important;
 }

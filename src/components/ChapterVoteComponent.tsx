@@ -1,14 +1,14 @@
 import * as React from "react";
 import Config from "../config";
-import { Category, SegmentUUID, SponsorTime } from "../types";
+import { ActionType, Category, SegmentUUID, SponsorTime } from "../types";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { VoteResponse } from "../messageTypes";
 import { AnimationUtils } from "../utils/animationUtils";
-import { GenericUtils } from "../utils/genericUtils";
 import { Tooltip } from "../render/Tooltip";
+import { getErrorMessage } from "../../maze-utils/src/formating";
 
 export interface ChapterVoteProps {
     vote: (type: number, UUID: SegmentUUID, category?: Category) => Promise<VoteResponse>;
@@ -65,35 +65,39 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                                 this.tooltip.close();
                                 this.tooltip = null;
                             } else {
-                                const referenceNode = chapterNode?.parentElement?.parentElement;
-                                if (referenceNode) {
-                                    const outerBounding = referenceNode.getBoundingClientRect();
-                                    const buttonBounding = (e.target as HTMLElement)?.parentElement?.getBoundingClientRect();
-                                    
-                                    this.tooltip = new Tooltip({
-                                        referenceNode: chapterNode?.parentElement?.parentElement,
-                                        prependElement: chapterNode?.parentElement,
-                                        showLogo: false,
-                                        showGotIt: false,
-                                        bottomOffset: `${outerBounding.height + 25}px`,
-                                        leftOffset: `${buttonBounding.x - outerBounding.x}px`,
-                                        extraClass: "centeredSBTriangle",
-                                        buttons: [
-                                            {
-                                                name: chrome.i18n.getMessage("incorrectVote"),
-                                                listener: (event) => this.vote(event, 0, e.target as HTMLElement).then(() => {
-                                                    this.tooltip?.close();
-                                                    this.tooltip = null;
-                                                })
-                                            }, {
-                                                name: chrome.i18n.getMessage("harmfulVote"),
-                                                listener: (event) => this.vote(event, 30, e.target as HTMLElement).then(() => {
-                                                    this.tooltip?.close();
-                                                    this.tooltip = null;
-                                                })
-                                            }
-                                        ]
-                                    });
+                                if (this.state.segment?.actionType === ActionType.Chapter) {
+                                    const referenceNode = chapterNode?.parentElement?.parentElement;
+                                    if (referenceNode) {
+                                        const outerBounding = referenceNode.getBoundingClientRect();
+                                        const buttonBounding = (e.target as HTMLElement)?.parentElement?.getBoundingClientRect();
+                                        
+                                        this.tooltip = new Tooltip({
+                                            referenceNode: chapterNode?.parentElement?.parentElement,
+                                            prependElement: chapterNode?.parentElement,
+                                            showLogo: false,
+                                            showGotIt: false,
+                                            bottomOffset: `${outerBounding.height + 25}px`,
+                                            leftOffset: `${buttonBounding.x - outerBounding.x}px`,
+                                            extraClass: "centeredSBTriangle",
+                                            buttons: [
+                                                {
+                                                    name: chrome.i18n.getMessage("incorrectVote"),
+                                                    listener: (event) => this.vote(event, 0, e.target as HTMLElement).then(() => {
+                                                        this.tooltip?.close();
+                                                        this.tooltip = null;
+                                                    })
+                                                }, {
+                                                    name: chrome.i18n.getMessage("harmfulVote"),
+                                                    listener: (event) => this.vote(event, 30, e.target as HTMLElement).then(() => {
+                                                        this.tooltip?.close();
+                                                        this.tooltip = null;
+                                                    })
+                                                }
+                                            ]
+                                        });
+                                    }
+                                } else {
+                                    this.vote(e, 0, e.target as HTMLElement)
                                 }
                             }
                         }}>
@@ -120,7 +124,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                     show: type === 1
                 });
             } else if (response.statusCode !== 403) {
-                alert(GenericUtils.getErrorMessage(response.statusCode, response.responseText));
+                alert(getErrorMessage(response.statusCode, response.responseText));
             }
         }
     }

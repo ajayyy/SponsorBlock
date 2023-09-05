@@ -1,8 +1,8 @@
 import Config from "../config";
 import { SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
-import { keybindToString } from "../utils/configUtils";
 import { AnimationUtils } from "../utils/animationUtils";
+import { keybindToString } from "../../maze-utils/src/config";
 
 export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;
@@ -102,6 +102,7 @@ export class SkipButtonControlBar {
         this.enabled = true;
 
         this.refreshText();
+        this.container?.classList?.remove("textDisabled");
         this.textContainer?.classList?.remove("hidden");
         AnimationUtils.disableAutoHideAnimation(this.skipIcon);
 
@@ -134,12 +135,15 @@ export class SkipButtonControlBar {
 
     disable(): void {
         this.container.classList.add("hidden");
-        this.textContainer?.classList?.remove("hidden");
 
         this.chapterText?.classList?.remove("hidden");
         this.getChapterPrefix()?.classList?.remove("hidden");
 
         this.enabled = false;
+    }
+
+    isEnabled(): boolean {
+        return this.enabled;
     }
 
     toggleSkip(): void {

@@ -7,13 +7,13 @@ import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import Utils from "../utils";
 const utils = new Utils();
 import { getSkippingText } from "../utils/categoryUtils";
-import { keybindToString } from "../utils/configUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import PencilSvg from "../svg-icons/pencil_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
-import { GenericUtils } from "../utils/genericUtils";
+import { generateUserID } from "../../maze-utils/src/setup";
+import { keybindToString } from "../../maze-utils/src/config";
 
 enum SkipButtonState {
     Undo, // Unskip
@@ -177,7 +177,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         ) : null;
 
         return (
-            <NoticeComponent noticeTitle={this.state.noticeTitle}
+            <NoticeComponent 
+                noticeTitle={this.state.noticeTitle}
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
                 showInSecondSlot={this.showInSecondSlot}
                 idSuffix={this.idSuffix}
@@ -191,6 +192,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 ref={this.noticeRef}
                 closeListener={() => this.closeListener()}
                 smaller={this.state.smaller}
+                logoFill={Config.config.barTypes[this.segments[0].category].color}
                 limitWidth={true}
                 firstColumn={firstColumn}
                 bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
@@ -373,6 +375,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 </span>
             );
         }
+        return null;
     }
 
     getSubmissionChooser(): JSX.Element[] {
@@ -541,7 +544,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         const sponsorVideoID = this.props.contentContainer().sponsorVideoID;
         const sponsorTimesSubmitting : SponsorTime = {
             segment: this.segments[index].segment,
-            UUID: GenericUtils.generateUserID() as SegmentUUID,
+            UUID: generateUserID() as SegmentUUID,
             category: this.segments[index].category,
             actionType: this.segments[index].actionType,
             source: SponsorSourceType.Local

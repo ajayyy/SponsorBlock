@@ -1,8 +1,12 @@
 {
   "optional_permissions": [
-    "declarativeContent"
+    "declarativeContent",
+    "webNavigation"
   ],
   "background": {
     "persistent": false
-  }
+  },
+  "permissions": [
+    "https://*.youtube.com/*"
+  ]
 }

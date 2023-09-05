@@ -13,15 +13,22 @@ import CategoryChooser from "./render/CategoryChooser";
 import UnsubmittedVideos from "./render/UnsubmittedVideos";
 import KeybindComponent from "./components/options/KeybindComponent";
 import { showDonationLink } from "./utils/configUtils";
-import { localizeHtmlPage } from "./utils/pageUtils";
-import { StorageChangesObject } from "./types";
+import { localizeHtmlPage } from "../maze-utils/src/setup";
+import { StorageChangesObject } from "../maze-utils/src/config";
+import { getHash } from "../maze-utils/src/hash";
+import { isFirefoxOrSafari } from "../maze-utils/src";
+import { isDeArrowInstalled } from "./utils/crossExtension";
 const utils = new Utils();
 let embed = false;
 
 const categoryChoosers: CategoryChooser[] = [];
 const unsubmittedVideos: UnsubmittedVideos[] = [];
 
-window.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "complete") {
+    init();
+} else {
+    document.addEventListener("DOMContentLoaded", init);
+}
 
 async function init() {
     localizeHtmlPage();
@@ -64,6 +71,18 @@ async function init() {
     donate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
     if (!showDonationLink()) {
         donate.classList.add("hidden");
+    }
+
+    // DeArrow promotion
+    if (Config.config.showNewFeaturePopups && Config.config.showUpsells) {
+        isDeArrowInstalled().then((installed) => {
+            if (!installed) {
+                const deArrowPromotion = document.getElementById("deArrowPromotion");
+                deArrowPromotion.classList.remove("hidden");
+
+                deArrowPromotion.addEventListener("click", () => Config.config.showDeArrowPromotion = false);
+            }
+        });
     }
 
     // Set all of the toggle options to the correct option
@@ -185,7 +204,7 @@ async function init() {
                             }
 
                             // Permission needed on Firefox
-                            if (utils.isFirefox()) {
+                            if (isFirefoxOrSafari()) {
                                 const permissionSuccess = await new Promise((resolve) => {
                                     chrome.permissions.request({
                                         origins: [textChangeInput.value + "/"],
@@ -430,7 +449,12 @@ function invidiousInstanceAddInit(element: HTMLElement, option: string) {
             let instanceList = Config.config[option];
             if (!instanceList) instanceList = [];
 
-            instanceList.push(textBox.value);
+            let domain = textBox.value.trim().toLowerCase();
+            if (domain.includes(":")) {
+                domain = domain.split(":")[0];
+            }
+
+            instanceList.push(domain);
 
             Config.config[option] = instanceList;
 
@@ -532,7 +556,7 @@ function activatePrivateTextChange(element: HTMLElement) {
         case "userID":
             if (Config.config[option]) {
                 utils.asyncRequestToServer("GET", "/api/userInfo", {
-                    userID: Config.config[option],
+                    publicUserID: getHash(Config.config[option]),
                     values: ["warnings", "banned"]
                 }).then((result) => {
                     const userInfo = JSON.parse(result.responseText);

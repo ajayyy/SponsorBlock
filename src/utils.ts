@@ -1,9 +1,12 @@
 import Config, { VideoDownvotes } from "./config";
-import { CategorySelection, SponsorTime, FetchResponse, BackgroundScriptContainer, Registration, HashedValue, VideoID, SponsorHideType } from "./types";
+import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType, CategorySkipOption } from "./types";
 
+import { getHash, HashedValue } from "../maze-utils/src/hash";
 import * as CompileConfig from "../config.json";
-import { findValidElement, findValidElementFromSelector } from "./utils/pageUtils";
-import { GenericUtils } from "./utils/genericUtils";
+import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
+import { findValidElementFromSelector } from "../maze-utils/src/dom";
+import { FetchResponse, sendRequestToCustomServer } from "../maze-utils/src/background-request-proxy"
+import { isSafari } from "../maze-utils/src/config";
 
 export default class Utils {
     
@@ -12,94 +15,21 @@ export default class Utils {
 
     // Used to add content scripts and CSS required
     js = [
-        "./js/vendor.js",
         "./js/content.js"
     ];
     css = [
         "content.css",
         "./libs/Source+Sans+Pro.css",
-        "popup.css"
+        "popup.css",
+        "shared.css"
     ];
-
-    /* Used for waitForElement */
-    creatingWaitingMutationObserver = false;
-    waitingMutationObserver: MutationObserver = null;
-    waitingElements: { selector: string; visibleCheck: boolean; callback: (element: Element) => void }[] = [];
 
     constructor(backgroundScriptContainer: BackgroundScriptContainer = null) {
         this.backgroundScriptContainer = backgroundScriptContainer;
     }
 
     async wait<T>(condition: () => T, timeout = 5000, check = 100): Promise<T> {
-        return GenericUtils.wait(condition, timeout, check);
-    }
-
-    /* Uses a mutation observer to wait asynchronously */
-    async waitForElement(selector: string, visibleCheck = false): Promise<Element> {
-        return await new Promise((resolve) => {
-            const initialElement = this.getElement(selector, visibleCheck);
-            if (initialElement) {
-                resolve(initialElement);
-                return;
-            }
-
-            this.waitingElements.push({
-                selector,
-                visibleCheck,
-                callback: resolve
-            });
-
-            if (!this.creatingWaitingMutationObserver) {
-                this.creatingWaitingMutationObserver = true;
-
-                if (document.body) {
-                    this.setupWaitingMutationListener();
-                } else {
-                    window.addEventListener("DOMContentLoaded", () => {
-                        this.setupWaitingMutationListener();
-                    });
-                }
-            }
-        });
-    }
-
-    private setupWaitingMutationListener(): void {
-        if (!this.waitingMutationObserver) {
-            const checkForObjects = () => {
-                const foundSelectors = [];
-                for (const { selector, visibleCheck, callback } of this.waitingElements) {
-                    const element = this.getElement(selector, visibleCheck);
-                    if (element) {
-                        callback(element);
-                        foundSelectors.push(selector);
-                    }
-                }
-
-                this.waitingElements = this.waitingElements.filter((element) => !foundSelectors.includes(element.selector));
-                
-                if (this.waitingElements.length === 0) {
-                    this.waitingMutationObserver?.disconnect();
-                    this.waitingMutationObserver = null;
-                    this.creatingWaitingMutationObserver = false;
-                }
-            };
-
-            // Do an initial check over all objects
-            checkForObjects();
-
-            if (this.waitingElements.length > 0) {
-                this.waitingMutationObserver = new MutationObserver(checkForObjects);
-
-                this.waitingMutationObserver.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
-            }
-        }
-    }
-
-    private getElement(selector: string, visibleCheck: boolean) {
-        return visibleCheck ? findValidElement(document.querySelectorAll(selector)) : document.querySelector(selector);
+        return waitFor(condition, timeout, check);
     }
 
     containsPermission(permissions: chrome.permissions.Permissions): Promise<boolean> {
@@ -117,9 +47,13 @@ export default class Utils {
      * @param {CallableFunction} callback
      */
     setupExtraSitePermissions(callback: (granted: boolean) => void): void {
-        // Request permission
-        let permissions = ["declarativeContent"];
-        if (this.isFirefox()) permissions = [];        
+        const permissions = [];
+        if (!isFirefoxOrSafari()) {
+            permissions.push("declarativeContent");
+        }
+        if (!isFirefoxOrSafari() || isSafari()) {
+            permissions.push("webNavigation");
+        }
 
         chrome.permissions.request({
             origins: this.getPermissionRegex(),
@@ -143,52 +77,19 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        if (this.isFirefox()) {
-            const firefoxJS = [];
-            for (const file of this.js) {
-                firefoxJS.push({file});
-            }
-            const firefoxCSS = [];
-            for (const file of this.css) {
-                firefoxCSS.push({file});
-            }
+        const registration: Registration = {
+            message: "registerContentScript",
+            id: "invidious",
+            allFrames: true,
+            js: this.js,
+            css: this.css,
+            matches: this.getPermissionRegex()
+        };
 
-            const registration: Registration = {
-                message: "registerContentScript",
-                id: "invidious",
-                allFrames: true,
-                js: firefoxJS,
-                css: firefoxCSS,
-                matches: this.getPermissionRegex()
-            };
-
-            if (this.backgroundScriptContainer) {
-                this.backgroundScriptContainer.registerFirefoxContentScript(registration);
-            } else {
-                chrome.runtime.sendMessage(registration);
-            }
+        if (this.backgroundScriptContainer) {
+            this.backgroundScriptContainer.registerFirefoxContentScript(registration);
         } else {
-            chrome.declarativeContent.onPageChanged.removeRules(["invidious"], () => {
-                const conditions = [];
-                for (const regex of this.getPermissionRegex()) {
-                    conditions.push(new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { urlMatches: regex }
-                    }));
-                }
-
-                // Add page rule
-                const rule = {
-                    id: "invidious",
-                    conditions,
-                    actions: [new chrome.declarativeContent.RequestContentScript({
-                        allFrames: true,
-                        js: this.js,
-                        css: this.css
-                    })]
-                };
-                
-                chrome.declarativeContent.onPageChanged.addRules([rule]);
-            });
+            chrome.runtime.sendMessage(registration);
         }
     }
 
@@ -196,18 +97,18 @@ export default class Utils {
      * Removes the permission and content script registration.
      */
     removeExtraSiteRegistration(): void {
-        if (this.isFirefox()) {
-            const id = "invidious";
+        const id = "invidious";
 
-            if (this.backgroundScriptContainer) {
-                this.backgroundScriptContainer.unregisterFirefoxContentScript(id);
-            } else {
-                chrome.runtime.sendMessage({
-                    message: "unregisterContentScript",
-                    id: id
-                });
-            }
-        } else if (chrome.declarativeContent) {
+        if (this.backgroundScriptContainer) {
+            this.backgroundScriptContainer.unregisterFirefoxContentScript(id);
+        } else {
+            chrome.runtime.sendMessage({
+                message: "unregisterContentScript",
+                id: id
+            });
+        }
+
+        if (!isFirefoxOrSafari() && chrome.declarativeContent) {
             // Only if we have permission
             chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }
@@ -237,7 +138,7 @@ export default class Utils {
     containsInvidiousPermission(): Promise<boolean> {
         return new Promise((resolve) => {
             let permissions = ["declarativeContent"];
-            if (this.isFirefox()) permissions = [];
+            if (isFirefoxOrSafari()) permissions = [];
 
             chrome.permissions.contains({
                 origins: this.getPermissionRegex(),
@@ -319,6 +220,7 @@ export default class Utils {
                 return selection;
             }
         }
+        return { name: category, option: CategorySkipOption.Disabled} as CategorySelection;
     }
 
     /**
@@ -345,18 +247,8 @@ export default class Utils {
      * @param address The address to add to the SponsorBlock server address
      * @param callback 
      */    
-    async asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
-        return new Promise((resolve) => {
-            // Ask the background script to do the work
-            chrome.runtime.sendMessage({
-                message: "sendRequest",
-                type,
-                url,
-                data
-            }, (response) => {
-                resolve(response);
-            });
-        });
+    asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
+        return sendRequestToCustomServer(type, url, data);
     }
 
     /**
@@ -396,18 +288,21 @@ export default class Utils {
         const selectors = [
             "#player-container-id", // Mobile YouTube
             "#movie_player",
+            ".html5-video-player", // May 2023 Card-Based YouTube Layout
             "#c4-player", // Channel Trailer
             "#player-container", // Preview on hover
             "#main-panel.ytmusic-player-page", // YouTube music
             "#player-container .video-js", // Invidious
-            ".main-video-section > .video-container" // Cloudtube  
+            ".main-video-section > .video-container", // Cloudtube
+            ".shaka-video-container", // Piped
+            "#player-container.ytk-player", // YT Kids
         ];
 
         let referenceNode = findValidElementFromSelector(selectors)
         if (referenceNode == null) {
             //for embeds
             const player = document.getElementById("player");
-            referenceNode = player.firstChild as HTMLElement;
+            referenceNode = player?.firstChild as HTMLElement;
             if (referenceNode) {
                 let index = 1;
 
@@ -431,32 +326,11 @@ export default class Utils {
         return Boolean(num.match(/^[0-9a-f]+$/i));
     }
 
-    /**
-     * Is this Firefox (web-extensions)
-     */
-    isFirefox(): boolean {
-        return typeof(browser) !== "undefined";
-    }
-
-    async getHash<T extends string>(value: T, times = 5000): Promise<T & HashedValue> {
-        if (times <= 0) return "" as T & HashedValue;
-
-        let hashHex: string = value;
-        for (let i = 0; i < times; i++) {
-            const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(hashHex).buffer);
-
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        return hashHex as T & HashedValue;
-    }
-
     async addHiddenSegment(videoID: VideoID, segmentUUID: string, hidden: SponsorHideType) {
         if (chrome.extension.inIncognitoContext || !Config.config.trackDownvotes) return;
 
-        const hashedVideoID = (await this.getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
-        const UUIDHash = await this.getHash(segmentUUID, 1);
+        const hashedVideoID = (await getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
+        const UUIDHash = await getHash(segmentUUID, 1);
 
         const allDownvotes = Config.local.downvotedSegments;
         const currentVideoData = allDownvotes[hashedVideoID] || { segments: [], lastAccess: 0 };
@@ -464,7 +338,11 @@ export default class Utils {
         currentVideoData.lastAccess = Date.now();
         const existingData = currentVideoData.segments.find((segment) => segment.uuid === UUIDHash);
         if (hidden === SponsorHideType.Visible) {
-            delete allDownvotes[hashedVideoID];
+            currentVideoData.segments.splice(currentVideoData.segments.indexOf(existingData), 1);
+
+            if (currentVideoData.segments.length === 0) {
+                delete allDownvotes[hashedVideoID];
+            }
         } else {
             if (existingData) {
                 existingData.hidden = hidden;
