@@ -155,6 +155,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     type="text"
                                     style={{color: "inherit", backgroundColor: "inherit"}}
                                     value={this.state.sponsorTimeEdits[1]}
+                                    onKeyDown={(e) => e.stopPropagation()}
+                                    onKeyUp={(e) => e.stopPropagation()}
                                     onChange={(e) => this.handleOnChange(1, e, sponsorTime, e.target.value)}
                                     onWheel={(e) => this.changeTimesWhenScrolling(1, e, sponsorTime)}>
                                 </input>
@@ -240,6 +242,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             ref={this.descriptionOptionRef}
                             type="text"
                             value={this.state.description}
+                            onKeyDown={(e) => e.stopPropagation()}
+                            onKeyUp={(e) => e.stopPropagation()}
                             onContextMenu={(e) => e.stopPropagation()}
                             onChange={(e) => this.descriptionUpdate(e.target.value)}
                             onFocus={() => this.setState({chapterNameSelectorOpen: true})}>
