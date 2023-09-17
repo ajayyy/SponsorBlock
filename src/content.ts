@@ -110,6 +110,7 @@ const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
 let retryFetchTimeout: NodeJS.Timeout = null;
 let shownSegmentFailedToFetchWarning = false;
+let selectedSegment: SegmentUUID | null = null;
 
 // JSON video info
 let videoInfo: VideoInfo = null;
@@ -299,6 +300,10 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         case "reskip":
             reskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID), true);
+            break;
+        case "selectSegment":
+            selectedSegment = request.UUID;
+            updatePreviewBar();
             break;
         case "submitVote":
             vote(request.type, request.UUID).then((response) => sendResponse(response));
@@ -1369,7 +1374,8 @@ function updatePreviewBar(): void {
                 showLarger: segment.actionType === ActionType.Poi,
                 description: segment.description,
                 source: segment.source,
-                requiredSegment: requiredSegment && (segment.UUID === requiredSegment || segment.UUID.startsWith(requiredSegment))
+                requiredSegment: requiredSegment && (segment.UUID === requiredSegment || segment.UUID.startsWith(requiredSegment)),
+                selectedSegment: selectedSegment && segment.UUID === selectedSegment
             });
         });
     }

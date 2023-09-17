@@ -49,7 +49,13 @@ div:hover > #previewbar.sbNotInvidious {
 }
 
 .previewbar.requiredSegment {
-	transform: scaleY(3)
+	transform: scaleY(3);
+}
+
+.previewbar.selectedSegment {
+	opacity: 1 !important;
+	z-index: 100;
+	transform: scaleY(1.5);
 }
 
 /* Make sure settings are upfront */

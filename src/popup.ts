@@ -687,6 +687,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 : chrome.i18n.getMessage("skipSegment");
             skipButton.addEventListener("click", () => skipSegment(actionType, UUID, skipButton));
             votingButtons.addEventListener("dblclick", () => skipSegment(actionType, UUID));
+            votingButtons.addEventListener("dblclick", () => skipSegment(actionType, UUID));
+            votingButtons.addEventListener("mouseenter", () => selectSegment(UUID));
 
             //add thumbs up, thumbs down and uuid copy buttons to the container
             voteButtonsContainer.appendChild(upvoteButton);
@@ -718,6 +720,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             container.appendChild(votingButtons);
         }
+
+        container.addEventListener("mouseleave", () => selectSegment(null));
     }
 
     function submitTimes() {
@@ -966,6 +970,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             const stopAnimation = AnimationUtils.applyLoadingAnimation(element, 0.3);
             stopAnimation();
         }
+    }
+
+    function selectSegment(UUID: SegmentUUID | null): void {
+        sendTabMessage({
+            message: "selectSegment",
+            UUID: UUID
+        });
     }
 
     /**

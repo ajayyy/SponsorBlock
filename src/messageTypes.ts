@@ -31,7 +31,7 @@ interface IsInfoFoundMessage {
 }
 
 interface SkipMessage {
-    message: "unskip" | "reskip";
+    message: "unskip" | "reskip" | "selectSegment";
     UUID: SegmentUUID;
 }
 
