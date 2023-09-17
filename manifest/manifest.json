@@ -17,9 +17,7 @@
         ],
         "css": [
             "content.css",
-            "shared.css",
-            "./libs/Source+Sans+Pro.css",
-            "popup.css"
+            "shared.css"
         ]
     }],
     "web_accessible_resources": [
