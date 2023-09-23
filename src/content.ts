@@ -2432,14 +2432,23 @@ function hotkeyListener(e: KeyboardEvent): void {
     };
 
     const skipKey = Config.config.skipKeybind;
+    const skipToHighlightKey = Config.config.skipToHighlightKeybind;
     const startSponsorKey = Config.config.startSponsorKeybind;
     const submitKey = Config.config.submitKeybind;
     const nextChapterKey = Config.config.nextChapterKeybind;
     const previousChapterKey = Config.config.previousChapterKeybind;
 
     if (keybindEquals(key, skipKey)) {
-        if (activeSkipKeybindElement)
+        if (activeSkipKeybindElement) {
             activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
+        }
+
+        return;
+    } else if (keybindEquals(key, skipToHighlightKey)) {
+        if (skipButtonControlBar) {
+            skipButtonControlBar.toggleSkip.call(skipButtonControlBar);
+        }
+
         return;
     } else if (keybindEquals(key, startSponsorKey)) {
         startOrEndTimingNewSegment();

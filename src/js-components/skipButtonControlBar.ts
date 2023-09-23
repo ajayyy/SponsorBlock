@@ -147,8 +147,10 @@ export class SkipButtonControlBar {
     }
 
     toggleSkip(): void {
-        this.skip(this.segment);
-        this.disableText();
+        if (this.segment && this.enabled) {
+            this.skip(this.segment);
+            this.disableText();
+        }
     }
 
     disableText(): void {
@@ -182,7 +184,7 @@ export class SkipButtonControlBar {
     }
 
     private getTitle(): string {
-        return getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + keybindToString(Config.config.skipKeybind) + ")" : "");
+        return getSkippingText([this.segment], false) + (this.showKeybindHint ? " (" + keybindToString(Config.config.skipToHighlightKeybind) + ")" : "");
     }
 
     private getChapterPrefix(): HTMLElement {

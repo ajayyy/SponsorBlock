@@ -86,6 +86,7 @@ interface SBConfig {
     };
 
     skipKeybind: Keybind;
+    skipToHighlightKeybind: Keybind;
     startSponsorKeybind: Keybind;
     submitKeybind: Keybind;
     nextChapterKeybind: Keybind;
@@ -328,6 +329,7 @@ const syncDefaults = {
      *      TODO: Find a way to skip having to update these checks. Maybe storing keybinds in a Map?
      */
     skipKeybind: { key: "Enter" },
+    skipToHighlightKeybind: { key: "Enter", ctrl: true },
     startSponsorKeybind: { key: ";" },
     submitKeybind: { key: "'" },
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
