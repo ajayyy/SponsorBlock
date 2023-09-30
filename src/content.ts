@@ -38,6 +38,7 @@ import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdP
 import { Keybind, StorageChangesObject, isSafari, keybindEquals } from "../maze-utils/src/config";
 import { findValidElement, waitForElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
+import { injectScript } from "../maze-utils/src/scriptInjector";
 import { generateUserID } from "../maze-utils/src/setup";
 import { updateAll } from "../maze-utils/src/thumbnailManagement";
 import { setupThumbnailListener } from "./utils/thumbnails";
@@ -61,7 +62,7 @@ utils.wait(() => Config.isReady(), 5000, 10).then(() => {
     setTimeout(async () => {
         if (document.URL === "https://www.youtube.com/"
             && Config.config.showDeArrowPromotion
-            && Config.config.showUpsells 
+            && Config.config.showUpsells
             && Config.config.showNewFeaturePopups
             && (Config.config.skipCount > 30 || !Config.config.trackViewCount)
             && Math.random() < 0.05) {
@@ -187,6 +188,7 @@ let controls: HTMLElement | null = null;
 const playerButtons: Record<string, {button: HTMLButtonElement; image: HTMLImageElement; setupListener: boolean}> = {};
 
 addHotkeyListener();
+preventVideoAutoPause();
 
 /** Segments created by the user which have not yet been submitted. */
 let sponsorTimesSubmitting: SponsorTime[] = [];
@@ -927,17 +929,17 @@ function setupVideoListeners() {
                         clearInterval(playbackRateCheckInterval);
                         return;
                     }
-    
+
                     if (getVideo().playbackRate !== lastPlaybackSpeed) {
                         lastPlaybackSpeed = getVideo().playbackRate;
-    
+
                         rateChangeListener();
                     }
                 }, 2000);
             }
         };
         getVideo().addEventListener('playing', playingListener);
-        
+
         const seekingListener = () => {
             lastKnownVideoTime.fromPause = false;
 
@@ -964,7 +966,7 @@ function setupVideoListeners() {
             }
         };
         getVideo().addEventListener('seeking', seekingListener);
-        
+
         const stoppedPlayback = () => {
             // Reset lastCheckVideoTime
             lastCheckVideoTime = -1;
@@ -1428,9 +1430,9 @@ function videoElementChange(newVideo: boolean): void {
             setupSkipButtonControlBar();
             setupCategoryPill();
         }
-    
+
         checkPreviewbarState();
-    
+
         // Incase the page is still transitioning, check again in a few seconds
         setTimeout(checkPreviewbarState, 100);
         setTimeout(checkPreviewbarState, 1000);
@@ -2602,4 +2604,18 @@ function setCategoryColorCSSVariables() {
     css += "}";
 
     styleContainer.innerText = css;
+}
+
+// Inject script to prevent "Video paused. Continue watching?" popup
+// This is done by periodically updating the window._lact variable
+function preventVideoAutoPause() {
+    const onLoad = () => {
+        injectScript("setInterval(() => { window._lact = Date.now() }, 5000);");
+    };
+
+    if (document.readyState === "complete") {
+        onLoad();
+    } else {
+        document.addEventListener("DOMContentLoaded", onLoad);
+    }
 }
