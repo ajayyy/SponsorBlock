@@ -140,7 +140,7 @@ div:hover > .sponsorBlockChapterBar {
 }
 
 .playerButtonImage {
-	height: 60%;
+	height: 50%;
 	top: 0;
 	bottom: 0;
 	display: block;
@@ -718,7 +718,7 @@ input::-webkit-inner-spin-button {
 }
 
 #sbSkipIconControlBarImage {
-	height: 60%;
+	height: 50%;
     top: 0px;
     bottom: 0px;
     display: block;
