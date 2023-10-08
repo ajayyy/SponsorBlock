@@ -27,7 +27,7 @@
   position: relative;
 }
 
-#sponsorBlockPopupBody .hidden {
+#sponsorBlockPopupBody .hidden, #sponsorBlockPopupBody .sbhidden {
   display: none !important;
 }
 

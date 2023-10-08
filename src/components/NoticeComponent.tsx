@@ -196,21 +196,21 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                     <span 
                         id={"skipNoticeTimerText" + this.idSuffix}
                         key="skipNoticeTimerText"
-                        className={this.state.countdownMode !== CountdownMode.Timer ? "hidden" : ""} >
+                        className={this.state.countdownMode !== CountdownMode.Timer ? "sbhidden" : ""} >
                             {chrome.i18n.getMessage("NoticeTimeAfterSkip").replace("{seconds}", this.state.countdownTime.toString())}
                     </span>
                 ),(
                     <img 
                         id={"skipNoticeTimerPaused" + this.idSuffix}
                         key="skipNoticeTimerPaused"
-                        className={this.state.countdownMode !== CountdownMode.Paused ? "hidden" : ""}
+                        className={this.state.countdownMode !== CountdownMode.Paused ? "sbhidden" : ""}
                         src={chrome.runtime.getURL("icons/pause.svg")}
                         alt={chrome.i18n.getMessage("paused")} />
                 ),(
                     <img 
                         id={"skipNoticeTimerStopped" + this.idSuffix}
                         key="skipNoticeTimerStopped"
-                        className={this.state.countdownMode !== CountdownMode.Stopped ? "hidden" : ""}
+                        className={this.state.countdownMode !== CountdownMode.Stopped ? "sbhidden" : ""}
                         src={chrome.runtime.getURL("icons/stop.svg")}
                         alt={chrome.i18n.getMessage("manualPaused")} />
         )];

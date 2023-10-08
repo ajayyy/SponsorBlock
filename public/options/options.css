@@ -257,7 +257,7 @@ input[type='number'] {
     opacity: 0;
 }
 
-.hidden {
+.hidden, .sbhidden {
     display: none !important;
 }
 

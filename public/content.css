@@ -7,7 +7,7 @@
 	--sb-dark-red-outline: rgb(130,0,0,0.9);
 }
 
-.hidden {
+.sbhidden {
 	display: none;
 }
 
@@ -151,7 +151,7 @@ div:hover > .sponsorBlockChapterBar {
 	vertical-align: top;
 }
 
-.playerButton.hidden:not(.autoHiding) {
+.playerButton.sbhidden:not(.autoHiding) {
 	display: none !important;
 }
 
@@ -169,13 +169,13 @@ div:hover > .sponsorBlockChapterBar {
 	overflow: visible !important;
 }
 
-.autoHiding:not(.hidden) {
+.autoHiding:not(.sbhidden) {
 	transform: translateX(0%) scale(1);
 	/* opacity is from YouTube page */
 	transition: transform 0.2s, width 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
 }
 
-.autoHiding.hidden {
+.autoHiding.sbhidden {
 	transform: translateX(100%) scale(0);
 	/* opacity is from YouTube page */
 	transition: transform 0.2s, width 0.2s, opacity .1s cubic-bezier(0.4,0.0,1,1) !important;
@@ -183,7 +183,7 @@ div:hover > .sponsorBlockChapterBar {
 	width: 0px !important;
 }
 
-.autoHiding.hidden.autoHideLeft {
+.autoHiding.sbhidden.autoHideLeft {
 	transform: translateX(-100%) scale(0);
 }
 
@@ -272,7 +272,7 @@ div:hover > .sponsorBlockChapterBar {
 	max-width: calc(100% - 50px);
 }
 
-.sponsorSkipNotice .hidden {
+.sponsorSkipNotice .sbhidden {
 	display: none;
 }
 
@@ -691,7 +691,7 @@ input::-webkit-inner-spin-button {
     color: white;
 }
 
-.skipButtonControlBarContainer.hidden {
+.skipButtonControlBarContainer.sbhidden {
 	display: none !important;
 }
 

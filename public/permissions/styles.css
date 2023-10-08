@@ -19,7 +19,7 @@ body {
     font-weight: bold;
 }
 
-.hidden {
+.hidden, .sbhidden {
     display: none !important;
 }
 

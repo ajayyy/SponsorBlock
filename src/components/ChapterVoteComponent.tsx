@@ -44,7 +44,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
             <>
                 {/* Upvote Button */}
                 <button id={"sponsorTimesDownvoteButtonsContainerUpvoteChapter"}
-                        className={"playerButton sbPlayerUpvote ytp-button " + (!this.state.show ? "hidden" : "")}
+                        className={"playerButton sbPlayerUpvote ytp-button " + (!this.state.show ? "sbhidden" : "")}
                         draggable="false"
                         title={chrome.i18n.getMessage("upvoteButtonInfo")}
                         onClick={(e) => this.vote(e, 1)}>
@@ -55,7 +55,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
 
                 {/* Downvote Button */}
                 <button id={"sponsorTimesDownvoteButtonsContainerDownvoteChapter"}
-                        className={"playerButton sbPlayerDownvote ytp-button " + (!this.state.show ? "hidden" : "")}
+                        className={"playerButton sbPlayerDownvote ytp-button " + (!this.state.show ? "sbhidden" : "")}
                         draggable="false"
                         title={chrome.i18n.getMessage("reportButtonInfo")}
                         onClick={(e) => {

@@ -27,7 +27,7 @@ function applyLoadingAnimation(element: HTMLElement, time: number, callback?: ()
 
 function setupCustomHideAnimation(element: Element, container: Element, enabled = true, rightSlide = true): { hide: () => void; show: () => void } {
     if (enabled) element.classList.add("autoHiding");
-    element.classList.add("hidden");
+    element.classList.add("sbhidden");
     element.classList.add("animationDone");
     if (!rightSlide) element.classList.add("autoHideLeft");
 
@@ -37,7 +37,7 @@ function setupCustomHideAnimation(element: Element, container: Element, enabled 
         hide: () => {
             mouseEntered = false;
             if (element.classList.contains("autoHiding")) {
-                element.classList.add("hidden");
+                element.classList.add("sbhidden");
             }
         },
         show: () => {
@@ -46,7 +46,7 @@ function setupCustomHideAnimation(element: Element, container: Element, enabled 
 
             // Wait for next event loop
             setTimeout(() => {
-                if (mouseEntered) element.classList.remove("hidden")
+                if (mouseEntered) element.classList.remove("sbhidden")
             }, 10);
         }
     };
@@ -61,12 +61,12 @@ function setupAutoHideAnimation(element: Element, container: Element, enabled = 
 
 function enableAutoHideAnimation(element: Element): void {
     element.classList.add("autoHiding");
-    element.classList.add("hidden");
+    element.classList.add("sbhidden");
 }
 
 function disableAutoHideAnimation(element: Element): void {
     element.classList.remove("autoHiding");
-    element.classList.remove("hidden");
+    element.classList.remove("sbhidden");
 }
 
 export const AnimationUtils = {
