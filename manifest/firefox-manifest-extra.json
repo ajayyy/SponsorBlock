@@ -2,6 +2,9 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "sponsorBlocker@ajay.app"
+    },
+    "gecko_android": {
+      "strict_min_version": "79.0"
     }
   },
   "background": {
