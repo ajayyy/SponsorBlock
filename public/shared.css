@@ -217,3 +217,16 @@
 	display: flex;
 	align-items: center;
 }
+
+/*
+ * Buttons that appear under a segment on click
+ */
+.voteButton {
+	height: 20px;
+	padding: 0 5px;
+	cursor: pointer;
+}
+
+.voteButton:hover {
+	opacity: 0.8;
+}

@@ -261,19 +261,6 @@
 }
 
 /*
- * Buttons that appear under a segment on click
- */
-.voteButton {
-  height: 20px;
-  padding: 0 5px;
-  cursor: pointer;
-}
-
-.voteButton:hover {
-  opacity: 0.8;
-}
-
-/*
  * "Voted!" text that appears after voting on a segment
  */
 .sponsorTimesThanksForVotingText {
