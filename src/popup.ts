@@ -1052,9 +1052,10 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
      */
     function getFormattedHours(minutes) {
         minutes = Math.round(minutes * 10) / 10;
-        const days = Math.floor(minutes / 1440);
+        const years = Math.floor(minutes / 525600); // Assumes 365.0 days in a year
+        const days = Math.floor(minutes / 1440) % 365;
         const hours = Math.floor(minutes / 60) % 24;
-        return (days > 0 ? days + chrome.i18n.getMessage("dayAbbreviation") + " " : "") + (hours > 0 ? hours + chrome.i18n.getMessage("hourAbbreviation") + " " : "") + (minutes % 60).toFixed(1);
+        return (years > 0 ? years + chrome.i18n.getMessage("yearAbbreviation") + " " : "") + (days > 0 ? days + chrome.i18n.getMessage("dayAbbreviation") + " " : "") + (hours > 0 ? hours + chrome.i18n.getMessage("hourAbbreviation") + " " : "") + (minutes % 60).toFixed(1);
     }
 
     function contentConfigUpdateListener(changes: StorageChangesObject) {
