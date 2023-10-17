@@ -297,7 +297,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 ): ""}
 
                 {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) ? (
-                    <span id={"sponsorTimePreviewButton" + this.idSuffix}
+                    <span id={"sponsorTimePreviewEndButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey, true)}>
                         {chrome.i18n.getMessage("End")}
