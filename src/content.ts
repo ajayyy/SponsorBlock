@@ -1660,6 +1660,9 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                     // MacOS will loop otherwise #1027
                     // Sometimes playlists loop too #1804
                     v.currentTime = v.duration - 0.001;
+                } else if (v.duration > 1 && Math.abs(skipTime[1] - v.duration) < 0.5
+                    && isFirefoxOrSafari() && !isSafari()) {
+                    v.currentTime = v.duration;
                 } else {
                     if (inMuteSegment(skipTime[1], true)) {
                         // Make sure not to mute if skipping into a mute segment
