@@ -185,6 +185,12 @@ module.exports = env => {
                 stream: env.stream
             }),
             new configDiffPlugin()
-        ]
+        ],
+        performance: {
+            hints: false,
+            maxEntrypointSize: 512000,
+            maxAssetSize: 512000
+        }
+
     };
 };
