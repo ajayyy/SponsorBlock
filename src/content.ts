@@ -302,8 +302,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             reskipSponsorTime(sponsorTimes.find((segment) => segment.UUID === request.UUID), true);
             break;
         case "selectSegment":
-            selectedSegment = request.UUID;
-            updatePreviewBar();
+            selectSegment(request.UUID);
             break;
         case "submitVote":
             vote(request.type, request.UUID).then((response) => sendResponse(response));
@@ -1071,6 +1070,7 @@ function setupSkipButtonControlBar() {
                 openNotice: true,
                 forceAutoSkip: true
             }),
+            selectSegment,
             onMobileYouTube: isOnMobileYouTube()
         });
     }
@@ -1347,6 +1347,11 @@ function updatePreviewBarPositionMobile(parent: HTMLElement) {
     if (document.getElementById("previewbar") === null) {
         previewBar.createElement(parent);
     }
+}
+
+function selectSegment(UUID: SegmentUUID): void {
+    selectedSegment = UUID;
+    updatePreviewBar();
 }
 
 function updatePreviewBar(): void {

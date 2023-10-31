@@ -1,11 +1,12 @@
 import Config from "../config";
-import { SponsorTime } from "../types";
+import { SegmentUUID, SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
 import { AnimationUtils } from "../utils/animationUtils";
 import { keybindToString } from "../../maze-utils/src/config";
 
 export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;
+    selectSegment: (UUID: SegmentUUID) => void;
     onMobileYouTube: boolean;
 }
 
@@ -54,8 +55,18 @@ export class SkipButtonControlBar {
         this.container.appendChild(this.skipIcon);
         this.container.appendChild(this.textContainer);
         this.container.addEventListener("click", () => this.toggleSkip());
-        this.container.addEventListener("mouseenter", () => this.stopTimer());
-        this.container.addEventListener("mouseleave", () => this.startTimer());
+        this.container.addEventListener("mouseenter", () => {
+            this.stopTimer();
+
+            if (this.segment) {
+                props.selectSegment(this.segment.UUID);
+            }
+        });
+        this.container.addEventListener("mouseleave", () => {
+            this.startTimer();
+
+            props.selectSegment(null);
+        });
         if (this.onMobileYouTube) {
             this.container.addEventListener("touchstart", (e) => this.handleTouchStart(e));
             this.container.addEventListener("touchmove", (e) => this.handleTouchMove(e));
