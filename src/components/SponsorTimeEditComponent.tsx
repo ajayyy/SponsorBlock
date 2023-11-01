@@ -590,7 +590,24 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             getFormattedTime(sponsorTime.segment[1], true)];
     }
 
+    lastEditTime = 0;
+    editTimeTimeout: NodeJS.Timeout | null = null;
     saveEditTimes(): void {
+        // Rate limit edits
+        const timeSinceLastEdit = Date.now() - this.lastEditTime;
+        if (timeSinceLastEdit < 200) {
+            if (!this.editTimeTimeout) {
+                this.editTimeTimeout = setTimeout(() => {
+                    this.saveEditTimes();
+                }, timeSinceLastEdit)
+            }
+
+            return;
+        }
+
+        this.lastEditTime = Date.now();
+        this.editTimeTimeout = null;
+
         const sponsorTimesSubmitting = this.props.contentContainer().sponsorTimesSubmitting;
         const category = this.categoryOptionRef.current.value as Category
 
