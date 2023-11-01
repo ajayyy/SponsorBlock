@@ -38,6 +38,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
 
     guidelinesReminder: GenericNotice;
 
+    lastSegmentCount: number;
+
     constructor(props: SubmissionNoticeProps) {
         super(props);
         this.noticeRef = React.createRef();
@@ -47,12 +49,14 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     
         const noticeTitle = chrome.i18n.getMessage("confirmNoticeTitle");
 
+        this.lastSegmentCount = this.props.contentContainer().sponsorTimesSubmitting.length;
+
         // Setup state
         this.state = {
             noticeTitle,
             messages: [],
             idSuffix: "SubmissionNotice"
-        }
+        };
     }
 
     componentDidMount(): void {
@@ -70,6 +74,18 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     componentWillUnmount(): void {
         if (this.videoObserver) {
             this.videoObserver.disconnect();
+        }
+    }
+
+    componentDidUpdate() {
+        const currentSegmentCount = this.props.contentContainer().sponsorTimesSubmitting.length;
+        if (currentSegmentCount > this.lastSegmentCount) {
+            this.lastSegmentCount = currentSegmentCount;
+
+            const scrollElement = this.noticeRef.current.getElement().current.querySelector("#sponsorSkipNoticeMiddleRowSubmissionNotice");
+            scrollElement.scrollTo({
+                top: scrollElement.scrollHeight + 1000
+            });
         }
     }
 
