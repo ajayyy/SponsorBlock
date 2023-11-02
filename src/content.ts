@@ -98,6 +98,8 @@ utils.wait(() => Config.isReady(), 5000, 10).then(() => {
 });
 
 const skipBuffer = 0.003;
+// If this close to the end, skip to the end
+const endTimeSkipBuffer = 0.5;
 
 //was sponsor data found when doing SponsorsLookup
 let sponsorDataFound = false;
@@ -622,7 +624,8 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
     updateActiveSegment(currentTime);
 
-    if (getVideo().paused) return;
+    if (getVideo().paused 
+        || (getVideo().currentTime >= getVideo().duration - 0.01 && getVideo().duration > 1)) return;
     const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
     const currentSkip = skipInfo.array[skipInfo.index];
@@ -701,8 +704,12 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                     forcedSkipTime = skipTime[0] + 0.001;
                 } else {
                     forcedSkipTime = skipTime[1];
-                    forcedIncludeIntersectingSegments = true;
                     forcedIncludeNonIntersectingSegments = false;
+
+                    // Only if not at the end of the video
+                    if (Math.abs(skipTime[1] - getVideo().duration) > endTimeSkipBuffer) {
+                        forcedIncludeIntersectingSegments = true;
+                    }
                 }
             } else {
                 forcedSkipTime = forceVideoTime + 0.001;
@@ -1665,7 +1672,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                     // MacOS will loop otherwise #1027
                     // Sometimes playlists loop too #1804
                     v.currentTime = v.duration - 0.001;
-                } else if (v.duration > 1 && Math.abs(skipTime[1] - v.duration) < 0.5
+                } else if (v.duration > 1 && Math.abs(skipTime[1] - v.duration) < endTimeSkipBuffer
                     && isFirefoxOrSafari() && !isSafari()) {
                     v.currentTime = v.duration;
                 } else {
