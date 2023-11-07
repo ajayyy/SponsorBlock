@@ -316,7 +316,7 @@ const syncDefaults = {
     showSegmentFailedToFetchWarning: true,
     allowScrollingToEdit: true,
     deArrowInstalled: false,
-    showDeArrowPromotion: true,
+    showDeArrowPromotion: false,
     showZoomToFillError2: true,
 
     categoryPillColors: {},
