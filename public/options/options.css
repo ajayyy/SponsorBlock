@@ -718,3 +718,15 @@ svg {
     width: 40px;
     margin-right: 4px;
 }
+
+.dearrow-link .close-button {
+    opacity: 0;
+    width: 15px;
+    filter: invert(0.3);
+    transition: opacity 0.2s;
+    margin-left: 10px;
+}
+  
+.dearrow-link:hover .close-button {
+    opacity: 1;
+}

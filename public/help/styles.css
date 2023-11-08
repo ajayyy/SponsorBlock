@@ -323,3 +323,32 @@ svg {
   background-color: var(--disabled);
   color: grey;
 }
+
+.dearrow-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  font-size: 16px;
+}
+
+.dearrow-link img {
+  width: 35px;
+  padding: 10px
+}
+
+.dearrow-link .close-button {
+  opacity: 0;
+  width: 15px;
+  filter: invert(0.3);
+  transition: opacity 0.2s;
+}
+
+.dearrow-link:hover .close-button {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}

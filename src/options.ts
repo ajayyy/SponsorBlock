@@ -74,13 +74,22 @@ async function init() {
     }
 
     // DeArrow promotion
-    if (Config.config.showNewFeaturePopups && Config.config.showUpsells) {
+    if (Config.config.showNewFeaturePopups && Config.config.showUpsells && Config.config.showDeArrowInSettings) {
         isDeArrowInstalled().then((installed) => {
             if (!installed) {
                 const deArrowPromotion = document.getElementById("deArrowPromotion");
                 deArrowPromotion.classList.remove("hidden");
 
                 deArrowPromotion.addEventListener("click", () => Config.config.showDeArrowPromotion = false);
+
+                const closeButton = deArrowPromotion.querySelector(".close-button");
+                closeButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    
+                    deArrowPromotion.classList.add("hidden");
+                    Config.config.showDeArrowPromotion = false;
+                    Config.config.showDeArrowInSettings = false;
+                });
             }
         });
     }
