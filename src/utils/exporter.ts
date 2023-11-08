@@ -106,5 +106,5 @@ export function exportTimesAsHashParam(segments: SponsorTime[]): string {
 
 
 export function normalizeChapterName(description: string): string {
-    return description.toLowerCase().replace(/[.:-'’`‛‘"‟”]/g, "").replace(/\s+/g, " ");
+    return description.toLowerCase().replace(/[.:'’`‛‘"‟”-]/ug, "").replace(/\s+/g, " ");
 }
