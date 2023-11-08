@@ -18,6 +18,7 @@ import { StorageChangesObject } from "../maze-utils/src/config";
 import { getHash } from "../maze-utils/src/hash";
 import { isFirefoxOrSafari } from "../maze-utils/src";
 import { isDeArrowInstalled } from "./utils/crossExtension";
+import { asyncRequestToServer } from "./utils/requests";
 const utils = new Utils();
 let embed = false;
 
@@ -567,7 +568,7 @@ function activatePrivateTextChange(element: HTMLElement) {
     switch (option) {
         case "userID":
             if (Config.config[option]) {
-                utils.asyncRequestToServer("GET", "/api/userInfo", {
+                asyncRequestToServer("GET", "/api/userInfo", {
                     publicUserID: getHash(Config.config[option]),
                     values: ["warnings", "banned"]
                 }).then((result) => {

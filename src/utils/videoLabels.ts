@@ -2,6 +2,7 @@ import { Category, CategorySkipOption, VideoID } from "../types";
 import { getHash } from "../../maze-utils/src/hash";
 import Utils from "../utils";
 import { logWarn } from "./logger";
+import { asyncRequestToServer } from "./requests";
 
 const utils = new Utils();
 
@@ -20,7 +21,7 @@ async function getLabelHashBlock(hashPrefix: string): Promise<LabelCacheEntry | 
         return cachedEntry;
     }
 
-    const response = await utils.asyncRequestToServer("GET", `/api/videoLabels/${hashPrefix}`);
+    const response = await asyncRequestToServer("GET", `/api/videoLabels/${hashPrefix}`);
     if (response.status !== 200) {
         // No video labels or server down
         labelCache[hashPrefix] = {

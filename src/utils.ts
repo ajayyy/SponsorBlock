@@ -2,10 +2,8 @@ import Config, { VideoDownvotes } from "./config";
 import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType, CategorySkipOption } from "./types";
 
 import { getHash, HashedValue } from "../maze-utils/src/hash";
-import * as CompileConfig from "../config.json";
 import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { findValidElementFromSelector } from "../maze-utils/src/dom";
-import { FetchResponse, sendRequestToCustomServer } from "../maze-utils/src/background-request-proxy"
 import { isSafari } from "../maze-utils/src/config";
 
 export default class Utils {
@@ -238,50 +236,6 @@ export default class Utils {
         }
 
         return permissionRegex;
-    }
-
-    /**
-     * Sends a request to a custom server
-     * 
-     * @param type The request type. "GET", "POST", etc.
-     * @param address The address to add to the SponsorBlock server address
-     * @param callback 
-     */    
-    asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
-        return sendRequestToCustomServer(type, url, data);
-    }
-
-    /**
-     * Sends a request to the SponsorBlock server with address added as a query
-     * 
-     * @param type The request type. "GET", "POST", etc.
-     * @param address The address to add to the SponsorBlock server address
-     * @param callback 
-     */    
-    async asyncRequestToServer(type: string, address: string, data = {}): Promise<FetchResponse> {
-        const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
-
-        return await (this.asyncRequestToCustomServer(type, serverAddress + address, data));
-    }
-
-    /**
-     * Sends a request to the SponsorBlock server with address added as a query
-     * 
-     * @param type The request type. "GET", "POST", etc.
-     * @param address The address to add to the SponsorBlock server address
-     * @param callback 
-     */
-    sendRequestToServer(type: string, address: string, callback?: (response: FetchResponse) => void): void {
-        const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
-
-        // Ask the background script to do the work
-        chrome.runtime.sendMessage({
-            message: "sendRequest",
-            type,
-            url: serverAddress + address
-        }, (response) => {
-            callback(response);
-        });
     }
 
     findReferenceNode(): HTMLElement {

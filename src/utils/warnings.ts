@@ -3,8 +3,7 @@ import { getHash } from "../../maze-utils/src/hash";
 import Config from "../config";
 import GenericNotice, { NoticeOptions } from "../render/GenericNotice";
 import { ContentContainer } from "../types";
-import Utils from "../utils";
-const utils = new Utils();
+import { asyncRequestToServer } from "./requests";
 
 export interface ChatConfig {
     displayName: string;
@@ -13,14 +12,14 @@ export interface ChatConfig {
 }
 
 export async function openWarningDialog(contentContainer: ContentContainer): Promise<void> {
-    const userInfo = await utils.asyncRequestToServer("GET", "/api/userInfo", {
+    const userInfo = await asyncRequestToServer("GET", "/api/userInfo", {
         publicUserID: await getHash(Config.config.userID),
         values: ["warningReason"]
     });
 
     if (userInfo.ok) {
         const warningReason = JSON.parse(userInfo.responseText)?.warningReason;
-        const userNameData = await utils.asyncRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID);
+        const userNameData = await asyncRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID);
         const userName = userNameData.ok ? JSON.parse(userNameData.responseText).userName : "";
         const publicUserID = await getHash(Config.config.userID);
 
@@ -43,7 +42,7 @@ export async function openWarningDialog(contentContainer: ContentContainer): Pro
                 {
                     name: chrome.i18n.getMessage("warningConfirmButton"),
                     listener: async () => {
-                        const result = await utils.asyncRequestToServer("POST", "/api/warnUser", {
+                        const result = await asyncRequestToServer("POST", "/api/warnUser", {
                             userID: Config.config.userID,
                             enabled: false
                         });

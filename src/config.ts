@@ -76,6 +76,7 @@ interface SBConfig {
     deArrowInstalled: boolean;
     showDeArrowPromotion: boolean;
     showDeArrowInSettings: boolean;
+    shownDeArrowPromotion: boolean;
     showZoomToFillError2: boolean;
     cleanPopup: boolean;
 
@@ -318,8 +319,9 @@ const syncDefaults = {
     showSegmentFailedToFetchWarning: true,
     allowScrollingToEdit: true,
     deArrowInstalled: false,
-    showDeArrowPromotion: false,
+    showDeArrowPromotion: true,
     showDeArrowInSettings: true,
+    shownDeArrowPromotion: false,
     showZoomToFillError2: true,
     cleanPopup: false,
 

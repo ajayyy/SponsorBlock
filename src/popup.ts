@@ -27,6 +27,7 @@ import GenericNotice from "./render/GenericNotice";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
 import { StorageChangesObject } from "../maze-utils/src/config";
 import { getHash } from "../maze-utils/src/hash";
+import { asyncRequestToServer, sendRequestToServer } from "./utils/requests";
 
 const utils = new Utils();
 
@@ -295,7 +296,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
 
-    utils.asyncRequestToServer("GET", "/api/userInfo", {
+    asyncRequestToServer("GET", "/api/userInfo", {
         publicUserID: await getHash(Config.config.userID),
         values
     }).then((res) => {
@@ -818,7 +819,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.setUsernameStatus.style.display = "unset";
         PageElements.setUsernameStatus.innerText = chrome.i18n.getMessage("Loading");
 
-        utils.sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
+        sendRequestToServer("POST", "/api/setUsername?userID=" + Config.config.userID + "&username=" + PageElements.usernameInput.value, function (response) {
             if (response.status == 200) {
                 //submitted
                 PageElements.submitUsername.style.display = "none";

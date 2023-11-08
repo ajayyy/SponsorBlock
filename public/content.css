@@ -742,6 +742,7 @@ input::-webkit-inner-spin-button {
 	color: white;
 	font-size: 12px;
 	z-index: 10000;
+	font-weight: normal;
 }
 
 .sponsorBlockTooltip a {
@@ -762,6 +763,12 @@ input::-webkit-inner-spin-button {
 .sponsorBlockTooltip.sbTriangle.centeredSBTriangle::after {
 	left: 50%;
 	right: 50%;
+}
+
+.sponsorBlockTooltip.sbTriangle.sbTopTriangle::after {
+	bottom: 100%;
+	top: unset;
+	border-color: transparent transparent rgba(28, 28, 28, 0.7) transparent;
 }
 
 .sponsorBlockLockedColor {

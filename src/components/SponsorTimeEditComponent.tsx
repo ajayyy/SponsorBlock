@@ -2,14 +2,12 @@ import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
 import { ActionType, Category, ChannelIDStatus, ContentContainer, SponsorTime } from "../types";
-import Utils from "../utils";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
 import { DEFAULT_CATEGORY } from "../utils/categoryUtils";
 import { getFormattedTime, getFormattedTimeToSeconds } from "../../maze-utils/src/formating";
-
-const utils = new Utils();
+import { asyncRequestToServer } from "../utils/requests";
 
 export interface SponsorTimeEditProps {
     index: number;
@@ -727,7 +725,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (this.props.contentContainer().channelIDInfo.status !== ChannelIDStatus.Found) return;
 
         this.fetchingSuggestions = true;
-        const result = await utils.asyncRequestToServer("GET", "/api/chapterNames", {
+        const result = await asyncRequestToServer("GET", "/api/chapterNames", {
             description,
             channelID: this.props.contentContainer().channelIDInfo.id
         });
