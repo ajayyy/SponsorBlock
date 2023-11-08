@@ -130,6 +130,7 @@
   top: 5px;
   right: 5px;
   opacity: 0.5;
+  z-index: 1;
 }
 
 .sbCloseButton:hover {
