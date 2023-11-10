@@ -30,7 +30,7 @@ Operating system and version:
 Browser and version: 
 Add-on version: 
 
-Please go to the advanced settings and copy the debug information with the button from there. Then paste them in here:
+Please go to the advanced settings and copy the debug information with the button from there. Then paste them in here and remove potentially sensitive data:
 ```json
 PASTE_HERE
 ```
