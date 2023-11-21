@@ -72,6 +72,12 @@ window.addEventListener("message", async (e): Promise<void> => {
     if (e.source !== window.parent) return;
     if (e.origin.endsWith('.youtube.com')) {
         allowPopup = true;
+
+        if (e.data && e.data?.type === "style") {
+            const style = document.createElement("style");
+            style.textContent = e.data.css;
+            document.head.appendChild(style);
+        }
     }
 });
 

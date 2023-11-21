@@ -2016,7 +2016,6 @@ function openInfoMenu() {
     //hide info button
     if (playerButtons.info) playerButtons.info.button.style.display = "none";
 
-
     const popup = document.createElement("div");
     popup.id = "sponsorBlockPopupContainer";
 
@@ -2024,7 +2023,37 @@ function openInfoMenu() {
     frame.width = "374";
     frame.height = "500";
     frame.style.borderRadius = "12px";
-    frame.addEventListener("load", () => frame.contentWindow.postMessage("", "*"));
+    frame.addEventListener("load", async () => {
+        frame.contentWindow.postMessage("", "*");
+
+        // To support userstyles applying to the popup
+        const stylusStyle = document.querySelector(".stylus");
+        if (stylusStyle) {
+            frame.contentWindow.postMessage({
+                type: "style",
+                css: stylusStyle.textContent
+            }, "*");
+        }
+
+        const enhancerStyle = document.getElementById("efyt-theme");
+        if (enhancerStyle) {
+            const enhancerStyleVariables = document.getElementById("efyt-theme-variables");
+            if (enhancerStyleVariables) {
+                const enhancerCss = await fetch(enhancerStyle.getAttribute("href")).then((response) => response.text());
+                const enhancerVariablesCss = await fetch(enhancerStyleVariables.getAttribute("href")).then((response) => response.text());
+
+                if (enhancerCss && enhancerVariablesCss) {
+                    frame.contentWindow.postMessage({
+                        type: "style",
+                        // Image needs needs to reference the full url now
+                        css: enhancerCss.replace("./images/youtube-deep-dark/IconSponsorBlocker256px.png",
+                            "https://raw.githubusercontent.com/RaitaroH/YouTube-DeepDark/master/YT_Images/IconSponsorBlocker256px.png")
+                            + enhancerVariablesCss
+                    }, "*");
+                }
+            }
+        }
+    });
     frame.src = chrome.extension.getURL("popup.html");
     popup.appendChild(frame);
 
