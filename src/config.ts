@@ -137,6 +137,9 @@ interface SBStorage {
     /* VideoID prefixes to UUID prefixes */
     downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>;
     navigationApiAvailable: boolean;
+    
+    // Used when sync storage disbaled
+    alreadyInstalled: boolean;
 }
 
 class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
@@ -456,7 +459,8 @@ const syncDefaults = {
 
 const localDefaults = {
     downvotedSegments: {},
-    navigationApiAvailable: null
+    navigationApiAvailable: null,
+    alreadyInstalled: false
 };
 
 const Config = new ConfigClass(syncDefaults, localDefaults, migrateOldSyncFormats);

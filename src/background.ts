@@ -121,7 +121,7 @@ chrome.runtime.onInstalled.addListener(function () {
         const userID = Config.config.userID;
 
         // If there is no userID, then it is the first install.
-        if (!userID){
+        if (!userID && !Config.local.alreadyInstalled){
             //open up the install page
             chrome.tabs.create({url: chrome.extension.getURL("/help/index.html")});
 
@@ -129,6 +129,7 @@ chrome.runtime.onInstalled.addListener(function () {
             const newUserID = generateUserID();
             //save this UUID
             Config.config.userID = newUserID;
+            Config.local.alreadyInstalled = true;
 
             // Don't show update notification
             Config.config.categoryPillUpdate = true;
