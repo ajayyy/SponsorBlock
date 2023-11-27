@@ -37,6 +37,7 @@ export async function tryShowingDeArrowPromotion() {
                                     window.open("https://dearrow.ajay.app");
                                     Config.config.shownDeArrowPromotion = true;
                                 },
+                                secondButtonText: chrome.i18n.getMessage("hideNewFeatureUpdates"),
                                 referenceNode: element,
                                 prependElement: element.firstElementChild as HTMLElement,
                                 timeout: 15000,
