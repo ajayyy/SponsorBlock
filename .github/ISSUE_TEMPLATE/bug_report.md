@@ -27,7 +27,7 @@ assignees: ''
 <!-- Add some information about your system. You can omit values if you think they are really not necessary. -->
 
 Operating system and version: 
-Browser and version: 
+Browser and version (including variants if needed): 
 Add-on version: 
 
 Please go to the advanced settings and copy the debug information with the button from there. Then paste them in here and remove potentially sensitive data:
