@@ -1554,7 +1554,8 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
                     && segment.segment[1] > minimum && shouldSkip(segment)))) // Only include intersecting skippable segments
         && (!hideHiddenSponsors || segment.hidden === SponsorHideType.Visible)
         && segment.segment.length === 2
-        && segment.actionType !== ActionType.Poi;
+        && segment.actionType !== ActionType.Poi
+        && segment.actionType !== ActionType.Full;
 
     const possibleTimes = sponsorTimes.map((sponsorTime) => ({
         ...sponsorTime,
