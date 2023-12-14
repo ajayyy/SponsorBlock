@@ -94,6 +94,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     type PageElements = { [key: string]: HTMLElement } & InputPageElements
 
     let stopLoadingAnimation = null;
+    // For loading video info from the page
+    let loadRetryCount = 0;
 
     //the start and end time pairs (2d)
     let sponsorTimes: SponsorTime[] = [];
@@ -409,9 +411,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 currentVideoID = result.videoID;
 
                 loadTabData(tabs, updating);
-            } else if (result === undefined && chrome.runtime.lastError) {
-                //this isn't a YouTube video then, or at least the content script is not loaded
+            } else {
+                // Handle error if it exists
+                chrome.runtime.lastError;
+
+                // This isn't a YouTube video then, or at least the content script is not loaded
                 displayNoVideo();
+
+                // Try again in some time if a failure
+                loadRetryCount++;
+                if (loadRetryCount < 6) {
+                    setTimeout(() => getSegmentsFromContentScript(false), 100 * loadRetryCount);
+                }
             }
         });
     }
