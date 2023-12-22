@@ -2458,6 +2458,7 @@ function hotkeyListener(e: KeyboardEvent): void {
 
     const skipKey = Config.config.skipKeybind;
     const skipToHighlightKey = Config.config.skipToHighlightKeybind;
+    const closeSkipNoticeKey = Config.config.closeSkipNoticeKeybind;
     const startSponsorKey = Config.config.startSponsorKeybind;
     const submitKey = Config.config.actuallySubmitKeybind;
     const openSubmissionMenuKey = Config.config.submitKeybind;
@@ -2473,6 +2474,12 @@ function hotkeyListener(e: KeyboardEvent): void {
     } else if (keybindEquals(key, skipToHighlightKey)) {
         if (skipButtonControlBar) {
             skipButtonControlBar.toggleSkip.call(skipButtonControlBar);
+        }
+
+        return;
+    } else if (keybindEquals(key, closeSkipNoticeKey)) {
+        for (let i = 0; i < skipNotices.length; i++) {
+            skipNotices.pop().close();
         }
 
         return;

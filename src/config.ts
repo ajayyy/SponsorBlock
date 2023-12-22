@@ -95,6 +95,7 @@ interface SBConfig {
     actuallySubmitKeybind: Keybind;
     nextChapterKeybind: Keybind;
     previousChapterKeybind: Keybind;
+    closeSkipNoticeKeybind: Keybind;
 
     // What categories should be skipped
     categorySelections: CategorySelection[];
@@ -345,6 +346,7 @@ const syncDefaults = {
     actuallySubmitKeybind: { key: "'", ctrl: true },
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
     previousChapterKeybind: { key: "ArrowLeft", ctrl: true },
+    closeSkipNoticeKeybind: { key: "Backspace" },
 
     categorySelections: [{
         name: "sponsor" as Category,
