@@ -41,6 +41,13 @@ export interface NoticeProps {
     children?: React.ReactNode;
 }
 
+interface MouseDownInfo {
+    x: number;
+    y: number;
+    right: number;
+    bottom: number;
+}
+
 export interface NoticeState {
     maxCountdownTime: () => number;
 
@@ -50,7 +57,15 @@ export interface NoticeState {
     mouseHovering: boolean;
 
     startFaded: boolean;
+
+    mouseDownInfo: MouseDownInfo | null;
+    mouseMoved: boolean;
+    right: number;
+    bottom: number;
 }
+
+// Limits for dragging notice around
+const bounds = [10, 100, 10, 10];
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
@@ -60,6 +75,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     amountOfPreviousNotices: number;
 
     parentRef: React.RefObject<HTMLDivElement>;
+
+    handleMouseMoveBinded: (e: MouseEvent) => void = this.handleMouseMove.bind(this);
 
     constructor(props: NoticeProps) {
         super(props);
@@ -87,7 +104,12 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             countdownMode: CountdownMode.Timer,
             mouseHovering: false,
 
-            startFaded: this.props.startFaded ?? false
+            startFaded: this.props.startFaded ?? false,
+
+            mouseDownInfo: null,
+            mouseMoved: false,
+            right: bounds[0],
+            bottom: bounds[1]
         }
     }
 
@@ -98,6 +120,9 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     render(): React.ReactElement {
         const noticeStyle: React.CSSProperties = {
             zIndex: this.props.zIndex || (1000 + this.amountOfPreviousNotices),
+            right: this.state.right,
+            bottom: this.state.bottom,
+            userSelect: this.state.mouseDownInfo && this.state.mouseMoved ? "none" : "auto",
             ...(this.props.style ?? {})
         }
 
@@ -107,7 +132,29 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                     + (this.props.showInSecondSlot ? " secondSkipNotice" : "")
                     + (this.props.extraClass ? ` ${this.props.extraClass}` : "")}
                 onMouseEnter={(e) => this.onMouseEnter(e) }
-                onMouseLeave={() => this.timerMouseLeave()}
+                onMouseLeave={() => {
+                    this.timerMouseLeave();
+                }}
+                onMouseDown={(e) => {
+                    document.addEventListener("mousemove", this.handleMouseMoveBinded);
+
+                    this.setState({
+                        mouseDownInfo: {
+                            x: e.clientX,
+                            y: e.clientY,
+                            right: this.state.right,
+                            bottom: this.state.bottom
+                        },
+                        mouseMoved: false
+                    });
+                }}
+                onMouseUp={() => {
+                    document.removeEventListener("mousemove", this.handleMouseMoveBinded);
+
+                    this.setState({
+                        mouseDownInfo: null
+                    });
+                }}
                 ref={this.parentRef}
                 style={noticeStyle} >
                 <div className={"sponsorSkipNoticeTableContainer" 
@@ -394,6 +441,33 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
 
     getElement(): React.RefObject<HTMLDivElement> {
         return this.parentRef;
+    }
+
+    componentWillUnmount(): void {
+        document.removeEventListener("mousemove", this.handleMouseMoveBinded);
+    }
+
+    // For dragging around notice
+    handleMouseMove(e: MouseEvent): void {
+        if (this.state.mouseDownInfo && e.buttons === 1) {
+            const [mouseX, mouseY] = [e.clientX, e.clientY];
+
+            const deltaX = mouseX - this.state.mouseDownInfo.x;
+            const deltaY = mouseY - this.state.mouseDownInfo.y;
+
+            console.log(deltaX, deltaY)
+
+            if (deltaX > 0 || deltaY > 0) this.setState({ mouseMoved: true });
+
+            const element = this.parentRef.current;
+            const parent = element.parentElement.parentElement;
+            this.setState({
+                right: Math.min(parent.clientWidth - element.clientWidth - bounds[2], Math.max(bounds[0], this.state.mouseDownInfo.right - deltaX)),
+                bottom: Math.min(parent.clientHeight - element.clientHeight - bounds[3], Math.max(bounds[1], this.state.mouseDownInfo.bottom - deltaY))
+            });
+        } else {
+            document.removeEventListener("mousemove", this.handleMouseMoveBinded);
+        }
     }
 }
 

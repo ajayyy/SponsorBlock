@@ -316,6 +316,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         <select id={"sponsorTimeCategories" + this.idSuffix}
                                 className="sponsorTimeCategories sponsorTimeEditSelector"
                                 defaultValue={this.segments[0].category}
+                                onMouseDown={(e) => e.stopPropagation()}
                                 ref={this.categoryOptionRef}>
 
                             {this.getCategoryOptions()}
