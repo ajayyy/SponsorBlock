@@ -109,7 +109,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             mouseDownInfo: null,
             mouseMoved: false,
             right: bounds[0],
-            bottom: bounds[1]
+            bottom: props.showInSecondSlot ? 290 : bounds[1]
         }
     }
 
