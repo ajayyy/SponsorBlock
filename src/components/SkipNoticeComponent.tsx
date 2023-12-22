@@ -388,6 +388,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         style={{opacity: this.getSubmissionChooserOpacity(i),
                                 color: this.getSubmissionChooserColor(i)}}
                         onClick={() => this.performAction(i)}
+                        autoFocus={i == 0}
                         key={"submission" + i + this.segments[i].category + this.idSuffix}>
                     {`${(i + 1)}. ${chrome.i18n.getMessage("category_" + 
                         this.segments[i].category)} (${getFormattedTime(this.segments[i].segment[0])})`}
@@ -459,6 +460,15 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         if (this.segments.length === 1) {
             this.performAction(0, action);
         } else {
+            if (this.state.smaller) {
+                this.setState({
+                    smaller: false
+                });
+
+                this.noticeRef.current.fadedMouseEnter();
+                this.noticeRef.current.resetCountdown();
+            }
+
             switch (action ?? this.state.actionState) {
                 case SkipNoticeAction.None:
                     this.resetStateToStart();
