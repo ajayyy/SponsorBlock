@@ -593,11 +593,12 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     saveEditTimes(): void {
         // Rate limit edits
         const timeSinceLastEdit = Date.now() - this.lastEditTime;
-        if (timeSinceLastEdit < 200) {
+        const rateLimitTime = 200;
+        if (timeSinceLastEdit < rateLimitTime) {
             if (!this.editTimeTimeout) {
                 this.editTimeTimeout = setTimeout(() => {
                     this.saveEditTimes();
-                }, timeSinceLastEdit)
+                }, rateLimitTime - timeSinceLastEdit)
             }
 
             return;
