@@ -14,6 +14,7 @@ import PencilSvg from "../svg-icons/pencil_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { generateUserID } from "../../maze-utils/src/setup";
 import { keybindToString } from "../../maze-utils/src/config";
+import { getFormattedTime } from "../../maze-utils/src/formating";
 
 enum SkipButtonState {
     Undo, // Unskip
@@ -388,7 +389,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                                 color: this.getSubmissionChooserColor(i)}}
                         onClick={() => this.performAction(i)}
                         key={"submission" + i + this.segments[i].category + this.idSuffix}>
-                    {(i + 1) + ". " + chrome.i18n.getMessage("category_" + this.segments[i].category)}
+                    {`${(i + 1)}. ${chrome.i18n.getMessage("category_" + 
+                        this.segments[i].category)} (${getFormattedTime(this.segments[i].segment[0])})`}
                 </button>
             );
         }
