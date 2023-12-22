@@ -92,6 +92,7 @@ interface SBConfig {
     skipToHighlightKeybind: Keybind;
     startSponsorKeybind: Keybind;
     submitKeybind: Keybind;
+    actuallySubmitKeybind: Keybind;
     nextChapterKeybind: Keybind;
     previousChapterKeybind: Keybind;
 
@@ -341,6 +342,7 @@ const syncDefaults = {
     skipToHighlightKeybind: { key: "Enter", ctrl: true },
     startSponsorKeybind: { key: ";" },
     submitKeybind: { key: "'" },
+    actuallySubmitKeybind: { key: "'", ctrl: true },
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
     previousChapterKeybind: { key: "ArrowLeft", ctrl: true },
 

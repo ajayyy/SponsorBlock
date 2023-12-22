@@ -52,6 +52,10 @@ class SubmissionNotice {
 
         this.noticeElement.remove();
     }
+
+    submit(): void {
+        this.noticeRef.current?.submit?.();
+    }
 }
 
 export default SubmissionNotice;
