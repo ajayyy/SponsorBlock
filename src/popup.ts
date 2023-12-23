@@ -435,7 +435,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
 
         await utils.wait(() => Config.config !== null, 5000, 10);
-        sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
+        sponsorTimes = Config.local.unsubmittedSegments[currentVideoID] ?? [];
         updateSegmentEditingUI();
 
         messageHandler.sendMessage(
@@ -527,7 +527,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     function startSponsorCallback(response: SponsorStartResponse) {
         // Only update the segments after a segment was created
         if (!response.creatingSegment) {
-            sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] || [];
+            sponsorTimes = Config.local.unsubmittedSegments[currentVideoID] || [];
         }
 
         // Update the UI
@@ -769,7 +769,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     function isCreatingSegment(): boolean {
-        const segments = Config.config.unsubmittedSegments[currentVideoID];
+        const segments = Config.local.unsubmittedSegments[currentVideoID];
         if (!segments) return false;
         const lastSegment = segments[segments.length - 1];
         return lastSegment && lastSegment?.segment?.length !== 2;
@@ -1094,7 +1094,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         for (const key in changes) {
             switch(key) {
                 case "unsubmittedSegments":
-                    sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
+                    sponsorTimes = Config.local.unsubmittedSegments[currentVideoID] ?? [];
                     updateSegmentEditingUI();
                     break;
             }
@@ -1144,7 +1144,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 break;
             case "videoChanged":
                 currentVideoID = msg.videoID
-                sponsorTimes = Config.config.unsubmittedSegments[currentVideoID] ?? [];
+                sponsorTimes = Config.local.unsubmittedSegments[currentVideoID] ?? [];
                 updateSegmentEditingUI();
 
                 if (msg.whitelisted) {

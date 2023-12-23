@@ -24,7 +24,7 @@ class UnsubmittedVideoListComponent extends React.Component<UnsubmittedVideoList
 
     render(): React.ReactElement {
         // Render nothing if there are no unsubmitted segments
-        if (Object.keys(Config.config.unsubmittedSegments).length == 0)
+        if (Object.keys(Config.local.unsubmittedSegments).length == 0)
             return <></>;
 
         return (
@@ -58,7 +58,7 @@ class UnsubmittedVideoListComponent extends React.Component<UnsubmittedVideoList
     getUnsubmittedVideos(): JSX.Element[] {
         const elements: JSX.Element[] = [];
 
-        for (const videoID of Object.keys(Config.config.unsubmittedSegments)) {
+        for (const videoID of Object.keys(Config.local.unsubmittedSegments)) {
             elements.push(
                 <UnsubmittedVideoListItem videoID={videoID} key={videoID}>
                 </UnsubmittedVideoListItem>

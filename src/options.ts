@@ -62,6 +62,10 @@ async function init() {
         Config.configSyncListeners.push(optionsConfigUpdateListener);
     }
 
+    if (!Config.configLocalListeners.includes(optionsLocalConfigUpdateListener)) {
+        Config.configLocalListeners.push(optionsLocalConfigUpdateListener);
+    }
+
     await utils.wait(() => Config.config !== null);
 
     if (!Config.config.darkMode) {
@@ -253,10 +257,10 @@ async function init() {
 
                 if (option == "*")  {
                     const downloadButton = optionsElements[i].querySelector(".download-button");
-                    downloadButton.addEventListener("click", downloadConfig);
+                    downloadButton.addEventListener("click", () => downloadConfig(optionsElements[i]));
 
                     const uploadButton = optionsElements[i].querySelector(".upload-button");
-                    uploadButton.addEventListener("change", (e) => uploadConfig(e));
+                    uploadButton.addEventListener("change", (e) => uploadConfig(e, optionsElements[i] as HTMLElement));
                 }
 
                 const privateTextChangeOption = optionsElements[i].getAttribute("data-sync");
@@ -406,7 +410,11 @@ function optionsConfigUpdateListener(changes: StorageChangesObject) {
         for (const chooser of categoryChoosers) {
             chooser.update();
         }
-    } else if (changes.unsubmittedSegments) {
+    }
+}
+
+function optionsLocalConfigUpdateListener(changes: StorageChangesObject) {
+    if (changes.unsubmittedSegments) {
         for (const chooser of unsubmittedVideos) {
             chooser.update();
         }
@@ -540,6 +548,7 @@ function activatePrivateTextChange(element: HTMLElement) {
 
     const textBox = <HTMLInputElement> element.querySelector(".option-text-box");
     const option = element.getAttribute("data-sync");
+    const optionType = element.getAttribute("data-sync-type");
 
     // See if anything extra must be done
     switch (option) {
@@ -552,7 +561,11 @@ function activatePrivateTextChange(element: HTMLElement) {
     // See if anything extra must be done
     switch (option) {
         case "*": {
-            result = JSON.stringify(Config.cachedSyncConfig);
+            if (optionType === "local") {
+                result = JSON.stringify(Config.cachedLocalStorage);
+            } else {
+                result = JSON.stringify(Config.cachedSyncConfig);
+            }
             break;
         }
     }
@@ -595,6 +608,7 @@ function activatePrivateTextChange(element: HTMLElement) {
  */
 async function setTextOption(option: string, element: HTMLElement, value: string, callbackOnError?: () => void) {
     const confirmMessage = element.getAttribute("data-confirm-message");
+    const optionType = element.getAttribute("data-sync-type");
 
     if (confirmMessage === null || confirm(chrome.i18n.getMessage(confirmMessage))) {
 
@@ -604,10 +618,14 @@ async function setTextOption(option: string, element: HTMLElement, value: string
                 try {
                     const newConfig = JSON.parse(value);
                     for (const key in newConfig) {
-                        Config.config[key] = newConfig[key];
+                        if (optionType === "local") {
+                            Config.local[key] = newConfig[key];
+                        } else {
+                            Config.config[key] = newConfig[key];
+                        }
                     }
 
-                    if (newConfig.supportInvidious) {
+                    if (optionType !== "local" && newConfig.supportInvidious) {
                         const checkbox = <HTMLInputElement> document.querySelector("#support-invidious > div > label > input");
 
                         checkbox.checked = true;
@@ -630,25 +648,27 @@ async function setTextOption(option: string, element: HTMLElement, value: string
     }
 }
 
-function downloadConfig() {
+function downloadConfig(element: Element) {
+    const optionType = element.getAttribute("data-sync-type");
+
     const file = document.createElement("a");
-    const jsonData = JSON.parse(JSON.stringify(Config.cachedSyncConfig));
+    const jsonData = JSON.parse(JSON.stringify(optionType === "local" ? Config.cachedLocalStorage : Config.cachedSyncConfig));
     const dateTimeString = new Date().toJSON().replace("T", "_").replace(/:/g, ".").replace(/.\d+Z/g, "")
     file.setAttribute("href", `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(jsonData))}`);
-    file.setAttribute("download", `SponsorBlockConfig_${dateTimeString}.json`);
+    file.setAttribute("download", `SponsorBlock${optionType === "local" ? "OtherData" : "Config"}_${dateTimeString}.json`);
     document.body.append(file);
     file.click();
     file.remove();
 }
 
-function uploadConfig(e) {
-    if (e.target.files.length == 1) {
-        const file = e.target.files[0];
+function uploadConfig(e: Event, element: HTMLElement) {
+    const target = e.target as HTMLInputElement;
+    if (target.files.length == 1) {
+        const file = target.files[0];
         const reader = new FileReader();
-        const element = document.querySelector("[data-sync='*']") as HTMLElement;
         reader.onload = function(ev) {
             setTextOption("*", element, ev.target.result as string, () => {
-                e.target.value = null;
+                target.value = null;
             });
         };
         reader.readAsText(file);

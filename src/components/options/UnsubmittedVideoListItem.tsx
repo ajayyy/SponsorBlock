@@ -23,7 +23,7 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
     }
 
     render(): React.ReactElement {
-        const segmentCount = Config.config.unsubmittedSegments[this.props.videoID]?.length ?? 0;
+        const segmentCount = Config.local.unsubmittedSegments[this.props.videoID]?.length ?? 0;
 
         return (
             <>
@@ -69,17 +69,17 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
 
     clearSegments(): void {
         if (confirm(chrome.i18n.getMessage("clearThis"))) {
-            delete Config.config.unsubmittedSegments[this.props.videoID];
+            delete Config.local.unsubmittedSegments[this.props.videoID];
             Config.forceSyncUpdate("unsubmittedSegments");
         }
     }
 
     exportSegments(): void {
-        this.copyToClipboard(exportTimes(Config.config.unsubmittedSegments[this.props.videoID]));
+        this.copyToClipboard(exportTimes(Config.local.unsubmittedSegments[this.props.videoID]));
     }
 
     exportSegmentsAsURL(): void {
-        this.copyToClipboard(`https://youtube.com/watch?v=${this.props.videoID}${exportTimesAsHashParam(Config.config.unsubmittedSegments[this.props.videoID])}`)
+        this.copyToClipboard(`https://youtube.com/watch?v=${this.props.videoID}${exportTimesAsHashParam(Config.local.unsubmittedSegments[this.props.videoID])}`)
     }
 
     copyToClipboard(text: string): void {

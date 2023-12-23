@@ -12,8 +12,6 @@ interface SBConfig {
     userID: string;
     isVip: boolean;
     permissions: Record<Category, Permission>;
-    /* Contains unsubmitted segments that the user has created. */
-    unsubmittedSegments: Record<string, SponsorTime[]>;
     defaultCategory: Category;
     renderSegmentsAsChapters: boolean;
     whitelistedChannels: string[];
@@ -142,6 +140,9 @@ interface SBStorage {
     
     // Used when sync storage disbaled
     alreadyInstalled: boolean;
+
+    /* Contains unsubmitted segments that the user has created. */
+    unsubmittedSegments: Record<string, SponsorTime[]>;
 }
 
 class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
@@ -153,12 +154,24 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
             skipCount: this.config.skipCount,
             sponsorTimesContributed: this.config.sponsorTimesContributed
         });
+
+        chrome.storage.local.set({
+            ...this.localDefaults,
+        });
     }
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
     if (config["showZoomToFillError"]) {
         chrome.storage.sync.remove("showZoomToFillError");
+    }
+
+    if (config["unsubmittedSegments"] && Object.keys(config["unsubmittedSegments"]).length > 0) {
+        chrome.storage.local.set({
+            unsubmittedSegments: config["unsubmittedSegments"]
+        }, () => {
+            chrome.storage.sync.remove("unsubmittedSegments");
+        });
     }
 
     if (!config["chapterCategoryAdded"]) {
@@ -172,15 +185,6 @@ function migrateOldSyncFormats(config: SBConfig) {
     
             config.categorySelections = config.categorySelections;
         }
-    }
-
-    if (config["segmentTimes"]) {
-        const unsubmittedSegments = {};
-        for (const item of config["segmentTimes"]) {
-            unsubmittedSegments[item[0]] = item[1];
-        }
-
-        chrome.storage.sync.remove("segmentTimes", () => config.unsubmittedSegments = unsubmittedSegments);
     }
 
     if (config["exclusive_accessCategoryAdded"] !== undefined) {
@@ -268,7 +272,6 @@ const syncDefaults = {
     userID: null,
     isVip: false,
     permissions: {},
-    unsubmittedSegments: {},
     defaultCategory: "chooseACategory" as Category,
     renderSegmentsAsChapters: false,
     whitelistedChannels: [],
@@ -464,7 +467,9 @@ const syncDefaults = {
 const localDefaults = {
     downvotedSegments: {},
     navigationApiAvailable: null,
-    alreadyInstalled: false
+    alreadyInstalled: false,
+
+    unsubmittedSegments: {}
 };
 
 const Config = new ConfigClass(syncDefaults, localDefaults, migrateOldSyncFormats);

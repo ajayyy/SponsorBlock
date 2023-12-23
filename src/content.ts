@@ -307,7 +307,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             }
 
             if (addedSegments) {
-                Config.config.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
+                Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
                 Config.forceSyncUpdate("unsubmittedSegments");
 
                 updateEditButtonsOnPlayer();
@@ -1925,7 +1925,7 @@ function startOrEndTimingNewSegment() {
     }
 
     // Save the newly created segment
-    Config.config.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
+    Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
     Config.forceSyncUpdate("unsubmittedSegments");
 
     // Make sure they know if someone has already submitted something it while they were watching
@@ -1958,11 +1958,11 @@ function cancelCreatingSegment() {
     if (isSegmentCreationInProgress()) {
         if (sponsorTimesSubmitting.length > 1) {  // If there's more than one segment: remove last
             sponsorTimesSubmitting.pop();
-            Config.config.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
+            Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
         } else {  // Otherwise delete the video entry & close submission menu
             resetSponsorSubmissionNotice();
             sponsorTimesSubmitting = [];
-            delete Config.config.unsubmittedSegments[getVideoID()];
+            delete Config.local.unsubmittedSegments[getVideoID()];
         }
         Config.forceSyncUpdate("unsubmittedSegments");
     }
@@ -1972,7 +1972,7 @@ function cancelCreatingSegment() {
 }
 
 function updateSponsorTimesSubmitting(getFromConfig = true) {
-    const segmentTimes = Config.config.unsubmittedSegments[getVideoID()];
+    const segmentTimes = Config.local.unsubmittedSegments[getVideoID()];
 
     //see if this data should be saved in the sponsorTimesSubmitting variable
     if (getFromConfig && segmentTimes != undefined) {
@@ -2102,7 +2102,7 @@ function closeInfoMenu() {
 function clearSponsorTimes() {
     const currentVideoID = getVideoID();
 
-    const sponsorTimes = Config.config.unsubmittedSegments[currentVideoID];
+    const sponsorTimes = Config.local.unsubmittedSegments[currentVideoID];
 
     if (sponsorTimes != undefined && sponsorTimes.length > 0) {
         const confirmMessage = chrome.i18n.getMessage("clearThis") + getSegmentsMessage(sponsorTimes)
@@ -2112,7 +2112,7 @@ function clearSponsorTimes() {
         resetSponsorSubmissionNotice();
 
         //clear the sponsor times
-        delete Config.config.unsubmittedSegments[currentVideoID];
+        delete Config.local.unsubmittedSegments[currentVideoID];
         Config.forceSyncUpdate("unsubmittedSegments");
 
         //clear sponsor times submitting
@@ -2276,7 +2276,7 @@ async function sendSubmitMessage() {
     }
 
     //update sponsorTimes
-    Config.config.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
+    Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
     Config.forceSyncUpdate("unsubmittedSegments");
 
     // Check to see if any of the submissions are below the minimum duration set
@@ -2304,7 +2304,7 @@ async function sendSubmitMessage() {
         stopAnimation();
 
         // Remove segments from storage since they've already been submitted
-        delete Config.config.unsubmittedSegments[getVideoID()];
+        delete Config.local.unsubmittedSegments[getVideoID()];
         Config.forceSyncUpdate("unsubmittedSegments");
 
         const newSegments = sponsorTimesSubmitting;
@@ -2610,7 +2610,7 @@ function checkForPreloadedSegment() {
     }
 
     if (pushed) {
-        Config.config.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
+        Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
         Config.forceSyncUpdate("unsubmittedSegments");
     }
 }

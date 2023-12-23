@@ -512,6 +512,31 @@
 					</div>
 				</div>
 
+				<div data-type="private-text-change" data-sync-type="local" data-sync="*" data-confirm-message="exportOptionsWarning">
+					<h2>__MSG_exportOtherData__</h2>
+					
+					<div>
+						<div class="option-button trigger-button inline">
+							__MSG_exportOptionsCopy__
+						</div>
+						<div class="option-button download-button inline">
+							__MSG_exportOptionsDownload__
+						</div>
+						<label for="importLocalOptions" class="option-button inline">
+							__MSG_exportOptionsUpload__
+						</label>
+						<input id="importLocalOptions" type="file" class="upload-button hidden" />
+					</div>
+	
+					<div class="option-hidden-section hidden spacing indent">	
+						<textarea class="option-text-box" rows="10" style="width:80%"></textarea>
+	
+						<div class="option-button text-change-set">
+							__MSG_setOptions__
+						</div>
+					</div>
+				</div>
+
 				<div data-type="button-press" data-sync="resetToDefault" data-confirm-message="confirmResetToDefault">
 					<div class="option-button trigger-button">
 						__MSG_resetToDefault__

@@ -21,8 +21,8 @@ class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps,
     }
 
     render(): React.ReactElement {
-        const videoCount = Object.keys(Config.config.unsubmittedSegments).length;
-        const segmentCount = Object.values(Config.config.unsubmittedSegments).reduce((acc: number, vid: Array<unknown>) => acc + vid.length, 0);
+        const videoCount = Object.keys(Config.local.unsubmittedSegments).length;
+        const segmentCount = Object.values(Config.local.unsubmittedSegments).reduce((acc: number, vid: Array<unknown>) => acc + vid.length, 0);
 
         return <>
             <div style={{marginBottom: "10px"}}>
@@ -48,7 +48,7 @@ class UnsubmittedVideosComponent extends React.Component<UnsubmittedVideosProps,
 
     clearAllSegments(): void {
         if (confirm(chrome.i18n.getMessage("clearUnsubmittedSegmentsConfirm")))
-            Config.config.unsubmittedSegments = {};
+            Config.local.unsubmittedSegments = {};
     }
 }
 
