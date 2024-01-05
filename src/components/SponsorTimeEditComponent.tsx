@@ -143,7 +143,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             className="sponsorTimeEdit sponsorTimeEditInput"
                             type="text"
                             style={{color: "inherit", backgroundColor: "inherit"}}
-                            value={this.state.sponsorTimeEdits[0]}
+                            value={this.state.sponsorTimeEdits[0] ?? ""}
                             onKeyDown={(e) => e.stopPropagation()}
                             onKeyUp={(e) => e.stopPropagation()}
                             onChange={(e) => this.handleOnChange(0, e, sponsorTime, e.target.value)}
@@ -160,7 +160,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     className="sponsorTimeEdit sponsorTimeEditInput"
                                     type="text"
                                     style={{color: "inherit", backgroundColor: "inherit"}}
-                                    value={this.state.sponsorTimeEdits[1]}
+                                    value={this.state.sponsorTimeEdits[1] ?? ""}
                                     onKeyDown={(e) => e.stopPropagation()}
                                     onKeyUp={(e) => e.stopPropagation()}
                                     onChange={(e) => this.handleOnChange(1, e, sponsorTime, e.target.value)}
@@ -622,6 +622,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 if (addingTime) {
                     this.props.contentContainer().updateEditButtonsOnPlayer();
                 }
+            } else if (startTime !== null) {
+                // Only start time is valid, still an incomplete segment
+                sponsorTimesSubmitting[this.props.index].segment[0] = startTime;
             }
         } else if (this.state.sponsorTimeEdits[1] === null && category === "outro" && !sponsorTimesSubmitting[this.props.index].segment[1]) {
             sponsorTimesSubmitting[this.props.index].segment[1] = this.props.contentContainer().v.duration;
