@@ -455,8 +455,6 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             const deltaX = mouseX - this.state.mouseDownInfo.x;
             const deltaY = mouseY - this.state.mouseDownInfo.y;
 
-            console.log(deltaX, deltaY)
-
             if (deltaX > 0 || deltaY > 0) this.setState({ mouseMoved: true });
 
             const element = this.parentRef.current;
