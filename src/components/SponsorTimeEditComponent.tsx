@@ -640,7 +640,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         sponsorTimesSubmitting[this.props.index].description = description;
 
         Config.local.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimesSubmitting;
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
 
         this.props.contentContainer().updatePreviewBar();
 
@@ -694,7 +694,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         } else {
             delete Config.local.unsubmittedSegments[this.props.contentContainer().sponsorVideoID];
         }
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
 
         this.props.contentContainer().updatePreviewBar();
         

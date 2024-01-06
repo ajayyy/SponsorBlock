@@ -70,7 +70,7 @@ class UnsubmittedVideoListItem extends React.Component<UnsubmittedVideosListItem
     clearSegments(): void {
         if (confirm(chrome.i18n.getMessage("clearThis"))) {
             delete Config.local.unsubmittedSegments[this.props.videoID];
-            Config.forceSyncUpdate("unsubmittedSegments");
+            Config.forceLocalUpdate("unsubmittedSegments");
         }
     }
 

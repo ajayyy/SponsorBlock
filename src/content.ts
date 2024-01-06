@@ -308,7 +308,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
 
             if (addedSegments) {
                 Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
-                Config.forceSyncUpdate("unsubmittedSegments");
+                Config.forceLocalUpdate("unsubmittedSegments");
 
                 updateEditButtonsOnPlayer();
                 updateSponsorTimesSubmitting(false);
@@ -1926,7 +1926,7 @@ function startOrEndTimingNewSegment() {
 
     // Save the newly created segment
     Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
-    Config.forceSyncUpdate("unsubmittedSegments");
+    Config.forceLocalUpdate("unsubmittedSegments");
 
     // Make sure they know if someone has already submitted something it while they were watching
     sponsorsLookup();
@@ -1964,7 +1964,7 @@ function cancelCreatingSegment() {
             sponsorTimesSubmitting = [];
             delete Config.local.unsubmittedSegments[getVideoID()];
         }
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
     }
 
     updateEditButtonsOnPlayer();
@@ -2113,7 +2113,7 @@ function clearSponsorTimes() {
 
         //clear the sponsor times
         delete Config.local.unsubmittedSegments[currentVideoID];
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
 
         //clear sponsor times submitting
         sponsorTimesSubmitting = [];
@@ -2277,7 +2277,7 @@ async function sendSubmitMessage() {
 
     //update sponsorTimes
     Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
-    Config.forceSyncUpdate("unsubmittedSegments");
+    Config.forceLocalUpdate("unsubmittedSegments");
 
     // Check to see if any of the submissions are below the minimum duration set
     if (Config.config.minDuration > 0) {
@@ -2305,7 +2305,7 @@ async function sendSubmitMessage() {
 
         // Remove segments from storage since they've already been submitted
         delete Config.local.unsubmittedSegments[getVideoID()];
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
 
         const newSegments = sponsorTimesSubmitting;
         try {
@@ -2611,7 +2611,7 @@ function checkForPreloadedSegment() {
 
     if (pushed) {
         Config.local.unsubmittedSegments[getVideoID()] = sponsorTimesSubmitting;
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
     }
 }
 

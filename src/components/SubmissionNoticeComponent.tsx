@@ -238,7 +238,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         sponsorTimesSubmitting = sponsorTimesSubmitting.sort((a, b) => a.segment[0] - b.segment[0]);
 
         Config.local.unsubmittedSegments[this.props.contentContainer().sponsorVideoID] = sponsorTimesSubmitting;
-        Config.forceSyncUpdate("unsubmittedSegments");
+        Config.forceLocalUpdate("unsubmittedSegments");
 
         this.forceUpdate();
     }
