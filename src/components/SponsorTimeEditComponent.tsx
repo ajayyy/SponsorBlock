@@ -26,6 +26,7 @@ export interface SponsorTimeEditState {
     editing: boolean;
     sponsorTimeEdits: [string, string];
     selectedCategory: Category;
+    selectedActionType: ActionType;
     description: string;
     suggestedNames: SelectorOption[];
     chapterNameSelectorOpen: boolean;
@@ -68,7 +69,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         this.state = {
             editing: false,
             sponsorTimeEdits: [null, null],
-            selectedCategory: DEFAULT_CATEGORY as Category,
+            selectedCategory: sponsorTime.category ?? DEFAULT_CATEGORY as Category,
+            selectedActionType: sponsorTime.actionType,
             description: sponsorTime.description || "",
             suggestedNames: [],
             chapterNameSelectorOpen: false,
@@ -119,14 +121,14 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const timeDisplayStyle: React.CSSProperties = {};
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
         const segment = sponsorTime.segment;
-        if (sponsorTime?.actionType === ActionType.Full) timeDisplayStyle.display = "none";
+        if (this.state.selectedActionType === ActionType.Full) timeDisplayStyle.display = "none";
         if (this.state.editing) {
             timeDisplay = (
                 <div id={"sponsorTimesContainer" + this.idSuffix}
                     style={timeDisplayStyle}
                     className="sponsorTimeDisplay">
 
-                        {sponsorTime.actionType !== ActionType.Poi ? (
+                        {this.state.selectedActionType !== ActionType.Poi ? (
                             <span id={"startButton" + this.idSuffix}
                                 className="sponsorNowButton"
                                 onClick={() => this.setTimeTo(0, 0)}>
@@ -150,7 +152,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             onWheel={(e) => this.changeTimesWhenScrolling(0, e, sponsorTime)}>
                         </input>
 
-                        {sponsorTime.actionType !== ActionType.Poi ? (
+                        {this.state.selectedActionType !== ActionType.Poi ? (
                             <span>
                                 <span>
                                     {" " + chrome.i18n.getMessage("to") + " "}
@@ -190,7 +192,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     className="sponsorTimeDisplay"
                     onClick={this.toggleEditTime.bind(this)}>
                         {getFormattedTime(segment[0], true) +
-                            ((!isNaN(segment[1]) && sponsorTime.actionType !== ActionType.Poi)
+                            ((!isNaN(segment[1]) && this.state.selectedActionType !== ActionType.Poi)
                                 ? " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segment[1], true) : "")}
                 </div>
             );
@@ -205,9 +207,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 <div style={{position: "relative"}}>
                     <select id={"sponsorTimeCategories" + this.idSuffix}
                         className="sponsorTimeEditSelector sponsorTimeCategories"
-                        defaultValue={sponsorTime.category}
                         ref={this.categoryOptionRef}
                         style={{color: "inherit", backgroundColor: "inherit"}}
+                        value={this.state.selectedCategory}
                         onChange={(event) => this.categorySelectionChange(event)}>
                         {this.getCategoryOptions()}
                     </select>
@@ -230,7 +232,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <div style={{position: "relative"}}>
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
-                            defaultValue={sponsorTime.actionType}
+                            value={this.state.selectedActionType}
                             style={{color: "inherit", backgroundColor: "inherit"}}
                             ref={this.actionTypeOptionRef}
                             onChange={(e) => this.actionTypeSelectionChange(e)}>
@@ -240,7 +242,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 ): ""}
 
                 {/* Chapter Name */}
-                {sponsorTime.actionType === ActionType.Chapter ? (
+                {this.state.selectedActionType=== ActionType.Chapter ? (
                     <div onBlur={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
@@ -277,8 +279,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     {chrome.i18n.getMessage("delete")}
                 </span>
 
-                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) 
-                    && sponsorTime.actionType !== ActionType.Chapter ? (
+                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(this.state.selectedActionType)) 
+                    && this.state.selectedActionType !== ActionType.Chapter ? (
                     <span id={"sponsorTimePreviewButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
@@ -286,7 +288,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
+                {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
                     <span id={"sponsorTimeInspectButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.inspectTime.bind(this)}>
@@ -294,7 +296,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(sponsorTime.actionType)) ? (
+                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(this.state.selectedActionType)) ? (
                     <span id={"sponsorTimePreviewEndButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey, true)}>
@@ -302,7 +304,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </span>
                 ): ""}
 
-                {(!isNaN(segment[1]) && sponsorTime.actionType != ActionType.Full) ? (
+                {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
                     <span id={"sponsorTimeEditButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
                         onClick={this.toggleEditTime.bind(this)}>
@@ -452,6 +454,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     categorySelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         const chosenCategory = event.target.value as Category;
+        this.setState({
+            selectedCategory: chosenCategory
+        });
 
         // See if show more categories was pressed
         if (chosenCategory !== DEFAULT_CATEGORY && !Config.config.categorySelections.some((category) => category.name === chosenCategory)) {
@@ -478,6 +483,10 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
     actionTypeSelectionChange(event: React.ChangeEvent<HTMLSelectElement>): void {
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
+
+        this.setState({
+            selectedActionType: event.target.value as ActionType
+        });
 
         this.handleReplacingLostTimes(sponsorTime.category, event.target.value as ActionType, sponsorTime);
         this.saveEditTimes();
@@ -635,6 +644,9 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
 
         const actionType = this.getNextActionType(category, this.actionTypeOptionRef?.current?.value as ActionType);
         sponsorTimesSubmitting[this.props.index].actionType = actionType;
+        this.setState({
+            selectedActionType: actionType
+        });
 
         const description = actionType === ActionType.Chapter ? this.descriptionOptionRef?.current?.value : "";
         sponsorTimesSubmitting[this.props.index].description = description;
