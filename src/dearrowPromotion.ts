@@ -9,8 +9,10 @@ import { isVisible } from "./utils/pageUtils";
 import { asyncRequestToServer } from "./utils/requests";
 
 let tooltip: Tooltip = null;
+const showDeArrowPromotion = false;
 export async function tryShowingDeArrowPromotion() {
-    if (Config.config.showDeArrowPromotion
+    if (showDeArrowPromotion
+            && Config.config.showDeArrowPromotion
             && !isOnMobileYouTube()
             && !isOnInvidious()
             && document.URL.includes("watch")
