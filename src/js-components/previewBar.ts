@@ -1,5 +1,5 @@
 /*
-Parts of this are inspired from code from VideoSegments, but rewritten and under the LGPLv3 license
+Based on code from
 https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd51f62a4e7fef4d4/segmentsbar/segmentsbar.js
 */
 
