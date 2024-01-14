@@ -224,16 +224,12 @@ class PreviewBar {
         }
     }
 
-    createElement(parent: HTMLElement): void {
-        this.parent = parent;
+    createElement(parent?: HTMLElement): void {
+        if (parent) this.parent = parent;
 
         if (this.onMobileYouTube) {
-            if (parent.classList.contains("progress-bar-background")) {
-                parent.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
-                parent.style.opacity = "1";
-            }
-
             this.container.style.transform = "none";
+            this.container.style.height = "var(--yt-progress-bar-height)";
         } else if (!this.onInvidious) {
             this.container.classList.add("sbNotInvidious");
         }

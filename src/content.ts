@@ -47,6 +47,7 @@ import { cleanPage } from "./utils/pageCleaner";
 import { addCleanupListener } from "../maze-utils/src/cleanup";
 import { hideDeArrowPromotion, tryShowingDeArrowPromotion } from "./dearrowPromotion";
 import { asyncRequestToServer } from "./utils/requests";
+import { isMobileControlsOpen } from "./utils/mobileUtils";
 
 cleanPage();
 
@@ -457,16 +458,13 @@ function handleMobileControlsMutations(): void {
     skipButtonControlBar?.updateMobileControls();
 
     if (previewBar !== null) {
-        if (document.body.contains(previewBar.container)) {
-            const progressBarBackground = document.querySelector<HTMLElement>(".progress-bar-background");
-
-            if (progressBarBackground !== null) {
-                updatePreviewBarPositionMobile(progressBarBackground);
-            }
+        if (!previewBar.parent.contains(previewBar.container) && isMobileControlsOpen()) {
+            previewBar.createElement();
+            updatePreviewBar();
 
             return;
-        } else {
-            // The container does not exist anymore, remove that old preview bar
+        } else if (!previewBar.parent.isConnected) {
+            // The parent does not exist anymore, remove that old preview bar
             previewBar.remove();
             previewBar = null;
         }
@@ -483,12 +481,12 @@ function createPreviewBar(): void {
     if (previewBar !== null) return;
 
     const progressElementOptions = [{
-            // For mobile YouTube
-            selector: ".progress-bar-background",
-            isVisibleCheck: true
-        }, {
             // For new mobile YouTube (#1287)
             selector: ".progress-bar-line",
+            isVisibleCheck: true
+        }, {
+            // For newer mobile YouTube (Jan 2024)
+            selector: ".YtProgressBarProgressBarLine",
             isVisibleCheck: true
         }, {
             // For Desktop YouTube
@@ -1311,15 +1309,6 @@ function startSkipScheduleCheckingForStartSponsors() {
         } else {
             startSponsorSchedule();
         }
-    }
-}
-
-/**
- * This function is required on mobile YouTube and will keep getting called whenever the preview bar disapears
- */
-function updatePreviewBarPositionMobile(parent: HTMLElement) {
-    if (document.getElementById("previewbar") === null) {
-        previewBar.createElement(parent);
     }
 }
 
