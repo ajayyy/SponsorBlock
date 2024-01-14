@@ -2362,16 +2362,10 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 }
 
 function updateActiveSegment(currentTime: number): void {
-    const activeSegments = previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
     chrome.runtime.sendMessage({
         message: "time",
         time: currentTime
     });
-
-    const chapterSegments = activeSegments?.filter((segment) => segment.actionType === ActionType.Chapter);
-    if (chapterSegments?.length > 0) {
-        sendTelemetryAndCount(chapterSegments, 0, true);
-    }
 }
 
 function nextChapter(): void {
