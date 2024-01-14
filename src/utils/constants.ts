@@ -158,3 +158,5 @@ export function getGuidelineInfo(category: Category): TextBox[] {
             }];
     }
 }
+
+export const defaultPreviewTime = 2;

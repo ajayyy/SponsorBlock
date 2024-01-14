@@ -91,6 +91,7 @@ interface SBConfig {
     startSponsorKeybind: Keybind;
     submitKeybind: Keybind;
     actuallySubmitKeybind: Keybind;
+    previewKeybind: Keybind;
     nextChapterKeybind: Keybind;
     previousChapterKeybind: Keybind;
     closeSkipNoticeKeybind: Keybind;
@@ -347,6 +348,7 @@ const syncDefaults = {
     startSponsorKeybind: { key: ";" },
     submitKeybind: { key: "'" },
     actuallySubmitKeybind: { key: "'", ctrl: true },
+    previewKeybind: { key: ";", ctrl: true },
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
     previousChapterKeybind: { key: "ArrowLeft", ctrl: true },
     closeSkipNoticeKeybind: { key: "Backspace" },

@@ -56,6 +56,10 @@ class SubmissionNotice {
     submit(): void {
         this.noticeRef.current?.submit?.();
     }
+
+    scrollToBottom(): void {
+        this.noticeRef.current?.scrollToBottom?.();
+    }
 }
 
 export default SubmissionNotice;

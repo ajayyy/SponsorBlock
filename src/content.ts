@@ -48,6 +48,7 @@ import { addCleanupListener } from "../maze-utils/src/cleanup";
 import { hideDeArrowPromotion, tryShowingDeArrowPromotion } from "./dearrowPromotion";
 import { asyncRequestToServer } from "./utils/requests";
 import { isMobileControlsOpen } from "./utils/mobileUtils";
+import { defaultPreviewTime } from "./utils/constants";
 
 cleanPage();
 
@@ -2230,7 +2231,16 @@ function openSubmissionMenu() {
     if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
         submissionNotice = new SubmissionNotice(skipNoticeContentContainer, sendSubmitMessage);
     }
+}
 
+function previewRecentSegment() {
+    if (sponsorTimesSubmitting !== undefined && sponsorTimesSubmitting.length > 0) {
+        previewTime(sponsorTimesSubmitting[sponsorTimesSubmitting.length - 1].segment[0] - defaultPreviewTime);
+        
+        if (submissionNotice) {
+            submissionNotice.scrollToBottom();
+        }
+    }
 }
 
 function submitSegments() {
@@ -2444,6 +2454,7 @@ function hotkeyListener(e: KeyboardEvent): void {
     const closeSkipNoticeKey = Config.config.closeSkipNoticeKeybind;
     const startSponsorKey = Config.config.startSponsorKeybind;
     const submitKey = Config.config.actuallySubmitKeybind;
+    const previewKey = Config.config.previewKeybind;
     const openSubmissionMenuKey = Config.config.submitKeybind;
     const nextChapterKey = Config.config.nextChapterKeybind;
     const previousChapterKey = Config.config.previousChapterKeybind;
@@ -2474,6 +2485,9 @@ function hotkeyListener(e: KeyboardEvent): void {
         return;
     } else if (keybindEquals(key, openSubmissionMenuKey)) {
         openSubmissionMenu();
+        return;
+    } else if (keybindEquals(key, previewKey)) {
+        previewRecentSegment();
         return;
     } else if (keybindEquals(key, nextChapterKey)) {
         if (sponsorTimes.length > 0) e.stopPropagation();

@@ -8,6 +8,7 @@ import SelectorComponent, { SelectorOption } from "./SelectorComponent";
 import { DEFAULT_CATEGORY } from "../utils/categoryUtils";
 import { getFormattedTime, getFormattedTimeToSeconds } from "../../maze-utils/src/formating";
 import { asyncRequestToServer } from "../utils/requests";
+import { defaultPreviewTime } from "../utils/constants";
 
 export interface SponsorTimeEditProps {
     index: number;
@@ -671,7 +672,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
     previewTime(ctrlPressed = false, shiftPressed = false, skipToEndTime = false): void {
         const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         const index = this.props.index;
-        let seekTime = 2;
+        let seekTime = defaultPreviewTime;
         if (ctrlPressed) seekTime = 0.5;
         if (shiftPressed) seekTime = 0.25;
 
