@@ -34,7 +34,7 @@ export interface SponsorTimeEditState {
     chapterNameSelectorHovering: boolean;
 }
 
-const categoryNamesGrams: string[] = [].concat(...CompileConfig.categoryList.filter((name) => name !== "chapter")
+const categoryNamesGrams: string[] = [].concat(...CompileConfig.categoryList.filter((name) => !["chapter", "intro"].includes(name))
     .map((name) => chrome.i18n.getMessage("category_" + name).split(/\/|\s|-/)));
 
 class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, SponsorTimeEditState> {
