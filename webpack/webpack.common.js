@@ -160,7 +160,7 @@ module.exports = env => {
                             if (path.match(/(\/|\\)_locales(\/|\\).+/)) {
                                 const parsed = JSON.parse(content.toString());
                                 if (env.browser.toLowerCase() === "safari") {
-                                    parsed.fullName.message = parsed.fullName.message.match(/^.+(?= -)/)?.[0] || parsed.fullName.message;
+                                    parsed.fullName.message = parsed.fullName.message.match(/^.+(?= [-–])/)?.[0] || parsed.fullName.message;
                                     if (parsed.fullName.message.length > 50) {
                                         parsed.fullName.message = parsed.fullName.message.slice(0, 47) + "...";
                                     }
