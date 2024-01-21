@@ -158,7 +158,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             });
         }
 
-        Config.forceLocalUpdate("categorySelections");
+        Config.forceSyncUpdate("categorySelections");
     }
 
     getCategorySkipOptions(): JSX.Element[] {
