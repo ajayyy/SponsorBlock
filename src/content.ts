@@ -2266,7 +2266,9 @@ async function sendSubmitMessage() {
         return;
     }
 
-    if (!previewedSegment) {
+    if (!previewedSegment 
+            && !sponsorTimesSubmitting.every((segment) => 
+                [ActionType.Full, ActionType.Chapter, ActionType.Poi].includes(segment.actionType))) {
         alert(`${chrome.i18n.getMessage("previewSegmentRequired")} ${keybindToString(Config.config.previewKeybind)}`);
         return;
     }
