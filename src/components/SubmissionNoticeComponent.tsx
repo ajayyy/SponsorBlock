@@ -69,6 +69,13 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         this.videoObserver.observe(this.contentContainer().v, {
             attributes: true
         });
+
+        // Prevent zooming while changing times
+        document.getElementById("sponsorSkipNoticeMiddleRow" + this.state.idSuffix).addEventListener('wheel', function (event) {
+            if (event.ctrlKey) {
+                event.preventDefault();
+            }
+        }, {passive: false});
     }
 
     componentWillUnmount(): void {
