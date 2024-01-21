@@ -1768,7 +1768,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     newButton.draggable = isDraggable;
     newButtonImage.id = baseID + "Image";
     newButtonImage.className = "playerButtonImage";
-    newButtonImage.src = chrome.extension.getURL("icons/" + imageName);
+    newButtonImage.src = chrome.runtime.getURL("icons/" + imageName);
 
     // Append image to button
     newButton.appendChild(newButtonImage);
@@ -1867,10 +1867,10 @@ function updateEditButtonsOnPlayer(): void {
 
     if (buttonsEnabled) {
         if (creatingSegment) {
-            playerButtons.startSegment.image.src = chrome.extension.getURL("icons/PlayerStopIconSponsorBlocker.svg");
+            playerButtons.startSegment.image.src = chrome.runtime.getURL("icons/PlayerStopIconSponsorBlocker.svg");
             playerButtons.startSegment.button.setAttribute("title", chrome.i18n.getMessage("sponsorEnd"));
         } else {
-            playerButtons.startSegment.image.src = chrome.extension.getURL("icons/PlayerStartIconSponsorBlocker.svg");
+            playerButtons.startSegment.image.src = chrome.runtime.getURL("icons/PlayerStartIconSponsorBlocker.svg");
             playerButtons.startSegment.button.setAttribute("title", chrome.i18n.getMessage("sponsorStart"));
         }
     }
@@ -2048,7 +2048,7 @@ function openInfoMenu() {
             }
         }
     });
-    frame.src = chrome.extension.getURL("popup.html");
+    frame.src = chrome.runtime.getURL("popup.html");
     popup.appendChild(frame);
 
     const elemHasChild = (elements: NodeListOf<HTMLElement>): Element => {
@@ -2274,7 +2274,7 @@ async function sendSubmitMessage() {
     }
 
     // Add loading animation
-    playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
+    playerButtons.submit.image.src = chrome.runtime.getURL("icons/PlayerUploadIconSponsorBlocker.svg");
     const stopAnimation = AnimationUtils.applyLoadingAnimation(playerButtons.submit.button, 1, () => updateEditButtonsOnPlayer());
 
     //check if a sponsor exceeds the duration of the video
@@ -2349,7 +2349,7 @@ async function sendSubmitMessage() {
     } else {
         // Show that the upload failed
         playerButtons.submit.button.style.animation = "unset";
-        playerButtons.submit.image.src = chrome.extension.getURL("icons/PlayerUploadFailedIconSponsorBlocker.svg");
+        playerButtons.submit.image.src = chrome.runtime.getURL("icons/PlayerUploadFailedIconSponsorBlocker.svg");
 
         if (response.status === 403 && response.responseText.startsWith("Submission rejected due to a tip from a moderator.")) {
             openWarningDialog(skipNoticeContentContainer);
@@ -2533,7 +2533,7 @@ function addCSS() {
 
                 fileref.rel = "stylesheet";
                 fileref.type = "text/css";
-                fileref.href = chrome.extension.getURL(file);
+                fileref.href = chrome.runtime.getURL(file);
 
                 head.appendChild(fileref);
             }
