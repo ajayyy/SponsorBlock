@@ -125,7 +125,7 @@ class PreviewBar {
         });
 
         seekBar.addEventListener("mousemove", (e: MouseEvent) => {
-            if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer) return;
+            if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer || !chrome.runtime?.id) return;
 
             let noYoutubeChapters = !!tooltipTextWrapper.querySelector(".ytp-tooltip-text.ytp-tooltip-text-no-title");
             const timeInSeconds = this.decimalToTime((e.clientX - seekBar.getBoundingClientRect().x) / seekBar.clientWidth);
