@@ -2274,7 +2274,8 @@ async function sendSubmitMessage() {
 
     if (!previewedSegment 
             && !sponsorTimesSubmitting.every((segment) => 
-                [ActionType.Full, ActionType.Chapter, ActionType.Poi].includes(segment.actionType))) {
+                [ActionType.Full, ActionType.Chapter, ActionType.Poi].includes(segment.actionType) 
+                    || segment.segment[1] >= getVideo()?.duration)) {
         alert(`${chrome.i18n.getMessage("previewSegmentRequired")} ${keybindToString(Config.config.previewKeybind)}`);
         return;
     }
