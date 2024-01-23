@@ -1986,6 +1986,9 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
         }
 
         if (sponsorTimesSubmitting.length > 0) {
+            // Assume they already previewed a segment
+            previewedSegment = true;
+
             importExistingChapters(true);
         }
     }
