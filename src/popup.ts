@@ -19,7 +19,7 @@ import {
     VoteResponse,
 } from "./messageTypes";
 import { showDonationLink } from "./utils/configUtils";
-import { AnimationUtils } from "./utils/animationUtils";
+import { AnimationUtils } from "../maze-utils/src/animationUtils";
 import { shortCategoryName } from "./utils/categoryUtils";
 import { localizeHtmlPage } from "../maze-utils/src/setup";
 import { exportTimes } from "./utils/exporter";

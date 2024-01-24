@@ -1,7 +1,7 @@
 import Config from "../config";
 import { SegmentUUID, SponsorTime } from "../types";
 import { getSkippingText } from "../utils/categoryUtils";
-import { AnimationUtils } from "../utils/animationUtils";
+import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { keybindToString } from "../../maze-utils/src/config";
 import { isMobileControlsOpen } from "../utils/mobileUtils";
 

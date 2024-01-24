@@ -6,7 +6,7 @@ import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
 import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { VoteResponse } from "../messageTypes";
-import { AnimationUtils } from "../utils/animationUtils";
+import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { Tooltip } from "../render/Tooltip";
 import { getErrorMessage } from "../../maze-utils/src/formating";
 
