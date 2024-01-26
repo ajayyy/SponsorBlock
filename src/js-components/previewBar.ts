@@ -274,6 +274,7 @@ class PreviewBar {
             return (b[1] - b[0]) - (a[1] - a[0]);
         });
         for (const segment of sortedSegments) {
+            if (segment.actionType === ActionType.Chapter) continue;
             const bar = this.createBar(segment);
 
             this.container.appendChild(bar);
@@ -313,7 +314,7 @@ class PreviewBar {
         bar.style.left = this.timeToPercentage(startTime);
 
         if (duration > 0) {
-            bar.style.right = this.timeToPercentage(this.videoDuration - endTime);
+            bar.style.right = this.timeToRightPercentage(endTime);
         }
         if (this.chapterFilter(barSegment) && segment[1] < this.videoDuration) {
             bar.style.marginRight = `${this.chapterMargin}px`;
@@ -884,6 +885,10 @@ class PreviewBar {
 
     timeToPercentage(time: number): string {
         return `${this.timeToDecimal(time) * 100}%`
+    }
+
+    timeToRightPercentage(time: number): string {
+        return `${(1 - this.timeToDecimal(time)) * 100}%`
     }
 
     timeToDecimal(time: number): number {
