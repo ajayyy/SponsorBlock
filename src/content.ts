@@ -454,7 +454,9 @@ function videoIDChange(): void {
 }
 
 function handleMobileControlsMutations(): void {
-    if (!chrome.runtime?.id) return;
+    // Don't update while scrubbing
+    if (!chrome.runtime?.id 
+            || document.querySelector(".YtProgressBarProgressBarPlayheadDotInDragging")) return;
 
     updateVisibilityOfPlayerControlsButton();
 
