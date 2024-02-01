@@ -32,7 +32,7 @@ export class RectangleTooltip {
             maxWidth: "300px",
             backgroundColor: "rgba(28, 28, 28, 0.7)",
             fontSize: "10px",
-            htmlId: "sponsorRectangleTooltip" + props.text;
+            htmlId: "sponsorRectangleTooltip" + props.text,
         };
         // Replace missing props with the default props
         props = { ... defaultProps, ...props };
