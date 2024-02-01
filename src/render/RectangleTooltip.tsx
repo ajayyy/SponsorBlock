@@ -24,16 +24,22 @@ export class RectangleTooltip {
     timer: NodeJS.Timeout;
     
     constructor(props: RectangleTooltipProps) {
-        props.bottomOffset ??= "0px";
-        props.leftOffset ??= "0px";
-        props.maxHeight ??= "100px";
-        props.maxWidth ??= "300px";
-        props.backgroundColor ??= "rgba(28, 28, 28, 0.7)";
+        // Define the default props
+        let defaultProps = {
+            bottomOffset: "0px",
+            leftOffset: "0px",
+            maxHeight: "100px",
+            maxWidth: "300px",
+            backgroundColor: "rgba(28, 28, 28, 0.7)",
+            fontSize: "10px",
+            htmlId: "sponsorRectangleTooltip" + props.text;
+        };
+        // Replace missing props with the default props
+        props = { ... defaultProps, ...props };
+
         this.text = props.text;
-        props.fontSize ??= "10px";
 
         this.container = document.createElement('div');
-        props.htmlId ??= "sponsorRectangleTooltip" + props.text;
         this.container.id = props.htmlId;
         this.container.style.display = "relative";
 
