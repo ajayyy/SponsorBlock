@@ -14,7 +14,7 @@ export interface SubmissionNoticeProps {
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
-    callback: () => unknown;
+    callback: () => Promise<boolean>;
 
     closeListener: () => void;
 }
@@ -239,9 +239,11 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             }
         }
 
-        this.props.callback();
-
-        this.cancel();
+        this.props.callback().then((success) => {
+            if (success) {
+                this.cancel();
+            }
+        });
     }
 
     sortSegments(): void {
