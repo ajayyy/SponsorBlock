@@ -25,7 +25,7 @@ export class RectangleTooltip {
     
     constructor(props: RectangleTooltipProps) {
         // Define the default props
-        let defaultProps = {
+        const defaultProps = {
             bottomOffset: "0px",
             leftOffset: "0px",
             maxHeight: "100px",
