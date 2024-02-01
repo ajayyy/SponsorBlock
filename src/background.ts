@@ -222,27 +222,35 @@ async function submitVote(type: number, UUID: string, category: string) {
 
     const typeSection = (type !== undefined) ? "&type=" + type : "&category=" + category;
 
-    //publish this vote
-    const response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection);
-
-    if (response.ok) {
-        return {
-            successType: 1,
-            responseText: await response.text()
-        };
-    } else if (response.status == 405) {
-        //duplicate vote
-        return {
-            successType: 0,
-            statusCode: response.status,
-            responseText: await response.text()
-        };
-    } else {
-        //error while connect
+    try {
+        const response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection);
+    
+        if (response.ok) {
+            return {
+                successType: 1,
+                responseText: await response.text()
+            };
+        } else if (response.status == 405) {
+            //duplicate vote
+            return {
+                successType: 0,
+                statusCode: response.status,
+                responseText: await response.text()
+            };
+        } else {
+            //error while connect
+            return {
+                successType: -1,
+                statusCode: response.status,
+                responseText: await response.text()
+            };
+        }
+    } catch (e) {
+        console.error(e);
         return {
             successType: -1,
-            statusCode: response.status,
-            responseText: await response.text()
+            statusCode: -1,
+            responseText: ""
         };
     }
 }
