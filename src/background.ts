@@ -160,8 +160,8 @@ async function registerFirefoxContentScript(options: Registration) {
             ids: [options.id]
         }).catch(() => []);
 
-        if (existingRegistrations.length > 0 
-            && existingRegistrations[0].matches.every((match) => options.matches.includes(match))) {
+        if (existingRegistrations && existingRegistrations.length > 0 
+            && options.matches.every((match) => existingRegistrations[0].matches.includes(match))) {
             // No need to register another script, already registered
             return;
         }
