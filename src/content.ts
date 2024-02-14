@@ -772,6 +772,7 @@ function getVirtualTime(): number {
 
 function inMuteSegment(currentTime: number, includeOverlap: boolean): boolean {
     const checkFunction = (segment) => segment.actionType === ActionType.Mute
+        && segment.hidden === SponsorHideType.Visible
         && segment.segment[0] <= currentTime
         && (segment.segment[1] > currentTime || (includeOverlap && segment.segment[1] + 0.02 > currentTime));
     return sponsorTimes?.some(checkFunction) || sponsorTimesSubmitting.some(checkFunction);
