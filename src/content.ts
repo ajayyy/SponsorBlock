@@ -2396,6 +2396,8 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 }
 
 function updateActiveSegment(currentTime: number): void {
+    previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
+
     chrome.runtime.sendMessage({
         message: "time",
         time: currentTime
