@@ -780,6 +780,18 @@ input::-webkit-inner-spin-button {
     line-height: 1.5em;
 }
 
+/* Description on right layout */
+#title > #categoryPillParent {
+	font-size: 2rem;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	line-height: 2.8rem;
+}
+#title > #categoryPillParent > #categoryPill.cbPillOpen {
+	margin-bottom: 5px;
+}
+
 #categoryPillParent {
 	height: fit-content;
     margin-top: auto;

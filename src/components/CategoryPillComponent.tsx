@@ -23,11 +23,13 @@ export interface CategoryPillState {
 }
 
 class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryPillState> {
-
+    mainRef: React.MutableRefObject<HTMLSpanElement>;
     tooltip?: Tooltip;
 
     constructor(props: CategoryPillProps) {
         super(props);
+
+        this.mainRef = React.createRef();
 
         this.state = {
             segment: null,
@@ -43,13 +45,17 @@ class CategoryPillComponent extends React.Component<CategoryPillProps, CategoryP
             color: this.getTextColor(),
         }
 
+        // To be able to remove the margin from the parent
+        this.mainRef?.current?.parentElement?.classList?.toggle("cbPillOpen", this.state.show);
+
         return (
             <span style={style}
                 className={"sponsorBlockCategoryPill" + (!this.props.showTextByDefault ? " sbPillNoText" : "")}
                 aria-label={this.getTitleText()}
                 onClick={(e) => this.toggleOpen(e)}
                 onMouseEnter={() => this.openTooltip()}
-                onMouseLeave={() => this.closeTooltip()}>
+                onMouseLeave={() => this.closeTooltip()}
+                ref={this.mainRef}>
                 
                 <span className="sponsorBlockCategoryPillTitleSection">
                     <img className="sponsorSkipLogo sponsorSkipObject"

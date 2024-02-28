@@ -43,8 +43,14 @@ export class CategoryPill {
     }
 
     private async attachToPageInternal(): Promise<void> {
-        const referenceNode = 
+        let referenceNode = 
             await waitFor(() => getYouTubeTitleNode());
+
+        // Experimental YouTube layout with description on right
+        const isOnDescriptionOnRightLayout = document.querySelector("#title #description");
+        if (isOnDescriptionOnRightLayout) {
+            referenceNode = referenceNode.parentElement;
+        }
 
         if (referenceNode && !referenceNode.contains(this.container)) {
             if (!this.container) {
@@ -91,7 +97,9 @@ export class CategoryPill {
             parent.appendChild(this.container);
 
             referenceNode.prepend(parent);
-            referenceNode.style.display = "flex";
+            if (!isOnDescriptionOnRightLayout) {
+                referenceNode.style.display = "flex";
+            }
         }
     }
 
