@@ -465,8 +465,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             return;
         }
 
-        //if request is undefined, then the page currently being browsed is not YouTube
-        if (request != undefined) {
+        // if request has no field other than message, then the page currently being browsed is not YouTube
+        if (request.found != undefined) {
             //remove loading text
             PageElements.mainControls.style.display = "block";
             if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
@@ -490,6 +490,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
                 PageElements.issueReporterImportExport.classList.remove("hidden");
             }
+        } else {
+            displayNoVideo();
         }
 
         //see if whitelist button should be swapped
