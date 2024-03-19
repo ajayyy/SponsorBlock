@@ -259,11 +259,11 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
         case "refreshSegments":
             // update video on refresh if videoID invalid
             if (!getVideoID()) {
-                checkVideoIDChange().then(() => {
-                    // if still no video ID found, return an empty info to the popup
-                    if (!getVideoID()) chrome.runtime.sendMessage({ message: "infoUpdated" });
-                });
+                checkVideoIDChange();
             }
+            // if popup rescieves no response, or the videoID is invalid,
+            // it will assume the page is not a video page and stop the refresh animation
+            sendResponse({ hasVideo: getVideoID() != null });
             // fetch segments
             sponsorsLookup(false);
 

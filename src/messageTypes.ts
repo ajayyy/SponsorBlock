@@ -103,7 +103,8 @@ export type MessageResponse =
     | IsChannelWhitelistedResponse
     | Record<string, never> // empty object response {}
     | VoteResponse
-    | ImportSegmentsResponse;
+    | ImportSegmentsResponse
+    | RefreshSegmentsResponse;
 
 export interface VoteResponse {
     successType: number;
@@ -113,6 +114,10 @@ export interface VoteResponse {
 
 interface ImportSegmentsResponse {
     importedSegments: SponsorTime[];
+}
+
+export interface RefreshSegmentsResponse {
+    hasVideo: boolean;
 }
 
 export interface TimeUpdateMessage {
