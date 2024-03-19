@@ -748,6 +748,7 @@ class PreviewBar {
 
     updateChapterText(segments: SponsorTime[], submittingSegments: SponsorTime[], currentTime: number): SponsorTime[] {
         if (!Config.config.showSegmentNameInChapterBar
+                || Config.config.disableSkipping
                 || ((!segments || segments.length <= 0) && submittingSegments?.length <= 0)) {
             const chaptersContainer = this.getChaptersContainer();
             if (chaptersContainer) {
