@@ -272,48 +272,49 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     </div>
                 ): ""}
 
-                <br/>
-
                 {/* Editing Tools */}
 
-                <span id={"sponsorTimeDeleteButton" + this.idSuffix}
-                    className="sponsorTimeEditButton"
-                    onClick={this.deleteTime.bind(this)}>
-                    {chrome.i18n.getMessage("delete")}
-                </span>
-
-                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(this.state.selectedActionType)) 
-                    && this.state.selectedActionType !== ActionType.Chapter ? (
-                    <span id={"sponsorTimePreviewButton" + this.idSuffix}
+                <div style={{ marginTop: "3px" }}>
+                    <span id={"sponsorTimeDeleteButton" + this.idSuffix}
                         className="sponsorTimeEditButton"
-                        onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
-                        {chrome.i18n.getMessage("preview")}
+                        onClick={this.deleteTime.bind(this)}>
+                        {chrome.i18n.getMessage("delete")}
                     </span>
-                ): ""}
 
-                {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
-                    <span id={"sponsorTimeInspectButton" + this.idSuffix}
-                        className="sponsorTimeEditButton"
-                        onClick={this.inspectTime.bind(this)}>
-                        {chrome.i18n.getMessage("inspect")}
-                    </span>
-                ): ""}
+                    {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(this.state.selectedActionType)) 
+                        && this.state.selectedActionType !== ActionType.Chapter ? (
+                        <span id={"sponsorTimePreviewButton" + this.idSuffix}
+                            className="sponsorTimeEditButton"
+                            onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey)}>
+                            {chrome.i18n.getMessage("preview")}
+                        </span>
+                    ): ""}
 
-                {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(this.state.selectedActionType)) ? (
-                    <span id={"sponsorTimePreviewEndButton" + this.idSuffix}
-                        className="sponsorTimeEditButton"
-                        onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey, true)}>
-                        {chrome.i18n.getMessage("End")}
-                    </span>
-                ): ""}
+                    {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
+                        <span id={"sponsorTimeInspectButton" + this.idSuffix}
+                            className="sponsorTimeEditButton"
+                            onClick={this.inspectTime.bind(this)}>
+                            {chrome.i18n.getMessage("inspect")}
+                        </span>
+                    ): ""}
 
-                {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
-                    <span id={"sponsorTimeEditButton" + this.idSuffix}
-                        className="sponsorTimeEditButton"
-                        onClick={this.toggleEditTime.bind(this)}>
-                        {this.state.editing ? chrome.i18n.getMessage("save") : chrome.i18n.getMessage("edit")}
-                    </span>
-                ): ""}
+                    {(!isNaN(segment[1]) && ![ActionType.Poi, ActionType.Full].includes(this.state.selectedActionType)) ? (
+                        <span id={"sponsorTimePreviewEndButton" + this.idSuffix}
+                            className="sponsorTimeEditButton"
+                            onClick={(e) => this.previewTime(e.ctrlKey, e.shiftKey, true)}>
+                            {chrome.i18n.getMessage("End")}
+                        </span>
+                    ): ""}
+
+                    {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
+                        <span id={"sponsorTimeEditButton" + this.idSuffix}
+                            className="sponsorTimeEditButton"
+                            onClick={this.toggleEditTime.bind(this)}>
+                            {this.state.editing ? chrome.i18n.getMessage("save") : chrome.i18n.getMessage("edit")}
+                        </span>
+                    ): ""}
+                </div>
+
             </div>
         );
     }
