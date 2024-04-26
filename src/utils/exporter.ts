@@ -53,24 +53,23 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
                 titleRight = removeIf(split2[split2.length - 1], specialCharMatchers)
 
                 const title = titleLeft?.length > titleRight?.length ? titleLeft : titleRight;
-                if (title) {
-                    const determinedCategory = chapterNames.find(c => c.names.includes(title))?.code as Category;
+                const determinedCategory = chapterNames.find(c => c.names.includes(title))?.code as Category;
 
-                    const segment: SponsorTime = {
-                        segment: [startTime, getFormattedTimeToSeconds(match[1])],
-                        category: determinedCategory ?? ("chapter" as Category),
-                        actionType: determinedCategory ? ActionType.Skip : ActionType.Chapter,
-                        description: title,
-                        source: SponsorSourceType.Local,
-                        UUID: generateUserID() as SegmentUUID
-                    };
+                const category = title ? (determinedCategory ?? ("chapter" as Category)) : "chooseACategory" as Category;
+                const segment: SponsorTime = {
+                    segment: [startTime, getFormattedTimeToSeconds(match[1])],
+                    category,
+                    actionType: category === "chapter" ? ActionType.Chapter : ActionType.Skip,
+                    description: category === "chapter" ? title : null,
+                    source: SponsorSourceType.Local,
+                    UUID: generateUserID() as SegmentUUID
+                };
 
-                    if (result.length > 0 && result[result.length - 1].segment[1] === null) {
-                        result[result.length - 1].segment[1] = segment.segment[0];
-                    }
-
-                    result.push(segment);
+                if (result.length > 0 && result[result.length - 1].segment[1] === null) {
+                    result[result.length - 1].segment[1] = segment.segment[0];
                 }
+
+                result.push(segment);
             }
         }
     }
