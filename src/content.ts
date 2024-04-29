@@ -1602,6 +1602,13 @@ function previewTime(time: number, unpause = true) {
 
 //send telemetry and count skip
 function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: number, fullSkip: boolean) {
+    for (const segment of skippingSegments) {
+        if (!previewedSegment && sponsorTimesSubmitting.some((s) => s.segment === segment.segment)) {
+            // Count that as a previewed segment
+            previewedSegment = true;
+        }
+    }
+
     if (!Config.config.trackViewCount || (!Config.config.trackViewCountInPrivate && chrome.extension.inIncognitoContext)) return;
 
     let counted = false;
@@ -1618,9 +1625,6 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
             }
 
             if (fullSkip) asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID);
-        } else if (!previewedSegment && sponsorTimesSubmitting.some((s) => s.segment === segment.segment)) {
-            // Count that as a previewed segment
-            previewedSegment = true;
         }
     }
 }
@@ -1631,8 +1635,9 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 
     // There will only be one submission if it is manual skip
     const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
+    const isSubmittingSegment = sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment);
 
-    if ((autoSkip || sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment))
+    if ((autoSkip || isSubmittingSegment)
             && v.currentTime !== skipTime[1]) {
         switch(skippingSegments[0].actionType) {
             case ActionType.Poi:
@@ -1713,7 +1718,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     }
 
     //send telemetry that a this sponsor was skipped
-    if (autoSkip) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
+    if (autoSkip || isSubmittingSegment) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
 }
 
 function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, unskipTime: number, startReskip: boolean) {
