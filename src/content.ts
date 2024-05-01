@@ -219,7 +219,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 found: sponsorDataFound,
                 status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
-                time: getVideo().currentTime,
+                time: getVideo()?.currentTime ?? 0,
                 onMobileYouTube: isOnMobileYouTube()
             });
 
@@ -1183,7 +1183,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         found: sponsorDataFound,
         status: lastResponseStatus,
         sponsorTimes: sponsorTimes,
-        time: getVideo().currentTime,
+        time: getVideo()?.currentTime ?? 0,
         onMobileYouTube: isOnMobileYouTube()
     });
 
