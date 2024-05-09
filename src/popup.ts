@@ -561,7 +561,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     return true;
                 }
             })
-            .sort((a, b) => a.segment[1] - b.segment[1])
+            .sort((a, b) => b.segment[1] - a.segment[1])
             .sort((a, b) => a.segment[0] - b.segment[0]);
 
         //add them as buttons to the issue reporting container
