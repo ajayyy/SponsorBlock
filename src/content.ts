@@ -34,7 +34,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube } from "../maze-utils/src/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, parseYouTubeVideoIDFromURL, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
@@ -49,6 +49,7 @@ import { hideDeArrowPromotion, tryShowingDeArrowPromotion } from "./dearrowPromo
 import { asyncRequestToServer } from "./utils/requests";
 import { isMobileControlsOpen } from "./utils/mobileUtils";
 import { defaultPreviewTime } from "./utils/constants";
+import { onVideoPage } from "../maze-utils/src/pageInfo";
 
 cleanPage();
 
@@ -72,6 +73,8 @@ let sponsorDataFound = false;
 let sponsorTimes: SponsorTime[] = [];
 let existingChaptersImported = false;
 let importingChaptersWaitingForFocus = false;
+let importingChaptersWaiting = false;
+let triedImportingChapters = false;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
@@ -168,7 +171,6 @@ let submissionNotice: SubmissionNotice = null;
 
 let lastResponseStatus: number;
 let retryCount = 0;
-let lookupWaiting = false;
 
 // Contains all of the functions and variables needed by the skip notice
 const skipNoticeContentContainer: ContentContainer = () => ({
@@ -384,6 +386,7 @@ function resetValues() {
 
     sponsorTimes = [];
     existingChaptersImported = false;
+    triedImportingChapters = false;
     sponsorSkipped = [];
     lastResponseStatus = 0;
     shownSegmentFailedToFetchWarning = false;
@@ -400,8 +403,9 @@ function resetValues() {
     //reset sponsor data found check
     sponsorDataFound = false;
 
-    if (switchingVideos === null) {
-        // When first loading a video, it is not switching videos
+    // When first loading a video, it is not switching videos
+    // Hover play also doesn't need this check
+    if (switchingVideos === null || !onVideoPage()) {
         switchingVideos = false;
     } else {
         switchingVideos = true;
@@ -458,6 +462,17 @@ function videoIDChange(): void {
     updateSponsorTimesSubmitting();
 
     tryShowingDeArrowPromotion().catch(logWarn);
+
+    checkPreviewbarState();
+
+    if (getIsInline()) {
+        // Hover preview progress bar can take some time to appear
+        //   and if the miniplayer is also active then it would 
+        //   attach to the wrong one
+        setTimeout(checkPreviewbarState, 500);
+        setTimeout(checkPreviewbarState, 1000);
+        setTimeout(checkPreviewbarState, 3000);
+    }
 }
 
 function handleMobileControlsMutations(): void {
@@ -486,12 +501,7 @@ function handleMobileControlsMutations(): void {
     createPreviewBar();
 }
 
-/**
- * Creates a preview bar on the video
- */
-function createPreviewBar(): void {
-    if (previewBar !== null) return;
-
+function getPreviewBarAttachElement(): HTMLElement | null {
     const progressElementOptions = [{
             // For new mobile YouTube (#1287)
             selector: ".progress-bar-line",
@@ -501,11 +511,18 @@ function createPreviewBar(): void {
             selector: ".YtProgressBarProgressBarLine",
             isVisibleCheck: true
         }, {
-            // For Desktop YouTube
+            // For desktop YouTube hover play
+            // Priority is given to the hover play progress bar over the main progress bar
+            //   for miniplayer + hover preview case
+            // Second is new hover play selector
+            selector: "#video-preview .ytp-progress-bar, #video-preview .YtProgressBarLineHost",
+            isVisibleCheck: true
+        }, {
+            // For desktop YouTube
             selector: ".ytp-progress-bar",
             isVisibleCheck: true
         }, {
-            // For Desktop YouTube
+            // For desktop YouTube
             selector: ".no-model.cue-range-marker",
             isVisibleCheck: true
         }, {
@@ -528,13 +545,26 @@ function createPreviewBar(): void {
         const el = option.isVisibleCheck ? findValidElement(allElements) : allElements[0];
 
         if (el) {
-            const chapterVote = new ChapterVote(voteAsync);
-            previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), chapterVote, () => importExistingChapters(true));
-
-            updatePreviewBar();
-
-            break;
+            return el;
         }
+    }
+
+    return null;
+}
+
+/**
+ * Creates a preview bar on the video
+ */
+function createPreviewBar(): void {
+    if (previewBar !== null) return;
+
+    const el = getPreviewBarAttachElement();
+
+    if (el) {
+        const chapterVote = new ChapterVote(voteAsync);
+        previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), chapterVote, () => importExistingChapters(true));
+
+        updatePreviewBar();
     }
 }
 
@@ -789,6 +819,8 @@ function inMuteSegment(currentTime: number, includeOverlap: boolean): boolean {
  * This makes sure the videoID is still correct and if the sponsorTime is included
  */
 function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boolean {
+    if (!onVideoPage()) return false;
+
     const currentVideoID = getYouTubeVideoID();
     const recordedVideoID = videoID || getVideoID();
     if (currentVideoID !== recordedVideoID || (sponsorTime
@@ -812,14 +844,16 @@ let playbackRateCheckInterval: NodeJS.Timeout | null = null;
 let lastPlaybackSpeed = 1;
 let setupVideoListenersFirstTime = true;
 function setupVideoListeners() {
+    const video = getVideo();
+
     //wait until it is loaded
-    getVideo().addEventListener('loadstart', videoOnReadyListener)
-    getVideo().addEventListener('durationchange', durationChangeListener);
+    video.addEventListener('loadstart', videoOnReadyListener)
+    video.addEventListener('durationchange', durationChangeListener);
 
     if (setupVideoListenersFirstTime) {
         addCleanupListener(() => {
-            getVideo().removeEventListener('loadstart', videoOnReadyListener);
-            getVideo().removeEventListener('durationchange', durationChangeListener);
+            video.removeEventListener('loadstart', videoOnReadyListener);
+            video.removeEventListener('durationchange', durationChangeListener);
         });
     }
 
@@ -835,18 +869,20 @@ function setupVideoListeners() {
 
             startSponsorSchedule();
         };
-        getVideo().addEventListener('ratechange', rateChangeListener);
+        video.addEventListener('ratechange', rateChangeListener);
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
-        getVideo().addEventListener('videoSpeed_ratechange', rateChangeListener);
+        video.addEventListener('videoSpeed_ratechange', rateChangeListener);
 
         const playListener = () => {
             // If it is not the first event, then the only way to get to 0 is if there is a seek event
             // This check makes sure that changing the video resolution doesn't cause the extension to think it
             // gone back to the begining
-            if (getVideo().readyState <= HTMLMediaElement.HAVE_CURRENT_DATA
-                    && getVideo().currentTime === 0) return;
+            if (video.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA
+                    && video.currentTime === 0) return;
 
+                    
             updateVirtualTime();
+            checkForMiniplayerPlaying();
 
             if (switchingVideos || lastPausedAtZero) {
                 switchingVideos = false;
@@ -862,15 +898,15 @@ function setupVideoListeners() {
             updateAdFlag();
 
             // Make sure it doesn't get double called with the playing event
-            if (Math.abs(lastCheckVideoTime - getVideo().currentTime) > 0.3
-                    || (lastCheckVideoTime !== getVideo().currentTime && Date.now() - lastCheckTime > 2000)) {
+            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
+                    || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
-                lastCheckVideoTime = getVideo().currentTime;
+                lastCheckVideoTime = video.currentTime;
 
                 startSponsorSchedule();
             }
         };
-        getVideo().addEventListener('play', playListener);
+        video.addEventListener('play', playListener);
 
         const playingListener = () => {
             updateVirtualTime();
@@ -878,8 +914,8 @@ function setupVideoListeners() {
 
             if (startedWaiting) {
                 startedWaiting = false;
-                logDebug(`[SB] Playing event after buffering: ${Math.abs(lastCheckVideoTime - getVideo().currentTime) > 0.3
-                    || (lastCheckVideoTime !== getVideo().currentTime && Date.now() - lastCheckTime > 2000)}`);
+                logDebug(`[SB] Playing event after buffering: ${Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
+                    || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)}`);
             }
 
             if (switchingVideos) {
@@ -891,63 +927,63 @@ function setupVideoListeners() {
             }
 
             // Make sure it doesn't get double called with the play event
-            if (Math.abs(lastCheckVideoTime - getVideo().currentTime) > 0.3
-                    || (lastCheckVideoTime !== getVideo().currentTime && Date.now() - lastCheckTime > 2000)) {
+            if (Math.abs(lastCheckVideoTime - video.currentTime) > 0.3
+                    || (lastCheckVideoTime !== video.currentTime && Date.now() - lastCheckTime > 2000)) {
                 lastCheckTime = Date.now();
-                lastCheckVideoTime = getVideo().currentTime;
+                lastCheckVideoTime = video.currentTime;
 
                 startSponsorSchedule();
             }
 
             if (playbackRateCheckInterval) clearInterval(playbackRateCheckInterval);
-            lastPlaybackSpeed = getVideo().playbackRate;
+            lastPlaybackSpeed = video.playbackRate;
 
             // Video speed controller compatibility
             // That extension makes rate change events not propagate
             if (document.body.classList.contains("vsc-initialized")) {
                 playbackRateCheckInterval = setInterval(() => {
-                    if ((!getVideoID() || getVideo().paused) && playbackRateCheckInterval) {
+                    if ((!getVideoID() || video.paused) && playbackRateCheckInterval) {
                         // Video is gone, stop checking
                         clearInterval(playbackRateCheckInterval);
                         return;
                     }
     
-                    if (getVideo().playbackRate !== lastPlaybackSpeed) {
-                        lastPlaybackSpeed = getVideo().playbackRate;
+                    if (video.playbackRate !== lastPlaybackSpeed) {
+                        lastPlaybackSpeed = video.playbackRate;
     
                         rateChangeListener();
                     }
                 }, 2000);
             }
         };
-        getVideo().addEventListener('playing', playingListener);
+        video.addEventListener('playing', playingListener);
         
         const seekingListener = () => {
             lastKnownVideoTime.fromPause = false;
 
-            if (!getVideo().paused){
+            if (!video.paused){
                 // Reset lastCheckVideoTime
                 lastCheckTime = Date.now();
-                lastCheckVideoTime = getVideo().currentTime;
+                lastCheckVideoTime = video.currentTime;
 
                 updateVirtualTime();
                 clearWaitingTime();
 
                 // Sometimes looped videos loop back to almost zero, but not quite
-                if (getVideo().loop && getVideo().currentTime < 0.2) {
+                if (video.loop && video.currentTime < 0.2) {
                     startSponsorSchedule(false, 0);
                 } else {
                     startSponsorSchedule();
                 }
             } else {
-                updateActiveSegment(getVideo().currentTime);
+                updateActiveSegment(video.currentTime);
 
-                if (getVideo().currentTime === 0) {
+                if (video.currentTime === 0) {
                     lastPausedAtZero = true;
                 }
             }
         };
-        getVideo().addEventListener('seeking', seekingListener);
+        video.addEventListener('seeking', seekingListener);
         
         const stoppedPlayback = () => {
             // Reset lastCheckVideoTime
@@ -958,7 +994,7 @@ function setupVideoListeners() {
 
             lastKnownVideoTime.videoTime = null;
             lastKnownVideoTime.preciseTime = null;
-            updateWaitingTime();
+            updateWaitingTime(video);
 
             cancelSponsorSchedule();
         };
@@ -967,26 +1003,26 @@ function setupVideoListeners() {
 
             stoppedPlayback();
         };
-        getVideo().addEventListener('pause', pauseListener);
+        video.addEventListener('pause', pauseListener);
         const waitingListener = () => {
             logDebug("[SB] Not skipping due to buffering");
             startedWaiting = true;
 
             stoppedPlayback();
         };
-        getVideo().addEventListener('waiting', waitingListener);
+        video.addEventListener('waiting', waitingListener);
 
         startSponsorSchedule();
 
         if (setupVideoListenersFirstTime) {
             addCleanupListener(() => {
-                getVideo().removeEventListener('play', playListener);
-                getVideo().removeEventListener('playing', playingListener);
-                getVideo().removeEventListener('seeking', seekingListener);
-                getVideo().removeEventListener('ratechange', rateChangeListener);
-                getVideo().removeEventListener('videoSpeed_ratechange', rateChangeListener);
-                getVideo().removeEventListener('pause', pauseListener);
-                getVideo().removeEventListener('waiting', waitingListener);
+                video.removeEventListener('play', playListener);
+                video.removeEventListener('playing', playingListener);
+                video.removeEventListener('seeking', seekingListener);
+                video.removeEventListener('ratechange', rateChangeListener);
+                video.removeEventListener('videoSpeed_ratechange', rateChangeListener);
+                video.removeEventListener('pause', pauseListener);
+                video.removeEventListener('waiting', waitingListener);
 
                 if (playbackRateCheckInterval) clearInterval(playbackRateCheckInterval);
             });
@@ -1037,8 +1073,8 @@ function updateVirtualTime() {
     }
 }
 
-function updateWaitingTime(): void {
-    lastTimeFromWaitingEvent = getVideo().currentTime;
+function updateWaitingTime(video: HTMLVideoElement): void {
+    lastTimeFromWaitingEvent = video.currentTime;
 }
 
 function clearWaitingTime(): void {
@@ -1072,17 +1108,6 @@ function setupCategoryPill() {
 }
 
 async function sponsorsLookup(keepOldSubmissions = true) {
-    if (lookupWaiting) return;
-    //there is still no video here
-    if (!getVideo()) {
-        lookupWaiting = true;
-        setTimeout(() => {
-            lookupWaiting = false;
-            sponsorsLookup()
-        }, 100);
-        return;
-    }
-
     const categories: string[] = Config.config.categorySelections.map((category) => category.name);
 
     const extraRequestData: Record<string, unknown> = {};
@@ -1159,13 +1184,14 @@ async function sponsorsLookup(keepOldSubmissions = true) {
                 }
             }
 
+            if (!getVideo()) {
+                //there is still no video here
+                await waitFor(() => getVideo(), 5000, 10);
+            }
+
             startSkipScheduleCheckingForStartSponsors();
 
-            //update the preview bar
-            //leave the type blank for now until categories are added
-            if (lastPreviewBarUpdate == getVideoID() || (lastPreviewBarUpdate == null && !isNaN(getVideo().duration))) {
-                //set it now
-                //otherwise the listener can handle it
+            if (!isNaN(getVideo().duration)) {
                 updatePreviewBar();
             }
         } else {
@@ -1193,10 +1219,10 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 }
 
 function importExistingChapters(wait: boolean) {
-    if (!existingChaptersImported) {
+    if (!existingChaptersImported && !importingChaptersWaiting && !triedImportingChapters && onVideoPage() && !isOnMobileYouTube()) {
         const waitCondition = () => getVideo()?.duration && getExistingChapters(getVideoID(), getVideo().duration);
 
-        if (!waitCondition() && wait && !document.hasFocus() && !importingChaptersWaitingForFocus) {
+        if (wait && !document.hasFocus() && !importingChaptersWaitingForFocus && !waitCondition()) {
             importingChaptersWaitingForFocus = true;
             const listener = () => {
                 importExistingChapters(wait);
@@ -1204,14 +1230,17 @@ function importExistingChapters(wait: boolean) {
             };
             window.addEventListener("focus", listener);
         } else {
+            importingChaptersWaiting = true;
             waitFor(waitCondition,
                 wait ? 15000 : 0, 400, (c) => c?.length > 0).then((chapters) => {
+                    importingChaptersWaiting = false;
+
                     if (!existingChaptersImported && chapters?.length > 0) {
                         sponsorTimes = (sponsorTimes ?? []).concat(...chapters).sort((a, b) => a.segment[0] - b.segment[0]);
                         existingChaptersImported = true;
                         updatePreviewBar();
                     }
-                }).catch(() => {}); // eslint-disable-line @typescript-eslint/no-empty-function
+                }).catch(() => { importingChaptersWaiting = false; triedImportingChapters = true; }); // eslint-disable-line @typescript-eslint/no-empty-function
         }
     }
 }
@@ -1409,7 +1438,8 @@ function videoElementChange(newVideo: boolean): void {
             setupSkipButtonControlBar();
             setupCategoryPill();
         }
-    
+        
+        updatePreviewBar();
         checkPreviewbarState();
     
         // Incase the page is still transitioning, check again in a few seconds
@@ -1419,8 +1449,19 @@ function videoElementChange(newVideo: boolean): void {
     })
 }
 
+let checkingPreviewbarAgain = false;
 function checkPreviewbarState(): void {
-    if (previewBar && !utils.findReferenceNode()?.contains(previewBar.container)) {
+    if (!getPreviewBarAttachElement() && !checkingPreviewbarAgain && getVideo() && getVideoID()) {
+        checkingPreviewbarAgain = true;
+        setTimeout(() => {
+            checkingPreviewbarAgain = false;
+            checkPreviewbarState();
+        }, 500);
+
+        return;
+    }
+
+    if (previewBar && !getPreviewBarAttachElement()?.contains(previewBar.container)) {
         previewBar.remove();
         previewBar = null;
     }
@@ -2675,4 +2716,23 @@ function setCategoryColorCSSVariables() {
     css += "}";
 
     styleContainer.innerText = css;
+}
+
+/**
+ * If mini player starts playing, then videoID change might have to be called
+ */
+function checkForMiniplayerPlaying() {
+    const miniPlayerUI = document.querySelector(".miniplayer") as HTMLElement;
+    if (!onVideoPage() && isVisible(miniPlayerUI)) {
+        const videoID = getLastNonInlineVideoID();
+        if (videoID) {
+            triggerVideoIDChange(videoID);
+
+            // treat as if video element has changed
+            const video = miniPlayerUI.querySelector("video") as HTMLVideoElement;
+            if (video && getVideo() !== video) {
+                triggerVideoElementChange(video);
+            }
+        }
+    }
 }

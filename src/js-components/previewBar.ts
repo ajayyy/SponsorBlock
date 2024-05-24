@@ -13,6 +13,7 @@ import { DEFAULT_CATEGORY, shortCategoryName } from "../utils/categoryUtils";
 import { normalizeChapterName } from "../utils/exporter";
 import { findValidElement } from "../../maze-utils/src/dom";
 import { addCleanupListener } from "../../maze-utils/src/cleanup";
+import { isVisible } from "../utils/pageUtils";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -225,10 +226,12 @@ class PreviewBar {
         this.segments = segments ?? [];
         this.videoDuration = videoDuration ?? 0;
 
+
         this.updatePageElements();
         // Sometimes video duration is inaccurate, pull from accessibility info
         const ariaDuration = parseInt(this.progressBar?.getAttribute('aria-valuemax')) ?? 0;
-        if (ariaDuration && Math.abs(ariaDuration - this.videoDuration) > 3) {
+        const multipleActiveVideos = [...document.querySelectorAll("video")].filter((v) => isVisible(v)).length > 1;
+        if (!multipleActiveVideos && ariaDuration && Math.abs(ariaDuration - this.videoDuration) > 3) {
             this.videoDuration = ariaDuration;
         }
 
@@ -236,7 +239,7 @@ class PreviewBar {
     }
 
     private updatePageElements(): void {
-        const allProgressBars = document.querySelectorAll('.ytp-progress-bar') as NodeListOf<HTMLElement>;
+        const allProgressBars = document.querySelectorAll(".ytp-progress-bar") as NodeListOf<HTMLElement>;
         this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
 
         if (this.progressBar) {
