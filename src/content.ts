@@ -511,6 +511,10 @@ function getPreviewBarAttachElement(): HTMLElement | null {
             selector: ".YtProgressBarProgressBarLine",
             isVisibleCheck: true
         }, {
+            // For newer mobile YouTube (May 2024)
+            selector: ".YtmProgressBarProgressBarLine",
+            isVisibleCheck: true
+        }, {
             // For desktop YouTube hover play
             // Priority is given to the hover play progress bar over the main progress bar
             //   for miniplayer + hover preview case
