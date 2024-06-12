@@ -11,6 +11,9 @@
             "https://*.youtube.com/*",
             "https://www.youtube-nocookie.com/embed/*"
         ],
+        "exclude_matches": [
+            "https://accounts.youtube.com/RotateCookiesPage*"
+        ],
         "all_frames": true,
         "js": [
             "./js/content.js"
