@@ -264,7 +264,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             // it will assume the page is not a video page and stop the refresh animation
             sendResponse({ hasVideo: getVideoID() != null });
             // fetch segments
-            sponsorsLookup(false);
+            if (getVideoID()) {
+                sponsorsLookup(false);
+            }
 
             break;
         case "unskip":
@@ -1115,7 +1117,12 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
-    const hashPrefix = (await getHash(getVideoID(), 1)).slice(0, 4) as VideoID & HashedValue;
+    const videoID = getVideoID()
+    if (!videoID) {
+        console.error("[SponsorBlock] Attempted to fetch segments with a null/undefined videoID.");
+        return;
+    }
+    const hashPrefix = (await getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories,
         actionTypes: getEnabledActionTypes(),
