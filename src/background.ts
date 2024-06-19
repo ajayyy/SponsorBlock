@@ -7,10 +7,6 @@ import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "../m
 import { setupTabUpdates } from "../maze-utils/src/tab-updates";
 import { generateUserID } from "../maze-utils/src/setup";
 
-// Make the config public for debugging purposes
-
-window.SB = Config;
-
 import Utils from "./utils";
 import { getExtensionIdsToImportFrom } from "./utils/crossExtension";
 import { isFirefoxOrSafari } from "../maze-utils/src";
