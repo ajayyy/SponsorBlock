@@ -303,7 +303,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.showNoticeAgain.style.display = "unset";
     }
 
-    const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions"];
+    const values = ["userName", "viewCount", "minutesSaved", "vip", "permissions", "segmentCount"];
 
     asyncRequestToServer("GET", "/api/userInfo", {
         publicUserID: await getHash(Config.config.userID),
@@ -336,16 +336,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.sponsorTimesOthersTimeSavedDisplay.innerText = getFormattedHours(minutesSaved);
             }
 
+            //get the amount of times this user has contributed and display it to thank them
+            PageElements.sponsorTimesContributionsDisplay.innerText = Math.max(Config.config.sponsorTimesContributed ?? 0, userInfo.segmentCount).toLocaleString();
+            PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
+
+            PageElements.sponsorTimesOthersTimeSavedEndWord.innerText = chrome.i18n.getMessage("minsLower");
+
             Config.config.isVip = userInfo.vip;
             Config.config.permissions = userInfo.permissions;
         }
     });
 
-    //get the amount of times this user has contributed and display it to thank them
-    if (Config.config.sponsorTimesContributed != undefined) {
-        PageElements.sponsorTimesContributionsDisplay.innerText = Config.config.sponsorTimesContributed.toLocaleString();
-        PageElements.sponsorTimesContributionsContainer.classList.remove("hidden");
-    }
+    
 
     //get the amount of times this user has skipped a sponsor
     if (Config.config.skipCount != undefined) {
