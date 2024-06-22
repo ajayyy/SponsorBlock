@@ -76,6 +76,9 @@
             "https://*.youtube.com/*",
             "https://www.youtube-nocookie.com/embed/*"
         ],
+        "exclude_matches": [
+          "https://accounts.youtube.com/RotateCookiesPage*"
+      ],
         "all_frames": true,
         "run_at": "document_start"
     },
@@ -91,6 +94,9 @@
       "matches": [
           "https://*.youtube.com/*",
           "https://www.youtube-nocookie.com/embed/*"
+      ],
+      "exclude_matches": [
+        "https://accounts.youtube.com/RotateCookiesPage*"
       ],
       "all_frames": true,
       "run_at": "document_start"
