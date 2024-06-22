@@ -10,7 +10,6 @@ export interface ContentContainer {
         sponsorTimes: SponsorTime[];
         sponsorTimesSubmitting: SponsorTime[];
         skipNotices: SkipNotice[];
-        v: HTMLVideoElement;
         sponsorVideoID;
         reskipSponsorTime: (segment: SponsorTime, forceSeek?: boolean) => void;
         updatePreviewBar: () => void;

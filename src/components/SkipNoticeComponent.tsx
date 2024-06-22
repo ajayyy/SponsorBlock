@@ -15,6 +15,7 @@ import { downvoteButtonColor, SkipNoticeAction } from "../utils/noticeUtils";
 import { generateUserID } from "../../maze-utils/src/setup";
 import { keybindToString } from "../../maze-utils/src/config";
 import { getFormattedTime } from "../../maze-utils/src/formating";
+import { getVideo } from "../../maze-utils/src/video";
 
 enum SkipButtonState {
     Undo, // Unskip
@@ -685,7 +686,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     getFullDurationCountdown(index: number): () => number {
         return () => {
             const sponsorTime = this.segments[index];
-            const duration = Math.round((sponsorTime.segment[1] - this.contentContainer().v.currentTime) * (1 / this.contentContainer().v.playbackRate));
+            const duration = Math.round((sponsorTime.segment[1] - getVideo().currentTime) * (1 / getVideo().playbackRate));
 
             return Math.max(duration, Config.config.skipNoticeDuration);
         };

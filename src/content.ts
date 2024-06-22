@@ -177,7 +177,6 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     sponsorTimes,
     sponsorTimesSubmitting,
     skipNotices,
-    v: getVideo(),
     sponsorVideoID: getVideoID(),
     reskipSponsorTime,
     updatePreviewBar,

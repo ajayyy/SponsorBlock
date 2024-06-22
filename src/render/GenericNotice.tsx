@@ -8,6 +8,7 @@ const utils = new Utils();
 import { ContentContainer } from "../types";
 import NoticeTextSelectionComponent from "../components/NoticeTextSectionComponent";
 import { ButtonListener } from "../../maze-utils/src/components/component-types";
+import { getVideo } from "../../maze-utils/src/video";
 
 export interface TextBox {
     icon: string;
@@ -75,7 +76,7 @@ export default class GenericNotice {
                     {options.textBoxes?.length > 0 ?
                         <tr id={"sponsorSkipNoticeMiddleRow" + this.idSuffix}
                             className="sponsorTimeMessagesRow"
-                            style={{maxHeight: this.contentContainer ? (this.contentContainer().v.offsetHeight - 200) + "px" : null}}>
+                            style={{maxHeight: getVideo() ? (getVideo().offsetHeight - 200) + "px" : null}}>
                             <td style={{width: "100%"}}>
                                 {this.getMessageBoxes(this.idSuffix, options.textBoxes)}
                             </td>

@@ -9,6 +9,7 @@ import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SponsorTimeEditComponent from "./SponsorTimeEditComponent";
 import { getGuidelineInfo } from "../utils/constants";
 import { exportTimes } from "../utils/exporter";
+import { getVideo } from "../../maze-utils/src/video";
 
 export interface SubmissionNoticeProps { 
     // Contains functions and variables from the content script needed by the skip notice
@@ -66,7 +67,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
             this.forceUpdate();
         });
 
-        this.videoObserver.observe(this.contentContainer().v, {
+        this.videoObserver.observe(getVideo(), {
             attributes: true
         });
 
@@ -131,7 +132,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
                 {/* Sponsor Time List */}
                 <tr id={"sponsorSkipNoticeMiddleRow" + this.state.idSuffix}
                     className="sponsorTimeMessagesRow"
-                    style={{maxHeight: (this.contentContainer().v?.offsetHeight - 200) + "px"}}
+                    style={{maxHeight: (getVideo()?.offsetHeight - 200) + "px"}}
                     onMouseDown={(e) => e.stopPropagation()}>
                     <td style={{width: "100%"}}>
                         {this.getSponsorTimeMessages()}
@@ -283,7 +284,7 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     categoryChangeListener(index: number, category: Category): void {
         const dialogWidth = this.noticeRef?.current?.getElement()?.current?.offsetWidth;
         if (category !== "chooseACategory" && Config.config.showCategoryGuidelines
-                && this.contentContainer().v.offsetWidth > dialogWidth * 2) {
+                && getVideo().offsetWidth > dialogWidth * 2) {
             const options = {
                 title:  chrome.i18n.getMessage(`category_${category}`),
                 textBoxes: getGuidelineInfo(category),
