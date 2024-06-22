@@ -2,9 +2,6 @@
   "background": {
     "persistent": false
   },
-  "permissions": [
-    "scripting"
-  ],
   "optional_permissions": [
     "webNavigation"
   ]

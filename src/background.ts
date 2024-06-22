@@ -7,13 +7,9 @@ import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "../m
 import { setupTabUpdates } from "../maze-utils/src/tab-updates";
 import { generateUserID } from "../maze-utils/src/setup";
 
-// Make the config public for debugging purposes
-
-window.SB = Config;
-
 import Utils from "./utils";
 import { getExtensionIdsToImportFrom } from "./utils/crossExtension";
-import { isFirefoxOrSafari } from "../maze-utils/src";
+import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { injectUpdatedScripts } from "../maze-utils/src/cleanup";
 import { logWarn } from "./utils/logger";
 import { chromeP } from "../maze-utils/src/browserApi";
@@ -142,9 +138,16 @@ chrome.runtime.onInstalled.addListener(function () {
         }
     }, 1500);
 
-    // Only do this once the old version understands how to clean itself up
-    if (!isFirefoxOrSafari() && chrome.runtime.getManifest().version !== "5.4.13") {
+    if (!isFirefoxOrSafari()) {
         injectUpdatedScripts().catch(logWarn);
+
+        waitFor(() => Config.isReady()).then(() => {
+            if (Config.config.supportInvidious) {
+                injectUpdatedScripts([
+                    utils.getExtraSiteRegistration()
+                ])
+            }
+        }).catch(logWarn);
     }
 });
 

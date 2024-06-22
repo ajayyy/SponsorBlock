@@ -11,9 +11,6 @@
   "background": {
     "persistent": false
   },
-  "permissions": [
-    "scripting"
-  ],
   "browser_action": {
     "default_area": "navbar"
   }

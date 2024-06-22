@@ -127,7 +127,7 @@ setupVideoModule({
         updateVisibilityOfPlayerControlsButton();
     },
     resetValues,
-    documentScript
+    documentScript: chrome.runtime.getManifest().manifest_version === 2 ? documentScript : undefined
 }, () => Config);
 setupThumbnailListener();
 

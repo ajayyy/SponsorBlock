@@ -5,140 +5,6 @@
     "default_locale": "en",
     "description": "__MSG_Description__",
     "homepage_url": "https://sponsor.ajay.app",
-    "content_scripts": [{
-        "run_at": "document_start",
-        "matches": [
-            "https://*.youtube.com/*",
-            "https://www.youtube-nocookie.com/embed/*"
-        ],
-        "exclude_matches": [
-            "https://accounts.youtube.com/RotateCookiesPage*"
-        ],
-        "all_frames": true,
-        "js": [
-            "./js/content.js"
-        ],
-        "css": [
-            "content.css",
-            "shared.css"
-        ]
-    }],
-    "web_accessible_resources": [
-        "icons/LogoSponsorBlocker256px.png",
-        "icons/IconSponsorBlocker256px.png",
-        "icons/PlayerStartIconSponsorBlocker.svg",
-        "icons/PlayerStopIconSponsorBlocker.svg",
-        "icons/PlayerUploadIconSponsorBlocker.svg",
-        "icons/PlayerUploadFailedIconSponsorBlocker.svg",
-        "icons/PlayerCancelSegmentIconSponsorBlocker.svg",
-        "icons/clipboard.svg",
-        "icons/settings.svg",
-        "icons/pencil.svg",
-        "icons/check.svg",
-        "icons/check-smaller.svg",
-        "icons/upvote.png",
-        "icons/downvote.png",
-        "icons/thumbs_down.svg",
-        "icons/thumbs_down_locked.svg",
-        "icons/thumbs_up.svg",
-        "icons/help.svg",
-        "icons/report.png",
-        "icons/close.png",
-        "icons/skipIcon.svg",
-        "icons/refresh.svg",
-        "icons/beep.ogg",
-        "icons/pause.svg",
-        "icons/stop.svg",
-        "icons/skip.svg",
-        "icons/heart.svg",
-        "icons/visible.svg",
-        "icons/not_visible.svg",
-        "icons/sort.svg",
-        "icons/money.svg",
-        "icons/segway.png",
-        "icons/close-smaller.svg",
-        "icons/right-arrow.svg",
-        "icons/campaign.svg",
-        "icons/star.svg",
-        "icons/lightbulb.svg",
-        "icons/bolt.svg",
-        "icons/stopwatch.svg",
-        "icons/music-note.svg",
-        "icons/import.svg",
-        "icons/export.svg",
-        "icons/PlayerInfoIconSponsorBlocker.svg",
-        "icons/PlayerDeleteIconSponsorBlocker.svg",
-        "icons/dearrow.svg",
-        "popup.html",
-        "popup.css",
-        "content.css",
-        "shared.css",
-        "js/document.js",
-        "libs/Source+Sans+Pro.css",
-        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
-        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRduz8A.woff2",
-        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBduz8A.woff2",
-        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBduz8A.woff2"
-    ],
-    "permissions": [
-        "storage",
-        "https://sponsor.ajay.app/*"
-    ],
-    "optional_permissions": [
-        "*://*/*"
-    ],
-    "browser_action": {
-        "default_title": "SponsorBlock",
-        "default_popup": "popup.html",
-        "default_icon": {
-            "16": "icons/IconSponsorBlocker16px.png",
-            "32": "icons/IconSponsorBlocker32px.png",
-            "64": "icons/IconSponsorBlocker64px.png",
-            "128": "icons/IconSponsorBlocker128px.png"
-        },
-        "theme_icons": [
-            {
-                "light": "icons/IconSponsorBlocker16px.png",
-                "dark": "icons/IconSponsorBlocker16px.png",
-                "size": 16
-            },
-            {
-                "light": "icons/IconSponsorBlocker32px.png",
-                "dark": "icons/IconSponsorBlocker32px.png",
-                "size": 32
-            },
-            {
-                "light": "icons/IconSponsorBlocker64px.png",
-                "dark": "icons/IconSponsorBlocker64px.png",
-                "size": 64
-            },
-            {
-                "light": "icons/IconSponsorBlocker128px.png",
-                "dark": "icons/IconSponsorBlocker128px.png",
-                "size": 128
-            },
-            {
-                "light": "icons/IconSponsorBlocker256px.png",
-                "dark": "icons/IconSponsorBlocker256px.png",
-                "size": 256
-            },
-            {
-                "light": "icons/IconSponsorBlocker512px.png",
-                "dark": "icons/IconSponsorBlocker512px.png",
-                "size": 512
-            },
-            {
-                "light": "icons/IconSponsorBlocker1024px.png",
-                "dark": "icons/IconSponsorBlocker1024px.png",
-                "size": 1024
-            }
-        ]
-    }, 
-    "background": {
-        "scripts":[
-        "./js/background.js"
-        ]
-    },
     "icons": {
         "16": "icons/IconSponsorBlocker16px.png",
         "32": "icons/IconSponsorBlocker32px.png",
@@ -148,9 +14,12 @@
         "512": "icons/IconSponsorBlocker512px.png",
         "1024": "icons/IconSponsorBlocker1024px.png"
     },
+    "permissions": [
+        "storage",
+        "scripting"
+    ],
     "options_ui": {
         "page": "options/options.html",
         "open_in_tab": true
-    },
-    "manifest_version": 2
+    }
 }  

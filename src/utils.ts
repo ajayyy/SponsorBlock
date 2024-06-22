@@ -2,7 +2,7 @@ import Config, { VideoDownvotes } from "./config";
 import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType, CategorySkipOption } from "./types";
 
 import { getHash, HashedValue } from "../maze-utils/src/hash";
-import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
+import { waitFor } from "../maze-utils/src";
 import { findValidElementFromSelector } from "../maze-utils/src/dom";
 import { isSafari } from "../maze-utils/src/config";
 
@@ -46,10 +46,7 @@ export default class Utils {
      */
     setupExtraSitePermissions(callback: (granted: boolean) => void): void {
         const permissions = [];
-        if (!isFirefoxOrSafari()) {
-            permissions.push("declarativeContent");
-        }
-        if (!isFirefoxOrSafari() || isSafari()) {
+        if (isSafari()) {
             permissions.push("webNavigation");
         }
 
@@ -67,6 +64,17 @@ export default class Utils {
         });
     }
 
+    getExtraSiteRegistration(): Registration {
+        return {
+            message: "registerContentScript",
+            id: "invidious",
+            allFrames: true,
+            js: this.js,
+            css: this.css,
+            matches: this.getPermissionRegex()
+        };
+    }
+
     /**
      * Registers the content scripts for the extra sites.
      * Will use a different method depending on the browser.
@@ -75,14 +83,7 @@ export default class Utils {
      * For now, it is just SB.config.invidiousInstances.
      */
     setupExtraSiteContentScripts(): void {
-        const registration: Registration = {
-            message: "registerContentScript",
-            id: "invidious",
-            allFrames: true,
-            js: this.js,
-            css: this.css,
-            matches: this.getPermissionRegex()
-        };
+        const registration = this.getExtraSiteRegistration();
 
         if (this.backgroundScriptContainer) {
             this.backgroundScriptContainer.registerFirefoxContentScript(registration);
@@ -104,11 +105,6 @@ export default class Utils {
                 message: "unregisterContentScript",
                 id: id
             });
-        }
-
-        if (!isFirefoxOrSafari() && chrome.declarativeContent) {
-            // Only if we have permission
-            chrome.declarativeContent.onPageChanged.removeRules(["invidious"]);
         }
 
         chrome.permissions.remove({
@@ -135,8 +131,10 @@ export default class Utils {
 
     containsInvidiousPermission(): Promise<boolean> {
         return new Promise((resolve) => {
-            let permissions = ["declarativeContent"];
-            if (isFirefoxOrSafari()) permissions = [];
+            const permissions = [];
+            if (isSafari()) {
+                permissions.push("webNavigation");
+            }
 
             chrome.permissions.contains({
                 origins: this.getPermissionRegex(),
