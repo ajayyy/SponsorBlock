@@ -9,7 +9,7 @@ import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import SponsorTimeEditComponent from "./SponsorTimeEditComponent";
 import { getGuidelineInfo } from "../utils/constants";
 import { exportTimes } from "../utils/exporter";
-import { getVideo } from "../../maze-utils/src/video";
+import { getVideo, isCurrentTimeWrong } from "../../maze-utils/src/video";
 
 export interface SubmissionNoticeProps { 
     // Contains functions and variables from the content script needed by the skip notice
@@ -216,6 +216,11 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
     }
 
     submit(): void {
+        if (isCurrentTimeWrong()) {
+            alert(chrome.i18n.getMessage("submissionFailedServerSideAds"));
+            return;
+        }
+
         // save all items
         for (const ref of this.timeEditRefs) {
             ref.current.saveEditTimes();

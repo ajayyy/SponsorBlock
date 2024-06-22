@@ -34,7 +34,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration } from "../maze-utils/src/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
@@ -1962,6 +1962,7 @@ function getRealCurrentTime(): number {
 }
 
 function startOrEndTimingNewSegment() {
+    verifyCurrentTime();
     const roundedTime = Math.round((getRealCurrentTime() + Number.EPSILON) * 1000) / 1000;
     if (!isSegmentCreationInProgress()) {
         sponsorTimesSubmitting.push({
