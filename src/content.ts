@@ -34,7 +34,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline } from "../maze-utils/src/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
@@ -217,7 +217,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 found: sponsorDataFound,
                 status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
-                time: getVideo()?.currentTime ?? 0,
+                time: getCurrentTime() ?? 0,
                 onMobileYouTube: isOnMobileYouTube()
             });
 
@@ -297,7 +297,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             navigator.clipboard.writeText(request.text);
             break;
         case "importSegments": {
-            const importedSegments = importTimes(request.data, getVideo().duration);
+            const importedSegments = importTimes(request.data, getVideoDuration());
             let addedSegments = false;
             for (const segment of importedSegments) {
                 if (!sponsorTimesSubmitting.some(
@@ -634,7 +634,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
     updateActiveSegment(currentTime);
 
     if (getVideo().paused 
-        || (getVideo().currentTime >= getVideo().duration - 0.01 && getVideo().duration > 1)) return;
+        || (getCurrentTime() >= getVideoDuration() - 0.01 && getVideoDuration() > 1)) return;
     const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
     const currentSkip = skipInfo.array[skipInfo.index];
@@ -684,7 +684,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         let forcedIncludeNonIntersectingSegments = true;
 
         if (incorrectVideoCheck(videoID, currentSkip)) return;
-        forceVideoTime ||= Math.max(getVideo().currentTime, getVirtualTime());
+        forceVideoTime ||= Math.max(getCurrentTime(), getVirtualTime());
 
         if ((shouldSkip(currentSkip) || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment))) {
             if (forceVideoTime >= skipTime[0] - skipBuffer && forceVideoTime < skipTime[1]) {
@@ -716,7 +716,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                     forcedIncludeNonIntersectingSegments = false;
 
                     // Only if not at the end of the video
-                    if (Math.abs(skipTime[1] - getVideo().duration) > endTimeSkipBuffer) {
+                    if (Math.abs(skipTime[1] - getVideoDuration()) > endTimeSkipBuffer) {
                         forcedIncludeIntersectingSegments = true;
                     }
                 }
@@ -747,38 +747,38 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
             // Use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = forceStartIntervalTime || performance.now();
-            const startVideoTime = Math.max(currentTime, getVideo().currentTime);
+            const startVideoTime = Math.max(currentTime, getCurrentTime());
             delayTime = (skipTime?.[0] - startVideoTime) * 1000 * (1 / getVideo().playbackRate);
 
             let startWaitingForReportedTimeToChange = true;
-            const reportedVideoTimeAtStart = getVideo().currentTime;
-            logDebug(`Starting setInterval skipping ${getVideo().currentTime} to skip at ${skipTime[0]}`);
+            const reportedVideoTimeAtStart = getCurrentTime();
+            logDebug(`Starting setInterval skipping ${getCurrentTime()} to skip at ${skipTime[0]}`);
 
             if (currentSkipInterval !== null) clearInterval(currentSkipInterval);
             currentSkipInterval = setInterval(() => {
                 // Estimate delay, but only take the current time right after a change
                 // Current time remains the same for many "frames" on Firefox
                 if (isFirefoxOrSafari() && !lastKnownVideoTime.fromPause && startWaitingForReportedTimeToChange
-                        && reportedVideoTimeAtStart !== getVideo().currentTime) {
+                        && reportedVideoTimeAtStart !== getCurrentTime()) {
                     startWaitingForReportedTimeToChange = false;
-                    const delay = getVirtualTime() - getVideo().currentTime;
+                    const delay = getVirtualTime() - getCurrentTime();
                     if (delay > 0) lastKnownVideoTime.approximateDelay = delay;
                 }
 
                 const intervalDuration = performance.now() - startIntervalTime;
-                if (intervalDuration + skipBuffer * 1000 >= delayTime || getVideo().currentTime >= skipTime[0]) {
+                if (intervalDuration + skipBuffer * 1000 >= delayTime || getCurrentTime() >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
-                    if (!isFirefoxOrSafari() && !getVideo().muted && !inMuteSegment(getVideo().currentTime, true)) {
+                    if (!isFirefoxOrSafari() && !getVideo().muted && !inMuteSegment(getCurrentTime(), true)) {
                         // Workaround for more accurate skipping on Chromium
                         getVideo().muted = true;
                         getVideo().muted = false;
                     }
 
-                    skippingFunction(Math.max(getVideo().currentTime, startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
+                    skippingFunction(Math.max(getCurrentTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
             }, 0);
         } else {
-            logDebug(`Starting timeout to skip ${getVideo().currentTime} to skip at ${skipTime[0]}`);
+            logDebug(`Starting timeout to skip ${getCurrentTime()} to skip at ${skipTime[0]}`);
 
             const offset = (isFirefoxOrSafari() && !isSafari() ? 600 : 150);
             // Schedule for right before to be more precise than normal timeout
@@ -802,10 +802,10 @@ function getVirtualTime(): number {
         (performance.now() - lastKnownVideoTime.preciseTime) * getVideo().playbackRate / 1000 + lastKnownVideoTime.videoTime : null);
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime
-            && Math.abs(virtualTime - getVideo().currentTime) < 0.2 && getVideo().currentTime !== 0) {
-        return Math.max(virtualTime, getVideo().currentTime);
+            && Math.abs(virtualTime - getCurrentTime()) < 0.2 && getCurrentTime() !== 0) {
+        return Math.max(virtualTime, getCurrentTime());
     } else {
-        return getVideo().currentTime;
+        return getCurrentTime();
     }
 }
 
@@ -972,15 +972,15 @@ function setupVideoListeners() {
                 clearWaitingTime();
 
                 // Sometimes looped videos loop back to almost zero, but not quite
-                if (video.loop && video.currentTime < 0.2) {
+                if (video.loop && video.currentTime < 0.2 && getCurrentTime() < 0.2) {
                     startSponsorSchedule(false, 0);
                 } else {
                     startSponsorSchedule();
                 }
             } else {
-                updateActiveSegment(video.currentTime);
+                updateActiveSegment(getCurrentTime());
 
-                if (video.currentTime === 0) {
+                if (getCurrentTime() === 0) {
                     lastPausedAtZero = true;
                 }
             }
@@ -1037,7 +1037,7 @@ function setupVideoListeners() {
 function updateVirtualTime() {
     if (currentVirtualTimeInterval) clearInterval(currentVirtualTimeInterval);
 
-    lastKnownVideoTime.videoTime = getVideo().currentTime;
+    lastKnownVideoTime.videoTime = getCurrentTime();
     lastKnownVideoTime.preciseTime = performance.now();
 
     // If on Firefox, wait for the second time change (time remains fixed for many "frames" for privacy reasons)
@@ -1049,21 +1049,21 @@ function updateVirtualTime() {
 
         currentVirtualTimeInterval = setInterval(() => {
             const frameTime = performance.now() - lastPerformanceTime;
-            if (lastTime !== getVideo().currentTime) {
+            if (lastTime !== getCurrentTime()) {
                 rawCount++;
 
                 // If there is lag, give it another shot at finding a good change time
                 if (frameTime < 20 || rawCount > 30) {
                     count++;
                 }
-                lastTime = getVideo().currentTime;
+                lastTime = getCurrentTime();
             }
 
             if (count > 1) {
                 const delay = lastKnownVideoTime.fromPause && lastKnownVideoTime.approximateDelay ?
                     lastKnownVideoTime.approximateDelay : 0;
 
-                lastKnownVideoTime.videoTime = getVideo().currentTime + delay;
+                lastKnownVideoTime.videoTime = getCurrentTime() + delay;
                 lastKnownVideoTime.preciseTime = performance.now();
 
                 clearInterval(currentVirtualTimeInterval);
@@ -1198,7 +1198,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
             startSkipScheduleCheckingForStartSponsors();
 
-            if (!isNaN(getVideo().duration)) {
+            if (!isNaN(getVideoDuration())) {
                 updatePreviewBar();
             }
         } else {
@@ -1216,7 +1216,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
         found: sponsorDataFound,
         status: lastResponseStatus,
         sponsorTimes: sponsorTimes,
-        time: getVideo()?.currentTime ?? 0,
+        time: getCurrentTime() ?? 0,
         onMobileYouTube: isOnMobileYouTube()
     });
 
@@ -1227,7 +1227,7 @@ async function sponsorsLookup(keepOldSubmissions = true) {
 
 function importExistingChapters(wait: boolean) {
     if (!existingChaptersImported && !importingChaptersWaiting && !triedImportingChapters && onVideoPage() && !isOnMobileYouTube()) {
-        const waitCondition = () => getVideo()?.duration && getExistingChapters(getVideoID(), getVideo().duration);
+        const waitCondition = () => getVideoDuration() && getExistingChapters(getVideoID(), getVideoDuration());
 
         if (wait && !document.hasFocus() && !importingChaptersWaitingForFocus && !waitCondition()) {
             importingChaptersWaitingForFocus = true;
@@ -1311,7 +1311,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         let startingSegmentTime = getStartTimeFromUrl(document.URL) || -1;
         let found = false;
         for (const time of sponsorTimes) {
-            if (time.segment[0] <= getVideo().currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > getVideo().currentTime
+            if (time.segment[0] <= getCurrentTime() && time.segment[0] > startingSegmentTime && time.segment[1] > getCurrentTime()
                     && time.actionType !== ActionType.Poi) {
                         startingSegmentTime = time.segment[0];
                         found = true;
@@ -1320,7 +1320,7 @@ function startSkipScheduleCheckingForStartSponsors() {
         }
         if (!found) {
             for (const time of sponsorTimesSubmitting) {
-                if (time.segment[0] <= getVideo().currentTime && time.segment[0] > startingSegmentTime && time.segment[1] > getVideo().currentTime
+                if (time.segment[0] <= getCurrentTime() && time.segment[0] > startingSegmentTime && time.segment[1] > getCurrentTime()
                         && time.actionType !== ActionType.Poi) {
                             startingSegmentTime = time.segment[0];
                             found = true;
@@ -1331,7 +1331,7 @@ function startSkipScheduleCheckingForStartSponsors() {
 
         // For highlight category
         const poiSegments = sponsorTimes
-            .filter((time) => time.segment[1] > getVideo().currentTime
+            .filter((time) => time.segment[1] > getCurrentTime()
                 && time.actionType === ActionType.Poi && time.hidden === SponsorHideType.Visible)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
@@ -1342,7 +1342,7 @@ function startSkipScheduleCheckingForStartSponsors() {
                     skipTime: time.segment,
                     skippingSegments: [time],
                     openNotice: true,
-                    unskipTime: getVideo().currentTime
+                    unskipTime: getCurrentTime()
                 });
                 if (skipOption === CategorySkipOption.AutoSkip) break;
             }
@@ -1409,8 +1409,8 @@ function updatePreviewBar(): void {
         });
     });
 
-    previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), getVideo()?.duration)
-    if (getVideo()) updateActiveSegment(getVideo().currentTime);
+    previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), getVideoDuration())
+    if (getVideo()) updateActiveSegment(getCurrentTime());
 
     if (Config.config.showTimeWithSkips) {
         const skippedDuration = utils.getTimestampsDuration(previewBarSegments
@@ -1637,7 +1637,7 @@ function getStartTimes(sponsorTimes: SponsorTime[], includeIntersectingSegments:
  */
 function previewTime(time: number, unpause = true) {
     previewedSegment = true;
-    getVideo().currentTime = time;
+    setCurrentTime(time);
 
     // Unpause the video if needed
     if (unpause && getVideo().paused){
@@ -1683,22 +1683,22 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     const isSubmittingSegment = sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment);
 
     if ((autoSkip || isSubmittingSegment)
-            && v.currentTime !== skipTime[1]) {
+            && getCurrentTime() !== skipTime[1]) {
         switch(skippingSegments[0].actionType) {
             case ActionType.Poi:
             case ActionType.Skip: {
                 // Fix for looped videos not working when skipping to the end #426
                 // for some reason you also can't skip to 1 second before the end
-                if (v.loop && v.duration > 1 && skipTime[1] >= v.duration - 1) {
-                    v.currentTime = 0;
-                } else if (v.duration > 1 && skipTime[1] >= v.duration
+                if (v.loop && getVideoDuration() > 1 && skipTime[1] >= getVideoDuration() - 1) {
+                    setCurrentTime(0);
+                } else if (getVideoDuration() > 1 && skipTime[1] >= getVideoDuration()
                         && (navigator.vendor === "Apple Computer, Inc." || isPlayingPlaylist())) {
                     // MacOS will loop otherwise #1027
                     // Sometimes playlists loop too #1804
-                    v.currentTime = v.duration - 0.001;
-                } else if (v.duration > 1 && Math.abs(skipTime[1] - v.duration) < endTimeSkipBuffer
+                    setCurrentTime(getVideoDuration() - 0.001);
+                } else if (getVideoDuration() > 1 && Math.abs(skipTime[1] - getVideoDuration()) < endTimeSkipBuffer
                     && isFirefoxOrSafari() && !isSafari()) {
-                    v.currentTime = v.duration;
+                    setCurrentTime(getVideoDuration());
                 } else {
                     if (inMuteSegment(skipTime[1], true)) {
                         // Make sure not to mute if skipping into a mute segment
@@ -1706,7 +1706,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                         videoMuted = true;
                     }
 
-                    v.currentTime = skipTime[1];
+                    setCurrentTime(skipTime[1]);
                 }
 
                 break;
@@ -1791,7 +1791,7 @@ function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forc
 
     if (forceSeek || segment.actionType === ActionType.Skip) {
         //add a tiny bit of time to make sure it is not skipped again
-        getVideo().currentTime = unskipTime ?? segment.segment[0] + 0.001;
+        setCurrentTime(unskipTime ?? segment.segment[0] + 0.001);
     }
 
 }
@@ -1801,11 +1801,11 @@ function reskipSponsorTime(segment: SponsorTime, forceSeek = false) {
         getVideo().muted = true;
         videoMuted = true;
     } else {
-        const skippedTime = Math.max(segment.segment[1] - getVideo().currentTime, 0);
+        const skippedTime = Math.max(segment.segment[1] - getCurrentTime(), 0);
         const segmentDuration = segment.segment[1] - segment.segment[0];
         const fullSkip = skippedTime / segmentDuration > manualSkipPercentCount;
 
-        getVideo().currentTime = segment.segment[1];
+        setCurrentTime(segment.segment[1]);
         sendTelemetryAndCount([segment], segment.actionType !== ActionType.Chapter ? skippedTime : 0, fullSkip);
         startSponsorSchedule(true, segment.segment[1], false);
     }
@@ -1955,9 +1955,9 @@ function getRealCurrentTime(): number {
 
     if (playButtonSVGData === replaceSVGData) {
         // At the end of the video
-        return getVideo()?.duration;
+        return getVideoDuration();
     } else {
-        return getVideo().currentTime;
+        return getCurrentTime();
     }
 }
 
@@ -2336,7 +2336,7 @@ async function sendSubmitMessage(): Promise<boolean> {
     if (!previewedSegment 
             && !sponsorTimesSubmitting.every((segment) => 
                 [ActionType.Full, ActionType.Chapter, ActionType.Poi].includes(segment.actionType) 
-                    || segment.segment[1] >= getVideo()?.duration
+                    || segment.segment[1] >= getVideoDuration()
                     || segment.segment[0] === 0)) {
         alert(`${chrome.i18n.getMessage("previewSegmentRequired")} ${keybindToString(Config.config.previewKeybind)}`);
         return false;
@@ -2348,8 +2348,8 @@ async function sendSubmitMessage(): Promise<boolean> {
 
     //check if a sponsor exceeds the duration of the video
     for (let i = 0; i < sponsorTimesSubmitting.length; i++) {
-        if (sponsorTimesSubmitting[i].segment[1] > getVideo().duration) {
-            sponsorTimesSubmitting[i].segment[1] = getVideo().duration;
+        if (sponsorTimesSubmitting[i].segment[1] > getVideoDuration()) {
+            sponsorTimesSubmitting[i].segment[1] = getVideoDuration();
         }
     }
 
@@ -2374,7 +2374,7 @@ async function sendSubmitMessage(): Promise<boolean> {
         videoID: getVideoID(),
         userID: Config.config.userID,
         segments: sponsorTimesSubmitting,
-        videoDuration: getVideo()?.duration,
+        videoDuration: getVideoDuration(),
         userAgent: `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
     });
 
@@ -2467,38 +2467,38 @@ function nextChapter(): void {
     const chapters = previewBar.unfilteredChapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
     if (!chapters || chapters.length <= 0) return;
 
-    lastNextChapterKeybind.time = getVideo().currentTime;
+    lastNextChapterKeybind.time = getCurrentTime();
     lastNextChapterKeybind.date = Date.now();
 
-    const nextChapter = chapters.findIndex((time) => time.segment[0] > getVideo().currentTime);
+    const nextChapter = chapters.findIndex((time) => time.segment[0] > getCurrentTime());
     if (nextChapter !== -1) {
-        getVideo().currentTime = chapters[nextChapter].segment[0];
+        setCurrentTime(chapters[nextChapter].segment[0]);
     } else {
-        getVideo().currentTime = getVideo().duration;
+        setCurrentTime(getVideoDuration());
     }
 }
 
 function previousChapter(): void {
     if (Date.now() - lastNextChapterKeybind.date < 3000) {
-        getVideo().currentTime = lastNextChapterKeybind.time;
+        setCurrentTime(lastNextChapterKeybind.time);
         lastNextChapterKeybind.date = 0;
         return;
     }
 
     const chapters = previewBar.unfilteredChapterGroups?.filter((time) => [ActionType.Chapter, null].includes(time.actionType));
     if (!chapters || chapters.length <= 0) {
-        getVideo().currentTime = 0;
+        setCurrentTime(0);
         return;
     }
 
     // subtract 5 seconds to allow skipping back to the previous chapter if close to start of
     // the current one
-    const nextChapter = chapters.findIndex((time) => time.segment[0] > getVideo().currentTime - Math.min(5, time.segment[1] - time.segment[0]));
+    const nextChapter = chapters.findIndex((time) => time.segment[0] > getCurrentTime() - Math.min(5, time.segment[1] - time.segment[0]));
     const previousChapter = nextChapter !== -1 ? (nextChapter - 1) : (chapters.length - 1);
     if (previousChapter !== -1) {
-        getVideo().currentTime = chapters[previousChapter].segment[0];
+        setCurrentTime(chapters[previousChapter].segment[0]);
     } else {
-        getVideo().currentTime = 0;
+        setCurrentTime(0);
     }
 }
 
@@ -2659,7 +2659,7 @@ function showTimeWithoutSkips(skippedDuration: number): void {
         display.appendChild(duration);
     }
 
-    const durationAfterSkips = getFormattedTime(getVideo()?.duration - skippedDuration);
+    const durationAfterSkips = getFormattedTime(getVideoDuration() - skippedDuration);
 
     duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
 }
