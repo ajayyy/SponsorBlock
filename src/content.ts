@@ -139,6 +139,9 @@ let switchingVideos = null;
 let lastCheckTime = 0;
 let lastCheckVideoTime = -1;
 
+// To determine if a video resolution change is happening
+let firstPlay = true;
+
 //is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
 
@@ -381,6 +384,7 @@ function resetValues() {
     lastCheckVideoTime = -1;
     retryCount = 0;
     previewedSegment = false;
+    firstPlay = true;
 
     sponsorTimes = [];
     existingChaptersImported = false;
@@ -633,7 +637,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
     updateActiveSegment(currentTime);
 
-    if (getVideo().paused 
+    if ((getVideo().paused && getCurrentTime() !== 0) // Allow autoplay disabled videos to skip before playing
         || (getCurrentTime() >= getVideoDuration() - 0.01 && getVideoDuration() > 1)) return;
     const skipInfo = getNextSkipIndex(currentTime, includeIntersectingSegments, includeNonIntersectingSegments);
 
@@ -864,6 +868,7 @@ function setupVideoListeners() {
 
         let startedWaiting = false;
         let lastPausedAtZero = true;
+        let lastVideoDataChange = 0;
 
         const rateChangeListener = () => {
             updateVirtualTime();
@@ -876,13 +881,10 @@ function setupVideoListeners() {
         video.addEventListener('videoSpeed_ratechange', rateChangeListener);
 
         const playListener = () => {
-            // If it is not the first event, then the only way to get to 0 is if there is a seek event
-            // This check makes sure that changing the video resolution doesn't cause the extension to think it
-            // gone back to the begining
-            if (video.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA
-                    && video.currentTime === 0) return;
+            // Prevent video resolution changes from causing skips
+            if (!firstPlay && Date.now() - lastVideoDataChange < 200 && video.currentTime === 0) return;
 
-                    
+            firstPlay = false;
             updateVirtualTime();
             checkForMiniplayerPlaying();
 
@@ -1014,6 +1016,24 @@ function setupVideoListeners() {
         };
         video.addEventListener('waiting', waitingListener);
 
+        // When video data is changed
+        const emptyListener = () => {
+            lastVideoDataChange = Date.now();
+
+            if (firstPlay && video.currentTime === 0) {
+                playListener();
+            }
+        }
+        video.addEventListener('emptied', emptyListener);
+
+        // For when autoplay is off to skip before starting playback
+        const metadataLoadedListener = () => {
+            if (firstPlay && getCurrentTime() === 0) {
+                playListener();
+            }
+        }
+        video.addEventListener('loadedmetadata', metadataLoadedListener)
+
         startSponsorSchedule();
 
         if (setupVideoListenersFirstTime) {
@@ -1025,6 +1045,8 @@ function setupVideoListeners() {
                 video.removeEventListener('videoSpeed_ratechange', rateChangeListener);
                 video.removeEventListener('pause', pauseListener);
                 video.removeEventListener('waiting', waitingListener);
+                video.removeEventListener('empty', emptyListener);
+                video.removeEventListener('loadedmetadata', metadataLoadedListener);
 
                 if (playbackRateCheckInterval) clearInterval(playbackRateCheckInterval);
             });
