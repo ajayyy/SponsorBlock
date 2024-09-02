@@ -1,10 +1,15 @@
 import { isOnInvidious, parseYouTubeVideoIDFromURL } from "../../maze-utils/src/video";
 import Config from "../config";
 import { getVideoLabel } from "./videoLabels";
-import { setThumbnailListener } from "../../maze-utils/src/thumbnailManagement";
+import { getThumbnailSelector, setThumbnailListener } from "../../maze-utils/src/thumbnailManagement";
+import { VideoID } from "../types";
+import { getSegmentsForVideo } from "./segmentData";
 
-export async function labelThumbnails(thumbnails: HTMLImageElement[]): Promise<void> {
-    await Promise.all(thumbnails.map((t) => labelThumbnail(t)));
+export async function handleThumbnails(thumbnails: HTMLImageElement[]): Promise<void> {
+    await Promise.all(thumbnails.map((t) => {
+        labelThumbnail(t);
+        setupThumbnailHover(t);
+    }));
 }
 
 export async function labelThumbnail(thumbnail: HTMLImageElement): Promise<HTMLElement | null> {
@@ -13,9 +18,7 @@ export async function labelThumbnail(thumbnail: HTMLImageElement): Promise<HTMLE
         return null;
     }
     
-    const link = (isOnInvidious() ? thumbnail.parentElement : thumbnail.querySelector("#thumbnail")) as HTMLAnchorElement
-    if (!link || link.nodeName !== "A" || !link.href) return null; // no link found
-    const videoID = parseYouTubeVideoIDFromURL(link.href)?.videoID;
+    const videoID = extractVideoID(thumbnail);
     if (!videoID) {
         hideThumbnailLabel(thumbnail);
         return null;
@@ -35,6 +38,37 @@ export async function labelThumbnail(thumbnail: HTMLImageElement): Promise<HTMLE
     overlay.classList.add("sponsorThumbnailLabelVisible");
 
     return overlay;
+}
+
+export async function setupThumbnailHover(thumbnail: HTMLImageElement): Promise<void> {
+    // Cache would be reset every load due to no SPA
+    if (isOnInvidious()) return;
+
+    const mainElement = thumbnail.closest("#dismissible") as HTMLElement;
+    if (mainElement) {
+        mainElement.removeEventListener("mouseenter", thumbnailHoverListener);
+        mainElement.addEventListener("mouseenter", thumbnailHoverListener);
+    }
+}
+
+function thumbnailHoverListener(e: MouseEvent) {
+    if (!chrome.runtime?.id) return;
+
+    const thumbnail = (e.target as HTMLElement).querySelector(getThumbnailSelector()) as HTMLImageElement;
+    if (!thumbnail) return;
+
+    // Pre-fetch data for this video
+    const videoID = extractVideoID(thumbnail);
+    if (videoID) {
+        void getSegmentsForVideo(videoID, false);
+    }
+}
+
+function extractVideoID(thumbnail: HTMLImageElement): VideoID | null {
+    const link = (isOnInvidious() ? thumbnail.parentElement : thumbnail.querySelector("#thumbnail")) as HTMLAnchorElement
+    if (!link || link.nodeName !== "A" || !link.href) return null; // no link found
+
+    return parseYouTubeVideoIDFromURL(link.href)?.videoID;
 }
 
 function getOldThumbnailLabel(thumbnail: HTMLImageElement): HTMLElement | null {
@@ -109,7 +143,7 @@ function insertSBIconDefinition() {
 }
 
 export function setupThumbnailListener(): void {
-    setThumbnailListener(labelThumbnails, () => {
+    setThumbnailListener(handleThumbnails, () => {
         insertSBIconDefinition();
     }, () => Config.isReady());
 }

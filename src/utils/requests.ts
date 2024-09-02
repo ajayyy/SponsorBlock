@@ -23,8 +23,6 @@ export function asyncRequestToCustomServer(type: string, url: string, data = {},
 export async function asyncRequestToServer(type: string, address: string, data = {}, headers = {}): Promise<FetchResponse> {
     const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
-    console.log(address, headers)
-
     return await (asyncRequestToCustomServer(type, serverAddress + address, data, headers));
 }
 
