@@ -1,6 +1,7 @@
 import Config from "./config";
 import {
     ActionType,
+    ActionTypes,
     Category,
     CategorySkipOption,
     ChannelIDInfo,
@@ -17,6 +18,7 @@ import {
     VideoInfo,
 } from "./types";
 import Utils from "./utils";
+import * as CompileConfig from "../config.json";
 import PreviewBar, { PreviewBarSegment } from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
@@ -1145,19 +1147,23 @@ async function sponsorsLookup(keepOldSubmissions = true) {
     }
     const hashPrefix = (await getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
     const response = await asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
-        categories,
-        actionTypes: getEnabledActionTypes(),
-        userAgent: `${chrome.runtime.id}`,
+        categories: CompileConfig.categoryList,
+        actionTypes: ActionTypes,
         ...extraRequestData
+    }, {
+        "X-CLIENT-NAME": `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
     });
 
     // store last response status
     lastResponseStatus = response?.status;
 
     if (response?.ok) {
+        const enabledActionTypes = getEnabledActionTypes();
+
         const receivedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === getVideoID())
                     ?.map((video) => video.segments)?.[0]
+                    ?.filter((segment) => enabledActionTypes.includes(segment.actionType) && categories.includes(segment.category))
                     ?.map((segment) => ({
                         ...segment,
                         source: SponsorSourceType.Server

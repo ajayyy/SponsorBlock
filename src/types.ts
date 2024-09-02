@@ -56,7 +56,13 @@ export enum ActionType {
     Poi = "poi"
 }
 
-export const ActionTypes = [ActionType.Skip, ActionType.Mute];
+export const ActionTypes = [
+    ActionType.Skip,
+    ActionType.Mute,
+    ActionType.Chapter,
+    ActionType.Full,
+    ActionType.Poi
+];
 
 export type SegmentUUID = string  & { __segmentUUIDBrand: unknown };
 export type Category = string & { __categoryBrand: unknown };
