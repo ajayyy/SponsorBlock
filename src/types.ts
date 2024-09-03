@@ -1,6 +1,7 @@
 import SubmissionNotice from "./render/SubmissionNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
 import SkipNotice from "./render/SkipNotice";
+import UpcomingNotice from "./render/UpcomingNotice";
 
 export interface ContentContainer {
     (): {
@@ -10,6 +11,7 @@ export interface ContentContainer {
         sponsorTimes: SponsorTime[];
         sponsorTimesSubmitting: SponsorTime[];
         skipNotices: SkipNotice[];
+        upcomingNotices: UpcomingNotice[];
         sponsorVideoID;
         reskipSponsorTime: (segment: SponsorTime, forceSeek?: boolean) => void;
         updatePreviewBar: () => void;
