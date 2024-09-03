@@ -2597,6 +2597,9 @@ function hotkeyListener(e: KeyboardEvent): void {
     } else if (keybindEquals(key, closeSkipNoticeKey)) {
         for (let i = 0; i < skipNotices.length; i++) {
             skipNotices.pop().close();
+        }
+        
+        for (let i = 0; i < upcomingNotices.length; i++) {
             upcomingNotices.pop().close();
         }
 
