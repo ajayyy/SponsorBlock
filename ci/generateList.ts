@@ -7,8 +7,7 @@ This file should not be shipped with the extension
 /*
 Criteria for inclusion:
 Invidious
-- 30d uptime >= 90%
-- available for at least 80/90 days
+- uptime >= 80%
 - must have been up for at least 90 days
 - HTTPS only
 - url includes name (this is to avoid redirects)
