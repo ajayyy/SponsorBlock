@@ -20,6 +20,7 @@ import Utils from "./utils";
 import PreviewBar, { PreviewBarSegment } from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import UpcomingNotice from "./render/UpcomingNotice";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
@@ -78,6 +79,7 @@ let importingChaptersWaiting = false;
 let triedImportingChapters = false;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
+const upcomingNotices: UpcomingNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
 let retryFetchTimeout: NodeJS.Timeout = null;
 let shownSegmentFailedToFetchWarning = false;
@@ -108,6 +110,7 @@ const lastNextChapterKeybind = {
 let currentSkipSchedule: NodeJS.Timeout = null;
 let currentSkipInterval: NodeJS.Timeout = null;
 let currentVirtualTimeInterval: NodeJS.Timeout = null;
+let currentUpcomingSchedule: NodeJS.Timeout = null;
 
 /** Has the sponsor been skipped */
 let sponsorSkipped: boolean[] = [];
@@ -181,6 +184,7 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     sponsorTimes,
     sponsorTimesSubmitting,
     skipNotices,
+    upcomingNotices,
     sponsorVideoID: getVideoID(),
     reskipSponsorTime,
     updatePreviewBar,
@@ -422,6 +426,10 @@ function resetValues() {
         skipNotices.pop()?.close();
     }
 
+    for (let i = 0; i < upcomingNotices.length; i++) {
+        upcomingNotices.pop()?.close();
+    }
+
     hideDeArrowPromotion();
 }
 
@@ -606,6 +614,11 @@ function cancelSponsorSchedule(): void {
         clearInterval(currentSkipInterval);
         currentSkipInterval = null;
     }
+
+    if (currentUpcomingSchedule !== null) {
+        clearTimeout(currentUpcomingSchedule);
+        currentUpcomingSchedule = null;
+    }
 }
 
 /**
@@ -787,7 +800,17 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
             const offset = (isFirefoxOrSafari() && !isSafari() ? 600 : 150);
             // Schedule for right before to be more precise than normal timeout
-            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - offset));
+            const offsetDelayTime = Math.max(0, delayTime - offset);
+            currentSkipSchedule = setTimeout(skippingFunction, offsetDelayTime);
+
+            // Show the notice only if the segment hasn't already started
+            if (!Config.config.dontShowUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0]) {
+                const maxPopupTime = 3000;
+                const timeUntilPopup = Math.max(0, offsetDelayTime - maxPopupTime);
+                const popupTime = offsetDelayTime - timeUntilPopup;
+                const autoSkip = shouldAutoSkip(skippingSegments[0])
+                currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
+            }
         }
     }
 }
@@ -1778,6 +1801,19 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
     activeSkipKeybindElement = newSkipNotice;
 }
 
+function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number, autoSkip: boolean) {
+    for (const upcomingNotice of upcomingNotices) {
+        if (skippingSegments.length === upcomingNotice.segments.length
+                && skippingSegments.every((segment) => upcomingNotice.segments.some((s) => s.UUID === segment.UUID))) {
+            // Upcoming notice already exists
+            return;
+        }
+    }
+
+    const newUpcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft, autoSkip);
+    upcomingNotices.push(newUpcomingNotice);
+}
+
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false) {
     if (segment.actionType === ActionType.Mute) {
         getVideo().muted = false;
@@ -2555,6 +2591,10 @@ function hotkeyListener(e: KeyboardEvent): void {
     } else if (keybindEquals(key, closeSkipNoticeKey)) {
         for (let i = 0; i < skipNotices.length; i++) {
             skipNotices.pop().close();
+        }
+        
+        for (let i = 0; i < upcomingNotices.length; i++) {
+            upcomingNotices.pop().close();
         }
 
         return;
