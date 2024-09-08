@@ -2,7 +2,6 @@ import * as React from "react";
 import { createRoot } from 'react-dom/client';
 
 import Config, { generateDebugDetails } from "./config";
-import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
 
 // Make the config public for debugging purposes
