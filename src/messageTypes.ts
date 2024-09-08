@@ -17,7 +17,8 @@ interface DefaultMessage {
         | "isChannelWhitelisted"
         | "submitTimes"
         | "refreshSegments"
-        | "closePopup";
+        | "closePopup"
+        | "getLogs";
 }
 
 interface BoolValueMessage {
@@ -104,7 +105,8 @@ export type MessageResponse =
     | Record<string, never> // empty object response {}
     | VoteResponse
     | ImportSegmentsResponse
-    | RefreshSegmentsResponse;
+    | RefreshSegmentsResponse
+    | LogResponse;
 
 export interface VoteResponse {
     successType: number;
@@ -118,6 +120,11 @@ interface ImportSegmentsResponse {
 
 export interface RefreshSegmentsResponse {
     hasVideo: boolean;
+}
+
+export interface LogResponse {
+    debug: string[];
+    warn: string[];
 }
 
 export interface TimeUpdateMessage {

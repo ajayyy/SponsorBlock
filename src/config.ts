@@ -478,3 +478,25 @@ const localDefaults = {
 
 const Config = new ConfigClass(syncDefaults, localDefaults, migrateOldSyncFormats);
 export default Config;
+
+export function generateDebugDetails(): string {
+    // Build output debug information object
+    const output = {
+        debug: {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            extensionVersion: chrome.runtime.getManifest().version
+        },
+        config: JSON.parse(JSON.stringify(Config.cachedSyncConfig)) // Deep clone config object
+    };
+
+    // Sanitise sensitive user config values
+    delete output.config.userID;
+    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress)
+        ? "Default server address" : "Custom server address";
+    output.config.invidiousInstances = output.config.invidiousInstances.length;
+    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+
+    return JSON.stringify(output, null, 4);
+}

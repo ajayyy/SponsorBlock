@@ -346,6 +346,12 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 metaKey: request.metaKey
             }));
             break;
+        case "getLogs":
+            sendResponse({
+                debug: window["SBLogs"].debug,
+                warn: window["SBLogs"].warn
+            });
+            break;
     }
 
     sendResponse({});
