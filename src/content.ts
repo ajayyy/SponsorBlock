@@ -2571,6 +2571,8 @@ function hotkeyListener(e: KeyboardEvent): void {
         submitSegments();
         return;
     } else if (keybindEquals(key, openSubmissionMenuKey)) {
+        e.preventDefault();
+
         openSubmissionMenu();
         return;
     } else if (keybindEquals(key, previewKey)) {
