@@ -512,12 +512,8 @@ function handleMobileControlsMutations(): void {
 
 function getPreviewBarAttachElement(): HTMLElement | null {
     const progressElementOptions = [{
-            // For new mobile YouTube (#1287)
-            selector: ".progress-bar-line",
-            isVisibleCheck: true
-        }, {
-            // For newer mobile YouTube (Jan 2024)
-            selector: ".YtProgressBarProgressBarLine",
+            // For newer mobile YouTube (Sept 2024)
+            selector: ".YtChapteredProgressBarHost",
             isVisibleCheck: true
         }, {
             // For newer mobile YouTube (May 2024)

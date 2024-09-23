@@ -197,7 +197,6 @@ class PreviewBar {
 
         if (this.onMobileYouTube) {
             this.container.style.transform = "none";
-            this.container.style.height = "var(--yt-progress-bar-height)";
         } else if (!this.onInvidious) {
             this.container.classList.add("sbNotInvidious");
         }
