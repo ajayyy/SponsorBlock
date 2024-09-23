@@ -92,8 +92,6 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
         }
     }
 
-    console.log(chapters)
-
     return chapters;
 }
 
