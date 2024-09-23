@@ -75,7 +75,6 @@ let sponsorTimes: SponsorTime[] = [];
 let existingChaptersImported = false;
 let importingChaptersWaitingForFocus = false;
 let importingChaptersWaiting = false;
-let triedImportingChapters = false;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let activeSkipKeybindElement: ToggleSkippable = null;
@@ -395,7 +394,6 @@ function resetValues() {
 
     sponsorTimes = [];
     existingChaptersImported = false;
-    triedImportingChapters = false;
     sponsorSkipped = [];
     lastResponseStatus = 0;
     shownSegmentFailedToFetchWarning = false;
@@ -1234,7 +1232,7 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
 }
 
 function importExistingChapters(wait: boolean) {
-    if (!existingChaptersImported && !importingChaptersWaiting && !triedImportingChapters && onVideoPage() && !isOnMobileYouTube()) {
+    if (!existingChaptersImported && !importingChaptersWaiting && onVideoPage() && !isOnMobileYouTube()) {
         const waitCondition = () => getVideoDuration() && getExistingChapters(getVideoID(), getVideoDuration());
 
         if (wait && !document.hasFocus() && !importingChaptersWaitingForFocus && !waitCondition()) {
@@ -1255,7 +1253,7 @@ function importExistingChapters(wait: boolean) {
                         existingChaptersImported = true;
                         updatePreviewBar();
                     }
-                }).catch(() => { importingChaptersWaiting = false; triedImportingChapters = true; }); // eslint-disable-line @typescript-eslint/no-empty-function
+                }).catch(() => { importingChaptersWaiting = false; }); // eslint-disable-line @typescript-eslint/no-empty-function
         }
     }
 }
