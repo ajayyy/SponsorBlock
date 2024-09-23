@@ -1133,13 +1133,16 @@ function setupCategoryPill() {
 }
 
 async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
-    const videoID = getVideoID()
+    const videoID = getVideoID();
     if (!videoID) {
         console.error("[SponsorBlock] Attempted to fetch segments with a null/undefined videoID.");
         return;
     }
 
     const segmentData = await getSegmentsForVideo(videoID, ignoreCache);
+
+    // Make sure an old pending request doesn't get used.
+    if (videoID !== getVideoID()) return;
 
     // store last response status
     lastResponseStatus = segmentData.status;
