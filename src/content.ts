@@ -852,6 +852,7 @@ let lastPlaybackSpeed = 1;
 let setupVideoListenersFirstTime = true;
 function setupVideoListeners() {
     const video = getVideo();
+    if (!video) return; // Maybe video became invisible
 
     //wait until it is loaded
     video.addEventListener('loadstart', videoOnReadyListener)
