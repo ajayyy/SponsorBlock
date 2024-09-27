@@ -2523,9 +2523,10 @@ function addHotkeyListener(): void {
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
-    if (["textarea", "input"].includes(document.activeElement?.tagName?.toLowerCase())
-        || document.activeElement?.["contentEditable"]
-        || document.activeElement?.id?.toLowerCase()?.match(/editable|input/)) return;
+    if ((["textarea", "input"].includes(document.activeElement?.tagName?.toLowerCase())
+        || document.activeElement?.["contentEditable"] === "true"
+        || document.activeElement?.id?.toLowerCase()?.match(/editable|input/))
+            && document.hasFocus()) return;
 
     const key: Keybind = {
         key: e.key,
