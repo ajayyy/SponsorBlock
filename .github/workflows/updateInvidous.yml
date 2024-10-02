@@ -21,7 +21,7 @@ jobs:
         run: npm run ci:invidious
 
       - name: Create pull request to update list
-        uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04
+        uses: peter-evans/create-pull-request@v7
         # v4.2.3
         with:
           commit-message: Update Invidious List
