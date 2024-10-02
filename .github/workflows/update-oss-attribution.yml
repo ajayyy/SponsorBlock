@@ -12,10 +12,10 @@ jobs:
   update-oss:
     runs-on: ubuntu-latest 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - name: Install and generate attribution
@@ -29,7 +29,7 @@ jobs:
           cd ci && npx ts-node prettify.ts
 
       - name: Create pull request to update list
-        uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04
+        uses: peter-evans/create-pull-request@v7
         # v4.2.3
         with:
           commit-message: Update OSS Attribution
