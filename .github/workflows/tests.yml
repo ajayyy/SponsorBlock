@@ -9,10 +9,10 @@ jobs:
 
     steps:
       # Initialization
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - run: npm ci
@@ -25,7 +25,7 @@ jobs:
 
       - name: Upload results on fail
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test Results
           path: ./test-results
