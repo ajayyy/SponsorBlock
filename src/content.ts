@@ -511,7 +511,7 @@ function handleMobileControlsMutations(): void {
 function getPreviewBarAttachElement(): HTMLElement | null {
     const progressElementOptions = [{
             // For newer mobile YouTube (Sept 2024)
-            selector: ".YtChapteredProgressBarHost",
+            selector: ".YtProgressBarLineHost, .YtChapteredProgressBarHost",
             isVisibleCheck: true
         }, {
             // For newer mobile YouTube (May 2024)
@@ -2636,7 +2636,7 @@ function showTimeWithoutSkips(skippedDuration: number): void {
     // YouTube player time display
     const selector =
         isOnInvidious()     ? ".vjs-duration" :
-        isOnMobileYouTube() ? ".ytm-time-display" :
+        isOnMobileYouTube() ? ".YtwPlayerTimeDisplayContent" :
                               ".ytp-time-display.notranslate .ytp-time-wrapper";
     const display = document.querySelector(selector);
     if (!display) return;
