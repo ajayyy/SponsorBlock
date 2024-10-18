@@ -647,8 +647,16 @@ class PreviewBar {
                         if (changedData.scale !== null) {
                             const transformScale = (changedData.scale) / progressBar.clientWidth;
 
+                            const scale = Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / fullSectionWidth - calculatedLeft));
                             customChangedElement.style.transform =
-                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / fullSectionWidth - calculatedLeft))}`;
+                                `scaleX(${scale})`;
+                            if (customChangedElement.style.backgroundSize) {
+                                const backgroundSize = progressBar.clientWidth;
+                                customChangedElement.style.backgroundSize = `${backgroundSize}px`;
+
+                                customChangedElement.style.backgroundPosition = `${-(cursor * progressBar.clientWidth)}px`;
+                            }
+
                             if (firstUpdate) {
                                 customChangedElement.style.transition = "none";
                                 setTimeout(() => customChangedElement.style.removeProperty("transition"), 50);
