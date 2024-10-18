@@ -1721,7 +1721,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 
     if (autoSkip && Config.config.audioNotificationOnSkip
             && !isSubmittingSegment && !getVideo()?.muted) {
-        const beep = new Audio(chrome.runtime.getURL("icons/beep.ogg"));
+        const beep = new Audio(chrome.runtime.getURL("icons/beep.oga"));
         beep.volume = getVideo().volume * 0.1;
         const oldMetadata = navigator.mediaSession.metadata
         beep.play();
