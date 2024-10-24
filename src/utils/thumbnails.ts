@@ -64,8 +64,18 @@ function thumbnailHoverListener(e: MouseEvent) {
     }
 }
 
+function getLink(thumbnail: HTMLImageElement): HTMLAnchorElement | null {
+    if (isOnInvidious()) {
+        return thumbnail.parentElement as HTMLAnchorElement | null;
+    } else if (thumbnail.nodeName.toLowerCase() === "yt-thumbnail-view-model") {
+        return thumbnail.closest("yt-lockup-view-model")?.querySelector("a.yt-lockup-metadata-view-model-wiz__title");
+    } else {
+        return thumbnail.querySelector("#thumbnail");
+    }
+}
+
 function extractVideoID(thumbnail: HTMLImageElement): VideoID | null {
-    const link = (isOnInvidious() ? thumbnail.parentElement : thumbnail.querySelector("#thumbnail")) as HTMLAnchorElement
+    const link = getLink(thumbnail);
     if (!link || link.nodeName !== "A" || !link.href) return null; // no link found
 
     return parseYouTubeVideoIDFromURL(link.href)?.videoID;
