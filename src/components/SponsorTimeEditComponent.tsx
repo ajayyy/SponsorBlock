@@ -157,7 +157,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         </input>
 
                         {this.state.selectedActionType !== ActionType.Poi ? (
-                            <span>
+                            <>
                                 <span>
                                     {" " + chrome.i18n.getMessage("to") + " "}
                                 </span>
@@ -184,7 +184,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                     onClick={() => this.setTimeToEnd()}>
                                         {chrome.i18n.getMessage("bracketEnd")}
                                 </span>
-                            </span>
+                            </>
                         ): ""}
                 </div>
             );
