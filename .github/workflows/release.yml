@@ -35,6 +35,19 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm ci
+
+      # Create Firefox artifacts
+      - name: Create Firefox artifacts
+        run: npm run build:firefox
+      - name: Zip Artifacts
+        run: cd ./dist ; zip -r ../builds/FirefoxExtension.zip *
+      - name: Upload FirefoxExtension to release
+        uses: Shopify/upload-to-release@07611424e04f1475ddf550e1c0dd650b867d5467
+        with:
+          args: builds/FirefoxExtension.zip
+          name: FirefoxExtension.zip
+          path: ./builds/FirefoxExtension.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       
       # Create Chrome artifacts
       - name: Create Chrome artifacts
@@ -50,32 +63,20 @@ jobs:
           path: ./builds/ChromeExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Create Firefox artifacts
-      - name: Create Firefox artifacts
-        run: npm run build:firefox
+      # Create Edge artifacts
+      - name: Clear dist for Edge
+        run: rm -rf ./dist
+      - name: Create Edge artifacts
+        run: npm run build:edge
       - name: Zip Artifacts
-        run: cd ./dist ; zip -r ../builds/FirefoxExtension.zip *
-      - name: Upload FirefoxExtension to release
+        run: cd ./dist ; zip -r ../builds/EdgeExtension.zip *
+      - name: Upload EdgeExtension to release
         uses: Shopify/upload-to-release@07611424e04f1475ddf550e1c0dd650b867d5467
         with:
-          args: builds/FirefoxExtension.zip
-          name: FirefoxExtension.zip
-          path: ./builds/FirefoxExtension.zip
+          args: builds/EdgeExtension.zip
+          name: EdgeExtension.zip
+          path: ./builds/EdgeExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Create Beta artifacts (Builds with the name changed to beta)
-      - name: Create Chrome Beta artifacts
-        run: npm run build:chrome -- --env stream=beta
-      - name: Zip Artifacts
-        run: cd ./dist ; zip -r ../builds/ChromeExtensionBeta.zip *
-      - name: Upload ChromeExtensionBeta to release
-        uses: Shopify/upload-to-release@07611424e04f1475ddf550e1c0dd650b867d5467
-        with:
-          args: builds/ChromeExtensionBeta.zip
-          name: ChromeExtensionBeta.zip
-          path: ./builds/ChromeExtensionBeta.zip
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
 
       # Create Safari artifacts
       - name: Create Safari artifacts
@@ -90,19 +91,17 @@ jobs:
           path: ./builds/SafariExtension.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Create Edge artifacts
-      - name: Clear dist for Edge
-        run: rm -rf ./dist
-      - name: Create Edge artifacts
-        run: npm run build:edge
+      # Create Beta artifacts (Builds with the name changed to beta)
+      - name: Create Chrome Beta artifacts
+        run: npm run build:chrome -- --env stream=beta
       - name: Zip Artifacts
-        run: cd ./dist ; zip -r ../builds/EdgeExtension.zip *
-      - name: Upload EdgeExtension to release
+        run: cd ./dist ; zip -r ../builds/ChromeExtensionBeta.zip *
+      - name: Upload ChromeExtensionBeta to release
         uses: Shopify/upload-to-release@07611424e04f1475ddf550e1c0dd650b867d5467
         with:
-          args: builds/EdgeExtension.zip
-          name: EdgeExtension.zip
-          path: ./builds/EdgeExtension.zip
+          args: builds/ChromeExtensionBeta.zip
+          name: ChromeExtensionBeta.zip
+          path: ./builds/ChromeExtensionBeta.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Firefox Beta
