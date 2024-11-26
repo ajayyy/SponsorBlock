@@ -218,6 +218,11 @@ div:hover > .sponsorBlockChapterBar {
 	from { opacity: 0; }
 }
 
+@keyframes fadeInToFaded {
+	from { opacity: 0; }
+	to { opacity: 0.5; }
+}
+
 @keyframes fadeOut {
 	to { opacity: 0; }
 }
@@ -288,6 +293,10 @@ div:hover > .sponsorBlockChapterBar {
 
 .sponsorSkipNoticeFadeIn {
 	animation: fadeIn 0.5s ease-out;
+}
+
+.sponsorSkipNoticeFadeIn.sponsorSkipNoticeFaded {
+	animation: fadeInToFaded 0.5s ease-out;
 }
 
 .exportCopiedNotice .sponsorSkipNoticeFadeIn {
