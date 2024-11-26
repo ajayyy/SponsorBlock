@@ -78,7 +78,7 @@ let importingChaptersWaiting = false;
 let triedImportingChapters = false;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
-const upcomingNotices: UpcomingNotice[] = [];
+let upcomingNotice: UpcomingNotice | null = null;
 let activeSkipKeybindElement: ToggleSkippable = null;
 let retryFetchTimeout: NodeJS.Timeout = null;
 let shownSegmentFailedToFetchWarning = false;
@@ -180,7 +180,6 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     sponsorTimes,
     sponsorTimesSubmitting,
     skipNotices,
-    upcomingNotices,
     sponsorVideoID: getVideoID(),
     reskipSponsorTime,
     updatePreviewBar,
@@ -421,8 +420,9 @@ function resetValues() {
         skipNotices.pop()?.close();
     }
 
-    for (let i = 0; i < upcomingNotices.length; i++) {
-        upcomingNotices.pop()?.close();
+    if (upcomingNotice) {
+        upcomingNotice.close();
+        upcomingNotice = null;
     }
 
     hideDeArrowPromotion();
@@ -802,9 +802,13 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             if (Config.config.showUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0]) {
                 const maxPopupTime = 3000;
                 const timeUntilPopup = Math.max(0, offsetDelayTime - maxPopupTime);
-                const popupTime = offsetDelayTime - timeUntilPopup;
-                const autoSkip = shouldAutoSkip(skippingSegments[0])
-                currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
+                const popupTime = Math.min(maxPopupTime, timeUntilPopup);
+                const autoSkip = shouldAutoSkip(skippingSegments[0]);
+
+                if (timeUntilPopup > 0) {
+                    if (currentUpcomingSchedule) clearTimeout(currentUpcomingSchedule);
+                    currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
+                }
             }
         }
     }
@@ -1799,7 +1803,12 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
         }
     }
 
-    const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime, startReskip);
+    const upcomingNoticeShown = !!upcomingNotice && !upcomingNotice.closed;
+
+    const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, () => {
+        upcomingNotice?.close();
+        upcomingNotice = null;
+    }, unskipTime, startReskip, upcomingNoticeShown);
     if (isOnMobileYouTube() || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
     skipNotices.push(newSkipNotice);
 
@@ -1807,17 +1816,15 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
     activeSkipKeybindElement = newSkipNotice;
 }
 
-function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number, autoSkip: boolean) {
-    for (const upcomingNotice of upcomingNotices) {
-        if (skippingSegments.length === upcomingNotice.segments.length
-                && skippingSegments.every((segment) => upcomingNotice.segments.some((s) => s.UUID === segment.UUID))) {
-            // Upcoming notice already exists
-            return;
-        }
+function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number, autoSkip: boolean): void {
+    if (upcomingNotice 
+            && !upcomingNotice.closed
+            && upcomingNotice.sameNotice(skippingSegments)) {
+        return;
     }
 
-    const newUpcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft, autoSkip);
-    upcomingNotices.push(newUpcomingNotice);
+    upcomingNotice?.close();
+    upcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft, autoSkip);
 }
 
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false) {
@@ -2599,10 +2606,8 @@ function hotkeyListener(e: KeyboardEvent): void {
             skipNotices.pop().close();
         }
         
-        for (let i = 0; i < upcomingNotices.length; i++) {
-            upcomingNotices.pop().close();
-        }
-
+        upcomingNotice?.close();
+        upcomingNotice = null;
         return;
     } else if (keybindEquals(key, startSponsorKey)) {
         startOrEndTimingNewSegment();

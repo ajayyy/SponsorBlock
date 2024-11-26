@@ -6,7 +6,7 @@ import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import Utils from "../utils";
 const utils = new Utils();
-import { getSkippingText } from "../utils/categoryUtils";
+import { getSkippingText, getUpcomingText } from "../utils/categoryUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
@@ -28,12 +28,16 @@ export interface SkipNoticeProps {
 
     autoSkip: boolean;
     startReskip?: boolean;
+    upcomingNotice?: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
     closeListener: () => void;
     showKeybindHint?: boolean;
     smaller: boolean;
+    fadeIn: boolean;
+
+    componentDidMount?: () => void;
 
     unskipTime?: number;
 }
@@ -97,9 +101,9 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
 
-        const noticeTitle = getSkippingText(this.segments, this.props.autoSkip);
+        const noticeTitle = !this.props.upcomingNotice ? getSkippingText(this.segments, this.props.autoSkip) : getUpcomingText(this.segments);
 
-        const previousSkipNotices = document.getElementsByClassName("sponsorSkipNoticeParent");
+        const previousSkipNotices = document.querySelectorAll(".sponsorSkipNoticeParent:not(.sponsorSkipUpcomingNotice)");
         this.amountOfPreviousNotices = previousSkipNotices.length;
         // If there is at least one already in the first slot
         this.showInSecondSlot = previousSkipNotices.length > 0 && [...previousSkipNotices].some(notice => !notice.classList.contains("secondSkipNotice"));
@@ -171,12 +175,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             noticeStyle.transform = "scale(0.8) translate(10%, 10%)";
         }
 
-        // If it started out as smaller, always keep the
-        // skip button there
-        const showFirstSkipButton = this.props.smaller || this.segments[0].actionType === ActionType.Mute;
-        const firstColumn = showFirstSkipButton ? (
-            this.getSkipButton(0)
-        ) : null;
+        const firstColumn = this.getSkipButton(0);
 
         return (
             <NoticeComponent 
@@ -184,7 +183,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 amountOfPreviousNotices={this.amountOfPreviousNotices}
                 showInSecondSlot={this.showInSecondSlot}
                 idSuffix={this.idSuffix}
-                fadeIn={true}
+                fadeIn={this.props.fadeIn}
+                fadeOut={!this.props.upcomingNotice}
                 startFaded={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.FadedForAll
                     || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.FadedForAutoSkip && this.autoSkip)}
                 timed={true}
@@ -197,10 +197,18 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 logoFill={Config.config.barTypes[this.segments[0].category].color}
                 limitWidth={true}
                 firstColumn={firstColumn}
+                dontPauseCountdown={!!this.props.upcomingNotice}
                 bottomRow={[...this.getMessageBoxes(), ...this.getBottomRow() ]}
+                extraClass={this.props.upcomingNotice ? "sponsorSkipUpcomingNotice" : ""}
                 onMouseEnter={() => this.onMouseEnter() } >
             </NoticeComponent>
         );
+    }
+
+    componentDidMount(): void {
+        if (this.props.componentDidMount) {
+            this.props.componentDidMount();
+        }
     }
 
     getBottomRow(): JSX.Element[] {
@@ -365,8 +373,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 style.minWidth = "100px";
             }
 
+            const showSkipButton = (buttonIndex !== 0 || this.props.smaller || this.segments[0].actionType === ActionType.Mute) && !this.props.upcomingNotice;
+
             return (
-                <span className="sponsorSkipNoticeUnskipSection">
+                <span className="sponsorSkipNoticeUnskipSection" style={{ visibility: !showSkipButton ? "hidden" : null }}>
                     <button id={"sponsorSkipUnskipButton" + this.idSuffix}
                             className="sponsorSkipObject sponsorSkipNoticeButton"
                             style={style}
@@ -420,7 +430,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     onMouseEnter(): void {
-        if (this.state.smaller) {
+        if (this.state.smaller && !this.props.upcomingNotice) {
             this.setState({
                 smaller: false
             });

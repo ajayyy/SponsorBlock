@@ -20,7 +20,7 @@ class SkipNotice {
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
     root: Root;
 
-    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, unskipTime: number = null, startReskip = false) {
+    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, componentDidMount: () => void, unskipTime: number = null, startReskip = false, upcomingNoticeShown: boolean) {
         this.skipNoticeRef = React.createRef();
 
         this.segments = segments;
@@ -53,7 +53,9 @@ class SkipNotice {
                 closeListener={() => this.close()}
                 smaller={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAll 
                     || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAutoSkip && autoSkip)}
-                unskipTime={unskipTime} />
+                fadeIn={!upcomingNoticeShown}
+                unskipTime={unskipTime}
+                componentDidMount={componentDidMount} />
         );
     }
 

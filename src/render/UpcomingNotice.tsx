@@ -1,9 +1,9 @@
 import * as React from "react";
 import { createRoot, Root } from "react-dom/client";
 import { ContentContainer, SponsorTime } from "../types";
-import UpcomingNoticeComponent from "../components/UpcomingNoticeComponent";
 
 import Utils from "../utils";
+import SkipNoticeComponent from "../components/SkipNoticeComponent";
 const utils = new Utils();
 
 class UpcomingNotice {
@@ -13,8 +13,10 @@ class UpcomingNotice {
 
     noticeElement: HTMLDivElement;
 
-    upcomingNoticeRef: React.MutableRefObject<UpcomingNoticeComponent>;
+    upcomingNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
     root: Root;
+
+    closed = false;
 
     constructor(segments: SponsorTime[], contentContainer: ContentContainer, timeLeft: number, autoSkip: boolean) {
         this.upcomingNoticeRef = React.createRef();
@@ -31,23 +33,33 @@ class UpcomingNotice {
 
         this.root = createRoot(this.noticeElement);
         this.root.render(
-            <UpcomingNoticeComponent
-                segments={segments}
-                autoSkip={autoSkip}
+            <SkipNoticeComponent segments={segments} 
+                autoSkip={autoSkip} 
+                upcomingNotice={true}
                 contentContainer={contentContainer}
-                timeUntilSegment={timeLeft}
                 ref={this.upcomingNoticeRef}
-                closeListener={() => this.close()} />
+                closeListener={() => this.close()}
+                smaller={true}
+                fadeIn={true}
+                unskipTime={timeLeft} />
         );
     }
 
     close(): void {
         this.root.unmount();
-
         this.noticeElement.remove();
 
-        const upcomingNotices = this.contentContainer().upcomingNotices;
-        upcomingNotices.splice(upcomingNotices.indexOf(this), 1);
+        this.closed = true;
+    }
+
+    sameNotice(segments: SponsorTime[]): boolean {
+        if (segments.length !== this.segments.length) return false;
+
+        for (let i = 0; i < segments.length; i++) {
+            if (segments[i].UUID !== this.segments[i].UUID) return false;
+        }
+
+        return true;
     }
 }
 
