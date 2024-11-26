@@ -55,7 +55,7 @@ export function getHashParams(): Record<string, unknown> {
 
 export function getExistingChapters(currentVideoID: VideoID, duration: number): SponsorTime[] {
     const chaptersBox = document.querySelector("ytd-macro-markers-list-renderer");
-    const title = document.querySelector("[target-id=engagement-panel-macro-markers-auto-chapters] #title-text");
+    const title = chaptersBox?.closest("ytd-engagement-panel-section-list-renderer")?.querySelector("#title-text.ytd-engagement-panel-title-header-renderer");
     if (title?.textContent?.includes("Key moment")) return [];
 
     const chapters: SponsorTime[] = [];

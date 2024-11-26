@@ -38,14 +38,14 @@
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "typescript": "4.9",
-    "web-ext": "^7.10.0",
-    "webpack": "^5.75.0",
+    "web-ext": "^8.2.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^4.10.0",
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
     "web-run": "npm run web-run:chrome",
-    "web-sign": "web-ext sign -s dist",
+    "web-sign": "web-ext sign --channel unlisted -s dist",
     "web-run:firefox": "cd dist && web-ext run --start-url https://addons.mozilla.org/firefox/addon/ublock-origin/",
     "web-run:firefox-android": "cd dist && web-ext run -t firefox-android --firefox-apk org.mozilla.fenix",
     "web-run:chrome": "cd dist && web-ext run --start-url https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm -t chromium",

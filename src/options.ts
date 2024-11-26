@@ -1,8 +1,7 @@
 import * as React from "react";
 import { createRoot } from 'react-dom/client';
 
-import Config from "./config";
-import * as CompileConfig from "../config.json";
+import Config, { generateDebugDetails } from "./config";
 import * as invidiousList from "../ci/invidiouslist.json";
 
 // Make the config public for debugging purposes
@@ -698,32 +697,14 @@ function validateServerAddress(input: string): string {
 }
 
 function copyDebugOutputToClipboard() {
-    // Build output debug information object
-    const output = {
-        debug: {
-            userAgent: navigator.userAgent,
-            platform: navigator.platform,
-            language: navigator.language,
-            extensionVersion: chrome.runtime.getManifest().version
-        },
-        config: JSON.parse(JSON.stringify(Config.cachedSyncConfig)) // Deep clone config object
-    };
-
-    // Sanitise sensitive user config values
-    delete output.config.userID;
-    output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress)
-        ? "Default server address" : "Custom server address";
-    output.config.invidiousInstances = output.config.invidiousInstances.length;
-    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
-
     // Copy object to clipboard
-    navigator.clipboard.writeText(JSON.stringify(output, null, 4))
-      .then(() => {
+    navigator.clipboard.writeText(generateDebugDetails())
+    .then(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationComplete"));
-      })
-      .catch(() => {
+    })
+    .catch(() => {
         alert(chrome.i18n.getMessage("copyDebugInformationFailed"));
-      });
+    });
 }
 
 function isIncognitoAllowed(): Promise<boolean> {

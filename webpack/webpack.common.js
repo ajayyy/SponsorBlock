@@ -170,6 +170,13 @@ module.exports = env => {
                                         parsed.Description.message = parsed.Description.message.slice(0, 77) + "...";
                                     }
                                 }
+
+                                if (env.browser.toLowerCase() === "edge") {
+                                    parsed.Description.message = parsed.Description.message.match(/^.+(?=\. )/)?.[0] || parsed.Description.message;
+                                    if (parsed.Description.message.length > 132) {
+                                        parsed.Description.message = parsed.Description.message.slice(0, 129) + "...";
+                                    }
+                                }
                 
                                 return Buffer.from(JSON.stringify(parsed));
                             }
@@ -185,6 +192,12 @@ module.exports = env => {
                 stream: env.stream
             }),
             new configDiffPlugin()
-        ]
+        ],
+        performance: {
+            hints: false,
+            maxEntrypointSize: 512000,
+            maxAssetSize: 512000
+        }
+
     };
 };

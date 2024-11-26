@@ -2,7 +2,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "sponsorBlocker@ajay.app",
-      "strict_min_version": "56.0"
+      "strict_min_version": "102.0"
     },
     "gecko_android": {
       "strict_min_version": "113.0"

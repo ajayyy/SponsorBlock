@@ -197,7 +197,6 @@ class PreviewBar {
 
         if (this.onMobileYouTube) {
             this.container.style.transform = "none";
-            this.container.style.height = "var(--yt-progress-bar-height)";
         } else if (!this.onInvidious) {
             this.container.classList.add("sbNotInvidious");
         }
@@ -648,8 +647,21 @@ class PreviewBar {
                         if (changedData.scale !== null) {
                             const transformScale = (changedData.scale) / progressBar.clientWidth;
 
+                            const scale = Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / fullSectionWidth - calculatedLeft));
                             customChangedElement.style.transform =
-                                `scaleX(${Math.max(0, Math.min(1 - calculatedLeft, (transformScale - cursor) / fullSectionWidth - calculatedLeft))}`;
+                                `scaleX(${scale})`;
+                            if (customChangedElement.style.backgroundSize) {
+                                const backgroundSize = Math.max(changedData.scale / scale, fullSectionWidth * progressBar.clientWidth);
+                                customChangedElement.style.backgroundSize = `${backgroundSize}px`;
+
+                                if (changedData.scale < (cursor + fullSectionWidth) * progressBar.clientWidth) {
+                                    customChangedElement.style.backgroundPosition = `-${backgroundSize - fullSectionWidth * progressBar.clientWidth}px`;
+                                } else {
+                                    // Passed this section
+                                    customChangedElement.style.backgroundPosition = `-${cursor * progressBar.clientWidth}px`;
+                                }
+                            }
+
                             if (firstUpdate) {
                                 customChangedElement.style.transition = "none";
                                 setTimeout(() => customChangedElement.style.removeProperty("transition"), 50);

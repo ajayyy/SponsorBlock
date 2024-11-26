@@ -9,8 +9,8 @@ import { FetchResponse, sendRequestToCustomServer } from "../../maze-utils/src/b
  * @param address The address to add to the SponsorBlock server address
  * @param callback 
  */    
-export function asyncRequestToCustomServer(type: string, url: string, data = {}): Promise<FetchResponse> {
-    return sendRequestToCustomServer(type, url, data);
+export function asyncRequestToCustomServer(type: string, url: string, data = {}, headers = {}): Promise<FetchResponse> {
+    return sendRequestToCustomServer(type, url, data, headers);
 }
 
 /**
@@ -20,10 +20,10 @@ export function asyncRequestToCustomServer(type: string, url: string, data = {})
  * @param address The address to add to the SponsorBlock server address
  * @param callback 
  */    
-export async function asyncRequestToServer(type: string, address: string, data = {}): Promise<FetchResponse> {
+export async function asyncRequestToServer(type: string, address: string, data = {}, headers = {}): Promise<FetchResponse> {
     const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
 
-    return await (asyncRequestToCustomServer(type, serverAddress + address, data));
+    return await (asyncRequestToCustomServer(type, serverAddress + address, data, headers));
 }
 
 /**

@@ -118,13 +118,13 @@ html, body {
 
 .option-group > div {
     min-height: 50px;
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
     border-image: linear-gradient(to right, var(--border-color), #00000000 80%)  1;
 }
 
 .categoryExtraOptions {
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 #music_offtopic_autoSkipOnMusicVideos {
@@ -271,11 +271,11 @@ input[type='number'] {
 
 .small-description {
     font-size: 13px;
-    padding: 15px 0 0 20px;
+    padding: 5px 0 0 20px;
 }
 
 .small-description td {
-    padding: 10px 0 20px 20px;
+    padding: 2.5px 0 10px 20px;
 }
 
 .indent {
@@ -283,7 +283,7 @@ input[type='number'] {
 }
 
 .categoryTableElement td {
-    padding-top: 10px;
+    padding-top: 5px;
     border-top: 1px solid var(--border-color);
 }
 
@@ -353,7 +353,8 @@ input[type='number'] {
 
     font-size: 14px;
 
-    display: table;
+    display: flex;
+    align-items: center;
 }
 
 .switch-container .switch-label {
