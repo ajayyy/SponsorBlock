@@ -20,6 +20,7 @@ import Utils from "./utils";
 import PreviewBar, { PreviewBarSegment } from "./js-components/previewBar";
 import SkipNotice from "./render/SkipNotice";
 import SkipNoticeComponent from "./components/SkipNoticeComponent";
+import UpcomingNotice from "./render/UpcomingNotice";
 import SubmissionNotice from "./render/SubmissionNotice";
 import { Message, MessageResponse, VoteResponse } from "./messageTypes";
 import { SkipButtonControlBar } from "./js-components/skipButtonControlBar";
@@ -77,6 +78,7 @@ let importingChaptersWaitingForFocus = false;
 let importingChaptersWaiting = false;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
+let upcomingNotice: UpcomingNotice | null = null;
 let activeSkipKeybindElement: ToggleSkippable = null;
 let retryFetchTimeout: NodeJS.Timeout = null;
 let shownSegmentFailedToFetchWarning = false;
@@ -107,6 +109,7 @@ const lastNextChapterKeybind = {
 let currentSkipSchedule: NodeJS.Timeout = null;
 let currentSkipInterval: NodeJS.Timeout = null;
 let currentVirtualTimeInterval: NodeJS.Timeout = null;
+let currentUpcomingSchedule: NodeJS.Timeout = null;
 
 /** Has the sponsor been skipped */
 let sponsorSkipped: boolean[] = [];
@@ -426,6 +429,11 @@ function resetValues() {
         skipNotices.pop()?.close();
     }
 
+    if (upcomingNotice) {
+        upcomingNotice.close();
+        upcomingNotice = null;
+    }
+
     hideDeArrowPromotion();
 }
 
@@ -605,6 +613,11 @@ function cancelSponsorSchedule(): void {
     if (currentSkipInterval !== null) {
         clearInterval(currentSkipInterval);
         currentSkipInterval = null;
+    }
+
+    if (currentUpcomingSchedule !== null) {
+        clearTimeout(currentUpcomingSchedule);
+        currentUpcomingSchedule = null;
     }
 }
 
@@ -787,7 +800,21 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
             const offset = (isFirefoxOrSafari() && !isSafari() ? 600 : 150);
             // Schedule for right before to be more precise than normal timeout
-            currentSkipSchedule = setTimeout(skippingFunction, Math.max(0, delayTime - offset));
+            const offsetDelayTime = Math.max(0, delayTime - offset);
+            currentSkipSchedule = setTimeout(skippingFunction, offsetDelayTime);
+
+            // Show the notice only if the segment hasn't already started
+            if (Config.config.showUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0]) {
+                const maxPopupTime = 3000;
+                const timeUntilPopup = Math.max(0, offsetDelayTime - maxPopupTime);
+                const popupTime = Math.min(maxPopupTime, timeUntilPopup);
+                const autoSkip = shouldAutoSkip(skippingSegments[0]);
+
+                if (timeUntilPopup > 0) {
+                    if (currentUpcomingSchedule) clearTimeout(currentUpcomingSchedule);
+                    currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
+                }
+            }
         }
     }
 }
@@ -1774,12 +1801,28 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
         }
     }
 
-    const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, unskipTime, startReskip);
+    const upcomingNoticeShown = !!upcomingNotice && !upcomingNotice.closed;
+
+    const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, () => {
+        upcomingNotice?.close();
+        upcomingNotice = null;
+    }, unskipTime, startReskip, upcomingNoticeShown);
     if (isOnMobileYouTube() || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
     skipNotices.push(newSkipNotice);
 
     activeSkipKeybindElement?.setShowKeybindHint(false);
     activeSkipKeybindElement = newSkipNotice;
+}
+
+function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number, autoSkip: boolean): void {
+    if (upcomingNotice 
+            && !upcomingNotice.closed
+            && upcomingNotice.sameNotice(skippingSegments)) {
+        return;
+    }
+
+    upcomingNotice?.close();
+    upcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft, autoSkip);
 }
 
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false) {
@@ -2562,7 +2605,9 @@ function hotkeyListener(e: KeyboardEvent): void {
         for (let i = 0; i < skipNotices.length; i++) {
             skipNotices.pop().close();
         }
-
+        
+        upcomingNotice?.close();
+        upcomingNotice = null;
         return;
     } else if (keybindEquals(key, startSponsorKey)) {
         startOrEndTimingNewSegment();

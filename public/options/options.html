@@ -209,15 +209,31 @@
 					<div class="small-description">__MSG_skipNoticeDurationDescription__</div>
 				</div>
 	
-				<div data-type="toggle" data-toggle-type="reverse" data-sync="dontShowNotice">
-					<div class="switch-container">
-						<label class="switch">
-							<input id="dontShowNotice" type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<label class="switch-label" for="dontShowNotice">
-							__MSG_showSkipNotice__
-						</label>
+				<div>
+					<div data-type="toggle" data-sync="showUpcomingNotice">
+						<div class="switch-container">
+							<label class="switch">
+								<input id="showUpcomingNotice" type="checkbox" checked>
+								<span class="slider round"></span>
+							</label>
+							<label class="switch-label" for="showUpcomingNotice">
+								__MSG_showUpcomingNotice__
+							</label>
+						</div>
+					</div>
+
+					<br/>
+
+					<div data-type="toggle" data-toggle-type="reverse" data-sync="dontShowNotice">
+						<div class="switch-container">
+							<label class="switch">
+								<input id="dontShowNotice" type="checkbox" checked>
+								<span class="slider round"></span>
+							</label>
+							<label class="switch-label" for="dontShowNotice">
+								__MSG_showSkipNotice__
+							</label>
+						</div>
 					</div>
 
 					<div data-type="selector" data-sync="noticeVisibilityMode" data-dependent-on="dontShowNotice">

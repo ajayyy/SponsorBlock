@@ -31,6 +31,7 @@ interface SBConfig {
     trackDownvotes: boolean;
     trackDownvotesInPrivate: boolean;
     dontShowNotice: boolean;
+    showUpcomingNotice: boolean;
     noticeVisibilityMode: NoticeVisbilityMode;
     hideVideoPlayerControls: boolean;
     hideInfoButtonPlayerControls: boolean;
@@ -293,6 +294,7 @@ const syncDefaults = {
     trackDownvotes: true,
     trackDownvotesInPrivate: false,
     dontShowNotice: false,
+    showUpcomingNotice: false,
     noticeVisibilityMode: NoticeVisbilityMode.FadedForAutoSkip,
     hideVideoPlayerControls: false,
     hideInfoButtonPlayerControls: false,

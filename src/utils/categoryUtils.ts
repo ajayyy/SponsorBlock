@@ -36,6 +36,15 @@ export function getSkippingText(segments: SponsorTime[], autoSkip: boolean): str
     }
 }
 
+export function getUpcomingText(segments: SponsorTime[]): string {
+    const categoryName = chrome.i18n.getMessage(segments.length > 1 ? "multipleSegments" 
+        : "category_" + segments[0].category + "_short") || chrome.i18n.getMessage("category_" + segments[0].category);
+        
+    const messageId = "upcoming";
+    return chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
+}
+
+
 export function getCategorySuffix(category: Category): string {
     if (category.startsWith("poi_")) {
         return "_POI";
@@ -51,5 +60,4 @@ export function getCategorySuffix(category: Category): string {
 export function shortCategoryName(categoryName: string): string {
     return chrome.i18n.getMessage("category_" + categoryName + "_short") || chrome.i18n.getMessage("category_" + categoryName);
 }
-
 export const DEFAULT_CATEGORY = "chooseACategory";

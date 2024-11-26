@@ -19,6 +19,7 @@ export interface NoticeProps {
     idSuffix?: string;
 
     fadeIn?: boolean;
+    fadeOut?: boolean;
     startFaded?: boolean;
     firstColumn?: React.ReactElement[] | React.ReactElement;
     firstRow?: React.ReactElement;
@@ -326,7 +327,7 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
             return;
         }
 
-        if (countdownTime == 3) {
+        if (countdownTime == 3 && this.props.fadeOut) {
             //start fade out animation
             const notice = document.getElementById("sponsorSkipNotice" + this.idSuffix);
             notice?.style.removeProperty("animation");
