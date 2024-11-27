@@ -832,7 +832,7 @@ function waitForNextTimeChange(): Promise<DOMHighResTimeStamp | null> {
 
 function getVirtualTime(): number {
     const virtualTime = lastTimeFromWaitingEvent ?? (lastKnownVideoTime.videoTime !== null ?
-        (performance.now() - lastKnownVideoTime.preciseTime) * getVideo().playbackRate / 1000 + lastKnownVideoTime.videoTime : null);
+        (performance.now() - lastKnownVideoTime.preciseTime) * (getVideo()?.playbackRate || 1) / 1000 + lastKnownVideoTime.videoTime : null);
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime
             && Math.abs(virtualTime - getCurrentTime()) < 0.2 && getCurrentTime() !== 0) {
