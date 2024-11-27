@@ -804,7 +804,9 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             currentSkipSchedule = setTimeout(skippingFunction, offsetDelayTime);
 
             // Show the notice only if the segment hasn't already started
-            if (Config.config.showUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0]) {
+            if (Config.config.showUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0] 
+                    && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)
+                    && [ActionType.Skip, ActionType.Mute].includes(skippingSegments[0].actionType)) {
                 const maxPopupTime = 3000;
                 const timeUntilPopup = Math.max(0, offsetDelayTime - maxPopupTime);
                 const popupTime = Math.min(maxPopupTime, timeUntilPopup);
