@@ -806,16 +806,15 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             // Show the notice only if the segment hasn't already started
             if (Config.config.showUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0] 
                     && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)
-                    && [ActionType.Skip, ActionType.Mute].includes(skippingSegments[0].actionType)) {
+                    && [ActionType.Skip, ActionType.Mute].includes(skippingSegments[0].actionType)
+                    && !getVideo()?.paused) {
                 const maxPopupTime = 3000;
                 const timeUntilPopup = Math.max(0, offsetDelayTime - maxPopupTime);
-                const popupTime = Math.min(maxPopupTime, timeUntilPopup);
+                const popupTime = offsetDelayTime - timeUntilPopup;
                 const autoSkip = shouldAutoSkip(skippingSegments[0]);
 
-                if (timeUntilPopup > 0) {
-                    if (currentUpcomingSchedule) clearTimeout(currentUpcomingSchedule);
-                    currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
-                }
+                if (currentUpcomingSchedule) clearTimeout(currentUpcomingSchedule);
+                currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
             }
         }
     }
@@ -1823,7 +1822,7 @@ function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number,
     }
 
     upcomingNotice?.close();
-    upcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft, autoSkip);
+    upcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft / 1000, autoSkip);
 }
 
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false) {

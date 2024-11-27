@@ -41,7 +41,7 @@ class UpcomingNotice {
                 closeListener={() => this.close()}
                 smaller={true}
                 fadeIn={true}
-                unskipTime={timeLeft} />
+                maxCountdownTime={timeLeft} />
         );
     }
 

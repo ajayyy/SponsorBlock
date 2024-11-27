@@ -36,6 +36,7 @@ export interface SkipNoticeProps {
     showKeybindHint?: boolean;
     smaller: boolean;
     fadeIn: boolean;
+    maxCountdownTime?: number;
 
     componentDidMount?: () => void;
 
@@ -124,7 +125,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.lockedColor = Config.config.colorPalette.locked;
 
         const isMuteSegment = this.segments[0].actionType === ActionType.Mute;
-        const maxCountdownTime = isMuteSegment ? this.getFullDurationCountdown(0) : () => Config.config.skipNoticeDuration;
+        const maxCountdownTime = props.maxCountdownTime ? () => props.maxCountdownTime : (isMuteSegment ? this.getFullDurationCountdown(0) : () => Config.config.skipNoticeDuration);
 
         const defaultSkipButtonState = this.props.startReskip ? SkipButtonState.Redo : SkipButtonState.Undo;
         const skipButtonStates = [defaultSkipButtonState, isMuteSegment ? SkipButtonState.Start : defaultSkipButtonState];
