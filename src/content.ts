@@ -814,7 +814,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                 const autoSkip = shouldAutoSkip(skippingSegments[0]);
 
                 if (currentUpcomingSchedule) clearTimeout(currentUpcomingSchedule);
-                currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, skippingSegments, popupTime, autoSkip);
+                currentUpcomingSchedule = setTimeout(createUpcomingNotice, timeUntilPopup, [skippingSegments[0]], popupTime, autoSkip);
             }
         }
     }
