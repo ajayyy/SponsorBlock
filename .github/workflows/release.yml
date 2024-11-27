@@ -39,6 +39,7 @@ jobs:
       # Create Firefox artifacts
       - name: Create Firefox artifacts
         run: npm run build:firefox
+      - run: mkdir ./builds
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/FirefoxExtension.zip *
       - name: Upload FirefoxExtension to release
@@ -52,7 +53,6 @@ jobs:
       # Create Chrome artifacts
       - name: Create Chrome artifacts
         run: npm run build:chrome
-      - run: mkdir ./builds
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/ChromeExtension.zip *
       - name: Upload ChromeExtension to release
