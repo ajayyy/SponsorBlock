@@ -877,8 +877,7 @@ function incorrectVideoCheck(videoID?: string, sponsorTime?: SponsorTime): boole
 let playbackRateCheckInterval: NodeJS.Timeout | null = null;
 let lastPlaybackSpeed = 1;
 let setupVideoListenersFirstTime = true;
-function setupVideoListeners() {
-    const video = getVideo();
+function setupVideoListeners(video: HTMLVideoElement) {
     if (!video) return; // Maybe video became invisible
 
     //wait until it is loaded
@@ -1460,10 +1459,10 @@ async function channelIDChange(channelIDInfo: ChannelIDInfo) {
     if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
-function videoElementChange(newVideo: boolean): void {
+function videoElementChange(newVideo: boolean, video: HTMLVideoElement): void {
     waitFor(() => Config.isReady()).then(() => {
         if (newVideo) {
-            setupVideoListeners();
+            setupVideoListeners(video);
             setupSkipButtonControlBar();
             setupCategoryPill();
         }
