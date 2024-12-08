@@ -233,6 +233,17 @@ class PreviewBar {
         this.segments = segments ?? [];
         this.videoDuration = videoDuration ?? 0;
 
+        // Remove unnecessary original chapters if submitted replacements exist
+        for (const chapter of this.segments.filter((s) => s.actionType === ActionType.Chapter && s.source === SponsorSourceType.Server)) {
+            const duplicate = this.segments.find((s) => s.actionType === ActionType.Chapter 
+                && s.source === SponsorSourceType.YouTube
+                && Math.abs(s.segment[0] - chapter.segment[0]) < 3 && Math.abs(s.segment[1] - chapter.segment[1]) < 3);
+            
+            if (duplicate) {
+                const index = this.segments.indexOf(duplicate);
+                this.segments.splice(index, 1);
+            }
+        }
 
         this.updatePageElements();
         // Sometimes video duration is inaccurate, pull from accessibility info
@@ -813,8 +824,14 @@ class PreviewBar {
                         return -1;
                     } else if (a.actionType !== ActionType.Chapter && b.actionType === ActionType.Chapter) {
                         return 1;
+                    } else if (a.actionType === ActionType.Chapter && b.actionType === ActionType.Chapter
+                                && a.source === SponsorSourceType.Server && b.source !== SponsorSourceType.Server) {
+                        return -0.5;
+                    } else if (a.actionType === ActionType.Chapter && b.actionType === ActionType.Chapter
+                                && a.source !== SponsorSourceType.Server && b.source === SponsorSourceType.Server) {
+                        return 0.5;
                     } else {
-                        return (b.segment[0] - a.segment[0]);
+                        return (b.segment[0] - a.segment[0]) * 4;
                     }
                 })[0];
 
