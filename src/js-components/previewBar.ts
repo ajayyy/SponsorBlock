@@ -235,9 +235,12 @@ class PreviewBar {
 
         // Remove unnecessary original chapters if submitted replacements exist
         for (const chapter of this.segments.filter((s) => s.actionType === ActionType.Chapter && s.source === SponsorSourceType.Server)) {
+            const segmentDuration = chapter.segment[1] - chapter.segment[0];
+            
             const duplicate = this.segments.find((s) => s.actionType === ActionType.Chapter 
                 && s.source === SponsorSourceType.YouTube
-                && Math.abs(s.segment[0] - chapter.segment[0]) < 3 && Math.abs(s.segment[1] - chapter.segment[1]) < 3);
+                && Math.abs(s.segment[0] - chapter.segment[0]) < Math.min(3, segmentDuration / 3)
+                && Math.abs(s.segment[1] - chapter.segment[1]) < Math.min(3, segmentDuration / 3));
             
             if (duplicate) {
                 const index = this.segments.indexOf(duplicate);
