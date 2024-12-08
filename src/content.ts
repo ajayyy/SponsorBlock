@@ -43,7 +43,7 @@ import { generateUserID } from "../maze-utils/src/setup";
 import { updateAll } from "../maze-utils/src/thumbnailManagement";
 import { setupThumbnailListener } from "./utils/thumbnails";
 import * as documentScript from "../dist/js/document.js";
-import { runCompatibilityChecks } from "./utils/compatibility";
+import { isVorapisInstalled, runCompatibilityChecks } from "./utils/compatibility";
 import { cleanPage } from "./utils/pageCleaner";
 import { addCleanupListener } from "../maze-utils/src/cleanup";
 import { hideDeArrowPromotion, tryShowingDeArrowPromotion } from "./dearrowPromotion";
@@ -552,6 +552,9 @@ function getPreviewBarAttachElement(): HTMLElement | null {
             // For piped
             selector: ".shaka-ad-markers",
             isVisibleCheck: false
+        }, {
+            // For Vorapis v3
+            selector: ".ytp-progress-bar-container > .html5-progress-bar > .ytp-progress-list"
         }
     ];
 
@@ -2750,6 +2753,10 @@ function setCategoryColorCSSVariables() {
     if (!styleContainer) {
         styleContainer = document.createElement("style");
         styleContainer.id = "sbCategoryColorStyle";
+        if (isVorapisInstalled()) {
+            // Vorapi deletes styles
+            styleContainer.className = 'stylus';
+        }
 
         const head = (document.head || document.documentElement);
         head.appendChild(styleContainer)

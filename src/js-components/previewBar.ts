@@ -14,6 +14,7 @@ import { normalizeChapterName } from "../utils/exporter";
 import { findValidElement } from "../../maze-utils/src/dom";
 import { addCleanupListener } from "../../maze-utils/src/cleanup";
 import { isVisible } from "../utils/pageUtils";
+import { isVorapisInstalled } from "../utils/compatibility";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -100,13 +101,15 @@ class PreviewBar {
         this.chapterTooltip.className = "ytp-tooltip-title sponsorCategoryTooltip";
 
         // global chaper tooltip or duration tooltip
-        const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
-        const originalTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip)") as HTMLElement;
+        // YT, Vorapis, unknown
+        const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper, .ytp-progress-tooltip-text-container") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
+        const originalTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip)") as HTMLElement;
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 
         // Grab the tooltip from the text wrapper as the tooltip doesn't have its classes on init
         this.categoryTooltipContainer = tooltipTextWrapper.parentElement;
-        const titleTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title") as HTMLElement;
+        // YT, Vorapis
+        const titleTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title, .ytp-progress-tooltip-text") as HTMLElement;
         if (!this.categoryTooltipContainer || !titleTooltip) return;
 
         tooltipTextWrapper.insertBefore(this.categoryTooltip, titleTooltip.nextSibling);
@@ -128,7 +131,7 @@ class PreviewBar {
         seekBar.addEventListener("mousemove", (e: MouseEvent) => {
             if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer || !chrome.runtime?.id) return;
 
-            let noYoutubeChapters = !!tooltipTextWrapper.querySelector(".ytp-tooltip-text.ytp-tooltip-text-no-title");
+            let noYoutubeChapters = !!tooltipTextWrapper.querySelector(".ytp-tooltip-text.ytp-tooltip-text-no-title, .ytp-progress-tooltip-timestamp");
             const timeInSeconds = this.decimalToTime((e.clientX - seekBar.getBoundingClientRect().x) / seekBar.clientWidth);
 
             // Find the segment at that location, using the shortest if multiple found
@@ -155,6 +158,11 @@ class PreviewBar {
 
                 this.setTooltipTitle(mainSegment, this.categoryTooltip);
                 this.setTooltipTitle(secondarySegment, this.chapterTooltip);
+
+                if (isVorapisInstalled()) {
+                    const tooltipParent = tooltipTextWrapper.parentElement!;
+                    tooltipParent.classList.add("with-text");
+                }
 
                 if (normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.categoryTooltip.textContent)
                         || normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.chapterTooltip.textContent)) {
@@ -238,7 +246,8 @@ class PreviewBar {
     }
 
     private updatePageElements(): void {
-        const allProgressBars = document.querySelectorAll(".ytp-progress-bar") as NodeListOf<HTMLElement>;
+        // YT, Vorapis v3
+        const allProgressBars = document.querySelectorAll(".ytp-progress-bar, .ytp-progress-bar-container > .html5-progress-bar > .ytp-progress-list") as NodeListOf<HTMLElement>;
         this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
 
         if (this.progressBar) {

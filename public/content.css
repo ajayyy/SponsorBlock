@@ -11,6 +11,11 @@
 	display: none;
 }
 
+/* Vorapi compatibility */
+#player-api_VORAPI_ELEMENT_ID #previewbar {
+	z-index: 999;
+}
+
 #previewbar {
     overflow: visible;
     padding: 0;
@@ -44,7 +49,16 @@
 }
 
 div:hover > #previewbar.sbNotInvidious {
-	transform: scaleY(1)
+	transform: scaleY(1);
+}
+
+/* Vorapis */
+.v3 #previewbar.sbNotInvidious {
+	transform: scaleY(1);
+}
+.sponsorCategoryTooltipVisible.ytp-progress-tooltip {
+	width: 216px !important;
+  	/* left: 264.308px !important; */
 }
 
 .previewbar {
@@ -833,6 +847,15 @@ input::-webkit-inner-spin-button {
 
 .sponsorBlockCategoryPillTitle {
 	white-space: nowrap;
+}
+
+/* Vorapis V3 support */
+#watch7-content .sponsorBlockCategoryPill {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#watch7-content .sponsorBlockCategoryPillTitle {
+	font-size: 15px;
 }
 
 .categoryPillClose {

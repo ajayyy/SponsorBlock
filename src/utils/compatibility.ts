@@ -13,3 +13,7 @@ export function runCompatibilityChecks() {
         }, 10000);
     }
 }
+
+export function isVorapisInstalled() {
+    return document.querySelector(`.v3`);
+}
