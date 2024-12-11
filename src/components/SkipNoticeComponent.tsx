@@ -669,7 +669,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         const skipButtonStates = this.state.skipButtonStates;
         const skipButtonCallbacks = this.state.skipButtonCallbacks;
         if (buttonIndex === null) {
-            for (let i = 0; i < this.segments.length; i++) {
+            for (let i = 0; i < skipButtonStates.length; i++) {
                 skipButtonStates[i] = skipButtonState;
                 skipButtonCallbacks[i] = this.reskip.bind(this);
             }
