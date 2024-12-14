@@ -9,7 +9,7 @@
     }
   },
   "background": {
-    "persistent": false
+    "persistent": true
   },
   "browser_action": {
     "default_area": "navbar"
