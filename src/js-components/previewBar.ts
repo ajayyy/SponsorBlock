@@ -152,6 +152,10 @@ class PreviewBar {
                 // Hide original tooltip if some chapter has been filtered out
                 originalTooltip.style.display = "none";
                 noYoutubeChapters = true;
+
+                originalTooltip.classList.add("sponsorTooltipHasYTChapters");
+            } else {
+                originalTooltip.classList.remove("sponsorTooltipHasYTChapters");
             }
 
             if (mainSegment === null && secondarySegment === null) {
@@ -163,6 +167,7 @@ class PreviewBar {
                 this.categoryTooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
                 if (mainSegment !== null && secondarySegment !== null) {
                     this.categoryTooltipContainer.classList.add("sponsorTwoTooltips");
+                    originalTooltip.classList.remove("sponsorTooltipHasYTChapters");
                 } else {
                     this.categoryTooltipContainer.classList.remove("sponsorTwoTooltips");
                 }

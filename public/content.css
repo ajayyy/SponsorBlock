@@ -88,7 +88,7 @@ div:hover > #previewbar.sbNotInvidious {
 	display: none !important;
 }
 
-.ytp-tooltip.sponsorCategoryTooltipVisible {
+.ytp-tooltip.sponsorCategoryTooltipVisible:not(.sponsorTooltipHasYTChapters) {
 	transform: translateY(-1em) !important;
 }
 
