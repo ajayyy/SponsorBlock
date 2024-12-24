@@ -48,7 +48,6 @@ interface SBConfig {
     audioNotificationOnSkip: boolean;
     checkForUnlistedVideos: boolean;
     testingServer: boolean;
-    refetchWhenNotFound: boolean;
     ytInfoPermissionGranted: boolean;
     allowExpirements: boolean;
     showDonationLink: boolean;
@@ -312,7 +311,6 @@ const syncDefaults = {
     audioNotificationOnSkip: false,
     checkForUnlistedVideos: false,
     testingServer: false,
-    refetchWhenNotFound: true,
     ytInfoPermissionGranted: false,
     allowExpirements: true,
     showDonationLink: true,
