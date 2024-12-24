@@ -1241,11 +1241,7 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
             if (!isNaN(getVideoDuration())) {
                 updatePreviewBar();
             }
-        } else {
-            retryFetch(404);
         }
-    } else {
-        retryFetch(lastResponseStatus);
     }
 
     importExistingChapters(true);
