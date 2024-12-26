@@ -516,7 +516,7 @@ function handleMobileControlsMutations(): void {
 function getPreviewBarAttachElement(): HTMLElement | null {
     const progressElementOptions = [{
             // For newer mobile YouTube (Sept 2024)
-            selector: ".ytChapteredProgressBarHost, .YtProgressBarLineHost, .YtChapteredProgressBarHost",
+            selector: ".ytChapteredProgressBarHost, .ytProgressBarLineHost, .YtProgressBarLineHost, .YtChapteredProgressBarHost",
             isVisibleCheck: true
         }, {
             // For newer mobile YouTube (May 2024)
