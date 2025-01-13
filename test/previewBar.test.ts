@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import PreviewBar, { PreviewBarSegment } from "../src/js-components/previewBar";
 
 describe("createChapterRenderGroups", () => {
