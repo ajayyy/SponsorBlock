@@ -240,7 +240,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         case "getChannelID":
             sendResponse({
-                channelID: getChannelIDInfo().id
+                channelID: getChannelIDInfo().id,
+                isYTTV: (document.location.host === "tv.youtube.com")
             });
 
             break;
