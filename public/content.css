@@ -31,6 +31,15 @@
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
 
+/* Prevent bar from covering highlights on YTTV */
+#previewbar.sponsorblock-yttv-container  {
+	z-index: unset;
+}
+
+ytu-time-bar.ytu-storyboard {
+	text-align: center;
+}
+
 /* May 2024 hover preview */
 .YtPlayerProgressBarProgressBar #previewbar {
 	transform: none;
@@ -65,6 +74,11 @@ div:hover > #previewbar.sbNotInvidious {
 	display: inline-block;
 	height: 100%;
 	min-width: 1px;
+}
+
+.previewbar-yttv {
+	height: 10px;
+	top: 14px;
 }
 
 .previewbar.requiredSegment {
@@ -182,6 +196,16 @@ div:hover > .sponsorBlockChapterBar {
 /* Adds back the padding */
 .sbPlayerDownvote svg {
 	padding-right: 3.6px;
+}
+
+.sbButtonYTTV {
+	padding-left: 5px !important;
+}
+
+/* YTTV only */
+.ytu-player-controls > .skipButtonControlBarContainer > div {
+	padding-left: 5px;
+	align-content: center;
 }
 
 .autoHiding {
