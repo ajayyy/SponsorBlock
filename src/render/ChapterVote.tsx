@@ -20,6 +20,10 @@ export class ChapterVote {
         this.container.id = "chapterVote";
         this.container.style.height = "100%";
 
+        if (document.location.host === "tv.youtube.com") {
+            this.container.style.lineHeight = "initial";
+        }
+
         this.root = createRoot(this.container);
         this.root.render(<ChapterVoteComponent ref={this.ref} vote={vote} />);
     }

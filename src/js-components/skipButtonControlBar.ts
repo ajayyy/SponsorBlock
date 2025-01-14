@@ -9,6 +9,7 @@ export interface SkipButtonControlBarProps {
     skip: (segment: SponsorTime) => void;
     selectSegment: (UUID: SegmentUUID) => void;
     onMobileYouTube: boolean;
+    onYTTV: boolean;
 }
 
 export class SkipButtonControlBar {
@@ -21,6 +22,7 @@ export class SkipButtonControlBar {
 
     showKeybindHint = true;
     onMobileYouTube: boolean;
+    onYTTV: boolean;
 
     enabled = false;
 
@@ -40,6 +42,7 @@ export class SkipButtonControlBar {
     constructor(props: SkipButtonControlBarProps) {
         this.skip = props.skip;
         this.onMobileYouTube = props.onMobileYouTube;
+        this.onYTTV = props.onYTTV;
 
         this.container = document.createElement("div");
         this.container.classList.add("skipButtonControlBarContainer");
@@ -50,6 +53,10 @@ export class SkipButtonControlBar {
         this.skipIcon.src = chrome.runtime.getURL("icons/skipIcon.svg");
         this.skipIcon.classList.add("ytp-button");
         this.skipIcon.id = "sbSkipIconControlBarImage";
+        if (this.onYTTV) {
+            this.skipIcon.style.width = "24px";
+            this.skipIcon.style.height = "24px";
+        }
 
         this.textContainer = document.createElement("div");
 
@@ -84,7 +91,7 @@ export class SkipButtonControlBar {
         this.chapterText = document.querySelector(".ytp-chapter-container");
 
         if (mountingContainer && !mountingContainer.contains(this.container)) {
-            if (this.onMobileYouTube) {
+            if (this.onMobileYouTube || this.onYTTV) {
                 mountingContainer.appendChild(this.container);
             } else {
                 mountingContainer.insertBefore(this.container, this.chapterText);
@@ -101,8 +108,10 @@ export class SkipButtonControlBar {
     }
 
     private getMountingContainer(): HTMLElement {
-        if (!this.onMobileYouTube) {
+        if (!this.onMobileYouTube && !this.onYTTV) {
             return document.querySelector(".ytp-left-controls");
+        } else if (this.onYTTV) {
+            return document.querySelector(".ypcs-control-buttons-left");
         } else {
             return document.getElementById("player-container-id");
         }
