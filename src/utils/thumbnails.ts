@@ -58,10 +58,27 @@ function thumbnailHoverListener(e: MouseEvent) {
     if (!thumbnail) return;
 
     // Pre-fetch data for this video
-    const videoID = extractVideoID(thumbnail);
-    if (videoID) {
-        void getSegmentsForVideo(videoID, false);
-    }
+    let fetched = false;
+    const preFetch = () => {
+        fetched = true;
+        const videoID = extractVideoID(thumbnail);
+        if (videoID) {
+            void getSegmentsForVideo(videoID, false);
+        }
+    };
+    const timeout = setTimeout(preFetch, 200);
+    const onMouseDown = () => {
+        clearTimeout(timeout);
+        if (!fetched) {
+            preFetch();
+        }
+    };
+
+    e.target.addEventListener("mousedown", onMouseDown, { once: true });
+    e.target.addEventListener("mouseleave", () => {
+        clearTimeout(timeout);
+        e.target.removeEventListener("mousedown", onMouseDown);
+    }, { once: true });
 }
 
 function getLink(thumbnail: HTMLImageElement): HTMLAnchorElement | null {
