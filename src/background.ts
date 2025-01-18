@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
             return false;
         case "submitVote":
-            submitVote(request.type, request.UUID, request.category).then(callback);
+            submitVote(request.type, request.UUID, request.category, request.videoID).then(callback);
 
             //this allows the callback to be called later
             return true;
@@ -214,7 +214,7 @@ async function  unregisterFirefoxContentScript(id: string) {
     }
 }
 
-async function submitVote(type: number, UUID: string, category: string) {
+async function submitVote(type: number, UUID: string, category: string, videoID: string) {
     let userID = Config.config.userID;
 
     if (userID == undefined || userID === "undefined") {
@@ -226,7 +226,7 @@ async function submitVote(type: number, UUID: string, category: string) {
     const typeSection = (type !== undefined) ? "&type=" + type : "&category=" + category;
 
     try {
-        const response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&userID=" + userID + typeSection);
+        const response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&videoID=" + videoID + "&userID=" + userID + typeSection);
     
         if (response.ok) {
             return {

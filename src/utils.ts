@@ -5,6 +5,7 @@ import { getHash, HashedValue } from "../maze-utils/src/hash";
 import { waitFor } from "../maze-utils/src";
 import { findValidElementFromSelector } from "../maze-utils/src/dom";
 import { isSafari } from "../maze-utils/src/config";
+import { asyncRequestToServer } from "./utils/requests";
 
 export default class Utils {
     
@@ -198,7 +199,7 @@ export default class Utils {
 
     getSponsorIndexFromUUID(sponsorTimes: SponsorTime[], UUID: string): number {
         for (let i = 0; i < sponsorTimes.length; i++) {
-            if (sponsorTimes[i].UUID === UUID) {
+            if (sponsorTimes[i].UUID.startsWith(UUID) || UUID.startsWith(sponsorTimes[i].UUID)) {
                 return i;
             }
         }
@@ -281,6 +282,17 @@ export default class Utils {
     async addHiddenSegment(videoID: VideoID, segmentUUID: string, hidden: SponsorHideType) {
         if ((chrome.extension.inIncognitoContext && !Config.config.trackDownvotesInPrivate)
                 || !Config.config.trackDownvotes) return;
+
+        if (segmentUUID.length < 60) {
+            const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
+                UUID: segmentUUID,
+                videoID
+            });
+
+            if (segmentIDData.ok && segmentIDData.responseText) {
+                segmentUUID = segmentIDData.responseText;
+            }
+        }
 
         const hashedVideoID = (await getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
         const UUIDHash = await getHash(segmentUUID, 1);
