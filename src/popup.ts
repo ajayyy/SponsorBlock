@@ -681,9 +681,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             uuidButton.className = "voteButton";
             uuidButton.src = chrome.runtime.getURL("icons/clipboard.svg");
             uuidButton.title = chrome.i18n.getMessage("copySegmentID");
-            uuidButton.addEventListener("click", () => {
-                copyToClipboard(UUID);
+            uuidButton.addEventListener("click", async () => {
                 const stopAnimation = AnimationUtils.applyLoadingAnimation(uuidButton, 0.3);
+
+                if (UUID.length > 60) {
+                    copyToClipboard(UUID);
+                } else {
+                    const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
+                        UUID: UUID,
+                        videoID: currentVideoID
+                    });
+        
+                    if (segmentIDData.ok && segmentIDData.responseText) {
+                        copyToClipboard(segmentIDData.responseText);
+                    }
+                }
+
                 stopAnimation();
             });
 
