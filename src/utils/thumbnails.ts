@@ -1,6 +1,6 @@
 import { isOnInvidious, parseYouTubeVideoIDFromURL } from "../../maze-utils/src/video";
 import Config from "../config";
-import { getVideoLabel } from "./videoLabels";
+import { getHasStartSegment, getVideoLabel } from "./videoLabels";
 import { getThumbnailSelector, setThumbnailListener } from "../../maze-utils/src/thumbnailManagement";
 import { VideoID } from "../types";
 import { getSegmentsForVideo } from "./segmentData";
@@ -59,14 +59,14 @@ function thumbnailHoverListener(e: MouseEvent) {
 
     // Pre-fetch data for this video
     let fetched = false;
-    const preFetch = () => {
+    const preFetch = async () => {
         fetched = true;
         const videoID = extractVideoID(thumbnail);
-        if (videoID) {
+        if (videoID && await getHasStartSegment(videoID)) {
             void getSegmentsForVideo(videoID, false);
         }
     };
-    const timeout = setTimeout(preFetch, 200);
+    const timeout = setTimeout(preFetch, 100);
     const onMouseDown = () => {
         clearTimeout(timeout);
         if (!fetched) {
