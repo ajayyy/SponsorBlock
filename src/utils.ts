@@ -199,7 +199,7 @@ export default class Utils {
 
     getSponsorIndexFromUUID(sponsorTimes: SponsorTime[], UUID: string): number {
         for (let i = 0; i < sponsorTimes.length; i++) {
-            if (sponsorTimes[i].UUID.startsWith(UUID) || UUID.startsWith(sponsorTimes[i].UUID)) {
+            if (sponsorTimes[i].UUID && (sponsorTimes[i].UUID.startsWith(UUID) || UUID.startsWith(sponsorTimes[i].UUID))) {
                 return i;
             }
         }
@@ -320,6 +320,7 @@ export default class Utils {
 
             allDownvotes[hashedVideoID] = currentVideoData;
         }
+        console.log(allDownvotes)
 
         const entries = Object.entries(allDownvotes);
         if (entries.length > 10000) {
