@@ -97,6 +97,8 @@ interface SBConfig {
     nextChapterKeybind: Keybind;
     previousChapterKeybind: Keybind;
     closeSkipNoticeKeybind: Keybind;
+    upvoteKeybind: Keybind;
+    downvoteKeybind: Keybind;
 
     // What categories should be skipped
     categorySelections: CategorySelection[];
@@ -356,6 +358,8 @@ const syncDefaults = {
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
     previousChapterKeybind: { key: "ArrowLeft", ctrl: true },
     closeSkipNoticeKeybind: { key: "Backspace" },
+    downvoteKeybind: { key: "h" },
+    upvoteKeybind: { key: "g" },
 
     categorySelections: [{
         name: "sponsor" as Category,
