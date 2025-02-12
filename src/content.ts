@@ -2621,12 +2621,14 @@ function hotkeyListener(e: KeyboardEvent): void {
         previousChapter();
         return;
     } else if (keybindEquals(key, upvoteKey)) {
-        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.segment[0]<=getCurrentTime());
-        if (lastSegment) vote(1,lastSegment.UUID, undefined, skipNotices?.find((skipNotice) => skipNotice.segments.some((segment) => segment.UUID === lastSegment.UUID))?.skipNoticeRef.current);
+        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.segment[0] <= getCurrentTime() && getCurrentTime() - (s.segment[1] || s.segment[0]) <= Config.config.skipNoticeDuration);
+        const lastSkipNotice = skipNotices?.find((skipNotice) => skipNotice.segments.some((segment) => segment.UUID === lastSegment.UUID))?.skipNoticeRef.current;
+        if (lastSegment) vote(1,lastSegment.UUID, undefined, lastSkipNotice);
         return;
     } else if (keybindEquals(key, downvoteKey)) {
-        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.segment[0]<=getCurrentTime());
-        if (lastSegment) vote(0,lastSegment.UUID, undefined, skipNotices?.find((skipNotice) => skipNotice.segments.some((segment) => segment.UUID === lastSegment.UUID))?.skipNoticeRef.current);
+        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.segment[0] <= getCurrentTime() && getCurrentTime() - (s.segment[1] || s.segment[0]) <= Config.config.skipNoticeDuration);
+        const lastSkipNotice = skipNotices?.find((skipNotice) => skipNotice.segments.some((segment) => segment.UUID === lastSegment.UUID))?.skipNoticeRef.current;
+        if (lastSegment) vote(0,lastSegment.UUID, undefined, lastSkipNotice);
         return;
     }
 }
