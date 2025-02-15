@@ -81,6 +81,26 @@ class SkipNotice {
     unmutedListener(time: number): void {
         this.skipNoticeRef?.current?.unmutedListener(time);
     }
+
+    async waitForSkipNoticeRef(): Promise<SkipNoticeComponent> {
+        const waitForRef = () => new Promise<SkipNoticeComponent>((resolve) => {
+            const observer = new MutationObserver(() => {
+            if (this.skipNoticeRef.current) {
+                observer.disconnect();
+                resolve(this.skipNoticeRef.current);
+            }
+            });
+
+            observer.observe(document.getElementsByClassName("sponsorSkipNoticeContainer")[0], { childList: true, subtree: true});
+
+            if (this.skipNoticeRef.current) {
+            observer.disconnect();
+            resolve(this.skipNoticeRef.current);
+            }
+        });
+
+        return this.skipNoticeRef?.current || await waitForRef();
+    }
 }
 
 export default SkipNotice;

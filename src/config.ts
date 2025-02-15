@@ -358,8 +358,8 @@ const syncDefaults = {
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
     previousChapterKeybind: { key: "ArrowLeft", ctrl: true },
     closeSkipNoticeKeybind: { key: "Backspace" },
-    downvoteKeybind: { key: "h" },
-    upvoteKeybind: { key: "g" },
+    downvoteKeybind: { key: "h", shift: true },
+    upvoteKeybind: { key: "g", shift: true },
 
     categorySelections: [{
         name: "sponsor" as Category,

@@ -2532,6 +2532,23 @@ function previousChapter(): void {
     }
 }
 
+async function handleKeybindVote(type: number): Promise<void>{
+        let lastSkipNotice = skipNotices[0]?.skipNoticeRef.current;
+
+        if (!lastSkipNotice) {
+            const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.source == SponsorSourceType.Server && s.actionType != 'chapter' && (s.segment[0] <= getCurrentTime() && getCurrentTime() - (s.segment[1] || s.segment[0]) <= Config.config.skipNoticeDuration));
+            if (!lastSegment) return;
+
+            createSkipNotice([lastSegment], shouldAutoSkip(lastSegment), lastSegment?.segment[0], false);
+            lastSkipNotice = await skipNotices[0]?.waitForSkipNoticeRef();
+            lastSkipNotice?.reskippedMode(0);
+        }
+
+        lastSkipNotice?.onMouseEnter();
+        vote(type,lastSkipNotice?.segments[0]?.UUID, undefined, lastSkipNotice);
+        return;
+}
+
 function addHotkeyListener(): void {
     document.addEventListener("keydown", hotkeyListener);
 
@@ -2621,14 +2638,10 @@ function hotkeyListener(e: KeyboardEvent): void {
         previousChapter();
         return;
     } else if (keybindEquals(key, upvoteKey)) {
-        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.segment[0] <= getCurrentTime() && getCurrentTime() - (s.segment[1] || s.segment[0]) <= Config.config.skipNoticeDuration);
-        const lastSkipNotice = skipNotices?.find((skipNotice) => skipNotice.segments.some((segment) => segment.UUID === lastSegment.UUID))?.skipNoticeRef.current;
-        if (lastSegment) vote(1,lastSegment.UUID, undefined, lastSkipNotice);
+        handleKeybindVote(1);
         return;
     } else if (keybindEquals(key, downvoteKey)) {
-        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.segment[0] <= getCurrentTime() && getCurrentTime() - (s.segment[1] || s.segment[0]) <= Config.config.skipNoticeDuration);
-        const lastSkipNotice = skipNotices?.find((skipNotice) => skipNotice.segments.some((segment) => segment.UUID === lastSegment.UUID))?.skipNoticeRef.current;
-        if (lastSegment) vote(0,lastSegment.UUID, undefined, lastSkipNotice);
+        handleKeybindVote(0);
         return;
     }
 }

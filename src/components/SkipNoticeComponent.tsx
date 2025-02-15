@@ -631,7 +631,10 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
 
     reskip(buttonIndex: number, index: number, forceSeek: boolean): void {
         this.contentContainer().reskipSponsorTime(this.segments[index], forceSeek);
+        this.reskippedMode(buttonIndex);
+    }
 
+    reskippedMode(buttonIndex: number): void {
         const skipButtonStates = this.state.skipButtonStates;
         skipButtonStates[buttonIndex] = SkipButtonState.Undo;
 
