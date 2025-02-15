@@ -842,6 +842,21 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
             }
         }
     }
+
+    KeybindVote(): void {
+        const skipButtonStates = this.state.skipButtonStates;
+        skipButtonStates[0] = SkipButtonState.Undo;
+
+        const skipButtonCallbacks = this.state.skipButtonCallbacks;
+        skipButtonCallbacks[0] = this.unskip.bind(this);
+
+        const newState: SkipNoticeState = {
+            skipButtonStates,
+            skipButtonCallbacks,
+        };
+
+        this.setState(newState);
+    }
 }
 
 export default SkipNoticeComponent;
