@@ -146,7 +146,9 @@ class KeybindDialogComponent extends React.Component<KeybindDialogProps, Keybind
                 this.props.option !== "actuallySubmitKeybind" && this.equals(Config.config['actuallySubmitKeybind']) ||
                 this.props.option !== "previewKeybind" && this.equals(Config.config['previewKeybind']) ||
                 this.props.option !== "closeSkipNoticeKeybind" && this.equals(Config.config['closeSkipNoticeKeybind']) ||
-                this.props.option !== "startSponsorKeybind" && this.equals(Config.config['startSponsorKeybind']))
+                this.props.option !== "startSponsorKeybind" && this.equals(Config.config['startSponsorKeybind']) ||
+                this.props.option !== "downvoteKeybind" && this.equals(Config.config['downvoteKeybind']) ||
+                this.props.option !== "upvoteKeybind" && this.equals(Config.config['upvoteKeybind']))
             return {message: chrome.i18n.getMessage("keyAlreadyUsed"), blocking: true};
 
         return null;
