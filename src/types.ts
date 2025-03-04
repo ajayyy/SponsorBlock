@@ -6,7 +6,7 @@ export interface ContentContainer {
     (): {
         vote: (type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent) => void;
         dontShowNoticeAgain: () => void;
-        unskipSponsorTime: (segment: SponsorTime, unskipTime: number, forceSeek?: boolean) => void;
+        unskipSponsorTime: (segment: SponsorTime, unskipTime: number, forceSeek?: boolean, voteNotice?: boolean) => void;
         sponsorTimes: SponsorTime[];
         sponsorTimesSubmitting: SponsorTime[];
         skipNotices: SkipNotice[];
@@ -219,7 +219,7 @@ export interface ToggleSkippable {
     setShowKeybindHint: (show: boolean) => void;
 }
 
-export enum NoticeVisbilityMode {
+export enum NoticeVisibilityMode {
     FullSize = 0,
     MiniForAutoSkip = 1,
     MiniForAll = 2,
