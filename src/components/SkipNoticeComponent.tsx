@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config"
-import { Category, ContentContainer, SponsorTime, NoticeVisbilityMode, ActionType, SponsorSourceType, SegmentUUID } from "../types";
+import { Category, ContentContainer, SponsorTime, NoticeVisibilityMode, ActionType, SponsorSourceType, SegmentUUID } from "../types";
 import NoticeComponent from "./NoticeComponent";
 import NoticeTextSelectionComponent from "./NoticeTextSectionComponent";
 import Utils from "../utils";
 const utils = new Utils();
-import { getSkippingText, getUpcomingText } from "../utils/categoryUtils";
+import { getSkippingText, getUpcomingText, getVoteText } from "../utils/categoryUtils";
 
 import ThumbsUpSvg from "../svg-icons/thumbs_up_svg";
 import ThumbsDownSvg from "../svg-icons/thumbs_down_svg";
@@ -29,6 +29,7 @@ export interface SkipNoticeProps {
     autoSkip: boolean;
     startReskip?: boolean;
     upcomingNotice?: boolean;
+    voteNotice?: boolean;
     // Contains functions and variables from the content script needed by the skip notice
     contentContainer: ContentContainer;
 
@@ -102,7 +103,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
         this.autoSkip = props.autoSkip;
         this.contentContainer = props.contentContainer;
 
-        const noticeTitle = !this.props.upcomingNotice ? getSkippingText(this.segments, this.props.autoSkip) : getUpcomingText(this.segments);
+        const noticeTitle = this.props.voteNotice ? getVoteText(this.segments) : !this.props.upcomingNotice ? getSkippingText(this.segments, this.props.autoSkip) : getUpcomingText(this.segments);
 
         const previousSkipNotices = document.querySelectorAll(".sponsorSkipNoticeParent:not(.sponsorSkipUpcomingNotice)");
         this.amountOfPreviousNotices = previousSkipNotices.length;
@@ -186,8 +187,8 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 idSuffix={this.idSuffix}
                 fadeIn={this.props.fadeIn}
                 fadeOut={!this.props.upcomingNotice}
-                startFaded={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.FadedForAll
-                    || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.FadedForAutoSkip && this.autoSkip)}
+                startFaded={Config.config.noticeVisibilityMode >= NoticeVisibilityMode.FadedForAll
+                    || (Config.config.noticeVisibilityMode >= NoticeVisibilityMode.FadedForAutoSkip && this.autoSkip)}
                 timed={true}
                 maxCountdownTime={this.state.maxCountdownTime}
                 style={noticeStyle}
@@ -242,15 +243,18 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         </div>
 
                         {/* Copy and Downvote Button */}
-                        <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
-                                className="voteButton"
-                                style={{marginLeft: "5px"}}
-                                onClick={() => this.openEditingOptions()}>
-                            <PencilSvg fill={this.state.editing === true
-                                            || this.state.actionState === SkipNoticeAction.CopyDownvote
-                                            || this.state.choosingCategory === true
-                                            ? this.selectedColor : this.unselectedColor} />
-                        </div>
+                        {
+                            !this.props.voteNotice &&
+                            <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
+                                    className="voteButton"
+                                    style={{marginLeft: "5px"}}
+                                    onClick={() => this.openEditingOptions()}>
+                                <PencilSvg fill={this.state.editing === true
+                                                || this.state.actionState === SkipNoticeAction.CopyDownvote
+                                                || this.state.choosingCategory === true
+                                                ? this.selectedColor : this.unselectedColor} />
+                            </div>
+                        }
                     </td>
 
                     :
@@ -278,11 +282,11 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 }
 
                 {/* Unskip/Skip Button */}
-                {!this.props.smaller || this.segments[0].actionType === ActionType.Mute
+                {!this.props.voteNotice && (!this.props.smaller || this.segments[0].actionType === ActionType.Mute)
                     ? this.getSkipButton(1) : null}
 
                 {/* Never show button */}
-                {!this.autoSkip || this.props.startReskip ? "" :
+                {!this.autoSkip || this.props.startReskip || this.props.voteNotice ? "" :
                     <td className="sponsorSkipNoticeRightSection"
                         key={1}>
                         <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
@@ -374,7 +378,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 style.minWidth = "100px";
             }
 
-            const showSkipButton = (buttonIndex !== 0 || this.props.smaller || this.segments[0].actionType === ActionType.Mute) && !this.props.upcomingNotice;
+            const showSkipButton = (buttonIndex !== 0 || this.props.smaller || !this.props.voteNotice || this.segments[0].actionType === ActionType.Mute) && !this.props.upcomingNotice;
 
             return (
                 <span className="sponsorSkipNoticeUnskipSection" style={{ visibility: !showSkipButton ? "hidden" : null }}>
@@ -624,14 +628,17 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     unskip(buttonIndex: number, index: number, forceSeek: boolean): void {
-        this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime, forceSeek);
+        this.contentContainer().unskipSponsorTime(this.segments[index], this.props.unskipTime, forceSeek, this.props.voteNotice);
 
-        this.unskippedMode(buttonIndex, index, SkipButtonState.Redo);
+        this.unskippedMode(buttonIndex, index, this.segments[0].actionType === ActionType.Poi ? SkipButtonState.Undo : SkipButtonState.Redo);
     }
 
     reskip(buttonIndex: number, index: number, forceSeek: boolean): void {
         this.contentContainer().reskipSponsorTime(this.segments[index], forceSeek);
+        this.reskippedMode(buttonIndex);
+    }
 
+    reskippedMode(buttonIndex: number): void {
         const skipButtonStates = this.state.skipButtonStates;
         skipButtonStates[buttonIndex] = SkipButtonState.Undo;
 
@@ -661,7 +668,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
     }
 
     getUnskippedModeInfo(buttonIndex: number, index: number, skipButtonState: SkipButtonState): SkipNoticeState {
-        const changeCountdown = this.segments[index].actionType !== ActionType.Poi;
+        const changeCountdown = !this.props.voteNotice && this.segments[index].actionType !== ActionType.Poi;
 
         const maxCountdownTime = changeCountdown ?
             this.getFullDurationCountdown(index) : this.state.maxCountdownTime;

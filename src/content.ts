@@ -1779,7 +1779,7 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     if (autoSkip || isSubmittingSegment) sendTelemetryAndCount(skippingSegments, skipTime[1] - skipTime[0], true);
 }
 
-function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, unskipTime: number, startReskip: boolean) {
+function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, unskipTime: number, startReskip: boolean, voteNotice = false) {
     for (const skipNotice of skipNotices) {
         if (skippingSegments.length === skipNotice.segments.length
                 && skippingSegments.every((segment) => skipNotice.segments.some((s) => s.UUID === segment.UUID))) {
@@ -1793,7 +1793,7 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
     const newSkipNotice = new SkipNotice(skippingSegments, autoSkip, skipNoticeContentContainer, () => {
         upcomingNotice?.close();
         upcomingNotice = null;
-    }, unskipTime, startReskip, upcomingNoticeShown);
+    }, unskipTime, startReskip, upcomingNoticeShown, voteNotice);
     if (isOnMobileYouTube() || Config.config.skipKeybind == null) newSkipNotice.setShowKeybindHint(false);
     skipNotices.push(newSkipNotice);
 
@@ -1812,13 +1812,13 @@ function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number,
     upcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft / 1000, autoSkip);
 }
 
-function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false) {
+function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false, voteNotice = false) {
     if (segment.actionType === ActionType.Mute) {
         getVideo().muted = false;
         videoMuted = false;
     }
 
-    if (forceSeek || segment.actionType === ActionType.Skip) {
+    if (forceSeek || segment.actionType === ActionType.Skip || voteNotice) {
         //add a tiny bit of time to make sure it is not skipped again
         setCurrentTime(unskipTime ?? segment.segment[0] + 0.001);
     }
@@ -2533,6 +2533,23 @@ function previousChapter(): void {
     }
 }
 
+async function handleKeybindVote(type: number): Promise<void>{
+    let lastSkipNotice = skipNotices[0]?.skipNoticeRef.current;
+    lastSkipNotice?.onMouseEnter();
+
+    if (!lastSkipNotice) {
+        const lastSegment = [...sponsorTimes].reverse()?.find((s) => s.source == SponsorSourceType.Server && (s.segment[0] <= getCurrentTime() && getCurrentTime() - (s.segment[1] || s.segment[0]) <= Config.config.skipNoticeDuration));
+        if (!lastSegment) return;
+
+        createSkipNotice([lastSegment], shouldAutoSkip(lastSegment), lastSegment?.segment[0] + 0.001,false, true);
+        lastSkipNotice = await skipNotices[0].waitForSkipNoticeRef();
+        lastSkipNotice?.reskippedMode(0);
+    }
+
+    vote(type,lastSkipNotice?.segments[0]?.UUID, undefined, lastSkipNotice);
+    return;
+}
+
 function addHotkeyListener(): void {
     document.addEventListener("keydown", hotkeyListener);
 
@@ -2576,6 +2593,8 @@ function hotkeyListener(e: KeyboardEvent): void {
     const openSubmissionMenuKey = Config.config.submitKeybind;
     const nextChapterKey = Config.config.nextChapterKeybind;
     const previousChapterKey = Config.config.previousChapterKeybind;
+    const upvoteKey = Config.config.upvoteKeybind;
+    const downvoteKey = Config.config.downvoteKeybind;
 
     if (keybindEquals(key, skipKey)) {
         if (activeSkipKeybindElement) {
@@ -2618,6 +2637,12 @@ function hotkeyListener(e: KeyboardEvent): void {
     } else if (keybindEquals(key, previousChapterKey)) {
         if (sponsorTimes.length > 0) e.stopPropagation();
         previousChapter();
+        return;
+    } else if (keybindEquals(key, upvoteKey)) {
+        handleKeybindVote(1);
+        return;
+    } else if (keybindEquals(key, downvoteKey)) {
+        handleKeybindVote(0);
         return;
     }
 }

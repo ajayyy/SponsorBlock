@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisbilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
 
@@ -32,7 +32,7 @@ interface SBConfig {
     trackDownvotesInPrivate: boolean;
     dontShowNotice: boolean;
     showUpcomingNotice: boolean;
-    noticeVisibilityMode: NoticeVisbilityMode;
+    noticeVisibilityMode: NoticeVisibilityMode;
     hideVideoPlayerControls: boolean;
     hideInfoButtonPlayerControls: boolean;
     hideDeleteButtonPlayerControls: boolean;
@@ -97,6 +97,8 @@ interface SBConfig {
     nextChapterKeybind: Keybind;
     previousChapterKeybind: Keybind;
     closeSkipNoticeKeybind: Keybind;
+    upvoteKeybind: Keybind;
+    downvoteKeybind: Keybind;
 
     // What categories should be skipped
     categorySelections: CategorySelection[];
@@ -295,7 +297,7 @@ const syncDefaults = {
     trackDownvotesInPrivate: false,
     dontShowNotice: false,
     showUpcomingNotice: false,
-    noticeVisibilityMode: NoticeVisbilityMode.FadedForAutoSkip,
+    noticeVisibilityMode: NoticeVisibilityMode.FadedForAutoSkip,
     hideVideoPlayerControls: false,
     hideInfoButtonPlayerControls: false,
     hideDeleteButtonPlayerControls: false,
@@ -356,6 +358,8 @@ const syncDefaults = {
     nextChapterKeybind: { key: "ArrowRight", ctrl: true },
     previousChapterKeybind: { key: "ArrowLeft", ctrl: true },
     closeSkipNoticeKeybind: { key: "Backspace" },
+    downvoteKeybind: { key: "h", shift: true },
+    upvoteKeybind: { key: "g", shift: true },
 
     categorySelections: [{
         name: "sponsor" as Category,
@@ -466,7 +470,11 @@ const syncDefaults = {
         "preview-filler": {
             color: "#2E0066",
             opacity: "0.7"
-        }
+        },
+        "chapter": {
+            color: "#fff",
+            opacity: "0"
+        },
     }
 };
 
