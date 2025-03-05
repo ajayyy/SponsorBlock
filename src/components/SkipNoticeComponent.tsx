@@ -243,15 +243,18 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                         </div>
 
                         {/* Copy and Downvote Button */}
-                        <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
-                                className="voteButton"
-                                style={{marginLeft: "5px"}}
-                                onClick={() => this.openEditingOptions()}>
-                            <PencilSvg fill={this.state.editing === true
-                                            || this.state.actionState === SkipNoticeAction.CopyDownvote
-                                            || this.state.choosingCategory === true
-                                            ? this.selectedColor : this.unselectedColor} />
-                        </div>
+                        {
+                            !this.props.voteNotice &&
+                            <div id={"sponsorTimesDownvoteButtonsContainerCopyDownvote" + this.idSuffix}
+                                    className="voteButton"
+                                    style={{marginLeft: "5px"}}
+                                    onClick={() => this.openEditingOptions()}>
+                                <PencilSvg fill={this.state.editing === true
+                                                || this.state.actionState === SkipNoticeAction.CopyDownvote
+                                                || this.state.choosingCategory === true
+                                                ? this.selectedColor : this.unselectedColor} />
+                            </div>
+                        }
                     </td>
 
                     :
@@ -283,7 +286,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                     ? this.getSkipButton(1) : null}
 
                 {/* Never show button */}
-                {!this.autoSkip || this.props.startReskip ? "" :
+                {!this.autoSkip || this.props.startReskip || this.props.voteNotice ? "" :
                     <td className="sponsorSkipNoticeRightSection"
                         key={1}>
                         <button className="sponsorSkipObject sponsorSkipNoticeButton sponsorSkipNoticeRightButton"
@@ -375,7 +378,7 @@ class SkipNoticeComponent extends React.Component<SkipNoticeProps, SkipNoticeSta
                 style.minWidth = "100px";
             }
 
-            const showSkipButton = (buttonIndex !== 0 || this.props.smaller || this.props.voteNotice || this.segments[0].actionType === ActionType.Mute) && !this.props.upcomingNotice;
+            const showSkipButton = (buttonIndex !== 0 || this.props.smaller || !this.props.voteNotice || this.segments[0].actionType === ActionType.Mute) && !this.props.upcomingNotice;
 
             return (
                 <span className="sponsorSkipNoticeUnskipSection" style={{ visibility: !showSkipButton ? "hidden" : null }}>
