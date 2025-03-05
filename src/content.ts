@@ -306,7 +306,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             for (const segment of importedSegments) {
                 if (!sponsorTimesSubmitting.some(
                         (s) => Math.abs(s.segment[0] - segment.segment[0]) < 1
-                            && Math.abs(s.segment[1] - segment.segment[1]) < 1)) {
+                            && Math.abs(s.segment[1] - segment.segment[1]) < 1
+                            && s.description === segment.description)) {
                     const hasChaptersPermission = (Config.config.showCategoryWithoutPermission
                         || Config.config.permissions["chapter"]);
                     if (segment.category === "chapter" && (!utils.getCategorySelection("chapter") || !hasChaptersPermission)) {
