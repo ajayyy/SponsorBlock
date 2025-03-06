@@ -5,7 +5,7 @@ import Utils from "../utils";
 const utils = new Utils();
 
 import SkipNoticeComponent from "../components/SkipNoticeComponent";
-import { SponsorTime, ContentContainer, NoticeVisbilityMode } from "../types";
+import { SponsorTime, ContentContainer, NoticeVisibilityMode } from "../types";
 import Config from "../config";
 import { SkipNoticeAction } from "../utils/noticeUtils";
 
@@ -20,7 +20,7 @@ class SkipNotice {
     skipNoticeRef: React.MutableRefObject<SkipNoticeComponent>;
     root: Root;
 
-    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, componentDidMount: () => void, unskipTime: number = null, startReskip = false, upcomingNoticeShown: boolean) {
+    constructor(segments: SponsorTime[], autoSkip = false, contentContainer: ContentContainer, componentDidMount: () => void, unskipTime: number = null, startReskip = false, upcomingNoticeShown: boolean, voteNotice = false) {
         this.skipNoticeRef = React.createRef();
 
         this.segments = segments;
@@ -42,18 +42,18 @@ class SkipNotice {
         this.noticeElement.id = "sponsorSkipNoticeContainer" + idSuffix;
 
         referenceNode.prepend(this.noticeElement);
-
         this.root = createRoot(this.noticeElement);
         this.root.render(
             <SkipNoticeComponent segments={segments} 
                 autoSkip={autoSkip} 
                 startReskip={startReskip}
+                voteNotice={voteNotice}
                 contentContainer={contentContainer}
                 ref={this.skipNoticeRef}
                 closeListener={() => this.close()}
-                smaller={Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAll 
-                    || (Config.config.noticeVisibilityMode >= NoticeVisbilityMode.MiniForAutoSkip && autoSkip)}
-                fadeIn={!upcomingNoticeShown}
+                smaller={!voteNotice && (Config.config.noticeVisibilityMode >= NoticeVisibilityMode.MiniForAll 
+                    || (Config.config.noticeVisibilityMode >= NoticeVisibilityMode.MiniForAutoSkip && autoSkip))}
+                fadeIn={!upcomingNoticeShown && !voteNotice}
                 unskipTime={unskipTime}
                 componentDidMount={componentDidMount} />
         );
@@ -80,6 +80,26 @@ class SkipNotice {
 
     unmutedListener(time: number): void {
         this.skipNoticeRef?.current?.unmutedListener(time);
+    }
+
+    async waitForSkipNoticeRef(): Promise<SkipNoticeComponent> {
+        const waitForRef = () => new Promise<SkipNoticeComponent>((resolve) => {
+            const observer = new MutationObserver(() => {
+            if (this.skipNoticeRef.current) {
+                observer.disconnect();
+                resolve(this.skipNoticeRef.current);
+            }
+            });
+
+            observer.observe(document.getElementsByClassName("sponsorSkipNoticeContainer")[0], { childList: true, subtree: true});
+
+            if (this.skipNoticeRef.current) {
+            observer.disconnect();
+            resolve(this.skipNoticeRef.current);
+            }
+        });
+
+        return this.skipNoticeRef?.current || await waitForRef();
     }
 }
 

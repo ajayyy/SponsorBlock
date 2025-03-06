@@ -34,9 +34,12 @@ function exportTime(segment: SponsorTime): string {
 
 export function importTimes(data: string, videoDuration: number): SponsorTime[] {
     const lines = data.split("\n");
+    const timeRegex = /(?:((?:\d+:)?\d+:\d+)+(?:\.\d+)?)|(?:\d+(?=s| second))/g;
+    const anyLineHasTime = lines.some((line) => timeRegex.test(line));
+
     const result: SponsorTime[] = [];
     for (const line of lines) {
-        const match = line.match(/(?:((?:\d+:)?\d+:\d+)+(?:\.\d+)?)|(?:\d+(?=s| second))/g);
+        const match = line.match(timeRegex);
         if (match) {
             const startTime = getFormattedTimeToSeconds(match[0]);
             if (startTime !== null) {
@@ -71,6 +74,18 @@ export function importTimes(data: string, videoDuration: number): SponsorTime[] 
 
                 result.push(segment);
             }
+        } else if (!anyLineHasTime) {
+            // Adding chapters with placeholder times
+            const segment: SponsorTime = {
+                segment: [0, 0],
+                category: "chapter" as Category,
+                actionType: ActionType.Chapter,
+                description: line,
+                source: SponsorSourceType.Local,
+                UUID: generateUserID() as SegmentUUID
+            };
+
+            result.push(segment);
         }
     }
 

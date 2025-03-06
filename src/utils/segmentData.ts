@@ -48,11 +48,13 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
-    
+
     const hashPrefix = (await getHash(videoID, 1)).slice(0, 4) as VideoID & HashedValue;
+    const hasDownvotedSegments = !!Config.local.downvotedSegments[hashPrefix];
     const response = await asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories: CompileConfig.categoryList,
         actionTypes: ActionTypes,
+        trimUUIDs: hasDownvotedSegments ? null : 5,
         ...extraRequestData
     }, {
         "X-CLIENT-NAME": `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`

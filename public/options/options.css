@@ -373,6 +373,7 @@ input[type='number'] {
     display: inline-block;
     width: 40px;
     height: 24px;
+    min-width: 40px;
 }
 
 .switch input { 

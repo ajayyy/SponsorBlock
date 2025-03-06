@@ -44,6 +44,14 @@ export function getUpcomingText(segments: SponsorTime[]): string {
     return chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
 }
 
+export function getVoteText(segments: SponsorTime[]): string {
+    const categoryName = chrome.i18n.getMessage(segments.length > 1 ? "multipleSegments" 
+        : "category_" + segments[0].category + "_short") || chrome.i18n.getMessage("category_" + segments[0].category);
+        
+    const messageId = "voted_on";
+    return chrome.i18n.getMessage(messageId).replace("{0}", categoryName);
+}
+
 
 export function getCategorySuffix(category: Category): string {
     if (category.startsWith("poi_")) {
