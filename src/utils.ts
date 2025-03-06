@@ -249,6 +249,7 @@ export default class Utils {
             ".main-video-section > .video-container", // Cloudtube
             ".shaka-video-container", // Piped
             "#player-container.ytk-player", // YT Kids
+            "#id-tv-container" // YTTV
         ];
 
         let referenceNode = findValidElementFromSelector(selectors)

@@ -35,7 +35,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
@@ -240,7 +240,8 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         case "getChannelID":
             sendResponse({
-                channelID: getChannelIDInfo().id
+                channelID: getChannelIDInfo().id,
+                isYTTV: (document.location.host === "tv.youtube.com")
             });
 
             break;
@@ -553,6 +554,10 @@ function getPreviewBarAttachElement(): HTMLElement | null {
         }, {
             // For Vorapis v3
             selector: ".ytp-progress-bar-container > .html5-progress-bar > .ytp-progress-list"
+        }, {
+            // For YTTV
+            selector: ".yssi-slider > div.ytu-ss-timeline-container",
+            isVisibleCheck: false
         }
     ];
 
@@ -578,7 +583,7 @@ function createPreviewBar(): void {
 
     if (el) {
         const chapterVote = new ChapterVote(voteAsync);
-        previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), chapterVote, () => importExistingChapters(true));
+        previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), isOnYTTV(), chapterVote, () => importExistingChapters(true));
 
         updatePreviewBar();
     }
@@ -1147,7 +1152,8 @@ function setupSkipButtonControlBar() {
                 forceAutoSkip: true
             }),
             selectSegment,
-            onMobileYouTube: isOnMobileYouTube()
+            onMobileYouTube: isOnMobileYouTube(),
+            onYTTV: isOnYTTV(),
         });
     }
 
@@ -1850,6 +1856,9 @@ function createButton(baseID: string, title: string, callback: () => void, image
     newButton.id = baseID + "Button";
     newButton.classList.add("playerButton");
     newButton.classList.add("ytp-button");
+    if (isOnYTTV()) {
+        newButton.setAttribute("style", "width: 40px; height: 40px");
+    }
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
     newButton.addEventListener("click", () => {
         callback();
@@ -1924,7 +1933,7 @@ async function updateVisibilityOfPlayerControlsButton(): Promise<void> {
     updateEditButtonsOnPlayer();
 
     // Don't show the info button on embeds
-    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || isOnInvidious()
+    if (Config.config.hideInfoButtonPlayerControls || document.URL.includes("/embed/") || isOnInvidious() || isOnYTTV()
         || document.getElementById("sponsorBlockPopupContainer") != null) {
         playerButtons.info.button.style.display = "none";
     } else {
@@ -1991,6 +2000,11 @@ function getRealCurrentTime(): number {
 }
 
 function startOrEndTimingNewSegment() {
+    if (isOnYTTV() && getIsLivePremiere()) {
+        alert(chrome.i18n.getMessage("yttvLiveContentWarning"));
+        return;
+    }
+
     verifyCurrentTime();
     const roundedTime = Math.round((getRealCurrentTime() + Number.EPSILON) * 1000) / 1000;
     if (!isSegmentCreationInProgress()) {
@@ -2694,6 +2708,7 @@ function showTimeWithoutSkips(skippedDuration: number): void {
     // YouTube player time display
     const selector =
         isOnInvidious()     ? ".vjs-duration" :
+        isOnYTTV()          ? ".ypl-full-controls .ypmcs-control .time-info-bar" :
         isOnMobileYouTube() ? ".ytwPlayerTimeDisplayContent" :
                               ".ytp-time-display.notranslate .ytp-time-wrapper";
     const display = document.querySelector(selector);

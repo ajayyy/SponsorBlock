@@ -86,6 +86,7 @@ interface GetVideoIdResponse {
 
 export interface GetChannelIDResponse {
     channelID: string;
+    isYTTV: boolean;
 }
 
 export interface SponsorStartResponse {
