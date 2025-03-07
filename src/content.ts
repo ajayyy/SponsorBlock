@@ -1857,6 +1857,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     newButton.classList.add("playerButton");
     newButton.classList.add("ytp-button");
     if (isOnYTTV()) {
+        // Some style needs to be set here, but the numbers don't matter 
         newButton.setAttribute("style", "width: 40px; height: 40px");
     }
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
