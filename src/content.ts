@@ -799,7 +799,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                         getVideo().muted = false;
                     }
 
-                    skippingFunction(Math.max(getCurrentTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
+                    skippingFunction(Math.max(getVirtualTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
             }, 0);
         } else {
@@ -842,7 +842,7 @@ function getVirtualTime(): number {
         (performance.now() - lastKnownVideoTime.preciseTime) * (getVideo()?.playbackRate || 1) / 1000 + lastKnownVideoTime.videoTime : null);
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime
-            && virtualTime > getCurrentTime() && virtualTime - getCurrentTime() < 0.2 && getCurrentTime() !== 0) {
+            && virtualTime > getCurrentTime() && virtualTime - getCurrentTime() < 0.8 && getCurrentTime() !== 0) {
         return Math.max(virtualTime, getCurrentTime());
     } else {
         return getCurrentTime();
