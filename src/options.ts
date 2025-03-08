@@ -35,8 +35,9 @@ async function init() {
 
     // selected tab
     if (location.hash != "") {
-        const substr = location.hash.slice(1);
-        let menuItem = document.querySelector(`[data-for='${substr}']`);
+        const slashIndex = location.hash.indexOf("/");
+        const tabName = location.hash.slice(1, slashIndex > -1 ? slashIndex : undefined);
+        let menuItem = document.querySelector(`[data-for='${tabName}']`);
         if (menuItem == null)
             menuItem = document.querySelector(`[data-for='behavior']`);
         menuItem.classList.add("selected");

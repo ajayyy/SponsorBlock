@@ -238,7 +238,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             });
 
             break;
-        case "getChannelID":
+        case "getChannelInfo":
             sendResponse({
                 channelID: getChannelIDInfo().id,
                 isYTTV: (document.location.host === "tv.youtube.com")
@@ -466,7 +466,11 @@ function videoIDChange(): void {
         whitelisted: channelWhitelisted
     });
 
-    sponsorsLookup();
+    // To attempt to ensure the channel ID has been fetched so that channel-specific categories can be requested
+    if (Config.config.forceChannelCheck)
+        await whitelistCheckResult;
+
+    sponsorsLookup(id);
 
     // Make sure all player buttons are properly added
     updateVisibilityOfPlayerControlsButton();
@@ -732,28 +736,14 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                     }
                 }
 
-                if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
-                        || currentSkip.actionType === ActionType.Mute) {
-                    forcedSkipTime = skipTime[0] + 0.001;
-                } else {
-                    forcedSkipTime = skipTime[1];
-                    forcedIncludeNonIntersectingSegments = false;
-
-                    // Only if not at the end of the video
-                    if (Math.abs(skipTime[1] - getVideoDuration()) > endTimeSkipBuffer) {
-                        forcedIncludeIntersectingSegments = true;
-                    }
-                }
+            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
+                    || currentSkip.actionType === ActionType.Mute) {
+                forcedSkipTime = skipTime[0] + 0.001;
             } else {
-                forcedSkipTime = forceVideoTime + 0.001;
+                forcedSkipTime = skipTime[1];
+                forcedIncludeIntersectingSegments = true;
+                forcedIncludeNonIntersectingSegments = false;
             }
-        } else {
-            forcedSkipTime = forceVideoTime + 0.001;
-        }
-
-        // Don't pretend to be earlier than we are, could result in loops
-        if (forcedSkipTime !== null && forceVideoTime > forcedSkipTime) {
-            forcedSkipTime = forceVideoTime;
         }
 
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
@@ -1349,7 +1339,7 @@ function startSkipScheduleCheckingForStartSponsors() {
                 && time.actionType === ActionType.Poi && time.hidden === SponsorHideType.Visible)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
-            const skipOption = utils.getCategorySelection(time.category)?.option;
+            const skipOption = utils.getCategorySelection(time.category, channelIDInfo.id)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
                 skipToTime({
                     v: getVideo(),
@@ -1439,11 +1429,12 @@ function updatePreviewBar(): void {
 
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
 async function channelIDChange(channelIDInfo: ChannelIDInfo) {
-    const whitelistedChannels = Config.config.whitelistedChannels;
+    const channelSpecificSettings = Config.config.channelSpecificSettings;
 
     //see if this is a whitelisted channel
-    if (whitelistedChannels != undefined &&
-            channelIDInfo.status === ChannelIDStatus.Found && whitelistedChannels.includes(channelIDInfo.id)) {
+    if (channelWhitelisted = channelSpecificSettings != undefined &&
+        channelIDInfo.status === ChannelIDStatus.Found &&
+        !!channelSpecificSettings[channelIDInfo.id]?.whitelisted) {
         channelWhitelisted = true;
     }
 
@@ -1890,18 +1881,19 @@ function createButton(baseID: string, title: string, callback: () => void, image
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
     return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
-        && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+        && (utils.getCategorySelection(segment.category, getChannelIDInfo().id)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip)
             || sponsorTimesSubmitting.some((s) => s.segment === segment.segment));
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return (segment.actionType !== ActionType.Full
+    const skipOption = utils.getCategorySelection(segment.category, getChannelIDInfo().id)?.option;
+    return segment.actionType !== ActionType.Full &&
             && segment.source !== SponsorSourceType.YouTube
-            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
+        (skipOption === CategorySkipOption.ManualSkip || skipOption === CategorySkipOption.AutoSkip
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
-                && segment.actionType === ActionType.Skip);
+                && segment.actionType === ActionType.Skip));
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */

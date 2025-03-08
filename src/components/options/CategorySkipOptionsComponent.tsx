@@ -2,13 +2,14 @@ import * as React from "react";
 
 import Config from "../../config"
 import * as CompileConfig from "../../../config.json";
-import { Category, CategorySkipOption } from "../../types";
+import { Category, CategorySelection, CategorySkipOption } from "../../types";
 
 import { getCategorySuffix } from "../../utils/categoryUtils";
 import ToggleOptionComponent from "./ToggleOptionComponent";
 
 export interface CategorySkipOptionsProps { 
     category: Category;
+    selectedChannel: string;
     defaultColor?: string;
     defaultPreviewColor?: string;
     children?: React.ReactNode;
@@ -39,11 +40,23 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     }
 
     render(): React.ReactElement {
-        let defaultOption = "disable";
-        // Set the default opton properly
-        for (const categorySelection of Config.config.categorySelections) {
+        // Render the right settings based on whether we're configuring global or channel-specific
+        let defaultOption;
+        let categorySelections;
+        if (this.props.selectedChannel == null) {
+            defaultOption = "disable";
+            categorySelections = Config.config.categorySelections;
+        } else {
+            defaultOption = "inherit";
+            categorySelections = Config.config.channelSpecificSettings[this.props.selectedChannel].categorySelections;
+        }
+        // Set the default option properly
+        for (const categorySelection of categorySelections) {
             if (categorySelection.name === this.props.category) {
                 switch (categorySelection.option) {
+                    case CategorySkipOption.Disabled:
+                        defaultOption = "disable";
+                        break;
                     case CategorySkipOption.ShowOverlay:
                         defaultOption = "showOverlay";
                         break;
@@ -72,13 +85,14 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                         className="skipOption">
                         <select
                             className="optionsSelector"
+                            key={this.props.selectedChannel} // This is why: https://stackoverflow.com/a/39239074
                             defaultValue={defaultOption}
                             onChange={this.skipOptionSelected.bind(this)}>
                                 {this.getCategorySkipOptions()}
                         </select>
                     </td>
 
-                    {this.props.category !== "chapter" &&
+                    {this.props.category !== "chapter" && this.props.selectedChannel == null &&
                         <td id={this.props.category + "ColorOption"}
                             className="colorOption">
                             <input
@@ -99,7 +113,6 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                                 value={this.state.previewColor} />
                         </td>
                     }
-
                 </tr>
 
                 <tr id={this.props.category + "DescriptionRow"}
@@ -121,13 +134,34 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     }
 
     skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>): void {
+        const categorySelections = this.props.selectedChannel == null ?
+            Config.config.categorySelections :
+            Config.config.channelSpecificSettings[this.props.selectedChannel].categorySelections;
+
+        // Remove the existing category selection
+        for (let i = 0; i < categorySelections.length; i++) {
+            if (categorySelections[i].name === this.props.category) {
+                categorySelections.splice(i, 1);
+
+                this.forceSaveCategorySelections(categorySelections);
+
+                break;
+            }
+        }
+
+        // Select the new option
         let option: CategorySkipOption;
 
         switch (event.target.value) {
+            case "inherit":
             case "disable":
                 Config.config.categorySelections = Config.config.categorySelections.filter(
                     categorySelection => categorySelection.name !== this.props.category);
                 return;
+            case "disable":
+                option = CategorySkipOption.Disabled;
+
+                break;
             case "showOverlay":
                 option = CategorySkipOption.ShowOverlay;
 
@@ -164,15 +198,18 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     getCategorySkipOptions(): JSX.Element[] {
         const elements: JSX.Element[] = [];
 
-        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        let optionNames = ["inherit", "disable", "showOverlay", "manualSkip", "autoSkip"];
         if (this.props.category === "chapter") optionNames = ["disable", "showOverlay"]
-        else if (this.props.category === "exclusive_access") optionNames = ["disable", "showOverlay"];
+        else if (this.props.category === "exclusive_access") optionNames = ["inherit", "disable", "showOverlay"];
 
         for (const optionName of optionNames) {
+            if (this.props.selectedChannel == null && optionName == "inherit")
+                continue;
             elements.push(
                 <option key={optionName} value={optionName}>
-                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategorySuffix(this.props.category) 
-                                                                     : optionName)}
+                    {chrome.i18n.getMessage(optionName !== "inherit" && optionName !== "disable" ?
+                        optionName + getCategorySuffix(this.props.category) :
+                        optionName)}
                 </option>
             );
         }

@@ -205,6 +205,12 @@ export interface ChannelIDInfo {
     status: ChannelIDStatus;
 }
 
+export interface ChannelSpecificSettings {
+    name: string,
+    whitelisted: boolean,
+    categorySelections: CategorySelection[]
+}
+
 export interface SkipToTimeParams {
     v: HTMLVideoElement; 
     skipTime: number[]; 

@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, ChannelSpecificSettings, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
 
@@ -110,6 +110,7 @@ interface SBConfig {
         freeAccess: boolean;
         chaptersAllowed: boolean;
     };
+    channelSpecificSettings: Record<string, ChannelSpecificSettings>,
 
     // Preview bar
     barTypes: {
@@ -382,6 +383,7 @@ const syncDefaults = {
         freeAccess: false,
         chaptersAllowed: false
     },
+        channelSpecificSettings: {},
 
     colorPalette: {
         red: "#780303",

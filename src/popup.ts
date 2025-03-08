@@ -129,6 +129,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         // Top toggles
         "whitelistChannel",
         "unwhitelistChannel",
+        "whitelistButton",
         "whitelistToggle",
         "whitelistForceCheck",
         "disableSkipping",
@@ -170,7 +171,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorMessageTimes",
         //"downloadedSponsorMessageTimes",
         "refreshSegmentsButton",
-        "whitelistButton",
         "sbDonate",
         "issueReporterTabs",
         "issueReporterTabSegments",
@@ -214,36 +214,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
     PageElements.sbDonate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
 
-    if (Config.config.cleanPopup) {
-        PageElements.sbPopupLogo.classList.add("hidden");
-        PageElements.sbYourWorkBox.classList.add("hidden");
-        PageElements.sbFooter.classList.add("hidden");
-        PageElements.sponsorTimesDonateContainer.classList.add("hidden");
-        PageElements.mainControls.classList.add("hidden");
-
-        PageElements.videoInfo.style.marginTop = "10px";
-    }
-
-    if (Config.config.testingServer) {
-        PageElements.sbBetaServerWarning.classList.remove("hidden");
-        PageElements.sbBetaServerWarning.addEventListener("click", function () {
-            openOptionsAt("advanced");
-        });
-    }
-
-    PageElements.exportSegmentsButton.addEventListener("click", exportSegments);
-    PageElements.importSegmentsButton.addEventListener("click",
-        () => PageElements.importSegmentsMenu.classList.toggle("hidden"));
-    PageElements.importSegmentsSubmit.addEventListener("click", importSegments);
-
+    //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    PageElements.whitelistToggle.addEventListener("change", function () {
-        if (this.checked) {
-            whitelistChannel();
-        } else {
-            unwhitelistChannel();
-        }
-    });
+    PageElements.whitelistButton.addEventListener("click", whitelistChannelClick);
     PageElements.whitelistForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.toggleSwitch.addEventListener("change", function () {
         toggleSkipping(!this.checked);
@@ -926,9 +899,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
     }
 
-    async function whitelistChannel() {
+    function whitelistChannelClick(event) {
         //get the channel url
-        const response = await sendTabMessageAsync({ message: 'getChannelID' }) as GetChannelIDResponse;
+        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
         if (!response.channelID) {
             if (response.isYTTV) {
                 alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
@@ -938,14 +911,55 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             return;
         }
 
+                    // Ctrl+clicking opens the Options menu with the channel selected for customisation
+                    if (event.ctrlKey) {
+                        let channelSpecificSettings = Config.config.channelSpecificSettings;
+                        if (channelSpecificSettings == undefined) {
+                            channelSpecificSettings = {};
+                        }
+
+                        if (channelSpecificSettings[response.channelID] == undefined) {
+                            channelSpecificSettings[response.channelID] = {
+                                name: response.channelID,
+                                whitelisted: false,
+                                categorySelections: []
+                            };
+                        } else {
+                            // Update the channel name (old whitelisted channels don't have this, and this also handles channels changing their names if it happens)
+                            channelSpecificSettings[response.channelID].name = response.channelID;
+                        }
+
+                        // Save the settings
+                        Config.config.channelSpecificSettings = channelSpecificSettings;
+
+                        openOptionsAt("behavior/" + response.channelID);
+                    } else {
+                        // Otherwise, (un)whitelist the channel
+                        if ((PageElements.whitelistToggle.checked = !PageElements.whitelistToggle.checked)) {
+                            whitelistChannel(response.channelID);
+                        } else {
+                            unwhitelistChannel(response.channelID);
+                        }
+                    }
+            event.preventDefault();        
+    }
+
+    function whitelistChannel(channelID: string) {
         //get whitelisted channels
-        let whitelistedChannels = Config.config.whitelistedChannels;
-        if (whitelistedChannels == undefined) {
-            whitelistedChannels = [];
+        let channelSpecificSettings = Config.config.channelSpecificSettings;
+        if (channelSpecificSettings == undefined) {
+            channelSpecificSettings = {};
         }
 
         //add on this channel
-        whitelistedChannels.push(response.channelID);
+        if (channelSpecificSettings[channelID] != undefined) {
+            channelSpecificSettings[channelID].whitelisted = true;
+        } else {
+            channelSpecificSettings[channelID] = {
+                whitelisted: true,
+                categorySelections: []
+            };
+        }
 
         //change button
         PageElements.whitelistChannel.style.display = "none";
@@ -956,7 +970,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
 
         //save this
-        Config.config.whitelistedChannels = whitelistedChannels;
+        Config.config.channelSpecificSettings = channelSpecificSettings;
 
         //send a message to the client
         sendTabMessage({
@@ -965,19 +979,17 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    async function unwhitelistChannel() {
-        //get the channel url
-        const response = await sendTabMessageAsync({ message: 'getChannelID' }) as GetChannelIDResponse;
-
+    function unwhitelistChannel(channelID: string) {
         //get whitelisted channels
-        let whitelistedChannels = Config.config.whitelistedChannels;
-        if (whitelistedChannels == undefined) {
-            whitelistedChannels = [];
+        let channelSpecificSettings = Config.config.channelSpecificSettings;
+        if (channelSpecificSettings == undefined) {
+            channelSpecificSettings = {};
         }
 
-        //remove this channel
-        const index = whitelistedChannels.indexOf(response.channelID);
-        whitelistedChannels.splice(index, 1);
+        //Un-whitelist
+        if (channelSpecificSettings[channelID] != undefined) {
+            channelSpecificSettings[channelID].whitelisted = false;
+        }
 
         //change button
         PageElements.whitelistChannel.style.display = "unset";
@@ -988,7 +1000,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.whitelistForceCheck.classList.add("hidden");
 
         //save this
-        Config.config.whitelistedChannels = whitelistedChannels;
+        Config.config.channelSpecificSettings = channelSpecificSettings;
 
         //send a message to the client
         sendTabMessage({

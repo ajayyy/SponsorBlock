@@ -211,9 +211,32 @@ export default class Utils {
         return sponsorTimes[this.getSponsorIndexFromUUID(sponsorTimes, UUID)];
     }
 
-    getCategorySelection(category: string): CategorySelection {
+    createCategorySelectionList(channelID: string = null): CategorySelection[] {
+        const resultList = new Map<string, CategorySelection>();
+
+        // Channel-specific selections take priority
+        if (channelID != null && Config.config.channelSpecificSettings[channelID])
+            for (const channelSelection of Config.config.channelSpecificSettings[channelID].categorySelections)
+                if (channelSelection.option != CategorySkipOption.Disabled)
+                    resultList.set(channelSelection.name, channelSelection);
+
+        // Then global settings fill in everything else
+        for (const selection of Config.config.categorySelections)
+            if (!resultList.get(selection.name) && selection.option != CategorySkipOption.Disabled)
+                resultList.set(selection.name, selection);
+
+        return [...resultList.values()];
+    }
+
+    getCategorySelection(category: string, channelID: string = null): CategorySelection {
+        if (channelID != null && Config.config.channelSpecificSettings[channelID]) {
+            for (const channelSelection of Config.config.channelSpecificSettings[channelID].categorySelections) {
+                if (channelSelection.name === category)
+                    return channelSelection;
+            }
+        }
         for (const selection of Config.config.categorySelections) {
-            if (selection.name === category) {
+            if (selection.name === category){
                 return selection;
             }
         }
