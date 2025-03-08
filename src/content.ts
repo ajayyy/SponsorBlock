@@ -1414,15 +1414,17 @@ function updatePreviewBar(): void {
     }
 
     sponsorTimesSubmitting.forEach((segment) => {
-        previewBarSegments.push({
-            segment: segment.segment as [number, number],
-            category: segment.category,
-            actionType: segment.actionType,
-            unsubmitted: true,
-            showLarger: segment.actionType === ActionType.Poi,
-            description: segment.description,
-            source: segment.source
-        });
+        if (segment.actionType !== ActionType.Chapter || segment.segment.length > 1) {
+            previewBarSegments.push({
+                segment: segment.segment as [number, number],
+                category: segment.category,
+                actionType: segment.actionType,
+                unsubmitted: true,
+                showLarger: segment.actionType === ActionType.Poi,
+                description: segment.description,
+                source: segment.source
+            });
+        }
     });
 
     previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), getVideoDuration())
