@@ -763,7 +763,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
             // Use interval instead of timeout near the end to combat imprecise video time
             const startIntervalTime = forceStartIntervalTime || performance.now();
-            const startVideoTime = Math.max(currentTime, getCurrentTime());
+            const startVideoTime = Math.max(currentTime, getVirtualTime());
             delayTime = (skipTime?.[0] - startVideoTime) * 1000 * (1 / getVideo().playbackRate);
 
             let startWaitingForReportedTimeToChange = true;
@@ -782,7 +782,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                 }
 
                 const intervalDuration = performance.now() - startIntervalTime;
-                if (intervalDuration + skipBuffer * 1000 >= delayTime || getCurrentTime() >= skipTime[0]) {
+                if (intervalDuration + skipBuffer * 1000 >= delayTime || getVirtualTime() + skipBuffer >= skipTime[0]) {
                     clearInterval(currentSkipInterval);
                     if (!isFirefoxOrSafari() && !getVideo().muted && !inMuteSegment(getCurrentTime(), true)) {
                         // Workaround for more accurate skipping on Chromium
@@ -790,7 +790,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                         getVideo().muted = false;
                     }
 
-                    skippingFunction(Math.max(getCurrentTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
+                    skippingFunction(Math.max(getVirtualTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
             }, 0);
         } else {
@@ -833,7 +833,7 @@ function getVirtualTime(): number {
         (performance.now() - lastKnownVideoTime.preciseTime) * (getVideo()?.playbackRate || 1) / 1000 + lastKnownVideoTime.videoTime : null);
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime
-            && Math.abs(virtualTime - getCurrentTime()) < 0.2 && getCurrentTime() !== 0) {
+            && virtualTime > getCurrentTime() && virtualTime - getCurrentTime() < 0.8 && getCurrentTime() !== 0) {
         return Math.max(virtualTime, getCurrentTime());
     } else {
         return getCurrentTime();
@@ -1405,15 +1405,17 @@ function updatePreviewBar(): void {
     }
 
     sponsorTimesSubmitting.forEach((segment) => {
-        previewBarSegments.push({
-            segment: segment.segment as [number, number],
-            category: segment.category,
-            actionType: segment.actionType,
-            unsubmitted: true,
-            showLarger: segment.actionType === ActionType.Poi,
-            description: segment.description,
-            source: segment.source
-        });
+        if (segment.actionType !== ActionType.Chapter || segment.segment.length > 1) {
+            previewBarSegments.push({
+                segment: segment.segment as [number, number],
+                category: segment.category,
+                actionType: segment.actionType,
+                unsubmitted: true,
+                showLarger: segment.actionType === ActionType.Poi,
+                description: segment.description,
+                source: segment.source
+            });
+        }
     });
 
     previewBar.set(previewBarSegments.filter((segment) => segment.actionType !== ActionType.Full), getVideoDuration())
@@ -2494,6 +2496,8 @@ function getSegmentsMessage(sponsorTimes: SponsorTime[]): string {
 }
 
 function updateActiveSegment(currentTime: number): void {
+    if (!chrome.runtime?.id) return;
+
     previewBar?.updateChapterText(sponsorTimes, sponsorTimesSubmitting, currentTime);
 
     chrome.runtime.sendMessage({
