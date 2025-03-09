@@ -1,16 +1,16 @@
 import * as React from "react";
 
 import * as CompileConfig from "../../../config.json";
-import { Category, CategorySkipOption } from "../../types";
+import { Category } from "../../types";
 import CategorySkipOptionsComponent from "./CategorySkipOptionsComponent";
-import Config from "../config";
+import Config from "../../config";
 
 export interface CategoryChooserProps { 
 
 }
 
 export interface CategoryChooserState {
-    selectedChannel: string
+    selectedChannel: string;
 }
 
 class CategoryChooserComponent extends React.Component<CategoryChooserProps, CategoryChooserState> {

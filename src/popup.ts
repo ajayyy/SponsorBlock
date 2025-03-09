@@ -899,7 +899,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
     }
 
-    function whitelistChannelClick(event) {
+    async function whitelistChannelClick(event) {
         //get the channel url
         const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
         if (!response.channelID) {
@@ -956,6 +956,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             channelSpecificSettings[channelID].whitelisted = true;
         } else {
             channelSpecificSettings[channelID] = {
+                name: channelID,
                 whitelisted: true,
                 categorySelections: []
             };

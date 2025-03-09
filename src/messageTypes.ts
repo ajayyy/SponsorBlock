@@ -100,7 +100,7 @@ export interface IsChannelWhitelistedResponse {
 export type MessageResponse =
     IsInfoFoundMessageResponse
     | GetVideoIdResponse
-    | GetChannelInfoResponse
+    | GetChannelIDResponse
     | SponsorStartResponse
     | IsChannelWhitelistedResponse
     | Record<string, never> // empty object response {}

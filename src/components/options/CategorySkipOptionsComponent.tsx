@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Config from "../../config"
 import * as CompileConfig from "../../../config.json";
-import { Category, CategorySelection, CategorySkipOption } from "../../types";
+import { Category, CategorySkipOption } from "../../types";
 
 import { getCategorySuffix } from "../../utils/categoryUtils";
 import ToggleOptionComponent from "./ToggleOptionComponent";
@@ -143,7 +143,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             if (categorySelections[i].name === this.props.category) {
                 categorySelections.splice(i, 1);
 
-                this.forceSaveCategorySelections(categorySelections);
+                Config.forceSyncUpdate("channelSpecificSettings");
 
                 break;
             }
@@ -154,14 +154,15 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
 
         switch (event.target.value) {
             case "inherit":
+                return;
             case "disable":
                 Config.config.categorySelections = Config.config.categorySelections.filter(
                     categorySelection => categorySelection.name !== this.props.category);
+                if (this.props.selectedChannel != null) {
+                    option = CategorySkipOption.Disabled;
+                    break;
+                }
                 return;
-            case "disable":
-                option = CategorySkipOption.Disabled;
-
-                break;
             case "showOverlay":
                 option = CategorySkipOption.ShowOverlay;
 
@@ -182,17 +183,18 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 break;
         }
 
-        const existingSelection = Config.config.categorySelections.find(selection => selection.name === this.props.category);
+        const existingSelection = categorySelections.find(selection => selection.name === this.props.category);
         if (existingSelection) {
             existingSelection.option = option;
         } else {
-            Config.config.categorySelections.push({
+            categorySelections.push({
                 name: this.props.category,
                 option: option
             });
         }
 
         Config.forceSyncUpdate("categorySelections");
+        Config.forceSyncUpdate("channelSpecificSettings");
     }
 
     getCategorySkipOptions(): JSX.Element[] {

@@ -436,7 +436,7 @@ function resetValues() {
     hideDeArrowPromotion();
 }
 
-function videoIDChange(): void {
+async function videoIDChange(): Promise<void> {
     //setup the preview bar
     if (previewBar === null) {
         if (isOnMobileYouTube()) {
@@ -467,10 +467,10 @@ function videoIDChange(): void {
     });
 
     // To attempt to ensure the channel ID has been fetched so that channel-specific categories can be requested
-    if (Config.config.forceChannelCheck)
-        await whitelistCheckResult;
-
-    sponsorsLookup(id);
+    if (Config.config.forceChannelCheck){
+        await channelIDChange(getChannelIDInfo());
+    }
+    sponsorsLookup();
 
     // Make sure all player buttons are properly added
     updateVisibilityOfPlayerControlsButton();
@@ -744,6 +744,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                 forcedIncludeIntersectingSegments = true;
                 forcedIncludeNonIntersectingSegments = false;
             }
+        }
         }
 
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
@@ -1339,7 +1340,7 @@ function startSkipScheduleCheckingForStartSponsors() {
                 && time.actionType === ActionType.Poi && time.hidden === SponsorHideType.Visible)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
-            const skipOption = utils.getCategorySelection(time.category, channelIDInfo.id)?.option;
+            const skipOption = utils.getCategorySelection(time.category, getChannelIDInfo().id)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
                 skipToTime({
                     v: getVideo(),
@@ -1432,7 +1433,7 @@ async function channelIDChange(channelIDInfo: ChannelIDInfo) {
     const channelSpecificSettings = Config.config.channelSpecificSettings;
 
     //see if this is a whitelisted channel
-    if (channelWhitelisted = channelSpecificSettings != undefined &&
+    if (channelSpecificSettings != undefined &&
         channelIDInfo.status === ChannelIDStatus.Found &&
         !!channelSpecificSettings[channelIDInfo.id]?.whitelisted) {
         channelWhitelisted = true;
@@ -1890,7 +1891,7 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 function shouldSkip(segment: SponsorTime): boolean {
     const skipOption = utils.getCategorySelection(segment.category, getChannelIDInfo().id)?.option;
     return segment.actionType !== ActionType.Full &&
-            && segment.source !== SponsorSourceType.YouTube
+        segment.source !== SponsorSourceType.YouTube &&
         (skipOption === CategorySkipOption.ManualSkip || skipOption === CategorySkipOption.AutoSkip
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip));
