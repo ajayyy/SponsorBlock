@@ -2008,7 +2008,7 @@ function startOrEndTimingNewSegment() {
         return;
     }
 
-    verifyCurrentTime();
+    verifyCurrentTime(getRealCurrentTime());
     const roundedTime = Math.round((getRealCurrentTime() + Number.EPSILON) * 1000) / 1000;
     if (!isSegmentCreationInProgress()) {
         sponsorTimesSubmitting.push({
