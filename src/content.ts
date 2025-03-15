@@ -264,7 +264,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             if (!getVideoID()) {
                 checkVideoIDChange();
             }
-            // if popup rescieves no response, or the videoID is invalid,
+            // if popup receives no response, or the videoID is invalid,
             // it will assume the page is not a video page and stop the refresh animation
             sendResponse({ hasVideo: getVideoID() != null });
             // fetch segments
@@ -371,6 +371,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 updateVisibilityOfPlayerControlsButton()
                 break;
             case "categorySelections":
+            case "channelSpecificSettings":
                 sponsorsLookup(true, true);
                 break;
             case "barTypes":
@@ -465,11 +466,7 @@ async function videoIDChange(): Promise<void> {
         videoID: getVideoID(),
         whitelisted: channelWhitelisted
     });
-
-    // To attempt to ensure the channel ID has been fetched so that channel-specific categories can be requested
-    if (Config.config.forceChannelCheck){
-        await channelIDChange(getChannelIDInfo());
-    }
+    
     sponsorsLookup();
 
     // Make sure all player buttons are properly added
@@ -833,7 +830,7 @@ function getVirtualTime(): number {
         (performance.now() - lastKnownVideoTime.preciseTime) * (getVideo()?.playbackRate || 1) / 1000 + lastKnownVideoTime.videoTime : null);
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime
-            && virtualTime > getCurrentTime() && virtualTime - getCurrentTime() < 0.8 && getCurrentTime() !== 0) {
+            && Math.abs(virtualTime - getCurrentTime()) < 0.2 && getCurrentTime() !== 0) {
         return Math.max(virtualTime, getCurrentTime());
     } else {
         return getCurrentTime();
@@ -1166,7 +1163,8 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
         return;
     }
 
-    const segmentData = await getSegmentsForVideo(videoID, ignoreCache);
+    const channelSettings = Config.config.channelSpecificSettings?.[getChannelIDInfo().id];
+    const segmentData = await getSegmentsForVideo(videoID, ignoreCache, channelSettings?.toggle ? channelSettings : undefined);
 
     // Make sure an old pending request doesn't get used.
     if (videoID !== getVideoID()) return;
@@ -1176,8 +1174,8 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
     if (segmentData.status === 200) {
         const receivedSegments = segmentData.segments;
 
-        if (receivedSegments && receivedSegments.length) {
-            sponsorDataFound = true;
+        if (receivedSegments && (receivedSegments.length || !!channelSettings && sponsorTimes)) {
+            sponsorDataFound = !!receivedSegments.length;
 
             // Check if any old submissions should be kept
             if (sponsorTimes !== null && keepOldSubmissions) {
@@ -1436,13 +1434,19 @@ async function channelIDChange(channelIDInfo: ChannelIDInfo) {
 
     //see if this is a whitelisted channel
     if (channelSpecificSettings != undefined &&
-        channelIDInfo.status === ChannelIDStatus.Found &&
-        !!channelSpecificSettings[channelIDInfo.id]?.whitelisted) {
-        channelWhitelisted = true;
+        channelIDInfo.status === ChannelIDStatus.Found){
+        if (Config.config.forceChannelCheck && channelSpecificSettings[channelIDInfo.id]?.toggle) {
+            sponsorsLookup(false, true);
+        }
+        if(channelSpecificSettings[channelIDInfo.id]?.whitelisted) {
+            channelWhitelisted = true;
+        }
     }
 
     // check if the start of segments were missed
-    if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
+    if (!channelSpecificSettings?.[channelIDInfo.id]?.toggle
+        && Config.config.forceChannelCheck
+        && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 function videoElementChange(newVideo: boolean, video: HTMLVideoElement): void {

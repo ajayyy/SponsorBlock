@@ -372,17 +372,56 @@
   opacity: 0;
 }
 
+
+ /* "Channel Overrides are enabled" toggle
+ */
+#channelOverridesToggleSwitch:checked ~ .switchDot {
+  transform: translateX(27px);
+}
+#channelOverridesToggleSwitch:checked ~ .switchBg.green {
+  opacity: 1;
+}
+#channelOverridesToggleSwitch:checked ~ .switchBg.white {
+  transition: opacity 0.2s step-end;
+  opacity: 0;
+}
+
+#channelOverridesList {
+  margin: 16px;
+  margin-top: 0;
+  padding: 8px 12px;
+  text-align: left;
+  border-radius: 8px;
+  border: 2px solid var(--sb-grey-bg-color);
+}
+
+.popupCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: right;
+  justify-content: space-between;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+select{
+  width: 100%;
+}
 /*
  * Notice that appears when whitelisting a channel, that recommends
  * enabling the "Force Channel Check Before Skipping" option
  */
-#whitelistForceCheck {
+#whitelistForceCheck,
+#channelSettingsForceCheck {
   background-color: #fff3cd;
   padding: 10px 15px;
   display: block;
   color: #664d03;
 }
-#whitelistForceCheck:hover {
+#whitelistForceCheck:hover,
+#channelSettingsForceCheck:hover {
   background-color: #f2e4b7;
 }
 

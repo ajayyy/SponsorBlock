@@ -229,7 +229,7 @@ export default class Utils {
     }
 
     getCategorySelection(category: string, channelID: string = null): CategorySelection {
-        if (channelID != null && Config.config.channelSpecificSettings[channelID]) {
+        if (channelID != null && Config.config.channelSpecificSettings[channelID]?.toggle) {
             for (const channelSelection of Config.config.channelSpecificSettings[channelID].categorySelections) {
                 if (channelSelection.name === category)
                     return channelSelection;

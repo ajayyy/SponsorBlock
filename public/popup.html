@@ -97,6 +97,31 @@
         __MSG_forceChannelCheckPopup__
       </a>
 
+      <!-- Channel Overrides Box -->
+      <!--github: scaccoman/SponsorBlock-->
+      <div class="sbControlsMenu">
+        <label id="channelOverrides" for="channelOverridesToggleSwitch" class="toggleSwitchContainer sbControlsMenu-item">
+        <span class="toggleSwitchContainer-switch">
+          <input type="checkbox" style="display:none;" id="channelOverridesToggleSwitch" checked>
+          <span class="switchBg shadow"></span>
+          <span class="switchBg white"></span>
+          <span class="switchBg green"></span>
+          <span class="switchDot"></span>
+        </span>
+        <span id="disableChannelOverrides">__MSG_disableChannelOverrides__</span>
+        <span id="enableChannelOverrides" style="display: none">__MSG_enableChannelOverrides__</span>
+      </div>
+
+      <a id="channelSettingsForceCheck" class="hidden">
+        __MSG_forceChannelCheckRequired__
+      </a>
+
+      <!-- Channel Overrides Container -->
+      <div id="channelOverridesContainer" style="display: none">
+        <ul id="channelOverridesList">
+        </ul>
+      </div>
+
       <!-- Submit box -->
       <div id="mainControls" style="display: none">
         <h1 class="sbHeader">
