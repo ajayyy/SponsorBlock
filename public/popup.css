@@ -375,18 +375,18 @@
 
  /* "Channel Overrides are enabled" toggle
  */
-#channelOverridesToggleSwitch:checked ~ .switchDot {
+#channelSpecificSettingsToggleSwitch:checked ~ .switchDot {
   transform: translateX(27px);
 }
-#channelOverridesToggleSwitch:checked ~ .switchBg.green {
+#channelSpecificSettingsToggleSwitch:checked ~ .switchBg.green {
   opacity: 1;
 }
-#channelOverridesToggleSwitch:checked ~ .switchBg.white {
+#channelSpecificSettingsToggleSwitch:checked ~ .switchBg.white {
   transition: opacity 0.2s step-end;
   opacity: 0;
 }
 
-#channelOverridesList {
+#channelSpecificSettingsList {
   margin: 16px;
   margin-top: 0;
   padding: 8px 12px;
@@ -406,9 +406,6 @@
   font-size: 14px;
 }
 
-select{
-  width: 100%;
-}
 /*
  * Notice that appears when whitelisting a channel, that recommends
  * enabling the "Force Channel Check Before Skipping" option

@@ -253,8 +253,6 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             break;
         case "whitelistChange":
             channelWhitelisted = request.value;
-            sponsorsLookup();
-
             break;
         case "submitTimes":
             openSubmissionMenu();
@@ -733,20 +731,32 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                     }
                 }
 
-            if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
+                if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
                     || currentSkip.actionType === ActionType.Mute) {
-                forcedSkipTime = skipTime[0] + 0.001;
+                    forcedSkipTime = skipTime[0] + 0.001;
+                } else {
+                    forcedSkipTime = skipTime[1];
+                    forcedIncludeNonIntersectingSegments = false;
+
+                    // Only if not at the end of the video
+                    if (Math.abs(skipTime[1] - getVideoDuration()) > endTimeSkipBuffer) {
+                        forcedIncludeIntersectingSegments = true;
+                    }
+                }
             } else {
-                forcedSkipTime = skipTime[1];
-                forcedIncludeIntersectingSegments = true;
-                forcedIncludeNonIntersectingSegments = false;
+                forcedSkipTime = forceVideoTime + 0.001;
             }
+        } else {
+            forcedSkipTime = forceVideoTime + 0.001;
         }
+
+        // Don't pretend to be earlier than we are, could result in loops
+        if (forcedSkipTime !== null && forceVideoTime > forcedSkipTime) {
+            forcedSkipTime = forceVideoTime;
         }
 
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
     };
-
     if (timeUntilSponsor < skipBuffer) {
         skippingFunction(currentTime);
     } else {
@@ -786,7 +796,6 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                         getVideo().muted = true;
                         getVideo().muted = false;
                     }
-
                     skippingFunction(Math.max(getVirtualTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
             }, 0);
@@ -1165,10 +1174,9 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
 
     const channelSettings = Config.config.channelSpecificSettings?.[getChannelIDInfo().id];
     const segmentData = await getSegmentsForVideo(videoID, ignoreCache, channelSettings?.toggle ? channelSettings : undefined);
-
+    
     // Make sure an old pending request doesn't get used.
     if (videoID !== getVideoID()) return;
-
     // store last response status
     lastResponseStatus = segmentData.status;
     if (segmentData.status === 200) {
@@ -1431,7 +1439,6 @@ function updatePreviewBar(): void {
 //checks if this channel is whitelisted, should be done only after the channelID has been loaded
 async function channelIDChange(channelIDInfo: ChannelIDInfo) {
     const channelSpecificSettings = Config.config.channelSpecificSettings;
-
     //see if this is a whitelisted channel
     if (channelSpecificSettings != undefined &&
         channelIDInfo.status === ChannelIDStatus.Found){
@@ -1504,7 +1511,6 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
             return 2;
         }
     }
-
     const { includedTimes: submittedArray, scheduledTimes: sponsorStartTimes } =
         getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
     const { scheduledTimes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true);

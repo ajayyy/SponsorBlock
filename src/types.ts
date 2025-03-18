@@ -206,10 +206,9 @@ export interface ChannelIDInfo {
 }
 
 export interface ChannelSpecificSettings {
-    name: string;
     whitelisted: boolean;
     toggle: boolean;
-    categorySelections: CategorySelection[]
+    categorySelections: CategorySelection[];
 }
 
 export interface SkipToTimeParams {

@@ -96,7 +96,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         whitelistToggle?: HTMLInputElement;
         toggleSwitch?: HTMLInputElement;
         usernameInput?: HTMLInputElement;
-        channelOverridesToggleSwitch?: HTMLInputElement;
+        channelSpecificSettingsToggleSwitch?: HTMLInputElement;
     };
     type PageElements = { [key: string]: HTMLElement } & InputPageElements
 
@@ -185,14 +185,14 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sbCloseDonate",
         "sbBetaServerWarning",
         "sbCloseButton",
-        // Channel Overrides
-        "channelOverridesToggleSwitch",
-        "channelOverrides",
+        // Channel specific settings
+        "channelSpecificSettingsToggleSwitch",
+        "channelSpecificSettings",
         "channelSettingsForceCheck",
-        "disableChannelOverrides",
-        "enableChannelOverrides",
-        "channelOverridesList",
-        "channelOverridesContainer",
+        "disableChannelSpecificSettings",
+        "enableChannelSpecificSettings",
+        "channelSpecificSettingsList",
+        "channelSpecificSettingsContainer",
         "issueReporterImportExport",
         "importSegmentsButton",
         "exportSegmentsButton",
@@ -229,7 +229,13 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    PageElements.whitelistButton.addEventListener("click", whitelistChannelClick);
+    PageElements.whitelistToggle.addEventListener("change", function () {
+        if (this.checked) {
+            whitelistChannel();
+        } else {
+            unwhitelistChannel();
+        }
+    });
     PageElements.whitelistForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.channelSettingsForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.toggleSwitch.addEventListener("change", function () {
@@ -245,7 +251,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.refreshSegmentsButton.addEventListener("click", refreshSegments);
     PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => copyToClipboard(await getHash(Config.config.userID)));
     PageElements.debugLogs.addEventListener("click", copyDebgLogs);
-    PageElements.channelOverridesToggleSwitch.addEventListener("change", toggleChannelOverrides);
+    PageElements.channelSpecificSettingsToggleSwitch.addEventListener("change", toggleChannelSpecificSettings);
 
     // Forward click events
     if (window !== window.top) {
@@ -464,6 +470,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.mainControls.style.display = "block";
         if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
         PageElements.whitelistButton.classList.remove("hidden");
+        PageElements.channelSpecificSettings.classList.remove("hidden");
         PageElements.loadingIndicator.style.display = "none";
 
         downloadedTimes = request.sponsorTimes ?? [];
@@ -914,86 +921,45 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         }
     }
 
-    async function whitelistChannelClick(event: MouseEvent) {
-        event.preventDefault();
-        //get the channel url
-        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
-        if (!response.channelID) {
-            if (response.isYTTV) {
-                alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
-            } else {
-                alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
-            }
-            return;
-        }
-
-                    // Ctrl+clicking opens the Options menu with the channel selected for customisation
-                    if (event.ctrlKey) {
-                        let channelSpecificSettings = Config.config.channelSpecificSettings;
-                        if (channelSpecificSettings == undefined) {
-                            channelSpecificSettings = {};
-                        }
-
-                        if (channelSpecificSettings[response.channelID] == undefined) {
-                            channelSpecificSettings[response.channelID] = {
-                                name: response.channelID,
-                                whitelisted: false,
-                                toggle: false,
-                                categorySelections: []
-                            };
-                        } else {
-                            // Update the channel name (old whitelisted channels don't have this, and this also handles channels changing their names if it happens)
-                            channelSpecificSettings[response.channelID].name = response.channelID;
-                        }
-
-                        // Save the settings
-                        Config.config.channelSpecificSettings = channelSpecificSettings;
-
-                        openOptionsAt("behavior/" + response.channelID);
-                    } else {
-                        // Otherwise, (un)whitelist the channel
-                        console.log(PageElements.whitelistToggle.checked = !PageElements.whitelistToggle.checked);
-                        if (PageElements.whitelistToggle.checked) {
-                            whitelistChannel(response.channelID);
-                        } else {
-                            unwhitelistChannel(response.channelID);
-                        }
-                    }
-    }
-
     // ********************************** Channel Override Logic Start ********************************* //
-    initChannelOverrides();
+    initChannelSpecificSettings();
 
-    async function initChannelOverrides() {
+    async function initChannelSpecificSettings() {
         //get the channel url
         const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
 
         const channelID = response.channelID;
 
-        //get channel overrides
-        const channelOverrides = Config.config.channelSpecificSettings?.[channelID];
-        const channelOverridesToggle = channelOverrides ? channelOverrides.toggle : false;
+        //get channel settings
+        const channelSpecificSettings = Config.config.channelSpecificSettings?.[channelID];
+
+        if (channelSpecificSettings && channelSpecificSettings?.categorySelections.length === 0 && !channelSpecificSettings.whitelisted){
+            delete Config.config.channelSpecificSettings[channelID];
+            Config.forceSyncUpdate('channelSpecificSettings');
+        }
+
+        const channelSpecificSettingsToggle = Config.config.channelSpecificSettings[channelID] ? Config.config.channelSpecificSettings[channelID].toggle : false;
 
         //change button
-        PageElements.enableChannelOverrides.style.display = channelOverridesToggle ? "none" : "unset";
-        PageElements.disableChannelOverrides.style.display = channelOverridesToggle ? "unset" : "none";
-        PageElements.channelOverridesToggleSwitch.checked = !!channelOverridesToggle;
-        PageElements.channelOverridesContainer.style.display = channelOverridesToggle ? "unset" : "none";
+        PageElements.enableChannelSpecificSettings.style.display = channelSpecificSettingsToggle ? "none" : "unset";
+        PageElements.disableChannelSpecificSettings.style.display = channelSpecificSettingsToggle ? "unset" : "none";
+        PageElements.channelSpecificSettingsToggleSwitch.checked = !!channelSpecificSettingsToggle;
+        PageElements.channelSpecificSettingsContainer.style.display = channelSpecificSettingsToggle ? "unset" : "none";
 
-        loadChannelOverridesOptions(channelOverrides);
+        loadChannelSpecificSettings(channelSpecificSettings);
     }
 
-    function loadChannelOverridesOptions(channelOverrides: ChannelSpecificSettings) {
+    function loadChannelSpecificSettings(channelSpecificSettings: ChannelSpecificSettings) {
         CompileConfig.categoryList.forEach(category => {
-            const channelOverride = channelOverrides?.categorySelections?.find(selection => selection.name === category);
+            const categorySelection = channelSpecificSettings?.categorySelections?.find(selection => selection.name === category);
 
             // Name element
             const categoryName = document.createElement("span");
             categoryName.innerText = chrome.i18n.getMessage(`category_${category}`);
 
             // Option selector
-            let optionNames = ["inherit", "disable", "showOverlay", "manualSkip", "autoSkip"];
-            if (category === "exclusive_access" || category === "chapter") optionNames = ["inherit", "disable", "showOverlay"];
+            let optionNames = ["global", "disable", "showOverlay", "manualSkip", "autoSkip"];
+            if (category === "exclusive_access" || category === "chapter") optionNames = ["global", "disable", "showOverlay"];
 
             function optionToString(option: CategorySkipOption) {
                 switch (option) {
@@ -1006,20 +972,20 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                     case CategorySkipOption.AutoSkip:
                         return "autoSkip";
                     default:
-                        return "inherit";
+                        return "global";
                 }
             }
 
-            const optionName = channelOverride ? optionToString(channelOverride.option) : "inherit";
+            const optionName = categorySelection ? optionToString(categorySelection.option) : "global";
 
 
             const categoryOption = document.createElement("select");
-            categoryOption.addEventListener("change", handleChannelOverrideChange);
+            categoryOption.addEventListener("change", handleChannelSettingChange);
 
             optionNames.forEach(option => {
                 const el = document.createElement("option");
                 el.setAttribute("value", `${category}:${option}`);
-                el.innerText = option !== "inherit" ? chrome.i18n.getMessage(option) : `${chrome.i18n.getMessage(option)} (${chrome.i18n.getMessage(optionToString(Config.config.categorySelections.find(selection => selection.name == category)?.option ?? CategorySkipOption.Disabled))})`;
+                el.innerText = option !== "global" ? chrome.i18n.getMessage(option) : `${chrome.i18n.getMessage(option)} (${chrome.i18n.getMessage(optionToString(Config.config.categorySelections.find(selection => selection.name == category)?.option ?? CategorySkipOption.Disabled))})`;
                 if (option === optionName) el.setAttribute("selected", "selected");
                 categoryOption.appendChild(el);
             });
@@ -1030,20 +996,25 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             categoryLi.appendChild(categoryName);
             categoryLi.appendChild(categoryOption);
 
-            PageElements.channelOverridesList.appendChild(categoryLi);
+            PageElements.channelSpecificSettingsList.appendChild(categoryLi);
         })
     }
 
-    async function handleChannelOverrideChange(event) {
+    async function handleChannelSettingChange(event) {
         const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
         //get the channel url
         const channelID = response.channelID;
 
         const [categoryName, optionName] = event.target.value.split(":");
 
+        if (PageElements.channelSpecificSettingsToggleSwitch.checked && !Config.config.channelSpecificSettings?.[channelID]) {
+            Config.config.channelSpecificSettings[channelID] = {
+                whitelisted: false,
+                toggle: true,
+                categorySelections: []
+            };
+        }                 
         const channelSettings = Config.config.channelSpecificSettings[channelID];
-
-                
         // Remove the existing category selection
         for (let i = 0; i < channelSettings.categorySelections.length; i++) {
             if (channelSettings.categorySelections[i].name === categoryName as Category) {
@@ -1056,7 +1027,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         let option: CategorySkipOption
 
         switch (optionName) {
-            case "inherit":
+            case "global":
                 Config.forceSyncUpdate("channelSpecificSettings");
                 return;
             case "disable":
@@ -1077,59 +1048,55 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             name: categoryName as Category,
             option: option
         });
-
         // Force update
         Config.forceSyncUpdate('channelSpecificSettings');
     }
 
-    async function toggleChannelOverrides() {
+    async function toggleChannelSpecificSettings() {
         //get the channel ID
         const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
         const channelID = response.channelID;
 
-        const channelOverrides = Config.config.channelSpecificSettings?.[channelID];
-        if (PageElements.channelOverridesToggleSwitch.checked && !channelOverrides) {
-            Config.config.channelSpecificSettings[channelID] = {
-                name: channelID,
-                whitelisted: false,
-                toggle: false,
-                categorySelections: []
-            };
-            Config.forceSyncUpdate('channelSpecificSettings');
-        } else if (channelOverrides?.categorySelections.length === 0 && !channelOverrides.whitelisted){
+        if (Config.config.channelSpecificSettings?.[channelID] && Config.config.channelSpecificSettings?.[channelID]?.categorySelections.length === 0 && !Config.config.channelSpecificSettings?.[channelID].whitelisted){
             delete Config.config.channelSpecificSettings[channelID];
+            Config.forceSyncUpdate('channelSpecificSettings');
         }
+        const channelSpecificSettings = Config.config.channelSpecificSettings?.[channelID];
 
-        const channelOverridesToggle = PageElements.channelOverridesToggleSwitch.checked;
+        const channelSpecificSettingsToggle = PageElements.channelSpecificSettingsToggleSwitch.checked;
 
-        if (!Config.config.forceChannelCheck && channelOverridesToggle) PageElements.channelSettingsForceCheck.classList.remove("hidden");
-        else if (!channelOverridesToggle) PageElements.channelSettingsForceCheck.classList.add("hidden");
-        PageElements.enableChannelOverrides.style.display = channelOverridesToggle ? "none" : "unset";
-        PageElements.disableChannelOverrides.style.display = channelOverridesToggle ? "unset" : "none";
-        PageElements.channelOverridesContainer.style.display = channelOverridesToggle ? "unset" : "none";
+        if (!Config.config.forceChannelCheck && channelSpecificSettingsToggle) PageElements.channelSettingsForceCheck.classList.remove("hidden");
+        else if (!channelSpecificSettingsToggle) PageElements.channelSettingsForceCheck.classList.add("hidden");
+        PageElements.enableChannelSpecificSettings.style.display = channelSpecificSettingsToggle ? "none" : "unset";
+        PageElements.disableChannelSpecificSettings.style.display = channelSpecificSettingsToggle ? "unset" : "none";
+        PageElements.channelSpecificSettingsContainer.style.display = channelSpecificSettingsToggle ? "unset" : "none";
 
-        if (channelOverrides){
-            channelOverrides.toggle = channelOverridesToggle;
+        if (channelSpecificSettings){
+            Config.config.channelSpecificSettings[channelID].toggle = channelSpecificSettingsToggle;
+            Config.forceSyncUpdate('channelSpecificSettings');
         }
-        
-        Config.forceSyncUpdate('channelSpecificSettings');
     }
 
     // ********************************** Channel Override Logic End ********************************* //
 
-    function whitelistChannel(channelID: string) {
+    async function whitelistChannel() {
+        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
+        if (!response.channelID) {
+            if (response.isYTTV) {
+                alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
+            } else {
+                alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+            }
+            return;
+        }
         //get whitelisted channels
         const channelSpecificSettings = Config.config.channelSpecificSettings;
-        if (channelSpecificSettings == undefined) {
-            Config.config.channelSpecificSettings = {};
-        }
 
         //add on this channel
-        if (channelSpecificSettings[channelID] != undefined) {
-            channelSpecificSettings[channelID].whitelisted = true;
+        if (channelSpecificSettings[response.channelID] != undefined) {
+            channelSpecificSettings[response.channelID].whitelisted = true;
         } else {
-            channelSpecificSettings[channelID] = {
-                name: channelID,
+            channelSpecificSettings[response.channelID] = {
                 whitelisted: true,
                 toggle: false,
                 categorySelections: []
@@ -1154,19 +1121,25 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         });
     }
 
-    function unwhitelistChannel(channelID: string) {
+    async function unwhitelistChannel() {
+        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
+        if (!response.channelID) {
+            if (response.isYTTV) {
+                alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
+            } else {
+                alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+            }
+            return;
+        }
         //get whitelisted channels
         const channelSpecificSettings = Config.config.channelSpecificSettings;
-        if (channelSpecificSettings == undefined) {
-            Config.config.channelSpecificSettings = {};
-        }
 
         //Un-whitelist
-        if (channelSpecificSettings[channelID] != undefined) {
-            if (!channelSpecificSettings[channelID].toggle && !channelSpecificSettings[channelID].categorySelections.length){
-                delete Config.config.channelSpecificSettings[channelID];
+        if (channelSpecificSettings[response.channelID] != undefined) {
+            if (!channelSpecificSettings[response.channelID].toggle && !channelSpecificSettings[response.channelID].categorySelections.length){
+                delete Config.config.channelSpecificSettings[response.channelID];
             } else {
-                channelSpecificSettings[channelID].whitelisted = false;
+                channelSpecificSettings[response.channelID].whitelisted = false;
             }
         }
 

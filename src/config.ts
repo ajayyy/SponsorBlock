@@ -14,7 +14,6 @@ interface SBConfig {
     permissions: Record<Category, Permission>;
     defaultCategory: Category;
     renderSegmentsAsChapters: boolean;
-    whitelistedChannels: string[];
     forceChannelCheck: boolean;
     minutesSaved: number;
     skipCount: number;
@@ -110,7 +109,7 @@ interface SBConfig {
         freeAccess: boolean;
         chaptersAllowed: boolean;
     };
-    channelSpecificSettings: Record<string, ChannelSpecificSettings>,
+    channelSpecificSettings: Record<string, ChannelSpecificSettings>;
 
     // Preview bar
     barTypes: {
@@ -168,6 +167,18 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
+    if (config["whitelistedChannels"]){
+        config["whitelistedChannels"].forEach((channel: string) => {
+            if (!config["channelSpecificSettings"]?.[channel]){
+                config["channelSpecificSettings"][channel] = {whitelisted: true,
+                                                            toggle : false,
+                                                            categorySelections: []};
+            } else {
+                config["channelSpecificSettings"][channel].whitelisted = true;
+            }});
+        chrome.storage.sync.remove("whitelistedChannels");
+    }
+
     if (config["showZoomToFillError"]) {
         chrome.storage.sync.remove("showZoomToFillError");
     }
@@ -280,7 +291,6 @@ const syncDefaults = {
     permissions: {},
     defaultCategory: "chooseACategory" as Category,
     renderSegmentsAsChapters: false,
-    whitelistedChannels: [],
     forceChannelCheck: false,
     minutesSaved: 0,
     skipCount: 0,
@@ -341,6 +351,8 @@ const syncDefaults = {
     showZoomToFillError2: true,
     cleanPopup: false,
 
+    channelSpecificSettings: {},
+
     categoryPillColors: {},
 
     /**
@@ -383,7 +395,6 @@ const syncDefaults = {
         freeAccess: false,
         chaptersAllowed: false
     },
-        channelSpecificSettings: {},
 
     colorPalette: {
         red: "#780303",
@@ -508,7 +519,7 @@ export function generateDebugDetails(): string {
     output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress)
         ? "Default server address" : "Custom server address";
     output.config.invidiousInstances = output.config.invidiousInstances.length;
-    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+    output.config.channelSpecificSettings = output.config.channelSpecificSettings.length;
 
     return JSON.stringify(output, null, 4);
 }
