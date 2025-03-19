@@ -102,7 +102,7 @@
       <div class="sbControlsMenu">
         <label id="channelSpecificSettings" for="channelSpecificSettingsToggleSwitch" class="hidden toggleSwitchContainer sbControlsMenu-item">
         <span class="toggleSwitchContainer-switch">
-          <input type="checkbox" style="display:none;" id="channelSpecificSettingsToggleSwitch" checked>
+          <input type="checkbox" style="display:none;" id="channelSpecificSettingsToggleSwitch" checked="false">
           <span class="switchBg shadow"></span>
           <span class="switchBg white"></span>
           <span class="switchBg green"></span>
@@ -110,6 +110,11 @@
         </span>
         <span id="disableChannelSpecificSettings">__MSG_disableChannelSpecificSettings__</span>
         <span id="enableChannelSpecificSettings" style="display: none">__MSG_enableChannelSpecificSettings__</span>
+        </label>
+        <button id="channelSpecificSettingsDeleteButton" class = "hidden sbControlsMenu-item">
+          <img src="/icons/deleteChannelSpecificSettings.svg" alt="Delete settings icon" height="24" class="sbControlsMenu-itemIcon" />
+          __MSG_deleteChannelSpecificSettings__
+        </button>
       </div>
 
       <a id="channelSettingsForceCheck" class="hidden">

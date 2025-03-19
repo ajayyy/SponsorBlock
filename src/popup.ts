@@ -191,6 +191,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "channelSettingsForceCheck",
         "disableChannelSpecificSettings",
         "enableChannelSpecificSettings",
+        "channelSpecificSettingsDeleteButton",
         "channelSpecificSettingsList",
         "channelSpecificSettingsContainer",
         "issueReporterImportExport",
@@ -252,6 +253,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     PageElements.sbPopupIconCopyUserID.addEventListener("click", async () => copyToClipboard(await getHash(Config.config.userID)));
     PageElements.debugLogs.addEventListener("click", copyDebgLogs);
     PageElements.channelSpecificSettingsToggleSwitch.addEventListener("change", toggleChannelSpecificSettings);
+    PageElements.channelSpecificSettingsDeleteButton.addEventListener("click", deleteChannelSpecificSettings);
 
     // Forward click events
     if (window !== window.top) {
@@ -933,17 +935,22 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //get channel settings
         const channelSpecificSettings = Config.config.channelSpecificSettings?.[channelID];
 
-        if (channelSpecificSettings && channelSpecificSettings?.categorySelections.length === 0 && !channelSpecificSettings.whitelisted){
-            delete Config.config.channelSpecificSettings[channelID];
+        if (channelSpecificSettings && channelSpecificSettings?.categorySelections.length === 0){
+            if (!channelSpecificSettings.whitelisted){
+                delete Config.config.channelSpecificSettings[channelID];
+            } else {
+                Config.config.channelSpecificSettings[channelID].toggle = false;
+            }
             Config.forceSyncUpdate('channelSpecificSettings');
         }
 
         const channelSpecificSettingsToggle = Config.config.channelSpecificSettings[channelID] ? Config.config.channelSpecificSettings[channelID].toggle : false;
 
         //change button
+        if (Config.config.channelSpecificSettings[channelID]?.categorySelections.length) PageElements.channelSpecificSettingsDeleteButton.classList.remove("hidden");
         PageElements.enableChannelSpecificSettings.style.display = channelSpecificSettingsToggle ? "none" : "unset";
         PageElements.disableChannelSpecificSettings.style.display = channelSpecificSettingsToggle ? "unset" : "none";
-        PageElements.channelSpecificSettingsToggleSwitch.checked = !!channelSpecificSettingsToggle;
+        PageElements.channelSpecificSettingsToggleSwitch.checked = channelSpecificSettingsToggle;
         PageElements.channelSpecificSettingsContainer.style.display = channelSpecificSettingsToggle ? "unset" : "none";
 
         loadChannelSpecificSettings(channelSpecificSettings);
@@ -1015,6 +1022,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             };
         }                 
         const channelSettings = Config.config.channelSpecificSettings[channelID];
+        
+        if (channelSettings) PageElements.channelSpecificSettingsDeleteButton.classList.remove("hidden");
+        
         // Remove the existing category selection
         for (let i = 0; i < channelSettings.categorySelections.length; i++) {
             if (channelSettings.categorySelections[i].name === categoryName as Category) {
@@ -1059,6 +1069,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         if (Config.config.channelSpecificSettings?.[channelID] && Config.config.channelSpecificSettings?.[channelID]?.categorySelections.length === 0 && !Config.config.channelSpecificSettings?.[channelID].whitelisted){
             delete Config.config.channelSpecificSettings[channelID];
+            PageElements.channelSpecificSettingsDeleteButton.classList.add("hidden");
             Config.forceSyncUpdate('channelSpecificSettings');
         }
         const channelSpecificSettings = Config.config.channelSpecificSettings?.[channelID];
@@ -1075,6 +1086,37 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             Config.config.channelSpecificSettings[channelID].toggle = channelSpecificSettingsToggle;
             Config.forceSyncUpdate('channelSpecificSettings');
         }
+    }
+
+    async function deleteChannelSpecificSettings() {
+        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
+        const channelID = response.channelID;
+        
+        if(Config.config.channelSpecificSettings[channelID]){
+            if (Config.config.channelSpecificSettings[channelID].whitelisted){
+                Config.config.channelSpecificSettings[channelID].categorySelections = [];
+                Config.config.channelSpecificSettings[channelID].toggle = false;
+            } else {
+                delete Config.config.channelSpecificSettings[channelID];
+            }
+            Config.forceSyncUpdate('channelSpecificSettings');
+        }
+
+        PageElements.channelSpecificSettingsList
+            .querySelectorAll("select")
+            .forEach((select) => {
+                select.value = Array.from(select.options).find(option => option.value.endsWith("global")).value;
+            });
+
+        if (PageElements.channelSpecificSettingsToggleSwitch.checked){
+            PageElements.channelSpecificSettingsToggleSwitch.checked = false;
+            PageElements.disableChannelSpecificSettings.style.display = "unset";
+            PageElements.enableChannelSpecificSettings.style.display = "none";
+            PageElements.channelSpecificSettingsContainer.style.display = "none";
+            if (!Config.config.forceChannelCheck) PageElements.channelSettingsForceCheck.classList.add("hidden");
+        }
+        PageElements.channelSpecificSettingsDeleteButton.classList.add("hidden");
+        Config.forceSyncUpdate('channelSpecificSettings');
     }
 
     // ********************************** Channel Override Logic End ********************************* //

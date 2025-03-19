@@ -1443,7 +1443,7 @@ async function channelIDChange(channelIDInfo: ChannelIDInfo) {
     if (channelSpecificSettings != undefined &&
         channelIDInfo.status === ChannelIDStatus.Found){
         if (Config.config.forceChannelCheck && channelSpecificSettings[channelIDInfo.id]?.toggle) {
-            sponsorsLookup(false, true);
+            sponsorsLookup(true, true);
         }
         if(channelSpecificSettings[channelIDInfo.id]?.whitelisted) {
             channelWhitelisted = true;
