@@ -4,13 +4,11 @@ import * as CompileConfig from "../config.json";
 import Utils from "./utils";
 import {
     ActionType,
-    CategorySkipOption,
     Category,
     SegmentUUID,
     SponsorHideType,
     SponsorSourceType,
     SponsorTime,
-    ChannelSpecificSettings,
 } from "./types";
 import {
     GetChannelIDResponse,
@@ -33,6 +31,8 @@ import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
 import { StorageChangesObject } from "../maze-utils/src/config";
 import { getHash } from "../maze-utils/src/hash";
 import { asyncRequestToServer, sendRequestToServer } from "./utils/requests";
+import PopupCategorySkipOptionsComponent from "./components/PopupCategorySkipOptionsComponent";
+import ReactDOM = require("react-dom");
 
 const utils = new Utils();
 
@@ -924,112 +924,18 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         PageElements.channelSpecificSettingsToggleSwitch.checked = channelSpecificSettingsToggle;
         PageElements.channelSpecificSettingsContainer.style.display = channelSpecificSettingsToggle ? "unset" : "none";
 
-        loadChannelSpecificSettings(channelSpecificSettings);
+        loadChannelSpecificSettings(channelID);
     }
 
-    function loadChannelSpecificSettings(channelSpecificSettings: ChannelSpecificSettings) {
-        CompileConfig.categoryList.forEach(category => {
-            const categorySelection = channelSpecificSettings?.categorySelections?.find(selection => selection.name === category);
-
-            // Name element
-            const categoryName = document.createElement("span");
-            categoryName.innerText = chrome.i18n.getMessage(`category_${category}`);
-
-            // Option selector
-            let optionNames = ["global", "disable", "showOverlay", "manualSkip", "autoSkip"];
-            if (category === "exclusive_access" || category === "chapter") optionNames = ["global", "disable", "showOverlay"];
-
-            function optionToString(option: CategorySkipOption) {
-                switch (option) {
-                    case CategorySkipOption.Disabled:
-                        return "disable";
-                    case CategorySkipOption.ShowOverlay:
-                        return "showOverlay";
-                    case CategorySkipOption.ManualSkip:
-                        return "manualSkip";
-                    case CategorySkipOption.AutoSkip:
-                        return "autoSkip";
-                    default:
-                        return "global";
-                }
-            }
-
-            const optionName = categorySelection ? optionToString(categorySelection.option) : "global";
-
-
-            const categoryOption = document.createElement("select");
-            categoryOption.addEventListener("change", handleChannelSettingChange);
-            //TODO: Change POI and chapter messages
-            optionNames.forEach(option => {
-                const el = document.createElement("option");
-                el.setAttribute("value", `${category}:${option}`);
-                el.innerText = option !== "global" ? chrome.i18n.getMessage(option) : `${chrome.i18n.getMessage(option)} (${chrome.i18n.getMessage(optionToString(Config.config.categorySelections.find(selection => selection.name == category)?.option ?? CategorySkipOption.Disabled))})`;
-                if (option === optionName) el.setAttribute("selected", "selected");
-                categoryOption.appendChild(el);
-            });
-
-            const categoryLi = document.createElement("li");
-            categoryLi.classList.add("popupCategory");
-
-            categoryLi.appendChild(categoryName);
-            categoryLi.appendChild(categoryOption);
-
-            PageElements.channelSpecificSettingsList.appendChild(categoryLi);
-        })
-    }
-
-    async function handleChannelSettingChange(event) {
-        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
-        //get the channel url
-        const channelID = response.channelID;
-
-        const [categoryName, optionName] = event.target.value.split(":");
-
-        if (PageElements.channelSpecificSettingsToggleSwitch.checked && !Config.config.channelSpecificSettings?.[channelID]) {
-            Config.config.channelSpecificSettings[channelID] = {
-                toggle: true,
-                categorySelections: []
-            };
-        }                 
-        const channelSettings = Config.config.channelSpecificSettings[channelID];
-        
-        if (channelSettings) PageElements.channelSpecificSettingsDeleteButton.classList.remove("hidden");
-        
-        // Remove the existing category selection
-        for (let i = 0; i < channelSettings.categorySelections.length; i++) {
-            if (channelSettings.categorySelections[i].name === categoryName as Category) {
-                channelSettings.categorySelections[i].option;
-                channelSettings.categorySelections.splice(i, 1);
-                break;
-            }
-        }
-
-        let option: CategorySkipOption
-
-        switch (optionName) {
-            case "global":
-                Config.forceSyncUpdate("channelSpecificSettings");
-                return;
-            case "disable":
-                option = CategorySkipOption.Disabled;
-                break;
-            case "showOverlay":
-                option = CategorySkipOption.ShowOverlay;
-                break;
-            case "manualSkip":
-                option = CategorySkipOption.ManualSkip;
-                break;
-            case "autoSkip":
-                option = CategorySkipOption.AutoSkip;
-                break;
-        }
-
-        channelSettings.categorySelections.push({
-            name: categoryName as Category,
-            option: option
+    function loadChannelSpecificSettings(channelID: string) {
+        const settingsList = PageElements.channelSpecificSettingsList;
+        const deleteButton = PageElements.channelSpecificSettingsDeleteButton;
+        CompileConfig.categoryList.forEach((category: Category) => {
+            const categorySkipOptionsComponent = new PopupCategorySkipOptionsComponent({category, channelID, deleteButton});
+            const wrapper = document.createElement("div");
+            ReactDOM.render(categorySkipOptionsComponent.render(), wrapper);
+            settingsList.appendChild(wrapper);
         });
-        // Force update
-        Config.forceSyncUpdate('channelSpecificSettings');
     }
 
     async function toggleChannelSpecificSettings() {
@@ -1271,7 +1177,8 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 sponsorTimes = Config.local.unsubmittedSegments[currentVideoID] ?? [];
                 updateSegmentEditingUI();
 
-                //TODO: update channel specific settings
+                PageElements.channelSpecificSettingsList.replaceChildren();
+                initChannelSpecificSettings();
 
                 // Clear segments list & start loading animation
                 // We'll get a ping once they're loaded
