@@ -211,7 +211,13 @@ export default class Utils {
         return sponsorTimes[this.getSponsorIndexFromUUID(sponsorTimes, UUID)];
     }
 
-    getCategorySelection(category: string): CategorySelection {
+    getCategorySelection(category: string, channelID: string = null): CategorySelection {
+        if (channelID != null && Config.config.channelSpecificSettings[channelID]?.toggle) {
+            for (const channelSelection of Config.config.channelSpecificSettings[channelID].categorySelections) {
+                if (channelSelection.name === category)
+                    return channelSelection;
+            }
+        }
         for (const selection of Config.config.categorySelections) {
             if (selection.name === category) {
                 return selection;

@@ -301,24 +301,6 @@
 }
 
 /*
- * Whitelist add/remove icon
- */
-.SBWhitelistIcon > path {
-  fill: var(--sb-main-fg-color);
-}
-.SBWhitelistIcon.rotated {
-  transform: rotate(45deg);
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/*
  * "Skipping is enabled" toggle
  */
 .toggleSwitchContainer {
@@ -372,17 +354,51 @@
   opacity: 0;
 }
 
-/*
- * Notice that appears when whitelisting a channel, that recommends
- * enabling the "Force Channel Check Before Skipping" option
+
+ /* "Channel Overrides are enabled" toggle
  */
-#whitelistForceCheck {
+#channelSpecificSettingsToggleSwitch:checked ~ .switchDot {
+  transform: translateX(27px);
+}
+#channelSpecificSettingsToggleSwitch:checked ~ .switchBg.green {
+  opacity: 1;
+}
+#channelSpecificSettingsToggleSwitch:checked ~ .switchBg.white {
+  transition: opacity 0.2s step-end;
+  opacity: 0;
+}
+
+#channelSpecificSettingsList {
+  margin: 16px;
+  margin-top: 0;
+  padding: 8px 12px;
+  text-align: left;
+  border-radius: 8px;
+  border: 2px solid var(--sb-grey-bg-color);
+}
+
+.popupCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: right;
+  justify-content: space-between;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/*
+ * Notice that appears when creating channel specific settings, that informs to
+ * enable the "Force Channel Check Before Skipping" option
+ */
+#channelSettingsForceCheck {
   background-color: #fff3cd;
   padding: 10px 15px;
   display: block;
   color: #664d03;
 }
-#whitelistForceCheck:hover {
+#channelSettingsForceCheck:hover {
   background-color: #f2e4b7;
 }
 
