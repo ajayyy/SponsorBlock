@@ -14,7 +14,6 @@ import {
 } from "./types";
 import {
     GetChannelIDResponse,
-    IsChannelWhitelistedResponse,
     IsInfoFoundMessageResponse,
     LogResponse,
     Message,
@@ -93,7 +92,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     localizeHtmlPage();
 
     type InputPageElements = {
-        whitelistToggle?: HTMLInputElement;
         toggleSwitch?: HTMLInputElement;
         usernameInput?: HTMLInputElement;
         channelSpecificSettingsToggleSwitch?: HTMLInputElement;
@@ -132,11 +130,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         "sponsorblockPopup",
         "sponsorStart",
         // Top toggles
-        "whitelistChannel",
-        "unwhitelistChannel",
-        "whitelistButton",
-        "whitelistToggle",
-        "whitelistForceCheck",
         "disableSkipping",
         "enableSkipping",
         "toggleSwitch",
@@ -230,14 +223,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
     //setup click listeners
     PageElements.sponsorStart.addEventListener("click", sendSponsorStartMessage);
-    PageElements.whitelistToggle.addEventListener("change", function () {
-        if (this.checked) {
-            whitelistChannel();
-        } else {
-            unwhitelistChannel();
-        }
-    });
-    PageElements.whitelistForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.channelSettingsForceCheck.addEventListener("click", () => {openOptionsAt("behavior")});
     PageElements.toggleSwitch.addEventListener("change", function () {
         toggleSkipping(!this.checked);
@@ -471,7 +456,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         //remove loading text
         PageElements.mainControls.style.display = "block";
         if (request.onMobileYouTube) PageElements.mainControls.classList.add("hidden");
-        PageElements.whitelistButton.classList.remove("hidden");
         PageElements.channelSpecificSettings.classList.remove("hidden");
         PageElements.loadingIndicator.style.display = "none";
 
@@ -491,15 +475,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             }
 
             PageElements.issueReporterImportExport.classList.remove("hidden");
-        }
-
-        //see if whitelist button should be swapped
-        const response = await sendTabMessageAsync({ message: 'isChannelWhitelisted' }) as IsChannelWhitelistedResponse;
-        if (response.value) {
-            PageElements.whitelistChannel.style.display = "none";
-            PageElements.unwhitelistChannel.style.display = "unset";
-            PageElements.whitelistToggle.checked = true;
-            document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
         }
     }
 
@@ -936,11 +911,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         const channelSpecificSettings = Config.config.channelSpecificSettings?.[channelID];
 
         if (channelSpecificSettings && channelSpecificSettings?.categorySelections.length === 0){
-            if (!channelSpecificSettings.whitelisted){
-                delete Config.config.channelSpecificSettings[channelID];
-            } else {
-                Config.config.channelSpecificSettings[channelID].toggle = false;
-            }
+            delete Config.config.channelSpecificSettings[channelID];
             Config.forceSyncUpdate('channelSpecificSettings');
         }
 
@@ -988,7 +959,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
             const categoryOption = document.createElement("select");
             categoryOption.addEventListener("change", handleChannelSettingChange);
-
+            //TODO: Change POI and chapter messages
             optionNames.forEach(option => {
                 const el = document.createElement("option");
                 el.setAttribute("value", `${category}:${option}`);
@@ -1016,7 +987,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
 
         if (PageElements.channelSpecificSettingsToggleSwitch.checked && !Config.config.channelSpecificSettings?.[channelID]) {
             Config.config.channelSpecificSettings[channelID] = {
-                whitelisted: false,
                 toggle: true,
                 categorySelections: []
             };
@@ -1067,7 +1037,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
         const channelID = response.channelID;
 
-        if (Config.config.channelSpecificSettings?.[channelID] && Config.config.channelSpecificSettings?.[channelID]?.categorySelections.length === 0 && !Config.config.channelSpecificSettings?.[channelID].whitelisted){
+        if (Config.config.channelSpecificSettings?.[channelID] && Config.config.channelSpecificSettings?.[channelID]?.categorySelections.length === 0){
             delete Config.config.channelSpecificSettings[channelID];
             PageElements.channelSpecificSettingsDeleteButton.classList.add("hidden");
             Config.forceSyncUpdate('channelSpecificSettings');
@@ -1093,12 +1063,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
         const channelID = response.channelID;
         
         if(Config.config.channelSpecificSettings[channelID]){
-            if (Config.config.channelSpecificSettings[channelID].whitelisted){
-                Config.config.channelSpecificSettings[channelID].categorySelections = [];
-                Config.config.channelSpecificSettings[channelID].toggle = false;
-            } else {
-                delete Config.config.channelSpecificSettings[channelID];
-            }
+            delete Config.config.channelSpecificSettings[channelID];
             Config.forceSyncUpdate('channelSpecificSettings');
         }
 
@@ -1120,87 +1085,6 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     // ********************************** Channel Override Logic End ********************************* //
-
-    async function whitelistChannel() {
-        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
-        if (!response.channelID) {
-            if (response.isYTTV) {
-                alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
-            } else {
-                alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
-            }
-            return;
-        }
-        //get whitelisted channels
-        const channelSpecificSettings = Config.config.channelSpecificSettings;
-
-        //add on this channel
-        if (channelSpecificSettings[response.channelID] != undefined) {
-            channelSpecificSettings[response.channelID].whitelisted = true;
-        } else {
-            channelSpecificSettings[response.channelID] = {
-                whitelisted: true,
-                toggle: false,
-                categorySelections: []
-            };
-        }
-
-        //change button
-        PageElements.whitelistChannel.style.display = "none";
-        PageElements.unwhitelistChannel.style.display = "unset";
-        document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
-
-        //show 'consider force channel check' alert
-        if (!Config.config.forceChannelCheck) PageElements.whitelistForceCheck.classList.remove("hidden");
-
-        //save this
-        Config.forceSyncUpdate('channelSpecificSettings');
-
-        //send a message to the client
-        sendTabMessage({
-            message: 'whitelistChange',
-            value: true
-        });
-    }
-
-    async function unwhitelistChannel() {
-        const response = await sendTabMessageAsync({ message: 'getChannelInfo' }) as GetChannelIDResponse;
-        if (!response.channelID) {
-            if (response.isYTTV) {
-                alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
-            } else {
-                alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
-            }
-            return;
-        }
-        //get whitelisted channels
-        const channelSpecificSettings = Config.config.channelSpecificSettings;
-
-        //Un-whitelist
-        if (channelSpecificSettings[response.channelID] != undefined) {
-            if (!channelSpecificSettings[response.channelID].toggle && !channelSpecificSettings[response.channelID].categorySelections.length){
-                delete Config.config.channelSpecificSettings[response.channelID];
-            } else {
-                channelSpecificSettings[response.channelID].whitelisted = false;
-            }
-        }
-
-        //change button
-        PageElements.whitelistChannel.style.display = "unset";
-        PageElements.unwhitelistChannel.style.display = "none";
-        document.querySelectorAll('.SBWhitelistIcon')[0].classList.remove("rotated");
-
-        //hide 'consider force channel check' alert
-        PageElements.whitelistForceCheck.classList.add("hidden");
-
-        //save this
-        Config.forceSyncUpdate('channelSpecificSettings');
-        //send a message to the client
-        sendTabMessage({
-            message: 'whitelistChange',
-            value: false
-        });
-    }
 
     function startLoadingAnimation() {
         stopLoadingAnimation = AnimationUtils.applyLoadingAnimation(PageElements.refreshSegmentsButton, 0.3);
@@ -1387,12 +1271,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 sponsorTimes = Config.local.unsubmittedSegments[currentVideoID] ?? [];
                 updateSegmentEditingUI();
 
-                if (msg.whitelisted) {
-                    PageElements.whitelistChannel.style.display = "none";
-                    PageElements.unwhitelistChannel.style.display = "unset";
-                    PageElements.whitelistToggle.checked = true;
-                    document.querySelectorAll('.SBWhitelistIcon')[0].classList.add("rotated");
-                }
+                //TODO: update channel specific settings
 
                 // Clear segments list & start loading animation
                 // We'll get a ping once they're loaded

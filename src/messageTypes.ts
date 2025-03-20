@@ -14,7 +14,6 @@ interface DefaultMessage {
         | "sponsorStart"
         | "getVideoID"
         | "getChannelInfo"
-        | "isChannelWhitelisted"
         | "submitTimes"
         | "refreshSegments"
         | "closePopup"
@@ -93,16 +92,11 @@ export interface SponsorStartResponse {
     creatingSegment: boolean;
 }
 
-export interface IsChannelWhitelistedResponse {
-    value: boolean;
-}
-
 export type MessageResponse =
     IsInfoFoundMessageResponse
     | GetVideoIdResponse
     | GetChannelIDResponse
     | SponsorStartResponse
-    | IsChannelWhitelistedResponse
     | Record<string, never> // empty object response {}
     | VoteResponse
     | ImportSegmentsResponse
@@ -140,7 +134,6 @@ export type InfoUpdatedMessage = IsInfoFoundMessageResponse & {
 export interface VideoChangedPopupMessage {
     message: "videoChanged";
     videoID: string;
-    whitelisted: boolean;
 }
 
 export type PopupMessage = TimeUpdateMessage | InfoUpdatedMessage | VideoChangedPopupMessage;

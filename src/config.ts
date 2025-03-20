@@ -78,7 +78,7 @@ interface SBConfig {
     shownDeArrowPromotion: boolean;
     showZoomToFillError2: boolean;
     cleanPopup: boolean;
-
+    whitelistedChannels: string[];
     // Used to cache calculated text color info
     categoryPillColors: {
         [key in Category]: {
@@ -168,14 +168,18 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 
 function migrateOldSyncFormats(config: SBConfig) {
     if (config["whitelistedChannels"]){
+        const whitelistSelection = [...config.categorySelections]
+                .filter((selection) => {
+                    return selection.option !== CategorySkipOption.ShowOverlay
+                }).map((selection) => ({ ...selection, option: CategorySkipOption.ShowOverlay }));
         config["whitelistedChannels"].forEach((channel: string) => {
-            if (!config["channelSpecificSettings"]?.[channel]){
-                config["channelSpecificSettings"][channel] = {whitelisted: true,
-                                                            toggle : false,
-                                                            categorySelections: []};
+            if (!config.channelSpecificSettings?.[channel]){  
+                config.channelSpecificSettings[channel] = {toggle : true,
+                                                            categorySelections: whitelistSelection};
             } else {
-                config["channelSpecificSettings"][channel].whitelisted = true;
+                config.channelSpecificSettings[channel].categorySelections = whitelistSelection;
             }});
+        config.channelSpecificSettings = config.channelSpecificSettings;
         chrome.storage.sync.remove("whitelistedChannels");
     }
 
@@ -286,6 +290,7 @@ function migrateOldSyncFormats(config: SBConfig) {
 }
 
 const syncDefaults = {
+    whitelistedChannels: undefined,
     userID: null,
     isVip: false,
     permissions: {},

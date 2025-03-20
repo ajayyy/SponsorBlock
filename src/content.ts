@@ -144,9 +144,6 @@ let lastCheckVideoTime = -1;
 // To determine if a video resolution change is happening
 let firstPlay = true;
 
-//is this channel whitelised from getting sponsors skipped
-let channelWhitelisted = false;
-
 let previewBar: PreviewBar = null;
 // Skip to highlight button
 let skipButtonControlBar: SkipButtonControlBar = null;
@@ -244,15 +241,6 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 isYTTV: (document.location.host === "tv.youtube.com")
             });
 
-            break;
-        case "isChannelWhitelisted":
-            sendResponse({
-                value: channelWhitelisted
-            });
-
-            break;
-        case "whitelistChange":
-            channelWhitelisted = request.value;
             break;
         case "submitTimes":
             openSubmissionMenu();
@@ -400,7 +388,6 @@ function resetValues() {
     shownSegmentFailedToFetchWarning = false;
 
     videoInfo = null;
-    channelWhitelisted = false;
     lockedCategories = [];
 
     //empty the preview bar
@@ -462,7 +449,6 @@ async function videoIDChange(): Promise<void> {
     chrome.runtime.sendMessage({
         message: "videoChanged",
         videoID: getVideoID(),
-        whitelisted: channelWhitelisted
     });
     
     sponsorsLookup();
@@ -679,7 +665,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
     logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
     if (skipInfo.index === -1) return;
 
-    if (Config.config.disableSkipping || channelWhitelisted || (getChannelIDInfo().status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
+    if (Config.config.disableSkipping || (getChannelIDInfo().status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
     }
 
@@ -1436,17 +1422,14 @@ function updatePreviewBar(): void {
     }
 }
 
-//checks if this channel is whitelisted, should be done only after the channelID has been loaded
+//checks if this channel has category settings set, should be done only after the channelID has been loaded
 async function channelIDChange(channelIDInfo: ChannelIDInfo) {
     const channelSpecificSettings = Config.config.channelSpecificSettings;
-    //see if this is a whitelisted channel
+    //see if this channel has channel specific settings
     if (channelSpecificSettings != undefined &&
         channelIDInfo.status === ChannelIDStatus.Found){
         if (Config.config.forceChannelCheck && channelSpecificSettings[channelIDInfo.id]?.toggle) {
             sponsorsLookup(true, true);
-        }
-        if(channelSpecificSettings[channelIDInfo.id]?.whitelisted) {
-            channelWhitelisted = true;
         }
     }
 

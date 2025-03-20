@@ -206,7 +206,6 @@ export interface ChannelIDInfo {
 }
 
 export interface ChannelSpecificSettings {
-    whitelisted: boolean;
     toggle: boolean;
     categorySelections: CategorySelection[];
 }

@@ -301,24 +301,6 @@
 }
 
 /*
- * Whitelist add/remove icon
- */
-.SBWhitelistIcon > path {
-  fill: var(--sb-main-fg-color);
-}
-.SBWhitelistIcon.rotated {
-  transform: rotate(45deg);
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/*
  * "Skipping is enabled" toggle
  */
 .toggleSwitchContainer {
@@ -407,17 +389,15 @@
 }
 
 /*
- * Notice that appears when whitelisting a channel, that recommends
- * enabling the "Force Channel Check Before Skipping" option
+ * Notice that appears when creating channel specific settings, that informs to
+ * enable the "Force Channel Check Before Skipping" option
  */
-#whitelistForceCheck,
 #channelSettingsForceCheck {
   background-color: #fff3cd;
   padding: 10px 15px;
   display: block;
   color: #664d03;
 }
-#whitelistForceCheck:hover,
 #channelSettingsForceCheck:hover {
   background-color: #f2e4b7;
 }
