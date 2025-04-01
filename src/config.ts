@@ -57,6 +57,7 @@ interface SBConfig {
     donateClicked: number;
     autoHideInfoButton: boolean;
     autoSkipOnMusicVideos: boolean;
+    skipNonMusicOnlyOnYoutubeMusic: boolean;
     colorPalette: {
         red: string;
         white: string;
@@ -321,7 +322,8 @@ const syncDefaults = {
     showNewFeaturePopups: true,
     donateClicked: 0,
     autoHideInfoButton: true,
-    autoSkipOnMusicVideos: false,
+    autoSkipOnMusicVideos: true,
+    skipNonMusicOnlyOnYoutubeMusic: true,
     scrollToEditTimeUpdate: false, // false means the tooltip will be shown
     categoryPillUpdate: false,
     showChapterInfoMessage: true,
