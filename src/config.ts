@@ -322,8 +322,8 @@ const syncDefaults = {
     showNewFeaturePopups: true,
     donateClicked: 0,
     autoHideInfoButton: true,
-    autoSkipOnMusicVideos: true,
-    skipNonMusicOnlyOnYoutubeMusic: true,
+    autoSkipOnMusicVideos: false,
+    skipNonMusicOnlyOnYoutubeMusic: false,
     scrollToEditTimeUpdate: false, // false means the tooltip will be shown
     categoryPillUpdate: false,
     showChapterInfoMessage: true,
