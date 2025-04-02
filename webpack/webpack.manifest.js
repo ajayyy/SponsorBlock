@@ -51,6 +51,7 @@ class BuildManifest {
         }  else if (this.options.browser.toLowerCase() === "safari") {
             mergeObjects(manifest, manifestV2ManifestExtra);
             mergeObjects(manifest, safariManifestExtra);
+            manifest.optional_permissions = manifest.optional_permissions.filter((a) => a !== "*://*/*");
         }
 
         if (this.options.stream === "beta") {
