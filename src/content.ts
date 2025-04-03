@@ -35,7 +35,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYouTubeMusic, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
@@ -1891,16 +1891,33 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
-        && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
-                && segment.actionType === ActionType.Skip)
-            || sponsorTimesSubmitting.some((s) => s.segment === segment.segment));
+    if (Config.config.manualSkipOnFullVideo && !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full)) {
+        return false;
+    }
+
+    return  (   // Normal skip
+                utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip 
+                // Forbid skipping of non-music if we are not on Youtube Music
+                && !(segment.category === "music_offtopic" && Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic())
+            )
+            ||
+            (   // Skip every segment, if it's a music video
+
+                // Forbid autoSkipOnMusicVideos if if we are not on Youtube Music
+                !(Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic())
+                && Config.config.autoSkipOnMusicVideos 
+                && sponsorTimes?.some((s) => s.category === "music_offtopic") 
+                && segment.actionType === ActionType.Skip
+            )
+            || 
+            sponsorTimesSubmitting.some((s) => s.segment === segment.segment);
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return (segment.actionType !== ActionType.Full
-            && segment.source !== SponsorSourceType.YouTube
+    if (segment.actionType === ActionType.Full) {
+        return false;
+    }
+    return (segment.source !== SponsorSourceType.YouTube
             && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip);
