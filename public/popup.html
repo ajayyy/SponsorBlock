@@ -67,14 +67,6 @@
 
       <!-- Toggle Box -->
       <div class="sbControlsMenu">
-        <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item">
-          <input type="checkbox" style="display: none" id="whitelistToggle">
-          <svg viewBox="0 0 24 24" width="23" height="23" class="SBWhitelistIcon sbControlsMenu-itemIcon">
-            <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
-          </svg>
-          <span id="whitelistChannel">__MSG_whitelistChannel__</span>
-          <span id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</span>
-        </label>
         <!--github: mbledkowski/toggle-switch-->
         <label id="disableExtension" for="toggleSwitch" class="toggleSwitchContainer sbControlsMenu-item">
           <span class="toggleSwitchContainer-switch">
@@ -93,9 +85,35 @@
         </button>
       </div>
 
-      <a id="whitelistForceCheck" class="hidden">
-        __MSG_forceChannelCheckPopup__
+      <!-- Channel specific settings box -->
+      <!--github: scaccoman/SponsorBlock-->
+      <div class="sbControlsMenu">
+        <label id="channelSpecificSettings" for="channelSpecificSettingsToggleSwitch" class="hidden toggleSwitchContainer sbControlsMenu-item">
+        <span class="toggleSwitchContainer-switch">
+          <input type="checkbox" style="display:none;" id="channelSpecificSettingsToggleSwitch" checked="false">
+          <span class="switchBg shadow"></span>
+          <span class="switchBg white"></span>
+          <span class="switchBg green"></span>
+          <span class="switchDot"></span>
+        </span>
+        <span id="disableChannelSpecificSettings">__MSG_disableChannelSpecificSettings__</span>
+        <span id="enableChannelSpecificSettings" style="display: none">__MSG_enableChannelSpecificSettings__</span>
+        </label>
+        <button id="channelSpecificSettingsDeleteButton" class = "hidden sbControlsMenu-item">
+          <img src="/icons/deleteChannelSpecificSettings.svg" alt="Delete settings icon" height="24" class="sbControlsMenu-itemIcon" />
+          __MSG_deleteChannelSpecificSettings__
+        </button>
+      </div>
+
+      <a id="channelSettingsForceCheck" class="hidden">
+        __MSG_forceChannelCheckRequired__
       </a>
+
+      <!-- Channel specific settings container -->
+      <div id="channelSpecificSettingsContainer" style="display: none">
+        <ul id="channelSpecificSettingsList">
+        </ul>
+      </div>
 
       <!-- Submit box -->
       <div id="mainControls" style="display: none">

@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, ChannelSpecificSettings, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
 
@@ -14,7 +14,6 @@ interface SBConfig {
     permissions: Record<Category, Permission>;
     defaultCategory: Category;
     renderSegmentsAsChapters: boolean;
-    whitelistedChannels: string[];
     forceChannelCheck: boolean;
     minutesSaved: number;
     skipCount: number;
@@ -79,7 +78,7 @@ interface SBConfig {
     shownDeArrowPromotion: boolean;
     showZoomToFillError2: boolean;
     cleanPopup: boolean;
-
+    whitelistedChannels: string[];
     // Used to cache calculated text color info
     categoryPillColors: {
         [key in Category]: {
@@ -110,6 +109,7 @@ interface SBConfig {
         freeAccess: boolean;
         chaptersAllowed: boolean;
     };
+    channelSpecificSettings: Record<string, ChannelSpecificSettings>;
 
     // Preview bar
     barTypes: {
@@ -167,6 +167,22 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
+    if (config["whitelistedChannels"]){
+        const whitelistSelection = [...config.categorySelections]
+                .filter((selection) => {
+                    return selection.option !== CategorySkipOption.ShowOverlay
+                }).map((selection) => ({ ...selection, option: CategorySkipOption.ShowOverlay }));
+        config["whitelistedChannels"].forEach((channel: string) => {
+            if (!config.channelSpecificSettings?.[channel]){  
+                config.channelSpecificSettings[channel] = {toggle : true,
+                                                            categorySelections: whitelistSelection};
+            } else {
+                config.channelSpecificSettings[channel].categorySelections = whitelistSelection;
+            }});
+        config.channelSpecificSettings = config.channelSpecificSettings;
+        chrome.storage.sync.remove("whitelistedChannels");
+    }
+
     if (config["showZoomToFillError"]) {
         chrome.storage.sync.remove("showZoomToFillError");
     }
@@ -274,12 +290,12 @@ function migrateOldSyncFormats(config: SBConfig) {
 }
 
 const syncDefaults = {
+    whitelistedChannels: undefined,
     userID: null,
     isVip: false,
     permissions: {},
     defaultCategory: "chooseACategory" as Category,
     renderSegmentsAsChapters: false,
-    whitelistedChannels: [],
     forceChannelCheck: false,
     minutesSaved: 0,
     skipCount: 0,
@@ -339,6 +355,8 @@ const syncDefaults = {
     shownDeArrowPromotion: false,
     showZoomToFillError2: true,
     cleanPopup: false,
+
+    channelSpecificSettings: {},
 
     categoryPillColors: {},
 
@@ -506,7 +524,7 @@ export function generateDebugDetails(): string {
     output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress)
         ? "Default server address" : "Custom server address";
     output.config.invidiousInstances = output.config.invidiousInstances.length;
-    output.config.whitelistedChannels = output.config.whitelistedChannels.length;
+    output.config.channelSpecificSettings = output.config.channelSpecificSettings.length;
 
     return JSON.stringify(output, null, 4);
 }

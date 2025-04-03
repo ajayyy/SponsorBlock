@@ -144,9 +144,6 @@ let lastCheckVideoTime = -1;
 // To determine if a video resolution change is happening
 let firstPlay = true;
 
-//is this channel whitelised from getting sponsors skipped
-let channelWhitelisted = false;
-
 let previewBar: PreviewBar = null;
 // Skip to highlight button
 let skipButtonControlBar: SkipButtonControlBar = null;
@@ -238,22 +235,11 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             });
 
             break;
-        case "getChannelID":
+        case "getChannelInfo":
             sendResponse({
                 channelID: getChannelIDInfo().id,
                 isYTTV: (document.location.host === "tv.youtube.com")
             });
-
-            break;
-        case "isChannelWhitelisted":
-            sendResponse({
-                value: channelWhitelisted
-            });
-
-            break;
-        case "whitelistChange":
-            channelWhitelisted = request.value;
-            sponsorsLookup();
 
             break;
         case "submitTimes":
@@ -264,7 +250,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             if (!getVideoID()) {
                 checkVideoIDChange();
             }
-            // if popup rescieves no response, or the videoID is invalid,
+            // if popup receives no response, or the videoID is invalid,
             // it will assume the page is not a video page and stop the refresh animation
             sendResponse({ hasVideo: getVideoID() != null });
             // fetch segments
@@ -371,6 +357,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 updateVisibilityOfPlayerControlsButton()
                 break;
             case "categorySelections":
+            case "channelSpecificSettings":
                 sponsorsLookup(true, true);
                 break;
             case "barTypes":
@@ -401,7 +388,6 @@ function resetValues() {
     shownSegmentFailedToFetchWarning = false;
 
     videoInfo = null;
-    channelWhitelisted = false;
     lockedCategories = [];
 
     //empty the preview bar
@@ -436,7 +422,7 @@ function resetValues() {
     hideDeArrowPromotion();
 }
 
-function videoIDChange(): void {
+async function videoIDChange(): Promise<void> {
     //setup the preview bar
     if (previewBar === null) {
         if (isOnMobileYouTube()) {
@@ -463,9 +449,8 @@ function videoIDChange(): void {
     chrome.runtime.sendMessage({
         message: "videoChanged",
         videoID: getVideoID(),
-        whitelisted: channelWhitelisted
     });
-
+    
     sponsorsLookup();
 
     // Make sure all player buttons are properly added
@@ -680,7 +665,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
     logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
     if (skipInfo.index === -1) return;
 
-    if (Config.config.disableSkipping || channelWhitelisted || (getChannelIDInfo().status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
+    if (Config.config.disableSkipping || (getChannelIDInfo().status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
     }
 
@@ -733,7 +718,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                 }
 
                 if (utils.getCategorySelection(currentSkip.category)?.option === CategorySkipOption.ManualSkip
-                        || currentSkip.actionType === ActionType.Mute) {
+                    || currentSkip.actionType === ActionType.Mute) {
                     forcedSkipTime = skipTime[0] + 0.001;
                 } else {
                     forcedSkipTime = skipTime[1];
@@ -758,7 +743,6 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
 
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
     };
-
     if (timeUntilSponsor < skipBuffer) {
         skippingFunction(currentTime);
     } else {
@@ -798,7 +782,6 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                         getVideo().muted = true;
                         getVideo().muted = false;
                     }
-
                     skippingFunction(Math.max(getVirtualTime(), startVideoTime + getVideo().playbackRate * Math.max(delayTime, intervalDuration) / 1000));
                 }
             }, 0);
@@ -842,7 +825,7 @@ function getVirtualTime(): number {
         (performance.now() - lastKnownVideoTime.preciseTime) * (getVideo()?.playbackRate || 1) / 1000 + lastKnownVideoTime.videoTime : null);
 
     if (Config.config.useVirtualTime && !isSafari() && virtualTime
-            && virtualTime > getCurrentTime() && virtualTime - getCurrentTime() < 0.8 && getCurrentTime() !== 0) {
+            && Math.abs(virtualTime - getCurrentTime()) < 0.2 && getCurrentTime() !== 0) {
         return Math.max(virtualTime, getCurrentTime());
     } else {
         return getCurrentTime();
@@ -1175,18 +1158,18 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
         return;
     }
 
-    const segmentData = await getSegmentsForVideo(videoID, ignoreCache);
-
+    const channelSettings = Config.config.channelSpecificSettings?.[getChannelIDInfo().id];
+    const segmentData = await getSegmentsForVideo(videoID, ignoreCache, channelSettings?.toggle ? channelSettings : undefined);
+    
     // Make sure an old pending request doesn't get used.
     if (videoID !== getVideoID()) return;
-
     // store last response status
     lastResponseStatus = segmentData.status;
     if (segmentData.status === 200) {
         const receivedSegments = segmentData.segments;
 
-        if (receivedSegments && receivedSegments.length) {
-            sponsorDataFound = true;
+        if (receivedSegments && (receivedSegments.length || !!channelSettings && sponsorTimes)) {
+            sponsorDataFound = !!receivedSegments.length;
 
             // Check if any old submissions should be kept
             if (sponsorTimes !== null && keepOldSubmissions) {
@@ -1349,7 +1332,7 @@ function startSkipScheduleCheckingForStartSponsors() {
                 && time.actionType === ActionType.Poi && time.hidden === SponsorHideType.Visible)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
-            const skipOption = utils.getCategorySelection(time.category)?.option;
+            const skipOption = utils.getCategorySelection(time.category, getChannelIDInfo().id)?.option;
             if (skipOption !== CategorySkipOption.ShowOverlay) {
                 skipToTime({
                     v: getVideo(),
@@ -1439,18 +1422,21 @@ function updatePreviewBar(): void {
     }
 }
 
-//checks if this channel is whitelisted, should be done only after the channelID has been loaded
+//checks if this channel has category settings set, should be done only after the channelID has been loaded
 async function channelIDChange(channelIDInfo: ChannelIDInfo) {
-    const whitelistedChannels = Config.config.whitelistedChannels;
-
-    //see if this is a whitelisted channel
-    if (whitelistedChannels != undefined &&
-            channelIDInfo.status === ChannelIDStatus.Found && whitelistedChannels.includes(channelIDInfo.id)) {
-        channelWhitelisted = true;
+    const channelSpecificSettings = Config.config.channelSpecificSettings;
+    //see if this channel has channel specific settings
+    if (channelSpecificSettings != undefined &&
+        channelIDInfo.status === ChannelIDStatus.Found){
+        if (Config.config.forceChannelCheck && channelSpecificSettings[channelIDInfo.id]?.toggle) {
+            sponsorsLookup(true, true);
+        }
     }
 
     // check if the start of segments were missed
-    if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
+    if (!channelSpecificSettings?.[channelIDInfo.id]?.toggle
+        && Config.config.forceChannelCheck
+        && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
 }
 
 function videoElementChange(newVideo: boolean, video: HTMLVideoElement): void {
@@ -1508,7 +1494,6 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
             return 2;
         }
     }
-
     const { includedTimes: submittedArray, scheduledTimes: sponsorStartTimes } =
         getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments);
     const { scheduledTimes: sponsorStartTimesAfterCurrentTime } = getStartTimes(sponsorTimes, includeIntersectingSegments, includeNonIntersectingSegments, currentTime, true);
@@ -1892,18 +1877,19 @@ function createButton(baseID: string, title: string, callback: () => void, image
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
     return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
-        && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+        && (utils.getCategorySelection(segment.category, getChannelIDInfo().id)?.option === CategorySkipOption.AutoSkip ||
             (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip)
             || sponsorTimesSubmitting.some((s) => s.segment === segment.segment));
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return (segment.actionType !== ActionType.Full
-            && segment.source !== SponsorSourceType.YouTube
-            && utils.getCategorySelection(segment.category)?.option !== CategorySkipOption.ShowOverlay)
+    const skipOption = utils.getCategorySelection(segment.category, getChannelIDInfo().id)?.option;
+    return segment.actionType !== ActionType.Full &&
+        segment.source !== SponsorSourceType.YouTube &&
+        (skipOption === CategorySkipOption.ManualSkip || skipOption === CategorySkipOption.AutoSkip
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
-                && segment.actionType === ActionType.Skip);
+                && segment.actionType === ActionType.Skip));
 }
 
 /** Creates any missing buttons on the YouTube player if possible. */

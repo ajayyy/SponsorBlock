@@ -2,7 +2,7 @@ import { DataCache } from "../../maze-utils/src/cache";
 import { getHash, HashedValue } from "../../maze-utils/src/hash";
 import Config from "../config";
 import * as CompileConfig from "../../config.json";
-import { ActionType, ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
+import { ActionType, ActionTypes, CategorySkipOption, Category, SponsorSourceType, SponsorTime, VideoID, ChannelSpecificSettings } from "../types";
 import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
 
@@ -20,7 +20,7 @@ export interface SegmentResponse {
     status: number;
 }
 
-export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean): Promise<SegmentResponse> {
+export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean, channelSettings:ChannelSpecificSettings = null): Promise<SegmentResponse> {
     if (!ignoreCache) {
         const cachedData = segmentDataCache.getFromCache(videoID);
         if (cachedData) {
@@ -33,7 +33,7 @@ export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean
         return await pendingList[videoID];
     }
 
-    const pendingData = fetchSegmentsForVideo(videoID);
+    const pendingData = fetchSegmentsForVideo(videoID, channelSettings);
     pendingList[videoID] = pendingData;
 
     const result = await pendingData;
@@ -42,8 +42,15 @@ export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean
     return result;
 }
 
-async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse> {
-    const categories: string[] = Config.config.categorySelections.map((category) => category.name);
+async function fetchSegmentsForVideo(videoID: VideoID, channelSettings:ChannelSpecificSettings = null): Promise<SegmentResponse> {
+    
+    let categories: string[] = Config.config.categorySelections.map((category) => category.name);
+    
+
+    if (channelSettings){
+        const disabledCategories = new Set(channelSettings.categorySelections.filter(category => category.option === CategorySkipOption.Disabled).map((category) => category.name));
+        categories = [...new Set([...categories, ...channelSettings.categorySelections.map((category) => category.name)])].filter((category) => !disabledCategories.has(category as Category));
+    }
 
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
@@ -72,8 +79,10 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
                         source: SponsorSourceType.Server
                     }))
                     ?.sort((a, b) => a.segment[0] - b.segment[0]);
-
-        if (receivedSegments && receivedSegments.length) {
+        
+        //if the channel specific settings make it so the video has no segments, [] has to be returned to 
+        //to notify that any segments that loaded have to be removed  
+        if (receivedSegments && (receivedSegments.length || channelSettings)) {
             const result = {
                 segments: receivedSegments,
                 status: response.status
