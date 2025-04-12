@@ -98,9 +98,6 @@
 #sponsorBlockPopupContainer {
   position: relative;
   margin-bottom: 16px;
-}
-
-#sponsorBlockPopupContainer iframe {
   width: 100%;
 }
 
