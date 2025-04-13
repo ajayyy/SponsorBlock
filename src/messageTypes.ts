@@ -18,7 +18,8 @@ interface DefaultMessage {
         | "submitTimes"
         | "refreshSegments"
         | "closePopup"
-        | "getLogs";
+        | "getLogs"
+        | "getLoopedChapter";
 }
 
 interface BoolValueMessage {
@@ -58,6 +59,11 @@ interface ImportSegmentsMessage {
     data: string;
 }
 
+interface LoopChapterMessage {
+    message: "loopChapter";
+    UUID: SegmentUUID;
+}
+
 interface KeyDownMessage {
     message: "keydown";
     key: string;
@@ -70,7 +76,7 @@ interface KeyDownMessage {
     metaKey: boolean;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage);
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
@@ -97,6 +103,10 @@ export interface IsChannelWhitelistedResponse {
     value: boolean;
 }
 
+export interface LoopedChapterResponse {
+    UUID: SegmentUUID;
+}
+
 export type MessageResponse =
     IsInfoFoundMessageResponse
     | GetVideoIdResponse
@@ -107,7 +117,8 @@ export type MessageResponse =
     | VoteResponse
     | ImportSegmentsResponse
     | RefreshSegmentsResponse
-    | LogResponse;
+    | LogResponse
+    | LoopedChapterResponse;
 
 export interface VoteResponse {
     successType: number;
