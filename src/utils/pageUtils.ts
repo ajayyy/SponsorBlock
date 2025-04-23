@@ -6,6 +6,8 @@ export function getControls(): HTMLElement {
     const controlsSelectors = [
         // YouTube
         ".ytp-right-controls",
+        // New YouTube (2025 April)
+        ".ytp-right-controls-right",
         // Mobile YouTube
         ".player-controls-top",
         // Invidious/videojs video element's controls element
