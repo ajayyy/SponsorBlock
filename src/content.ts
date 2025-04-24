@@ -1499,7 +1499,10 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
 
     const autoSkipSorter = (segment: ScheduledTime) => {
         const skipOption = utils.getCategorySelection(segment.category)?.option;
-        if ((skipOption === CategorySkipOption.AutoSkip || shouldAutoSkip(segment))
+        if (segment.hidden !== SponsorHideType.Visible) {
+            // Hidden segments sometimes end up here if another segment is at the same time, use them last
+            return 3;
+        } else if ((skipOption === CategorySkipOption.AutoSkip || shouldAutoSkip(segment))
                 && segment.actionType === ActionType.Skip) {
             return 0;
         } else if (skipOption !== CategorySkipOption.ShowOverlay) {
