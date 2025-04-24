@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   test:
     name: Run tests
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       # Initialization
@@ -20,6 +20,16 @@ jobs:
       
       - name: Copy configuration
         run: cp config.json.example config.json
+
+      - name: Set up WireGuard
+        uses: egor-tensin/setup-wireguard@3c76633378032377324ed3e9e84873fe40267a25
+        with:
+          endpoint: '${{ secrets.ENDPOINT }}'
+          endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
+          ips: '${{ secrets.IPS }}'
+          allowed_ips: '${{ secrets.ALLOWED_IPS }}'
+          private_key: '${{ secrets.PRIVATE }}'
+
       - name: Run tests
         run: npm run test
 
