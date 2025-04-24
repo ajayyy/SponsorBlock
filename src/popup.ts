@@ -13,6 +13,7 @@ import {
     IsChannelWhitelistedResponse,
     IsInfoFoundMessageResponse,
     LogResponse,
+    LoopedChapterResponse,
     Message,
     MessageResponse,
     PopupMessage,
@@ -539,7 +540,7 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
     }
 
     //display the video times from the array at the top, in a different section
-    function displayDownloadedSponsorTimes(sponsorTimes: SponsorTime[], time: number) {
+    async function displayDownloadedSponsorTimes(sponsorTimes: SponsorTime[], time: number) {
         let currentSegmentTab = segmentTab;
         if (!sponsorTimes.some((segment) => segment.actionType === ActionType.Chapter && segment.source !== SponsorSourceType.YouTube)) {
             PageElements.issueReporterTabs.classList.add("hidden");
@@ -553,6 +554,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 PageElements.issueReporterTabs.classList.remove("hidden");
             }
         }
+
+        const response = await sendTabMessageAsync({message : "getLoopedChapter"}) as LoopedChapterResponse
+        const loopedChapter = response.UUID;
 
         // Sort list by start time
         const downloadedTimes = sponsorTimes
@@ -728,6 +732,37 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
                 })
             });
 
+            const loopButton = document.createElement("input");
+            const loopButtonIcon = document.createElement("img");
+            loopButtonIcon.src = loopedChapter === UUID ? chrome.runtime.getURL("icons/looped.svg") : chrome.runtime.getURL("icons/loop.svg");
+            loopButtonIcon.className = "loopButtonIcon";
+            loopButton.type = "checkbox";
+            loopButton.checked = loopedChapter === UUID;
+            loopButton.id = "loopChapterButtonContainer" + UUID;
+            loopButton.className = "loopButton hidden";
+
+            loopButton.addEventListener("click", () => {
+                const stopAnimation = AnimationUtils.applyLoadingAnimation(loopButtonIcon, 0.4);
+                stopAnimation();
+                if (loopButton.checked) {
+                    document.querySelectorAll(".loopButton").forEach((e :HTMLInputElement) => e.checked = false);
+                    document.querySelectorAll(".loopButtonIcon").forEach((e :HTMLImageElement) => e.src = chrome.runtime.getURL("icons/loop.svg"));
+                    sendTabMessage({message: "loopChapter", UUID : UUID})
+                    loopButton.checked = true;
+                } else {
+                    sendTabMessage({message: "loopChapter", UUID : null})
+                    loopButton.checked = false;
+                }
+                loopButtonIcon.src = loopButton.checked ? chrome.runtime.getURL("icons/looped.svg") : chrome.runtime.getURL("icons/loop.svg");
+                loopButtonLabel.title = loopButton.checked ? chrome.i18n.getMessage("unloopChapter") : chrome.i18n.getMessage("loopChapter");
+            });
+            const loopButtonLabel = document.createElement("label");
+            loopButtonLabel.setAttribute("for", loopButton.id);
+            loopButtonLabel.className = "voteButton";
+            loopButtonLabel.title = loopedChapter === UUID ? chrome.i18n.getMessage("unloopChapter") : chrome.i18n.getMessage("loopChapter");
+            loopButtonLabel.appendChild(loopButtonIcon);
+            loopButtonLabel.appendChild(loopButton);
+
             const skipButton = document.createElement("img");
             skipButton.id = "sponsorTimesSkipButtonContainer" + UUID;
             skipButton.className = "voteButton";
@@ -743,6 +778,9 @@ async function runThePopup(messageListener?: MessageListener): Promise<void> {
             voteButtonsContainer.appendChild(upvoteButton);
             voteButtonsContainer.appendChild(downvoteButton);
             voteButtonsContainer.appendChild(uuidButton);
+            if (downloadedTimes[i].actionType === ActionType.Chapter) {
+                voteButtonsContainer.appendChild(loopButtonLabel);
+            }
             if (downloadedTimes[i].actionType === ActionType.Skip || downloadedTimes[i].actionType === ActionType.Mute
                     || downloadedTimes[i].actionType === ActionType.Poi
                     && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(downloadedTimes[i].hidden)) {
