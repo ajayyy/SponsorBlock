@@ -1926,13 +1926,14 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    if (segment.category === "music_offtopic" && Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic()) {
+    const canSkipNonMusic = !Config.config.skipNonMusicOnlyOnYoutubeMusic || isOnYouTubeMusic();
+    if (segment.category === "music_offtopic" && !canSkipNonMusic) {
         return false;
     }
 
     return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
         && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
-            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
+            (Config.config.autoSkipOnMusicVideos && canSkipNonMusic && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip)
             || sponsorTimesSubmitting.some((s) => s.segment === segment.segment))
         || isLoopedChapter(segment);
