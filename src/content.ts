@@ -1589,14 +1589,14 @@ function getLatestEndTimeIndex(sponsorTimes: SponsorTime[], index: number, hideH
         return index;
     }
 
-    let latestEndTimeIndex;
+    let latestEndTimeIndex = -1;
     // Default to looped chapter if its end would have been skipped
     if (loopedChapter
         && (loopedChapter.segment[0] > sponsorTimes[index].segment[0]
                 && loopedChapter.segment[0] <= sponsorTimes[index]?.segment[1])){
         latestEndTimeIndex = sponsorTimes.length - 1;
     } else {
-    // or the normal end time otherwise 
+        // or the normal end time otherwise 
         latestEndTimeIndex = index;
     }
 
