@@ -127,6 +127,8 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     await endTimeBox.clear();
     await endTimeBox.sendKeys(endTime);
 
+    await driver.sleep(1000);
+
     editButton = await driver.findElement(By.id("sponsorTimeEditButtonSubmissionNotice" + index));
     await editButton.click();
 
