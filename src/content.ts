@@ -1895,22 +1895,15 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
         return false;
     }
 
-    return  (   // Normal skip
-                utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip 
-                // Forbid skipping of non-music if we are not on Youtube Music
-                && !(segment.category === "music_offtopic" && Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic())
-            )
-            ||
-            (   // Skip every segment, if it's a music video
+    if (segment.category === "music_offtopic" && Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic()) {
+        return false;
+    }
 
-                // Forbid autoSkipOnMusicVideos if if we are not on Youtube Music
-                !(Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic())
-                && Config.config.autoSkipOnMusicVideos 
-                && sponsorTimes?.some((s) => s.category === "music_offtopic") 
-                && segment.actionType === ActionType.Skip
-            )
-            || 
-            sponsorTimesSubmitting.some((s) => s.segment === segment.segment);
+    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
+        && (utils.getCategorySelection(segment.category)?.option === CategorySkipOption.AutoSkip ||
+            (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
+                && segment.actionType === ActionType.Skip)
+            || sponsorTimesSubmitting.some((s) => s.segment === segment.segment));
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
