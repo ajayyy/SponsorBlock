@@ -21,14 +21,10 @@ jobs:
       - name: Copy configuration
         run: cp config.json.example config.json
 
-      - name: Set up WireGuard
-        uses: egor-tensin/setup-wireguard@3c76633378032377324ed3e9e84873fe40267a25
+      - name: Set up WireGuard Connection
+        uses: niklaskeerl/easy-wireguard-action@50341d5f4b8245ff3a90e278aca67b2d283c78d0
         with:
-          endpoint: '${{ secrets.ENDPOINT }}'
-          endpoint_public_key: '${{ secrets.ENDPOINT_PUBLIC }}'
-          ips: '${{ secrets.IPS }}'
-          allowed_ips: '${{ secrets.ALLOWED_IPS }}'
-          private_key: '${{ secrets.PRIVATE }}'
+          WG_CONFIG_FILE: ${{ secrets.WG_CONFIG_FILE }}
 
       - name: Run tests
         run: npm run test
