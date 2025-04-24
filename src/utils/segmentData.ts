@@ -50,7 +50,7 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
     const hashPrefix = (await getHash(videoID, 1)).slice(0, 5) as VideoID & HashedValue;
-    const hasDownvotedSegments = !!Config.local.downvotedSegments[hashPrefix];
+    const hasDownvotedSegments = !!Config.local.downvotedSegments[hashPrefix.slice(0, 4)];
     const response = await asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories: CompileConfig.categoryList,
         actionTypes: ActionTypes,
