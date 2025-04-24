@@ -243,6 +243,9 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 return [{
                     configKey: "autoSkipOnMusicVideos",
                     label: chrome.i18n.getMessage("autoSkipOnMusicVideos"),
+                }, {
+                    configKey: "skipNonMusicOnlyOnYoutubeMusic",
+                    label: chrome.i18n.getMessage("skipNonMusicOnlyOnYoutubeMusic"),
                 }];
             default:
                 return [];
