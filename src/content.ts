@@ -1926,10 +1926,6 @@ function createButton(baseID: string, title: string, callback: () => void, image
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
-    if (Config.config.manualSkipOnFullVideo && !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full)) {
-        return false;
-    }
-
     if (segment.category === "music_offtopic" && Config.config.skipNonMusicOnlyOnYoutubeMusic && !isOnYouTubeMusic()) {
         return false;
     }
