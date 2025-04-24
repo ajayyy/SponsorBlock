@@ -17,6 +17,12 @@ jobs:
           node-version: '18'
       - run: npm ci
       - run: sudo apt-get install chromium-chromedriver
+
+      - uses: browser-actions/setup-chrome@f657ed6f2be4bd6a9b51278992ea1f0efeb75b5d
+        with:
+          chrome-version: 135
+          install-dependencies: true
+          install-chromedriver: true
       
       - name: Copy configuration
         run: cp config.json.example config.json
