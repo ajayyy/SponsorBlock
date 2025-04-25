@@ -4,10 +4,10 @@ import Config from "../config";
 
 export function getControls(): HTMLElement {
     const controlsSelectors = [
-        // YouTube
-        ".ytp-right-controls",
         // New YouTube (2025 April)
         ".ytp-right-controls-right",
+        // YouTube
+        ".ytp-right-controls",
         // Mobile YouTube
         ".player-controls-top",
         // Invidious/videojs video element's controls element
