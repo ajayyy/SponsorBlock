@@ -33,7 +33,7 @@ import { logDebug, logWarn } from "./utils/logger";
 import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
-import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
+import { extensionUserAgent, isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
 import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYouTubeMusic, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
@@ -2470,7 +2470,7 @@ async function sendSubmitMessage(): Promise<boolean> {
         userID: Config.config.userID,
         segments: sponsorTimesSubmitting,
         videoDuration: getVideoDuration(),
-        userAgent: `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
+        userAgent: extensionUserAgent(),
     });
 
     if (response.status === 200) {
