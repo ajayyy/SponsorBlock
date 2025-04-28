@@ -5,6 +5,7 @@ import * as CompileConfig from "../../config.json";
 import { ActionType, ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
+import { extensionUserAgent } from "../../maze-utils/src";
 
 const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
     return {
@@ -57,7 +58,7 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
         trimUUIDs: hasDownvotedSegments ? null : 5,
         ...extraRequestData
     }, {
-        "X-CLIENT-NAME": `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
+        "X-CLIENT-NAME": extensionUserAgent(),
     });
 
     if (response.ok) {
