@@ -35,7 +35,7 @@ import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { extensionUserAgent, isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
-import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYouTubeMusic, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
+import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYouTubeMusic, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, setSpeed, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
 import { getHash, HashedValue } from "../maze-utils/src/hash";
@@ -1732,7 +1732,8 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
     if (Config.config.disableSkipping) return;
 
     // There will only be one submission if it is manual skip
-    const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
+    const autoSkip = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
+    const fastForward = shouldFastForward(skippingSegments[0]);
     const isSubmittingSegment = sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment);
 
     if ((autoSkip || isSubmittingSegment)
@@ -1787,6 +1788,10 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                 beep.remove();
             });
         })
+    }
+
+    if (fastForward) {
+        setupFastForward(skippingSegments[0]);
     }
 
     if (!autoSkip
@@ -1923,6 +1928,16 @@ function createButton(baseID: string, title: string, callback: () => void, image
     };
 
     return newButton;
+}
+
+function shouldFastForward(segment: SponsorTime): boolean {
+    const canSkipNonMusic = !Config.config.skipNonMusicOnlyOnYoutubeMusic || isOnYouTubeMusic();
+    if (segment.category === "music_offtopic" && !canSkipNonMusic) {
+        return false;
+    }
+
+    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
+        && utils.getCategorySelection(segment.category)?.option === CategorySkipOption.FastForward;
 }
 
 function shouldAutoSkip(segment: SponsorTime): boolean {
@@ -2866,4 +2881,26 @@ function checkForMiniplayerPlaying() {
             }
         }
     }
+}
+
+let fastForwardInterval: NodeJS.Timeout = null;
+let savedVideoSpeed = 1;
+
+function fastForwardUpdate(startTime: number, endTime: number) {
+    const currentTime = getCurrentTime();
+    if (currentTime < startTime - 1 || currentTime >= endTime) {
+        clearInterval(fastForwardInterval);
+        fastForwardInterval = null;
+        setSpeed(savedVideoSpeed);
+    }
+}
+
+function setupFastForward(segment: SponsorTime) {
+    if (fastForwardInterval) return;
+    const newSpeed = utils.getCategorySelection(segment.category)!.speed;
+    savedVideoSpeed = getVideo().playbackRate;
+    setSpeed(newSpeed);
+    const startTime = segment.actionType === ActionType.Poi || segment.segment.length !== 2 ? 0 : segment.segment[0];
+    const endTime = segment.segment[segment.segment.length - 1];
+    fastForwardInterval = setInterval(() => fastForwardUpdate(startTime, endTime), 400);
 }

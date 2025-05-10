@@ -33,12 +33,14 @@ export enum CategorySkipOption {
     Disabled = -1,
     ShowOverlay,
     ManualSkip,
-    AutoSkip
+    AutoSkip,
+    FastForward,
 }
 
 export interface CategorySelection {
     name: Category;
     option: CategorySkipOption;
+    speed: number;
 }
 
 export enum SponsorHideType {
