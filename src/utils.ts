@@ -217,7 +217,7 @@ export default class Utils {
                 return selection;
             }
         }
-        return { name: category, option: CategorySkipOption.Disabled} as CategorySelection;
+        return { name: category, option: CategorySkipOption.Disabled, speed: 2 } as CategorySelection;
     }
 
     /**

@@ -603,6 +603,22 @@ svg {
     border-radius: 5px;
 }
 
+.speedOption {
+  background-color: #c00000;
+  color: white;
+
+  box-sizing: content-box;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.skipOption {
+  display: flex;
+  gap: 5px;
+}
+
 .categoryColorTextBox {
     width: 60px;
 
