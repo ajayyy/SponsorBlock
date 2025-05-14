@@ -2762,7 +2762,7 @@ function showTimeWithoutSkips(skippedDuration: number): void {
         isOnInvidious()     ? ".vjs-duration" :
         isOnYTTV()          ? ".ypl-full-controls .ypmcs-control .time-info-bar" :
         isOnMobileYouTube() ? ".ytwPlayerTimeDisplayContent" :
-                              ".ytp-time-display.notranslate .ytp-time-wrapper";
+                              ".ytp-time-display.notranslate .ytp-time-wrapper .ytp-time-contents";
     const display = document.querySelector(selector);
     if (!display) return;
 
