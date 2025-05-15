@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Config from "../../config"
 import * as CompileConfig from "../../../config.json";
-import { Category, CategorySkipOption } from "../../types";
+import { Category, CategorySelection, CategorySkipOption } from "../../types";
 
 import { getCategorySuffix } from "../../utils/categoryUtils";
 import ToggleOptionComponent from "./ToggleOptionComponent";
@@ -17,6 +17,8 @@ export interface CategorySkipOptionsProps {
 export interface CategorySkipOptionsState {
     color: string;
     previewColor: string;
+    speed: number;
+    option: CategorySkipOption;
 }
 
 export interface ToggleOption {
@@ -27,36 +29,51 @@ export interface ToggleOption {
 
 class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsProps, CategorySkipOptionsState> {
     setBarColorTimeout: NodeJS.Timeout;
+    categorySelection: CategorySelection;
 
     constructor(props: CategorySkipOptionsProps) {
         super(props);
 
+        this.categorySelection = this.getCategorySelection();
+
         // Setup state
         this.state = {
             color: props.defaultColor || Config.config.barTypes[this.props.category]?.color,
-            previewColor: props.defaultPreviewColor || Config.config.barTypes["preview-" + this.props.category]?.color
+            previewColor: props.defaultPreviewColor || Config.config.barTypes["preview-" + this.props.category]?.color,
+            speed: this.categorySelection.speed,
+            option: this.categorySelection.option,
         };
+    }
+
+    getCategorySelection() {
+        let categorySelection = Config.config.categorySelections
+            .find(categorySelection => categorySelection.name === this.props.category)
+        if (!categorySelection) {
+            categorySelection = {
+                name: this.props.category,
+                option: CategorySkipOption.Disabled,
+                speed: 2,
+            }
+            Config.config.categorySelections.push(categorySelection);
+        }
+        return categorySelection;
     }
 
     render(): React.ReactElement {
         let defaultOption = "disable";
-        // Set the default opton properly
-        for (const categorySelection of Config.config.categorySelections) {
-            if (categorySelection.name === this.props.category) {
-                switch (categorySelection.option) {
-                    case CategorySkipOption.ShowOverlay:
-                        defaultOption = "showOverlay";
-                        break;
-                    case CategorySkipOption.ManualSkip:
-                        defaultOption = "manualSkip";
-                        break;
-                    case CategorySkipOption.AutoSkip:
-                        defaultOption = "autoSkip";
-                        break;
-                }
-
+        switch (this.categorySelection.option) {
+            case CategorySkipOption.ShowOverlay:
+                defaultOption = "showOverlay";
                 break;
-            }
+            case CategorySkipOption.ManualSkip:
+                defaultOption = "manualSkip";
+                break;
+            case CategorySkipOption.AutoSkip:
+                defaultOption = "autoSkip";
+                break;
+            case CategorySkipOption.FastForward:
+                defaultOption = "fastForward";
+                break;
         }
 
         return (
@@ -76,6 +93,16 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             onChange={this.skipOptionSelected.bind(this)}>
                                 {this.getCategorySkipOptions()}
                         </select>
+                        <input
+                            className={`speedOption ${
+                                this.state.option === CategorySkipOption.FastForward ? "" : "hidden"}`}
+                            type="number"
+                            min="0.1"
+                            max="10"
+                            step="0.1"
+                            title={chrome.i18n.getMessage("fastForwardSpeed")}
+                            onChange={this.forwardSpeedSelected.bind(this)}
+                            value={this.state.speed} />
                     </td>
 
                     {this.props.category !== "chapter" &&
@@ -127,6 +154,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             case "disable":
                 Config.config.categorySelections = Config.config.categorySelections.filter(
                     categorySelection => categorySelection.name !== this.props.category);
+                this.setState({ option: CategorySkipOption.Disabled });
                 return;
             case "showOverlay":
                 option = CategorySkipOption.ShowOverlay;
@@ -146,17 +174,29 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                 }
 
                 break;
+            case "fastForward":
+                option = CategorySkipOption.FastForward;
+
+                break;
         }
 
-        const existingSelection = Config.config.categorySelections.find(selection => selection.name === this.props.category);
-        if (existingSelection) {
-            existingSelection.option = option;
-        } else {
-            Config.config.categorySelections.push({
-                name: this.props.category,
-                option: option
-            });
-        }
+        this.setState({ option });
+
+        this.categorySelection = this.getCategorySelection();
+        this.categorySelection.option = option;
+
+        Config.forceSyncUpdate("categorySelections");
+    }
+
+    forwardSpeedSelected(event: React.ChangeEvent<HTMLSelectElement>): void {
+        const speedRaw = event.target.value;
+        const speed = +parseFloat(speedRaw || '1').toFixed(2);
+        if (speed < 0.1 || speed > 10) return;
+
+        this.setState({ speed });
+
+        this.categorySelection = this.getCategorySelection();
+        this.categorySelection.speed = speed;
 
         Config.forceSyncUpdate("categorySelections");
     }
@@ -164,7 +204,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     getCategorySkipOptions(): JSX.Element[] {
         const elements: JSX.Element[] = [];
 
-        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip", "fastForward"];
         if (this.props.category === "chapter") optionNames = ["disable", "showOverlay"]
         else if (this.props.category === "exclusive_access") optionNames = ["disable", "showOverlay"];
 

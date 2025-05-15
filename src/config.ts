@@ -134,6 +134,7 @@ interface SBConfig {
         "preview-poi_highlight": PreviewBarOption;
         "filler": PreviewBarOption;
         "preview-filler": PreviewBarOption;
+        "chapter": PreviewBarOption;
     };
 }
 
@@ -186,10 +187,9 @@ function migrateOldSyncFormats(config: SBConfig) {
         if (!config.categorySelections.some((s) => s.name === "chapter")) {
             config.categorySelections.push({
                 name: "chapter" as Category,
-                option: CategorySkipOption.ShowOverlay
+                option: CategorySkipOption.ShowOverlay,
+                speed: 2,
             });
-    
-            config.categorySelections = config.categorySelections;
         }
     }
 
@@ -271,6 +271,13 @@ function migrateOldSyncFormats(config: SBConfig) {
 
     if (config["lastIsVipUpdate"]) {
         chrome.storage.sync.remove("lastIsVipUpdate");
+    }
+
+    if (!config["fastForwardCategorySkipUpdate"]) {
+        config["fastForwardCategorySkipUpdate"] = true;
+        for (const selection of config.categorySelections) {
+            selection.speed = 2;
+        }
     }
 }
 
@@ -365,16 +372,20 @@ const syncDefaults = {
 
     categorySelections: [{
         name: "sponsor" as Category,
-        option: CategorySkipOption.AutoSkip
+        option: CategorySkipOption.AutoSkip,
+        speed: 2,
     }, {
         name: "poi_highlight" as Category,
-        option: CategorySkipOption.ManualSkip
+        option: CategorySkipOption.ManualSkip,
+        speed: 2,
     }, {
         name: "exclusive_access" as Category,
-        option: CategorySkipOption.ShowOverlay
+        option: CategorySkipOption.ShowOverlay,
+        speed: 2,
     }, {
         name: "chapter" as Category,
-        option: CategorySkipOption.ShowOverlay
+        option: CategorySkipOption.ShowOverlay,
+        speed: 2,
     }],
 
     payments: {
@@ -478,7 +489,7 @@ const syncDefaults = {
             opacity: "0"
         },
     }
-};
+} satisfies SBConfig;
 
 const localDefaults = {
     downvotedSegments: {},
@@ -486,7 +497,7 @@ const localDefaults = {
     alreadyInstalled: false,
 
     unsubmittedSegments: {}
-};
+} satisfies SBStorage;
 
 const Config = new ConfigClass(syncDefaults, localDefaults, migrateOldSyncFormats);
 export default Config;
