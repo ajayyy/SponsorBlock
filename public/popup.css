@@ -293,7 +293,7 @@
   padding: 10px 15px;
   transition: background-color 0.2s ease-in-out;
 }
-.sbControlsMenu-item:hover {
+.sbControlsMenu-item:hover, .sbControlsMenu-item:focus {
   background-color: #444;
 }
 .sbControlsMenu-itemIcon {

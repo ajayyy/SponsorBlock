@@ -47,7 +47,7 @@
           <div id="issueReporterImportExport" class="hidden">
             <div id="importExportButtons">
               <button id="importSegmentsButton" title="__MSG_importSegments__">
-                <img src="/icons/import.svg" alt="Refresh icon" id="importSegments" />
+                <img src="/icons/import.svg" alt="Import icon" id="importSegments" />
               </button>
               <button id="exportSegmentsButton" class="hidden" title="__MSG_exportSegments__">
                 <img src="/icons/export.svg" alt="Export icon" id="exportSegments" />
@@ -67,7 +67,7 @@
 
       <!-- Toggle Box -->
       <div class="sbControlsMenu">
-        <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item">
+        <label id="whitelistButton" for="whitelistToggle" class="hidden sbControlsMenu-item" role="button" tabIndex="0">
           <input type="checkbox" style="display: none" id="whitelistToggle">
           <svg viewBox="0 0 24 24" width="23" height="23" class="SBWhitelistIcon sbControlsMenu-itemIcon">
             <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
@@ -76,7 +76,7 @@
           <span id="unwhitelistChannel" style="display: none">__MSG_removeFromWhitelist__</span>
         </label>
         <!--github: mbledkowski/toggle-switch-->
-        <label id="disableExtension" for="toggleSwitch" class="toggleSwitchContainer sbControlsMenu-item">
+        <label id="disableExtension" for="toggleSwitch" class="toggleSwitchContainer sbControlsMenu-item" role="button" tabIndex="0">
           <span class="toggleSwitchContainer-switch">
             <input type="checkbox" style="display: none" id="toggleSwitch" checked>
             <span class="switchBg shadow"></span>
