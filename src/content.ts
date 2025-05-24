@@ -2665,7 +2665,7 @@ function hotkeyListener(e: KeyboardEvent): void {
     const downvoteKey = Config.config.downvoteKeybind;
 
     if (keybindEquals(key, skipKey)) {
-        if (activeSkipKeybindElement) {
+        if (activeSkipKeybindElement && !(activeSkipKeybindElement instanceof SkipButtonControlBar)) {
             activeSkipKeybindElement.toggleSkip.call(activeSkipKeybindElement);
         }
 
