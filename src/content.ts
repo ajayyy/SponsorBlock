@@ -2623,9 +2623,11 @@ function addHotkeyListener(): void {
         // Allow us to stop propagation to YouTube by being deeper
         document.removeEventListener("keydown", hotkeyListener);
         document.body.addEventListener("keydown", hotkeyListener);
+        document.body.addEventListener("keyup", hotkeyPropagationListener);
 
         addCleanupListener(() => {
             document.body.removeEventListener("keydown", hotkeyListener);
+            document.body.removeEventListener("keyup", hotkeyPropagationListener);
         });
     };
 
@@ -2709,6 +2711,32 @@ function hotkeyListener(e: KeyboardEvent): void {
         return;
     } else if (keybindEquals(key, downvoteKey)) {
         handleKeybindVote(0);
+        return;
+    }
+}
+
+function hotkeyPropagationListener(e: KeyboardEvent): void {
+    if ((["textarea", "input"].includes(document.activeElement?.tagName?.toLowerCase())
+        || (document.activeElement as HTMLElement)?.isContentEditable
+        || document.activeElement?.id?.toLowerCase()?.match(/editable|input/))
+            && document.hasFocus()) return;
+
+    const key: Keybind = {
+        key: e.key,
+        code: e.code,
+        alt: e.altKey,
+        ctrl: e.ctrlKey,
+        shift: e.shiftKey
+    };
+
+    const nextChapterKey = Config.config.nextChapterKeybind;
+    const previousChapterKey = Config.config.previousChapterKeybind;
+
+    if (keybindEquals(key, nextChapterKey)) {
+        if (sponsorTimes.length > 0) e.stopPropagation();
+        return;
+    } else if (keybindEquals(key, previousChapterKey)) {
+        if (sponsorTimes.length > 0) e.stopPropagation();
         return;
     }
 }
