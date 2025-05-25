@@ -7,7 +7,7 @@ import { Category, CategorySelection, CategorySkipOption } from "../../types";
 import { getCategorySuffix } from "../../utils/categoryUtils";
 import ToggleOptionComponent from "./ToggleOptionComponent";
 
-export interface CategorySkipOptionsProps { 
+export interface CategorySkipOptionsProps {
     category: Category;
     defaultColor?: string;
     defaultPreviewColor?: string;
@@ -101,7 +101,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             max="10"
                             step="0.1"
                             title={chrome.i18n.getMessage("fastForwardSpeed")}
-                            onChange={this.forwardSpeedSelected.bind(this)}
+                            onChange={this.forwardSpeedEntered.bind(this)}
                             value={this.state.speed} />
                     </td>
 
@@ -140,7 +140,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
                             </a>
                         </td>
                 </tr>
-                
+
                 {this.getExtraOptionComponents(this.props.category)}
 
             </>
@@ -188,7 +188,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         Config.forceSyncUpdate("categorySelections");
     }
 
-    forwardSpeedSelected(event: React.ChangeEvent<HTMLSelectElement>): void {
+    forwardSpeedEntered(event: React.ChangeEvent<HTMLInputElement>): void {
         const speedRaw = event.target.value;
         const speed = +parseFloat(speedRaw || '1').toFixed(2);
         if (speed < 0.1 || speed > 10) return;
@@ -211,7 +211,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         for (const optionName of optionNames) {
             elements.push(
                 <option key={optionName} value={optionName}>
-                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategorySuffix(this.props.category) 
+                    {chrome.i18n.getMessage(optionName !== "disable" ? optionName + getCategorySuffix(this.props.category)
                                                                      : optionName)}
                 </option>
             );
@@ -250,8 +250,8 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
             result.push(
                 <tr key={option.configKey}>
                     <td id={`${category}_${option.configKey}`} className="categoryExtraOptions">
-                        <ToggleOptionComponent 
-                            configKey={option.configKey} 
+                        <ToggleOptionComponent
+                            configKey={option.configKey}
                             label={option.label}
                             style={{width: "inherit"}}
                         />
