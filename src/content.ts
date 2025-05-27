@@ -2617,25 +2617,13 @@ async function handleKeybindVote(type: number): Promise<void>{
 }
 
 function addHotkeyListener(): void {
-    document.addEventListener("keydown", hotkeyListener);
+    document.addEventListener("keydown", hotkeyListener, true);
+    document.addEventListener("keyup", hotkeyPropagationListener, true);
 
-    const onLoad = () => {
-        // Allow us to stop propagation to YouTube by being deeper
-        document.removeEventListener("keydown", hotkeyListener);
-        document.body.addEventListener("keydown", hotkeyListener);
-        document.body.addEventListener("keyup", hotkeyPropagationListener);
-
-        addCleanupListener(() => {
-            document.body.removeEventListener("keydown", hotkeyListener);
-            document.body.removeEventListener("keyup", hotkeyPropagationListener);
-        });
-    };
-
-    if (document.readyState === "complete") {
-        onLoad();
-    } else {
-        document.addEventListener("DOMContentLoaded", onLoad);
-    }
+    addCleanupListener(() => {
+        document.body.removeEventListener("keydown", hotkeyListener, true);
+        document.body.removeEventListener("keyup", hotkeyPropagationListener, true);
+    });
 }
 
 function hotkeyListener(e: KeyboardEvent): void {
