@@ -947,3 +947,8 @@ input::-webkit-inner-spin-button {
 .sponsorblock-chapter-visible {
 	display: inherit !important;
 }
+
+/* hide sponsorSkip while youtube ad is playing */
+.ad-showing .sponsorSkipNoticeContainer {
+  display: none;
+}
