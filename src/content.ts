@@ -223,7 +223,10 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 status: lastResponseStatus,
                 sponsorTimes: sponsorTimes,
                 time: getCurrentTime() ?? 0,
-                onMobileYouTube: isOnMobileYouTube()
+                onMobileYouTube: isOnMobileYouTube(),
+                videoID: getVideoID(),
+                loopedChapter: loopedChapter?.UUID,
+                channelWhitelisted
             });
 
             if (!request.updating && popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
@@ -1275,7 +1278,10 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
         status: lastResponseStatus,
         sponsorTimes: sponsorTimes,
         time: getCurrentTime() ?? 0,
-        onMobileYouTube: isOnMobileYouTube()
+        onMobileYouTube: isOnMobileYouTube(),
+        videoID: getVideoID(),
+        loopedChapter: loopedChapter?.UUID,
+        channelWhitelisted
     });
 
     if (Config.config.isVip) {

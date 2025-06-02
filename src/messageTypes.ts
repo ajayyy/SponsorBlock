@@ -2,7 +2,7 @@
 // Message and Response Types
 //
 
-import { SegmentUUID, SponsorHideType, SponsorTime } from "./types";
+import { SegmentUUID, SponsorHideType, SponsorTime, VideoID } from "./types";
 
 interface BaseMessage {
     from?: string;
@@ -84,6 +84,9 @@ export interface IsInfoFoundMessageResponse {
     sponsorTimes: SponsorTime[];
     time: number;
     onMobileYouTube: boolean;
+    videoID: VideoID;
+    loopedChapter: SegmentUUID | null;
+    channelWhitelisted: boolean;
 }
 
 interface GetVideoIdResponse {

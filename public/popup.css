@@ -582,6 +582,10 @@
   margin: 0 !important;
 }
 
+#sponsorBlockPopupBody .u-mZ.cleanPopupMargin {
+  margin-top: 10px !important;
+}
+
 #sponsorBlockPopupBody .hidden {
   display: none !important;
 }
@@ -618,4 +622,9 @@
 
 #issueReporterTabs > span.sbSelected > span::after {
   transform: scaleX(0.8);
+}
+
+.sbPopupButton {
+  width: 16px;
+  fill: var(--sb-main-fg-color);
 }
