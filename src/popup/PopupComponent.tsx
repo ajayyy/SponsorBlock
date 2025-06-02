@@ -14,13 +14,23 @@ import { SegmentSubmissionComponent } from "./SegmentSubmissionComponent";
 export enum LoadingStatus {
     Loading,
     SegmentsFound,
-    NoSegmentsFound
+    NoSegmentsFound,
+    ConnectionError,
+    StillLoading,
+    NoVideo
+}
+
+export interface LoadingData {
+    status: LoadingStatus;
+    code?: number;
 }
 
 let loadRetryCount = 0;
 
 export const PopupComponent = () => {
-    const [status, setStatus] = React.useState<LoadingStatus>(LoadingStatus.Loading);
+    const [status, setStatus] = React.useState<LoadingData>({
+        status: LoadingStatus.Loading
+    });
     const [extensionEnabled, setExtensionEnabled] = React.useState(!Config.config!.disableSkipping);
     const [channelWhitelisted, setChannelWhitelisted] = React.useState<boolean | null>(null);
     const [showForceChannelCheckWarning, setShowForceChannelCheckWarning] = React.useState(false);
@@ -84,20 +94,11 @@ export const PopupComponent = () => {
                 </p>
             </header>
 
-            {/* Loading text */}
-            {status === LoadingStatus.Loading && (
-                <p id="loadingIndicator" 
-                        className={"u-mZ grey-text " + (Config.config.cleanPopup ? "cleanPopupMargin" : "")}>
-                    {chrome.i18n.getMessage("noVideoID")}
-                </p>
-            )}
-            {/* If the video was found in the database */}
-            {status !== LoadingStatus.Loading && (
-                <p id="videoFound" 
-                        className={"u-mZ grey-text " + (Config.config.cleanPopup ? "cleanPopupMargin" : "")}>
-                    {status === LoadingStatus.SegmentsFound ? chrome.i18n.getMessage("sponsorFound") : chrome.i18n.getMessage("sponsor404")}
-                </p>
-            )}
+            <p id="videoFound" 
+                    className={"u-mZ grey-text " + (Config.config.cleanPopup ? "cleanPopupMargin" : "")}>
+                {getVideoStatusText(status)}
+            </p>
+
             <button id="refreshSegmentsButton" title={chrome.i18n.getMessage("refreshSegments")} onClick={(e) => {
                 const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
 
@@ -276,8 +277,25 @@ export const PopupComponent = () => {
     );
 };
 
+function getVideoStatusText(status: LoadingData): string {
+    switch (status.status) {
+        case LoadingStatus.Loading:
+            return chrome.i18n.getMessage("Loading");
+        case LoadingStatus.SegmentsFound:
+            return chrome.i18n.getMessage("sponsorFound");
+        case LoadingStatus.NoSegmentsFound:
+            return chrome.i18n.getMessage("sponsor404");
+        case LoadingStatus.ConnectionError:
+            return chrome.i18n.getMessage("connectionError") + status.code;
+        case LoadingStatus.StillLoading:
+            return chrome.i18n.getMessage("segmentsStillLoading");
+        case LoadingStatus.NoVideo:
+            return chrome.i18n.getMessage("noVideoID");
+    }
+}
+
 interface SegmentsLoadedProps {
-    setStatus: (status: LoadingStatus) => void;
+    setStatus: (status: LoadingData) => void;
     setChannelWhitelisted: (whitelisted: boolean | null) => void;
     setVideoID: (videoID: string | null) => void;
     setCurrentTime: (time: number) => void;
@@ -298,7 +316,9 @@ async function loadSegments(props: LoadSegmentsProps): Promise<void> {
         // Handle error if it exists
         chrome.runtime.lastError;
 
-        props.setStatus(LoadingStatus.NoSegmentsFound);
+        props.setStatus({
+            status: LoadingStatus.NoVideo,
+        });
 
         if (!props.updating) {
             loadRetryCount++;
@@ -310,7 +330,26 @@ async function loadSegments(props: LoadSegmentsProps): Promise<void> {
 }
 
 function segmentsLoaded(response: IsInfoFoundMessageResponse, props: SegmentsLoadedProps): void {
-    props.setStatus(response.sponsorTimes?.length > 0 ? LoadingStatus.SegmentsFound : LoadingStatus.NoSegmentsFound);
+    if (response.found) {
+        props.setStatus({
+            status: LoadingStatus.SegmentsFound
+        });
+    } else if (response.status === 404 || response.status === 200) {
+        props.setStatus({
+            status: LoadingStatus.NoSegmentsFound
+        });
+    } else if (response.status) {
+        props.setStatus({
+            status: LoadingStatus.ConnectionError,
+            code: response.status
+        });
+    } else {
+        props.setStatus({
+            status: LoadingStatus.StillLoading
+        });
+    }
+
+    
     props.setVideoID(response.videoID);
     props.setCurrentTime(response.time);
     props.setChannelWhitelisted(response.channelWhitelisted);
