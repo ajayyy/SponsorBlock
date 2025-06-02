@@ -386,6 +386,7 @@ function ImportSegments(props: ImportSegmentsProps) {
         <div id="issueReporterImportExport" className={props.status === LoadingStatus.Loading ? "hidden" : ""}>
             <div id="importExportButtons">
             <button id="importSegmentsButton"
+                    className={props.status === LoadingStatus.SegmentsFound || props.status === LoadingStatus.NoSegmentsFound ? "" : "hidden"}
                     title={chrome.i18n.getMessage("importSegments")}
                     onClick={() => {
                         setImportMenuVisible(!importMenuVisible);
