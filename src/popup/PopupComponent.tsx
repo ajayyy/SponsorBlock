@@ -118,7 +118,7 @@ export const PopupComponent = () => {
             <SegmentListComponent
                 videoID={videoID}
                 currentTime={currentTime}
-                status={status}
+                status={status.status}
                 segments={segments}
                 loopedChapter={loopedChapter}
                 sendMessage={sendMessage} />
@@ -219,7 +219,7 @@ export const PopupComponent = () => {
                 !Config.config.cleanPopup &&
                 <SegmentSubmissionComponent
                     videoID={videoID || ""}
-                    status={status}
+                    status={status.status}
                     sendMessage={sendMessage} />
             }
             
@@ -392,7 +392,9 @@ function onMessage(props: ComPortProps, msg: PopupMessage) {
             segmentsLoaded(msg, props);
             break;
         case "videoChanged":
-            props.setStatus(LoadingStatus.SegmentsFound);
+            props.setStatus({
+                status: LoadingStatus.StillLoading
+            });
             props.setVideoID(msg.videoID);
             props.setChannelWhitelisted(msg.whitelisted);
             props.setSegments([]);
