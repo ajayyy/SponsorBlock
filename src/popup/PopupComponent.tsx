@@ -4,12 +4,13 @@ import { YourWorkComponent } from "./YourWorkComponent";
 // import { FormattingOptionsComponent } from "./FormattingOptionsComponent";
 import { isSafari } from "../../maze-utils/src/config";
 import { showDonationLink } from "../utils/configUtils";
-import Config from "../config";
-import { GetChannelIDResponse, IsInfoFoundMessageResponse, Message, MessageResponse, PopupMessage } from "../messageTypes";
+import Config, { generateDebugDetails } from "../config";
+import { GetChannelIDResponse, IsInfoFoundMessageResponse, LogResponse, Message, MessageResponse, PopupMessage } from "../messageTypes";
 import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { SegmentListComponent } from "./SegmentListComponent";
 import { ActionType, SegmentUUID, SponsorSourceType, SponsorTime } from "../types";
 import { SegmentSubmissionComponent } from "./SegmentSubmissionComponent";
+import { copyToClipboardPopup } from "./popupUtils";
 
 export enum LoadingStatus {
     Loading,
@@ -260,6 +261,14 @@ export const PopupComponent = () => {
                     </a>
                     <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noreferrer">
                         Matrix
+                    </a>
+                    <a id="debugLogs"
+                            onClick={async () => {
+                                const logs = await sendMessage({ message: "getLogs" }) as LogResponse;
+
+                                copyToClipboardPopup(`${generateDebugDetails()}\n\nWarn:\n${logs.warn.join("\n")}\n\nDebug:\n${logs.debug.join("\n")}`, sendMessage);
+                            }}>
+                        {chrome.i18n.getMessage("copyDebugLogs")}
                     </a>
                 </footer>
             }

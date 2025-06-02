@@ -10,6 +10,7 @@ import { Message, MessageResponse, VoteResponse } from "../messageTypes";
 import { LoadingStatus } from "./PopupComponent";
 import GenericNotice from "../render/GenericNotice";
 import { exportTimes } from "../utils/exporter";
+import { copyToClipboardPopup } from "./popupUtils";
 
 interface SegmentListComponentProps {
     videoID: VideoID;
@@ -192,7 +193,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, startingLooped,
                         const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
 
                         if (segment.UUID.length > 60) {
-                            copyToClipboard(segment.UUID, sendMessage);
+                            copyToClipboardPopup(segment.UUID, sendMessage);
                         } else {
                             const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
                                 UUID: segment.UUID,
@@ -200,7 +201,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, startingLooped,
                             });
                 
                             if (segmentIDData.ok && segmentIDData.responseText) {
-                                copyToClipboard(segmentIDData.responseText, sendMessage);
+                                copyToClipboardPopup(segmentIDData.responseText, sendMessage);
                             }
                         }
 
@@ -360,17 +361,6 @@ function loopChapter({ segment, element, sendMessage }: {
     }
 }
 
-function copyToClipboard(text: string, sendMessage: (request: Message) => Promise<MessageResponse>): void {
-    if (window === window.top) {
-        window.navigator.clipboard.writeText(text);
-    } else {
-        sendMessage({
-            message: "copyToClipboard",
-            text
-        });
-    }
-}
-
 interface ImportSegmentsProps {
     status: LoadingStatus;
     segments: SponsorTime[];
@@ -397,8 +387,8 @@ function ImportSegments(props: ImportSegmentsProps) {
                     className={props.segments.length === 0 ? "hidden" : ""}
                     title={chrome.i18n.getMessage("exportSegments")}
                     onClick={(e) => {
-                        copyToClipboard(exportTimes(props.segments), props.sendMessage);
-                        
+                        copyToClipboardPopup(exportTimes(props.segments), props.sendMessage);
+
                         const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
                         stopAnimation();
                         new GenericNotice(null, "exportCopied", {
