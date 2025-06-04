@@ -12,14 +12,11 @@ interface DefaultMessage {
     message:
         "update"
         | "sponsorStart"
-        | "getVideoID"
         | "getChannelID"
-        | "isChannelWhitelisted"
         | "submitTimes"
         | "refreshSegments"
         | "closePopup"
-        | "getLogs"
-        | "getLoopedChapter";
+        | "getLogs";
 }
 
 interface BoolValueMessage {
