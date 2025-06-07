@@ -3,45 +3,7 @@ import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
-
-export interface Permission {
-    canSubmit: boolean;
-}
-
-export enum SkipRuleAttribute {
-    StartTime = "startTime",
-    EndTime = "endTime",
-    Duration = "duration",
-    StartTimePercent = "startTimePercent",
-    EndTimePercent = "endTimePercent",
-    DurationPercent = "durationPercent",
-    Category = "category",
-    Description = "description",
-    Source = "source"
-}
-
-export enum SkipRuleOperator {
-    Less = "<",
-    LessOrEqual = "<=",
-    Greater = ">",
-    GreaterOrEqual = ">=",
-    Equal = "==",
-    NotEqual = "!=",
-    Contains = "*=",
-    Regex = "~="
-}
-
-export interface AdvancedSkipRule {
-    attribute: SkipRuleAttribute;
-    operator: SkipRuleOperator;
-    value: string | number;
-}
-
-export interface AdvancedSkipRuleSet {
-    rules: AdvancedSkipRule[];
-    skipOption: CategorySkipOption;
-    comment: string;
-}
+import { Permission, AdvancedSkipRuleSet } from "./utils/skipRule";
 
 interface SBConfig {
     userID: string;

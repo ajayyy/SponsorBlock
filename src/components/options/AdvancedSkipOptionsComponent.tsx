@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as CompileConfig from "../../../config.json";
 
-import Config, { AdvancedSkipRuleSet, SkipRuleAttribute, SkipRuleOperator } from "../../config";
+import Config from "../../config";
+import { AdvancedSkipRuleSet, SkipRuleAttribute, SkipRuleOperator } from "../../utils/skipRule";
 import { CategorySkipOption } from "../../types";
 
 let configSaveTimeout: NodeJS.Timeout | null = null;

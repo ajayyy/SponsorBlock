@@ -51,7 +51,8 @@ import { asyncRequestToServer } from "./utils/requests";
 import { isMobileControlsOpen } from "./utils/mobileUtils";
 import { defaultPreviewTime } from "./utils/constants";
 import { onVideoPage } from "../maze-utils/src/pageInfo";
-import { getCategoryDefaultSelection, getCategorySelection, getSegmentsForVideo } from "./utils/segmentData";
+import { getSegmentsForVideo } from "./utils/segmentData";
+import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
 
 cleanPage();
 
