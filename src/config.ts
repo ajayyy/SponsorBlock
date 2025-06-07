@@ -8,6 +8,38 @@ export interface Permission {
     canSubmit: boolean;
 }
 
+export enum SkipRuleAttribute {
+    StartTime = "startTime",
+    EndTime = "endTime",
+    Duration = "duration",
+    Category = "category",
+    Description = "description",
+    Source = "source"
+}
+
+export enum SkipRuleOperator {
+    Less = "<",
+    LessOrEqual = "<=",
+    Greater = ">",
+    GreaterOrEqual = ">=",
+    Equal = "==",
+    NotEqual = "!=",
+    Contains = "*=",
+    Regex = "~="
+}
+
+export interface AdvancedSkipRule {
+    attribute: SkipRuleAttribute;
+    operator: SkipRuleOperator;
+    value: string | number;
+}
+
+export interface AdvancedSkipRuleSet {
+    rules: AdvancedSkipRule[];
+    skipOption: CategorySkipOption;
+    comment: string;
+}
+
 interface SBConfig {
     userID: string;
     isVip: boolean;
@@ -149,6 +181,8 @@ interface SBStorage {
 
     /* Contains unsubmitted segments that the user has created. */
     unsubmittedSegments: Record<string, SponsorTime[]>;
+
+    skipRules: AdvancedSkipRuleSet[];
 }
 
 class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
@@ -168,6 +202,15 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 }
 
 function migrateOldSyncFormats(config: SBConfig) {
+    if (!config["changeChapterColor"]) {
+        config.barTypes["chapter"].color = "#ffd983";
+        config["changeChapterColor"] = true;
+        chrome.storage.sync.set({
+            "changeChapterColor": true,
+            "barTypes": config.barTypes
+        });
+    }
+
     if (config["showZoomToFillError"]) {
         chrome.storage.sync.remove("showZoomToFillError");
     }
@@ -474,7 +517,7 @@ const syncDefaults = {
             opacity: "0.7"
         },
         "chapter": {
-            color: "#fff",
+            color: "#ffd983",
             opacity: "0"
         },
     }
@@ -485,7 +528,8 @@ const localDefaults = {
     navigationApiAvailable: null,
     alreadyInstalled: false,
 
-    unsubmittedSegments: {}
+    unsubmittedSegments: {},
+    skipRules: []
 };
 
 const Config = new ConfigClass(syncDefaults, localDefaults, migrateOldSyncFormats);

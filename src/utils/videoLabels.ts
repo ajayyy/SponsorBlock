@@ -1,12 +1,10 @@
 import { Category, CategorySkipOption, VideoID } from "../types";
 import { getHash } from "../../maze-utils/src/hash";
-import Utils from "../utils";
 import { logWarn } from "./logger";
 import { asyncRequestToServer } from "./requests";
+import { getCategorySelection } from "./segmentData";
 
-const utils = new Utils();
-
-interface VideoLabelsCacheData {
+export interface VideoLabelsCacheData {
     category: Category;
     hasStartSegment: boolean;
 }
@@ -68,7 +66,7 @@ export async function getVideoLabel(videoID: VideoID): Promise<Category | null> 
 
     if (result) {
         const category = result.videos[videoID]?.category;
-        if (category && utils.getCategorySelection(category).option !== CategorySkipOption.Disabled) {
+        if (category && getCategorySelection(result.videos[videoID]).option !== CategorySkipOption.Disabled) {
             return category;
         } else {
             return null;

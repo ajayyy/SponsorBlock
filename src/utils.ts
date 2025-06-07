@@ -1,5 +1,5 @@
 import Config, { VideoDownvotes } from "./config";
-import { CategorySelection, SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType, CategorySkipOption } from "./types";
+import { SponsorTime, BackgroundScriptContainer, Registration, VideoID, SponsorHideType } from "./types";
 
 import { getHash, HashedValue } from "../maze-utils/src/hash";
 import { waitFor } from "../maze-utils/src";
@@ -211,15 +211,6 @@ export default class Utils {
         return sponsorTimes[this.getSponsorIndexFromUUID(sponsorTimes, UUID)];
     }
 
-    getCategorySelection(category: string): CategorySelection {
-        for (const selection of Config.config.categorySelections) {
-            if (selection.name === category) {
-                return selection;
-            }
-        }
-        return { name: category, option: CategorySkipOption.Disabled} as CategorySelection;
-    }
-
     /**
      * @returns {String[]} Domains in regex form
      */
@@ -321,7 +312,6 @@ export default class Utils {
 
             allDownvotes[hashedVideoID] = currentVideoData;
         }
-        console.log(allDownvotes)
 
         const entries = Object.entries(allDownvotes);
         if (entries.length > 10000) {

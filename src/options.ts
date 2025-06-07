@@ -18,6 +18,7 @@ import { getHash } from "../maze-utils/src/hash";
 import { isFirefoxOrSafari } from "../maze-utils/src";
 import { isDeArrowInstalled } from "./utils/crossExtension";
 import { asyncRequestToServer } from "./utils/requests";
+import AdvancedSkipOptions from "./render/AdvancedSkipOptions";
 const utils = new Utils();
 let embed = false;
 
@@ -349,6 +350,9 @@ async function init() {
             }
             case "react-CategoryChooserComponent":
                 categoryChoosers.push(new CategoryChooser(optionsElements[i]));
+                break;
+            case "react-AdvancedSkipOptionsComponent":
+                new AdvancedSkipOptions(optionsElements[i]);
                 break;
             case "react-UnsubmittedVideosComponent":
                 unsubmittedVideos.push(new UnsubmittedVideos(optionsElements[i]));
