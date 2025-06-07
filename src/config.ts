@@ -12,6 +12,9 @@ export enum SkipRuleAttribute {
     StartTime = "startTime",
     EndTime = "endTime",
     Duration = "duration",
+    StartTimePercent = "startTimePercent",
+    EndTimePercent = "endTimePercent",
+    DurationPercent = "durationPercent",
     Category = "category",
     Description = "description",
     Source = "source"

@@ -7,6 +7,7 @@ import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
 import { extensionUserAgent } from "../../maze-utils/src";
 import { VideoLabelsCacheData } from "./videoLabels";
+import { getVideoDuration } from "../../maze-utils/src/video";
 
 const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
     return {
@@ -129,6 +130,25 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
             return (segment as SponsorTime).segment?.[1];
         case SkipRuleAttribute.Duration:
             return (segment as SponsorTime).segment?.[1] - (segment as SponsorTime).segment?.[0];
+        case SkipRuleAttribute.StartTimePercent: {
+            const startTime = (segment as SponsorTime).segment?.[0];
+            if (startTime === undefined) return undefined;
+
+            return startTime / getVideoDuration() * 100;
+        }
+        case SkipRuleAttribute.EndTimePercent: {
+            const endTime = (segment as SponsorTime).segment?.[1];
+            if (endTime === undefined) return undefined;
+
+            return endTime / getVideoDuration() * 100;
+        }
+        case SkipRuleAttribute.DurationPercent: {
+            const startTime = (segment as SponsorTime).segment?.[0];
+            const endTime = (segment as SponsorTime).segment?.[1];
+            if (startTime === undefined || endTime === undefined) return undefined;
+
+            return (endTime - startTime) / getVideoDuration() * 100;
+        }
         case SkipRuleAttribute.Category:
             return segment.category;
         case SkipRuleAttribute.Description:
