@@ -2,11 +2,10 @@ import { DataCache } from "../../maze-utils/src/cache";
 import { getHash, HashedValue } from "../../maze-utils/src/hash";
 import Config, {  } from "../config";
 import * as CompileConfig from "../../config.json";
-import { ActionType, ActionTypes, CategorySkipOption, SponsorSourceType, SponsorTime, VideoID } from "../types";
+import { ActionType, ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
 import { extensionUserAgent } from "../../maze-utils/src";
-import { getCategorySelection } from "./skipRule";
 
 const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
     return {
@@ -66,8 +65,7 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
         const receivedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === videoID)
                     ?.map((video) => video.segments)?.[0]
-                    ?.filter((segment) => enabledActionTypes.includes(segment.actionType) 
-                        && getCategorySelection(segment).option !== CategorySkipOption.Disabled)
+                    ?.filter((segment) => enabledActionTypes.includes(segment.actionType))
                     ?.map((segment) => ({
                         ...segment,
                         source: SponsorSourceType.Server
