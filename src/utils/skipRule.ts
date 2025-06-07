@@ -15,6 +15,7 @@ export enum SkipRuleAttribute {
     EndTimePercent = "endTimePercent",
     DurationPercent = "durationPercent",
     Category = "category",
+    ActionType = "actionType",
     Description = "description",
     Source = "source"
 }
@@ -86,6 +87,8 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
         }
         case SkipRuleAttribute.Category:
             return segment.category;
+        case SkipRuleAttribute.ActionType:
+            return (segment as SponsorTime).actionType;
         case SkipRuleAttribute.Description:
             return (segment as SponsorTime).description || "";
         case SkipRuleAttribute.Source:
