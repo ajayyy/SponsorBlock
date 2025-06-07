@@ -28,7 +28,11 @@ export enum SkipRuleOperator {
     Equal = "==",
     NotEqual = "!=",
     Contains = "*=",
-    Regex = "~="
+    NotContains = "!*=",
+    Regex = "~=",
+    RegexIgnoreCase = "~i=",
+    NotRegex = "!~=",
+    NotRegexIgnoreCase = "!~i="
 }
 
 export interface AdvancedSkipRule {
@@ -127,8 +131,16 @@ function isSkipRulePassing(segment: SponsorTime | VideoLabelsCacheData, rule: Ad
             return value !== rule.value;
         case SkipRuleOperator.Contains:
             return String(value).toLocaleLowerCase().includes(String(rule.value).toLocaleLowerCase());
+        case SkipRuleOperator.NotContains:
+            return !String(value).toLocaleLowerCase().includes(String(rule.value).toLocaleLowerCase());
         case SkipRuleOperator.Regex:
             return new RegExp(rule.value as string).test(String(value));
+        case SkipRuleOperator.RegexIgnoreCase:
+            return new RegExp(rule.value as string, "i").test(String(value));
+        case SkipRuleOperator.NotRegex:
+            return !new RegExp(rule.value as string).test(String(value));
+        case SkipRuleOperator.NotRegexIgnoreCase:
+            return !new RegExp(rule.value as string, "i").test(String(value));
         default:
             return false;
     }
