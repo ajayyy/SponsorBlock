@@ -166,7 +166,7 @@ function isSkipRulePassing(segment: SponsorTime | VideoLabelsCacheData, rule: Ad
         case SkipRuleOperator.NotEqual:
             return value !== rule.value;
         case SkipRuleOperator.Contains:
-            return String(value).includes(String(rule.value));
+            return String(value).toLocaleLowerCase().includes(String(rule.value).toLocaleLowerCase());
         case SkipRuleOperator.Regex:
             return new RegExp(rule.value as string).test(String(value));
         default:
