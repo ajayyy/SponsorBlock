@@ -3,8 +3,6 @@ Based on code from
 https://github.com/videosegments/videosegments/commits/f1e111bdfe231947800c6efdd51f62a4e7fef4d4/segmentsbar/segmentsbar.js
 */
 
-'use strict';
-
 import Config from "../config";
 import { ChapterVote } from "../render/ChapterVote";
 import { ActionType, Category, SegmentContainer, SponsorHideType, SponsorSourceType, SponsorTime } from "../types";
@@ -205,9 +203,12 @@ class PreviewBar {
                     this.setTooltipTitle(mainSegment, this.categoryScrubTooltip);
                     this.setTooltipTitle(secondarySegment, this.chapterScrubTooltip);
                 }
+
+                this.categoryTooltipContainer.classList.remove("sponsorHasOriginalTooltip");
             } else {
                 this.categoryTooltipContainer.classList.add(TOOLTIP_VISIBLE_CLASS);
-                if (mainSegment !== null && secondarySegment !== null) {
+                const hasTwoTooltips = mainSegment !== null && secondarySegment !== null;
+                if (hasTwoTooltips) {
                     this.categoryTooltipContainer.classList.add("sponsorTwoTooltips");
                     originalTooltip.classList.remove("sponsorTooltipHasYTChapters");
                 } else {
@@ -227,11 +228,15 @@ class PreviewBar {
                 }
 
                 if (normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.categoryTooltip.textContent)
-                        || normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.chapterTooltip.textContent)) {
+                        || normalizeChapterName(originalTooltip.textContent) === normalizeChapterName(this.chapterTooltip.textContent)
+                        || !originalTooltip.textContent) {
                     if (originalTooltip.style.display !== "none") originalTooltip.style.display = "none";
+                    this.categoryTooltipContainer.classList.remove("sponsorHasOriginalTooltip");
                     noYoutubeChapters = true;
                 } else if (originalTooltip.style.display === "none") {
                     originalTooltip.style.removeProperty("display");
+                    this.categoryTooltipContainer.classList.add("sponsorHasOriginalTooltip");
+                    noYoutubeChapters = false;
                 }
 
                 // To prevent offset issue

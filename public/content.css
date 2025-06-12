@@ -115,6 +115,14 @@ div:hover > #previewbar.sbNotInvidious {
 	transform: translateY(-2em) !important;
 }
 
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorHasOriginalTooltip {
+	transform: translateY(-2em) !important;
+}
+
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips.sponsorHasOriginalTooltip {
+	transform: translateY(-3em) !important;
+}
+
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible {
 	transform: translateY(-2em) !important;
 }
