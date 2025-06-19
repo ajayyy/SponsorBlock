@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: '18'
       - run: npm ci
-      - run: sudo apt-get install chromium-chromedriver
 
       - uses: browser-actions/setup-chrome@c785b87e244131f27c9f19c1a33e2ead956ab7ce
         with:
