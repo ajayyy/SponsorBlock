@@ -58,7 +58,7 @@ async function setup(): Promise<WebDriver> {
     options.addArguments("--headless=new");
     options.addArguments("--window-size=1920,1080");
 
-    const driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build();
+    const driver = await new Builder().forBrowser("chromium").setChromeOptions(options).build();
     driver.manage().setTimeouts({
         implicit: 5000
     });
