@@ -16,13 +16,6 @@ jobs:
         with:
           node-version: '18'
       - run: npm ci
-      - run: sudo apt-get remove google-chrome-stable
-
-      - uses: browser-actions/setup-chrome@c785b87e244131f27c9f19c1a33e2ead956ab7ce
-        with:
-          chrome-version: 135
-          install-dependencies: true
-          install-chromedriver: true
       
       - name: Copy configuration
         run: cp config.json.example config.json
