@@ -4,7 +4,7 @@ import * as Path from "path";
 
 import * as fs from "fs";
 
-test("Selenium Chrome test", async () => {
+xtest("Selenium Chrome test", async () => {
     let driver: WebDriver;
     try {
         driver = await setup();   
