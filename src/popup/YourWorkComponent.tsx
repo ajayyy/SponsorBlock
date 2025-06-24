@@ -6,6 +6,7 @@ import { asyncRequestToServer } from "../utils/requests";
 import PencilIcon from "../svg-icons/pencilIcon";
 import ClipboardIcon from "../svg-icons/clipboardIcon";
 import CheckIcon from "../svg-icons/checkIcon";
+import { showDonationLink } from "../utils/configUtils";
 
 export const YourWorkComponent = () => {
     const [isSettingUsername, setIsSettingUsername] = React.useState(false);
@@ -36,7 +37,7 @@ export const YourWorkComponent = () => {
                 Config.config!.permissions = userInfo.permissions;
 
                 setShowDonateMessage(Config.config.showDonationLink && Config.config.donateClicked <= 0 && Config.config.showPopupDonationCount < 5
-                    && viewCount < 50000 && !Config.config.isVip && Config.config.skipCount > 10);
+                    && viewCount < 50000 && !Config.config.isVip && Config.config.skipCount > 10 && showDonationLink());
             }
         })();
     }, []);
