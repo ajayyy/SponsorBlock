@@ -102,10 +102,6 @@ div:hover > #previewbar.sbNotInvidious {
 	display: none !important;
 }
 
-.ytp-tooltip.sponsorCategoryTooltipVisible:not(.sponsorTooltipHasYTChapters) {
-	transform: translateY(-1em) !important;
-}
-
 /* Pull up for precise seeking */
 .ytp-tooltip.sponsorCategoryTooltipVisible .ytp-tooltip-edu {
 	transform: translateY(-1em) !important;
