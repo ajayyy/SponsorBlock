@@ -1355,7 +1355,9 @@ function startSkipScheduleCheckingForStartSponsors() {
         // For highlight category
         const poiSegments = sponsorTimes
             .filter((time) => time.segment[1] > getCurrentTime()
-                && time.actionType === ActionType.Poi && time.hidden === SponsorHideType.Visible)
+                && time.actionType === ActionType.Poi
+                && time.hidden === SponsorHideType.Visible
+                && getCategorySelection(time).option !== CategorySkipOption.Disabled)
             .sort((a, b) => b.segment[0] - a.segment[0]);
         for (const time of poiSegments) {
             const skipOption = getCategorySelection(time)?.option;
