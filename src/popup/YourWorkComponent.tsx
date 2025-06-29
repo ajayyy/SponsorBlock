@@ -168,7 +168,7 @@ function TimeSavedMessage({ viewCount, minutesSaved }: { viewCount: number; minu
                 <span className="sbExtraInfo">
                     {"("}{" "}
                     <b>
-                        <span id="sponsorTimeSavedDisplay">{Config.config.minutesSaved}</span>{" "}
+                        <span id="sponsorTimeSavedDisplay">{Config.config.minutesSaved.toFixed(2)}</span>{" "}
                         <span id="sponsorTimeSavedEndWord">{Config.config.minutesSaved !== 1 ? chrome.i18n.getMessage("minsLower") : chrome.i18n.getMessage("minLower")}</span>{" "}
                     </b>
                     {")"}
