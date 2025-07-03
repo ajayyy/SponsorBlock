@@ -816,6 +816,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             if (Config.config.showUpcomingNotice && getCurrentTime() < skippingSegments[0].segment[0] 
                     && !sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment)
                     && [ActionType.Skip, ActionType.Mute].includes(skippingSegments[0].actionType)
+                    && getCategorySelection(skippingSegments[0])?.option > CategorySkipOption.ShowOverlay
                     && !getVideo()?.paused) {
                 const maxPopupTime = 3000;
                 const timeUntilPopup = Math.max(0, offsetDelayTime - maxPopupTime);
