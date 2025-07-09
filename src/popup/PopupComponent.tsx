@@ -103,15 +103,18 @@ export const PopupComponent = () => {
             <button id="refreshSegmentsButton" title={chrome.i18n.getMessage("refreshSegments")} onClick={(e) => {
                 const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
 
-                loadSegments({
-                    updating: true,
-                    setStatus,
-                    setChannelWhitelisted,
-                    setVideoID,
-                    setCurrentTime,
-                    setSegments,
-                    setLoopedChapter
-                }).then(() => stopAnimation());
+                sendMessage({ message: "refreshSegments" }).then(() => {
+                    loadSegments({
+                        updating: true,
+                        setStatus,
+                        setChannelWhitelisted,
+                        setVideoID,
+                        setCurrentTime,
+                        setSegments,
+                        setLoopedChapter
+                    }).then(() => stopAnimation());
+                });
+
             }}>
                 <img src="/icons/refresh.svg" alt="Refresh icon" id="refreshSegments" />
             </button>
