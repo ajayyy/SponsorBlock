@@ -265,6 +265,10 @@ export const PopupComponent = () => {
                     <a href="https://matrix.to/#/#sponsor:ajay.app?via=ajay.app&via=matrix.org&via=mozilla.org" target="_blank" rel="noreferrer">
                         Matrix
                     </a>
+                    <a href="https://wiki.sponsor.ajay.app/w/Guidelines" target="_blank" rel="noreferrer">
+                        {chrome.i18n.getMessage("guidelines")}
+                    </a>
+                    <br />
                     <a id="debugLogs"
                             onClick={async () => {
                                 const logs = await sendMessage({ message: "getLogs" }) as LogResponse;
