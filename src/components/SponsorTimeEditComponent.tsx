@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, Category, ChannelIDStatus, ContentContainer, SponsorTime } from "../types";
+import { ActionType, Category, ChannelIDStatus, ContentContainer, SponsorHideType, SponsorTime } from "../types";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
@@ -10,6 +10,7 @@ import { getFormattedTime, getFormattedTimeToSeconds } from "../../maze-utils/sr
 import { asyncRequestToServer } from "../utils/requests";
 import { defaultPreviewTime } from "../utils/constants";
 import { getVideo, getVideoDuration } from "../../maze-utils/src/video";
+import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 
 export interface SponsorTimeEditProps {
     index: number;
@@ -242,6 +243,22 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                             onChange={(e) => this.actionTypeSelectionChange(e)}>
                             {this.getActionTypeOptions(sponsorTime)}
                         </select>
+                        <img
+                            className="voteButton hideSegmentSubmitButton"
+                            title={chrome.i18n.getMessage("hideSegment")}
+                            src={sponsorTime.hidden === SponsorHideType.Hidden ? chrome.runtime.getURL("icons/not_visible.svg") : chrome.runtime.getURL("icons/visible.svg")}
+                            onClick={(e) => {
+                                const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);
+                                stopAnimation();
+    
+                                if (sponsorTime.hidden === SponsorHideType.Hidden) {
+                                    sponsorTime.hidden = SponsorHideType.Visible;
+                                } else {
+                                    sponsorTime.hidden = SponsorHideType.Hidden;
+                                }
+
+                                this.saveEditTimes();
+                        }}/>
                     </div>
                 ): ""}
 

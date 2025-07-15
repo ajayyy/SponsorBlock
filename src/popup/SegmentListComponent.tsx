@@ -237,7 +237,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, startingLooped,
                         && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segment.hidden)) &&
                     <img
                         className="voteButton"
-                        title="Hide Segment"
+                        title={chrome.i18n.getMessage("hideSegment")}
                         src={hidden === SponsorHideType.Hidden ? chrome.runtime.getURL("icons/not_visible.svg") : chrome.runtime.getURL("icons/visible.svg")}
                         onClick={(e) => {
                             const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);

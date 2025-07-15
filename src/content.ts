@@ -713,7 +713,9 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         forceVideoTime ||= Math.max(getCurrentTime(), getVirtualTime());
 
         if ((shouldSkip(currentSkip)
-                || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment && segment.actionType !== ActionType.Chapter))) {
+                || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment
+                    && segment.actionType !== ActionType.Chapter
+                    && segment.hidden === SponsorHideType.Visible))) {
             if (forceVideoTime >= skipTime[0] - skipBuffer && (forceVideoTime < skipTime[1] || skipTime[1] < skipTime[0])) {
                 skipToTime({
                     v: getVideo(),
@@ -1427,7 +1429,8 @@ function updatePreviewBar(): void {
     }
 
     sponsorTimesSubmitting.forEach((segment) => {
-        if (segment.actionType !== ActionType.Chapter || segment.segment.length > 1) {
+        if (segment.hidden === SponsorHideType.Visible
+                && (segment.actionType !== ActionType.Chapter || segment.segment.length > 1)) {
             previewBarSegments.push({
                 segment: segment.segment as [number, number],
                 category: segment.category,
@@ -1940,7 +1943,7 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 }
 
 function shouldSkip(segment: SponsorTime): boolean {
-    return (segment.actionType !== ActionType.Full
+    return segment.hidden === SponsorHideType.Visible && (segment.actionType !== ActionType.Full
             && getCategorySelection(segment)?.option > CategorySkipOption.ShowOverlay)
             || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip)
@@ -2135,6 +2138,7 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
                 category: segmentTime.category,
                 actionType: segmentTime.actionType,
                 description: segmentTime.description,
+                hidden: segmentTime.hidden,
                 source: segmentTime.source
             });
         }

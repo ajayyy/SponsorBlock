@@ -683,6 +683,14 @@ input::-webkit-inner-spin-button {
 	color: white;
 }
 
+.hideSegmentSubmitButton {
+	cursor: pointer;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+}
+
 /* Start SelectorComponent */
 
 .sbSelector {
