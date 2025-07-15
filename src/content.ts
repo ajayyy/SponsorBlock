@@ -712,7 +712,8 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         if (incorrectVideoCheck(videoID, currentSkip)) return;
         forceVideoTime ||= Math.max(getCurrentTime(), getVirtualTime());
 
-        if ((shouldSkip(currentSkip) || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment))) {
+        if ((shouldSkip(currentSkip)
+                || sponsorTimesSubmitting?.some((segment) => segment.segment === currentSkip.segment && segment.actionType !== ActionType.Chapter))) {
             if (forceVideoTime >= skipTime[0] - skipBuffer && (forceVideoTime < skipTime[1] || skipTime[1] < skipTime[0])) {
                 skipToTime({
                     v: getVideo(),
