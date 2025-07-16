@@ -47,6 +47,6 @@ async function init() {
     }
 
     if (!showDonationLink()) {
-        document.getElementById("sbDonate").style.display = "none";
+        document.getElementById("donate-component").style.display = "none";
     }
 }
