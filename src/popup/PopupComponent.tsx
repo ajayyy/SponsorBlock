@@ -220,7 +220,7 @@ export const PopupComponent = () => {
             }
 
             {
-                !Config.config.cleanPopup &&
+                !Config.config.cleanPopup && !Config.config.hideSegmentCreationInPopup &&
                 <SegmentSubmissionComponent
                     videoID={videoID || ""}
                     status={status.status}
