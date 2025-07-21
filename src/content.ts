@@ -1193,7 +1193,7 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
         const receivedSegments = segmentData.segments;
 
         if (receivedSegments && receivedSegments.length) {
-            sponsorDataFound = true;
+            sponsorDataFound = receivedSegments.findIndex((segment) => getCategorySelection(segment).option !== CategorySkipOption.Disabled) !== -1;
 
             // Check if any old submissions should be kept
             if (sponsorTimes !== null && keepOldSubmissions) {
