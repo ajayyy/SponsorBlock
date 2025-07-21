@@ -184,6 +184,10 @@ div:hover > .sponsorBlockChapterBar {
 	margin: auto;
 }
 
+.sbChapterVoteButton {
+	padding: 0 !important;
+}
+
 .playerButton {
 	vertical-align: top;
 }
@@ -957,5 +961,5 @@ input::-webkit-inner-spin-button {
 }
 
 .sponsorblock-chapter-visible {
-	display: inherit !important;
+	display: block !important;
 }

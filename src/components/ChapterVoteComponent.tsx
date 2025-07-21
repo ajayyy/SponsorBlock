@@ -48,7 +48,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                         draggable="false"
                         title={chrome.i18n.getMessage("upvoteButtonInfo")}
                         onClick={(e) => this.vote(e, 1)}>
-                    <ThumbsUpSvg className="playerButtonImage" 
+                    <ThumbsUpSvg className="playerButtonImage sbChapterVoteButton" 
                         fill={Config.config.colorPalette.white} 
                         width={this.state.size} height={this.state.size} />
                 </button>
@@ -102,7 +102,7 @@ class ChapterVoteComponent extends React.Component<ChapterVoteProps, ChapterVote
                             }
                         }}>
                     <ThumbsDownSvg 
-                        className="playerButtonImage" 
+                        className="playerButtonImage sbChapterVoteButton"
                         fill={downvoteButtonColor(this.state.segment ? [this.state.segment] : null, SkipNoticeAction.Downvote, SkipNoticeAction.Downvote)} 
                         width={this.state.size} 
                         height={this.state.size} />
