@@ -752,6 +752,13 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	display: flex;
     color: white;
+	align-items: center;
+}
+
+/* July 2025 test UI */
+.ytp-delhi-modern .skipButtonControlBarContainer {
+    height: 48px;
+    margin: auto 0;
 }
 
 .skipButtonControlBarContainer.sbhidden {
