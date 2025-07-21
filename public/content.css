@@ -107,6 +107,10 @@ div:hover > #previewbar.sbNotInvidious {
 	transform: translateY(-1em) !important;
 }
 
+.ytp-tooltip.sponsorCategoryTooltipVisible {
+	transform: translateY(-1em) !important;
+}
+
 .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
 	transform: translateY(-2em) !important;
 }
@@ -145,17 +149,17 @@ div:hover > #previewbar.sbNotInvidious {
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
-	transform: translateY(1em) !important;
+	transform: translateY(1.75em) !important;
 }
 
-.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
-	display: block !important;
-	transform: translateY(1em) !important;
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper .ytp-tooltip-text {
+	display: inline-block !important;
+	transform: translateY(0.75em) !important;
 }
 
-.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
-	display: block !important;
-	transform: translateY(2em) !important;
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper .ytp-tooltip-text {
+	display: inline-block !important;
+	transform: translateY(0.75em) !important;
 }
 
 div:hover > .sponsorBlockChapterBar {
