@@ -19,7 +19,8 @@ export enum SkipRuleAttribute {
     Description = "chapter.name",
     Source = "chapter.source",
     ChannelID = "channel.id",
-    ChannelName = "channel.name"
+    ChannelName = "channel.name",
+    VideoDuration = "video.duration"
 }
 
 export enum SkipRuleOperator {
@@ -116,6 +117,8 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
         case SkipRuleAttribute.ChannelName:
             getChannelIDInfo()
             return getChannelIDInfo().author;
+        case SkipRuleAttribute.VideoDuration:
+            return getVideoDuration();
         default:
             return undefined;
     }
