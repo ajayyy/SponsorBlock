@@ -1,3 +1,4 @@
+import { getCurrentPageTitle } from "../../maze-utils/src/elements";
 import { getChannelIDInfo, getVideoDuration } from "../../maze-utils/src/video";
 import Config from "../config";
 import { CategorySelection, CategorySkipOption, SponsorSourceType, SponsorTime } from "../types";
@@ -20,7 +21,8 @@ export enum SkipRuleAttribute {
     Source = "chapter.source",
     ChannelID = "channel.id",
     ChannelName = "channel.name",
-    VideoDuration = "video.duration"
+    VideoDuration = "video.duration",
+    Title = "video.title"
 }
 
 export enum SkipRuleOperator {
@@ -119,6 +121,8 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
             return getChannelIDInfo().author;
         case SkipRuleAttribute.VideoDuration:
             return getVideoDuration();
+        case SkipRuleAttribute.Title:
+            return getCurrentPageTitle() || "";
         default:
             return undefined;
     }
