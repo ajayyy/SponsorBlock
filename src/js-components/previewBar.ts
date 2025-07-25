@@ -131,7 +131,8 @@ class PreviewBar {
         // global chapter tooltip or duration tooltip
         // YT, Vorapis, unknown, YTTV
         const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper, .ytp-progress-tooltip-text-container, .yssi-slider .ys-seek-details .time-info-bar") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
-        const originalTooltip = tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)") as HTMLElement;
+        const originalTooltip = (tooltipTextWrapper.querySelector(".ytp-tooltip-progress-bar-pill-title") ??
+            tooltipTextWrapper.querySelector(".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)")) as HTMLElement;
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 
         // Grab the tooltip from the text wrapper as the tooltip doesn't have its classes on init
@@ -258,6 +259,21 @@ class PreviewBar {
             }
 
             tooltip.style.removeProperty("display");
+
+            // For July 2025 test layout
+            if (document.querySelector(".ytp-delhi-modern")) {
+                tooltip.style.display = "inline-block";
+
+                // Class gets added back, so grab the top value for when the class is removed
+                tooltip.style.removeProperty("top");
+                tooltip.classList.remove("ytp-tooltip-text-no-title");
+
+                if (tooltip === this.chapterTooltip) {
+                    tooltip.style.top = `calc(${window.getComputedStyle(tooltip).getPropertyValue("top")} + 5px)`;
+                } else {
+                    tooltip.style.top = window.getComputedStyle(tooltip).getPropertyValue("top");
+                }
+            }
         } else {
             tooltip.style.display = "none";
         }
