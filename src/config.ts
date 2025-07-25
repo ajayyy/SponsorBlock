@@ -62,6 +62,7 @@ interface SBConfig {
     };
     scrollToEditTimeUpdate: boolean;
     categoryPillUpdate: boolean;
+    hookUpdate: boolean;
     showChapterInfoMessage: boolean;
     darkMode: boolean;
     showCategoryGuidelines: boolean;
@@ -335,6 +336,7 @@ const syncDefaults = {
     skipNonMusicOnlyOnYoutubeMusic: false,
     scrollToEditTimeUpdate: false, // false means the tooltip will be shown
     categoryPillUpdate: false,
+    hookUpdate: false,
     showChapterInfoMessage: true,
     darkMode: true,
     showCategoryGuidelines: true,

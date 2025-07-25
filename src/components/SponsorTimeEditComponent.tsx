@@ -11,6 +11,7 @@ import { asyncRequestToServer } from "../utils/requests";
 import { defaultPreviewTime } from "../utils/constants";
 import { getVideo, getVideoDuration } from "../../maze-utils/src/video";
 import { AnimationUtils } from "../../maze-utils/src/animationUtils";
+import { Tooltip } from "../render/Tooltip";
 
 export interface SponsorTimeEditProps {
     index: number;
@@ -492,6 +493,23 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             }
             
             return;
+        }
+
+        // Hook update
+        if (!Config.config.hookUpdate && chosenCategory === "preview") {
+            Config.config.hookUpdate = true;
+
+            const target = event.target.closest(".sponsorSkipNotice tbody");
+            if (target) {
+                new Tooltip({
+                    text: chrome.i18n.getMessage("hookNewFeature"),
+                    referenceNode: target.parentElement,
+                    prependElement: target as HTMLElement,
+                    bottomOffset: "30px",
+                    opacity: 0.9,
+                    timeout: 100
+                });
+            }
         }
 
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
