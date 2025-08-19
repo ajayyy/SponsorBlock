@@ -37,8 +37,12 @@ export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean
     const pendingData = fetchSegmentsForVideo(videoID);
     pendingList[videoID] = pendingData;
 
-    const result = await pendingData;
-    delete pendingList[videoID];
+    let result: Awaited<typeof pendingData>;
+    try {
+        result = await pendingData;
+    } finally {
+        delete pendingList[videoID];
+    }
 
     return result;
 }
