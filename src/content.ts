@@ -34,7 +34,7 @@ import { importTimes } from "./utils/exporter";
 import { ChapterVote } from "./render/ChapterVote";
 import { openWarningDialog } from "./utils/warnings";
 import { extensionUserAgent, isFirefoxOrSafari, waitFor } from "../maze-utils/src";
-import { getErrorMessage, getFormattedTime } from "../maze-utils/src/formating";
+import { formatJSErrorMessage, getFormattedTime, getLongErrorMessage } from "../maze-utils/src/formating";
 import { getChannelIDInfo, getVideo, getIsAdPlaying, getIsLivePremiere, setIsAdPlaying, checkVideoIDChange, getVideoID, getYouTubeVideoID, setupVideoModule, checkIfNewVideoID, isOnInvidious, isOnMobileYouTube, isOnYouTubeMusic, isOnYTTV, getLastNonInlineVideoID, triggerVideoIDChange, triggerVideoElementChange, getIsInline, getCurrentTime, setCurrentTime, getVideoDuration, verifyCurrentTime, waitForVideo } from "../maze-utils/src/video";
 import { Keybind, StorageChangesObject, isSafari, keybindEquals, keybindToString } from "../maze-utils/src/config";
 import { findValidElement } from "../maze-utils/src/dom"
@@ -53,6 +53,7 @@ import { defaultPreviewTime } from "./utils/constants";
 import { onVideoPage } from "../maze-utils/src/pageInfo";
 import { getSegmentsForVideo } from "./utils/segmentData";
 import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
+import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
 
 cleanPage();
 
@@ -173,7 +174,7 @@ let popupInitialised = false;
 
 let submissionNotice: SubmissionNotice = null;
 
-let lastResponseStatus: number;
+let lastResponseStatus: number | Error | string;
 
 // Contains all of the functions and variables needed by the skip notice
 const skipNoticeContentContainer: ContentContainer = () => ({
@@ -1314,15 +1315,19 @@ function importExistingChapters(wait: boolean) {
 
 async function lockedCategoriesLookup(): Promise<void> {
     const hashPrefix = (await getHash(getVideoID(), 1)).slice(0, 4);
-    const response = await asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
+    try {
+        const response = await asyncRequestToServer("GET", "/api/lockCategories/" + hashPrefix);
 
-    if (response.ok) {
-        try {
+        if (response.ok) {
             const categoriesResponse = JSON.parse(response.responseText).filter((lockInfo) => lockInfo.videoID === getVideoID())[0]?.categories;
             if (Array.isArray(categoriesResponse)) {
                 lockedCategories = categoriesResponse;
             }
-        } catch (e) { } //eslint-disable-line no-empty
+        } else if (response.status !== 404) {
+            logRequest(response, "SB", "locked categories")
+        }
+    } catch (e) {
+        console.warn(`[SB] Caught error while looking up category locks for hashprefix ${hashPrefix}`, e)
     }
 }
 
@@ -1724,7 +1729,11 @@ function sendTelemetryAndCount(skippingSegments: SponsorTime[], secondsSkipped: 
                 counted = true;
             }
 
-            if (fullSkip) asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID + "&videoID=" + getVideoID());
+            if (fullSkip) asyncRequestToServer("POST", "/api/viewedVideoSponsorTime?UUID=" + segment.UUID + "&videoID=" + getVideoID())
+                .then(r => {
+                    if (!r.ok) logRequest(r, "SB", "segment skip log");
+                })
+                .catch(e => console.warn("[SB] Caught error while attempting to log segment skip", e));
         }
     }
 }
@@ -2284,25 +2293,29 @@ function clearSponsorTimes() {
 async function vote(type: number, UUID: SegmentUUID, category?: Category, skipNotice?: SkipNoticeComponent): Promise<VoteResponse> {
     if (skipNotice !== null && skipNotice !== undefined) {
         //add loading info
-        skipNotice.addVoteButtonInfo.bind(skipNotice)(chrome.i18n.getMessage("Loading"))
-        skipNotice.setNoticeInfoMessage.bind(skipNotice)();
+        skipNotice.addVoteButtonInfo(chrome.i18n.getMessage("Loading"))
+        skipNotice.setNoticeInfoMessage();
     }
 
     const response = await voteAsync(type, UUID, category);
     if (response != undefined) {
         //see if it was a success or failure
         if (skipNotice != null) {
-            if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+            if ("error" in response) {
+                skipNotice.setNoticeInfoMessage(formatJSErrorMessage(response.error))
+                skipNotice.resetVoteButtonInfo();
+            } else if (response.ok || response.status === 429) {
                 //success (treat rate limits as a success)
-                skipNotice.afterVote.bind(skipNotice)(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
-            } else if (response.successType == -1) {
-                if (response.statusCode === 403 && response.responseText.startsWith("Vote rejected due to a tip from a moderator.")) {
+                skipNotice.afterVote(utils.getSponsorTimeFromUUID(sponsorTimes, UUID), type, category);
+            } else {
+                logRequest({headers: null, ...response}, "SB", "vote on segment");
+                if (response.status === 403 && response.responseText.startsWith("Vote rejected due to a tip from a moderator.")) {
                     openWarningDialog(skipNoticeContentContainer);
                 } else {
-                    skipNotice.setNoticeInfoMessage.bind(skipNotice)(getErrorMessage(response.statusCode, response.responseText))
+                    skipNotice.setNoticeInfoMessage(getLongErrorMessage(response.status, response.responseText))
                 }
 
-                skipNotice.resetVoteButtonInfo.bind(skipNotice)();
+                skipNotice.resetVoteButtonInfo();
             }
         }
     }
@@ -2339,7 +2352,7 @@ async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): 
             category: category,
             videoID: getVideoID()
         }, (response) => {
-            if (response.successType === 1) {
+            if (response.ok === true) {
                 // Change the sponsor locally
                 const segment = utils.getSponsorTimeFromUUID(sponsorTimes, UUID);
                 if (segment) {
@@ -2468,13 +2481,23 @@ async function sendSubmitMessage(): Promise<boolean> {
         }
     }
 
-    const response = await asyncRequestToServer("POST", "/api/skipSegments", {
-        videoID: getVideoID(),
-        userID: Config.config.userID,
-        segments: sponsorTimesSubmitting,
-        videoDuration: getVideoDuration(),
-        userAgent: extensionUserAgent(),
-    });
+    let response: FetchResponse;
+    try {
+        response = await asyncRequestToServer("POST", "/api/skipSegments", {
+            videoID: getVideoID(),
+            userID: Config.config.userID,
+            segments: sponsorTimesSubmitting,
+            videoDuration: getVideoDuration(),
+            userAgent: extensionUserAgent(),
+        });
+    } catch (e) {
+        console.error("[SB] Caught error while attempting to submit segments", e);
+        // Show that the upload failed
+        playerButtons.submit.button.style.animation = "unset";
+        playerButtons.submit.image.src = chrome.runtime.getURL("icons/PlayerUploadFailedIconSponsorBlocker.svg");
+        alert(formatJSErrorMessage(e));
+        return false;
+    }
 
     if (response.status === 200) {
         stopAnimation();
@@ -2523,7 +2546,8 @@ async function sendSubmitMessage(): Promise<boolean> {
         if (response.status === 403 && response.responseText.startsWith("Submission rejected due to a tip from a moderator.")) {
             openWarningDialog(skipNoticeContentContainer);
         } else {
-            alert(getErrorMessage(response.status, response.responseText));
+            logRequest(response, "SB", "segment submission");
+            alert(getLongErrorMessage(response.status, response.responseText));
         }
     }
 

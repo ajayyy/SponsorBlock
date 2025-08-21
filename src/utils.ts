@@ -6,6 +6,8 @@ import { waitFor } from "../maze-utils/src";
 import { findValidElementFromSelector } from "../maze-utils/src/dom";
 import { isSafari } from "../maze-utils/src/config";
 import { asyncRequestToServer } from "./utils/requests";
+import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
+import { formatJSErrorMessage, getLongErrorMessage } from "../maze-utils/src/formating";
 
 export default class Utils {
     
@@ -276,13 +278,24 @@ export default class Utils {
                 || !Config.config.trackDownvotes) return;
 
         if (segmentUUID.length < 60) {
-            const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
-                UUID: segmentUUID,
-                videoID
-            });
+            let segmentIDData: FetchResponse;
+            try {
+                segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
+                    UUID: segmentUUID,
+                    videoID
+                });
+            } catch (e) {
+                console.error("[SB] Caught error while trying to resolve the segment UUID to be hidden", e);
+                alert(`${chrome.i18n.getMessage("segmentHideFailed")}\n${formatJSErrorMessage(e)}`);
+                return;
+            }
 
             if (segmentIDData.ok && segmentIDData.responseText) {
                 segmentUUID = segmentIDData.responseText;
+            } else {
+                logRequest(segmentIDData, "SB", "segment UUID resolution");
+                alert(`${chrome.i18n.getMessage("segmentHideFailed")}\n${getLongErrorMessage(segmentIDData.status, segmentIDData.responseText)}`);
+                return;
             }
         }
 
