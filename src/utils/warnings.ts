@@ -1,4 +1,6 @@
 import { objectToURI } from "../../maze-utils/src";
+import { FetchResponse, logRequest } from "../../maze-utils/src/background-request-proxy";
+import { formatJSErrorMessage, getLongErrorMessage } from "../../maze-utils/src/formating";
 import { getHash } from "../../maze-utils/src/hash";
 import Config from "../config";
 import GenericNotice, { NoticeOptions } from "../render/GenericNotice";
@@ -12,15 +14,26 @@ export interface ChatConfig {
 }
 
 export async function openWarningDialog(contentContainer: ContentContainer): Promise<void> {
-    const userInfo = await asyncRequestToServer("GET", "/api/userInfo", {
-        publicUserID: await getHash(Config.config.userID),
-        values: ["warningReason"]
-    });
+    let userInfo: FetchResponse;
+    try {
+        userInfo = await asyncRequestToServer("GET", "/api/userInfo", {
+            publicUserID: await getHash(Config.config.userID),
+            values: ["warningReason"]
+        });
+    } catch (e) {
+        console.error("[SB] Caught error while trying to fetch user's active warnings", e)
+        return;
+    }
 
     if (userInfo.ok) {
         const warningReason = JSON.parse(userInfo.responseText)?.warningReason;
-        const userNameData = await asyncRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID);
-        const userName = userNameData.ok ? JSON.parse(userNameData.responseText).userName : "";
+        let userName = "";
+        try {
+            const userNameData = await asyncRequestToServer("GET", "/api/getUsername?userID=" + Config.config.userID);
+            userName = userNameData.ok ? JSON.parse(userNameData.responseText).userName : "";
+        } catch (e) {
+            console.warn("[SB] Caught non-fatal error while trying to resolve user's username", e);
+        }
         const publicUserID = await getHash(Config.config.userID);
 
         let notice: GenericNotice = null;
@@ -42,15 +55,22 @@ export async function openWarningDialog(contentContainer: ContentContainer): Pro
                 {
                     name: chrome.i18n.getMessage("warningConfirmButton"),
                     listener: async () => {
-                        const result = await asyncRequestToServer("POST", "/api/warnUser", {
-                            userID: Config.config.userID,
-                            enabled: false
-                        });
+                        let result: FetchResponse;
+                        try {
+                            result = await asyncRequestToServer("POST", "/api/warnUser", {
+                                userID: Config.config.userID,
+                                enabled: false
+                            });
+                        } catch (e) {
+                            console.error("[SB] Caught error while trying to acknowledge user's active warning", e);
+                            alert(formatJSErrorMessage(e));
+                        }
 
                         if (result.ok) {
                             notice?.close();
                         } else {
-                            alert(`${chrome.i18n.getMessage("warningError")} ${result.status}`);
+                            logRequest(result, "SB", "warning acknowledgement");
+                            alert(getLongErrorMessage(result.status, result.responseText));
                         }
                     }
             }],
@@ -58,6 +78,8 @@ export async function openWarningDialog(contentContainer: ContentContainer): Pro
         };
 
         notice = new GenericNotice(contentContainer, "warningNotice", options);
+    } else {
+        logRequest(userInfo, "SB", "user's active warnings");
     }
 }
 

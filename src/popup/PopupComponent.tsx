@@ -17,6 +17,7 @@ export enum LoadingStatus {
     SegmentsFound,
     NoSegmentsFound,
     ConnectionError,
+    JSError,
     StillLoading,
     NoVideo
 }
@@ -24,6 +25,7 @@ export enum LoadingStatus {
 export interface LoadingData {
     status: LoadingStatus;
     code?: number;
+    error?: Error | string;
 }
 
 let loadRetryCount = 0;
@@ -302,7 +304,9 @@ function getVideoStatusText(status: LoadingData): string {
         case LoadingStatus.NoSegmentsFound:
             return chrome.i18n.getMessage("sponsor404");
         case LoadingStatus.ConnectionError:
-            return chrome.i18n.getMessage("connectionError") + status.code;
+            return `${chrome.i18n.getMessage("connectionError")} ${chrome.i18n.getMessage("errorCode").replace("{code}", `${status.code}`)}`;
+        case LoadingStatus.JSError:
+            return `${chrome.i18n.getMessage("connectionError")} ${status.error}`;
         case LoadingStatus.StillLoading:
             return chrome.i18n.getMessage("segmentsStillLoading");
         case LoadingStatus.NoVideo:
@@ -350,6 +354,11 @@ function segmentsLoaded(response: IsInfoFoundMessageResponse, props: SegmentsLoa
         props.setStatus({
             status: LoadingStatus.SegmentsFound
         });
+    } else if (typeof response.status !== "number") {
+        props.setStatus({
+            status: LoadingStatus.JSError,
+            error: response.status,
+        })
     } else if (response.status === 404 || response.status === 200) {
         props.setStatus({
             status: LoadingStatus.NoSegmentsFound

@@ -3,7 +3,7 @@ import { ActionType, SegmentUUID, SponsorHideType, SponsorTime, VideoID } from "
 import Config from "../config";
 import { waitFor } from "../../maze-utils/src";
 import { shortCategoryName } from "../utils/categoryUtils";
-import { getErrorMessage, getFormattedTime } from "../../maze-utils/src/formating";
+import { formatJSErrorMessage, getFormattedTime, getShortErrorMessage } from "../../maze-utils/src/formating";
 import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { asyncRequestToServer } from "../utils/requests";
 import { Message, MessageResponse, VoteResponse } from "../messageTypes";
@@ -11,6 +11,7 @@ import { LoadingStatus } from "./PopupComponent";
 import GenericNotice from "../render/GenericNotice";
 import { exportTimes } from "../utils/exporter";
 import { copyToClipboardPopup } from "./popupUtils";
+import { logRequest } from "../../maze-utils/src/background-request-proxy";
 
 interface SegmentListComponentProps {
     videoID: VideoID;
@@ -192,20 +193,26 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, startingLooped,
                     onClick={async (e) => {
                         const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
 
-                        if (segment.UUID.length > 60) {
-                            copyToClipboardPopup(segment.UUID, sendMessage);
-                        } else {
-                            const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
-                                UUID: segment.UUID,
-                                videoID: videoID
-                            });
-                
-                            if (segmentIDData.ok && segmentIDData.responseText) {
-                                copyToClipboardPopup(segmentIDData.responseText, sendMessage);
+                        try {
+                            if (segment.UUID.length > 60) {
+                                copyToClipboardPopup(segment.UUID, sendMessage);
+                            } else {
+                                const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
+                                    UUID: segment.UUID,
+                                    videoID: videoID
+                                });
+                                if (segmentIDData.ok && segmentIDData.responseText) {
+                                    copyToClipboardPopup(segmentIDData.responseText, sendMessage);
+                                } else {
+                                    logRequest(segmentIDData, "SB", "segment UUID resolution");
+                                }
                             }
+                        } catch (e) {
+                            console.error("[SB] Caught error while attempting to resolve and copy segment UUID", e);
+                        } finally {
+                            stopAnimation();
                         }
 
-                        stopAnimation();
                     }}/>
                 {
                     segment.actionType === ActionType.Chapter &&
@@ -298,14 +305,24 @@ async function vote(props: {
     }) as VoteResponse;
 
     if (response != undefined) {
+        let messageDuration = 1_500;
         // See if it was a success or failure
-        if (response.successType == 1 || (response.successType == -1 && response.statusCode == 429)) {
+        if ("error" in response) {
+            // JS error
+            console.error("[SB] Caught error while attempting to submit a vote", response.error);
+            props.setVoteMessage(formatJSErrorMessage(response.error));
+            messageDuration = 10_000;
+        }
+        else if (response.ok || response.status === 429) {
             // Success (treat rate limits as a success)
             props.setVoteMessage(chrome.i18n.getMessage("voted"));
-        } else if (response.successType == -1) {
-            props.setVoteMessage(getErrorMessage(response.statusCode, response.responseText));
+        } else {
+            // Error
+            logRequest({headers: null, ...response}, "SB", "vote on segment");
+            props.setVoteMessage(getShortErrorMessage(response.status, response.responseText));
+            messageDuration = 10_000;
         }
-        setTimeout(() => props.setVoteMessage(null), 1500);
+        setTimeout(() => props.setVoteMessage(null), messageDuration);
     }
 }
 
