@@ -32,7 +32,7 @@ export async function tryShowingDeArrowPromotion() {
                         const title = deArrowDataJson?.[getVideoID()]?.titles?.[0];
                         if (title && title.title && (title.locked || title.votes > 0)) {
                             Config.config.showDeArrowPromotion = false;
-        
+
                             tooltip = new Tooltip({
                                 text: chrome.i18n.getMessage("DeArrowTitleReplacementSuggestion") + "\n\n" + title.title,
                                 linkOnClick: () => {

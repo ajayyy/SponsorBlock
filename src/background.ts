@@ -3,7 +3,7 @@ import * as CompileConfig from "../config.json";
 import Config from "./config";
 import { Registration } from "./types";
 import "content-scripts-register-polyfill";
-import { sendRealRequestToCustomServer, setupBackgroundRequestProxy } from "../maze-utils/src/background-request-proxy";
+import { sendRealRequestToCustomServer, serializeOrStringify, setupBackgroundRequestProxy } from "../maze-utils/src/background-request-proxy";
 import { setupTabUpdates } from "../maze-utils/src/tab-updates";
 import { generateUserID } from "../maze-utils/src/setup";
 
@@ -227,33 +227,16 @@ async function submitVote(type: number, UUID: string, category: string, videoID:
 
     try {
         const response = await asyncRequestToServer("POST", "/api/voteOnSponsorTime?UUID=" + UUID + "&videoID=" + videoID + "&userID=" + userID + typeSection);
-    
-        if (response.ok) {
-            return {
-                successType: 1,
-                responseText: await response.text()
-            };
-        } else if (response.status == 405) {
-            //duplicate vote
-            return {
-                successType: 0,
-                statusCode: response.status,
-                responseText: await response.text()
-            };
-        } else {
-            //error while connect
-            return {
-                successType: -1,
-                statusCode: response.status,
-                responseText: await response.text()
-            };
-        }
-    } catch (e) {
-        console.error(e);
+
         return {
-            successType: -1,
-            statusCode: -1,
-            responseText: ""
+            status: response.status,
+            ok: response.ok,
+            responseText: await response.text(),
+        };
+    } catch (e) {
+        console.error("Error while voting:", e);
+        return {
+            error: serializeOrStringify(e),
         };
     }
 }
