@@ -7,6 +7,7 @@ module.exports = env => {
     env.mode = mode;
 
     return merge(common(env), {
-        mode
+        mode,
+        devtool: "source-map",
     });
 };
