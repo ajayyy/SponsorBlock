@@ -42,6 +42,7 @@ class BuildManifest {
     apply() {
         const distFolder = path.resolve(__dirname, "../dist/");
         const distManifestFile = path.resolve(distFolder, "manifest.json");
+        const [owner, repo_name] = (process.env.GITHUB_REPOSITORY ?? "ajayyy/SponsorBlock").split("/");
 
         // Add missing manifest elements
         if (this.options.browser.toLowerCase() === "firefox") {
@@ -66,7 +67,6 @@ class BuildManifest {
         }
 
         if (this.options.autoupdate === true && this.options.browser.toLowerCase() === "firefox") {
-            const [owner, repo_name] = process.env.GITHUB_REPOSITORY.split("/");
             manifest.browser_specific_settings.gecko.update_url = `https://${owner.toLowerCase()}.github.io/${repo_name}/updates.json`;
         }
 
