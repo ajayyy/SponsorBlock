@@ -609,6 +609,8 @@ function activatePrivateTextChange(element: HTMLElement) {
                     if (userInfo.warnings > 0 || userInfo.banned) {
                         setButton.classList.add("hidden");
                     }
+                }).catch(e => {
+                    console.error("[SB] Caught error while fetching user info for the new user ID", e)
                 });
             }
 
