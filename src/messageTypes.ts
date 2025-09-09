@@ -83,7 +83,7 @@ export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoF
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
-    status: number;
+    status: number | string | Error;
     sponsorTimes: SponsorTime[];
     time: number;
     onMobileYouTube: boolean;
@@ -128,11 +128,13 @@ export type MessageResponse =
     | LogResponse
     | LoopedChapterResponse;
 
-export interface VoteResponse {
-    successType: number;
-    statusCode: number;
+export type VoteResponse = {
+    status: number;
+    ok: boolean;
     responseText: string;
-}
+} | {
+    error: Error | string;
+};
 
 interface ImportSegmentsResponse {
     importedSegments: SponsorTime[];

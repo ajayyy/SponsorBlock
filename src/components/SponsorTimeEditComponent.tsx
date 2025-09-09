@@ -12,6 +12,7 @@ import { defaultPreviewTime } from "../utils/constants";
 import { getVideo, getVideoDuration } from "../../maze-utils/src/video";
 import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { Tooltip } from "../render/Tooltip";
+import { logRequest } from "../../maze-utils/src/background-request-proxy";
 
 export interface SponsorTimeEditProps {
     index: number;
@@ -781,23 +782,26 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (this.props.contentContainer().channelIDInfo.status !== ChannelIDStatus.Found) return;
 
         this.fetchingSuggestions = true;
-        const result = await asyncRequestToServer("GET", "/api/chapterNames", {
-            description,
-            channelID: this.props.contentContainer().channelIDInfo.id
-        });
-
-        if (result.ok) {
-            try {
+        try {
+            const result = await asyncRequestToServer("GET", "/api/chapterNames", {
+                description,
+                channelID: this.props.contentContainer().channelIDInfo.id
+            });
+            if (result.ok) {
                 const names = JSON.parse(result.responseText) as {description: string}[];
                 this.setState({
                     suggestedNames: names.map(n => ({
                         label: n.description
                     }))
                 });
-            } catch (e) {} //eslint-disable-line no-empty
+            } else if (result.status !== 404) {
+                logRequest(result, "SB", "chapter suggestion")
+            }
+        } catch (e) {
+            console.warn("[SB] Caught error while fetching chapter suggestions", e);
+        } finally {
+            this.fetchingSuggestions = false;
         }
-
-        this.fetchingSuggestions = false;
     }
 
     configUpdate(): void {

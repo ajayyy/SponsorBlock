@@ -6,6 +6,7 @@ import { ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
 import { extensionUserAgent } from "../../maze-utils/src";
+import { logRequest, serializeOrStringify } from "../../maze-utils/src/background-request-proxy";
 
 const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
     return {
@@ -18,7 +19,7 @@ const pendingList: Record<VideoID, Promise<SegmentResponse>> = {};
 
 export interface SegmentResponse {
     segments: SponsorTime[] | null;
-    status: number;
+    status: number | Error | string;
 }
 
 export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean): Promise<SegmentResponse> {
@@ -37,8 +38,18 @@ export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean
     const pendingData = fetchSegmentsForVideo(videoID);
     pendingList[videoID] = pendingData;
 
-    const result = await pendingData;
-    delete pendingList[videoID];
+    let result: Awaited<typeof pendingData>;
+    try {
+        result = await pendingData;
+    } catch (e) {
+        console.error("[SB] Caught error while fetching segments", e);
+        return {
+            segments: null,
+            status: serializeOrStringify(e),
+        }
+    } finally {
+        delete pendingList[videoID];
+    }
 
     return result;
 }
@@ -82,6 +93,7 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
             segmentDataCache.setupCache(videoID);
         }
     }
+    if (response.status !== 404) logRequest(response, "SB", "skip segments");
 
     return {
         segments: null,
