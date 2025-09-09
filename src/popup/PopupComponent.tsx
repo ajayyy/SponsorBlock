@@ -1,16 +1,17 @@
 import * as React from "react";
 import { YourWorkComponent } from "./YourWorkComponent";
-// import { ToggleOptionComponent } from "./ToggleOptionComponent";
-// import { FormattingOptionsComponent } from "./FormattingOptionsComponent";
 import { isSafari } from "../../maze-utils/src/config";
 import { showDonationLink } from "../utils/configUtils";
-import Config, { generateDebugDetails } from "../config";
-import { GetChannelIDResponse, IsInfoFoundMessageResponse, LogResponse, Message, MessageResponse, PopupMessage } from "../messageTypes";
+import Config, { ConfigurationID, generateDebugDetails } from "../config";
+import { IsInfoFoundMessageResponse, LogResponse, Message, MessageResponse, PopupMessage } from "../messageTypes";
 import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { SegmentListComponent } from "./SegmentListComponent";
 import { ActionType, SegmentUUID, SponsorSourceType, SponsorTime } from "../types";
 import { SegmentSubmissionComponent } from "./SegmentSubmissionComponent";
 import { copyToClipboardPopup } from "./popupUtils";
+import { getSkipProfileID, getSkipProfileIDForChannel, getSkipProfileIDForTab, getSkipProfileIDForTime, getSkipProfileIDForVideo, setCurrentTabSkipProfile } from "../utils/skipProfiles";
+import { SelectOptionComponent } from "../components/options/SelectOptionComponent";
+import * as Video from "../../maze-utils/src/video";
 
 export enum LoadingStatus {
     Loading,
@@ -26,6 +27,40 @@ export interface LoadingData {
     code?: number;
 }
 
+type SkipProfileAction = "forJustThisVideo" | "forThisChannel" | "forThisTab" | "forAnHour" | null;
+interface SkipProfileOption {
+    name: SkipProfileAction;
+    active: () => boolean;
+}
+
+interface SegmentsLoadedProps {
+    setStatus: (status: LoadingData) => void;
+    setVideoID: (videoID: string | null) => void;
+    setCurrentTime: (time: number) => void;
+    setSegments: (segments: SponsorTime[]) => void;
+    setLoopedChapter: (loopedChapter: SegmentUUID | null) => void;
+}
+
+interface LoadSegmentsProps extends SegmentsLoadedProps {
+    updating: boolean;
+}
+
+interface SkipProfileRadioButtonsProps {
+    selected: SkipProfileAction;
+    setSelected: (s: SkipProfileAction, updateConfig: boolean) => void;
+
+    disabled: boolean;
+}
+
+interface SkipOptionActionComponentProps {
+    selected: boolean;
+    setSelected: (s: boolean) => void;
+    highlighted: boolean;
+    disabled: boolean;
+    overridden: boolean;
+    label: string;
+}
+
 let loadRetryCount = 0;
 
 export const PopupComponent = () => {
@@ -33,7 +68,6 @@ export const PopupComponent = () => {
         status: LoadingStatus.Loading
     });
     const [extensionEnabled, setExtensionEnabled] = React.useState(!Config.config!.disableSkipping);
-    const [channelWhitelisted, setChannelWhitelisted] = React.useState<boolean | null>(null);
     const [showForceChannelCheckWarning, setShowForceChannelCheckWarning] = React.useState(false);
     const [showNoticeButton, setShowNoticeButton] = React.useState(Config.config!.dontShowNotice);
 
@@ -47,7 +81,6 @@ export const PopupComponent = () => {
         loadSegments({
             updating: false,
             setStatus,
-            setChannelWhitelisted,
             setVideoID,
             setCurrentTime,
             setSegments,
@@ -56,7 +89,6 @@ export const PopupComponent = () => {
 
         setupComPort({
             setStatus,
-            setChannelWhitelisted,
             setVideoID,
             setCurrentTime,
             setSegments,
@@ -107,7 +139,6 @@ export const PopupComponent = () => {
                     loadSegments({
                         updating: true,
                         setStatus,
-                        setChannelWhitelisted,
                         setVideoID,
                         setCurrentTime,
                         setSegments,
@@ -129,54 +160,10 @@ export const PopupComponent = () => {
 
             {/* Toggle Box */}
             <div className="sbControlsMenu">
-                {/* github: mbledkowski/toggle-switch */}
-                {channelWhitelisted !== null && (
-                    <label id="whitelistButton" htmlFor="whitelistToggle" className="toggleSwitchContainer sbControlsMenu-item" role="button" tabIndex={0}>
-                        <input type="checkbox" 
-                            style={{ "display": "none" }} 
-                            id="whitelistToggle" 
-                            checked={channelWhitelisted}
-                            onChange={async (e) => {
-                                const response = await sendMessage({ message: 'getChannelID' }) as GetChannelIDResponse;
-                                if (!response.channelID) {
-                                    if (response.isYTTV) {
-                                        alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
-                                    } else {
-                                        alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
-                                    }
-
-                                    return;
-                                }
-
-                                const whitelistedChannels = Config.config.whitelistedChannels ?? [];
-                                if (e.target.checked) {
-                                    whitelistedChannels.splice(whitelistedChannels.indexOf(response.channelID), 1);
-                                } else {
-                                    whitelistedChannels.push(response.channelID);
-                                }
-                                Config.config.whitelistedChannels = whitelistedChannels;
-
-                                setChannelWhitelisted(!e.target.checked);
-                                if (!Config.config.forceChannelCheck) setShowForceChannelCheckWarning(true);
-
-                                // Send a message to the client
-                                sendMessage({
-                                    message: 'whitelistChange',
-                                    value: !e.target.checked
-                                });
-
-                            }}/>
-                        <svg viewBox="0 0 24 24" width="23" height="23" className={"SBWhitelistIcon sbControlsMenu-itemIcon " + (channelWhitelisted ? " rotated" : "")}>
-                            <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
-                        </svg>
-                        <span id="whitelistChannel" className={channelWhitelisted ? " hidden" : ""}>
-                            {chrome.i18n.getMessage("whitelistChannel")}
-                        </span>
-                        <span id="unwhitelistChannel" className={!channelWhitelisted ? " hidden" : ""}>
-                            {chrome.i18n.getMessage("removeFromWhitelist")}
-                        </span>
-                    </label>
-                )}
+                <SkipProfileButton
+                    videoID={videoID}
+                    setShowForceChannelCheckWarning={setShowForceChannelCheckWarning}
+                />
                 <label id="disableExtension" htmlFor="toggleSwitch" className="toggleSwitchContainer sbControlsMenu-item" role="button" tabIndex={0}>
                     <span className="toggleSwitchContainer-switch">
                         <input type="checkbox" 
@@ -310,19 +297,6 @@ function getVideoStatusText(status: LoadingData): string {
     }
 }
 
-interface SegmentsLoadedProps {
-    setStatus: (status: LoadingData) => void;
-    setChannelWhitelisted: (whitelisted: boolean | null) => void;
-    setVideoID: (videoID: string | null) => void;
-    setCurrentTime: (time: number) => void;
-    setSegments: (segments: SponsorTime[]) => void;
-    setLoopedChapter: (loopedChapter: SegmentUUID | null) => void;
-}
-
-interface LoadSegmentsProps extends SegmentsLoadedProps {
-    updating: boolean;
-}
-
 async function loadSegments(props: LoadSegmentsProps): Promise<void> {
     const response = await sendMessage({ message: "isInfoFound", updating: props.updating }) as IsInfoFoundMessageResponse;
 
@@ -367,8 +341,10 @@ function segmentsLoaded(response: IsInfoFoundMessageResponse, props: SegmentsLoa
 
     
     props.setVideoID(response.videoID);
+    Video.setVideoID(response.videoID as Video.VideoID);
     props.setCurrentTime(response.time);
-    props.setChannelWhitelisted(response.channelWhitelisted);
+    Video.setChanelIDInfo(response.channelID, response.channelAuthor);
+    setCurrentTabSkipProfile(response.currentTabSkipProfileID);
     props.setSegments((response.sponsorTimes || [])
         .filter((segment) => segment.source === SponsorSourceType.Server)
         .sort((a, b) => b.segment[1] - a.segment[1])
@@ -390,16 +366,13 @@ function sendMessage(request: Message): Promise<MessageResponse> {
     });
 }
 
-interface ComPortProps extends SegmentsLoadedProps {
-}
-
-function setupComPort(props: ComPortProps): void {
+function setupComPort(props: SegmentsLoadedProps): void {
     const port = chrome.runtime.connect({ name: "popup" });
     port.onDisconnect.addListener(() => setupComPort(props));
     port.onMessage.addListener((msg) => onMessage(props, msg));
 }
 
-function onMessage(props: ComPortProps, msg: PopupMessage) {
+function onMessage(props: SegmentsLoadedProps, msg: PopupMessage) {
     switch (msg.message) {
         case "time":
             props.setCurrentTime(msg.time);
@@ -412,7 +385,8 @@ function onMessage(props: ComPortProps, msg: PopupMessage) {
                 status: LoadingStatus.StillLoading
             });
             props.setVideoID(msg.videoID);
-            props.setChannelWhitelisted(msg.whitelisted);
+            Video.setVideoID(msg.videoID as Video.VideoID);
+            Video.setChanelIDInfo(msg.channelID, msg.channelAuthor);
             props.setSegments([]);
             break;
     }
@@ -458,3 +432,258 @@ window.addEventListener("message", async (e): Promise<void> => {
         document.head.appendChild(style);
     }
 });
+
+function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarning: (v: boolean) => void}): JSX.Element {
+    const [menuOpen, setMenuOpen] = React.useState(false);
+    const skipProfileSet = getSkipProfileIDForChannel() !== null;
+
+    return (
+        <>
+            <label id="skipProfileButton" 
+                    htmlFor="skipProfileToggle"
+                    className="toggleSwitchContainer sbControlsMenu-item"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => {
+                        if (menuOpen && !Config.config.forceChannelCheck && getSkipProfileID() !== null) {
+                            props.setShowForceChannelCheckWarning(true);
+                        }
+
+                        setMenuOpen(!menuOpen);
+                    }}>
+                <svg viewBox="0 0 24 24" width="23" height="23" className={"SBWhitelistIcon sbControlsMenu-itemIcon " + (menuOpen ? " rotated" : "")}>
+                    <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
+                </svg>
+                <span id="whitelistChannel" className={(menuOpen || skipProfileSet) ? " hidden" : ""}>
+                    {chrome.i18n.getMessage("addChannelToSkipProfile")}
+                </span>
+                <span id="whitelistChannel" className={(menuOpen || !skipProfileSet) ? " hidden" : ""}>
+                    {chrome.i18n.getMessage("editChannelsSkipProfile")}
+                </span>
+                <span id="unwhitelistChannel" className={!menuOpen ? " hidden" : ""}>
+                    {chrome.i18n.getMessage("closeSkipProfileMenu")}
+                </span>
+            </label>
+
+            {
+                props.videoID &&
+                <SkipProfileMenu open={menuOpen} />
+            }
+        </>
+    );
+}
+
+const skipProfileOptions: SkipProfileOption[] = [{
+        name: "forAnHour",
+        active: () => getSkipProfileIDForTime() !== null
+    }, {
+        name: "forThisTab",
+        active: () => getSkipProfileIDForTab() !== null
+    }, {
+        name: "forJustThisVideo",
+        active: () => getSkipProfileIDForVideo() !== null
+    }, {
+        name: "forThisChannel",
+        active: () => getSkipProfileIDForChannel() !== null
+    }];
+
+function SkipProfileMenu(props: {open: boolean}): JSX.Element {
+    const [configID, setConfigID] = React.useState<ConfigurationID | null>(null);
+    const [selectedSkipProfileAction, setSelectedSkipProfileAction] = React.useState<SkipProfileAction>(null);
+    const [allSkipProfiles, setAllSkipProfiles] = React.useState(Object.entries(Config.local!.skipProfiles));
+
+    React.useEffect(() => {
+        if (props.open) {
+            const channelInfo = Video.getChannelIDInfo();
+            if (!channelInfo) {
+                if (Video.isOnYTTV()) {
+                    alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
+                } else {
+                    alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
+                }
+            }
+
+            setConfigID(getSkipProfileID());
+        }
+    }, [props.open]);
+
+    React.useEffect(() => {
+        Config.configLocalListeners.push(() => {
+            setAllSkipProfiles(Object.entries(Config.local!.skipProfiles));
+        });
+    }, []);
+
+    return (
+        <div id="skipProfileMenu" className={`${!props.open ? " hidden" : ""}`}
+            aria-label={chrome.i18n.getMessage("SkipProfileMenu")}>
+            <div style={{position: "relative"}}>
+                <SelectOptionComponent
+                    id="sbSkipProfileSelection"
+                    title={chrome.i18n.getMessage("SelectASkipProfile")}
+                    onChange={(value) => {
+                        if (value === "new") {
+                            chrome.runtime.sendMessage({ message: "openConfig", hash: "newProfile" });
+                            return;
+                        }
+                        
+                        const configID = value === "null" ? null : value as ConfigurationID;
+                        setConfigID(configID);
+                        if (configID === null) {
+                            setSelectedSkipProfileAction(null);
+                        }
+
+                        if (selectedSkipProfileAction) {
+                            updateSkipProfileSetting(selectedSkipProfileAction, configID);
+
+                            if (configID === null) {
+                                for (const option of skipProfileOptions) {
+                                    if (option.name !== selectedSkipProfileAction && option.active()) {
+                                        updateSkipProfileSetting(option.name, null);
+                                    }
+                                }
+                            }
+                        }
+                    }}
+                    value={configID ?? "null"}
+                    options={[{
+                        value: "null",
+                        label: chrome.i18n.getMessage("DefaultConfiguration")
+                    }].concat(allSkipProfiles.map(([key, value]) => ({
+                        value: key,
+                        label: value.name
+                    }))).concat([{
+                        value: "new",
+                        label: chrome.i18n.getMessage("CreateNewConfiguration")
+                    }])}
+                />
+
+                <SkipProfileRadioButtons
+                    selected={selectedSkipProfileAction}
+                    setSelected={(s, updateConfig) => {
+                        if (updateConfig) {
+                            if (s === null) {
+                                updateSkipProfileSetting(selectedSkipProfileAction, null);
+                            } else {
+                                updateSkipProfileSetting(s, configID);
+                            }
+                        } else if (s !== null) {
+                            setConfigID(getSkipProfileID());
+                        }
+
+                        setSelectedSkipProfileAction(s);
+                    }}
+                    disabled={configID === null}
+                />
+            </div>
+        </div>
+    );
+}
+
+function SkipProfileRadioButtons(props: SkipProfileRadioButtonsProps): JSX.Element {
+    const result: JSX.Element[] = [];
+
+    React.useEffect(() => {
+        if (props.selected === null) {
+            for (const option of skipProfileOptions) {
+                if (option.active()) {
+                    props.setSelected(option.name, false);
+                    return;
+                }
+            }
+        }
+    }, [props.selected]);
+
+    let alreadySelected = false;
+    for (const option of skipProfileOptions) {
+        const highlighted = option.active() && props.selected !== option.name;
+        const overridden = !highlighted && alreadySelected;
+        result.push(
+            <SkipOptionActionComponent
+                highlighted={highlighted}
+                label={chrome.i18n.getMessage(`skipProfile_${option.name}`)}
+                selected={props.selected === option.name}
+                overridden={overridden}
+                disabled={props.disabled || overridden}
+                key={option.name}
+                setSelected={(s) => {
+                    props.setSelected(s ? option.name : null, true);
+                }}/>
+        );
+
+        if (props.selected === option.name) {
+            alreadySelected = true;
+        }
+    }
+
+    return <div id="skipProfileActions">
+        {result}
+    </div>
+}
+
+function SkipOptionActionComponent(props: SkipOptionActionComponentProps): JSX.Element {
+    let title = "";
+    if (props.selected) {
+        title = chrome.i18n.getMessage("clickToNotApplyThisProfile");
+    } else if ((props.highlighted && !props.disabled) || props.overridden) {
+        title = chrome.i18n.getMessage("skipProfileBeingOverriddenByHigherPriority");
+    } else if (!props.highlighted && !props.disabled) {
+        title = chrome.i18n.getMessage("clickToApplyThisProfile");
+    } else if (props.disabled) {
+        title = chrome.i18n.getMessage("selectASkipProfileFirst");
+    }
+
+    return (
+        <div className={`skipOptionAction ${props.selected ? "selected" : ""} ${props.highlighted ? "highlighted" : ""} ${props.disabled ? "disabled" : ""}`}
+            title={title}
+            role="button"
+            tabIndex={0}
+            aria-pressed={props.selected}
+            onClick={() => {
+                // Need to uncheck or disable a higher priority option first
+                if (!props.disabled && !props.highlighted) {
+                    props.setSelected(!props.selected);
+                }
+            }}>
+            {props.label}
+        </div>
+    );
+}
+
+function updateSkipProfileSetting(action: SkipProfileAction, configID: ConfigurationID | null) {
+    switch (action) {
+        case "forAnHour":
+            Config.local!.skipProfileTemp = configID ? { time: Date.now(), configID } : null;
+            break;
+        case "forThisTab":
+            setCurrentTabSkipProfile(configID);
+
+            sendMessage({
+                message: "setCurrentTabSkipProfile",
+                configID
+            });
+            break;
+        case "forJustThisVideo":
+            if (configID) {
+                Config.local!.channelSkipProfileIDs[Video.getVideoID()!] = configID;
+            } else {
+                delete Config.local!.channelSkipProfileIDs[Video.getVideoID()!];
+            }
+
+            Config.forceLocalUpdate("channelSkipProfileIDs");
+            break;
+        case "forThisChannel": {
+            const channelInfo = Video.getChannelIDInfo();
+
+            if (configID) {
+                Config.local!.channelSkipProfileIDs[channelInfo.id] = configID;
+                delete Config.local!.channelSkipProfileIDs[channelInfo.author];
+            } else {
+                delete Config.local!.channelSkipProfileIDs[channelInfo.id];
+                delete Config.local!.channelSkipProfileIDs[channelInfo.author];
+            }
+
+            Config.forceLocalUpdate("channelSkipProfileIDs");
+            break;
+        }
+    }
+}

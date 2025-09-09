@@ -2,7 +2,7 @@ import { DataCache } from "../../maze-utils/src/cache";
 import { getHash, HashedValue } from "../../maze-utils/src/hash";
 import Config, {  } from "../config";
 import * as CompileConfig from "../../config.json";
-import { ActionType, ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
+import { ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
 import { extensionUserAgent } from "../../maze-utils/src";
@@ -60,12 +60,9 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
     });
 
     if (response.ok) {
-        const enabledActionTypes = getEnabledActionTypes();
-
         const receivedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === videoID)
                     ?.map((video) => video.segments)?.[0]
-                    ?.filter((segment) => enabledActionTypes.includes(segment.actionType))
                     ?.map((segment) => ({
                         ...segment,
                         source: SponsorSourceType.Server
@@ -90,16 +87,4 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
         segments: null,
         status: response.status
     };
-}
-
-function getEnabledActionTypes(forceFullVideo = false): ActionType[] {
-    const actionTypes = [ActionType.Skip, ActionType.Poi, ActionType.Chapter];
-    if (Config.config.muteSegments) {
-        actionTypes.push(ActionType.Mute);
-    }
-    if (Config.config.fullVideoSegments || forceFullVideo) {
-        actionTypes.push(ActionType.Full);
-    }
-
-    return actionTypes;
 }

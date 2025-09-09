@@ -277,8 +277,8 @@
   border-radius: 8px;
   background-color: var(--sb-grey-bg-color);
   justify-content: space-evenly;
-  overflow: hidden;
   display: flex;
+  position: relative;
 }
 .sbControlsMenu-item {
   display: flex;
@@ -627,4 +627,62 @@
 .sbPopupButton {
   width: 16px;
   fill: var(--sb-main-fg-color);
+}
+
+#skipProfileMenu {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+
+  background-color: #292828;
+  border-radius: 10px;
+  padding: 10px;
+
+  transform: translateX(-50%);
+}
+
+#skipProfileActions {
+  padding-top: 10px;
+}
+
+.skipOptionAction {
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  font-size: 14px;
+  padding: 5px;
+  margin: 5px;
+
+  background-color: #222;
+  border-radius: 5px;
+
+  cursor: help;
+  user-select: none;
+
+  border-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+}
+.skipOptionAction:not(.highlighted, .disabled):hover {
+  background-color: var(--sb-grey-bg-color);
+}
+.skipOptionAction.selected {
+  border-color: var(--sb-red-bg-color);
+}
+.skipOptionAction.highlighted {
+  border-color: rgb(127, 0, 0);
+}
+.skipOptionAction:not(.highlighted, .disabled) {
+  cursor: pointer;
+}
+.skipOptionAction.disabled {
+  color: #808080
+}
+
+.optionsSelector {
+    background-color: #c00000;
+    color: white;
+    
+    border: none;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
 }

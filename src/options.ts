@@ -414,7 +414,7 @@ async function shouldHideOption(element: Element): Promise<boolean> {
 /**
  * Called when the config is updated
  */
-function optionsConfigUpdateListener(changes: StorageChangesObject) {
+function optionsConfigUpdateListener() {
     const optionsContainer = document.getElementById("options");
     const optionsElements = optionsContainer.querySelectorAll("*");
 
@@ -423,12 +423,6 @@ function optionsConfigUpdateListener(changes: StorageChangesObject) {
             case "display":
                 updateDisplayElement(<HTMLElement> optionsElements[i])
                 break;
-        }
-    }
-
-    if (changes.categorySelections || changes.payments) {
-        for (const chooser of categoryChoosers) {
-            chooser.update();
         }
     }
 }

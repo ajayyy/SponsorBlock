@@ -3,7 +3,6 @@ import {
     ActionType,
     Category,
     CategorySkipOption,
-    ChannelIDInfo,
     ChannelIDStatus,
     ContentContainer,
     ScheduledTime,
@@ -53,6 +52,7 @@ import { defaultPreviewTime } from "./utils/constants";
 import { onVideoPage } from "../maze-utils/src/pageInfo";
 import { getSegmentsForVideo } from "./utils/segmentData";
 import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
+import { getSkipProfileBool, getSkipProfileIDForTab, hideTooShortSegments, setCurrentTabSkipProfile } from "./utils/skipProfiles";
 
 cleanPage();
 
@@ -146,7 +146,6 @@ let lastCheckVideoTime = -1;
 // To determine if a video resolution change is happening
 let firstPlay = true;
 
-//is this channel whitelised from getting sponsors skipped
 let channelWhitelisted = false;
 
 let previewBar: PreviewBar = null;
@@ -227,7 +226,9 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 onMobileYouTube: isOnMobileYouTube(),
                 videoID: getVideoID(),
                 loopedChapter: loopedChapter?.UUID,
-                channelWhitelisted
+                channelID: getChannelIDInfo().id,
+                channelAuthor: getChannelIDInfo().author,
+                currentTabSkipProfileID: getSkipProfileIDForTab()
             });
 
             if (!request.updating && popupInitialised && document.getElementById("sponsorBlockPopupContainer") != null) {
@@ -355,6 +356,10 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 warn: window["SBLogs"].warn
             });
             break;
+        case "setCurrentTabSkipProfile":
+            setCurrentTabSkipProfile(request.configID);
+            channelIDChange();
+            break;
     }
 
     sendResponse({});
@@ -372,7 +377,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 updateVisibilityOfPlayerControlsButton()
                 break;
             case "categorySelections":
-                sponsorsLookup(true, true);
+                channelIDChange();
                 break;
             case "barTypes":
                 setCategoryColorCSSVariables();
@@ -384,9 +389,24 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
         }
     }
 }
+function contentLocalConfigUpdateListener(changes: StorageChangesObject) {
+    for (const key in changes) {
+        switch(key) {
+            case "channelSkipProfileIDs":
+            case "skipProfiles":
+            case "skipProfileTemp":
+                channelIDChange();
+                break;
+        }
+    }
+}
 
 if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
     Config.configSyncListeners.push(contentConfigUpdateListener);
+}
+
+if (!Config.configLocalListeners.includes(contentLocalConfigUpdateListener)) {
+    Config.configLocalListeners.push(contentLocalConfigUpdateListener);
 }
 
 function resetValues() {
@@ -465,7 +485,8 @@ function videoIDChange(): void {
     chrome.runtime.sendMessage({
         message: "videoChanged",
         videoID: getVideoID(),
-        whitelisted: channelWhitelisted
+        channelID: getChannelIDInfo().id,
+        channelAuthor: getChannelIDInfo().author
     });
 
     sponsorsLookup();
@@ -1209,16 +1230,6 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
             sponsorTimes = receivedSegments;
             existingChaptersImported = false;
 
-            // Hide all submissions smaller than the minimum duration
-            if (Config.config.minDuration !== 0) {
-                for (const segment of sponsorTimes) {
-                    const duration = segment.segment[1] - segment.segment[0];
-                    if (duration > 0 && duration < Config.config.minDuration) {
-                        segment.hidden = SponsorHideType.MinimumDuration;
-                    }
-                }
-            }
-
             if (keepOldSubmissions) {
                 for (const segment of oldSegments) {
                     const otherSegment = sponsorTimes.find((other) => segment.UUID === other.UUID);
@@ -1242,6 +1253,8 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
                     }
                 }
             }
+
+            hideTooShortSegments(sponsorTimes);
 
             if (!getVideo()) {
                 //there is still no video here
@@ -1275,7 +1288,9 @@ function notifyPopupOfSegments(): void {
         onMobileYouTube: isOnMobileYouTube(),
         videoID: getVideoID(),
         loopedChapter: loopedChapter?.UUID,
-        channelWhitelisted
+        channelID: getChannelIDInfo().id,
+        channelAuthor: getChannelIDInfo().author,
+        currentTabSkipProfileID: getSkipProfileIDForTab()
     });
 }
 
@@ -1303,12 +1318,18 @@ function importExistingChapters(wait: boolean) {
                     }
                 }).catch(() => { importingChaptersWaiting = false; });
 
-            if (!Config.config.showAutogeneratedChapters) {
+            if (!getSkipProfileBool("showAutogeneratedChapters")) {
                 waitFor(() => hasAutogeneratedChapters(), wait ? 15000 : 0, 400).then(() => {
                     updateActiveSegment(getCurrentTime());
                 }).catch(() => { }); // eslint-disable-line @typescript-eslint/no-empty-function
             }
         }
+    }
+}
+
+function handleExistingChaptersChannelChange() {
+    if (existingChaptersImported && hasAutogeneratedChapters() && !getSkipProfileBool("showAutogeneratedChapters")) {
+        sponsorTimes = sponsorTimes.filter((segment) => segment.source !== SponsorSourceType.Autogenerated);
     }
 }
 
@@ -1375,13 +1396,6 @@ function startSkipScheduleCheckingForStartSponsors() {
                 });
                 if (skipOption === CategorySkipOption.AutoSkip) break;
             }
-        }
-
-        const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
-        if (fullVideoSegment) {
-            waitFor(() => categoryPill).then(() => {
-                categoryPill?.setSegment(fullVideoSegment);
-            });
         }
 
         if (startingSegmentTime !== -1) {
@@ -1455,20 +1469,24 @@ function updatePreviewBar(): void {
     }
 }
 
-//checks if this channel is whitelisted, should be done only after the channelID has been loaded
-async function channelIDChange(channelIDInfo: ChannelIDInfo) {
-    const whitelistedChannels = Config.config.whitelistedChannels;
-
-    //see if this is a whitelisted channel
-    if (whitelistedChannels != undefined &&
-            channelIDInfo.status === ChannelIDStatus.Found && whitelistedChannels.includes(channelIDInfo.id)) {
-        channelWhitelisted = true;
+function updateCategoryPill() {
+    const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
+    if (fullVideoSegment && getSkipProfileBool("fullVideoSegments")) {
+        categoryPill?.setSegment(fullVideoSegment);
+    } else {
+        categoryPill?.setVisibility(false);
     }
+}
 
+//checks if this channel is whitelisted, should be done only after the channelID has been loaded
+async function channelIDChange() {
     // check if the start of segments were missed
     if (Config.config.forceChannelCheck && sponsorTimes?.length > 0) startSkipScheduleCheckingForStartSponsors();
 
+    hideTooShortSegments(sponsorTimes);
+    handleExistingChaptersChannelChange();
     updatePreviewBar();
+    updateCategoryPill();
     notifyPopupOfSegments();
 }
 
@@ -1934,9 +1952,9 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
         return false;
     }
 
-    return (!Config.config.manualSkipOnFullVideo || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
+    return (!getSkipProfileBool("manualSkipOnFullVideo") || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
         && (getCategorySelection(segment)?.option === CategorySkipOption.AutoSkip ||
-            (Config.config.autoSkipOnMusicVideos && canSkipNonMusic && sponsorTimes?.some((s) => s.category === "music_offtopic")
+            (getSkipProfileBool("autoSkipOnMusicVideos") && canSkipNonMusic && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip)
             || sponsorTimesSubmitting.some((s) => s.segment === segment.segment))
         || isLoopedChapter(segment);
@@ -1945,7 +1963,7 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 function shouldSkip(segment: SponsorTime): boolean {
     return segment.hidden === SponsorHideType.Visible && (segment.actionType !== ActionType.Full
             && getCategorySelection(segment)?.option > CategorySkipOption.ShowOverlay)
-            || (Config.config.autoSkipOnMusicVideos && sponsorTimes?.some((s) => s.category === "music_offtopic")
+            || (getSkipProfileBool("autoSkipOnMusicVideos") && sponsorTimes?.some((s) => s.category === "music_offtopic")
                 && segment.actionType === ActionType.Skip)
             || isLoopedChapter(segment);
 }
@@ -2508,11 +2526,7 @@ async function sendSubmitMessage(): Promise<boolean> {
         sponsorTimesSubmitting = [];
 
         updatePreviewBar();
-
-        const fullVideoSegment = sponsorTimes.filter((time) => time.actionType === ActionType.Full)[0];
-        if (fullVideoSegment) {
-            categoryPill?.setSegment(fullVideoSegment);
-        }
+        updateCategoryPill();
 
         return true;
     } else {

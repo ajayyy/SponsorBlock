@@ -116,14 +116,26 @@ html, body {
     color: white;
 }
 
-.option-group > div {
+.option-group > div, .extraOptionGroup {
     min-height: 50px;
     padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
     border-image: linear-gradient(to right, var(--border-color), #00000000 80%)  1;
 }
+.option-group > div {
+    border-bottom: 1px solid var(--border-color);
+}
+.extraOptionGroup {
+    border-top: 1px solid var(--border-color);
+}
+.extraOptionGroup tr:not(:last-child) {
+    padding-bottom: 15px;
+    display: block;
+}
+#category-type {
+    padding: 0;
+}
 
-.categoryExtraOptions {
+.categoryChooserTable .categoryExtraOptions {
     padding-bottom: 15px;
 }
 
@@ -362,6 +374,11 @@ input[type='number'] {
     vertical-align: middle;
 
     padding: 4px;
+}
+
+.sb-number-input {
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .switch-label {
@@ -744,4 +761,40 @@ svg {
 .advanced-config-help-message {
     margin-bottom: 10px;
     transition: none;
+}
+
+.categoryChooserTopRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.partiallyHidden {
+    opacity: 0.5;
+}
+
+.partiallyHidden:hover {
+    opacity: 1;
+}
+
+.reset-button svg {
+    margin-left: 5px;
+    width: 10px;
+    fill: var(--white);
+
+    cursor: pointer;
+}
+
+.skipProfileMenu {
+    position: absolute;
+}
+
+.configurationInfo > *:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.configurationInfo .option-text-box {
+    width: 100%;
 }
