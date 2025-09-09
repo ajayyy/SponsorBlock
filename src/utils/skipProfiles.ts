@@ -74,7 +74,7 @@ export function getSkipProfileNum(key: "minDuration"): number {
 
 function getSkipProfileValue<T>(key: keyof CustomConfiguration): T {
     const profile = getSkipProfile();
-    if (profile && profile[key] !== undefined) {
+    if (profile && profile[key] !== null) {
         return profile[key] as T;
     }
 
