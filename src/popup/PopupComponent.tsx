@@ -50,8 +50,9 @@ interface LoadSegmentsProps extends SegmentsLoadedProps {
 interface SkipProfileRadioButtonsProps {
     selected: SkipProfileAction;
     setSelected: (s: SkipProfileAction, updateConfig: boolean) => void;
-
     disabled: boolean;
+    configID: ConfigurationID | null;
+    videoID: string;
 }
 
 interface SkipOptionActionComponentProps {
@@ -446,6 +447,10 @@ function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarn
     const [menuOpen, setMenuOpen] = React.useState(false);
     const skipProfileSet = getSkipProfileIDForChannel() !== null;
 
+    React.useEffect(() => {
+        setMenuOpen(false);
+    }, [props.videoID]);
+
     return (
         <>
             <label id="skipProfileButton" 
@@ -476,7 +481,7 @@ function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarn
 
             {
                 props.videoID &&
-                <SkipProfileMenu open={menuOpen} />
+                <SkipProfileMenu open={menuOpen} videoID={props.videoID} />
             }
         </>
     );
@@ -496,7 +501,7 @@ const skipProfileOptions: SkipProfileOption[] = [{
         active: () => getSkipProfileIDForChannel() !== null
     }];
 
-function SkipProfileMenu(props: {open: boolean}): JSX.Element {
+function SkipProfileMenu(props: {open: boolean; videoID: string}): JSX.Element {
     const [configID, setConfigID] = React.useState<ConfigurationID | null>(null);
     const [selectedSkipProfileAction, setSelectedSkipProfileAction] = React.useState<SkipProfileAction>(null);
     const [allSkipProfiles, setAllSkipProfiles] = React.useState(Object.entries(Config.local!.skipProfiles));
@@ -511,10 +516,10 @@ function SkipProfileMenu(props: {open: boolean}): JSX.Element {
                     alert(chrome.i18n.getMessage("channelDataNotFound") + " https://github.com/ajayyy/SponsorBlock/issues/753");
                 }
             }
-
-            setConfigID(getSkipProfileID());
         }
-    }, [props.open]);
+
+        setConfigID(getSkipProfileID());
+    }, [props.open, props.videoID]);
 
     React.useEffect(() => {
         Config.configLocalListeners.push(() => {
@@ -582,6 +587,8 @@ function SkipProfileMenu(props: {open: boolean}): JSX.Element {
                         setSelectedSkipProfileAction(s);
                     }}
                     disabled={configID === null}
+                    configID={configID}
+                    videoID={props.videoID}
                 />
             </div>
         </div>
@@ -592,15 +599,20 @@ function SkipProfileRadioButtons(props: SkipProfileRadioButtonsProps): JSX.Eleme
     const result: JSX.Element[] = [];
 
     React.useEffect(() => {
-        if (props.selected === null) {
+        if (props.configID === null) {
+            props.setSelected(null, false);
+        } else {
             for (const option of skipProfileOptions) {
                 if (option.active()) {
-                    props.setSelected(option.name, false);
+                    if (props.selected !== option.name) {
+                        props.setSelected(option.name, false);
+                    }
+
                     return;
                 }
             }
         }
-    }, [props.selected]);
+    }, [props.configID, props.videoID]);
 
     let alreadySelected = false;
     for (const option of skipProfileOptions) {
