@@ -197,15 +197,36 @@
  * <details> wrapper around each segment
  */
 .votingButtons {
-  font-family: Arial, Helvetica, sans-serif;
   border-radius: 8px;
-  margin: 4px 16px;
 }
 .votingButtons[open] {
   padding-bottom: 5px;
 }
 .votingButtons:hover {
   background-color: var(--sb-grey-bg-color);
+}
+
+/*
+ * Nested chapters
+ */ 
+.innerChapterList {
+  border-radius: 8px;
+}
+
+.innerChapterList > summary {
+  font-weight: bold;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.segmentWrapper:has(> .innerChapterList > summary:hover) {
+  background-color: var(--sb-grey-bg-color);
+}
+
+.segmentWrapper{
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 8px;
+  margin: 4px 16px;
 }
 
 /*
