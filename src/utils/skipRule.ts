@@ -2,6 +2,7 @@ import { getCurrentPageTitle } from "../../maze-utils/src/elements";
 import { getChannelIDInfo, getVideoDuration } from "../../maze-utils/src/video";
 import Config from "../config";
 import { CategorySelection, CategorySkipOption, SponsorSourceType, SponsorTime } from "../types";
+import { getSkipProfile, getSkipProfileBool } from "./skipProfiles";
 import { VideoLabelsCacheData } from "./videoLabels";
 
 export interface Permission {
@@ -53,12 +54,28 @@ export interface AdvancedSkipRuleSet {
 }
 
 export function getCategorySelection(segment: SponsorTime | VideoLabelsCacheData): CategorySelection {
+    // First check skip rules
     for (const ruleSet of Config.local.skipRules) {
         if (ruleSet.rules.every((rule) => isSkipRulePassing(segment, rule))) {
             return { name: segment.category, option: ruleSet.skipOption } as CategorySelection;
         }
     }
 
+    // Action type filters
+    if ("actionType" in segment && (segment as SponsorTime).actionType === "mute" && !getSkipProfileBool("muteSegments")) {
+        return { name: segment.category, option: CategorySkipOption.Disabled } as CategorySelection;
+    }
+
+    // Then check skip profile
+    const profile = getSkipProfile();
+    if (profile) {
+        const profileSelection = profile.categorySelections.find(selection => selection.name === segment.category);
+        if (profileSelection) {
+            return profileSelection;
+        }
+    }
+
+    // Then fallback to default
     for (const selection of Config.config.categorySelections) {
         if (selection.name === segment.category) {
             return selection;

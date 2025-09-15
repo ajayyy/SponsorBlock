@@ -2,6 +2,7 @@
 // Message and Response Types
 //
 
+import { ConfigurationID } from "./config";
 import { SegmentUUID, SponsorHideType, SponsorTime, VideoID } from "./types";
 
 interface BaseMessage {
@@ -73,17 +74,24 @@ interface KeyDownMessage {
     metaKey: boolean;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage);
+interface SetCurrentTabSkipProfileResponse {
+    message: "setCurrentTabSkipProfile";
+    configID: ConfigurationID | null;
+}
+
+export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage | SetCurrentTabSkipProfileResponse);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
-    status: number;
+    status: number | string | Error;
     sponsorTimes: SponsorTime[];
     time: number;
     onMobileYouTube: boolean;
     videoID: VideoID;
     loopedChapter: SegmentUUID | null;
-    channelWhitelisted: boolean;
+    channelID: string;
+    channelAuthor: string;
+    currentTabSkipProfileID: ConfigurationID | null;
 }
 
 interface GetVideoIdResponse {
@@ -120,11 +128,13 @@ export type MessageResponse =
     | LogResponse
     | LoopedChapterResponse;
 
-export interface VoteResponse {
-    successType: number;
-    statusCode: number;
+export type VoteResponse = {
+    status: number;
+    ok: boolean;
     responseText: string;
-}
+} | {
+    error: Error | string;
+};
 
 interface ImportSegmentsResponse {
     importedSegments: SponsorTime[];
@@ -151,7 +161,8 @@ export type InfoUpdatedMessage = IsInfoFoundMessageResponse & {
 export interface VideoChangedPopupMessage {
     message: "videoChanged";
     videoID: string;
-    whitelisted: boolean;
+    channelID: string;
+    channelAuthor: string;
 }
 
 export type PopupMessage = TimeUpdateMessage | InfoUpdatedMessage | VideoChangedPopupMessage;

@@ -30,6 +30,7 @@ export interface VideoDurationResponse {
 }
 
 export enum CategorySkipOption {
+    FallbackToDefault = -2,
     Disabled = -1,
     ShowOverlay,
     ManualSkip,
