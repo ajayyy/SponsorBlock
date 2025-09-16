@@ -1,9 +1,10 @@
-import { isOnInvidious, parseYouTubeVideoIDFromURL } from "../../maze-utils/src/video";
+import { extractVideoID, isOnInvidious } from "../../maze-utils/src/video";
 import Config from "../config";
 import { getHasStartSegment, getVideoLabel } from "./videoLabels";
 import { getThumbnailSelector, setThumbnailListener } from "../../maze-utils/src/thumbnailManagement";
 import { VideoID } from "../types";
 import { getSegmentsForVideo } from "./segmentData";
+import { onMobile } from "../../maze-utils/src/pageInfo";
 
 export async function handleThumbnails(thumbnails: HTMLImageElement[]): Promise<void> {
     await Promise.all(thumbnails.map((t) => {
@@ -18,7 +19,7 @@ export async function labelThumbnail(thumbnail: HTMLImageElement): Promise<HTMLE
         return null;
     }
     
-    const videoID = extractVideoID(thumbnail);
+    const videoID = await extractVideoIDFromElement(thumbnail);
     if (!videoID) {
         hideThumbnailLabel(thumbnail);
         return null;
@@ -61,7 +62,7 @@ function thumbnailHoverListener(e: MouseEvent) {
     let fetched = false;
     const preFetch = async () => {
         fetched = true;
-        const videoID = extractVideoID(thumbnail);
+        const videoID = await extractVideoIDFromElement(thumbnail);
         if (videoID && await getHasStartSegment(videoID)) {
             void getSegmentsForVideo(videoID, false);
         }
@@ -84,18 +85,28 @@ function thumbnailHoverListener(e: MouseEvent) {
 function getLink(thumbnail: HTMLImageElement): HTMLAnchorElement | null {
     if (isOnInvidious()) {
         return thumbnail.parentElement as HTMLAnchorElement | null;
-    } else if (thumbnail.nodeName.toLowerCase() === "yt-thumbnail-view-model") {
-        return thumbnail.closest("yt-lockup-view-model")?.querySelector("a.yt-lockup-metadata-view-model-wiz__title");
+    } else if (!onMobile()) {
+        const link = thumbnail.querySelector("a#thumbnail, a.reel-item-endpoint, a.yt-lockup-metadata-view-model__title, a.yt-lockup-metadata-view-model__title-link, a.yt-lockup-view-model__content-image, a.yt-lockup-metadata-view-model-wiz__title") as HTMLAnchorElement;
+        if (link) {
+            return link;
+        } else if (thumbnail.nodeName === "YTD-HERO-PLAYLIST-THUMBNAIL-RENDERER"
+            || thumbnail.nodeName === "YT-THUMBNAIL-VIEW-MODEL"
+        ) {
+            return thumbnail.closest("a") as HTMLAnchorElement;
+        } else {
+            return null;
+        }
     } else {
-        return thumbnail.querySelector("#thumbnail");
+        // Big thumbnails, compact thumbnails, shorts, channel feature, playlist header
+        return thumbnail.querySelector("a.media-item-thumbnail-container, a.compact-media-item-image, a.reel-item-endpoint, :scope > a, .amsterdam-playlist-thumbnail-wrapper > a") as HTMLAnchorElement;
     }
 }
 
-function extractVideoID(thumbnail: HTMLImageElement): VideoID | null {
+async function extractVideoIDFromElement(thumbnail: HTMLImageElement): Promise<VideoID | null> {
     const link = getLink(thumbnail);
     if (!link || link.nodeName !== "A" || !link.href) return null; // no link found
 
-    return parseYouTubeVideoIDFromURL(link.href)?.videoID;
+    return await extractVideoID(link);
 }
 
 function getOldThumbnailLabel(thumbnail: HTMLImageElement): HTMLElement | null {
