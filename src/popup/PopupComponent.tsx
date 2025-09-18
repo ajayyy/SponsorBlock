@@ -619,7 +619,7 @@ function SkipProfileRadioButtons(props: SkipProfileRadioButtonsProps): JSX.Eleme
                 }
             }
         }
-    }, [props.configID, props.videoID]);
+    }, [props.configID, props.videoID, props.selected]);
 
     let alreadySelected = false;
     for (const option of skipProfileOptions) {
