@@ -147,8 +147,6 @@ let lastCheckVideoTime = -1;
 // To determine if a video resolution change is happening
 let firstPlay = true;
 
-let channelWhitelisted = false;
-
 let previewBar: PreviewBar = null;
 // Skip to highlight button
 let skipButtonControlBar: SkipButtonControlBar = null;
@@ -244,11 +242,6 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
                 channelID: getChannelIDInfo().id,
                 isYTTV: (document.location.host === "tv.youtube.com")
             });
-
-            break;
-        case "whitelistChange":
-            channelWhitelisted = request.value;
-            sponsorsLookup();
 
             break;
         case "submitTimes":
@@ -402,12 +395,14 @@ function contentLocalConfigUpdateListener(changes: StorageChangesObject) {
     }
 }
 
-if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
-    Config.configSyncListeners.push(contentConfigUpdateListener);
-}
+if (!window.location.href.includes("youtube.com/live_chat")) {
+    if (!Config.configSyncListeners.includes(contentConfigUpdateListener)) {
+        Config.configSyncListeners.push(contentConfigUpdateListener);
+    }
 
-if (!Config.configLocalListeners.includes(contentLocalConfigUpdateListener)) {
-    Config.configLocalListeners.push(contentLocalConfigUpdateListener);
+    if (!Config.configLocalListeners.includes(contentLocalConfigUpdateListener)) {
+        Config.configLocalListeners.push(contentLocalConfigUpdateListener);
+    }
 }
 
 function resetValues() {
@@ -424,7 +419,6 @@ function resetValues() {
     shownSegmentFailedToFetchWarning = false;
 
     videoInfo = null;
-    channelWhitelisted = false;
     lockedCategories = [];
 
     //empty the preview bar
@@ -704,7 +698,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
     logDebug(`Ready to start skipping: ${skipInfo.index} at ${currentTime}`);
     if (skipInfo.index === -1) return;
 
-    if (Config.config.disableSkipping || channelWhitelisted || (getChannelIDInfo().status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
+    if (Config.config.disableSkipping || (getChannelIDInfo().status === ChannelIDStatus.Fetching && Config.config.forceChannelCheck)){
         return;
     }
 
