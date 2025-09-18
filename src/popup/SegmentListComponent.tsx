@@ -58,35 +58,37 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     };
 
-    const segmentsWithNesting: segmentWithNesting[] = []
-    let nbTrailingNonChapters = 0
-    function nestChapters(segments: segmentWithNesting[], seg: SponsorTime, topLevel?:boolean){
-        if (seg.actionType === ActionType.Chapter
-            && segments.length)
-            {
+    const segmentsWithNesting: segmentWithNesting[] = [];
+    let nbTrailingNonChapters = 0;
+    function nestChapters(segments: segmentWithNesting[], seg: SponsorTime, topLevel?: boolean) {
+        if (seg.actionType === ActionType.Chapter && segments.length) {
                 // trailing non-chapters can only exist at top level
                 const lastElement = segments[segments.length - (topLevel ? nbTrailingNonChapters + 1 : 1)]
 
                 if (lastElement.actionType === ActionType.Chapter
-                && lastElement.segment[0] <= seg.segment[0]
-                && lastElement.segment[1] >= seg.segment[1]) {
+                        && lastElement.segment[0] <= seg.segment[0]
+                        && lastElement.segment[1] >= seg.segment[1]) {
                     if (lastElement.innerChapters){
                         nestChapters(lastElement.innerChapters, seg);
                     } else {
                         lastElement.innerChapters = [seg];
                     }
-                }
-                else {
-                    if (topLevel){nbTrailingNonChapters = 0}
+                } else {
+                    if (topLevel) {
+                        nbTrailingNonChapters = 0;
+                    }
+
                     segments.push(seg);
                 }
         } else {
-            if (seg.actionType !== ActionType.Chapter){nbTrailingNonChapters++}
+            if (seg.actionType !== ActionType.Chapter) {
+                nbTrailingNonChapters++;
+            }
 
             segments.push(seg);
         }
     }
-    props.segments.forEach((seg) => {nestChapters(segmentsWithNesting, {...seg}, true)})
+    props.segments.forEach((seg) => nestChapters(segmentsWithNesting, {...seg}, true));
 
     return (
         <div id="issueReporterContainer">
@@ -160,7 +162,6 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
 
     return (
         <div className={"segmentWrapper " + (!tabFilter(segment) ? "hidden" : "")}>
-            {
             <details data-uuid={segment.UUID}
                     onDoubleClick={() => skipSegment({
                         segment,
@@ -250,7 +251,6 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 stopAnimation();
                             }
 
-                            stopAnimation();
                         }}/>
                     {
                         segment.actionType === ActionType.Chapter &&
@@ -325,7 +325,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                     </div>
                 </div>
             </details>
-            }
+
             {
                 segment.innerChapters
                 && <InnerChapterList
