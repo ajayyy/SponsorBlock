@@ -16,7 +16,8 @@
     },
     "permissions": [
         "storage",
-        "scripting"
+        "scripting",
+        "unlimitedStorage"
     ],
     "options_ui": {
         "page": "options/options.html",
