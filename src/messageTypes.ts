@@ -20,11 +20,6 @@ interface DefaultMessage {
         | "getLogs";
 }
 
-interface BoolValueMessage {
-    message: "whitelistChange";
-    value: boolean;
-}
-
 interface IsInfoFoundMessage {
     message: "isInfoFound";
     updating: boolean;
@@ -79,7 +74,7 @@ interface SetCurrentTabSkipProfileResponse {
     configID: ConfigurationID | null;
 }
 
-export type Message = BaseMessage & (DefaultMessage | BoolValueMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage | SetCurrentTabSkipProfileResponse);
+export type Message = BaseMessage & (DefaultMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage | SetCurrentTabSkipProfileResponse);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
