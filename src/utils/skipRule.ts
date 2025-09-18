@@ -131,10 +131,8 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
                     return undefined;
             }
         case SkipRuleAttribute.ChannelID:
-            getChannelIDInfo()
             return getChannelIDInfo().id;
         case SkipRuleAttribute.ChannelName:
-            getChannelIDInfo()
             return getChannelIDInfo().author;
         case SkipRuleAttribute.VideoDuration:
             return getVideoDuration();
