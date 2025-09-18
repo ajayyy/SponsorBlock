@@ -314,6 +314,12 @@
   padding: 10px 15px;
   transition: background-color 0.2s ease-in-out;
 }
+.sbControlsMenu-item:first-child {
+  border-radius: 8px 0px 0px 8px;
+}
+.sbControlsMenu-item:last-child {
+  border-radius: 0px 8px 8px 0px;
+}
 .sbControlsMenu-item:hover, .sbControlsMenu-item:focus {
   background-color: #444;
 }
