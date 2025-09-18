@@ -448,7 +448,8 @@ window.addEventListener("message", async (e): Promise<void> => {
 
 function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarning: (v: boolean) => void}): JSX.Element {
     const [menuOpen, setMenuOpen] = React.useState(false);
-    const skipProfileSet = getSkipProfileIDForChannel() !== null;
+    const channelSkipProfileSet = getSkipProfileIDForChannel() !== null;
+    const skipProfileSet = getSkipProfileID() !== null;
 
     React.useEffect(() => {
         setMenuOpen(false);
@@ -471,11 +472,14 @@ function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarn
                 <svg viewBox="0 0 24 24" width="23" height="23" className={"SBWhitelistIcon sbControlsMenu-itemIcon " + (menuOpen ? " rotated" : "")}>
                     <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
                 </svg>
-                <span id="whitelistChannel" className={(menuOpen || skipProfileSet) ? " hidden" : ""}>
+                <span id="whitelistChannel" className={!(!menuOpen && !channelSkipProfileSet && !skipProfileSet) ? " hidden" : ""}>
                     {chrome.i18n.getMessage("addChannelToSkipProfile")}
                 </span>
-                <span id="whitelistChannel" className={(menuOpen || !skipProfileSet) ? " hidden" : ""}>
+                <span id="whitelistChannel" className={!(!menuOpen && channelSkipProfileSet) ? " hidden" : ""}>
                     {chrome.i18n.getMessage("editChannelsSkipProfile")}
+                </span>
+                <span id="whitelistChannel" className={!(!menuOpen && !channelSkipProfileSet && skipProfileSet) ? " hidden" : ""}>
+                    {chrome.i18n.getMessage("editActiveSkipProfile")}
                 </span>
                 <span id="unwhitelistChannel" className={!menuOpen ? " hidden" : ""}>
                     {chrome.i18n.getMessage("closeSkipProfileMenu")}
