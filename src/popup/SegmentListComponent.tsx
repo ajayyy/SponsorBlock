@@ -28,6 +28,10 @@ enum SegmentListTab {
     Chapter
 }
 
+interface segmentWithNesting extends SponsorTime {
+    innerChapters?: (segmentWithNesting|SponsorTime)[];
+}
+
 export const SegmentListComponent = (props: SegmentListComponentProps) => {
     const [tab, setTab] = React.useState(SegmentListTab.Segments);
     const [isVip, setIsVip] = React.useState(Config.config?.isVip ?? false);
@@ -54,6 +58,38 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     };
 
+    const segmentsWithNesting: segmentWithNesting[] = [];
+    let nbTrailingNonChapters = 0;
+    function nestChapters(segments: segmentWithNesting[], seg: SponsorTime, topLevel?: boolean) {
+        if (seg.actionType === ActionType.Chapter && segments.length) {
+                // trailing non-chapters can only exist at top level
+                const lastElement = segments[segments.length - (topLevel ? nbTrailingNonChapters + 1 : 1)]
+
+                if (lastElement.actionType === ActionType.Chapter
+                        && lastElement.segment[0] <= seg.segment[0]
+                        && lastElement.segment[1] >= seg.segment[1]) {
+                    if (lastElement.innerChapters){
+                        nestChapters(lastElement.innerChapters, seg);
+                    } else {
+                        lastElement.innerChapters = [seg];
+                    }
+                } else {
+                    if (topLevel) {
+                        nbTrailingNonChapters = 0;
+                    }
+
+                    segments.push(seg);
+                }
+        } else {
+            if (seg.actionType !== ActionType.Chapter) {
+                nbTrailingNonChapters++;
+            }
+
+            segments.push(seg);
+        }
+    }
+    props.segments.forEach((seg) => nestChapters(segmentsWithNesting, {...seg}, true));
+
     return (
         <div id="issueReporterContainer">
             <div id="issueReporterTabs" className={props.segments && props.segments.find(s => s.actionType === ActionType.Chapter) ? "" : "hidden"}>
@@ -74,14 +110,14 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
                         sendMessage: props.sendMessage
                     })}>
                 {
-                    props.segments.map((segment) => (
+                    segmentsWithNesting.map((segment) => (
                         <SegmentListItem
                             key={segment.UUID}
                             videoID={props.videoID}
                             segment={segment}
                             currentTime={props.currentTime}
                             isVip={isVip}
-                            startingLooped={props.loopedChapter === segment.UUID}
+                            loopedChapter={props.loopedChapter} // UUID instead of boolean so it can be passed down to nested chapters 
 
                             tabFilter={tabFilter}
                             sendMessage={props.sendMessage}
@@ -99,19 +135,19 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
     );
 };
 
-function SegmentListItem({ segment, videoID, currentTime, isVip, startingLooped, tabFilter, sendMessage }: {
-    segment: SponsorTime;
+function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
+    segment: segmentWithNesting;
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
-    startingLooped: boolean;
+    loopedChapter: SegmentUUID;
     
     tabFilter: (segment: SponsorTime) => boolean;
     sendMessage: (request: Message) => Promise<MessageResponse>;
 }) {
     const [voteMessage, setVoteMessage] = React.useState<string | null>(null);
     const [hidden, setHidden] = React.useState(segment.hidden || SponsorHideType.Visible);
-    const [isLooped, setIsLooped] = React.useState(startingLooped);
+    const [isLooped, setIsLooped] = React.useState(loopedChapter === segment.UUID);
 
     let extraInfo = "";
     if (segment.hidden === SponsorHideType.Downvoted) {
@@ -125,169 +161,222 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, startingLooped,
     }
 
     return (
-        <details data-uuid={segment.UUID}
-                onDoubleClick={() => skipSegment({
-                    segment,
-                    sendMessage
-                })}
-                onMouseEnter={() => {
-                    selectSegment({
+        <div className={"segmentWrapper " + (!tabFilter(segment) ? "hidden" : "")}>
+            <details data-uuid={segment.UUID}
+                    onDoubleClick={() => skipSegment({
                         segment,
                         sendMessage
-                    });
-                }}
-                className={"votingButtons " + (!tabFilter(segment) ? "hidden" : "")}>
-            <summary className={"segmentSummary " + (
-                currentTime >= segment.segment[0] ? (
-                    currentTime < segment.segment[1] ? "segmentActive" : "segmentPassed"
-                ) : ""
-            )}>
-                <div>
-                    {
-                        segment.actionType !== ActionType.Chapter &&
-                        <span className="sponsorTimesCategoryColorCircle dot" style={{ backgroundColor: Config.config.barTypes[segment.category]?.color }}></span>
-                    }
-                    <span className="summaryLabel">{(segment.description || shortCategoryName(segment.category)) + extraInfo}</span>
-                </div>
-
-                <div style={{ margin: "5px" }}>
-                    {
-                        segment.actionType === ActionType.Full ? chrome.i18n.getMessage("full") :
-                        (getFormattedTime(segment.segment[0], true) +
-                            (segment.actionType !== ActionType.Poi
-                                ? " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segment.segment[1], true)
-                                : ""))
-                    }
-                </div>
-            </summary>
-
-            <div className={"sbVoteButtonsContainer " + (voteMessage ? "hidden" : "")}>
-                <img
-                    className="voteButton"
-                    title="Upvote"
-                    src={chrome.runtime.getURL("icons/thumbs_up.svg")}
-                    onClick={() => {
-                        vote({
-                            type: 1,
-                            UUID: segment.UUID,
-                            setVoteMessage: setVoteMessage,
+                    })}
+                    onMouseEnter={() => {
+                        selectSegment({
+                            segment,
                             sendMessage
                         });
-                    }}/>
-                <img
-                    className="voteButton"
-                    title="Downvote"
-                    src={segment.locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg")}
-                    onClick={() => {
-                        vote({
-                            type: 0,
-                            UUID: segment.UUID,
-                            setVoteMessage: setVoteMessage,
-                            sendMessage
-                        });
-                    }}/>
-                <img
-                    className="voteButton"
-                    title="Copy Segment ID"
-                    src={chrome.runtime.getURL("icons/clipboard.svg")}
-                    onClick={async (e) => {
-                        const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
-
-                        try {
-                            if (segment.UUID.length > 60) {
-                                copyToClipboardPopup(segment.UUID, sendMessage);
-                            } else {
-                                const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
-                                    UUID: segment.UUID,
-                                    videoID: videoID
-                                });
-                                if (segmentIDData.ok && segmentIDData.responseText) {
-                                    copyToClipboardPopup(segmentIDData.responseText, sendMessage);
-                                } else {
-                                    logRequest(segmentIDData, "SB", "segment UUID resolution");
-                                }
-                            }
-                        } catch (e) {
-                            console.error("[SB] Caught error while attempting to resolve and copy segment UUID", e);
-                        } finally {
-                            stopAnimation();
+                    }}
+                    className={"votingButtons"}
+                    >
+                <summary className={"segmentSummary " + (
+                    currentTime >= segment.segment[0] ? (
+                        currentTime < segment.segment[1] ? "segmentActive" : "segmentPassed"
+                    ) : ""
+                )}>
+                    <div>
+                        {
+                            segment.actionType !== ActionType.Chapter &&
+                            <span className="sponsorTimesCategoryColorCircle dot" style={{ backgroundColor: Config.config.barTypes[segment.category]?.color }}></span>
                         }
+                        <span className="summaryLabel">{(segment.description || shortCategoryName(segment.category)) + extraInfo}</span>
+                    </div>
 
-                    }}/>
-                {
-                    segment.actionType === ActionType.Chapter &&
+                    <div style={{ margin: "5px" }}>
+                        {
+                            segment.actionType === ActionType.Full ? chrome.i18n.getMessage("full") :
+                            (getFormattedTime(segment.segment[0], true) +
+                                (segment.actionType !== ActionType.Poi
+                                    ? " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segment.segment[1], true)
+                                    : ""))
+                        }
+                    </div>
+                </summary>
+
+                <div className={"sbVoteButtonsContainer " + (voteMessage ? "hidden" : "")}>
                     <img
                         className="voteButton"
-                        title={isLooped ? chrome.i18n.getMessage("unloopChapter") : chrome.i18n.getMessage("loopChapter")}
-                        src={isLooped ? chrome.runtime.getURL("icons/looped.svg") : chrome.runtime.getURL("icons/loop.svg")}
-                        onClick={(e) => {
-                            if (isLooped) {
-                                loopChapter({
-                                    segment: null,
-                                    element: e.currentTarget,
-                                    sendMessage
+                        title="Upvote"
+                        src={chrome.runtime.getURL("icons/thumbs_up.svg")}
+                        onClick={() => {
+                            vote({
+                                type: 1,
+                                UUID: segment.UUID,
+                                setVoteMessage: setVoteMessage,
+                                sendMessage
+                            });
+                        }}/>
+                    <img
+                        className="voteButton"
+                        title="Downvote"
+                        src={segment.locked && isVip ? chrome.runtime.getURL("icons/thumbs_down_locked.svg") : chrome.runtime.getURL("icons/thumbs_down.svg")}
+                        onClick={() => {
+                            vote({
+                                type: 0,
+                                UUID: segment.UUID,
+                                setVoteMessage: setVoteMessage,
+                                sendMessage
+                            });
+                        }}/>
+                    <img
+                        className="voteButton"
+                        title="Copy Segment ID"
+                        src={chrome.runtime.getURL("icons/clipboard.svg")}
+                        onClick={async (e) => {
+                            const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
+
+                            try {
+                                if (segment.UUID.length > 60) {
+                                    copyToClipboardPopup(segment.UUID, sendMessage);
+                                } else {
+                                    const segmentIDData = await asyncRequestToServer("GET", "/api/segmentID", {
+                                        UUID: segment.UUID,
+                                        videoID: videoID
+                                    });
+                                    if (segmentIDData.ok && segmentIDData.responseText) {
+                                        copyToClipboardPopup(segmentIDData.responseText, sendMessage);
+                                    } else {
+                                        logRequest(segmentIDData, "SB", "segment UUID resolution");
+                                    }
+                                }
+                            } catch (e) {
+                                console.error("[SB] Caught error while attempting to resolve and copy segment UUID", e);
+                            } finally {
+                                stopAnimation();
+                            }
+
+                        }}/>
+                    {
+                        segment.actionType === ActionType.Chapter &&
+                        <img
+                            className="voteButton"
+                            title={isLooped ? chrome.i18n.getMessage("unloopChapter") : chrome.i18n.getMessage("loopChapter")}
+                            src={isLooped ? chrome.runtime.getURL("icons/looped.svg") : chrome.runtime.getURL("icons/loop.svg")}
+                            onClick={(e) => {
+                                if (isLooped) {
+                                    loopChapter({
+                                        segment: null,
+                                        element: e.currentTarget,
+                                        sendMessage
+                                    });
+                                } else {
+                                    loopChapter({
+                                        segment,
+                                        element: e.currentTarget,
+                                        sendMessage
+                                    });
+                                }
+
+                                setIsLooped(!isLooped);
+                            }}/>
+                    }
+                    {
+                        (segment.actionType === ActionType.Skip || segment.actionType === ActionType.Mute
+                            || segment.actionType === ActionType.Poi
+                            && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segment.hidden)) &&
+                        <img
+                            className="voteButton"
+                            title={chrome.i18n.getMessage("hideSegment")}
+                            src={hidden === SponsorHideType.Hidden ? chrome.runtime.getURL("icons/not_visible.svg") : chrome.runtime.getURL("icons/visible.svg")}
+                            onClick={(e) => {
+                                const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);
+                                stopAnimation();
+
+                                if (segment.hidden === SponsorHideType.Hidden) {
+                                    segment.hidden = SponsorHideType.Visible;
+                                    setHidden(SponsorHideType.Visible);
+                                } else {
+                                    segment.hidden = SponsorHideType.Hidden;
+                                    setHidden(SponsorHideType.Hidden);
+                                }
+
+                                sendMessage({
+                                    message: "hideSegment",
+                                    type: segment.hidden,
+                                    UUID: segment.UUID
                                 });
-                            } else {
-                                loopChapter({
+                            }}/>
+                    }
+                    {
+                        segment.actionType !== ActionType.Full &&
+                        <img
+                            className="voteButton"
+                            title={segment.actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter") : chrome.i18n.getMessage("skipSegment")}
+                            src={chrome.runtime.getURL("icons/skip.svg")}
+                            onClick={(e) => {
+                                skipSegment({
                                     segment,
                                     element: e.currentTarget,
                                     sendMessage
                                 });
-                            }
-
-                            setIsLooped(!isLooped);
-                        }}/>
-                }
-                {
-                    (segment.actionType === ActionType.Skip || segment.actionType === ActionType.Mute
-                        || segment.actionType === ActionType.Poi
-                        && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segment.hidden)) &&
-                    <img
-                        className="voteButton"
-                        title={chrome.i18n.getMessage("hideSegment")}
-                        src={hidden === SponsorHideType.Hidden ? chrome.runtime.getURL("icons/not_visible.svg") : chrome.runtime.getURL("icons/visible.svg")}
-                        onClick={(e) => {
-                            const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);
-                            stopAnimation();
-
-                            if (segment.hidden === SponsorHideType.Hidden) {
-                                segment.hidden = SponsorHideType.Visible;
-                                setHidden(SponsorHideType.Visible);
-                            } else {
-                                segment.hidden = SponsorHideType.Hidden;
-                                setHidden(SponsorHideType.Hidden);
-                            }
-
-                            sendMessage({
-                                message: "hideSegment",
-                                type: segment.hidden,
-                                UUID: segment.UUID
-                            });
-                        }}/>
-                }
-                {
-                    segment.actionType !== ActionType.Full &&
-                    <img
-                        className="voteButton"
-                        title={segment.actionType === ActionType.Chapter ? chrome.i18n.getMessage("playChapter") : chrome.i18n.getMessage("skipSegment")}
-                        src={chrome.runtime.getURL("icons/skip.svg")}
-                        onClick={(e) => {
-                            skipSegment({
-                                segment,
-                                element: e.currentTarget,
-                                sendMessage
-                            });
-                        }}/>
-                }
-            </div>
-
-            <div className={"sponsorTimesVoteStatusContainer " + (voteMessage ? "" : "hidden")}>
-                <div className="sponsorTimesThanksForVotingText">
-                    {voteMessage}
+                            }}/>
+                    }
                 </div>
-            </div>
-        </details>
+
+                <div className={"sponsorTimesVoteStatusContainer " + (voteMessage ? "" : "hidden")}>
+                    <div className="sponsorTimesThanksForVotingText">
+                        {voteMessage}
+                    </div>
+                </div>
+            </details>
+
+            {
+                segment.innerChapters
+                && <InnerChapterList
+                    chapters={segment.innerChapters}
+                    videoID={videoID}
+                    currentTime={currentTime}
+                    isVip={isVip}
+                    loopedChapter={loopedChapter}
+                    tabFilter={tabFilter}
+                    sendMessage={sendMessage}
+                />
+            }
+        </div>
     );
+}
+
+function InnerChapterList({ chapters, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
+    chapters: (segmentWithNesting)[];
+    videoID: VideoID;
+    currentTime: number;
+    isVip: boolean;
+    loopedChapter: SegmentUUID;
+
+    tabFilter: (segment: SponsorTime) => boolean;
+    sendMessage: (request: Message) => Promise<MessageResponse>;
+}) {
+    return <details className="innerChapterList" open>
+        <summary
+            onClick={(e) => {
+                e.currentTarget.firstChild.textContent = (e.currentTarget.parentElement as HTMLDetailsElement).open ? chrome.i18n.getMessage("expandChapters").replace("{0}", String(chapters.length)) : chrome.i18n.getMessage("collapseChapters");
+            }}>
+            {chrome.i18n.getMessage("collapseChapters")}
+        </summary>
+        <div className="innerChaptersContainer">
+            {
+                chapters.map((chapter) => {
+                    return <SegmentListItem
+                        key={chapter.UUID}
+                        videoID={videoID}
+                        segment={chapter}
+                        currentTime={currentTime}
+                        isVip={isVip}
+                        loopedChapter={loopedChapter}
+
+                        tabFilter={tabFilter}
+                        sendMessage={sendMessage}
+                    />
+                })
+            }
+        </div>
+    </details>
 }
 
 async function vote(props: {
