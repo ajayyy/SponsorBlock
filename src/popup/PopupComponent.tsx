@@ -163,10 +163,13 @@ export const PopupComponent = () => {
 
             {/* Toggle Box */}
             <div className="sbControlsMenu">
-                <SkipProfileButton
-                    videoID={videoID}
-                    setShowForceChannelCheckWarning={setShowForceChannelCheckWarning}
-                />
+                {
+                    videoID &&
+                        <SkipProfileButton
+                            videoID={videoID}
+                            setShowForceChannelCheckWarning={setShowForceChannelCheckWarning}
+                        />
+                }
                 <label id="disableExtension" htmlFor="toggleSwitch" className="toggleSwitchContainer sbControlsMenu-item" role="button" tabIndex={0}>
                     <span className="toggleSwitchContainer-switch">
                         <input type="checkbox" 
