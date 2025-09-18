@@ -92,8 +92,9 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
             // Setup with null data
             segmentDataCache.setupCache(videoID);
         }
+    } else if (response.status !== 404) {
+        logRequest(response, "SB", "skip segments");
     }
-    if (response.status !== 404) logRequest(response, "SB", "skip segments");
 
     return {
         segments: null,
