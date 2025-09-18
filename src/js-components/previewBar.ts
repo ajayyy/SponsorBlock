@@ -132,10 +132,11 @@ class PreviewBar {
         // global chapter tooltip or duration tooltip
         // YT, Vorapis, unknown, YTTV
         const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper, .ytp-progress-tooltip-text-container, .yssi-slider .ys-seek-details .time-info-bar") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
+        const defaultTooltipSelector = ".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-tooltip-title:not(.sponsorCategoryTooltip) span, .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)";
         const originalTooltip = findNonEmptyElement([
-            ".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-tooltip-title:not(.sponsorCategoryTooltip) span, .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)",
+            defaultTooltipSelector,
             ".ytp-tooltip-progress-bar-pill-title"
-        ]);
+        ]) ?? document.querySelector(defaultTooltipSelector);
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
 
         // Grab the tooltip from the text wrapper as the tooltip doesn't have its classes on init
