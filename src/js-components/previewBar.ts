@@ -133,7 +133,7 @@ class PreviewBar {
         // YT, Vorapis, unknown, YTTV
         const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper, .ytp-progress-tooltip-text-container, .yssi-slider .ys-seek-details .time-info-bar") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
         const originalTooltip = findNonEmptyElement([
-            ".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)",
+            ".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-tooltip-title:not(.sponsorCategoryTooltip) span, .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)",
             ".ytp-tooltip-progress-bar-pill-title"
         ]);
         if (!tooltipTextWrapper || !tooltipTextWrapper.parentElement) return;
