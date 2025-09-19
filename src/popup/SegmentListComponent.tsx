@@ -146,18 +146,27 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
     sendMessage: (request: Message) => Promise<MessageResponse>;
 }) {
     const [voteMessage, setVoteMessage] = React.useState<string | null>(null);
-    const [hidden, setHidden] = React.useState(segment.hidden || SponsorHideType.Visible);
+    const [hidden, setHidden] = React.useState(segment.hidden ?? SponsorHideType.Visible); // undefined ?? undefined lol
     const [isLooped, setIsLooped] = React.useState(loopedChapter === segment.UUID);
 
-    let extraInfo = "";
-    if (segment.hidden === SponsorHideType.Downvoted) {
-        // This one is downvoted
-        extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
-    } else if (segment.hidden === SponsorHideType.MinimumDuration) {
-        // This one is too short
-        extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
-    } else if (segment.hidden === SponsorHideType.Hidden) {
-        extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
+    let extraInfo: string;
+    switch (hidden) {
+        case SponsorHideType.Visible:
+            extraInfo = "";
+            break;
+        case SponsorHideType.Downvoted:
+            extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+            break;
+        case SponsorHideType.MinimumDuration:
+            extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
+            break;
+        case SponsorHideType.Hidden:
+            extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
+            break;
+        default:
+            // hidden satisfies never; // need to upgrade TS
+            console.warn(`[SB] Unhandled variant of SponsorHideType in SegmentListItem: ${hidden}`);
+            extraInfo = "";
     }
 
     return (
@@ -279,7 +288,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                     {
                         (segment.actionType === ActionType.Skip || segment.actionType === ActionType.Mute
                             || segment.actionType === ActionType.Poi
-                            && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segment.hidden)) &&
+                            && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(hidden)) &&
                         <img
                             className="voteButton"
                             title={chrome.i18n.getMessage("hideSegment")}
@@ -288,17 +297,11 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);
                                 stopAnimation();
 
-                                if (segment.hidden === SponsorHideType.Hidden) {
-                                    segment.hidden = SponsorHideType.Visible;
-                                    setHidden(SponsorHideType.Visible);
-                                } else {
-                                    segment.hidden = SponsorHideType.Hidden;
-                                    setHidden(SponsorHideType.Hidden);
-                                }
-
+                                const newState = hidden === SponsorHideType.Hidden ? SponsorHideType.Visible : SponsorHideType.Hidden;
+                                setHidden(newState);
                                 sendMessage({
                                     message: "hideSegment",
-                                    type: segment.hidden,
+                                    type: newState,
                                     UUID: segment.UUID
                                 });
                             }}/>
