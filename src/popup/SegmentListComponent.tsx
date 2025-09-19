@@ -28,8 +28,8 @@ enum SegmentListTab {
     Chapter
 }
 
-interface segmentWithNesting extends SponsorTime {
-    innerChapters?: (segmentWithNesting|SponsorTime)[];
+interface SegmentWithNesting extends SponsorTime {
+    innerChapters?: (SegmentWithNesting|SponsorTime)[];
 }
 
 export const SegmentListComponent = (props: SegmentListComponentProps) => {
@@ -58,37 +58,41 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     };
 
-    const segmentsWithNesting: segmentWithNesting[] = [];
-    let nbTrailingNonChapters = 0;
-    function nestChapters(segments: segmentWithNesting[], seg: SponsorTime, topLevel?: boolean) {
-        if (seg.actionType === ActionType.Chapter && segments.length) {
-                // trailing non-chapters can only exist at top level
-                const lastElement = segments[segments.length - (topLevel ? nbTrailingNonChapters + 1 : 1)]
+    const segmentsWithNesting = React.useMemo(() => {
+        const result: SegmentWithNesting[] = [];
+        let nbTrailingNonChapters = 0;
+        function nestChapters(segments: SegmentWithNesting[], seg: SponsorTime, topLevel?: boolean) {
+            if (seg.actionType === ActionType.Chapter && segments.length) {
+                    // trailing non-chapters can only exist at top level
+                    const lastElement = segments[segments.length - (topLevel ? nbTrailingNonChapters + 1 : 1)]
 
-                if (lastElement.actionType === ActionType.Chapter
-                        && lastElement.segment[0] <= seg.segment[0]
-                        && lastElement.segment[1] >= seg.segment[1]) {
-                    if (lastElement.innerChapters){
-                        nestChapters(lastElement.innerChapters, seg);
+                    if (lastElement.actionType === ActionType.Chapter
+                            && lastElement.segment[0] <= seg.segment[0]
+                            && lastElement.segment[1] >= seg.segment[1]) {
+                        if (lastElement.innerChapters){
+                            nestChapters(lastElement.innerChapters, seg);
+                        } else {
+                            lastElement.innerChapters = [seg];
+                        }
                     } else {
-                        lastElement.innerChapters = [seg];
-                    }
-                } else {
-                    if (topLevel) {
-                        nbTrailingNonChapters = 0;
-                    }
+                        if (topLevel) {
+                            nbTrailingNonChapters = 0;
+                        }
 
-                    segments.push(seg);
+                        segments.push(seg);
+                    }
+            } else {
+                if (seg.actionType !== ActionType.Chapter) {
+                    nbTrailingNonChapters++;
                 }
-        } else {
-            if (seg.actionType !== ActionType.Chapter) {
-                nbTrailingNonChapters++;
-            }
 
-            segments.push(seg);
+                segments.push(seg);
+            }
         }
-    }
-    props.segments.forEach((seg) => nestChapters(segmentsWithNesting, {...seg}, true));
+        props.segments.forEach((seg) => nestChapters(result, {...seg}, true));
+        return result;
+    }, [props.segments])
+
 
     return (
         <div id="issueReporterContainer">
@@ -136,7 +140,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
 };
 
 function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
-    segment: segmentWithNesting;
+    segment: SegmentWithNesting;
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
@@ -146,18 +150,32 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
     sendMessage: (request: Message) => Promise<MessageResponse>;
 }) {
     const [voteMessage, setVoteMessage] = React.useState<string | null>(null);
-    const [hidden, setHidden] = React.useState(segment.hidden || SponsorHideType.Visible);
+    const [hidden, setHidden] = React.useState(segment.hidden ?? SponsorHideType.Visible); // undefined ?? undefined lol
     const [isLooped, setIsLooped] = React.useState(loopedChapter === segment.UUID);
 
-    let extraInfo = "";
-    if (segment.hidden === SponsorHideType.Downvoted) {
-        // This one is downvoted
-        extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
-    } else if (segment.hidden === SponsorHideType.MinimumDuration) {
-        // This one is too short
-        extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
-    } else if (segment.hidden === SponsorHideType.Hidden) {
-        extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
+    // Update internal state if the hidden property of the segment changes
+    React.useEffect(() => {
+        setHidden(segment.hidden ?? SponsorHideType.Visible);
+    }, [segment.hidden])
+
+    let extraInfo: string;
+    switch (hidden) {
+        case SponsorHideType.Visible:
+            extraInfo = "";
+            break;
+        case SponsorHideType.Downvoted:
+            extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDownvote") + ")";
+            break;
+        case SponsorHideType.MinimumDuration:
+            extraInfo = " (" + chrome.i18n.getMessage("hiddenDueToDuration") + ")";
+            break;
+        case SponsorHideType.Hidden:
+            extraInfo = " (" + chrome.i18n.getMessage("manuallyHidden") + ")";
+            break;
+        default:
+            // hidden satisfies never; // need to upgrade TS
+            console.warn(`[SB] Unhandled variant of SponsorHideType in SegmentListItem: ${hidden}`);
+            extraInfo = "";
     }
 
     return (
@@ -279,7 +297,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                     {
                         (segment.actionType === ActionType.Skip || segment.actionType === ActionType.Mute
                             || segment.actionType === ActionType.Poi
-                            && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(segment.hidden)) &&
+                            && [SponsorHideType.Visible, SponsorHideType.Hidden].includes(hidden)) &&
                         <img
                             className="voteButton"
                             title={chrome.i18n.getMessage("hideSegment")}
@@ -288,17 +306,11 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);
                                 stopAnimation();
 
-                                if (segment.hidden === SponsorHideType.Hidden) {
-                                    segment.hidden = SponsorHideType.Visible;
-                                    setHidden(SponsorHideType.Visible);
-                                } else {
-                                    segment.hidden = SponsorHideType.Hidden;
-                                    setHidden(SponsorHideType.Hidden);
-                                }
-
+                                const newState = hidden === SponsorHideType.Hidden ? SponsorHideType.Visible : SponsorHideType.Hidden;
+                                setHidden(newState);
                                 sendMessage({
                                     message: "hideSegment",
-                                    type: segment.hidden,
+                                    type: newState,
                                     UUID: segment.UUID
                                 });
                             }}/>
@@ -343,7 +355,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
 }
 
 function InnerChapterList({ chapters, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
-    chapters: (segmentWithNesting)[];
+    chapters: (SegmentWithNesting)[];
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
