@@ -12,7 +12,8 @@ jobs:
 
     steps:
       # Initialization
-      - uses: actions/checkout@v4
+      - name: Checkout release branch w/submodules
+        uses: actions/checkout@v5
         with:
           submodules: recursive
       - uses: actions/setup-node@v4
@@ -34,12 +35,27 @@ jobs:
           path: ../builds/SourceCodeUseThisOne.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout source maps branch
+        uses: actions/checkout@v5
+        with:
+          path: source-maps
+          ref: source-maps
+      - name: Set up committer info
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - run: npm ci
 
       # Create Firefox artifacts
       - name: Create Firefox artifacts
-        run: npm run build:firefox
+        run: npm run build:firefox -- --env ghpSourceMaps
       - run: mkdir ./builds
+      - name: Move Firefox source maps to source map repo
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          mkdir -p "./source-maps/firefox/$VERSION/"
+          mv -v ./dist/**/*.js.map "./source-maps/firefox/$VERSION/"
+          cp -v ./dist/**/*.js.LICENSE.txt "./source-maps/firefox/$VERSION/"
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/FirefoxExtension.zip *
       - name: Upload FirefoxExtension to release
@@ -52,7 +68,13 @@ jobs:
       
       # Create Chrome artifacts
       - name: Create Chrome artifacts
-        run: npm run build:chrome
+        run: npm run build:chrome -- --env ghpSourceMaps
+      - name: Move Chrome source maps to source map repo
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          mkdir -p "./source-maps/chrome/$VERSION/"
+          mv -v ./dist/**/*.js.map "./source-maps/chrome/$VERSION/"
+          cp -v ./dist/**/*.js.LICENSE.txt "./source-maps/chrome/$VERSION/"
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/ChromeExtension.zip *
       - name: Upload ChromeExtension to release
@@ -67,7 +89,13 @@ jobs:
       - name: Clear dist for Edge
         run: rm -rf ./dist
       - name: Create Edge artifacts
-        run: npm run build:edge
+        run: npm run build:edge -- --env ghpSourceMaps
+      - name: Move Edge source maps to source map repo
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          mkdir -p "./source-maps/edge/$VERSION/"
+          mv -v ./dist/**/*.js.map "./source-maps/edge/$VERSION/"
+          cp -v ./dist/**/*.js.LICENSE.txt "./source-maps/edge/$VERSION/"
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/EdgeExtension.zip *
       - name: Upload EdgeExtension to release
@@ -80,7 +108,13 @@ jobs:
 
       # Create Safari artifacts
       - name: Create Safari artifacts
-        run: npm run build:safari
+        run: npm run build:safari -- --env ghpSourceMaps
+      - name: Move Safari source maps to source map repo
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          mkdir -p "./source-maps/safari/$VERSION/"
+          mv -v ./dist/**/*.js.map "./source-maps/safari/$VERSION/"
+          cp -v ./dist/**/*.js.LICENSE.txt "./source-maps/safari/$VERSION/"
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/SafariExtension.zip *
       - name: Upload SafariExtension to release
@@ -93,7 +127,13 @@ jobs:
 
       # Create Beta artifacts (Builds with the name changed to beta)
       - name: Create Chrome Beta artifacts
-        run: npm run build:chrome -- --env stream=beta
+        run: npm run build:chrome -- --env stream=beta --env ghpSourceMaps
+      - name: Move Chrome Beta source maps to source map repo
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          mkdir -p "./source-maps/chrome-beta/$VERSION/"
+          mv -v ./dist/**/*.js.map "./source-maps/chrome-beta/$VERSION/"
+          cp -v ./dist/**/*.js.LICENSE.txt "./source-maps/chrome-beta/$VERSION/"
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/ChromeExtensionBeta.zip *
       - name: Upload ChromeExtensionBeta to release
@@ -106,11 +146,17 @@ jobs:
 
       # Firefox Beta
       - name: Create Firefox Beta artifacts
-        run: npm run build:firefox -- --env stream=beta
+        run: npm run build:firefox -- --env stream=beta --env autoupdate --env ghpSourceMaps
       - uses: actions/upload-artifact@v4
         with:
           name: FirefoxExtensionBeta
           path: dist
+      - name: Move Firefox Beta source maps to source map repo
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          mkdir -p "./source-maps/firefox-beta/$VERSION/"
+          mv -v ./dist/**/*.js.map "./source-maps/firefox-beta/$VERSION/"
+          cp -v ./dist/**/*.js.LICENSE.txt "./source-maps/firefox-beta/$VERSION/"
       - name: Zip Artifacts
         run: cd ./dist ; zip -r ../builds/FirefoxExtensionBeta.zip *
 
@@ -120,10 +166,8 @@ jobs:
         env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
-      - name: Install rename
-        run: sudo apt-get install rename
       - name: Rename signed file
-        run: cd ./web-ext-artifacts ; rename 's/.*/FirefoxSignedInstaller.xpi/' *
+        run: mv ./web-ext-artifacts/* ./web-ext-artifacts/FirefoxSignedInstaller.xpi
       - uses: actions/upload-artifact@v4
         with:
           name: FirefoxExtensionSigned.xpi
@@ -137,3 +181,80 @@ jobs:
           path: ./web-ext-artifacts/FirefoxSignedInstaller.xpi
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Commit & push new source maps
+        if: always()
+        run: |
+          VERSION=`jq -r '.version' ./dist/manifest.json`
+          cd ./source-maps
+          git add .
+          git commit -m "Publish source maps for version $VERSION"
+          git push
+
+      - name: Prepare new github pages deployment
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          import shutil
+          import os
+
+          # config stuff
+          installer_name = "FirefoxSignedInstaller.xpi"
+          owner, repo_name = os.environ["GITHUB_REPOSITORY"].split("/")
+          owner = owner.lower()
+
+          # create the github paged dir
+          ghp_dir = Path("./github-pages")
+          ghp_dir.mkdir(parents=True, exist_ok=True)
+
+          # move in the installer
+          Path("./web-ext-artifacts", installer_name).rename(ghp_dir / installer_name)
+
+          # read manifest.json and extract parameters
+          with open("./dist/manifest.json") as f:
+            manifest = json.load(f)
+          current_version = manifest["version"]
+          ext_id = manifest["browser_specific_settings"]["gecko"]["id"]
+
+          # generate updates file
+          updates = {
+            "addons": {
+              ext_id: {
+                "updates": [
+                  {
+                    "version": current_version,
+                    # param doesn't actually matter, it's just a cachebuster
+                    "update_link": f"https://{owner}.github.io/{repo_name}/{installer_name}?v={current_version}",
+                  },
+                ],
+              },
+            },
+          }
+          (ghp_dir / "updates.json").write_text(json.dumps(updates))
+
+          # copy in source maps
+          def only_sourcemaps(cur, ls):
+            if '/' in cur:
+              return []
+            return set(ls) - {"chrome", "chrome-beta", "edge", "firefox", "firefox-beta", "safari"}
+          shutil.copytree("source-maps", ghp_dir, ignore=only_sourcemaps, dirs_exist_ok=True)
+
+      - name: Upload new github pages deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./github-pages
+
+  deploy-ghp:
+    name: Deploy to github pages
+    needs: build
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
