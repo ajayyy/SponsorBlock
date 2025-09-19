@@ -28,8 +28,8 @@ enum SegmentListTab {
     Chapter
 }
 
-interface segmentWithNesting extends SponsorTime {
-    innerChapters?: (segmentWithNesting|SponsorTime)[];
+interface SegmentWithNesting extends SponsorTime {
+    innerChapters?: (SegmentWithNesting|SponsorTime)[];
 }
 
 export const SegmentListComponent = (props: SegmentListComponentProps) => {
@@ -58,37 +58,41 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     };
 
-    const segmentsWithNesting: segmentWithNesting[] = [];
-    let nbTrailingNonChapters = 0;
-    function nestChapters(segments: segmentWithNesting[], seg: SponsorTime, topLevel?: boolean) {
-        if (seg.actionType === ActionType.Chapter && segments.length) {
-                // trailing non-chapters can only exist at top level
-                const lastElement = segments[segments.length - (topLevel ? nbTrailingNonChapters + 1 : 1)]
+    const segmentsWithNesting = React.useMemo(() => {
+        const result: SegmentWithNesting[] = [];
+        let nbTrailingNonChapters = 0;
+        function nestChapters(segments: SegmentWithNesting[], seg: SponsorTime, topLevel?: boolean) {
+            if (seg.actionType === ActionType.Chapter && segments.length) {
+                    // trailing non-chapters can only exist at top level
+                    const lastElement = segments[segments.length - (topLevel ? nbTrailingNonChapters + 1 : 1)]
 
-                if (lastElement.actionType === ActionType.Chapter
-                        && lastElement.segment[0] <= seg.segment[0]
-                        && lastElement.segment[1] >= seg.segment[1]) {
-                    if (lastElement.innerChapters){
-                        nestChapters(lastElement.innerChapters, seg);
+                    if (lastElement.actionType === ActionType.Chapter
+                            && lastElement.segment[0] <= seg.segment[0]
+                            && lastElement.segment[1] >= seg.segment[1]) {
+                        if (lastElement.innerChapters){
+                            nestChapters(lastElement.innerChapters, seg);
+                        } else {
+                            lastElement.innerChapters = [seg];
+                        }
                     } else {
-                        lastElement.innerChapters = [seg];
-                    }
-                } else {
-                    if (topLevel) {
-                        nbTrailingNonChapters = 0;
-                    }
+                        if (topLevel) {
+                            nbTrailingNonChapters = 0;
+                        }
 
-                    segments.push(seg);
+                        segments.push(seg);
+                    }
+            } else {
+                if (seg.actionType !== ActionType.Chapter) {
+                    nbTrailingNonChapters++;
                 }
-        } else {
-            if (seg.actionType !== ActionType.Chapter) {
-                nbTrailingNonChapters++;
-            }
 
-            segments.push(seg);
+                segments.push(seg);
+            }
         }
-    }
-    props.segments.forEach((seg) => nestChapters(segmentsWithNesting, {...seg}, true));
+        props.segments.forEach((seg) => nestChapters(result, {...seg}, true));
+        return result;
+    }, [props.segments])
+
 
     return (
         <div id="issueReporterContainer">
@@ -136,7 +140,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
 };
 
 function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
-    segment: segmentWithNesting;
+    segment: SegmentWithNesting;
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
@@ -351,7 +355,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
 }
 
 function InnerChapterList({ chapters, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
-    chapters: (segmentWithNesting)[];
+    chapters: (SegmentWithNesting)[];
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
