@@ -149,6 +149,11 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
     const [hidden, setHidden] = React.useState(segment.hidden ?? SponsorHideType.Visible); // undefined ?? undefined lol
     const [isLooped, setIsLooped] = React.useState(loopedChapter === segment.UUID);
 
+    // Update internal state if the hidden property of the segment changes
+    React.useEffect(() => {
+        setHidden(segment.hidden ?? SponsorHideType.Visible);
+    }, [segment.hidden])
+
     let extraInfo: string;
     switch (hidden) {
         case SponsorHideType.Visible:
