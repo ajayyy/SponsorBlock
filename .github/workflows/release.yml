@@ -16,15 +16,6 @@ jobs:
         uses: actions/checkout@v5
         with:
           submodules: recursive
-      - name: Checkout source maps branch
-        uses: actions/checkout@v5
-        with:
-          path: source-maps
-          ref: source-maps
-      - name: Set up committer info
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -44,6 +35,15 @@ jobs:
           path: ../builds/SourceCodeUseThisOne.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout source maps branch
+        uses: actions/checkout@v5
+        with:
+          path: source-maps
+          ref: source-maps
+      - name: Set up committer info
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - run: npm ci
 
       # Create Firefox artifacts
