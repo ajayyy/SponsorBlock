@@ -68,14 +68,6 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     }, [props.videoID, hasSegments]);
 
-    const tabFilter = (segment: SponsorTime) => {
-        if (tab === SegmentListTab.Chapter) {
-            return isChapter(segment);
-        } else {
-            return isSegment(segment);
-        }
-    };
-
     const segmentsWithNesting = React.useMemo(() => {
         const result: SegmentWithNesting[] = [];
         let nbTrailingNonChapters = 0;
@@ -141,7 +133,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
                             isVip={isVip}
                             loopedChapter={props.loopedChapter} // UUID instead of boolean so it can be passed down to nested chapters 
 
-                            tabFilter={tabFilter}
+                            tabFilter={tab === SegmentListTab.Chapter ? isChapter : isSegment}
                             sendMessage={props.sendMessage}
                         />
                     ))
