@@ -48,9 +48,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
 
     React.useEffect(() => {
         const hasSegments = props.segments.find(seg => seg.actionType !== ActionType.Chapter)
-        if (hasSegments) {
-            setTab(SegmentListTab.Segments);
-        } else {
+        if (!hasSegments && props.segments.length > 0) {
             setTab(SegmentListTab.Chapter);
         }
     }, [props.videoID, props.segments]);
