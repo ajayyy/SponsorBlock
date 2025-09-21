@@ -47,11 +47,11 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
     }, []);
 
     React.useEffect(() => {
-        const hasNonChapter = props.segments.find(seg => seg.actionType !== ActionType.Chapter)
-        if (!hasNonChapter && props.segments.length > 0) {
-            setTab(SegmentListTab.Chapter);
-        } else {
+        const hasSegments = props.segments.find(seg => seg.actionType !== ActionType.Chapter)
+        if (hasSegments) {
             setTab(SegmentListTab.Segments);
+        } else {
+            setTab(SegmentListTab.Chapter);
         }
     }, [props.videoID, props.segments]);
 
