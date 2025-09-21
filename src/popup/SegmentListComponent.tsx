@@ -47,8 +47,13 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
     }, []);
 
     React.useEffect(() => {
-        setTab(SegmentListTab.Segments);
-    }, [props.videoID]);
+        const hasNonChapter = props.segments.find(seg => seg.actionType !== ActionType.Chapter)
+        if (!hasNonChapter && props.segments.length > 0) {
+            setTab(SegmentListTab.Chapter);
+        } else {
+            setTab(SegmentListTab.Segments);
+        }
+    }, [props.videoID, props.segments]);
 
     const tabFilter = (segment: SponsorTime) => {
         if (tab === SegmentListTab.Chapter) {
