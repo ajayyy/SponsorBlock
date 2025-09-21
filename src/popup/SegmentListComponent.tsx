@@ -32,6 +32,14 @@ interface SegmentWithNesting extends SponsorTime {
     innerChapters?: (SegmentWithNesting|SponsorTime)[];
 }
 
+function isSegment(segment) {
+    return segment.actionType !== ActionType.Chapter;
+}
+
+function isChapter(segment) {
+    return segment.actionType === ActionType.Chapter;
+}
+
 export const SegmentListComponent = (props: SegmentListComponentProps) => {
     const [tab, setTab] = React.useState(SegmentListTab.Segments);
     const [isVip, setIsVip] = React.useState(Config.config?.isVip ?? false);
@@ -46,18 +54,25 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     }, []);
 
+    const [hasSegments, hasChapters] = React.useMemo(() => {
+        const hasSegments = Boolean(props.segments.find(isSegment))
+        const hasChapters = Boolean(props.segments.find(isChapter))
+        return [hasSegments, hasChapters];
+    }, [props.segments]);
+
     React.useEffect(() => {
-        const hasSegments = props.segments.find(seg => seg.actionType !== ActionType.Chapter)
-        if (!hasSegments && props.segments.length > 0) {
+        if (hasSegments){
+            setTab(SegmentListTab.Segments);
+        } else {
             setTab(SegmentListTab.Chapter);
         }
-    }, [props.videoID, props.segments]);
+    }, [props.videoID, hasSegments]);
 
     const tabFilter = (segment: SponsorTime) => {
         if (tab === SegmentListTab.Chapter) {
-            return segment.actionType === ActionType.Chapter;
+            return isChapter(segment);
         } else {
-            return segment.actionType !== ActionType.Chapter;
+            return isSegment(segment);
         }
     };
 
@@ -99,7 +114,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
 
     return (
         <div id="issueReporterContainer">
-            <div id="issueReporterTabs" className={props.segments && props.segments.find(s => s.actionType === ActionType.Chapter) ? "" : "hidden"}>
+            <div id="issueReporterTabs" className={hasSegments && hasChapters ? "" : "hidden"}>
                 <span id="issueReporterTabSegments" className={tab === SegmentListTab.Segments ? "sbSelected" : ""} onClick={() => {
                     setTab(SegmentListTab.Segments);
                 }}>
