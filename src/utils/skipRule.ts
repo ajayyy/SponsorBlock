@@ -145,7 +145,7 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
 
 function isSkipRulePassing(segment: SponsorTime | VideoLabelsCacheData, rule: AdvancedSkipRule): boolean {
     const value = getSkipRuleValue(segment, rule);
-    
+
     switch (rule.operator) {
         case SkipRuleOperator.Less:
             return typeof value === "number" && value < (rule.value as number);
@@ -183,4 +183,181 @@ export function getCategoryDefaultSelection(category: string): CategorySelection
         }
     }
     return { name: category, option: CategorySkipOption.Disabled} as CategorySelection;
+}
+
+type TokenType =
+    | "if" // Keywords
+    | "disabled" | "show overlay" | "manual skip" | "auto skip" // Skip option
+    | keyof typeof SkipRuleAttribute // Segment attributes
+    | keyof typeof SkipRuleOperator // Segment attribute operators
+    | "and" | "or" // Expression operators
+    | "string" // Literal values
+    | "eof" | "error"; // Sentinel and special tokens
+
+interface SourcePos {
+    line: number;
+    // column: number;
+}
+
+interface Span {
+    start: SourcePos;
+    end: SourcePos;
+}
+
+interface Token {
+    type: TokenType;
+    span: Span;
+    value: string;
+}
+
+interface LexerState {
+    source: string;
+    start: number;
+    current: number;
+
+    start_pos: SourcePos;
+    current_pos: SourcePos;
+}
+
+function nextToken(state: LexerState): Token {
+    function makeToken(type: TokenType): Token {
+        return {
+            type,
+            span: { start: state.start_pos, end: state.current_pos, },
+            value: state.source.slice(state.start, state.current),
+        };
+    }
+
+    /**
+     * Returns the UTF-16 value at the current position and advances it forward.
+     * If the end of the source string has been reached, returns {@code null}.
+     *
+     * @return current UTF-16 value, or {@code null} on EOF
+     */
+    function consume(): string | null {
+        if (state.source.length > state.current) {
+            // The UTF-16 value at the current position, which could be either a Unicode code point or a lone surrogate.
+            // The check above this is also based on the UTF-16 value count, so this should not be able to fail on “weird” inputs.
+            const c = state.source[state.current];
+            state.current++;
+
+            if (c === "\n") {
+                state.current_pos.line++;
+                // state.current_pos.column = 1;
+            } else {
+                // // TODO This will be wrong on anything involving UTF-16 surrogate pairs or grapheme clusters with multiple code units
+                // // So just don't show column numbers on errors for now
+                // state.current_pos.column++;
+            }
+
+            return c;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns the UTF-16 value at the current position without advancing it.
+     * If the end of the source string has been reached, returns {@code null}.
+     *
+     * @return current UTF-16 value, or {@code null} on EOF
+     */
+    function peek(): string | null {
+        if (state.source.length > state.current) {
+            // See comment in consume() for Unicode expectations here
+            return state.source[state.current];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Checks the current position against expected UTF-16 values.
+     * If any of them matches, advances the current position and returns
+     * {@code true}, otherwise {@code false}.
+     *
+     * @param expected the expected set of UTF-16 values at the current position
+     * @return whether the actual value matches and whether the position was advanced
+     */
+    function expect(expected: string | readonly string[]): boolean {
+        const actual = peek();
+
+        if (actual === null) {
+            return false;
+        }
+
+        if (typeof expected === "string") {
+            if (expected === actual) {
+                consume();
+                return true;
+            }
+        } else if (expected.includes(actual)) {
+            consume();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Skips a series of whitespace characters starting at the current
+     * position. May advance the current position multiple times, once,
+     * or not at all.
+     */
+    function skipWhitespace() {
+        let c = peek();
+        const whitespace = /s+/;
+
+        while (c != null) {
+            if (!whitespace.test(c)) {
+                return;
+            }
+
+            consume();
+            c = peek();
+        }
+    }
+
+    /**
+     * Skips all characters until the next {@code "\n"} (line feed)
+     * character occurs (inclusive). Will always advance the current position
+     * at least once.
+     */
+    function skipLine() {
+        let c = consume();
+        while (c != null) {
+            if (c == '\n') {
+                return;
+            }
+
+            c = consume();
+        }
+    }
+
+    function isEof(): boolean {
+        return state.current >= state.source.length;
+    }
+
+    for (;;) {
+        skipWhitespace();
+        state.start = state.current;
+
+        if (isEof()) {
+            return makeToken("eof");
+        }
+
+        const c = consume();
+
+        switch (c) {
+            // TODO
+            default:
+                return makeToken("error");
+        }
+    }
+}
+
+export function compileConfig(config: string): AdvancedSkipRuleSet[] | null {
+    // TODO
+    const ruleSets: AdvancedSkipRuleSet[] = [];
+    return ruleSets;
 }
