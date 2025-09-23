@@ -361,10 +361,20 @@ function nextToken(state: LexerState): Token {
         }
     }
 
+    /**
+     * @return whether the lexer has reached the end of input
+     */
     function isEof(): boolean {
         return state.current >= state.source.length;
     }
 
+    /**
+     * Sets the start position of the next token that will be emitted
+     * to the current position.
+     *
+     * More characters need to be consumed after calling this, as
+     * an empty token would be emitted otherwise.
+     */
     function resetToCurrent() {
         state.start = state.current;
         state.start_pos = state.current_pos;
@@ -604,6 +614,14 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
     let erroring = false;
     let panicMode = false;
 
+    /**
+     * Adds an error message. The current skip rule will be marked as erroring.
+     *
+     * @param span the range of the error
+     * @param message the message to report
+     * @param panic if <code>true</code>, all further errors will be silenced
+     *              until panic mode is disabled again
+     */
     function errorAt(span: Span, message: string, panic: boolean) {
         if (!panicMode) {
             errors.push({span, message,});
@@ -613,14 +631,36 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         erroring = true;
     }
 
+    /**
+     * Adds an error message for an error occurring at the previous token
+     * (which was just consumed).
+     *
+     * @param message the message to report
+     * @param panic if <code>true</code>, all further errors will be silenced
+     *              until panic mode is disabled again
+     */
     function error(message: string, panic: boolean) {
         errorAt(previous.span, message, panic);
     }
 
+    /**
+     * Adds an error message for an error occurring at the current token
+     * (which has not been consumed yet).
+     *
+     * @param message the message to report
+     * @param panic if <code>true</code>, all further errors will be silenced
+     *              until panic mode is disabled again
+     */
     function errorAtCurrent(message: string, panic: boolean) {
         errorAt(current.span, message, panic);
     }
 
+    /**
+     * Consumes the current token, which can then be accessed at <code>previous</code>.
+     * The next token will be at <code>current</code> after this call.
+     *
+     * If a token of type <code>error</code> is found, issues an error message.
+     */
     function consume() {
         previous = current;
         current = nextToken(lexerState);
@@ -631,6 +671,12 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         }
     }
 
+    /**
+     * Checks the current token (that has not been consumed yet) against a set of expected token types.
+     *
+     * @param expected the set of expected token types
+     * @return whether the actual current token matches any expected token type
+     */
     function match(expected: readonly TokenType[]): boolean {
         if (expected.includes(current.type)) {
             consume();
@@ -640,12 +686,26 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         }
     }
 
+    /**
+     * Checks the current token (that has not been consumed yet) against a set of expected token types.
+     *
+     * If there is no match, issues an error message which will be prepended to <code>, got: <token type></code>.
+     *
+     * @param expected the set of expected token types
+     * @param message the error message to report in case the actual token doesn't match
+     * @param panic if <code>true</code>, all further errors will be silenced
+     *              until panic mode is disabled again
+     */
     function expect(expected: readonly TokenType[], message: string, panic: boolean) {
         if (!match(expected)) {
             errorAtCurrent(message.concat(`, got: \`${current.type}\``), panic);
         }
     }
 
+    /**
+     * Synchronize with the next rule block and disable panic mode.
+     * Skips all tokens until the <code>if</code> keyword is found.
+     */
     function synchronize() {
         panicMode = false;
 
@@ -658,6 +718,9 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         }
     }
 
+    /**
+     * @return whether the parser has reached the end of input
+     */
     function isEof(): boolean {
         return current.type === "eof";
     }
