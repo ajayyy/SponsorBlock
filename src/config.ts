@@ -3,7 +3,7 @@ import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
-import { Permission, AdvancedSkipRuleSet } from "./utils/skipRule";
+import { Permission, AdvancedSkipRule } from "./utils/skipRule";
 
 interface SBConfig {
     userID: string;
@@ -155,7 +155,7 @@ interface SBStorage {
     /* VideoID prefixes to UUID prefixes */
     downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>;
     navigationApiAvailable: boolean;
-    
+
     // Used when sync storage disabled
     alreadyInstalled: boolean;
 
@@ -166,7 +166,7 @@ interface SBStorage {
     skipProfileTemp: { time: number; configID: ConfigurationID } | null;
     skipProfiles: Record<ConfigurationID, CustomConfiguration>;
 
-    skipRules: AdvancedSkipRuleSet[];
+    skipRules: AdvancedSkipRule[];
 }
 
 class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
@@ -212,7 +212,7 @@ function migrateOldSyncFormats(config: SBConfig, local: SBStorage) {
         for (const channelID of whitelistedChannels) {
             local.channelSkipProfileIDs[channelID] = skipProfileID;
         }
-        local.channelSkipProfileIDs = local.channelSkipProfileIDs;     
+        local.channelSkipProfileIDs = local.channelSkipProfileIDs;
 
         chrome.storage.sync.remove("whitelistedChannels");
     }
@@ -246,7 +246,7 @@ function migrateOldSyncFormats(config: SBConfig, local: SBStorage) {
                 name: "chapter" as Category,
                 option: CategorySkipOption.ShowOverlay
             });
-    
+
             config.categorySelections = config.categorySelections;
         }
     }

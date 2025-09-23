@@ -1,9 +1,10 @@
 import { getCurrentPageTitle } from "../../maze-utils/src/elements";
 import { getChannelIDInfo, getVideoDuration } from "../../maze-utils/src/video";
 import Config from "../config";
-import { CategorySelection, CategorySkipOption, SponsorSourceType, SponsorTime } from "../types";
+import {ActionType, ActionTypes, CategorySelection, CategorySkipOption, SponsorSourceType, SponsorTime} from "../types";
 import { getSkipProfile, getSkipProfileBool } from "./skipProfiles";
 import { VideoLabelsCacheData } from "./videoLabels";
+import * as CompileConfig from "../../config.json";
 
 export interface Permission {
     canSubmit: boolean;
@@ -41,23 +42,38 @@ export enum SkipRuleOperator {
     NotRegexIgnoreCase = "!~i="
 }
 
-export interface AdvancedSkipRule {
+export interface AdvancedSkipCheck {
+    kind: "check";
     attribute: SkipRuleAttribute;
     operator: SkipRuleOperator;
     value: string | number;
 }
 
-export interface AdvancedSkipRuleSet {
-    rules: AdvancedSkipRule[];
+export enum PredicateOperator {
+    And = "and",
+    Or = "or",
+}
+
+export interface AdvancedSkipOperator {
+    kind: "operator";
+    operator: PredicateOperator;
+    left: AdvancedSkipPredicate;
+    right: AdvancedSkipPredicate;
+}
+
+export type AdvancedSkipPredicate = AdvancedSkipCheck | AdvancedSkipOperator;
+
+export interface AdvancedSkipRule {
+    predicate: AdvancedSkipPredicate;
     skipOption: CategorySkipOption;
-    comment: string;
+    comments: string[];
 }
 
 export function getCategorySelection(segment: SponsorTime | VideoLabelsCacheData): CategorySelection {
     // First check skip rules
-    for (const ruleSet of Config.local.skipRules) {
-        if (ruleSet.rules.every((rule) => isSkipRulePassing(segment, rule))) {
-            return { name: segment.category, option: ruleSet.skipOption } as CategorySelection;
+    for (const rule of Config.local.skipRules) {
+        if (isSkipPredicatePassing(segment, rule.predicate)) {
+            return { name: segment.category, option: rule.skipOption } as CategorySelection;
         }
     }
 
@@ -84,7 +100,7 @@ export function getCategorySelection(segment: SponsorTime | VideoLabelsCacheData
     return { name: segment.category, option: CategorySkipOption.Disabled} as CategorySelection;
 }
 
-function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: AdvancedSkipRule): string | number | undefined {
+function getSkipCheckValue(segment: SponsorTime | VideoLabelsCacheData, rule: AdvancedSkipCheck): string | number | undefined {
     switch (rule.attribute) {
         case SkipRuleAttribute.StartTime:
             return (segment as SponsorTime).segment?.[0];
@@ -143,8 +159,8 @@ function getSkipRuleValue(segment: SponsorTime | VideoLabelsCacheData, rule: Adv
     }
 }
 
-function isSkipRulePassing(segment: SponsorTime | VideoLabelsCacheData, rule: AdvancedSkipRule): boolean {
-    const value = getSkipRuleValue(segment, rule);
+function isSkipCheckPassing(segment: SponsorTime | VideoLabelsCacheData, rule: AdvancedSkipCheck): boolean {
+    const value = getSkipCheckValue(segment, rule);
 
     switch (rule.operator) {
         case SkipRuleOperator.Less:
@@ -176,6 +192,19 @@ function isSkipRulePassing(segment: SponsorTime | VideoLabelsCacheData, rule: Ad
     }
 }
 
+function isSkipPredicatePassing(segment: SponsorTime | VideoLabelsCacheData, predicate: AdvancedSkipPredicate): boolean {
+    if (predicate.kind === "check") {
+        return isSkipCheckPassing(segment, predicate as AdvancedSkipCheck);
+    } else { // predicate.kind === "operator"
+        // TODO Is recursion fine to use here?
+        if (predicate.operator == PredicateOperator.And) {
+            return isSkipPredicatePassing(segment, predicate.left) && isSkipPredicatePassing(segment, predicate.right);
+        } else { // predicate.operator === PredicateOperator.Or
+            return isSkipPredicatePassing(segment, predicate.left) || isSkipPredicatePassing(segment, predicate.right);
+        }
+    }
+}
+
 export function getCategoryDefaultSelection(category: string): CategorySelection {
     for (const selection of Config.config.categorySelections) {
         if (selection.name === category) {
@@ -188,19 +217,19 @@ export function getCategoryDefaultSelection(category: string): CategorySelection
 type TokenType =
     | "if" // Keywords
     | "disabled" | "show overlay" | "manual skip" | "auto skip" // Skip option
-    | keyof typeof SkipRuleAttribute // Segment attributes
-    | keyof typeof SkipRuleOperator // Segment attribute operators
+    | `${SkipRuleAttribute}` // Segment attributes
+    | `${SkipRuleOperator}` // Segment attribute operators
     | "and" | "or" // Expression operators
-    | "(" | ")" // Syntax
+    | "(" | ")" | "comment" // Syntax
     | "string" | "number" // Literal values
     | "eof" | "error"; // Sentinel and special tokens
 
-interface SourcePos {
+export interface SourcePos {
     line: number;
     // column: number;
 }
 
-interface Span {
+export interface Span {
     start: SourcePos;
     end: SourcePos;
 }
@@ -341,218 +370,222 @@ function nextToken(state: LexerState): Token {
         state.start_pos = state.current_pos;
     }
 
-    for (;;) {
-        skipWhitespace();
-        resetToCurrent();
+    skipWhitespace();
+    resetToCurrent();
 
-        if (isEof()) {
-            return makeToken("eof");
+    if (isEof()) {
+        return makeToken("eof");
+    }
+
+    const keyword = expectKeyword([
+        "if", "and", "or",
+        "(", ")",
+        "//",
+    ].concat(Object.values(SkipRuleAttribute))
+        .concat(Object.values(SkipRuleOperator)), true);
+
+    if (keyword !== null) {
+        switch (keyword) {
+            case "if": return makeToken("if");
+            case "and": return makeToken("and");
+            case "or": return makeToken("or");
+
+            case "(": return makeToken("(");
+            case ")": return makeToken(")");
+
+            case "time.start": return makeToken("time.start");
+            case "time.end": return makeToken("time.end");
+            case "time.duration": return makeToken("time.duration");
+            case "time.startPercent": return makeToken("time.startPercent");
+            case "time.endPercent": return makeToken("time.endPercent");
+            case "time.durationPercent": return makeToken("time.durationPercent");
+            case "category": return makeToken("category");
+            case "actionType": return makeToken("actionType");
+            case "chapter.name": return makeToken("chapter.name");
+            case "chapter.source": return makeToken("chapter.source");
+            case "channel.id": return makeToken("channel.id");
+            case "channel.name": return makeToken("channel.name");
+            case "video.duration": return makeToken("video.duration");
+            case "video.title": return makeToken("video.title");
+
+            case "<": return makeToken("<");
+            case "<=": return makeToken("<=");
+            case ">": return makeToken(">");
+            case ">=": return makeToken(">=");
+            case "==": return makeToken("==");
+            case "!=": return makeToken("!=");
+            case "*=": return makeToken("*=");
+            case "!*=": return makeToken("!*=");
+            case "~=": return makeToken("~=");
+            case "~i=": return makeToken("~i=");
+            case "!~=": return makeToken("!~=");
+            case "!~i=": return makeToken("!~i=");
+
+            case "//":
+                resetToCurrent();
+                skipLine();
+                return makeToken("comment");
+
+            default:
         }
+    }
 
-        const keyword = expectKeyword([
-            "if", "and", "or",
-            "(", ")",
-            "//",
-        ].concat(Object.values(SkipRuleAttribute))
-            .concat(Object.values(SkipRuleOperator)), true);
+    const keyword2 = expectKeyword(
+        [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
 
-        if (keyword !== null) {
-            switch (keyword) {
-                case "if": return makeToken("if");
-                case "and": return makeToken("and");
-                case "or": return makeToken("or");
-
-                case "(": return makeToken("(");
-                case ")": return makeToken(")");
-
-                case "time.start": return makeToken("StartTime");
-                case "time.end": return makeToken("EndTime");
-                case "time.duration": return makeToken("Duration");
-                case "time.startPercent": return makeToken("StartTimePercent");
-                case "time.endPercent": return makeToken("EndTimePercent");
-                case "time.durationPercent": return makeToken("DurationPercent");
-                case "category": return makeToken("Category");
-                case "actionType": return makeToken("ActionType");
-                case "chapter.name": return makeToken("Description");
-                case "chapter.source": return makeToken("Source");
-                case "channel.id": return makeToken("ChannelID");
-                case "channel.name": return makeToken("ChannelName");
-                case "video.duration": return makeToken("VideoDuration");
-                case "video.title": return makeToken("Title");
-
-                case "<": return makeToken("Less");
-                case "<=": return makeToken("LessOrEqual");
-                case ">": return makeToken("Greater");
-                case ">=": return makeToken("GreaterOrEqual");
-                case "==": return makeToken("Equal");
-                case "!=": return makeToken("NotEqual");
-                case "*=": return makeToken("Contains");
-                case "!*=": return makeToken("NotContains");
-                case "~=": return makeToken("Regex");
-                case "~i=": return makeToken("RegexIgnoreCase");
-                case "!~=": return makeToken("NotRegex");
-                case "!~i=": return makeToken("NotRegexIgnoreCase");
-
-                case "//":
-                    skipLine();
-                    continue;
-
-                default:
-            }
+    if (keyword2 !== null) {
+        switch (keyword2) {
+            case "disabled": return makeToken("disabled");
+            case "show overlay": return makeToken("show overlay");
+            case "manual skip": return makeToken("manual skip");
+            case "auto skip": return makeToken("auto skip");
+            default:
         }
+    }
 
-        const keyword2 = expectKeyword(
-            [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
+    let c = consume();
 
-        if (keyword2 !== null) {
-            switch (keyword2) {
-                case "disabled": return makeToken("disabled");
-                case "show overlay": return makeToken("show overlay");
-                case "manual skip": return makeToken("manual skip");
-                case "auto skip": return makeToken("auto skip");
-                default:
-            }
-        }
-
+    if (c === '"') {
+        // Parses string according to ECMA-404 2nd edition (JSON), section 9 “String”
+        let output = "";
         let c = consume();
+        let error = false;
 
-        if (c === '"') {
-            // Parses string according to ECMA-404 2nd edition (JSON), section 9 “String”
-            let output = "";
-            let c = consume();
-            let error = false;
+        while (c !== null && c !== '"') {
+            if (c == '\\') {
+                c = consume();
 
-            while (c !== null && c !== '"') {
-                if (c == '\\') {
-                    c = consume();
+                switch (c) {
+                    case '"':
+                        output = output.concat('"');
+                        break;
+                    case '\\':
+                        output = output.concat('\\');
+                        break;
+                    case '/':
+                        output = output.concat('/');
+                        break;
+                    case 'b':
+                        output = output.concat('\b');
+                        break;
+                    case 'f':
+                        output = output.concat('\f');
+                        break;
+                    case 'n':
+                        output = output.concat('\n');
+                        break;
+                    case 'r':
+                        output = output.concat('\r');
+                        break;
+                    case 't':
+                        output = output.concat('\t');
+                        break;
+                    case 'u': {
+                        // UTF-16 value sequence
+                        const digits = state.source.slice(state.current, state.current + 4);
 
-                    switch (c) {
-                        case '"':
-                            output = output.concat('"');
-                            break;
-                        case '\\':
-                            output = output.concat('\\');
-                            break;
-                        case '/':
-                            output = output.concat('/');
-                            break;
-                        case 'b':
-                            output = output.concat('\b');
-                            break;
-                        case 'f':
-                            output = output.concat('\f');
-                            break;
-                        case 'n':
-                            output = output.concat('\n');
-                            break;
-                        case 'r':
-                            output = output.concat('\r');
-                            break;
-                        case 't':
-                            output = output.concat('\t');
-                            break;
-                        case 'u': {
-                            // UTF-16 value sequence
-                            const digits = state.source.slice(state.current, state.current + 4);
-
-                            if (digits.length < 4 || !/[0-9a-zA-Z]{4}/.test(digits)) {
-                                error = true;
-                                output = output.concat(`\\u`);
-                                c = consume();
-                                continue;
-                            }
-
-                            const value = parseInt(digits, 16);
-                            // fromCharCode() takes a UTF-16 value without performing validity checks,
-                            // which is exactly what is needed here – in JSON, code units outside the
-                            // BMP are represented by two Unicode escape sequences.
-                            output = output.concat(String.fromCharCode(value));
-                            break;
-                        }
-                        default:
+                        if (digits.length < 4 || !/[0-9a-zA-Z]{4}/.test(digits)) {
                             error = true;
-                            output = output.concat(`\\${c}`);
-                            break;
+                            output = output.concat(`\\u`);
+                            c = consume();
+                            continue;
+                        }
+
+                        const value = parseInt(digits, 16);
+                        // fromCharCode() takes a UTF-16 value without performing validity checks,
+                        // which is exactly what is needed here – in JSON, code units outside the
+                        // BMP are represented by two Unicode escape sequences.
+                        output = output.concat(String.fromCharCode(value));
+                        break;
                     }
-                } else {
-                    output = output.concat(c);
+                    default:
+                        error = true;
+                        output = output.concat(`\\${c}`);
+                        break;
                 }
-
-                c = consume();
+            } else {
+                output = output.concat(c);
             }
 
-            return {
-                type: error || c !== '"' ? "error" : "string",
-                span: { start: state.start_pos, end: state.current_pos, },
-                value: output,
-            };
-        } else if (/[0-9-]/.test(c)) {
-            // Parses number according to ECMA-404 2nd edition (JSON), section 8 “Numbers”
-            if (c === '-') {
-                c = consume();
+            c = consume();
+        }
 
-                if (!/[0-9]/.test(c)) {
-                    return makeToken("error");
-                }
+        return {
+            type: error || c !== '"' ? "error" : "string",
+            span: { start: state.start_pos, end: state.current_pos, },
+            value: output,
+        };
+    } else if (/[0-9-]/.test(c)) {
+        // Parses number according to ECMA-404 2nd edition (JSON), section 8 “Numbers”
+        if (c === '-') {
+            c = consume();
+
+            if (!/[0-9]/.test(c)) {
+                return makeToken("error");
+            }
+        }
+
+        const leadingZero = c === '0';
+        let next = peek();
+        let error = false;
+
+        while (next !== null && /[0-9]/.test(next)) {
+            consume();
+            next = peek();
+
+            if (leadingZero) {
+                error = true;
+            }
+        }
+
+
+        if (next !== null && next === '.') {
+            consume();
+            next = peek();
+
+            if (next === null || !/[0-9]/.test(next)) {
+                return makeToken("error");
             }
 
-            const leadingZero = c === '0';
-            let next = peek();
-            let error = false;
+            do {
+                consume();
+                next = peek();
+            } while (next !== null && /[0-9]/.test(next));
+        }
+
+        next = peek();
+
+        if (next != null && (next === 'e' || next === 'E')) {
+            consume();
+            next = peek();
+
+            if (next === null) {
+                return makeToken("error");
+            }
+
+            if (next === '+' || next === '-') {
+                consume();
+                next = peek();
+            }
 
             while (next !== null && /[0-9]/.test(next)) {
                 consume();
                 next = peek();
-
-                if (leadingZero) {
-                    error = true;
-                }
             }
-
-
-            if (next !== null && next === '.') {
-                consume();
-                next = peek();
-
-                if (next === null || !/[0-9]/.test(next)) {
-                    return makeToken("error");
-                }
-
-                do {
-                    consume();
-                    next = peek();
-                } while (next !== null && /[0-9]/.test(next));
-            }
-
-            next = peek();
-
-            if (next != null && (next === 'e' || next === 'E')) {
-                consume();
-                next = peek();
-
-                if (next === null) {
-                    return makeToken("error");
-                }
-
-                if (next === '+' || next === '-') {
-                    consume();
-                    next = peek();
-                }
-
-                while (next !== null && /[0-9]/.test(next)) {
-                    consume();
-                    next = peek();
-                }
-            }
-
-            return makeToken(error ? "error" : "number");
         }
 
-        return makeToken("error");
+        return makeToken(error ? "error" : "number");
     }
+
+    return makeToken("error");
 }
 
-export function compileConfigNew(config: string): AdvancedSkipRuleSet[] | null {
+export interface ParseError {
+    span: Span;
+    message: string;
+}
+
+export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors: ParseError[] } {
      // Mutated by calls to nextToken()
     const lexerState: LexerState = {
         source: config,
@@ -563,14 +596,212 @@ export function compileConfigNew(config: string): AdvancedSkipRuleSet[] | null {
         current_pos: { line: 1 },
     };
 
-    let token = nextToken(lexerState);
+    let previous: Token = null;
+    let current: Token = nextToken(lexerState);
 
-    while (token.type !== "eof") {
-        console.log(token);
+    const rules: AdvancedSkipRule[] = [];
+    const errors: ParseError[] = [];
+    let erroring = false;
+    let panicMode = false;
 
-        token = nextToken(lexerState);
+    function errorAt(span: Span, message: string, panic: boolean) {
+        if (!panicMode) {
+            errors.push({span, message,});
+        }
+
+        panicMode ||= panic;
+        erroring = true;
     }
 
-    // TODO
-    return null;
+    function error(message: string, panic: boolean) {
+        errorAt(previous.span, message, panic);
+    }
+
+    function errorAtCurrent(message: string, panic: boolean) {
+        errorAt(current.span, message, panic);
+    }
+
+    function consume() {
+        previous = current;
+        current = nextToken(lexerState);
+
+        while (current.type === "error") {
+            errorAtCurrent(`Unexpected token: ${JSON.stringify(current)}`, true);
+            current = nextToken(lexerState);
+        }
+    }
+
+    function match(expected: readonly TokenType[]): boolean {
+        if (expected.includes(current.type)) {
+            consume();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function expect(expected: readonly TokenType[], message: string, panic: boolean) {
+        if (!match(expected)) {
+            errorAtCurrent(message.concat(`, got: \`${current.type}\``), panic);
+        }
+    }
+
+    function synchronize() {
+        panicMode = false;
+
+        while (!isEof()) {
+            if (current.type === "if") {
+                return;
+            }
+
+            consume();
+        }
+    }
+
+    function isEof(): boolean {
+        return current.type === "eof";
+    }
+
+    while (!isEof()) {
+        erroring = false;
+        const rule = parseRule();
+
+        if (!erroring) {
+            rules.push(rule);
+        }
+
+        if (panicMode) {
+            synchronize();
+        }
+    }
+
+    return { rules, errors, };
+
+    function parseRule(): AdvancedSkipRule {
+        const rule: AdvancedSkipRule = {
+            predicate: null,
+            skipOption: null,
+            comments: [],
+        };
+
+        while (match(["comment"])) {
+            rule.comments.push(previous.value.trim());
+        }
+
+        expect(["if"], "Expected `if`", true);
+
+        rule.predicate = parsePredicate();
+
+        expect(["disabled", "show overlay", "manual skip", "auto skip"], "Expected skip option after predicate", true);
+
+        switch (previous.type) {
+            case "disabled":
+                rule.skipOption = CategorySkipOption.Disabled;
+                break;
+            case "show overlay":
+                rule.skipOption = CategorySkipOption.ShowOverlay;
+                break;
+            case "manual skip":
+                rule.skipOption = CategorySkipOption.ManualSkip;
+                break;
+            case "auto skip":
+                rule.skipOption = CategorySkipOption.AutoSkip;
+                break;
+            default:
+                // Ignore, should have already errored
+        }
+
+        return rule;
+    }
+
+    function parsePredicate(): AdvancedSkipPredicate {
+        return parseOr();
+    }
+
+    function parseOr(): AdvancedSkipPredicate {
+        let left = parseAnd();
+
+        while (match(["or"])) {
+            const right = parseAnd();
+
+            left = {
+                kind: "operator",
+                operator: PredicateOperator.Or,
+                left, right,
+            };
+        }
+
+        return left;
+    }
+
+    function parseAnd(): AdvancedSkipPredicate {
+        let left = parsePrimary();
+
+        while (match(["and"])) {
+            const right = parsePrimary();
+
+            left = {
+                kind: "operator",
+                operator: PredicateOperator.And,
+                left, right,
+            };
+        }
+
+        return left;
+    }
+
+    function parsePrimary(): AdvancedSkipPredicate {
+        if (match(["("])) {
+            const predicate = parsePredicate();
+            expect([")"], "Expected `)` after predicate", true);
+            return predicate;
+        } else {
+            return parseCheck();
+        }
+    }
+
+    function parseCheck(): AdvancedSkipCheck {
+        expect(Object.values(SkipRuleAttribute), "Expected attribute", true);
+
+        if (erroring) {
+            return null;
+        }
+
+        const attribute = previous.type as SkipRuleAttribute;
+        expect(Object.values(SkipRuleOperator), "Expected operator after attribute", true);
+
+        if (erroring) {
+            return null;
+        }
+
+        const operator = previous.type as SkipRuleOperator;
+        expect(["string", "number"], "Expected string or number after operator", true);
+
+        if (erroring) {
+            return null;
+        }
+
+        const value = previous.type === "number" ? Number(previous.value) : previous.value;
+
+        if ([SkipRuleOperator.Equal, SkipRuleOperator.NotEqual].includes(operator)) {
+            if (attribute === SkipRuleAttribute.Category
+                && !CompileConfig.categoryList.includes(value as string)) {
+                error(`Unknown category: \`${value}\``, false);
+                return null;
+            } else if (attribute === SkipRuleAttribute.ActionType
+                && !ActionTypes.includes(value as ActionType)) {
+                error(`Unknown action type: \`${value}\``, false);
+                return null;
+            } else if (attribute === SkipRuleAttribute.Source
+                && !["local", "youtube", "autogenerated", "server"].includes(value as string)) {
+                error(`Unknown chapter source: \`${value}\``, false);
+                return null;
+            }
+        }
+
+        return {
+            kind: "check",
+            attribute, operator, value,
+        };
+    }
 }
