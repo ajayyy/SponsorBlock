@@ -192,7 +192,7 @@ type TokenType =
     | keyof typeof SkipRuleOperator // Segment attribute operators
     | "and" | "or" // Expression operators
     | "(" | ")" // Syntax
-    | "string" // Literal values
+    | "string" | "number" // Literal values
     | "eof" | "error"; // Sentinel and special tokens
 
 interface SourcePos {
@@ -336,10 +336,14 @@ function nextToken(state: LexerState): Token {
         return state.current >= state.source.length;
     }
 
-    for (;;) {
-        skipWhitespace();
+    function resetToCurrent() {
         state.start = state.current;
         state.start_pos = state.current_pos;
+    }
+
+    for (;;) {
+        skipWhitespace();
+        resetToCurrent();
 
         if (isEof()) {
             return makeToken("eof");
@@ -410,12 +414,138 @@ function nextToken(state: LexerState): Token {
             }
         }
 
-        const c = consume();
+        let c = consume();
 
         if (c === '"') {
-            // TODO
-        } else if (/[0-9.]/.test(c)) {
-            // TODO
+            // Parses string according to ECMA-404 2nd edition (JSON), section 9 “String”
+            let output = "";
+            let c = consume();
+            let error = false;
+
+            while (c !== null && c !== '"') {
+                if (c == '\\') {
+                    c = consume();
+
+                    switch (c) {
+                        case '"':
+                            output = output.concat('"');
+                            break;
+                        case '\\':
+                            output = output.concat('\\');
+                            break;
+                        case '/':
+                            output = output.concat('/');
+                            break;
+                        case 'b':
+                            output = output.concat('\b');
+                            break;
+                        case 'f':
+                            output = output.concat('\f');
+                            break;
+                        case 'n':
+                            output = output.concat('\n');
+                            break;
+                        case 'r':
+                            output = output.concat('\r');
+                            break;
+                        case 't':
+                            output = output.concat('\t');
+                            break;
+                        case 'u': {
+                            // UTF-16 value sequence
+                            const digits = state.source.slice(state.current, state.current + 4);
+
+                            if (digits.length < 4 || !/[0-9a-zA-Z]{4}/.test(digits)) {
+                                error = true;
+                                output = output.concat(`\\u`);
+                                c = consume();
+                                continue;
+                            }
+
+                            const value = parseInt(digits, 16);
+                            // fromCharCode() takes a UTF-16 value without performing validity checks,
+                            // which is exactly what is needed here – in JSON, code units outside the
+                            // BMP are represented by two Unicode escape sequences.
+                            output = output.concat(String.fromCharCode(value));
+                            break;
+                        }
+                        default:
+                            error = true;
+                            output = output.concat(`\\${c}`);
+                            break;
+                    }
+                } else {
+                    output = output.concat(c);
+                }
+
+                c = consume();
+            }
+
+            return {
+                type: error || c !== '"' ? "error" : "string",
+                span: { start: state.start_pos, end: state.current_pos, },
+                value: output,
+            };
+        } else if (/[0-9-]/.test(c)) {
+            // Parses number according to ECMA-404 2nd edition (JSON), section 8 “Numbers”
+            if (c === '-') {
+                c = consume();
+
+                if (!/[0-9]/.test(c)) {
+                    return makeToken("error");
+                }
+            }
+
+            const leadingZero = c === '0';
+            let next = peek();
+            let error = false;
+
+            while (next !== null && /[0-9]/.test(next)) {
+                consume();
+                next = peek();
+
+                if (leadingZero) {
+                    error = true;
+                }
+            }
+
+
+            if (next !== null && next === '.') {
+                consume();
+                next = peek();
+
+                if (next === null || !/[0-9]/.test(next)) {
+                    return makeToken("error");
+                }
+
+                do {
+                    consume();
+                    next = peek();
+                } while (next !== null && /[0-9]/.test(next));
+            }
+
+            next = peek();
+
+            if (next != null && (next === 'e' || next === 'E')) {
+                consume();
+                next = peek();
+
+                if (next === null) {
+                    return makeToken("error");
+                }
+
+                if (next === '+' || next === '-') {
+                    consume();
+                    next = peek();
+                }
+
+                while (next !== null && /[0-9]/.test(next)) {
+                    consume();
+                    next = peek();
+                }
+            }
+
+            return makeToken(error ? "error" : "number");
         }
 
         return makeToken("error");
