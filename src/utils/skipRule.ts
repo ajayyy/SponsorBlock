@@ -191,6 +191,7 @@ type TokenType =
     | keyof typeof SkipRuleAttribute // Segment attributes
     | keyof typeof SkipRuleOperator // Segment attribute operators
     | "and" | "or" // Expression operators
+    | "(" | ")" // Syntax
     | "string" // Literal values
     | "eof" | "error"; // Sentinel and special tokens
 
@@ -230,9 +231,9 @@ function nextToken(state: LexerState): Token {
 
     /**
      * Returns the UTF-16 value at the current position and advances it forward.
-     * If the end of the source string has been reached, returns {@code null}.
+     * If the end of the source string has been reached, returns <code>null</code>.
      *
-     * @return current UTF-16 value, or {@code null} on EOF
+     * @return current UTF-16 value, or <code>null</code> on EOF
      */
     function consume(): string | null {
         if (state.source.length > state.current) {
@@ -258,9 +259,9 @@ function nextToken(state: LexerState): Token {
 
     /**
      * Returns the UTF-16 value at the current position without advancing it.
-     * If the end of the source string has been reached, returns {@code null}.
+     * If the end of the source string has been reached, returns <code>null</code>.
      *
-     * @return current UTF-16 value, or {@code null} on EOF
+     * @return current UTF-16 value, or <code>null</code> on EOF
      */
     function peek(): string | null {
         if (state.source.length > state.current) {
@@ -272,31 +273,28 @@ function nextToken(state: LexerState): Token {
     }
 
     /**
-     * Checks the current position against expected UTF-16 values.
-     * If any of them matches, advances the current position and returns
-     * {@code true}, otherwise {@code false}.
+     * Checks the word at the current position against a list of
+     * expected keywords. The keyword can consist of multiple characters.
+     * If a match is found, the current position is advanced by the length
+     * of the keyword found.
      *
-     * @param expected the expected set of UTF-16 values at the current position
-     * @return whether the actual value matches and whether the position was advanced
+     * @param keywords the expected set of keywords at the current position
+     * @param caseSensitive whether to do a case-sensitive comparison
+     * @return the matching keyword, or <code>null</code>
      */
-    function expect(expected: string | readonly string[]): boolean {
-        const actual = peek();
+    function expectKeyword(keywords: readonly string[], caseSensitive: boolean): string | null {
+        for (const keyword of keywords) {
+            // slice() clamps to string length, so cannot cause out of bounds errors
+            const actual = state.source.slice(state.current, state.current + keyword.length);
 
-        if (actual === null) {
-            return false;
-        }
-
-        if (typeof expected === "string") {
-            if (expected === actual) {
-                consume();
-                return true;
+            if (caseSensitive && keyword === actual || !caseSensitive && keyword.toLowerCase() === actual.toLowerCase()) {
+                // Does not handle keywords containing line feeds, which shouldn't happen anyway
+                state.current += keyword.length;
+                return keyword;
             }
-        } else if (expected.includes(actual)) {
-            consume();
-            return true;
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -306,7 +304,7 @@ function nextToken(state: LexerState): Token {
      */
     function skipWhitespace() {
         let c = peek();
-        const whitespace = /s+/;
+        const whitespace = /\s+/;
 
         while (c != null) {
             if (!whitespace.test(c)) {
@@ -319,7 +317,7 @@ function nextToken(state: LexerState): Token {
     }
 
     /**
-     * Skips all characters until the next {@code "\n"} (line feed)
+     * Skips all characters until the next <code>"\n"</code> (line feed)
      * character occurs (inclusive). Will always advance the current position
      * at least once.
      */
@@ -341,23 +339,108 @@ function nextToken(state: LexerState): Token {
     for (;;) {
         skipWhitespace();
         state.start = state.current;
+        state.start_pos = state.current_pos;
 
         if (isEof()) {
             return makeToken("eof");
         }
 
+        const keyword = expectKeyword([
+            "if", "and", "or",
+            "(", ")",
+            "//",
+        ].concat(Object.values(SkipRuleAttribute))
+            .concat(Object.values(SkipRuleOperator)), true);
+
+        if (keyword !== null) {
+            switch (keyword) {
+                case "if": return makeToken("if");
+                case "and": return makeToken("and");
+                case "or": return makeToken("or");
+
+                case "(": return makeToken("(");
+                case ")": return makeToken(")");
+
+                case "time.start": return makeToken("StartTime");
+                case "time.end": return makeToken("EndTime");
+                case "time.duration": return makeToken("Duration");
+                case "time.startPercent": return makeToken("StartTimePercent");
+                case "time.endPercent": return makeToken("EndTimePercent");
+                case "time.durationPercent": return makeToken("DurationPercent");
+                case "category": return makeToken("Category");
+                case "actionType": return makeToken("ActionType");
+                case "chapter.name": return makeToken("Description");
+                case "chapter.source": return makeToken("Source");
+                case "channel.id": return makeToken("ChannelID");
+                case "channel.name": return makeToken("ChannelName");
+                case "video.duration": return makeToken("VideoDuration");
+                case "video.title": return makeToken("Title");
+
+                case "<": return makeToken("Less");
+                case "<=": return makeToken("LessOrEqual");
+                case ">": return makeToken("Greater");
+                case ">=": return makeToken("GreaterOrEqual");
+                case "==": return makeToken("Equal");
+                case "!=": return makeToken("NotEqual");
+                case "*=": return makeToken("Contains");
+                case "!*=": return makeToken("NotContains");
+                case "~=": return makeToken("Regex");
+                case "~i=": return makeToken("RegexIgnoreCase");
+                case "!~=": return makeToken("NotRegex");
+                case "!~i=": return makeToken("NotRegexIgnoreCase");
+
+                case "//":
+                    skipLine();
+                    continue;
+
+                default:
+            }
+        }
+
+        const keyword2 = expectKeyword(
+            [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
+
+        if (keyword2 !== null) {
+            switch (keyword2) {
+                case "disabled": return makeToken("disabled");
+                case "show overlay": return makeToken("show overlay");
+                case "manual skip": return makeToken("manual skip");
+                case "auto skip": return makeToken("auto skip");
+                default:
+            }
+        }
+
         const c = consume();
 
-        switch (c) {
+        if (c === '"') {
             // TODO
-            default:
-                return makeToken("error");
+        } else if (/[0-9.]/.test(c)) {
+            // TODO
         }
+
+        return makeToken("error");
     }
 }
 
-export function compileConfig(config: string): AdvancedSkipRuleSet[] | null {
+export function compileConfigNew(config: string): AdvancedSkipRuleSet[] | null {
+     // Mutated by calls to nextToken()
+    const lexerState: LexerState = {
+        source: config,
+        start: 0,
+        current: 0,
+
+        start_pos: { line: 1 },
+        current_pos: { line: 1 },
+    };
+
+    let token = nextToken(lexerState);
+
+    while (token.type !== "eof") {
+        console.log(token);
+
+        token = nextToken(lexerState);
+    }
+
     // TODO
-    const ruleSets: AdvancedSkipRuleSet[] = [];
-    return ruleSets;
+    return null;
 }

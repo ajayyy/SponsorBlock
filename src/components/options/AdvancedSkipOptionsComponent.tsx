@@ -2,7 +2,7 @@ import * as React from "react";
 import * as CompileConfig from "../../../config.json";
 
 import Config from "../../config";
-import { AdvancedSkipRuleSet, SkipRuleAttribute, SkipRuleOperator } from "../../utils/skipRule";
+import {AdvancedSkipRuleSet, compileConfigNew, SkipRuleAttribute, SkipRuleOperator} from "../../utils/skipRule";
 import { ActionType, ActionTypes, CategorySkipOption } from "../../types";
 
 let configSaveTimeout: NodeJS.Timeout | null = null;
@@ -65,6 +65,9 @@ export function AdvancedSkipOptionsComponent() {
 }
 
 function compileConfig(config: string): AdvancedSkipRuleSet[] | null {
+    // Debug
+    compileConfigNew(config);
+
     const ruleSets: AdvancedSkipRuleSet[] = [];
 
     let ruleSet: AdvancedSkipRuleSet = {
