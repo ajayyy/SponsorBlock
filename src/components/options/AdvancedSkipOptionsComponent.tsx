@@ -86,7 +86,7 @@ function configToText(config: AdvancedSkipRule[]): string {
         }
 
         result += "if ";
-        result += predicateToText(rule.predicate, PredicateOperator.Or);
+        result += predicateToText(rule.predicate, null);
 
         switch (rule.skipOption) {
             case CategorySkipOption.Disabled:
@@ -111,15 +111,18 @@ function configToText(config: AdvancedSkipRule[]): string {
     return result.trim();
 }
 
-function predicateToText(predicate: AdvancedSkipPredicate, highestPrecedence: PredicateOperator): string {
+function predicateToText(predicate: AdvancedSkipPredicate, outerPrecedence: PredicateOperator | null): string {
     if (predicate.kind === "check") {
         return `${predicate.attribute} ${predicate.operator} ${JSON.stringify(predicate.value)}`;
     } else {
+        let text: string;
+
         if (predicate.operator === PredicateOperator.And) {
-            return `${predicateToText(predicate.left, PredicateOperator.And)} and ${predicateToText(predicate.right, PredicateOperator.And)}`;
+            text = `${predicateToText(predicate.left, PredicateOperator.And)} and ${predicateToText(predicate.right, PredicateOperator.And)}`;
         } else { // Or
-            const text = `${predicateToText(predicate.left, PredicateOperator.Or)} or ${predicateToText(predicate.right, PredicateOperator.Or)}`;
-            return highestPrecedence == PredicateOperator.And ? `(${text})` : text;
+            text = `${predicateToText(predicate.left, PredicateOperator.Or)} or ${predicateToText(predicate.right, PredicateOperator.Or)}`;
         }
+
+        return outerPrecedence !== null && outerPrecedence !== predicate.operator ? `(${text})` : text;
     }
 }
