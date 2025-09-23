@@ -28,19 +28,22 @@ export enum SkipRuleAttribute {
 }
 
 export enum SkipRuleOperator {
-    Less = "<",
     LessOrEqual = "<=",
-    Greater = ">",
+    Less = "<",
     GreaterOrEqual = ">=",
-    Equal = "==",
+    Greater = ">",
     NotEqual = "!=",
-    Contains = "*=",
+    Equal = "==",
     NotContains = "!*=",
-    Regex = "~=",
-    RegexIgnoreCase = "~i=",
+    Contains = "*=",
     NotRegex = "!~=",
-    NotRegexIgnoreCase = "!~i="
+    Regex = "~=",
+    NotRegexIgnoreCase = "!~i=",
+    RegexIgnoreCase = "~i="
 }
+
+const SKIP_RULE_ATTRIBUTES = Object.values(SkipRuleAttribute);
+const SKIP_RULE_OPERATORS = Object.values(SkipRuleOperator);
 
 export interface AdvancedSkipCheck {
     kind: "check";
@@ -272,12 +275,11 @@ function nextToken(state: LexerState): Token {
             state.current++;
 
             if (c === "\n") {
-                state.current_pos.line++;
-                // state.current_pos.column = 1;
+                state.current_pos = { line: state.current_pos.line + 1, /* column: 1 */ };
             } else {
                 // // TODO This will be wrong on anything involving UTF-16 surrogate pairs or grapheme clusters with multiple code units
                 // // So just don't show column numbers on errors for now
-                // state.current_pos.column++;
+                // state.current_pos = { line: state.current_pos.line, /* column: state.current_pos.column + 1 */ };
             }
 
             return c;
@@ -391,10 +393,14 @@ function nextToken(state: LexerState): Token {
         "if", "and", "or",
         "(", ")",
         "//",
-    ].concat(Object.values(SkipRuleAttribute))
-        .concat(Object.values(SkipRuleOperator)), true);
+    ].concat(SKIP_RULE_ATTRIBUTES)
+        .concat(SKIP_RULE_OPERATORS), true);
 
     if (keyword !== null) {
+        if ((SKIP_RULE_ATTRIBUTES as string[]).includes(keyword) || (SKIP_RULE_OPERATORS as string[]).includes(keyword)) {
+            return makeToken(keyword as TokenType);
+        }
+
         switch (keyword) {
             case "if": return makeToken("if");
             case "and": return makeToken("and");
@@ -402,34 +408,6 @@ function nextToken(state: LexerState): Token {
 
             case "(": return makeToken("(");
             case ")": return makeToken(")");
-
-            case "time.start": return makeToken("time.start");
-            case "time.end": return makeToken("time.end");
-            case "time.duration": return makeToken("time.duration");
-            case "time.startPercent": return makeToken("time.startPercent");
-            case "time.endPercent": return makeToken("time.endPercent");
-            case "time.durationPercent": return makeToken("time.durationPercent");
-            case "category": return makeToken("category");
-            case "actionType": return makeToken("actionType");
-            case "chapter.name": return makeToken("chapter.name");
-            case "chapter.source": return makeToken("chapter.source");
-            case "channel.id": return makeToken("channel.id");
-            case "channel.name": return makeToken("channel.name");
-            case "video.duration": return makeToken("video.duration");
-            case "video.title": return makeToken("video.title");
-
-            case "<": return makeToken("<");
-            case "<=": return makeToken("<=");
-            case ">": return makeToken(">");
-            case ">=": return makeToken(">=");
-            case "==": return makeToken("==");
-            case "!=": return makeToken("!=");
-            case "*=": return makeToken("*=");
-            case "!*=": return makeToken("!*=");
-            case "~=": return makeToken("~=");
-            case "~i=": return makeToken("~i=");
-            case "!~=": return makeToken("!~=");
-            case "!~i=": return makeToken("!~i=");
 
             case "//":
                 resetToCurrent();
@@ -587,6 +565,15 @@ function nextToken(state: LexerState): Token {
         return makeToken(error ? "error" : "number");
     }
 
+    // Consume common characters up to a space for a more useful value in the error token
+    const common = /[a-zA-Z0-9<>=!~*.-]/;
+    if (c !== null && common.test(c)) {
+        do {
+            consume();
+            c = peek();
+        } while (c !== null && common.test(c));
+    }
+
     return makeToken("error");
 }
 
@@ -663,12 +650,10 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      */
     function consume() {
         previous = current;
+        // Intentionally ignoring `error` tokens here;
+        // by handling those in later functions with more context (match(), expect(), ...),
+        // the user gets better errors
         current = nextToken(lexerState);
-
-        while (current.type === "error") {
-            errorAtCurrent(`Unexpected token: ${JSON.stringify(current)}`, true);
-            current = nextToken(lexerState);
-        }
     }
 
     /**
@@ -698,7 +683,7 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      */
     function expect(expected: readonly TokenType[], message: string, panic: boolean) {
         if (!match(expected)) {
-            errorAtCurrent(message.concat(`, got: \`${current.type}\``), panic);
+            errorAtCurrent(message.concat(`, got: \`${current.type === "error" ? current.value : current.type}\``), panic);
         }
     }
 
@@ -751,11 +736,11 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
             rule.comments.push(previous.value.trim());
         }
 
-        expect(["if"], "Expected `if`", true);
+        expect(["if"], rule.comments.length !== 0 ? "expected `if` after `comment`" : "expected `if`", true);
 
         rule.predicate = parsePredicate();
 
-        expect(["disabled", "show overlay", "manual skip", "auto skip"], "Expected skip option after predicate", true);
+        expect(["disabled", "show overlay", "manual skip", "auto skip"], "expected skip option after predicate", true);
 
         switch (previous.type) {
             case "disabled":
@@ -816,7 +801,7 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
     function parsePrimary(): AdvancedSkipPredicate {
         if (match(["("])) {
             const predicate = parsePredicate();
-            expect([")"], "Expected `)` after predicate", true);
+            expect([")"], "expected `)` after predicate", true);
             return predicate;
         } else {
             return parseCheck();
@@ -824,21 +809,21 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
     }
 
     function parseCheck(): AdvancedSkipCheck {
-        expect(Object.values(SkipRuleAttribute), "Expected attribute", true);
+        expect(SKIP_RULE_ATTRIBUTES, `expected attribute after \`${previous.type}\``, true);
 
         if (erroring) {
             return null;
         }
 
         const attribute = previous.type as SkipRuleAttribute;
-        expect(Object.values(SkipRuleOperator), "Expected operator after attribute", true);
+        expect(SKIP_RULE_OPERATORS, `expected operator after \`${attribute}\``, true);
 
         if (erroring) {
             return null;
         }
 
         const operator = previous.type as SkipRuleOperator;
-        expect(["string", "number"], "Expected string or number after operator", true);
+        expect(["string", "number"], `expected string or number after \`${operator}\``, true);
 
         if (erroring) {
             return null;
@@ -849,15 +834,15 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         if ([SkipRuleOperator.Equal, SkipRuleOperator.NotEqual].includes(operator)) {
             if (attribute === SkipRuleAttribute.Category
                 && !CompileConfig.categoryList.includes(value as string)) {
-                error(`Unknown category: \`${value}\``, false);
+                error(`unknown category: \`${value}\``, false);
                 return null;
             } else if (attribute === SkipRuleAttribute.ActionType
                 && !ActionTypes.includes(value as ActionType)) {
-                error(`Unknown action type: \`${value}\``, false);
+                error(`unknown action type: \`${value}\``, false);
                 return null;
             } else if (attribute === SkipRuleAttribute.Source
                 && !["local", "youtube", "autogenerated", "server"].includes(value as string)) {
-                error(`Unknown chapter source: \`${value}\``, false);
+                error(`unknown chapter source: \`${value}\``, false);
                 return null;
             }
         }
