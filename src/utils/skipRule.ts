@@ -737,11 +737,9 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         }
 
         expect(["if"], rule.comments.length !== 0 ? "expected `if` after `comment`" : "expected `if`", true);
-
         rule.predicate = parsePredicate();
 
-        expect(["disabled", "show overlay", "manual skip", "auto skip"], "expected skip option after predicate", true);
-
+        expect(["disabled", "show overlay", "manual skip", "auto skip"], "expected skip option after condition", true);
         switch (previous.type) {
             case "disabled":
                 rule.skipOption = CategorySkipOption.Disabled;
@@ -801,7 +799,7 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
     function parsePrimary(): AdvancedSkipPredicate {
         if (match(["("])) {
             const predicate = parsePredicate();
-            expect([")"], "expected `)` after predicate", true);
+            expect([")"], "expected `)` after condition", true);
             return predicate;
         } else {
             return parseCheck();

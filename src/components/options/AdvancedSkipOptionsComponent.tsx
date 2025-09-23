@@ -67,7 +67,7 @@ function compileConfig(config: string): AdvancedSkipRule[] | null {
     const { rules, errors } = parseConfig(config);
 
     for (const error of errors) {
-        console.log(`Error on line ${error.span.start.line}: ${error.message}`);
+        console.error(`[SB] Error on line ${error.span.start.line}: ${error.message}`);
     }
 
     if (errors.length === 0) {
