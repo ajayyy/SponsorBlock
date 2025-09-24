@@ -93,13 +93,13 @@ function configToText(config: AdvancedSkipRule[]): string {
                 result += "\nDisabled";
                 break;
             case CategorySkipOption.ShowOverlay:
-                result += "\nShow overlay";
+                result += "\nShow Overlay";
                 break;
             case CategorySkipOption.ManualSkip:
-                result += "\nManual skip";
+                result += "\nManual Skip";
                 break;
             case CategorySkipOption.AutoSkip:
-                result += "\nAuto skip";
+                result += "\nAuto Skip";
                 break;
             default:
                 return null; // Invalid skip option

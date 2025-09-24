@@ -229,7 +229,6 @@ type TokenType =
 
 export interface SourcePos {
     line: number;
-    // column: number;
 }
 
 export interface Span {
@@ -275,11 +274,8 @@ function nextToken(state: LexerState): Token {
             state.current++;
 
             if (c === "\n") {
-                state.current_pos = { line: state.current_pos.line + 1, /* column: 1 */ };
-            } else {
-                // // TODO This will be wrong on anything involving UTF-16 surrogate pairs or grapheme clusters with multiple code units
-                // // So just don't show column numbers on errors for now
-                // state.current_pos = { line: state.current_pos.line, /* column: state.current_pos.column + 1 */ };
+                // Cannot use state.current_pos.line++, because SourcePos is mutable and used in tokens without copying
+                state.current_pos = { line: state.current_pos.line + 1, };
             }
 
             return c;
