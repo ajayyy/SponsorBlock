@@ -11,12 +11,12 @@ export interface Permission {
 }
 
 export enum SkipRuleAttribute {
-    StartTime = "time.start",
-    EndTime = "time.end",
-    Duration = "time.duration",
     StartTimePercent = "time.startPercent",
+    StartTime = "time.start",
     EndTimePercent = "time.endPercent",
+    EndTime = "time.end",
     DurationPercent = "time.durationPercent",
+    Duration = "time.duration",
     Category = "category",
     ActionType = "actionType",
     Description = "chapter.name",
