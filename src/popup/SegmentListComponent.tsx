@@ -32,6 +32,14 @@ interface SegmentWithNesting extends SponsorTime {
     innerChapters?: (SegmentWithNesting|SponsorTime)[];
 }
 
+function isSegment(segment) {
+    return segment.actionType !== ActionType.Chapter;
+}
+
+function isChapter(segment) {
+    return segment.actionType === ActionType.Chapter;
+}
+
 export const SegmentListComponent = (props: SegmentListComponentProps) => {
     const [tab, setTab] = React.useState(SegmentListTab.Segments);
     const [isVip, setIsVip] = React.useState(Config.config?.isVip ?? false);
@@ -46,17 +54,19 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         }
     }, []);
 
-    React.useEffect(() => {
-        setTab(SegmentListTab.Segments);
-    }, [props.videoID]);
+    const [hasSegments, hasChapters] = React.useMemo(() => {
+        const hasSegments = Boolean(props.segments.find(isSegment))
+        const hasChapters = Boolean(props.segments.find(isChapter))
+        return [hasSegments, hasChapters];
+    }, [props.segments]);
 
-    const tabFilter = (segment: SponsorTime) => {
-        if (tab === SegmentListTab.Chapter) {
-            return segment.actionType === ActionType.Chapter;
+    React.useEffect(() => {
+        if (hasSegments){
+            setTab(SegmentListTab.Segments);
         } else {
-            return segment.actionType !== ActionType.Chapter;
+            setTab(SegmentListTab.Chapter);
         }
-    };
+    }, [props.videoID, hasSegments]);
 
     const segmentsWithNesting = React.useMemo(() => {
         const result: SegmentWithNesting[] = [];
@@ -98,7 +108,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
 
     return (
         <div id="issueReporterContainer">
-            <div id="issueReporterTabs" className={props.segments && props.segments.find(s => s.actionType === ActionType.Chapter) ? "" : "hidden"}>
+            <div id="issueReporterTabs" className={hasSegments && hasChapters ? "" : "hidden"}>
                 <span id="issueReporterTabSegments" className={tab === SegmentListTab.Segments ? "sbSelected" : ""} onClick={() => {
                     setTab(SegmentListTab.Segments);
                 }}>
@@ -125,7 +135,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
                             isVip={isVip}
                             loopedChapter={props.loopedChapter} // UUID instead of boolean so it can be passed down to nested chapters 
 
-                            tabFilter={tabFilter}
+                            tabFilter={tab === SegmentListTab.Chapter ? isChapter : isSegment}
                             sendMessage={props.sendMessage}
                         />
                     ))
