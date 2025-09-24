@@ -395,40 +395,55 @@ function nextToken(state: LexerState): Token {
         "//",
     ].concat(SKIP_RULE_ATTRIBUTES)
         .concat(SKIP_RULE_OPERATORS), true);
+    let type: TokenType | null = null;
+    let kind: "word" | "operator" | null = null;
 
     if (keyword !== null) {
-        if ((SKIP_RULE_ATTRIBUTES as string[]).includes(keyword) || (SKIP_RULE_OPERATORS as string[]).includes(keyword)) {
-            return makeToken(keyword as TokenType);
+        if ((SKIP_RULE_ATTRIBUTES as string[]).includes(keyword)) {
+            kind = "word";
+            type = keyword as TokenType;
+        } else if ((SKIP_RULE_OPERATORS as string[]).includes(keyword)) {
+            kind = "operator";
+            type = keyword as TokenType;
+        } else {
+            switch (keyword) {
+                case "if":  // Fallthrough
+                case "and": // Fallthrough
+                case "or": kind = "word"; type = keyword as TokenType; break;
+
+                case "(": return makeToken("(");
+                case ")": return makeToken(")");
+
+                case "//":
+                    resetToCurrent();
+                    skipLine();
+                    return makeToken("comment");
+
+                default:
+            }
         }
+    } else {
+        const keyword2 = expectKeyword(
+            [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
 
-        switch (keyword) {
-            case "if": return makeToken("if");
-            case "and": return makeToken("and");
-            case "or": return makeToken("or");
-
-            case "(": return makeToken("(");
-            case ")": return makeToken(")");
-
-            case "//":
-                resetToCurrent();
-                skipLine();
-                return makeToken("comment");
-
-            default:
+        if (keyword2 !== null) {
+            kind = "word";
+            type = keyword2 as TokenType;
         }
     }
 
-    const keyword2 = expectKeyword(
-        [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
+    if (type !== null) {
+        const more = kind == "operator" ? /[<>=!~*&|-]/ : kind == "word" ? /[a-zA-Z0-9.]/ : /[a-zA-Z0-9<>=!~*&|.-]/;
 
-    if (keyword2 !== null) {
-        switch (keyword2) {
-            case "disabled": return makeToken("disabled");
-            case "show overlay": return makeToken("show overlay");
-            case "manual skip": return makeToken("manual skip");
-            case "auto skip": return makeToken("auto skip");
-            default:
+        let c = peek();
+        let error = false;
+        while (c !== null && more.test(c)) {
+            error = true;
+            consume();
+            c = peek();
         }
+
+        return makeToken(error ? "error" : type);
     }
 
     let c = consume();
@@ -491,6 +506,11 @@ function nextToken(state: LexerState): Token {
                         output = output.concat(`\\${c}`);
                         break;
                 }
+            } else if (c === '\n') {
+                // Unterminated / multi-line string, unsupported
+                error = true;
+                // Prevent unterminated strings from consuming the entire rest of the input
+                break;
             } else {
                 output = output.concat(c);
             }
@@ -566,12 +586,11 @@ function nextToken(state: LexerState): Token {
     }
 
     // Consume common characters up to a space for a more useful value in the error token
-    const common = /[a-zA-Z0-9<>=!~*.-]/;
-    if (c !== null && common.test(c)) {
-        do {
-            consume();
-            c = peek();
-        } while (c !== null && common.test(c));
+    const common = /[a-zA-Z0-9<>=!~*&|.-]/;
+    c = peek();
+    while (c !== null && common.test(c)) {
+        consume();
+        c = peek();
     }
 
     return makeToken("error");
@@ -683,7 +702,7 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      */
     function expect(expected: readonly TokenType[], message: string, panic: boolean) {
         if (!match(expected)) {
-            errorAtCurrent(message.concat(`, got: \`${current.type === "error" ? current.value : current.type}\``), panic);
+            errorAtCurrent(message.concat(current.type === "error" ?  `, got: ${JSON.stringify(current.value)}` : `, got: \`${current.type}\``), panic);
         }
     }
 
