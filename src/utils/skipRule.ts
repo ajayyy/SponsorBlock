@@ -242,21 +242,27 @@ interface Token {
     value: string;
 }
 
-interface LexerState {
-    source: string;
-    start: number;
-    current: number;
+class Lexer {
+    private readonly source: string;
+    private start: number;
+    private current: number;
 
-    start_pos: SourcePos;
-    current_pos: SourcePos;
-}
+    private start_pos: SourcePos;
+    private current_pos: SourcePos;
 
-function nextToken(state: LexerState): Token {
-    function makeToken(type: TokenType): Token {
+    public constructor(source: string) {
+        this.source = source;
+        this.start = 0;
+        this.current = 0;
+        this.start_pos = { line: 1 };
+        this.current_pos = { line: 1 };
+    }
+
+    private makeToken(type: TokenType): Token {
         return {
             type,
-            span: { start: state.start_pos, end: state.current_pos, },
-            value: state.source.slice(state.start, state.current),
+            span: { start: this.start_pos, end: this.current_pos, },
+            value: this.source.slice(this.start, this.current),
         };
     }
 
@@ -266,16 +272,16 @@ function nextToken(state: LexerState): Token {
      *
      * @return current UTF-16 value, or <code>null</code> on EOF
      */
-    function consume(): string | null {
-        if (state.source.length > state.current) {
+    private consume(): string | null {
+        if (this.source.length > this.current) {
             // The UTF-16 value at the current position, which could be either a Unicode code point or a lone surrogate.
             // The check above this is also based on the UTF-16 value count, so this should not be able to fail on “weird” inputs.
-            const c = state.source[state.current];
-            state.current++;
+            const c = this.source[this.current];
+            this.current++;
 
             if (c === "\n") {
-                // Cannot use state.current_pos.line++, because SourcePos is mutable and used in tokens without copying
-                state.current_pos = { line: state.current_pos.line + 1, };
+                // Cannot use this.current_pos.line++, because SourcePos is mutable and used in tokens without copying
+                this.current_pos = { line: this.current_pos.line + 1, };
             }
 
             return c;
@@ -290,10 +296,10 @@ function nextToken(state: LexerState): Token {
      *
      * @return current UTF-16 value, or <code>null</code> on EOF
      */
-    function peek(): string | null {
-        if (state.source.length > state.current) {
+    private peek(): string | null {
+        if (this.source.length > this.current) {
             // See comment in consume() for Unicode expectations here
-            return state.source[state.current];
+            return this.source[this.current];
         } else {
             return null;
         }
@@ -309,14 +315,14 @@ function nextToken(state: LexerState): Token {
      * @param caseSensitive whether to do a case-sensitive comparison
      * @return the matching keyword, or <code>null</code>
      */
-    function expectKeyword(keywords: readonly string[], caseSensitive: boolean): string | null {
+    private expectKeyword(keywords: readonly string[], caseSensitive: boolean): string | null {
         for (const keyword of keywords) {
             // slice() clamps to string length, so cannot cause out of bounds errors
-            const actual = state.source.slice(state.current, state.current + keyword.length);
+            const actual = this.source.slice(this.current, this.current + keyword.length);
 
             if (caseSensitive && keyword === actual || !caseSensitive && keyword.toLowerCase() === actual.toLowerCase()) {
                 // Does not handle keywords containing line feeds, which shouldn't happen anyway
-                state.current += keyword.length;
+                this.current += keyword.length;
                 return keyword;
             }
         }
@@ -329,8 +335,8 @@ function nextToken(state: LexerState): Token {
      * position. May advance the current position multiple times, once,
      * or not at all.
      */
-    function skipWhitespace() {
-        let c = peek();
+    private skipWhitespace() {
+        let c = this.peek();
         const whitespace = /\s+/;
 
         while (c != null) {
@@ -338,8 +344,8 @@ function nextToken(state: LexerState): Token {
                 return;
             }
 
-            consume();
-            c = peek();
+            this.consume();
+            c = this.peek();
         }
     }
 
@@ -348,22 +354,22 @@ function nextToken(state: LexerState): Token {
      * character occurs (inclusive). Will always advance the current position
      * at least once.
      */
-    function skipLine() {
-        let c = consume();
+    private skipLine() {
+        let c = this.consume();
         while (c != null) {
             if (c == '\n') {
                 return;
             }
 
-            c = consume();
+            c = this.consume();
         }
     }
 
     /**
      * @return whether the lexer has reached the end of input
      */
-    function isEof(): boolean {
-        return state.current >= state.source.length;
+    private isEof(): boolean {
+        return this.current >= this.source.length;
     }
 
     /**
@@ -373,223 +379,225 @@ function nextToken(state: LexerState): Token {
      * More characters need to be consumed after calling this, as
      * an empty token would be emitted otherwise.
      */
-    function resetToCurrent() {
-        state.start = state.current;
-        state.start_pos = state.current_pos;
+    private resetToCurrent() {
+        this.start = this.current;
+        this.start_pos = this.current_pos;
     }
 
-    skipWhitespace();
-    resetToCurrent();
+    public nextToken(): Token {
+        this.skipWhitespace();
+        this.resetToCurrent();
 
-    if (isEof()) {
-        return makeToken("eof");
-    }
-
-    const keyword = expectKeyword([
-        "if", "and", "or",
-        "(", ")",
-        "//",
-    ].concat(SKIP_RULE_ATTRIBUTES)
-        .concat(SKIP_RULE_OPERATORS), true);
-    let type: TokenType | null = null;
-    let kind: "word" | "operator" | null = null;
-
-    if (keyword !== null) {
-        if ((SKIP_RULE_ATTRIBUTES as string[]).includes(keyword)) {
-            kind = "word";
-            type = keyword as TokenType;
-        } else if ((SKIP_RULE_OPERATORS as string[]).includes(keyword)) {
-            kind = "operator";
-            type = keyword as TokenType;
-        } else {
-            switch (keyword) {
-                case "if":  // Fallthrough
-                case "and": // Fallthrough
-                case "or": kind = "word"; type = keyword as TokenType; break;
-
-                case "(": return makeToken("(");
-                case ")": return makeToken(")");
-
-                case "//":
-                    resetToCurrent();
-                    skipLine();
-                    return makeToken("comment");
-
-                default:
-            }
-        }
-    } else {
-        const keyword2 = expectKeyword(
-            [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
-
-        if (keyword2 !== null) {
-            kind = "word";
-            type = keyword2 as TokenType;
-        }
-    }
-
-    if (type !== null) {
-        const more = kind == "operator" ? /[<>=!~*&|-]/ : kind == "word" ? /[a-zA-Z0-9.]/ : /[a-zA-Z0-9<>=!~*&|.-]/;
-
-        let c = peek();
-        let error = false;
-        while (c !== null && more.test(c)) {
-            error = true;
-            consume();
-            c = peek();
+        if (this.isEof()) {
+            return this.makeToken("eof");
         }
 
-        return makeToken(error ? "error" : type);
-    }
+        const keyword = this.expectKeyword([
+            "if", "and", "or",
+            "(", ")",
+            "//",
+        ].concat(SKIP_RULE_ATTRIBUTES)
+            .concat(SKIP_RULE_OPERATORS), true);
+        let type: TokenType | null = null;
+        let kind: "word" | "operator" | null = null;
 
-    let c = consume();
-
-    if (c === '"') {
-        // Parses string according to ECMA-404 2nd edition (JSON), section 9 “String”
-        let output = "";
-        let c = consume();
-        let error = false;
-
-        while (c !== null && c !== '"') {
-            if (c == '\\') {
-                c = consume();
-
-                switch (c) {
-                    case '"':
-                        output = output.concat('"');
-                        break;
-                    case '\\':
-                        output = output.concat('\\');
-                        break;
-                    case '/':
-                        output = output.concat('/');
-                        break;
-                    case 'b':
-                        output = output.concat('\b');
-                        break;
-                    case 'f':
-                        output = output.concat('\f');
-                        break;
-                    case 'n':
-                        output = output.concat('\n');
-                        break;
-                    case 'r':
-                        output = output.concat('\r');
-                        break;
-                    case 't':
-                        output = output.concat('\t');
-                        break;
-                    case 'u': {
-                        // UTF-16 value sequence
-                        const digits = state.source.slice(state.current, state.current + 4);
-
-                        if (digits.length < 4 || !/[0-9a-zA-Z]{4}/.test(digits)) {
-                            error = true;
-                            output = output.concat(`\\u`);
-                            c = consume();
-                            continue;
-                        }
-
-                        const value = parseInt(digits, 16);
-                        // fromCharCode() takes a UTF-16 value without performing validity checks,
-                        // which is exactly what is needed here – in JSON, code units outside the
-                        // BMP are represented by two Unicode escape sequences.
-                        output = output.concat(String.fromCharCode(value));
-                        break;
-                    }
-                    default:
-                        error = true;
-                        output = output.concat(`\\${c}`);
-                        break;
-                }
-            } else if (c === '\n') {
-                // Unterminated / multi-line string, unsupported
-                error = true;
-                // Prevent unterminated strings from consuming the entire rest of the input
-                break;
+        if (keyword !== null) {
+            if ((SKIP_RULE_ATTRIBUTES as string[]).includes(keyword)) {
+                kind = "word";
+                type = keyword as TokenType;
+            } else if ((SKIP_RULE_OPERATORS as string[]).includes(keyword)) {
+                kind = "operator";
+                type = keyword as TokenType;
             } else {
-                output = output.concat(c);
-            }
+                switch (keyword) {
+                    case "if":  // Fallthrough
+                    case "and": // Fallthrough
+                    case "or": kind = "word"; type = keyword as TokenType; break;
 
-            c = consume();
+                    case "(": return this.makeToken("(");
+                    case ")": return this.makeToken(")");
+
+                    case "//":
+                        this.resetToCurrent();
+                        this.skipLine();
+                        return this.makeToken("comment");
+
+                    default:
+                }
+            }
+        } else {
+            const keyword2 = this.expectKeyword(
+                [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
+
+            if (keyword2 !== null) {
+                kind = "word";
+                type = keyword2 as TokenType;
+            }
         }
 
-        return {
-            type: error || c !== '"' ? "error" : "string",
-            span: { start: state.start_pos, end: state.current_pos, },
-            value: output,
-        };
-    } else if (/[0-9-]/.test(c)) {
-        // Parses number according to ECMA-404 2nd edition (JSON), section 8 “Numbers”
-        if (c === '-') {
-            c = consume();
+        if (type !== null) {
+            const more = kind == "operator" ? /[<>=!~*&|-]/ : kind == "word" ? /[a-zA-Z0-9.]/ : /[a-zA-Z0-9<>=!~*&|.-]/;
 
-            if (!/[0-9]/.test(c)) {
-                return makeToken("error");
-            }
-        }
-
-        const leadingZero = c === '0';
-        let next = peek();
-        let error = false;
-
-        while (next !== null && /[0-9]/.test(next)) {
-            consume();
-            next = peek();
-
-            if (leadingZero) {
+            let c = this.peek();
+            let error = false;
+            while (c !== null && more.test(c)) {
                 error = true;
+                this.consume();
+                c = this.peek();
             }
+
+            return this.makeToken(error ? "error" : type);
         }
 
+        let c = this.consume();
 
-        if (next !== null && next === '.') {
-            consume();
-            next = peek();
+        if (c === '"') {
+            // Parses string according to ECMA-404 2nd edition (JSON), section 9 “String”
+            let output = "";
+            let c = this.consume();
+            let error = false;
 
-            if (next === null || !/[0-9]/.test(next)) {
-                return makeToken("error");
+            while (c !== null && c !== '"') {
+                if (c == '\\') {
+                    c = this.consume();
+
+                    switch (c) {
+                        case '"':
+                            output = output.concat('"');
+                            break;
+                        case '\\':
+                            output = output.concat('\\');
+                            break;
+                        case '/':
+                            output = output.concat('/');
+                            break;
+                        case 'b':
+                            output = output.concat('\b');
+                            break;
+                        case 'f':
+                            output = output.concat('\f');
+                            break;
+                        case 'n':
+                            output = output.concat('\n');
+                            break;
+                        case 'r':
+                            output = output.concat('\r');
+                            break;
+                        case 't':
+                            output = output.concat('\t');
+                            break;
+                        case 'u': {
+                            // UTF-16 value sequence
+                            const digits = this.source.slice(this.current, this.current + 4);
+
+                            if (digits.length < 4 || !/[0-9a-zA-Z]{4}/.test(digits)) {
+                                error = true;
+                                output = output.concat(`\\u`);
+                                c = this.consume();
+                                continue;
+                            }
+
+                            const value = parseInt(digits, 16);
+                            // fromCharCode() takes a UTF-16 value without performing validity checks,
+                            // which is exactly what is needed here – in JSON, code units outside the
+                            // BMP are represented by two Unicode escape sequences.
+                            output = output.concat(String.fromCharCode(value));
+                            break;
+                        }
+                        default:
+                            error = true;
+                            output = output.concat(`\\${c}`);
+                            break;
+                    }
+                } else if (c === '\n') {
+                    // Unterminated / multi-line string, unsupported
+                    error = true;
+                    // Prevent unterminated strings from consuming the entire rest of the input
+                    break;
+                } else {
+                    output = output.concat(c);
+                }
+
+                c = this.consume();
             }
 
-            do {
-                consume();
-                next = peek();
-            } while (next !== null && /[0-9]/.test(next));
-        }
+            return {
+                type: error || c !== '"' ? "error" : "string",
+                span: { start: this.start_pos, end: this.current_pos, },
+                value: output,
+            };
+        } else if (/[0-9-]/.test(c)) {
+            // Parses number according to ECMA-404 2nd edition (JSON), section 8 “Numbers”
+            if (c === '-') {
+                c = this.consume();
 
-        next = peek();
-
-        if (next != null && (next === 'e' || next === 'E')) {
-            consume();
-            next = peek();
-
-            if (next === null) {
-                return makeToken("error");
+                if (!/[0-9]/.test(c)) {
+                    return this.makeToken("error");
+                }
             }
 
-            if (next === '+' || next === '-') {
-                consume();
-                next = peek();
-            }
+            const leadingZero = c === '0';
+            let next = this.peek();
+            let error = false;
 
             while (next !== null && /[0-9]/.test(next)) {
-                consume();
-                next = peek();
+                this.consume();
+                next = this.peek();
+
+                if (leadingZero) {
+                    error = true;
+                }
             }
+
+
+            if (next !== null && next === '.') {
+                this.consume();
+                next = this.peek();
+
+                if (next === null || !/[0-9]/.test(next)) {
+                    return this.makeToken("error");
+                }
+
+                do {
+                    this.consume();
+                    next = this.peek();
+                } while (next !== null && /[0-9]/.test(next));
+            }
+
+            next = this.peek();
+
+            if (next != null && (next === 'e' || next === 'E')) {
+                this.consume();
+                next = this.peek();
+
+                if (next === null) {
+                    return this.makeToken("error");
+                }
+
+                if (next === '+' || next === '-') {
+                    this.consume();
+                    next = this.peek();
+                }
+
+                while (next !== null && /[0-9]/.test(next)) {
+                    this.consume();
+                    next = this.peek();
+                }
+            }
+
+            return this.makeToken(error ? "error" : "number");
         }
 
-        return makeToken(error ? "error" : "number");
-    }
+        // Consume common characters up to a space for a more useful value in the error token
+        const common = /[a-zA-Z0-9<>=!~*&|.-]/;
+        c = this.peek();
+        while (c !== null && common.test(c)) {
+            this.consume();
+            c = this.peek();
+        }
 
-    // Consume common characters up to a space for a more useful value in the error token
-    const common = /[a-zA-Z0-9<>=!~*&|.-]/;
-    c = peek();
-    while (c !== null && common.test(c)) {
-        consume();
-        c = peek();
+        return this.makeToken("error");
     }
-
-    return makeToken("error");
 }
 
 export interface ParseError {
@@ -597,24 +605,29 @@ export interface ParseError {
     message: string;
 }
 
-export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors: ParseError[] } {
-     // Mutated by calls to nextToken()
-    const lexerState: LexerState = {
-        source: config,
-        start: 0,
-        current: 0,
+class Parser {
+    private lexer: Lexer;
 
-        start_pos: { line: 1 },
-        current_pos: { line: 1 },
-    };
+    private previous: Token;
+    private current: Token;
 
-    let previous: Token = null;
-    let current: Token = nextToken(lexerState);
+    private readonly rules: AdvancedSkipRule[];
+    private readonly errors: ParseError[];
 
-    const rules: AdvancedSkipRule[] = [];
-    const errors: ParseError[] = [];
-    let erroring = false;
-    let panicMode = false;
+    private erroring: boolean;
+    private panicMode: boolean;
+
+    public constructor(lexer: Lexer) {
+        this.lexer = lexer;
+        this.previous = null;
+        this.current = lexer.nextToken();
+        this.rules = [];
+        this.errors = [];
+        this.erroring = false;
+        this.panicMode = false;
+    }
+
+    // Helper functions
 
     /**
      * Adds an error message. The current skip rule will be marked as erroring.
@@ -624,13 +637,13 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      * @param panic if <code>true</code>, all further errors will be silenced
      *              until panic mode is disabled again
      */
-    function errorAt(span: Span, message: string, panic: boolean) {
-        if (!panicMode) {
-            errors.push({span, message,});
+    private errorAt(span: Span, message: string, panic: boolean) {
+        if (!this.panicMode) {
+            this.errors.push({span, message,});
         }
 
-        panicMode ||= panic;
-        erroring = true;
+        this.panicMode ||= panic;
+        this.erroring = true;
     }
 
     /**
@@ -641,8 +654,8 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      * @param panic if <code>true</code>, all further errors will be silenced
      *              until panic mode is disabled again
      */
-    function error(message: string, panic: boolean) {
-        errorAt(previous.span, message, panic);
+    private error(message: string, panic: boolean) {
+        this.errorAt(this.previous.span, message, panic);
     }
 
     /**
@@ -653,8 +666,8 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      * @param panic if <code>true</code>, all further errors will be silenced
      *              until panic mode is disabled again
      */
-    function errorAtCurrent(message: string, panic: boolean) {
-        errorAt(current.span, message, panic);
+    private errorAtCurrent(message: string, panic: boolean) {
+        this.errorAt(this.current.span, message, panic);
     }
 
     /**
@@ -663,12 +676,12 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      *
      * If a token of type <code>error</code> is found, issues an error message.
      */
-    function consume() {
-        previous = current;
+    private consume() {
+        this.previous = this.current;
         // Intentionally ignoring `error` tokens here;
-        // by handling those in later functions with more context (match(), expect(), ...),
+        // by handling those in later privates with more context (match(), expect(), ...),
         // the user gets better errors
-        current = nextToken(lexerState);
+        this.current = this.lexer.nextToken();
     }
 
     /**
@@ -677,9 +690,9 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      * @param expected the set of expected token types
      * @return whether the actual current token matches any expected token type
      */
-    function match(expected: readonly TokenType[]): boolean {
-        if (expected.includes(current.type)) {
-            consume();
+    private match(expected: readonly TokenType[]): boolean {
+        if (expected.includes(this.current.type)) {
+            this.consume();
             return true;
         } else {
             return false;
@@ -696,9 +709,9 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      * @param panic if <code>true</code>, all further errors will be silenced
      *              until panic mode is disabled again
      */
-    function expect(expected: readonly TokenType[], message: string, panic: boolean) {
-        if (!match(expected)) {
-            errorAtCurrent(message.concat(current.type === "error" ?  `, got: ${JSON.stringify(current.value)}` : `, got: \`${current.type}\``), panic);
+    private expect(expected: readonly TokenType[], message: string, panic: boolean) {
+        if (!this.match(expected)) {
+            this.errorAtCurrent(message.concat(this.current.type === "error" ?  `, got: ${JSON.stringify(this.current.value)}` : `, got: \`${this.current.type}\``), panic);
         }
     }
 
@@ -706,56 +719,64 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
      * Synchronize with the next rule block and disable panic mode.
      * Skips all tokens until the <code>if</code> keyword is found.
      */
-    function synchronize() {
-        panicMode = false;
+    private synchronize() {
+        this.panicMode = false;
 
-        while (!isEof()) {
-            if (current.type === "if") {
+        while (!this.isEof()) {
+            if (this.current.type === "if") {
                 return;
             }
 
-            consume();
+            this.consume();
         }
     }
 
     /**
      * @return whether the parser has reached the end of input
      */
-    function isEof(): boolean {
-        return current.type === "eof";
+    private isEof(): boolean {
+        return this.current.type === "eof";
     }
 
-    while (!isEof()) {
-        erroring = false;
-        const rule = parseRule();
+    // Parsing functions
 
-        if (!erroring) {
-            rules.push(rule);
+    /**
+     * Parse the config. Should only ever be called once on a given
+     * <code>Parser</code> instance.
+     */
+    public parse(): { rules: AdvancedSkipRule[]; errors: ParseError[] } {
+        while (!this.isEof()) {
+            this.erroring = false;
+            const rule = this.parseRule();
+
+            if (!this.erroring) {
+                this.rules.push(rule);
+            }
+
+            if (this.panicMode) {
+                this.synchronize();
+            }
         }
 
-        if (panicMode) {
-            synchronize();
-        }
+        return { rules: this.rules, errors: this.errors, };
     }
 
-    return { rules, errors, };
-
-    function parseRule(): AdvancedSkipRule {
+    private parseRule(): AdvancedSkipRule {
         const rule: AdvancedSkipRule = {
             predicate: null,
             skipOption: null,
             comments: [],
         };
 
-        while (match(["comment"])) {
-            rule.comments.push(previous.value.trim());
+        while (this.match(["comment"])) {
+            rule.comments.push(this.previous.value.trim());
         }
 
-        expect(["if"], rule.comments.length !== 0 ? "expected `if` after `comment`" : "expected `if`", true);
-        rule.predicate = parsePredicate();
+        this.expect(["if"], rule.comments.length !== 0 ? "expected `if` after `comment`" : "expected `if`", true);
+        rule.predicate = this.parsePredicate();
 
-        expect(["disabled", "show overlay", "manual skip", "auto skip"], "expected skip option after condition", true);
-        switch (previous.type) {
+        this.expect(["disabled", "show overlay", "manual skip", "auto skip"], "expected skip option after condition", true);
+        switch (this.previous.type) {
             case "disabled":
                 rule.skipOption = CategorySkipOption.Disabled;
                 break;
@@ -769,21 +790,21 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
                 rule.skipOption = CategorySkipOption.AutoSkip;
                 break;
             default:
-                // Ignore, should have already errored
+            // Ignore, should have already errored
         }
 
         return rule;
     }
 
-    function parsePredicate(): AdvancedSkipPredicate {
-        return parseOr();
+    private parsePredicate(): AdvancedSkipPredicate {
+        return this.parseOr();
     }
 
-    function parseOr(): AdvancedSkipPredicate {
-        let left = parseAnd();
+    private parseOr(): AdvancedSkipPredicate {
+        let left = this.parseAnd();
 
-        while (match(["or"])) {
-            const right = parseAnd();
+        while (this.match(["or"])) {
+            const right = this.parseAnd();
 
             left = {
                 kind: "operator",
@@ -795,11 +816,11 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         return left;
     }
 
-    function parseAnd(): AdvancedSkipPredicate {
-        let left = parsePrimary();
+    private parseAnd(): AdvancedSkipPredicate {
+        let left = this.parsePrimary();
 
-        while (match(["and"])) {
-            const right = parsePrimary();
+        while (this.match(["and"])) {
+            const right = this.parsePrimary();
 
             left = {
                 kind: "operator",
@@ -811,51 +832,51 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
         return left;
     }
 
-    function parsePrimary(): AdvancedSkipPredicate {
-        if (match(["("])) {
-            const predicate = parsePredicate();
-            expect([")"], "expected `)` after condition", true);
+    private parsePrimary(): AdvancedSkipPredicate {
+        if (this.match(["("])) {
+            const predicate = this.parsePredicate();
+            this.expect([")"], "expected `)` after condition", true);
             return predicate;
         } else {
-            return parseCheck();
+            return this.parseCheck();
         }
     }
 
-    function parseCheck(): AdvancedSkipCheck {
-        expect(SKIP_RULE_ATTRIBUTES, `expected attribute after \`${previous.type}\``, true);
+    private parseCheck(): AdvancedSkipCheck {
+        this.expect(SKIP_RULE_ATTRIBUTES, `expected attribute after \`${this.previous.type}\``, true);
 
-        if (erroring) {
+        if (this.erroring) {
             return null;
         }
 
-        const attribute = previous.type as SkipRuleAttribute;
-        expect(SKIP_RULE_OPERATORS, `expected operator after \`${attribute}\``, true);
+        const attribute = this.previous.type as SkipRuleAttribute;
+        this.expect(SKIP_RULE_OPERATORS, `expected operator after \`${attribute}\``, true);
 
-        if (erroring) {
+        if (this.erroring) {
             return null;
         }
 
-        const operator = previous.type as SkipRuleOperator;
-        expect(["string", "number"], `expected string or number after \`${operator}\``, true);
+        const operator = this.previous.type as SkipRuleOperator;
+        this.expect(["string", "number"], `expected string or number after \`${operator}\``, true);
 
-        if (erroring) {
+        if (this.erroring) {
             return null;
         }
 
-        const value = previous.type === "number" ? Number(previous.value) : previous.value;
+        const value = this.previous.type === "number" ? Number(this.previous.value) : this.previous.value;
 
         if ([SkipRuleOperator.Equal, SkipRuleOperator.NotEqual].includes(operator)) {
             if (attribute === SkipRuleAttribute.Category
                 && !CompileConfig.categoryList.includes(value as string)) {
-                error(`unknown category: \`${value}\``, false);
+                this.error(`unknown category: \`${value}\``, false);
                 return null;
             } else if (attribute === SkipRuleAttribute.ActionType
                 && !ActionTypes.includes(value as ActionType)) {
-                error(`unknown action type: \`${value}\``, false);
+                this.error(`unknown action type: \`${value}\``, false);
                 return null;
             } else if (attribute === SkipRuleAttribute.Source
                 && !["local", "youtube", "autogenerated", "server"].includes(value as string)) {
-                error(`unknown chapter source: \`${value}\``, false);
+                this.error(`unknown chapter source: \`${value}\``, false);
                 return null;
             }
         }
@@ -865,4 +886,9 @@ export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors
             attribute, operator, value,
         };
     }
+}
+
+export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors: ParseError[] } {
+    const parser = new Parser(new Lexer(config));
+    return parser.parse();
 }
