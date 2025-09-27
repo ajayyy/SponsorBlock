@@ -44,6 +44,20 @@ export enum SkipRuleOperator {
 
 const SKIP_RULE_ATTRIBUTES = Object.values(SkipRuleAttribute);
 const SKIP_RULE_OPERATORS = Object.values(SkipRuleOperator);
+const INVERTED_SKIP_RULE_OPERATORS = {
+    "<=": SkipRuleOperator.Greater,
+    "<": SkipRuleOperator.GreaterOrEqual,
+    ">=": SkipRuleOperator.Less,
+    ">": SkipRuleOperator.LessOrEqual,
+    "!=": SkipRuleOperator.Equal,
+    "==": SkipRuleOperator.NotEqual,
+    "!*=": SkipRuleOperator.Contains,
+    "*=": SkipRuleOperator.NotContains,
+    "!~=": SkipRuleOperator.Regex,
+    "~=": SkipRuleOperator.NotRegex,
+    "!~i=": SkipRuleOperator.RegexIgnoreCase,
+    "~i=": SkipRuleOperator.NotRegexIgnoreCase,
+};
 const WORD_EXTRA_CHARACTER = /[a-zA-Z0-9.]/;
 const OPERATOR_EXTRA_CHARACTER = /[<>=!~*&|-]/;
 const ANY_EXTRA_CHARACTER = /[a-zA-Z0-9<>=!~*&|.-]/;
@@ -225,7 +239,7 @@ type TokenType =
     | "disabled" | "show overlay" | "manual skip" | "auto skip" // Skip option
     | `${SkipRuleAttribute}` // Segment attributes
     | `${SkipRuleOperator}` // Segment attribute operators
-    | "and" | "or" // Expression operators
+    | "and" | "or" | "not" // Expression operators
     | "(" | ")" | "comment" // Syntax
     | "string" | "number" // Literal values
     | "eof" | "error"; // Sentinel and special tokens
@@ -396,7 +410,7 @@ class Lexer {
         }
 
         const keyword = this.expectKeyword([
-            "if", "and", "or",
+            "if", "and", "or", "not",
             "(", ")",
             "//",
         ].concat(SKIP_RULE_ATTRIBUTES)
@@ -415,7 +429,8 @@ class Lexer {
                 switch (keyword) {
                     case "if":  // Fallthrough
                     case "and": // Fallthrough
-                    case "or": kind = "word"; type = keyword as TokenType; break;
+                    case "or": // Fallthrough
+                    case "not": kind = "word"; type = keyword as TokenType; break;
 
                     case "(": return this.makeToken("(");
                     case ")": return this.makeToken(")");
@@ -820,10 +835,10 @@ class Parser {
     }
 
     private parseAnd(): AdvancedSkipPredicate | null {
-        let left = this.parsePrimary();
+        let left = this.parseUnary();
 
         while (this.match(["and"])) {
-            const right = this.parsePrimary();
+            const right = this.parseUnary();
 
             left = {
                 kind: "operator",
@@ -833,6 +848,33 @@ class Parser {
         }
 
         return left;
+    }
+
+    private static invertPredicate(predicate: AdvancedSkipPredicate): AdvancedSkipPredicate {
+        if (predicate.kind === "check") {
+            return {
+                ...predicate,
+                operator: INVERTED_SKIP_RULE_OPERATORS[predicate.operator],
+            };
+        } else {
+            // not (a and b) == (not a or not b)
+            // not (a or b) == (not a and not b)
+            return {
+                kind: "operator",
+                operator: predicate.operator === "and" ? PredicateOperator.Or : PredicateOperator.And,
+                left: predicate.left ? Parser.invertPredicate(predicate.left) : null,
+                right: predicate.right ? Parser.invertPredicate(predicate.right) : null,
+            };
+        }
+    }
+
+    private parseUnary(): AdvancedSkipPredicate | null {
+        if (this.match(["not"])) {
+            const predicate = this.parseUnary();
+            return predicate ? Parser.invertPredicate(predicate) : null;
+        }
+
+        return this.parsePrimary();
     }
 
     private parsePrimary(): AdvancedSkipPredicate | null {
