@@ -44,6 +44,9 @@ export enum SkipRuleOperator {
 
 const SKIP_RULE_ATTRIBUTES = Object.values(SkipRuleAttribute);
 const SKIP_RULE_OPERATORS = Object.values(SkipRuleOperator);
+const WORD_EXTRA_CHARACTER = /[a-zA-Z0-9.]/;
+const OPERATOR_EXTRA_CHARACTER = /[<>=!~*&|-]/;
+const ANY_EXTRA_CHARACTER = /[a-zA-Z0-9<>=!~*&|.-]/;
 
 export interface AdvancedSkipCheck {
     kind: "check";
@@ -436,7 +439,7 @@ class Lexer {
         }
 
         if (type !== null) {
-            const more = kind == "operator" ? /[<>=!~*&|-]/ : kind == "word" ? /[a-zA-Z0-9.]/ : /[a-zA-Z0-9<>=!~*&|.-]/;
+            const more = kind == "operator" ? OPERATOR_EXTRA_CHARACTER : kind == "word" ? WORD_EXTRA_CHARACTER : ANY_EXTRA_CHARACTER;
 
             let c = this.peek();
             let error = false;
@@ -589,7 +592,7 @@ class Lexer {
         }
 
         // Consume common characters up to a space for a more useful value in the error token
-        const common = /[a-zA-Z0-9<>=!~*&|.-]/;
+        const common = ANY_EXTRA_CHARACTER;
         c = this.peek();
         while (c !== null && common.test(c)) {
             this.consume();
@@ -749,7 +752,7 @@ class Parser {
             this.erroring = false;
             const rule = this.parseRule();
 
-            if (!this.erroring) {
+            if (!this.erroring && rule) {
                 this.rules.push(rule);
             }
 
@@ -761,7 +764,7 @@ class Parser {
         return { rules: this.rules, errors: this.errors, };
     }
 
-    private parseRule(): AdvancedSkipRule {
+    private parseRule(): AdvancedSkipRule | null {
         const rule: AdvancedSkipRule = {
             predicate: null,
             skipOption: null,
@@ -796,11 +799,11 @@ class Parser {
         return rule;
     }
 
-    private parsePredicate(): AdvancedSkipPredicate {
+    private parsePredicate(): AdvancedSkipPredicate | null {
         return this.parseOr();
     }
 
-    private parseOr(): AdvancedSkipPredicate {
+    private parseOr(): AdvancedSkipPredicate | null {
         let left = this.parseAnd();
 
         while (this.match(["or"])) {
@@ -816,7 +819,7 @@ class Parser {
         return left;
     }
 
-    private parseAnd(): AdvancedSkipPredicate {
+    private parseAnd(): AdvancedSkipPredicate | null {
         let left = this.parsePrimary();
 
         while (this.match(["and"])) {
@@ -832,7 +835,7 @@ class Parser {
         return left;
     }
 
-    private parsePrimary(): AdvancedSkipPredicate {
+    private parsePrimary(): AdvancedSkipPredicate | null {
         if (this.match(["("])) {
             const predicate = this.parsePredicate();
             this.expect([")"], "expected `)` after condition", true);
@@ -842,7 +845,7 @@ class Parser {
         }
     }
 
-    private parseCheck(): AdvancedSkipCheck {
+    private parseCheck(): AdvancedSkipCheck | null {
         this.expect(SKIP_RULE_ATTRIBUTES, `expected attribute after \`${this.previous.type}\``, true);
 
         if (this.erroring) {
