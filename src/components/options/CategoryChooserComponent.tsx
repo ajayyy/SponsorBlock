@@ -23,6 +23,12 @@ export function CategoryChooserComponent() {
 
         updateChannelList(setChannelListText, selectedConfigurationID!);
         setSelections(getConfigurationValue<CategorySelection[]>(selectedConfigurationID, "categorySelections"));
+
+        if (selectedConfigurationID === null) {
+            document.querySelectorAll(".hide-when-skip-profile").forEach((e) => e.classList.remove("hidden"));
+        } else {
+            document.querySelectorAll(".hide-when-skip-profile").forEach((e) => e.classList.add("hidden"));
+        }
     }, [selectedConfigurationID]);
 
     const createNewConfig = () => {
