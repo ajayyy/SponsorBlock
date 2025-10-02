@@ -145,6 +145,10 @@ export function CategoryChooserComponent() {
                                 }
                                 forceUpdateConfigurationIDs();
 
+                                if (Config.local.skipProfileTemp && Config.local.skipProfileTemp.configID === selectedConfigurationID) {
+                                    Config.local.skipProfileTemp = null;
+                                }
+
                                 setConfigurations(Config.local!.skipProfiles);
                                 const newID = Object.keys(Config.local!.skipProfiles)[0] as ConfigurationID;
                                 setSelectedConfigurationID(newID);
