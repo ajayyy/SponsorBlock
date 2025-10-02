@@ -1,8 +1,7 @@
 import * as React from "react";
 
 import Config from "../../config";
-import {AdvancedSkipPredicate, AdvancedSkipRule, parseConfig, PredicateOperator,} from "../../utils/skipRule";
-import {CategorySkipOption} from "../../types";
+import { AdvancedSkipRule, configToText, parseConfig, } from "../../utils/skipRule";
 
 let configSaveTimeout: NodeJS.Timeout | null = null;
 
@@ -74,55 +73,5 @@ function compileConfig(config: string): AdvancedSkipRule[] | null {
         return rules;
     } else {
         return null;
-    }
-}
-
-function configToText(config: AdvancedSkipRule[]): string {
-    let result = "";
-
-    for (const rule of config) {
-        for (const comment of rule.comments) {
-            result += "// " + comment + "\n";
-        }
-
-        result += "if ";
-        result += predicateToText(rule.predicate, null);
-
-        switch (rule.skipOption) {
-            case CategorySkipOption.Disabled:
-                result += "\nDisabled";
-                break;
-            case CategorySkipOption.ShowOverlay:
-                result += "\nShow Overlay";
-                break;
-            case CategorySkipOption.ManualSkip:
-                result += "\nManual Skip";
-                break;
-            case CategorySkipOption.AutoSkip:
-                result += "\nAuto Skip";
-                break;
-            default:
-                return null; // Invalid skip option
-        }
-
-        result += "\n\n";
-    }
-
-    return result.trim();
-}
-
-function predicateToText(predicate: AdvancedSkipPredicate, outerPrecedence: PredicateOperator | null): string {
-    if (predicate.kind === "check") {
-        return `${predicate.attribute} ${predicate.operator} ${JSON.stringify(predicate.value)}`;
-    } else {
-        let text: string;
-
-        if (predicate.operator === PredicateOperator.And) {
-            text = `${predicateToText(predicate.left, PredicateOperator.And)} and ${predicateToText(predicate.right, PredicateOperator.And)}`;
-        } else { // Or
-            text = `${predicateToText(predicate.left, PredicateOperator.Or)} or ${predicateToText(predicate.right, PredicateOperator.Or)}`;
-        }
-
-        return outerPrecedence !== null && outerPrecedence !== predicate.operator ? `(${text})` : text;
     }
 }

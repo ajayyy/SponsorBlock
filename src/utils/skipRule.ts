@@ -10,6 +10,9 @@ export interface Permission {
     canSubmit: boolean;
 }
 
+// Note that attributes that are prefixes of other attributes (like `time.start`) need to be ordered *after*
+// the longer attributes, because these are matched sequentially. Using the longer attribute would otherwise result
+// in an error token.
 export enum SkipRuleAttribute {
     StartTimePercent = "time.startPercent",
     StartTime = "time.start",
@@ -27,6 +30,9 @@ export enum SkipRuleAttribute {
     Title = "video.title"
 }
 
+// Note that operators that are prefixes of other attributes (like `<`) need to be ordered *after* the longer
+// operators, because these are matched sequentially. Using the longer operator would otherwise result
+// in an error token.
 export enum SkipRuleOperator {
     LessOrEqual = "<=",
     Less = "<",
@@ -79,6 +85,7 @@ export interface AdvancedSkipOperator {
     operator: PredicateOperator;
     left: AdvancedSkipPredicate;
     right: AdvancedSkipPredicate;
+    displayInverted?: boolean;
 }
 
 export type AdvancedSkipPredicate = AdvancedSkipCheck | AdvancedSkipOperator;
@@ -850,28 +857,10 @@ class Parser {
         return left;
     }
 
-    private static invertPredicate(predicate: AdvancedSkipPredicate): AdvancedSkipPredicate {
-        if (predicate.kind === "check") {
-            return {
-                ...predicate,
-                operator: INVERTED_SKIP_RULE_OPERATORS[predicate.operator],
-            };
-        } else {
-            // not (a and b) == (not a or not b)
-            // not (a or b) == (not a and not b)
-            return {
-                kind: "operator",
-                operator: predicate.operator === "and" ? PredicateOperator.Or : PredicateOperator.And,
-                left: predicate.left ? Parser.invertPredicate(predicate.left) : null,
-                right: predicate.right ? Parser.invertPredicate(predicate.right) : null,
-            };
-        }
-    }
-
     private parseUnary(): AdvancedSkipPredicate | null {
         if (this.match(["not"])) {
             const predicate = this.parseUnary();
-            return predicate ? Parser.invertPredicate(predicate) : null;
+            return predicate ? invertPredicate(predicate) : null;
         }
 
         return this.parsePrimary();
@@ -936,4 +925,76 @@ class Parser {
 export function parseConfig(config: string): { rules: AdvancedSkipRule[]; errors: ParseError[] } {
     const parser = new Parser(new Lexer(config));
     return parser.parse();
+}
+
+export function configToText(config: AdvancedSkipRule[]): string {
+    let result = "";
+
+    for (const rule of config) {
+        for (const comment of rule.comments) {
+            result += "// " + comment + "\n";
+        }
+
+        result += "if ";
+        result += predicateToText(rule.predicate, null);
+
+        switch (rule.skipOption) {
+            case CategorySkipOption.Disabled:
+                result += "\nDisabled";
+                break;
+            case CategorySkipOption.ShowOverlay:
+                result += "\nShow Overlay";
+                break;
+            case CategorySkipOption.ManualSkip:
+                result += "\nManual Skip";
+                break;
+            case CategorySkipOption.AutoSkip:
+                result += "\nAuto Skip";
+                break;
+            default:
+                return null; // Invalid skip option
+        }
+
+        result += "\n\n";
+    }
+
+    return result.trim();
+}
+
+function predicateToText(predicate: AdvancedSkipPredicate, outerPrecedence: "or" | "and" | "not" | null): string {
+    if (predicate.kind === "check") {
+        return `${predicate.attribute} ${predicate.operator} ${JSON.stringify(predicate.value)}`;
+    } else if (predicate.displayInverted) {
+        // Should always be fine, considering `not` has the highest precedence
+        return `not ${predicateToText(invertPredicate(predicate), "not")}`;
+    } else {
+        let text: string;
+
+        if (predicate.operator === PredicateOperator.And) {
+            text = `${predicateToText(predicate.left, "and")} and ${predicateToText(predicate.right, "and")}`;
+        } else { // Or
+            text = `${predicateToText(predicate.left, "or")} or ${predicateToText(predicate.right, "or")}`;
+        }
+
+        return outerPrecedence !== null && outerPrecedence !== predicate.operator ? `(${text})` : text;
+    }
+}
+
+function invertPredicate(predicate: AdvancedSkipPredicate): AdvancedSkipPredicate {
+    if (predicate.kind === "check") {
+        return {
+            ...predicate,
+            operator: INVERTED_SKIP_RULE_OPERATORS[predicate.operator],
+        };
+    } else {
+        // not (a and b) == (not a or not b)
+        // not (a or b) == (not a and not b)
+        return {
+            kind: "operator",
+            operator: predicate.operator === "and" ? PredicateOperator.Or : PredicateOperator.And,
+            left: predicate.left ? invertPredicate(predicate.left) : null,
+            right: predicate.right ? invertPredicate(predicate.right) : null,
+            displayInverted: !predicate.displayInverted,
+        };
+    }
 }
