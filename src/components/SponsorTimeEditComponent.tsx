@@ -123,6 +123,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             style.marginTop = "15px";
         }
 
+        const borderColor = this.state.selectedCategory ? Config.config.barTypes[this.state.selectedCategory]?.color : null;
+
         // Create time display
         let timeDisplay: JSX.Element;
         const timeDisplayStyle: React.CSSProperties = {};
@@ -151,7 +153,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <input id={"submittingTime0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput"
                             type="text"
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             value={this.state.sponsorTimeEdits[0] ?? ""}
                             onKeyDown={(e) => e.stopPropagation()}
                             onKeyUp={(e) => e.stopPropagation()}
@@ -168,7 +170,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                 <input id={"submittingTime1" + this.idSuffix}
                                     className="sponsorTimeEdit sponsorTimeEditInput"
                                     type="text"
-                                    style={{color: "inherit", backgroundColor: "inherit"}}
+                                    style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                                     value={this.state.sponsorTimeEdits[1] ?? ""}
                                     onKeyDown={(e) => e.stopPropagation()}
                                     onKeyUp={(e) => e.stopPropagation()}
@@ -204,8 +206,6 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 </div>
             );
         }
-
-        const borderColor = this.state.selectedCategory ? Config.config.barTypes[this.state.selectedCategory]?.color : null;
 
         return (
             <div id={"sponsorTimeEditContainer" + this.idSuffix} style={style}>
