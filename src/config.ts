@@ -1,9 +1,9 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
-import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorHideType, SponsorTime, VideoID } from "./types";
+import { Keybind, keybindEquals, ProtoConfig } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
-import { Permission, AdvancedSkipRuleSet } from "./utils/skipRule";
+import { AdvancedSkipCheck, AdvancedSkipPredicate, AdvancedSkipRule, Permission, PredicateOperator } from "./utils/skipRule";
 
 interface SBConfig {
     userID: string;
@@ -155,7 +155,7 @@ interface SBStorage {
     /* VideoID prefixes to UUID prefixes */
     downvotedSegments: Record<VideoID & HashedValue, VideoDownvotes>;
     navigationApiAvailable: boolean;
-    
+
     // Used when sync storage disabled
     alreadyInstalled: boolean;
 
@@ -166,7 +166,7 @@ interface SBStorage {
     skipProfileTemp: { time: number; configID: ConfigurationID } | null;
     skipProfiles: Record<ConfigurationID, CustomConfiguration>;
 
-    skipRules: AdvancedSkipRuleSet[];
+    skipRules: AdvancedSkipRule[];
 }
 
 class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
@@ -186,6 +186,43 @@ class ConfigClass extends ProtoConfig<SBConfig, SBStorage> {
 }
 
 function migrateOldSyncFormats(config: SBConfig, local: SBStorage) {
+    if (local["skipRules"] && local["skipRules"].length !== 0 && local["skipRules"][0]["rules"]) {
+        const output: AdvancedSkipRule[] = [];
+
+        for (const rule of local["skipRules"]) {
+            const rules: object[] = rule["rules"];
+
+            if (rules.length !== 0) {
+                let predicate: AdvancedSkipPredicate = {
+                    kind: "check",
+                    ...rules[0] as AdvancedSkipCheck,
+                };
+
+                for (let i = 1; i < rules.length; i++) {
+                    predicate = {
+                        kind: "operator",
+                        operator: PredicateOperator.And,
+                        left: predicate,
+                        right: {
+                            kind: "check",
+                            ...rules[i] as AdvancedSkipCheck,
+                        },
+                    };
+                }
+
+                const comment = rule["comment"] as string;
+
+                output.push({
+                    predicate,
+                    skipOption: rule.skipOption,
+                    comments: comment.length === 0 ? [] : comment.split(/;\s*/),
+                });
+            }
+        }
+
+        local["skipRules"] = output;
+    }
+
     if (config["whitelistedChannels"]) {
         // convert to skipProfiles
         const whitelistedChannels = config["whitelistedChannels"] as string[];
@@ -212,7 +249,7 @@ function migrateOldSyncFormats(config: SBConfig, local: SBStorage) {
         for (const channelID of whitelistedChannels) {
             local.channelSkipProfileIDs[channelID] = skipProfileID;
         }
-        local.channelSkipProfileIDs = local.channelSkipProfileIDs;     
+        local.channelSkipProfileIDs = local.channelSkipProfileIDs;
 
         chrome.storage.sync.remove("whitelistedChannels");
     }
@@ -246,7 +283,7 @@ function migrateOldSyncFormats(config: SBConfig, local: SBStorage) {
                 name: "chapter" as Category,
                 option: CategorySkipOption.ShowOverlay
             });
-    
+
             config.categorySelections = config.categorySelections;
         }
     }
