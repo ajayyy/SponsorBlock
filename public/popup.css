@@ -591,6 +591,8 @@
 #sponsorTimesDonateContainer a {
   color: var(--sb-main-fg-color);
   text-decoration: none;
+
+  padding-left: 5px;
 }
 
 /*
