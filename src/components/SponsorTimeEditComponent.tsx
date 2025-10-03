@@ -205,6 +205,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             );
         }
 
+        const borderColor = this.state.selectedCategory ? Config.config.barTypes[this.state.selectedCategory]?.color : null;
+
         return (
             <div id={"sponsorTimeEditContainer" + this.idSuffix} style={style}>
                 
@@ -215,7 +217,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <select id={"sponsorTimeCategories" + this.idSuffix}
                         className="sponsorTimeEditSelector sponsorTimeCategories"
                         ref={this.categoryOptionRef}
-                        style={{color: "inherit", backgroundColor: "inherit"}}
+                        style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                         value={this.state.selectedCategory}
                         onChange={(event) => this.categorySelectionChange(event)}>
                         {this.getCategoryOptions()}
@@ -240,7 +242,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
                             value={this.state.selectedActionType}
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             ref={this.actionTypeOptionRef}
                             onChange={(e) => this.actionTypeSelectionChange(e)}>
                             {this.getActionTypeOptions(sponsorTime)}
@@ -269,7 +271,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <div onBlur={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             ref={this.descriptionOptionRef}
                             type="text"
                             value={this.state.description}
