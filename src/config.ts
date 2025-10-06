@@ -1,6 +1,6 @@
 import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
-import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType } from "./types";
+import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorTime, VideoID, SponsorHideType, SegmentListDefaultTab } from "./types";
 import { Keybind, ProtoConfig, keybindEquals } from "../maze-utils/src/config";
 import { HashedValue } from "../maze-utils/src/hash";
 import { Permission, AdvancedSkipRuleSet } from "./utils/skipRule";
@@ -10,6 +10,7 @@ interface SBConfig {
     isVip: boolean;
     permissions: Record<Category, Permission>;
     defaultCategory: Category;
+    segmentListDefaultTab: SegmentListDefaultTab;
     renderSegmentsAsChapters: boolean;
     forceChannelCheck: boolean;
     minutesSaved: number;
@@ -337,6 +338,7 @@ const syncDefaults = {
     isVip: false,
     permissions: {},
     defaultCategory: "chooseACategory" as Category,
+    segmentListDefaultTab: SegmentListDefaultTab.Segments,
     renderSegmentsAsChapters: false,
     forceChannelCheck: false,
     minutesSaved: 0,
