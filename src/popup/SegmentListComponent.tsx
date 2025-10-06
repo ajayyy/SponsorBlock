@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ActionType, SegmentUUID, SponsorHideType, SponsorTime, VideoID } from "../types";
+import { ActionType, SegmentListDefaultTab, SegmentUUID, SponsorHideType, SponsorTime, VideoID } from "../types";
 import Config from "../config";
 import { waitFor } from "../../maze-utils/src";
 import { shortCategoryName } from "../utils/categoryUtils";
@@ -61,12 +61,21 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
     }, [props.segments]);
 
     React.useEffect(() => {
-        if (hasSegments){
-            setTab(SegmentListTab.Segments);
+        const setTabBasedOnConfig = () => {
+            const preferChapters = Config.config.segmentListDefaultTab === SegmentListDefaultTab.Chapters;
+            if (preferChapters) {
+                setTab(hasChapters ? SegmentListTab.Chapter : SegmentListTab.Segments);
+            } else {
+                setTab(hasSegments ? SegmentListTab.Segments : SegmentListTab.Chapter);
+            }
+        };
+
+        if (Config.isReady()) {
+            setTabBasedOnConfig();
         } else {
-            setTab(SegmentListTab.Chapter);
+            waitFor(() => Config.isReady()).then(setTabBasedOnConfig);
         }
-    }, [props.videoID, hasSegments]);
+    }, [props.videoID, hasSegments, hasChapters]);
 
     const segmentsWithNesting = React.useMemo(() => {
         const result: SegmentWithNesting[] = [];
