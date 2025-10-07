@@ -123,6 +123,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             style.marginTop = "15px";
         }
 
+        const borderColor = this.state.selectedCategory ? Config.config.barTypes[this.state.selectedCategory]?.color : null;
+
         // Create time display
         let timeDisplay: JSX.Element;
         const timeDisplayStyle: React.CSSProperties = {};
@@ -151,7 +153,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <input id={"submittingTime0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput"
                             type="text"
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             value={this.state.sponsorTimeEdits[0] ?? ""}
                             onKeyDown={(e) => e.stopPropagation()}
                             onKeyUp={(e) => e.stopPropagation()}
@@ -168,7 +170,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                 <input id={"submittingTime1" + this.idSuffix}
                                     className="sponsorTimeEdit sponsorTimeEditInput"
                                     type="text"
-                                    style={{color: "inherit", backgroundColor: "inherit"}}
+                                    style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                                     value={this.state.sponsorTimeEdits[1] ?? ""}
                                     onKeyDown={(e) => e.stopPropagation()}
                                     onKeyUp={(e) => e.stopPropagation()}
@@ -215,7 +217,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <select id={"sponsorTimeCategories" + this.idSuffix}
                         className="sponsorTimeEditSelector sponsorTimeCategories"
                         ref={this.categoryOptionRef}
-                        style={{color: "inherit", backgroundColor: "inherit"}}
+                        style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                         value={this.state.selectedCategory}
                         onChange={(event) => this.categorySelectionChange(event)}>
                         {this.getCategoryOptions()}
@@ -240,7 +242,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
                             value={this.state.selectedActionType}
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             ref={this.actionTypeOptionRef}
                             onChange={(e) => this.actionTypeSelectionChange(e)}>
                             {this.getActionTypeOptions(sponsorTime)}
@@ -269,7 +271,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <div onBlur={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             ref={this.descriptionOptionRef}
                             type="text"
                             value={this.state.description}

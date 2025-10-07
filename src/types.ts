@@ -228,3 +228,8 @@ export enum NoticeVisibilityMode {
     FadedForAutoSkip = 3,
     FadedForAll = 4
 }
+
+export enum SegmentListDefaultTab {
+    Segments,
+    Chapters,
+}

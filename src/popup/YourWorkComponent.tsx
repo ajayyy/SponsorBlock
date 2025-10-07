@@ -191,7 +191,7 @@ function TimeSavedMessage({ viewCount, minutesSaved }: { viewCount: number; minu
 
 function DonateMessage(props: { onClose: () => void }): JSX.Element {
     return (
-        <div id="sponsorTimesDonateContainer" style={{ alignItems: "center", justifyContent: "center" }}>
+        <div id="sponsorTimesDonateContainer" style={{ alignItems: "center", justifyContent: "center", display: "flex" }}>
             <img className="sbHeart" src="/icons/heart.svg" alt="Heart icon" />
             <a id="sbConsiderDonateLink" href="https://sponsor.ajay.app/donate" target="_blank" rel="noreferrer" onClick={() => {
                 Config.config.donateClicked = Config.config.donateClicked + 1;
