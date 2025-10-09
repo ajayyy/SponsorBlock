@@ -1917,6 +1917,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     newButton.id = baseID + "Button";
     newButton.classList.add("playerButton");
     newButton.classList.add("ytp-button");
+    if (Config.config.prideTheme) newButton.classList.add("prideTheme");
     if (isOnYTTV()) {
         // Some style needs to be set here, but the numbers don't matter 
         newButton.setAttribute("style", "width: 40px; height: 40px");

@@ -78,6 +78,7 @@ interface SBConfig {
     showZoomToFillError2: boolean;
     cleanPopup: boolean;
     hideSegmentCreationInPopup: boolean;
+    prideTheme: boolean;
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -400,6 +401,7 @@ const syncDefaults = {
     showZoomToFillError2: true,
     cleanPopup: false,
     hideSegmentCreationInPopup: false,
+    prideTheme: false,
 
     categoryPillColors: {},
 

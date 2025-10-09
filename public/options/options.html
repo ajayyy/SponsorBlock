@@ -19,7 +19,7 @@
 		<div id="menubar" class="center">
 
 			<div id="title" class="titleBar">
-				<img src="../icons/LogoSponsorBlocker256px.png" class="profilepic" alt="SponsorBlock logo"/>
+				<img id="title-bar-logo" src="../icons/LogoSponsorBlocker256px.png" class="profilepic" alt="SponsorBlock logo"/>
 				SponsorBlock
 				<div id="version"></div>
 			</div>
@@ -305,15 +305,17 @@
 					<div class="small-description">__MSG_showTimeWithSkipsDescription__</div>
 				</div>
 
-				<div data-type="toggle" data-sync="cleanPopup">
-					<div class="switch-container">
-						<label class="switch">
-							<input id="cleanPopup" type="checkbox" checked>
-							<span class="slider round"></span>
-						</label>
-						<label class="switch-label" for="cleanPopup">
-							__MSG_cleanPopup__
-						</label>
+				<div>
+					<div data-type="toggle" data-sync="cleanPopup">
+						<div class="switch-container">
+							<label class="switch">
+								<input id="cleanPopup" type="checkbox" checked>
+								<span class="slider round"></span>
+							</label>
+							<label class="switch-label" for="cleanPopup">
+								__MSG_cleanPopup__
+							</label>
+						</div>
 					</div>
 
 					<br/>
@@ -339,6 +341,18 @@
 						</label>
 						<label class="switch-label" for="darkMode">
 							__MSG_darkModeOptionsPage__
+						</label>
+					</div>
+				</div>
+
+				<div data-type="toggle" data-sync="prideTheme">
+					<div class="switch-container">
+						<label class="switch">
+							<input id="prideTheme" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<label class="switch-label" for="prideTheme">
+							__MSG_prideTheme__
 						</label>
 					</div>
 				</div>

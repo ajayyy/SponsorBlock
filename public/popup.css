@@ -3,8 +3,29 @@
   --sb-main-bg-color: #222;
   --sb-main-fg-color: #fff;
   --sb-grey-bg-color: #333;
+  --sb-grey-bg-active-color: #444;
   --sb-grey-fg-color: #999;
   --sb-red-bg-color: #cc1717;
+  --sb-red-bg-active-color: #ec1c1c;
+  --sb-skip-profile-bg: #292828;
+  --sb-skip-profile-disabled: #808080;
+  --sb-skip-profile-option-bg: #222;
+  --sb-skip-profile-highlighted: rgb(127, 0, 0);
+}
+
+.prideTheme {
+  --sb-main-fg-color: #fff;
+  --sb-grey-bg-color: #008026;
+  --sb-grey-bg-active-color: #FF8C00;
+  --sb-grey-fg-color: #FFED00;
+  --sb-red-bg-color: #732982;
+  --sb-red-bg-active-color: #004CFF;
+  --sb-skip-profile-bg: #FFAFC8;
+  --sb-skip-profile-disabled: #74D7EE;
+  --sb-skip-profile-option-bg: #f687aa;
+  --sb-skip-profile-highlighted: #38153f;
+
+  background: url("icons/pride.svg");
 }
 
 /*
@@ -321,10 +342,20 @@
   border-radius: 0px 8px 8px 0px;
 }
 .sbControlsMenu-item:hover, .sbControlsMenu-item:focus {
-  background-color: #444;
+  background-color: var(--sb-grey-bg-active-color) !important;
 }
 .sbControlsMenu-itemIcon {
   margin-bottom: 6px;
+}
+
+.prideTheme .sbControlsMenu-item:nth-child(1) {
+  background-color: #750787;
+}
+.prideTheme .sbControlsMenu-item:nth-child(3) {
+  background-color: #0035b1;
+}
+.prideTheme .sbControlsMenu-item:nth-child(4) {
+  background-color: #008026;
 }
 
 /*
@@ -447,7 +478,7 @@
 }
 .sbMediumButton:hover,
 .sbMediumButton:focus {
-  background-color: #ec1c1c;
+  background-color: var(--sb-red-bg-active-color);
   outline: none;
 }
 .sbMediumButton:active {
@@ -585,7 +616,35 @@
   margin: 2px 1px;
 }
 #sbFooter a:hover {
-  background-color: #444;
+  background-color: var(--sb-grey-bg-active-color) !important;
+}
+
+.prideTheme #sbFooter a:nth-of-type(1) {
+  background-color: #E40303;
+}
+.prideTheme #sbFooter a:nth-of-type(2) {
+  background-color: #FF8C00;
+}
+.prideTheme #sbFooter a:nth-of-type(3) {
+  background-color: #b9ad00;
+}
+.prideTheme #sbFooter a:nth-of-type(4) {
+  background-color: #008026;
+}
+.prideTheme #sbFooter a:nth-of-type(5) {
+  background-color: #004DFF;
+}
+.prideTheme #sbFooter a:nth-of-type(6) {
+  background-color: #750787;
+}
+.prideTheme #sbFooter a:nth-of-type(7) {
+  background-color: #c7899d;
+}
+.prideTheme #sbFooter a:nth-of-type(8) {
+  background-color: #65b8cb;
+}
+.prideTheme #sbFooter a:nth-of-type(9) {
+  background-color: #613915;
 }
 
 #sponsorTimesDonateContainer a {
@@ -663,7 +722,7 @@
   top: 80px;
   left: 50%;
 
-  background-color: #292828;
+  background-color: var(--sb-skip-profile-bg);
   border-radius: 10px;
   padding: 10px;
 
@@ -680,7 +739,7 @@
   padding: 5px;
   margin: 5px;
 
-  background-color: #222;
+  background-color: var(--sb-skip-profile-option-bg);
   border-radius: 5px;
 
   cursor: help;
@@ -697,13 +756,13 @@
   border-color: var(--sb-red-bg-color);
 }
 .skipOptionAction.highlighted {
-  border-color: rgb(127, 0, 0);
+  border-color: var(--sb-skip-profile-highlighted);
 }
 .skipOptionAction:not(.highlighted, .disabled) {
   cursor: pointer;
 }
 .skipOptionAction.disabled {
-  color: #808080
+  color: var(--sb-skip-profile-disabled);
 }
 
 .optionsSelector {

@@ -72,6 +72,12 @@ async function init() {
         document.documentElement.setAttribute("data-theme", "light");
     }
 
+    if (Config.config.prideTheme) {
+        document.documentElement.setAttribute("data-theme", "pride");
+
+        (document.getElementById("title-bar-logo") as HTMLImageElement).src = "../icons/sb-pride.png";
+    }
+
     const donate = document.getElementById("sbDonate");
     donate.addEventListener("click", () => Config.config.donateClicked = Config.config.donateClicked + 1);
     if (!showDonationLink()) {
@@ -194,6 +200,17 @@ async function init() {
                                 document.documentElement.setAttribute("data-theme", "dark");
                             } else {
                                 document.documentElement.setAttribute("data-theme", "light");
+                            }
+                            break;
+                        case "prideTheme":
+                            if (checkbox.checked) {
+                                document.documentElement.setAttribute("data-theme", "pride");
+                            } else {
+                                if (Config.config.darkMode) {
+                                    document.documentElement.setAttribute("data-theme", "dark");
+                                } else {
+                                    document.documentElement.setAttribute("data-theme", "light");
+                                }
                             }
                             break;
                         case "trackDownvotes":

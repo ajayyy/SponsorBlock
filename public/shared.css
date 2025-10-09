@@ -28,6 +28,11 @@
 	min-width: 100%;
 }
 
+.sponsorSkipNoticeTableContainer.prideTheme {
+	background: url("icons/pride.svg");
+	background-size: cover;
+}
+
 .sponsorSkipNotice {
 	transition: all 0.1s ease-out;
 }

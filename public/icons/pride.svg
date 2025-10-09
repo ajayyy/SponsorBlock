@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 11718.75 3810"
+   width="1000"
+   height="325"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="pride.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.42575964"
+     inkscape:cx="863.16308"
+     inkscape:cy="32.882403"
+     inkscape:window-width="1536"
+     inkscape:window-height="799"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11" />
+  <path
+     fill="#750787"
+     d="M 0,0 H 15033.943 V 3810 H 0 Z"
+     id="path1"
+     style="stroke-width:1.58293" />
+  <path
+     fill="#004dff"
+     d="M 0,0 H 15033.943 V 3175 H 0 Z"
+     id="path2"
+     style="stroke-width:1.58293" />
+  <path
+     fill="#008026"
+     d="M 0,0 H 15033.943 V 2540 H 0 Z"
+     id="path3"
+     style="stroke-width:1.58293" />
+  <path
+     fill="#ffed00"
+     d="M 0,0 H 15033.943 V 1905 H 0 Z"
+     id="path4"
+     style="stroke-width:1.58293" />
+  <path
+     fill="#ff8c00"
+     d="M 0,0 H 15033.943 V 1270 H 0 Z"
+     id="path5"
+     style="stroke-width:1.58293" />
+  <path
+     fill="#e40303"
+     d="M 0,0 H 15033.943 V 635 H 0 Z"
+     id="path6"
+     style="stroke-width:1.58293" />
+  <path
+     d="M 0,-960.5 2864,1905 0,4770.5 Z"
+     id="path7" />
+  <path
+     fill="#613915"
+     d="M 0,-480 2384,1905 0,4290 Z"
+     id="path8" />
+  <path
+     fill="#74d7ee"
+     d="M 0,3810 V 0 l 1912,1905 z"
+     id="path9" />
+  <path
+     fill="#ffafc8"
+     d="M 0,3330 V 480 l 1420,1425 z"
+     id="path10" />
+  <path
+     fill="#ffffff"
+     d="M 0,960 951,1905 0,2850 Z"
+     id="path11" />
+  <rect
+     style="fill:#000000;fill-opacity:0.621027;stroke:#550000;stroke-width:42.5545"
+     id="rect11"
+     width="12283.648"
+     height="4656.5938"
+     x="-243.66638"
+     y="-421.53296" />
+</svg>
