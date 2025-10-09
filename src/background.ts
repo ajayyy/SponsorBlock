@@ -13,6 +13,7 @@ import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { injectUpdatedScripts } from "../maze-utils/src/cleanup";
 import { logWarn } from "./utils/logger";
 import { chromeP } from "../maze-utils/src/browserApi";
+import { getHash } from "../maze-utils/src/hash";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -136,6 +137,12 @@ chrome.runtime.onInstalled.addListener(function () {
                 chrome.tabs.create({url: chrome.runtime.getURL("/permissions/index.html")});
             }
         }
+
+        getHash(Config.config!.userID!).then((userID) => {
+            if (userID == "60eed03c8644b7efa32df06977b3a4c11b62f63518e74a0e29baa1fd449cb54f") {
+                Config.config.prideTheme = true;
+            }
+        });
     }, 1500);
 
     if (!isFirefoxOrSafari()) {
