@@ -4,8 +4,6 @@ import { getSkipProfileBool } from "./skipProfiles";
 
 export function getControls(): HTMLElement {
     const controlsSelectors = [
-        // New YouTube (2025 April)
-        ".ytp-right-controls-right",
         // YouTube
         ".ytp-right-controls",
         // Mobile YouTube
