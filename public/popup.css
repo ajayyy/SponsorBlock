@@ -321,6 +321,8 @@
   justify-content: space-evenly;
   display: flex;
   position: relative;
+
+  z-index: 1;
 }
 .sbControlsMenu-item {
   display: flex;
