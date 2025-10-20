@@ -389,6 +389,7 @@ function contentLocalConfigUpdateListener(changes: StorageChangesObject) {
             case "channelSkipProfileIDs":
             case "skipProfiles":
             case "skipProfileTemp":
+            case "skipRules":
                 channelIDChange();
                 break;
         }
