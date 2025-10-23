@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import Config from "../../config";
-import { AdvancedSkipRule, configToText, parseConfig, } from "../../utils/skipRule";
+import { configToText, parseConfig, } from "../../utils/skipRule";
+import { AdvancedSkipRule } from "../../utils/skipRule.type";
 
 let configSaveTimeout: NodeJS.Timeout | null = null;
 
