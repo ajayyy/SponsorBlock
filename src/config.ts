@@ -2,8 +2,8 @@ import * as CompileConfig from "../config.json";
 import * as invidiousList from "../ci/invidiouslist.json";
 import { Category, CategorySelection, CategorySkipOption, NoticeVisibilityMode, PreviewBarOption, SponsorHideType, SponsorTime, VideoID, SegmentListDefaultTab } from "./types";
 import { Keybind, keybindEquals, ProtoConfig } from "../maze-utils/src/config";
-import { HashedValue } from "../maze-utils/src/hash";
-import { AdvancedSkipCheck, AdvancedSkipPredicate, AdvancedSkipRule, Permission, PredicateOperator } from "./utils/skipRule";
+import type { HashedValue } from "../maze-utils/src/hash";
+import { AdvancedSkipCheck, AdvancedSkipPredicate, AdvancedSkipRule, Permission, PredicateOperator } from "./utils/skipRule.type";
 
 interface SBConfig {
     userID: string;

@@ -5,48 +5,7 @@ import {ActionType, ActionTypes, CategorySelection, CategorySkipOption, SponsorS
 import { getSkipProfile, getSkipProfileBool } from "./skipProfiles";
 import { VideoLabelsCacheData } from "./videoLabels";
 import * as CompileConfig from "../../config.json";
-
-export interface Permission {
-    canSubmit: boolean;
-}
-
-// Note that attributes that are prefixes of other attributes (like `time.start`) need to be ordered *after*
-// the longer attributes, because these are matched sequentially. Using the longer attribute would otherwise result
-// in an error token.
-export enum SkipRuleAttribute {
-    StartTimePercent = "time.startPercent",
-    StartTime = "time.start",
-    EndTimePercent = "time.endPercent",
-    EndTime = "time.end",
-    DurationPercent = "time.durationPercent",
-    Duration = "time.duration",
-    Category = "category",
-    ActionType = "actionType",
-    Description = "chapter.name",
-    Source = "chapter.source",
-    ChannelID = "channel.id",
-    ChannelName = "channel.name",
-    VideoDuration = "video.duration",
-    Title = "video.title"
-}
-
-// Note that operators that are prefixes of other attributes (like `<`) need to be ordered *after* the longer
-// operators, because these are matched sequentially. Using the longer operator would otherwise result
-// in an error token.
-export enum SkipRuleOperator {
-    LessOrEqual = "<=",
-    Less = "<",
-    GreaterOrEqual = ">=",
-    Greater = ">",
-    NotEqual = "!=",
-    Equal = "==",
-    NotContains = "!*=",
-    Contains = "*=",
-    NotRegex = "!~=",
-    Regex = "~=",
-    NotRegexIgnoreCase = "!~i=",
-    RegexIgnoreCase = "~i="
-}
+import { AdvancedSkipCheck, AdvancedSkipPredicate, AdvancedSkipRule, PredicateOperator, SkipRuleAttribute, SkipRuleOperator } from "./skipRule.type";
 
 const SKIP_RULE_ATTRIBUTES = Object.values(SkipRuleAttribute);
 const SKIP_RULE_OPERATORS = Object.values(SkipRuleOperator);
@@ -67,34 +26,6 @@ const INVERTED_SKIP_RULE_OPERATORS = {
 const WORD_EXTRA_CHARACTER = /[a-zA-Z0-9.]/;
 const OPERATOR_EXTRA_CHARACTER = /[<>=!~*&|-]/;
 const ANY_EXTRA_CHARACTER = /[a-zA-Z0-9<>=!~*&|.-]/;
-
-export interface AdvancedSkipCheck {
-    kind: "check";
-    attribute: SkipRuleAttribute;
-    operator: SkipRuleOperator;
-    value: string | number;
-}
-
-export enum PredicateOperator {
-    And = "and",
-    Or = "or",
-}
-
-export interface AdvancedSkipOperator {
-    kind: "operator";
-    operator: PredicateOperator;
-    left: AdvancedSkipPredicate;
-    right: AdvancedSkipPredicate;
-    displayInverted?: boolean;
-}
-
-export type AdvancedSkipPredicate = AdvancedSkipCheck | AdvancedSkipOperator;
-
-export interface AdvancedSkipRule {
-    predicate: AdvancedSkipPredicate;
-    skipOption: CategorySkipOption;
-    comments: string[];
-}
 
 export function getCategorySelection(segment: SponsorTime | VideoLabelsCacheData): CategorySelection {
     // First check skip rules
