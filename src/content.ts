@@ -1959,7 +1959,8 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 
     return (!getSkipProfileBool("manualSkipOnFullVideo") || !sponsorTimes?.some((s) => s.category === segment.category && s.actionType === ActionType.Full))
         && (getCategorySelection(segment)?.option === CategorySkipOption.AutoSkip ||
-            (getSkipProfileBool("autoSkipOnMusicVideos") && canSkipNonMusic && sponsorTimes?.some((s) => s.category === "music_offtopic")
+            (getSkipProfileBool("autoSkipOnMusicVideos") && canSkipNonMusic
+                && sponsorTimes?.some((s) => s.category === "music_offtopic" && getCategorySelection(segment)?.option === CategorySkipOption.AutoSkip)
                 && segment.actionType === ActionType.Skip)
             || sponsorTimesSubmitting.some((s) => s.segment === segment.segment))
         || isLoopedChapter(segment);
@@ -1968,7 +1969,8 @@ function shouldAutoSkip(segment: SponsorTime): boolean {
 function shouldSkip(segment: SponsorTime): boolean {
     return segment.hidden === SponsorHideType.Visible && (segment.actionType !== ActionType.Full
             && getCategorySelection(segment)?.option > CategorySkipOption.ShowOverlay)
-            || (getSkipProfileBool("autoSkipOnMusicVideos") && sponsorTimes?.some((s) => s.category === "music_offtopic")
+            || (getSkipProfileBool("autoSkipOnMusicVideos")
+                && sponsorTimes?.some((s) => s.category === "music_offtopic" && getCategorySelection(segment)?.option === CategorySkipOption.AutoSkip)
                 && segment.actionType === ActionType.Skip)
             || isLoopedChapter(segment);
 }
