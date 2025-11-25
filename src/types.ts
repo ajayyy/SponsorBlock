@@ -34,7 +34,8 @@ export enum CategorySkipOption {
     Disabled = -1,
     ShowOverlay,
     ManualSkip,
-    AutoSkip
+    AutoSkip,
+    FastPlay          // 3 - Speed up playback instead of skipping
 }
 
 export interface CategorySelection {

@@ -198,6 +198,16 @@ const skipNoticeContentContainer: ContentContainer = () => ({
 // value determining when to count segment as skipped and send telemetry to server (percent based)
 const manualSkipPercentCount = 0.5;
 
+// FastPlay feature: track original playback speed
+let originalPlaybackRate: number = 1.0;  // Store original speed before FastPlay
+let inFastPlaySegment: boolean = false;  // Track if currently in FastPlay
+
+
+//TODO: remove all the [fastplay] logs before merging with other branches
+// Log FastPlay initialization TODO: cleanup before merge with barch
+//console.log(`[FastPlay] SponsorBlock FastPlay feature initialized`);
+//console.log(`[FastPlay] FastPlay speed configured: ${Config.config?.fastPlaySpeed || 'not yet loaded'}`);
+
 //get messages from the background script and the popup
 chrome.runtime.onMessage.addListener(messageListener);
 
@@ -776,6 +786,39 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         // Don't pretend to be earlier than we are, could result in loops
         if (forcedSkipTime !== null && forceVideoTime > forcedSkipTime && skipTime[1] > skipTime[0]) {
             forcedSkipTime = forceVideoTime;
+        }
+
+        // Check if we've exited a FastPlay segment counter
+        if (inFastPlaySegment) {
+            const currentTime = forceVideoTime || getCurrentTime();
+            let stillInFastPlay = false;
+            const entryBuffer = 0.1; // Same buffer used for entry
+            const exitBuffer = 0.2; // 0.2 second buffer to prevent premature exit
+            
+            console.log(`[FastPlay] Checking exit at time ${currentTime}, forceVideoTime=${forceVideoTime}, getCurrentTime()=${getCurrentTime()}`);
+            
+            for (const segment of sponsorTimes) {
+                const skipOption = getCategorySelection(segment)?.option;
+                console.log(`[FastPlay] Segment UUID=${segment.UUID}, category=${segment.category}, skipOption=${skipOption}, start=${segment.segment[0]}, end=${segment.segment[1]}`);
+                
+                if (skipOption === CategorySkipOption.FastPlay) {
+                    // Apply entry buffer to start check to match entry logic
+                    const inStart = currentTime >= (segment.segment[0] - entryBuffer);
+                    const inEnd = currentTime <= (segment.segment[1] + exitBuffer);
+                    console.log(`[FastPlay] FastPlay segment found: inStart=${inStart}, inEnd=${inEnd}, startWithBuffer=${segment.segment[0] - entryBuffer}, endWithBuffer=${segment.segment[1] + exitBuffer}`);
+                    
+                    if (inStart && inEnd) {
+                        stillInFastPlay = true;
+                        console.log(`[FastPlay] ✓ Still in FastPlay segment at time ${currentTime}`);
+                        break;
+                    }
+                }
+            }
+            
+            if (!stillInFastPlay) {
+                console.log(`[FastPlay] ✗ Exiting FastPlay segment at time ${currentTime}`);
+                exitFastPlaySegment(getVideo());
+            }
         }
 
         startSponsorSchedule(forcedIncludeIntersectingSegments, forcedSkipTime, forcedIncludeNonIntersectingSegments);
@@ -1542,6 +1585,8 @@ function getNextSkipIndex(currentTime: number, includeIntersectingSegments: bool
         } else if ((skipOption === CategorySkipOption.AutoSkip || shouldAutoSkip(segment))
                 && (segment.actionType === ActionType.Skip || segment.actionType === ActionType.Chapter)) {
             return 0;
+        } else if (skipOption === CategorySkipOption.FastPlay) {
+            return 0;  // Treat FastPlay with same priority as AutoSkip
         } else if (skipOption !== CategorySkipOption.ShowOverlay) {
             return 1;
         } else {
@@ -1757,7 +1802,33 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 
     // There will only be one submission if it is manual skip
     const autoSkip: boolean = forceAutoSkip || shouldAutoSkip(skippingSegments[0]);
+    const isFastPlay: boolean = getCategorySelection(skippingSegments[0])?.option === CategorySkipOption.FastPlay;
     const isSubmittingSegment = sponsorTimesSubmitting.some((time) => time.segment === skippingSegments[0].segment);
+
+    console.log(`[FastPlay] skipToTime called: isFastPlay=${isFastPlay}, currentTime=${getCurrentTime()}, skipTime=[${skipTime[0]}, ${skipTime[1]}]`);
+
+    // NEW: Handle FastPlay segments
+    const entryBuffer = 0.1; // 100ms buffer for timing precision (was too small at 10ms)
+    if (isFastPlay && getCurrentTime() >= (skipTime[0] - entryBuffer) && getCurrentTime() < skipTime[1]) {
+        console.log(`[FastPlay] Inside FastPlay segment check, inFastPlaySegment=${inFastPlaySegment}, within entry buffer`);
+        if (!inFastPlaySegment) {
+            // Entering FastPlay segment
+            console.log(`[FastPlay] ✓✓✓ ENTERING FastPlay segment at ${getCurrentTime()}`);
+            console.log(`[FastPlay] Saving original speed: ${v.playbackRate}, setting to: ${Config.config.fastPlaySpeed}`);
+            originalPlaybackRate = v.playbackRate;  // Save current speed
+            v.playbackRate = Config.config.fastPlaySpeed;  // Apply fast speed
+            inFastPlaySegment = true;
+            console.log(`[FastPlay] Video playbackRate is now: ${v.playbackRate}, inFastPlaySegment=${inFastPlaySegment}`);
+            
+            // Show notification (optional)
+            if (!Config.config.dontShowNotice && openNotice) {
+                createSkipNotice(skippingSegments, false, unskipTime, false);
+            }
+        } else {
+            console.log(`[FastPlay] Already in FastPlay segment, not re-entering`);
+        }
+        return;  // Don't skip, just speed up
+    }
 
     if ((autoSkip || isSubmittingSegment)
             && getCurrentTime() !== skipTime[1]) {
@@ -1878,6 +1949,22 @@ function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number,
 
     upcomingNotice?.close();
     upcomingNotice = new UpcomingNotice(skippingSegments, skipNoticeContentContainer, timeLeft / 1000, autoSkip);
+}
+
+/**
+ * Restore normal playback speed when exiting FastPlay segment
+ */
+function exitFastPlaySegment(v: HTMLVideoElement): void {
+    console.log(`[FastPlay] exitFastPlaySegment called, inFastPlaySegment=${inFastPlaySegment}, currentSpeed=${v.playbackRate}, originalSpeed=${originalPlaybackRate}`);
+    if (inFastPlaySegment) {
+        console.log(`[FastPlay] ✗✗✗ EXITING FastPlay segment at ${getCurrentTime()}`);
+        console.log(`[FastPlay] Restoring speed from ${v.playbackRate} to ${originalPlaybackRate}`);
+        v.playbackRate = originalPlaybackRate;  // Restore original speed
+        inFastPlaySegment = false;
+        console.log(`[FastPlay] Video playbackRate is now: ${v.playbackRate}, inFastPlaySegment=${inFastPlaySegment}`);
+    } else {
+        console.log(`[FastPlay] Not in FastPlay segment, skipping exit`);
+    }
 }
 
 function unskipSponsorTime(segment: SponsorTime, unskipTime: number = null, forceSeek = false, voteNotice = false) {

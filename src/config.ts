@@ -80,6 +80,7 @@ interface SBConfig {
     cleanPopup: boolean;
     hideSegmentCreationInPopup: boolean;
     prideTheme: boolean;
+    fastPlaySpeed: number;
 
     // Used to cache calculated text color info
     categoryPillColors: {
@@ -441,6 +442,7 @@ const syncDefaults = {
     cleanPopup: false,
     hideSegmentCreationInPopup: false,
     prideTheme: false,
+    fastPlaySpeed: 1.5,
 
     categoryPillColors: {},
 

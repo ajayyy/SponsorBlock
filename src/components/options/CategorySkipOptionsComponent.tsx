@@ -41,6 +41,8 @@ export function CategorySkipOptionsComponent(props: CategorySkipOptionsProps): R
                 return "manualSkip";
             case CategorySkipOption.AutoSkip:
                 return "autoSkip";
+            case CategorySkipOption.FastPlay:
+                return "fastPlay";
             case CategorySkipOption.FallbackToDefault:
                 return "fallbackToDefault";
             default:
@@ -165,6 +167,9 @@ function skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>,
             }
 
             break;
+        case "fastPlay":
+            option = CategorySkipOption.FastPlay;
+            break;
     }
 
     updateSelection(option);
@@ -173,7 +178,7 @@ function skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>,
 function getCategorySkipOptions(category: Category, isDefaultConfig: boolean): JSX.Element[] {
     const elements: JSX.Element[] = [];
 
-    let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+    let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip", "fastPlay"];
     if (category === "chapter") optionNames = ["disable", "showOverlay"]
     else if (category === "exclusive_access") optionNames = ["disable", "showOverlay"];
 
