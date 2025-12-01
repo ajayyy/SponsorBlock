@@ -957,6 +957,7 @@ class PreviewBar {
                     const elem = document.createElement("div");
                     chapterTitle.parentElement.insertBefore(elem, chapterTitle);
                     elem.classList.add("sponsorChapterText");
+                    elem.classList.add("ytp-chapter-title-content");
                     if (document.location.host === "tv.youtube.com") {
                         elem.style.lineHeight = "initial";
                     }
