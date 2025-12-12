@@ -12,5 +12,10 @@
       "64": "icons/SafariIconSponsorBlocker64px.png",
       "128": "icons/SafariIconSponsorBlocker128px.png"
     }
+  },
+  "browser_specific_settings": {
+    "safari": {
+      "strict_min_version": "14.0"
+    }
   }
 }
