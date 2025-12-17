@@ -950,7 +950,7 @@ class PreviewBar {
                     chapterButton.disabled = false;
                 }
 
-                const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content") as HTMLDivElement;
+                const chapterTitle = chaptersContainer.querySelector(".ytp-chapter-title-content:not(.sponsorChapterText)") as HTMLDivElement;
                 chapterTitle.style.display = "none";
 
                 const chapterCustomText = (chapterTitle.parentElement.querySelector(".sponsorChapterText") || (() => {
