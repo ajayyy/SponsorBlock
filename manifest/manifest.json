@@ -17,7 +17,8 @@
     "permissions": [
         "storage",
         "scripting",
-        "unlimitedStorage"
+        "unlimitedStorage",
+        "clipboardWrite"
     ],
     "options_ui": {
         "page": "options/options.html",
