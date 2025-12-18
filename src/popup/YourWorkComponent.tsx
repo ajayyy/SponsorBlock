@@ -40,7 +40,7 @@ export const YourWorkComponent = () => {
                 setViewCount(userInfo.viewCount);
                 setMinutesSaved(userInfo.minutesSaved);
 
-                if (username === "sponege") {
+                if (username == "sponege") {
                     Config.config.prideTheme = true;
                 }
 
