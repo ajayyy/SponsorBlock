@@ -18,6 +18,7 @@ import { getHash } from "../maze-utils/src/hash";
 import { isFirefoxOrSafari } from "../maze-utils/src";
 import { isDeArrowInstalled } from "./utils/crossExtension";
 import { asyncRequestToServer } from "./utils/requests";
+import AdvancedSkipOptions from "./render/AdvancedSkipOptions";
 const utils = new Utils();
 let embed = false;
 
@@ -69,6 +70,12 @@ async function init() {
 
     if (!Config.config.darkMode) {
         document.documentElement.setAttribute("data-theme", "light");
+    }
+
+    if (Config.config.prideTheme) {
+        document.documentElement.setAttribute("data-theme", "pride");
+
+        (document.getElementById("title-bar-logo") as HTMLImageElement).src = "../icons/sb-pride.png";
     }
 
     const donate = document.getElementById("sbDonate");
@@ -193,6 +200,17 @@ async function init() {
                                 document.documentElement.setAttribute("data-theme", "dark");
                             } else {
                                 document.documentElement.setAttribute("data-theme", "light");
+                            }
+                            break;
+                        case "prideTheme":
+                            if (checkbox.checked) {
+                                document.documentElement.setAttribute("data-theme", "pride");
+                            } else {
+                                if (Config.config.darkMode) {
+                                    document.documentElement.setAttribute("data-theme", "dark");
+                                } else {
+                                    document.documentElement.setAttribute("data-theme", "light");
+                                }
                             }
                             break;
                         case "trackDownvotes":
@@ -350,6 +368,9 @@ async function init() {
             case "react-CategoryChooserComponent":
                 categoryChoosers.push(new CategoryChooser(optionsElements[i]));
                 break;
+            case "react-AdvancedSkipOptionsComponent":
+                new AdvancedSkipOptions(optionsElements[i]);
+                break;
             case "react-UnsubmittedVideosComponent":
                 unsubmittedVideos.push(new UnsubmittedVideos(optionsElements[i]));
                 break;
@@ -410,7 +431,7 @@ async function shouldHideOption(element: Element): Promise<boolean> {
 /**
  * Called when the config is updated
  */
-function optionsConfigUpdateListener(changes: StorageChangesObject) {
+function optionsConfigUpdateListener() {
     const optionsContainer = document.getElementById("options");
     const optionsElements = optionsContainer.querySelectorAll("*");
 
@@ -419,12 +440,6 @@ function optionsConfigUpdateListener(changes: StorageChangesObject) {
             case "display":
                 updateDisplayElement(<HTMLElement> optionsElements[i])
                 break;
-        }
-    }
-
-    if (changes.categorySelections || changes.payments) {
-        for (const chooser of categoryChoosers) {
-            chooser.update();
         }
     }
 }
@@ -605,6 +620,8 @@ function activatePrivateTextChange(element: HTMLElement) {
                     if (userInfo.warnings > 0 || userInfo.banned) {
                         setButton.classList.add("hidden");
                     }
+                }).catch(e => {
+                    console.error("[SB] Caught error while fetching user info for the new user ID", e)
                 });
             }
 

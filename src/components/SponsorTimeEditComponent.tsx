@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as CompileConfig from "../../config.json";
 import Config from "../config";
-import { ActionType, Category, ChannelIDStatus, ContentContainer, SponsorTime } from "../types";
+import { ActionType, Category, ChannelIDStatus, ContentContainer, SponsorHideType, SponsorTime } from "../types";
 import SubmissionNoticeComponent from "./SubmissionNoticeComponent";
 import { RectangleTooltip } from "../render/RectangleTooltip";
 import SelectorComponent, { SelectorOption } from "./SelectorComponent";
@@ -10,6 +10,9 @@ import { getFormattedTime, getFormattedTimeToSeconds } from "../../maze-utils/sr
 import { asyncRequestToServer } from "../utils/requests";
 import { defaultPreviewTime } from "../utils/constants";
 import { getVideo, getVideoDuration } from "../../maze-utils/src/video";
+import { AnimationUtils } from "../../maze-utils/src/animationUtils";
+import { Tooltip } from "../render/Tooltip";
+import { logRequest } from "../../maze-utils/src/background-request-proxy";
 
 export interface SponsorTimeEditProps {
     index: number;
@@ -120,6 +123,8 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             style.marginTop = "15px";
         }
 
+        const borderColor = this.state.selectedCategory ? Config.config.barTypes[this.state.selectedCategory]?.color : null;
+
         // Create time display
         let timeDisplay: JSX.Element;
         const timeDisplayStyle: React.CSSProperties = {};
@@ -148,7 +153,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <input id={"submittingTime0" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput"
                             type="text"
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             value={this.state.sponsorTimeEdits[0] ?? ""}
                             onKeyDown={(e) => e.stopPropagation()}
                             onKeyUp={(e) => e.stopPropagation()}
@@ -165,7 +170,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                                 <input id={"submittingTime1" + this.idSuffix}
                                     className="sponsorTimeEdit sponsorTimeEditInput"
                                     type="text"
-                                    style={{color: "inherit", backgroundColor: "inherit"}}
+                                    style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                                     value={this.state.sponsorTimeEdits[1] ?? ""}
                                     onKeyDown={(e) => e.stopPropagation()}
                                     onKeyUp={(e) => e.stopPropagation()}
@@ -212,7 +217,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <select id={"sponsorTimeCategories" + this.idSuffix}
                         className="sponsorTimeEditSelector sponsorTimeCategories"
                         ref={this.categoryOptionRef}
-                        style={{color: "inherit", backgroundColor: "inherit"}}
+                        style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                         value={this.state.selectedCategory}
                         onChange={(event) => this.categorySelectionChange(event)}>
                         {this.getCategoryOptions()}
@@ -237,11 +242,27 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         <select id={"sponsorTimeActionTypes" + this.idSuffix}
                             className="sponsorTimeEditSelector sponsorTimeActionTypes"
                             value={this.state.selectedActionType}
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             ref={this.actionTypeOptionRef}
                             onChange={(e) => this.actionTypeSelectionChange(e)}>
                             {this.getActionTypeOptions(sponsorTime)}
                         </select>
+                        <img
+                            className="voteButton hideSegmentSubmitButton"
+                            title={chrome.i18n.getMessage("hideSegment")}
+                            src={sponsorTime.hidden === SponsorHideType.Hidden ? chrome.runtime.getURL("icons/not_visible.svg") : chrome.runtime.getURL("icons/visible.svg")}
+                            onClick={(e) => {
+                                const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.4);
+                                stopAnimation();
+    
+                                if (sponsorTime.hidden === SponsorHideType.Hidden) {
+                                    sponsorTime.hidden = SponsorHideType.Visible;
+                                } else {
+                                    sponsorTime.hidden = SponsorHideType.Hidden;
+                                }
+
+                                this.saveEditTimes();
+                        }}/>
                     </div>
                 ): ""}
 
@@ -250,7 +271,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                     <div onBlur={() => this.setState({chapterNameSelectorOpen: false})}>
                         <input id={"chapterName" + this.idSuffix}
                             className="sponsorTimeEdit sponsorTimeEditInput sponsorChapterNameInput"
-                            style={{color: "inherit", backgroundColor: "inherit"}}
+                            style={{color: "inherit", backgroundColor: "inherit", borderColor}}
                             ref={this.descriptionOptionRef}
                             type="text"
                             value={this.state.description}
@@ -291,7 +312,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                         </span>
                     ): ""}
 
-                    {(!isNaN(segment[1]) && this.state.selectedActionType != ActionType.Full) ? (
+                    {(!isNaN(segment[0]) && this.state.selectedActionType != ActionType.Full) ? (
                         <span id={"sponsorTimeInspectButton" + this.idSuffix}
                             className="sponsorTimeEditButton"
                             onClick={this.inspectTime.bind(this)}>
@@ -475,6 +496,23 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
             }
             
             return;
+        }
+
+        // Hook update
+        if (!Config.config.hookUpdate && chosenCategory === "preview") {
+            Config.config.hookUpdate = true;
+
+            const target = event.target.closest(".sponsorSkipNotice tbody");
+            if (target) {
+                new Tooltip({
+                    text: chrome.i18n.getMessage("hookNewFeature"),
+                    referenceNode: target.parentElement,
+                    prependElement: target as HTMLElement,
+                    bottomOffset: "30px",
+                    opacity: 0.9,
+                    timeout: 100
+                });
+            }
         }
 
         const sponsorTime = this.props.contentContainer().sponsorTimesSubmitting[this.props.index];
@@ -746,23 +784,26 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         if (this.props.contentContainer().channelIDInfo.status !== ChannelIDStatus.Found) return;
 
         this.fetchingSuggestions = true;
-        const result = await asyncRequestToServer("GET", "/api/chapterNames", {
-            description,
-            channelID: this.props.contentContainer().channelIDInfo.id
-        });
-
-        if (result.ok) {
-            try {
+        try {
+            const result = await asyncRequestToServer("GET", "/api/chapterNames", {
+                description,
+                channelID: this.props.contentContainer().channelIDInfo.id
+            });
+            if (result.ok) {
                 const names = JSON.parse(result.responseText) as {description: string}[];
                 this.setState({
                     suggestedNames: names.map(n => ({
                         label: n.description
                     }))
                 });
-            } catch (e) {} //eslint-disable-line no-empty
+            } else if (result.status !== 404) {
+                logRequest(result, "SB", "chapter suggestion")
+            }
+        } catch (e) {
+            console.warn("[SB] Caught error while fetching chapter suggestions", e);
+        } finally {
+            this.fetchingSuggestions = false;
         }
-
-        this.fetchingSuggestions = false;
     }
 
     configUpdate(): void {

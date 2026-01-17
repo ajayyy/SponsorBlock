@@ -25,7 +25,7 @@
 	pointer-events: none;
 
 	height: 100%;
-	transform: scaleY(0.6) translateY(-30%) translateY(1.5px);
+	transform: scaleY(0.667) translateY(-30%) translateY(1.5px);
 	z-index: 42;
 
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
@@ -102,17 +102,25 @@ div:hover > #previewbar.sbNotInvidious {
 	display: none !important;
 }
 
-.ytp-tooltip.sponsorCategoryTooltipVisible:not(.sponsorTooltipHasYTChapters) {
-	transform: translateY(-1em) !important;
-}
-
 /* Pull up for precise seeking */
 .ytp-tooltip.sponsorCategoryTooltipVisible .ytp-tooltip-edu {
 	transform: translateY(-1em) !important;
 }
 
+.ytp-tooltip.sponsorCategoryTooltipVisible {
+	transform: translateY(-1em) !important;
+}
+
 .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips {
 	transform: translateY(-2em) !important;
+}
+
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorHasOriginalTooltip {
+	transform: translateY(-2em) !important;
+}
+
+.ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips.sponsorHasOriginalTooltip {
+	transform: translateY(-3em) !important;
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible {
@@ -141,17 +149,17 @@ div:hover > #previewbar.sbNotInvidious {
 }
 
 .ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper {
-	transform: translateY(1em) !important;
+	transform: translateY(1.75em) !important;
 }
 
-.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
-	display: block !important;
-	transform: translateY(1em) !important;
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible > .ytp-tooltip-text-wrapper .ytp-tooltip-text {
+	display: inline-block !important;
+	transform: translateY(0.75em) !important;
 }
 
-.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper > .ytp-tooltip-text {
-	display: block !important;
-	transform: translateY(2em) !important;
+.ytp-big-mode .ytp-tooltip.sponsorCategoryTooltipVisible.sponsorTwoTooltips > .ytp-tooltip-text-wrapper .ytp-tooltip-text {
+	display: inline-block !important;
+	transform: translateY(0.75em) !important;
 }
 
 div:hover > .sponsorBlockChapterBar {
@@ -178,6 +186,10 @@ div:hover > .sponsorBlockChapterBar {
 	bottom: 0;
 	display: block;
 	margin: auto;
+}
+
+.sbChapterVoteButton {
+	padding: 0 !important;
 }
 
 .playerButton {
@@ -679,6 +691,14 @@ input::-webkit-inner-spin-button {
 	color: white;
 }
 
+.hideSegmentSubmitButton {
+	cursor: pointer;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+}
+
 /* Start SelectorComponent */
 
 .sbSelector {
@@ -736,6 +756,13 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	display: flex;
     color: white;
+	align-items: center;
+}
+
+/* July 2025 test UI */
+.ytp-delhi-modern .skipButtonControlBarContainer {
+    height: 48px;
+    margin: auto 0;
 }
 
 .skipButtonControlBarContainer.sbhidden {
@@ -945,5 +972,27 @@ input::-webkit-inner-spin-button {
 }
 
 .sponsorblock-chapter-visible {
-	display: inherit !important;
+	display: block !important;
+}
+
+/* Pride theme */
+
+.playerButton.prideTheme:nth-of-type(1) {
+	filter: brightness(50%) sepia(100) saturate(100);
+}
+
+.playerButton.prideTheme:nth-of-type(2) {
+	filter: sepia(100) saturate(100) hue-rotate(0deg);
+}
+
+.playerButton.prideTheme:nth-of-type(3) {
+	filter: sepia(100) saturate(100) hue-rotate(45deg);
+}
+
+.playerButton.prideTheme:nth-of-type(4) {
+	filter: sepia(100) saturate(100) invert() hue-rotate(5deg);
+}
+
+.playerButton.prideTheme:nth-of-type(5) {
+	filter: sepia(100) saturate(100) invert() hue-rotate(35deg);
 }

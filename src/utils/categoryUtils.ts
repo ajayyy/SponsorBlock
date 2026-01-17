@@ -6,6 +6,7 @@ export function getSkippingText(segments: SponsorTime[], autoSkip: boolean): str
     if (autoSkip) {
         let messageId = "";
         switch (segments[0].actionType) {
+            case ActionType.Chapter:
             case ActionType.Skip:
                 messageId = "skipped";
                 break;
@@ -21,6 +22,7 @@ export function getSkippingText(segments: SponsorTime[], autoSkip: boolean): str
     } else {
         let messageId = "";
         switch (segments[0].actionType) {
+            case ActionType.Chapter:
             case ActionType.Skip:
                 messageId = "skip_category";
                 break;

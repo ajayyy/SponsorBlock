@@ -1,10 +1,12 @@
 import { DataCache } from "../../maze-utils/src/cache";
 import { getHash, HashedValue } from "../../maze-utils/src/hash";
-import Config from "../config";
+import Config, {  } from "../config";
 import * as CompileConfig from "../../config.json";
-import { ActionType, ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
+import { ActionTypes, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
+import { extensionUserAgent } from "../../maze-utils/src";
+import { logRequest, serializeOrStringify } from "../../maze-utils/src/background-request-proxy";
 
 const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
     return {
@@ -17,7 +19,7 @@ const pendingList: Record<VideoID, Promise<SegmentResponse>> = {};
 
 export interface SegmentResponse {
     segments: SponsorTime[] | null;
-    status: number;
+    status: number | Error | string;
 }
 
 export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean): Promise<SegmentResponse> {
@@ -36,37 +38,42 @@ export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean
     const pendingData = fetchSegmentsForVideo(videoID);
     pendingList[videoID] = pendingData;
 
-    const result = await pendingData;
-    delete pendingList[videoID];
+    let result: Awaited<typeof pendingData>;
+    try {
+        result = await pendingData;
+    } catch (e) {
+        console.error("[SB] Caught error while fetching segments", e);
+        return {
+            segments: null,
+            status: serializeOrStringify(e),
+        }
+    } finally {
+        delete pendingList[videoID];
+    }
 
     return result;
 }
 
 async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse> {
-    const categories: string[] = Config.config.categorySelections.map((category) => category.name);
-
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
 
     const hashPrefix = (await getHash(videoID, 1)).slice(0, 5) as VideoID & HashedValue;
-    const hasDownvotedSegments = !!Config.local.downvotedSegments[hashPrefix];
+    const hasDownvotedSegments = !!Config.local.downvotedSegments[hashPrefix.slice(0, 4)];
     const response = await asyncRequestToServer('GET', "/api/skipSegments/" + hashPrefix, {
         categories: CompileConfig.categoryList,
         actionTypes: ActionTypes,
         trimUUIDs: hasDownvotedSegments ? null : 5,
         ...extraRequestData
     }, {
-        "X-CLIENT-NAME": `${chrome.runtime.id}/v${chrome.runtime.getManifest().version}`
+        "X-CLIENT-NAME": extensionUserAgent(),
     });
 
     if (response.ok) {
-        const enabledActionTypes = getEnabledActionTypes();
-
         const receivedSegments: SponsorTime[] = JSON.parse(response.responseText)
                     ?.filter((video) => video.videoID === videoID)
                     ?.map((video) => video.segments)?.[0]
-                    ?.filter((segment) => enabledActionTypes.includes(segment.actionType) && categories.includes(segment.category))
                     ?.map((segment) => ({
                         ...segment,
                         source: SponsorSourceType.Server
@@ -85,22 +92,12 @@ async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse>
             // Setup with null data
             segmentDataCache.setupCache(videoID);
         }
+    } else if (response.status !== 404) {
+        logRequest(response, "SB", "skip segments");
     }
 
     return {
         segments: null,
         status: response.status
     };
-}
-
-function getEnabledActionTypes(forceFullVideo = false): ActionType[] {
-    const actionTypes = [ActionType.Skip, ActionType.Poi, ActionType.Chapter];
-    if (Config.config.muteSegments) {
-        actionTypes.push(ActionType.Mute);
-    }
-    if (Config.config.fullVideoSegments || forceFullVideo) {
-        actionTypes.push(ActionType.Full);
-    }
-
-    return actionTypes;
 }

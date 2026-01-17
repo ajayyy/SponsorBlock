@@ -16,10 +16,15 @@ jobs:
         with:
           node-version: '18'
       - run: npm ci
-      - run: sudo apt-get install chromium-chromedriver
       
       - name: Copy configuration
         run: cp config.json.example config.json
+
+      - name: Set up WireGuard Connection
+        uses: niklaskeerl/easy-wireguard-action@50341d5f4b8245ff3a90e278aca67b2d283c78d0
+        with:
+          WG_CONFIG_FILE: ${{ secrets.WG_CONFIG_FILE }}
+
       - name: Run tests
         run: npm run test
 

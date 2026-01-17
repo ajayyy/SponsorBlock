@@ -45,6 +45,8 @@
         "icons/PlayerInfoIconSponsorBlocker.svg",
         "icons/PlayerDeleteIconSponsorBlocker.svg",
         "icons/dearrow.svg",
+        "icons/sb-pride.png",
+        "icons/pride.svg",
         "popup.html",
         "popup.css",
         "content.css",

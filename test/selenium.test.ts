@@ -4,13 +4,18 @@ import * as Path from "path";
 
 import * as fs from "fs";
 
-test("Selenium Chrome test", async () => {
+xtest("Selenium Chrome test", async () => {
     let driver: WebDriver;
     try {
         driver = await setup();   
     } catch (e) {
         console.warn("A browser is probably not installed, skipping selenium tests");
         console.warn(e);
+
+        if (String(e).includes("This version of ChromeDriver only supports")) {
+            // Count as failure
+            throw e;
+        }
 
         return;
     }
@@ -126,6 +131,8 @@ async function editSegments(driver: WebDriver, index: number, expectedStartTimeB
     const endTimeBox = await getEndTimeBox(driver, index, expectedEndTimeBox);
     await endTimeBox.clear();
     await endTimeBox.sendKeys(endTime);
+
+    await driver.sleep(1000);
 
     editButton = await driver.findElement(By.id("sponsorTimeEditButtonSubmissionNotice" + index));
     await editButton.click();

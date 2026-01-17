@@ -160,7 +160,8 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                 style={noticeStyle} >
                 <div className={"sponsorSkipNoticeTableContainer" 
                         + (this.props.fadeIn ? " sponsorSkipNoticeFadeIn" : "")
-                        + (this.state.startFaded ? " sponsorSkipNoticeFaded" : "") }>
+                        + (this.state.startFaded ? " sponsorSkipNoticeFaded" : "") 
+                        + (Config.config.prideTheme ? " prideTheme" : "")}>
                     <table className={"sponsorSkipObject sponsorSkipNotice"
                                 + (this.props.limitWidth ? " sponsorSkipNoticeLimitWidth" : "")}>
                         <tbody>
@@ -172,10 +173,18 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
                                 <td className="noticeLeftIcon">
                                     {/* Logo */}
                                     {!this.props.hideLogo &&
-                                        <SbSvg
-                                            id={"sponsorSkipLogo" + this.idSuffix} 
-                                            fill={this.props.logoFill}
-                                            className="sponsorSkipLogo sponsorSkipObject"/>
+                                        (
+                                            !Config.config.prideTheme ?
+                                                <SbSvg
+                                                    id={"sponsorSkipLogo" + this.idSuffix} 
+                                                    fill={this.props.logoFill}
+                                                    className="sponsorSkipLogo sponsorSkipObject"/>
+                                            :
+                                                <img 
+                                                    id={"sponsorSkipLogo" + this.idSuffix} 
+                                                    src={chrome.runtime.getURL("icons/sb-pride.png")}
+                                                    className="sponsorSkipLogo sponsorSkipObject"/>
+                                        )
                                     }
 
                                     <span id={"sponsorSkipMessage" + this.idSuffix}

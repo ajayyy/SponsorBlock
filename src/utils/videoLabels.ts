@@ -1,12 +1,11 @@
 import { Category, CategorySkipOption, VideoID } from "../types";
 import { getHash } from "../../maze-utils/src/hash";
-import Utils from "../utils";
 import { logWarn } from "./logger";
 import { asyncRequestToServer } from "./requests";
+import { getCategorySelection } from "./skipRule";
+import { FetchResponse, logRequest } from "../../maze-utils/src/background-request-proxy";
 
-const utils = new Utils();
-
-interface VideoLabelsCacheData {
+export interface VideoLabelsCacheData {
     category: Category;
     hasStartSegment: boolean;
 }
@@ -26,8 +25,15 @@ async function getLabelHashBlock(hashPrefix: string): Promise<LabelCacheEntry | 
         return cachedEntry;
     }
 
-    const response = await asyncRequestToServer("GET", `/api/videoLabels/${hashPrefix}?hasStartSegment=true`);
+    let response: FetchResponse;
+    try {
+        response = await asyncRequestToServer("GET", `/api/videoLabels/${hashPrefix}?hasStartSegment=true`);
+    } catch (e) {
+        console.error("[SB] Caught error while fetching video labels", e)
+        return null;
+    }
     if (response.status !== 200) {
+        logRequest(response, "SB", "video labels");
         // No video labels or server down
         labelCache[hashPrefix] = {
             timestamp: Date.now(),
@@ -68,7 +74,7 @@ export async function getVideoLabel(videoID: VideoID): Promise<Category | null> 
 
     if (result) {
         const category = result.videos[videoID]?.category;
-        if (category && utils.getCategorySelection(category).option !== CategorySkipOption.Disabled) {
+        if (category && getCategorySelection(result.videos[videoID]).option !== CategorySkipOption.Disabled) {
             return category;
         } else {
             return null;
