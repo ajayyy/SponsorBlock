@@ -1,7 +1,7 @@
 import * as CompileConfig from "../config.json";
 
 import Config from "./config";
-import { Registration } from "./types";
+import { Registration, SponsorTime } from "./types";
 import "content-scripts-register-polyfill";
 import { sendRealRequestToCustomServer, serializeOrStringify, setupBackgroundRequestProxy } from "../maze-utils/src/background-request-proxy";
 import { setupTabUpdates } from "../maze-utils/src/tab-updates";
@@ -9,7 +9,7 @@ import { generateUserID } from "../maze-utils/src/setup";
 
 import Utils from "./utils";
 import { getExtensionIdsToImportFrom } from "./utils/crossExtension";
-import { isFirefoxOrSafari, waitFor } from "../maze-utils/src";
+import { extensionUserAgent, isFirefoxOrSafari, waitFor } from "../maze-utils/src";
 import { injectUpdatedScripts } from "../maze-utils/src/cleanup";
 import { logWarn } from "./utils/logger";
 import { chromeP } from "../maze-utils/src/browserApi";
@@ -25,7 +25,7 @@ const popupPort: Record<string, chrome.runtime.Port> = {};
 const contentScriptRegistrations = {};
 
 // Register content script if needed
-utils.wait(() => Config.isReady()).then(function() {
+utils.wait(() => Config.isReady()).then(function () {
     if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
 });
 
@@ -33,20 +33,23 @@ setupBackgroundRequestProxy();
 setupTabUpdates(Config);
 
 chrome.runtime.onMessage.addListener(function (request, sender, callback) {
-    switch(request.message) {
+    switch (request.message) {
         case "openConfig":
-            chrome.tabs.create({url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : ''))});
+            chrome.tabs.create({ url: chrome.runtime.getURL('options/options.html' + (request.hash ? '#' + request.hash : '')) });
             return false;
         case "openHelp":
-            chrome.tabs.create({url: chrome.runtime.getURL('help/index.html')});
+            chrome.tabs.create({ url: chrome.runtime.getURL('help/index.html') });
             return false;
         case "openPage":
-            chrome.tabs.create({url: chrome.runtime.getURL(request.url)});
+            chrome.tabs.create({ url: chrome.runtime.getURL(request.url) });
             return false;
         case "submitVote":
             submitVote(request.type, request.UUID, request.category, request.videoID).then(callback);
 
             //this allows the callback to be called later
+            return true;
+        case "updateSegment":
+            updateSegment(request.videoID, request.oldUUID, request.newSegment, request.videoDuration).then(callback);
             return true;
         case "registerContentScript":
             registerFirefoxContentScript(request);
@@ -82,7 +85,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             return false;
         default:
             return false;
-	}
+    }
 });
 
 chrome.runtime.onMessageExternal.addListener((request, sender, callback) => {
@@ -118,9 +121,9 @@ chrome.runtime.onInstalled.addListener(function () {
         const userID = Config.config.userID;
 
         // If there is no userID, then it is the first install.
-        if (!userID && !Config.local.alreadyInstalled){
+        if (!userID && !Config.local.alreadyInstalled) {
             //open up the install page
-            chrome.tabs.create({url: chrome.runtime.getURL("/help/index.html")});
+            chrome.tabs.create({ url: chrome.runtime.getURL("/help/index.html") });
 
             //generate a userID
             const newUserID = generateUserID();
@@ -134,7 +137,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
         if (Config.config.supportInvidious) {
             if (!(await utils.containsInvidiousPermission())) {
-                chrome.tabs.create({url: chrome.runtime.getURL("/permissions/index.html")});
+                chrome.tabs.create({ url: chrome.runtime.getURL("/permissions/index.html") });
             }
         }
 
@@ -170,7 +173,7 @@ async function registerFirefoxContentScript(options: Registration) {
             ids: [options.id]
         }).catch(() => []);
 
-        if (existingRegistrations && existingRegistrations.length > 0 
+        if (existingRegistrations && existingRegistrations.length > 0
             && options.matches.every((match) => existingRegistrations[0].matches.includes(match))) {
             // No need to register another script, already registered
             return;
@@ -192,8 +195,8 @@ async function registerFirefoxContentScript(options: Registration) {
     } else {
         chrome.contentScripts.register({
             allFrames: options.allFrames,
-            js: options.js?.map?.(file => ({file})),
-            css: options.css?.map?.(file => ({file})),
+            js: options.js?.map?.(file => ({ file })),
+            css: options.css?.map?.(file => ({ file })),
             matches: options.matches
         }).then((registration) => void (contentScriptRegistrations[options.id] = registration));
     }
@@ -204,7 +207,7 @@ async function registerFirefoxContentScript(options: Registration) {
  * Only works on Firefox.
  * Firefox requires that this is handled by the background script
  */
-async function  unregisterFirefoxContentScript(id: string) {
+async function unregisterFirefoxContentScript(id: string) {
     if ("scripting" in chrome && "getRegisteredContentScripts" in chrome.scripting) {
         try {
             await chromeP.scripting.unregisterContentScripts({
@@ -242,6 +245,50 @@ async function submitVote(type: number, UUID: string, category: string, videoID:
         };
     } catch (e) {
         console.error("Error while voting:", e);
+        return {
+            error: serializeOrStringify(e),
+        };
+    }
+}
+
+async function updateSegment(videoID: string, oldUUID: string, newSegment: SponsorTime, videoDuration: number) {
+    // 1. Downvote old segment
+    await submitVote(0, oldUUID, undefined, videoID);
+
+    // 2. Submit new segment
+    const userID = Config.config.userID;
+
+    // Create clean segment object without UUID and source (those are server-assigned)
+    const cleanSegment = {
+        segment: newSegment.segment,
+        category: newSegment.category,
+        actionType: newSegment.actionType,
+        ...(newSegment.description && { description: newSegment.description })
+    };
+
+    const segments = [cleanSegment];
+
+    const serverAddress = Config.config.testingServer ? CompileConfig.testingServerAddress : Config.config.serverAddress;
+
+    try {
+        const requestBody = {
+            videoID,
+            userID,
+            segments,
+            videoDuration,
+            userAgent: extensionUserAgent(),
+        };
+
+        const response = await sendRealRequestToCustomServer("POST", serverAddress + "/api/skipSegments", requestBody);
+        const responseText = await response.text();
+
+        return {
+            status: response.status,
+            ok: response.ok,
+            responseText: responseText,
+        };
+    } catch (e) {
+        console.error("[SB] Error while updating segment:", e);
         return {
             error: serializeOrStringify(e),
         };

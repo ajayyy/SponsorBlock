@@ -41,6 +41,7 @@ interface SegmentsLoadedProps {
     setCurrentTime: (time: number) => void;
     setSegments: (segments: SponsorTime[]) => void;
     setLoopedChapter: (loopedChapter: SegmentUUID | null) => void;
+    setVideoDuration: (duration: number) => void;
 }
 
 interface LoadSegmentsProps extends SegmentsLoadedProps {
@@ -79,6 +80,7 @@ export const PopupComponent = () => {
     const [loopedChapter, setLoopedChapter] = React.useState<SegmentUUID | null>(null);
 
     const [videoID, setVideoID] = React.useState<string | null>(null);
+    const [videoDuration, setVideoDuration] = React.useState<number>(0);
 
     React.useEffect(() => {
         loadSegments({
@@ -87,7 +89,8 @@ export const PopupComponent = () => {
             setVideoID,
             setCurrentTime,
             setSegments,
-            setLoopedChapter
+            setLoopedChapter,
+            setVideoDuration
         });
 
         setupComPort({
@@ -95,7 +98,8 @@ export const PopupComponent = () => {
             setVideoID,
             setCurrentTime,
             setSegments,
-            setLoopedChapter
+            setLoopedChapter,
+            setVideoDuration
         });
 
         forwardClickEvents(sendMessage);
@@ -108,17 +112,17 @@ export const PopupComponent = () => {
                 <button id="sbCloseButton" title="__MSG_closePopup__" className="sbCloseButton" onClick={() => {
                     sendMessage({ message: "closePopup" });
                 }}>
-                    <img src="icons/close.png" width="15" height="15" alt="Close icon"/>
+                    <img src="icons/close.png" width="15" height="15" alt="Close icon" />
                 </button>
             }
 
             {
                 Config.config!.testingServer &&
                 <div id="sbBetaServerWarning"
-                        title={chrome.i18n.getMessage("openOptionsPage")}
-                        onClick={() => {
-                            chrome.runtime.sendMessage({ "message": "openConfig", "hash": "advanced" });
-                        }}>
+                    title={chrome.i18n.getMessage("openOptionsPage")}
+                    onClick={() => {
+                        chrome.runtime.sendMessage({ "message": "openConfig", "hash": "advanced" });
+                    }}>
                     {chrome.i18n.getMessage("betaServerWarning")}
                 </div>
             }
@@ -135,8 +139,8 @@ export const PopupComponent = () => {
                 </p>
             </header>
 
-            <p id="videoFound" 
-                    className={"u-mZ grey-text " + (Config.config.cleanPopup ? "cleanPopupMargin" : "")}>
+            <p id="videoFound"
+                className={"u-mZ grey-text " + (Config.config.cleanPopup ? "cleanPopupMargin" : "")}>
                 {getVideoStatusText(status)}
             </p>
 
@@ -150,7 +154,8 @@ export const PopupComponent = () => {
                         setVideoID,
                         setCurrentTime,
                         setSegments,
-                        setLoopedChapter
+                        setLoopedChapter,
+                        setVideoDuration
                     }).then(() => stopAnimation());
                 });
 
@@ -164,27 +169,28 @@ export const PopupComponent = () => {
                 status={status.status}
                 segments={segments}
                 loopedChapter={loopedChapter}
+                videoDuration={videoDuration}
                 sendMessage={sendMessage} />
 
             {/* Toggle Box */}
             <div className="sbControlsMenu">
                 {
                     videoID &&
-                        <SkipProfileButton
-                            videoID={videoID}
-                            setShowForceChannelCheckWarning={setShowForceChannelCheckWarning}
-                        />
+                    <SkipProfileButton
+                        videoID={videoID}
+                        setShowForceChannelCheckWarning={setShowForceChannelCheckWarning}
+                    />
                 }
                 <label id="disableExtension" htmlFor="toggleSwitch" className="toggleSwitchContainer sbControlsMenu-item" role="button" tabIndex={0}>
                     <span className="toggleSwitchContainer-switch">
-                        <input type="checkbox" 
-                            style={{ "display": "none" }} 
-                            id="toggleSwitch" 
+                        <input type="checkbox"
+                            style={{ "display": "none" }}
+                            id="toggleSwitch"
                             checked={extensionEnabled}
                             onChange={(e) => {
                                 Config.config!.disableSkipping = !e.target.checked;
                                 setExtensionEnabled(e.target.checked)
-                            }}/>
+                            }} />
                         <span className="switchBg shadow"></span>
                         <span className="switchBg white"></span>
                         <span className="switchBg green"></span>
@@ -197,13 +203,13 @@ export const PopupComponent = () => {
                         {chrome.i18n.getMessage("disableSkipping")}
                     </span>
                 </label>
-                <button id="optionsButton" 
-                    className="sbControlsMenu-item" 
+                <button id="optionsButton"
+                    className="sbControlsMenu-item"
                     title={chrome.i18n.getMessage("Options")}
                     onClick={() => {
                         chrome.runtime.sendMessage({ "message": "openConfig" });
                     }}>
-                <img src="/icons/settings.svg" alt="Settings icon" width="23" height="23" className="sbControlsMenu-itemIcon" id="sbPopupIconSettings" />
+                    <img src="/icons/settings.svg" alt="Settings icon" width="23" height="23" className="sbControlsMenu-itemIcon" id="sbPopupIconSettings" />
                     {chrome.i18n.getMessage("Options")}
                 </button>
             </div>
@@ -224,12 +230,12 @@ export const PopupComponent = () => {
                     status={status.status}
                     sendMessage={sendMessage} />
             }
-            
+
 
             {/* Your Work box */}
             {
                 !Config.config.cleanPopup &&
-                <YourWorkComponent/>
+                <YourWorkComponent />
             }
 
             {/* Footer */}
@@ -240,7 +246,7 @@ export const PopupComponent = () => {
                         onClick={() => {
                             chrome.runtime.sendMessage({ "message": "openHelp" });
                         }}>
-                            {chrome.i18n.getMessage("help")}
+                        {chrome.i18n.getMessage("help")}
                     </a>
                     <a href="https://sponsor.ajay.app" target="_blank" rel="noreferrer">
                         {chrome.i18n.getMessage("website")}
@@ -268,11 +274,11 @@ export const PopupComponent = () => {
                     </a>
                     <br />
                     <a id="debugLogs"
-                            onClick={async () => {
-                                const logs = await sendMessage({ message: "getLogs" }) as LogResponse;
+                        onClick={async () => {
+                            const logs = await sendMessage({ message: "getLogs" }) as LogResponse;
 
-                                copyToClipboardPopup(`${generateDebugDetails()}\n\nWarn:\n${logs.warn.join("\n")}\n\nDebug:\n${logs.debug.join("\n")}`, sendMessage);
-                            }}>
+                            copyToClipboardPopup(`${generateDebugDetails()}\n\nWarn:\n${logs.warn.join("\n")}\n\nDebug:\n${logs.debug.join("\n")}`, sendMessage);
+                        }}>
                         {chrome.i18n.getMessage("copyDebugLogs")}
                     </a>
                 </footer>
@@ -284,7 +290,7 @@ export const PopupComponent = () => {
                     Config.config!.dontShowNotice = false;
                     setShowNoticeButton(false);
                 }}>
-                    { chrome.i18n.getMessage("showNotice") }
+                    {chrome.i18n.getMessage("showNotice")}
                 </button>
             }
         </div>
@@ -357,7 +363,7 @@ function segmentsLoaded(response: IsInfoFoundMessageResponse, props: SegmentsLoa
         });
     }
 
-    
+
     props.setVideoID(response.videoID);
     Video.setVideoID(response.videoID as Video.VideoID);
     props.setCurrentTime(response.time);
@@ -369,6 +375,7 @@ function segmentsLoaded(response: IsInfoFoundMessageResponse, props: SegmentsLoa
         .sort((a, b) => a.segment[0] - b.segment[0])
         .sort((a, b) => a.actionType === ActionType.Full ? -1 : b.actionType === ActionType.Full ? 1 : 0));
     props.setLoopedChapter(response.loopedChapter);
+    props.setVideoDuration(response.videoDuration || 0);
 }
 
 function sendMessage(request: Message): Promise<MessageResponse> {
@@ -451,7 +458,7 @@ window.addEventListener("message", async (e): Promise<void> => {
     }
 });
 
-function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarning: (v: boolean) => void}): JSX.Element {
+function SkipProfileButton(props: { videoID: string; setShowForceChannelCheckWarning: (v: boolean) => void }): JSX.Element {
     const [menuOpen, setMenuOpen] = React.useState(false);
     const channelSkipProfileSet = getSkipProfileIDForChannel() !== null;
     const skipProfileSet = getSkipProfileID() !== null;
@@ -462,18 +469,18 @@ function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarn
 
     return (
         <>
-            <label id="skipProfileButton" 
-                    htmlFor="skipProfileToggle"
-                    className="toggleSwitchContainer sbControlsMenu-item"
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => {
-                        if (menuOpen && !Config.config.forceChannelCheck && getSkipProfileID() !== null) {
-                            props.setShowForceChannelCheckWarning(true);
-                        }
+            <label id="skipProfileButton"
+                htmlFor="skipProfileToggle"
+                className="toggleSwitchContainer sbControlsMenu-item"
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                    if (menuOpen && !Config.config.forceChannelCheck && getSkipProfileID() !== null) {
+                        props.setShowForceChannelCheckWarning(true);
+                    }
 
-                        setMenuOpen(!menuOpen);
-                    }}>
+                    setMenuOpen(!menuOpen);
+                }}>
                 <svg viewBox="0 0 24 24" width="23" height="23" className={"SBWhitelistIcon sbControlsMenu-itemIcon " + (menuOpen ? " rotated" : "")}>
                     <path d="M24 10H14V0h-4v10H0v4h10v10h4V14h10z" />
                 </svg>
@@ -500,20 +507,20 @@ function SkipProfileButton(props: {videoID: string; setShowForceChannelCheckWarn
 }
 
 const skipProfileOptions: SkipProfileOption[] = [{
-        name: "forAnHour",
-        active: () => getSkipProfileIDForTime() !== null
-    }, {
-        name: "forThisTab",
-        active: () => getSkipProfileIDForTab() !== null
-    }, {
-        name: "forJustThisVideo",
-        active: () => getSkipProfileIDForVideo() !== null
-    }, {
-        name: "forThisChannel",
-        active: () => getSkipProfileIDForChannel() !== null
-    }];
+    name: "forAnHour",
+    active: () => getSkipProfileIDForTime() !== null
+}, {
+    name: "forThisTab",
+    active: () => getSkipProfileIDForTab() !== null
+}, {
+    name: "forJustThisVideo",
+    active: () => getSkipProfileIDForVideo() !== null
+}, {
+    name: "forThisChannel",
+    active: () => getSkipProfileIDForChannel() !== null
+}];
 
-function SkipProfileMenu(props: {open: boolean; videoID: string}): JSX.Element {
+function SkipProfileMenu(props: { open: boolean; videoID: string }): JSX.Element {
     const [configID, setConfigID] = React.useState<ConfigurationID | null>(null);
     const [selectedSkipProfileAction, setSelectedSkipProfileAction] = React.useState<SkipProfileAction>(null);
     const [allSkipProfiles, setAllSkipProfiles] = React.useState(Object.entries(Config.local!.skipProfiles));
@@ -542,7 +549,7 @@ function SkipProfileMenu(props: {open: boolean; videoID: string}): JSX.Element {
     return (
         <div id="skipProfileMenu" className={`${!props.open ? " hidden" : ""}`}
             aria-label={chrome.i18n.getMessage("SkipProfileMenu")}>
-            <div style={{position: "relative"}}>
+            <div style={{ position: "relative" }}>
                 <SelectOptionComponent
                     id="sbSkipProfileSelection"
                     title={chrome.i18n.getMessage("SelectASkipProfile")}
@@ -551,7 +558,7 @@ function SkipProfileMenu(props: {open: boolean; videoID: string}): JSX.Element {
                             chrome.runtime.sendMessage({ message: "openConfig", hash: "newProfile" });
                             return;
                         }
-                        
+
                         const configID = value === "null" ? null : value as ConfigurationID;
                         setConfigID(configID);
                         if (configID === null) {
@@ -640,7 +647,7 @@ function SkipProfileRadioButtons(props: SkipProfileRadioButtonsProps): JSX.Eleme
                 key={option.name}
                 setSelected={(s) => {
                     props.setSelected(s ? option.name : null, true);
-                }}/>
+                }} />
         );
 
         if (props.selected === option.name) {
