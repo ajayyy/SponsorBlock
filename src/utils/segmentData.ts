@@ -13,7 +13,7 @@ const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
         segments: null,
         status: 200
     };
-}, 5);
+}, undefined, 5);
 
 const pendingList: Record<VideoID, Promise<SegmentResponse>> = {};
 
