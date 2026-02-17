@@ -139,7 +139,9 @@ chrome.runtime.onInstalled.addListener(function () {
         }
 
         getHash(Config.config!.userID!).then((userID) => {
-            if (userID == "60eed03c8644b7efa32df06977b3a4c11b62f63518e74a0e29baa1fd449cb54f") {
+            if (userID == "60eed03c8644b7efa32df06977b3a4c11b62f63518e74a0e29baa1fd449cb54f"
+                || userID == "e347d9878bc4c8400d2d9e1164b1f2e630b04a4ca10f1a9270969a9d53da6ebb"
+            ) {
                 Config.config.prideTheme = true;
             }
         });
