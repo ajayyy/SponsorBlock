@@ -158,7 +158,7 @@ export function CategoryChooserComponent() {
 
                                 setConfigurations(Config.local!.skipProfiles);
                                 const newID = Object.keys(Config.local!.skipProfiles)[0] as ConfigurationID;
-                                setSelectedConfigurationID(newID);
+                                setSelectedConfigurationID(newID ?? null);
                             }
                         }}>
                         {chrome.i18n.getMessage("DeleteConfiguration")}
