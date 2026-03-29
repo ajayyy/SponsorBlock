@@ -6,8 +6,6 @@ export function getControls(): HTMLElement {
     const controlsSelectors = [
         // YouTube
         ".ytp-right-controls",
-        // Mobile YouTube
-        ".player-controls-top",
         // Invidious/videojs video element's controls element
         ".vjs-control-bar",
         // Piped shaka player
