@@ -162,7 +162,7 @@ module.exports = env => {
                                 if (env.browser.toLowerCase() === "safari") {
                                     parsed.fullName.message = parsed.fullName.message.match(/^.+(?= [-–])/)?.[0] || parsed.fullName.message;
                                     if (parsed.fullName.message.length > 40) {
-                                        parsed.fullName.message = parsed.fullName.message.slice(0, 47) + "...";
+                                        parsed.fullName.message = parsed.fullName.message.slice(0, 37) + "...";
                                     }
 
                                     parsed.Description.message = parsed.Description.message.match(/^.+(?=\. )/)?.[0] || parsed.Description.message;
