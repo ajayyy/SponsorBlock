@@ -161,7 +161,7 @@ module.exports = env => {
                                 const parsed = JSON.parse(content.toString());
                                 if (env.browser.toLowerCase() === "safari") {
                                     parsed.fullName.message = parsed.fullName.message.match(/^.+(?= [-–])/)?.[0] || parsed.fullName.message;
-                                    if (parsed.fullName.message.length > 50) {
+                                    if (parsed.fullName.message.length > 40) {
                                         parsed.fullName.message = parsed.fullName.message.slice(0, 47) + "...";
                                     }
 
