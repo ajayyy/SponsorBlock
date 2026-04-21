@@ -830,6 +830,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
             const offset = (isFirefoxOrSafari() && !isSafari() ? 600 : 150);
             // Schedule for right before to be more precise than normal timeout
             const offsetDelayTime = Math.max(0, delayTime - offset);
+            if (currentSkipSchedule) clearTimeout(currentSkipSchedule);
             currentSkipSchedule = setTimeout(skippingFunction, offsetDelayTime);
 
             // Show the notice only if the segment hasn't already started
