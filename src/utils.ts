@@ -8,6 +8,7 @@ import { isSafari } from "../maze-utils/src/config";
 import { asyncRequestToServer } from "./utils/requests";
 import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
 import { formatJSErrorMessage, getLongErrorMessage } from "../maze-utils/src/formating";
+import { getActiveVideoService } from "./videoServices";
 
 export default class Utils {
     
@@ -243,9 +244,7 @@ export default class Utils {
             ".shaka-video-container", // Piped
             "#player-container.ytk-player", // YT Kids
             "#id-tv-container", // YTTV
-            "#raichuContainerWithPlayer", // Rutube
-            "[data-testid='layout-loader']", // Rutube
-            ".video-player" // Rutube
+            ...(getActiveVideoService()?.selectors?.referenceNode ?? [])
         ];
 
         let referenceNode = findValidElementFromSelector(selectors)

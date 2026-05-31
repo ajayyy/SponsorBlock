@@ -1,6 +1,7 @@
 import { ActionType, Category, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getFormattedTimeToSeconds } from "../../maze-utils/src/formating";
 import { getSkipProfileBool } from "./skipProfiles";
+import { getActiveVideoService } from "../videoServices";
 
 export function getControls(): HTMLElement {
     const controlsSelectors = [
@@ -14,9 +15,7 @@ export function getControls(): HTMLElement {
         ".html5-player-chrome",
         // tv.youtube.com
         ".ypcs-control-buttons-right",
-        // Rutube
-        '[data-testid="video-ui"] [class*="desktop-controls-layout-module__column"][class*="_justify-flex-end"][class*="_align-center"]',
-        '[data-testid="video-ui"] [class*="_justify-flex-end"][class*="_align-center"]'
+        ...(getActiveVideoService()?.selectors?.controls ?? [])
     ];
 
     for (const controlsSelector of controlsSelectors) {

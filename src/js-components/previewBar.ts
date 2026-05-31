@@ -16,7 +16,7 @@ import { isVorapisInstalled } from "../utils/compatibility";
 import { isOnYTTV } from "../../maze-utils/src/video";
 import { getCategorySelection } from "../utils/skipRule";
 import { getSkipProfileBool } from "../utils/skipProfiles";
-import { isRutubeHost } from "../utils/rutube";
+import { getActiveVideoService } from "../videoServices";
 
 const TOOLTIP_VISIBLE_CLASS = 'sponsorCategoryTooltipVisible';
 const MIN_CHAPTER_SIZE = 0.003;
@@ -289,8 +289,8 @@ class PreviewBar {
 
         if (this.onMobileYouTube) {
             this.container.style.transform = "none";
-        } else if (isRutubeHost()) {
-            this.container.classList.add("sb-rutube-previewbar");
+        } else if (getActiveVideoService()?.previewBarClass) {
+            this.container.classList.add(getActiveVideoService()!.previewBarClass);
         } else if (!this.onInvidious) {
             this.container.classList.add("sbNotInvidious");
         }
@@ -353,7 +353,13 @@ class PreviewBar {
 
     private updatePageElements(): void {
         // YT, Vorapis v3
-        const allProgressBars = document.querySelectorAll('.ytp-progress-bar, .ytp-progress-bar-container > .html5-progress-bar > .ytp-progress-list, [data-testid="ui-progress-progressBar"], [data-testid="video-ui"] [role="slider"][aria-valuemax]') as NodeListOf<HTMLElement>;
+        const servicePreviewBarSelector = getActiveVideoService()?.selectors?.previewBar;
+        const progressBarSelector = [
+            ".ytp-progress-bar",
+            ".ytp-progress-bar-container > .html5-progress-bar > .ytp-progress-list",
+            servicePreviewBarSelector
+        ].filter(Boolean).join(", ");
+        const allProgressBars = document.querySelectorAll(progressBarSelector) as NodeListOf<HTMLElement>;
         this.progressBar = findValidElement(allProgressBars) ?? allProgressBars?.[0];
 
         if (this.progressBar) {

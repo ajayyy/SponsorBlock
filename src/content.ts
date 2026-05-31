@@ -54,7 +54,7 @@ import { getSegmentsForVideo } from "./utils/segmentData";
 import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
 import { getSkipProfileBool, getSkipProfileIDForTab, hideTooShortSegments, setCurrentTabSkipProfile } from "./utils/skipProfiles";
 import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
-import { getRutubeVideoID, isRutubeHost, submitRutubeSegment } from "./utils/rutube";
+import { getActiveVideoService } from "./videoServices";
 
 cleanPage();
 
@@ -119,8 +119,9 @@ let sponsorSkipped: boolean[] = [];
 
 let videoMuted = false; // Has it been attempted to be muted
 const controlsWithEventListeners: HTMLElement[] = [];
-let currentRutubeVideoID: VideoID | null = null;
-let currentRutubeVideoElement: HTMLVideoElement | null = null;
+const activeVideoService = getActiveVideoService();
+let currentVideoServiceVideoID: VideoID | null = null;
+let currentVideoServiceVideoElement: HTMLVideoElement | null = null;
 
 setupVideoModule({
     videoIDChange,
@@ -136,63 +137,53 @@ setupVideoModule({
     },
     resetValues,
     documentScript: chrome.runtime.getManifest().manifest_version === 2
-        && !isRutubeHost() ? documentScript : undefined
+        && (activeVideoService?.capabilities.documentScript ?? true) ? documentScript : undefined
 }, () => Config);
 setupThumbnailListener();
-setupRutubeVideoTracking();
+setupVideoServiceTracking();
 
 function getCurrentVideoID(): VideoID | null {
-    return isRutubeHost() ? currentRutubeVideoID ?? getRutubeVideoID() : getVideoID();
+    return activeVideoService ? currentVideoServiceVideoID ?? activeVideoService.getVideoID() : getVideoID();
 }
 
 function getCurrentPageVideoID(): VideoID | null {
-    return isRutubeHost() ? getRutubeVideoID() : getYouTubeVideoID();
+    return activeVideoService ? activeVideoService.getVideoID() : getYouTubeVideoID();
 }
 
 function checkCurrentVideoIDChange(): void {
-    if (!isRutubeHost()) {
+    if (!activeVideoService) {
         void checkVideoIDChange();
         return;
     }
 
-    checkRutubeVideoIDChange();
+    checkVideoServiceVideoIDChange();
 }
 
-function checkRutubeVideoIDChange(): void {
-    const videoID = getRutubeVideoID();
-    if (!videoID || videoID === currentRutubeVideoID) return;
+function checkVideoServiceVideoIDChange(): void {
+    const videoID = activeVideoService?.getVideoID();
+    if (!videoID || videoID === currentVideoServiceVideoID) return;
 
     resetValues();
-    currentRutubeVideoID = videoID;
+    currentVideoServiceVideoID = videoID;
     videoIDChange();
 }
 
-function checkRutubeVideoElementChange(): void {
-    const video = document.querySelector("video") as HTMLVideoElement | null;
-    if (!video || video === currentRutubeVideoElement) return;
+function checkVideoServiceVideoElementChange(video: HTMLVideoElement): void {
+    if (video === currentVideoServiceVideoElement) return;
 
-    currentRutubeVideoElement = video;
+    currentVideoServiceVideoElement = video;
     triggerVideoElementChange(video);
 }
 
-function setupRutubeVideoTracking(): void {
-    if (!isRutubeHost()) return;
+function setupVideoServiceTracking(): void {
+    if (!activeVideoService?.setupTracking) return;
 
     void waitFor(() => Config.isReady(), 5000, 1).then(() => {
-        checkRutubeVideoIDChange();
-        checkRutubeVideoElementChange();
+        activeVideoService.setupTracking({
+            onVideoIDChange: checkVideoServiceVideoIDChange,
+            onVideoElementChange: checkVideoServiceVideoElementChange
+        });
     });
-
-    let lastRutubeUrl = location.href;
-    const rutubeUrlChangeInterval = setInterval(() => {
-        checkRutubeVideoElementChange();
-        if (location.href === lastRutubeUrl) return;
-
-        lastRutubeUrl = location.href;
-        checkRutubeVideoIDChange();
-    }, 500);
-
-    addCleanupListener(() => clearInterval(rutubeUrlChangeInterval));
 }
 
 // Is the video currently being switched
@@ -464,7 +455,7 @@ if (!window.location.href.includes("youtube.com/live_chat")) {
 }
 
 function resetValues() {
-    currentRutubeVideoID = null;
+    currentVideoServiceVideoID = null;
     lastCheckTime = 0;
     lastCheckVideoTime = -1;
     previewedSegment = false;
@@ -531,7 +522,7 @@ function videoIDChange(): void {
                 });
             }).catch();
         } else {
-            utils.wait(isRutubeHost() ? getPreviewBarAttachElement : getControls).then(createPreviewBar).catch();
+            utils.wait(activeVideoService ? getPreviewBarAttachElement : getControls).then(createPreviewBar).catch();
         }
     }
 
@@ -552,7 +543,7 @@ function videoIDChange(): void {
     sponsorTimesSubmitting = [];
     updateSponsorTimesSubmitting();
 
-    if (!isRutubeHost()) {
+    if (activeVideoService?.capabilities.deArrow ?? true) {
         tryShowingDeArrowPromotion().catch(logWarn);
     }
 
@@ -637,12 +628,14 @@ function getPreviewBarAttachElement(): HTMLElement | null {
             // For YTTV
             selector: ".yssi-slider > div.ytu-ss-timeline-container",
             isVisibleCheck: false
-        }, {
-            // For Rutube
-            selector: '[data-testid="ui-progress-progressBar"], [data-testid="video-ui"] [role="slider"][aria-valuemax]',
-            isVisibleCheck: true
         }
     ];
+    if (activeVideoService?.selectors?.previewBar) {
+        progressElementOptions.push({
+            selector: activeVideoService.selectors.previewBar,
+            isVisibleCheck: true
+        });
+    }
 
     for (const option of progressElementOptions) {
         const allElements = document.querySelectorAll(option.selector) as NodeListOf<HTMLElement>;
@@ -665,7 +658,7 @@ function createPreviewBar(): void {
     const el = getPreviewBarAttachElement();
 
     if (el) {
-        const chapterVote = isRutubeHost() ? null : new ChapterVote(voteAsync);
+        const chapterVote = activeVideoService?.capabilities.chapterVote === false ? null : new ChapterVote(voteAsync);
         previewBar = new PreviewBar(el, isOnMobileYouTube(), isOnInvidious(), isOnYTTV(), chapterVote, () => importExistingChapters(true));
 
         updatePreviewBar();
@@ -1250,7 +1243,7 @@ function setupSkipButtonControlBar() {
 }
 
 function setupCategoryPill() {
-    if (isRutubeHost()) return;
+    if (activeVideoService?.capabilities.categoryPill === false) return;
 
     if (!categoryPill) {
         categoryPill = new CategoryPill();
@@ -1333,7 +1326,7 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
     }
 
     notifyPopupOfSegments();
-    if (!isRutubeHost()) {
+    if (activeVideoService?.capabilities.chapters ?? true) {
         importExistingChapters(true);
     }
 
@@ -1360,7 +1353,7 @@ function notifyPopupOfSegments(): void {
 }
 
 function importExistingChapters(wait: boolean) {
-    if (isRutubeHost()) return;
+    if (activeVideoService?.capabilities.chapters === false) return;
 
     if (!existingChaptersImported && !importingChaptersWaiting && onVideoPage() && !isOnMobileYouTube()) {
         const waitCondition = () => getVideoDuration() && getExistingChapters(getCurrentVideoID(), getVideoDuration());
@@ -1993,7 +1986,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     if (isOnYTTV()) {
         // Some style needs to be set here, but the numbers don't matter 
         newButton.setAttribute("style", "width: 40px; height: 40px");
-    } else if (isRutubeHost()) {
+    } else if (activeVideoService) {
         newButton.setAttribute("data-prevent-hide-controls", "true");
         Object.assign(newButton.style, {
             width: "40px",
@@ -2150,7 +2143,7 @@ function updateEditButtonsOnPlayer(): void {
  * for sponsor skipping as the video is not playing during these times.
  */
 function getRealCurrentTime(): number {
-    if (isRutubeHost()) {
+    if (activeVideoService) {
         return getCurrentTime() ?? 0;
     }
 
@@ -2204,7 +2197,7 @@ function startOrEndTimingNewSegment() {
     updateEditButtonsOnPlayer();
     updateSponsorTimesSubmitting(false);
 
-    if (!isRutubeHost()) {
+    if (activeVideoService?.capabilities.chapters ?? true) {
         importExistingChapters(false);
     }
 
@@ -2266,7 +2259,7 @@ function updateSponsorTimesSubmitting(getFromConfig = true) {
             // Assume they already previewed a segment
             previewedSegment = true;
 
-            if (!isRutubeHost()) {
+            if (activeVideoService?.capabilities.chapters ?? true) {
                 importExistingChapters(true);
             }
         }
@@ -2337,7 +2330,7 @@ function openInfoMenu() {
     frame.src = chrome.runtime.getURL("popup.html");
     popup.appendChild(frame);
 
-    if (isRutubeHost()) {
+    if (activeVideoService) {
         Object.assign(popup.style, {
             position: "fixed",
             top: "72px",
@@ -2368,11 +2361,6 @@ function openInfoMenu() {
         // old youtube theme
         selector: "#watch7-sidebar-contents",
     }, {
-        // Rutube side column
-        selector: ".video-page-layout-module__right",
-    }, {
-        // Rutube player fallback
-        selector: "#raichuContainerWithPlayer",
     }];
     let popupAttached = false;
     for (const option of parentNodeOptions) {
@@ -2622,9 +2610,9 @@ async function sendSubmitMessage(): Promise<boolean> {
 
     let response: FetchResponse;
     try {
-        if (isRutubeHost()) {
+        if (activeVideoService?.submitSegment) {
             const responses = await Promise.all(sponsorTimesSubmitting.map((segment) =>
-                submitRutubeSegment(getCurrentVideoID(), segment)
+                activeVideoService.submitSegment(getCurrentVideoID(), segment)
             ));
             response = responses.find((response) => !response.ok) ?? responses[responses.length - 1];
         } else {
@@ -2645,7 +2633,7 @@ async function sendSubmitMessage(): Promise<boolean> {
         return false;
     }
 
-    if (response.status === 200 || (isRutubeHost() && response.ok)) {
+    if (response.status === 200 || (activeVideoService && response.ok)) {
         stopAnimation();
 
         // Remove segments from storage since they've already been submitted
