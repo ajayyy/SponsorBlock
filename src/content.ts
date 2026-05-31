@@ -1988,21 +1988,6 @@ function createButton(baseID: string, title: string, callback: () => void, image
     if (isOnYTTV()) {
         // Some style needs to be set here, but the numbers don't matter 
         newButton.setAttribute("style", "width: 40px; height: 40px");
-    } else if (activeVideoService) {
-        newButton.setAttribute("data-prevent-hide-controls", "true");
-        Object.assign(newButton.style, {
-            width: "40px",
-            height: "40px",
-            minWidth: "40px",
-            margin: "0 4px 0 0",
-            border: "0",
-            borderRadius: "10px",
-            background: "rgba(51, 65, 85, 0.9)",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer"
-        });
     }
     newButton.setAttribute("title", chrome.i18n.getMessage(title));
     newButton.addEventListener("click", () => {
@@ -2331,19 +2316,6 @@ function openInfoMenu() {
     });
     frame.src = chrome.runtime.getURL("popup.html");
     popup.appendChild(frame);
-
-    if (activeVideoService) {
-        Object.assign(popup.style, {
-            position: "fixed",
-            top: "72px",
-            right: "24px",
-            zIndex: "10000",
-            width: "374px",
-            height: "500px"
-        });
-        document.body.appendChild(popup);
-        return;
-    }
 
     const elemHasChild = (elements: NodeListOf<HTMLElement>): Element => {
         let parentNode: Element;
