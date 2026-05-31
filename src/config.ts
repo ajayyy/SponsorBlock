@@ -80,7 +80,6 @@ interface SBConfig {
     cleanPopup: boolean;
     hideSegmentCreationInPopup: boolean;
     prideTheme: boolean;
-
     // Used to cache calculated text color info
     categoryPillColors: {
         [key in Category]: {
@@ -441,7 +440,6 @@ const syncDefaults = {
     cleanPopup: false,
     hideSegmentCreationInPopup: false,
     prideTheme: false,
-
     categoryPillColors: {},
 
     /**

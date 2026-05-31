@@ -2,7 +2,7 @@ import * as React from "react";
 import ResetIcon from "../../svg-icons/resetIcon";
 
 export interface SelectOption {
-    value: string;
+    value: string | null;
     label: string;
 }
 
@@ -31,7 +31,7 @@ export const SelectOptionComponent = (props: SelectOptionComponentProps) => {
             }
             <select id={props.id}
                 className="sb-selector-element optionsSelector"
-                value={props.value}
+                value={props.value ?? ""}
                 title={props.title}
                 onChange={(e) => {
                     props.onChange(e.target.value);

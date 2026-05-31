@@ -13,7 +13,10 @@ export function getControls(): HTMLElement {
         // Vorapis v3
         ".html5-player-chrome",
         // tv.youtube.com
-        ".ypcs-control-buttons-right"
+        ".ypcs-control-buttons-right",
+        // Rutube
+        '[data-testid="video-ui"] [class*="desktop-controls-layout-module__column"][class*="_justify-flex-end"][class*="_align-center"]',
+        '[data-testid="video-ui"] [class*="_justify-flex-end"][class*="_align-center"]'
     ];
 
     for (const controlsSelector of controlsSelectors) {
