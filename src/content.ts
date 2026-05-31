@@ -3018,6 +3018,9 @@ function setCategoryColorCSSVariables() {
         css += `--darkreader-text--sb-category-text-${category}: ${luminance > 128 ? "black" : "white"};`;
     }
     css += "}";
+    if (activeVideoService?.contentStyle) {
+        css += activeVideoService.contentStyle;
+    }
 
     styleContainer.innerText = css;
 }

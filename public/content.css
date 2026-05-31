@@ -61,20 +61,6 @@ div:hover > #previewbar.sbNotInvidious {
 	transform: scaleY(1);
 }
 
-#previewbar.sb-video-service-previewbar {
-	height: 100%;
-	inset: 0;
-	transform: none;
-	overflow: hidden;
-	border-radius: inherit;
-	z-index: 1;
-}
-
-#previewbar.sb-video-service-previewbar .previewbar {
-	height: 100%;
-	vertical-align: top;
-}
-
 /* Vorapis */
 .v3 #previewbar.sbNotInvidious {
 	transform: scaleY(1);

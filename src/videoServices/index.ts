@@ -19,6 +19,7 @@ export interface VideoService {
         referenceNode?: string[];
     };
     previewBarClass?: string;
+    contentStyle?: string;
     capabilities: {
         categoryPill: boolean;
         chapters: boolean;

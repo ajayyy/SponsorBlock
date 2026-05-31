@@ -14,6 +14,21 @@ const RUTUBE_REFERENCE_NODE_SELECTORS = [
     "[data-testid='layout-loader']",
     ".video-player"
 ];
+const RUTUBE_CONTENT_STYLE = `
+#previewbar.sb-video-service-previewbar {
+    height: 100%;
+    inset: 0;
+    transform: none;
+    overflow: hidden;
+    border-radius: inherit;
+    z-index: 1;
+}
+
+#previewbar.sb-video-service-previewbar .previewbar {
+    height: 100%;
+    vertical-align: top;
+}
+`;
 
 interface RutubeTimestamp {
     start: number;
@@ -121,6 +136,7 @@ export const rutubeVideoService: VideoService = {
         referenceNode: RUTUBE_REFERENCE_NODE_SELECTORS
     },
     previewBarClass: "sb-video-service-previewbar",
+    contentStyle: RUTUBE_CONTENT_STYLE,
     capabilities: {
         categoryPill: false,
         chapters: false,
