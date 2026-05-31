@@ -424,6 +424,8 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 channelIDChange();
                 break;
             case "barTypes":
+                setCategoryColorCSSVariables();
+                break;
             case "fullVideoSegments":
             case "fullVideoLabelsOnThumbnails":
                 updateAll();
@@ -2360,23 +2362,15 @@ function openInfoMenu() {
     }, {
         // old youtube theme
         selector: "#watch7-sidebar-contents",
-    }, {
     }];
-    let popupAttached = false;
     for (const option of parentNodeOptions) {
         const allElements = document.querySelectorAll(option.selector) as NodeListOf<HTMLElement>;
         const el = option.hasChildCheck ? elemHasChild(allElements) : allElements[0];
 
         if (el) {
             if (option.hasChildCheck) el.insertBefore(popup, el.firstChild);
-            else el.prepend(popup);
-            popupAttached = true;
             break;
         }
-    }
-
-    if (!popupAttached) {
-        document.body.prepend(popup);
     }
 }
 
