@@ -73,7 +73,7 @@ export function CategoryChooserComponent() {
                         setSelectedConfigurationID(value as ConfigurationID);
                         updateChannelList(setChannelListText, value as ConfigurationID);
                     }}
-                    value={selectedConfigurationID ?? "null"}
+                    value={selectedConfigurationID!}
                     options={[{
                         value: "null",
                         label: chrome.i18n.getMessage("DefaultConfiguration")
