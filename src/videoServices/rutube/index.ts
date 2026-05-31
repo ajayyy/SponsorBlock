@@ -1,7 +1,7 @@
-import { addCleanupListener } from "../../maze-utils/src/cleanup";
-import { ActionType, Category, SegmentUUID, SponsorSourceType, SponsorTime, VideoID } from "../types";
-import { FetchResponse, sendRequestToCustomServer } from "../../maze-utils/src/background-request-proxy";
-import type { VideoService } from ".";
+import { addCleanupListener } from "../../../maze-utils/src/cleanup";
+import { ActionType, Category, SegmentUUID, SponsorSourceType, SponsorTime, VideoID } from "../../types";
+import { FetchResponse, sendRequestToCustomServer } from "../../../maze-utils/src/background-request-proxy";
+import type { VideoService } from "../types";
 
 const RUTUBE_API = "https://sponsorblock.futuba.ru/api";
 const RUTUBE_PREVIEW_BAR_SELECTOR = '[data-testid="ui-progress-progressBar"], [data-testid="video-ui"] [role="slider"][aria-valuemax]';
@@ -14,7 +14,40 @@ const RUTUBE_REFERENCE_NODE_SELECTORS = [
     "[data-testid='layout-loader']",
     ".video-player"
 ];
+const RUTUBE_POPUP_PARENT_SELECTORS = [
+    "[data-testid='layout-loader']",
+    "#raichuContainerWithPlayer"
+];
 const RUTUBE_CONTENT_STYLE = `
+.sb-video-service-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sb-video-service-button .playerButtonImage {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+#sponsorBlockPopupContainer.sb-video-service-popup {
+    position: fixed;
+    top: 84px;
+    right: 12px;
+    width: 374px;
+    max-width: calc(100vw - 24px);
+    margin: 0;
+    z-index: 10000;
+}
+
 #previewbar.sb-video-service-previewbar {
     height: 100%;
     inset: 0;
@@ -132,6 +165,7 @@ export const rutubeVideoService: VideoService = {
     },
     selectors: {
         controls: RUTUBE_CONTROLS_SELECTORS,
+        popupParent: RUTUBE_POPUP_PARENT_SELECTORS,
         previewBar: RUTUBE_PREVIEW_BAR_SELECTOR,
         referenceNode: RUTUBE_REFERENCE_NODE_SELECTORS
     },

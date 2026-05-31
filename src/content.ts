@@ -1984,6 +1984,7 @@ function createButton(baseID: string, title: string, callback: () => void, image
     newButton.id = baseID + "Button";
     newButton.classList.add("playerButton");
     newButton.classList.add("ytp-button");
+    if (activeVideoService) newButton.classList.add("sb-video-service-button");
     if (Config.config.prideTheme) newButton.classList.add("prideTheme");
     if (isOnYTTV()) {
         // Some style needs to be set here, but the numbers don't matter 
@@ -2277,6 +2278,7 @@ function openInfoMenu() {
 
     const popup = document.createElement("div");
     popup.id = "sponsorBlockPopupContainer";
+    if (activeVideoService) popup.classList.add("sb-video-service-popup");
 
     const frame = document.createElement("iframe");
     frame.allow = "clipboard-write";
@@ -2328,6 +2330,9 @@ function openInfoMenu() {
     }
 
     const parentNodeOptions = [{
+        // Other video services
+        selector: activeVideoService?.selectors?.popupParent?.join(", "),
+    }, {
         // YouTube
         selector: "#secondary-inner",
         hasChildCheck: true
@@ -2336,13 +2341,20 @@ function openInfoMenu() {
         selector: "#watch7-sidebar-contents",
     }];
     for (const option of parentNodeOptions) {
+        if (!option.selector) continue;
+
         const allElements = document.querySelectorAll(option.selector) as NodeListOf<HTMLElement>;
         const el = option.hasChildCheck ? elemHasChild(allElements) : allElements[0];
 
         if (el) {
             if (option.hasChildCheck) el.insertBefore(popup, el.firstChild);
+            else el.prepend(popup);
             break;
         }
+    }
+
+    if (!popup.isConnected && activeVideoService) {
+        document.body.prepend(popup);
     }
 }
 
