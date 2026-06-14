@@ -66,7 +66,8 @@
       "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBduz8A.woff2",
       "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBduz8A.woff2"
     ],
-    "matches": ["<all_urls>"]
+    "matches": ["<all_urls>"],
+    "use_dynamic_url": true
   }],
   "content_scripts": [
     {
