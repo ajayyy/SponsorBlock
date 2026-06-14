@@ -75,7 +75,7 @@ export function getExistingChapters(currentVideoID: VideoID, duration: number): 
         const links = chaptersBox.querySelectorAll("ytd-macro-markers-list-item-renderer > a");
         for (const link of links) {
             const timeElement = link.querySelector("#time") as HTMLElement;
-            const description = link.querySelector("#details h4") as HTMLElement;
+            const description = link.querySelector("#details h3") as HTMLElement;
             if (timeElement && description?.innerText?.length > 0 && link.getAttribute("href")?.includes(currentVideoID)) {
                 const time = getFormattedTimeToSeconds(timeElement.innerText.replace(/\./g, ":"));
                 if (time === null) return [];
