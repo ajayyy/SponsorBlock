@@ -53,10 +53,20 @@
         "shared.css",
         "js/document.js",
         "libs/Source+Sans+Pro.css",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2",
+        "libs/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwkxduz8A.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBduz8A.woff2",
         "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2",
-        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRduz8A.woff2",
         "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBduz8A.woff2",
-        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBduz8A.woff2"
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmhduz8A.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRduz8A.woff2",
+        "libs/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmxduz8A.woff2"
     ],
     "permissions": [
         "https://sponsor.ajay.app/*"
