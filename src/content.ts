@@ -371,6 +371,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 updateVisibilityOfPlayerControlsButton()
                 break;
             case "categorySelections":
+            case "minDuration":
                 channelIDChange();
                 break;
             case "barTypes":

@@ -85,14 +85,13 @@ function getSkipProfileValue<T>(key: keyof CustomConfiguration): T {
 export function hideTooShortSegments(sponsorTimes: SponsorTime[]) {
     const minDuration = getSkipProfileNum("minDuration");
 
-    if (minDuration !== 0) {
-        for (const segment of sponsorTimes) {
-            const duration = segment.segment[1] - segment.segment[0];
-            if (duration > 0 && duration < minDuration && (segment.hidden === SponsorHideType.Visible || SponsorHideType.MinimumDuration)) {
-                segment.hidden = SponsorHideType.MinimumDuration;
-            } else if (segment.hidden === SponsorHideType.MinimumDuration) {
-                segment.hidden = SponsorHideType.Visible;
-            }
+    for (const segment of sponsorTimes) {
+        const duration = segment.segment[1] - segment.segment[0];
+        const tooShort = minDuration > 0 && duration > 0 && duration < minDuration;
+        if (tooShort && (segment.hidden === SponsorHideType.Visible || segment.hidden === SponsorHideType.MinimumDuration)) {
+            segment.hidden = SponsorHideType.MinimumDuration;
+        } else if (!tooShort && segment.hidden === SponsorHideType.MinimumDuration) {
+            segment.hidden = SponsorHideType.Visible;
         }
     }
 }
