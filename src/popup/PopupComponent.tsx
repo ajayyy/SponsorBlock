@@ -521,7 +521,7 @@ function SkipProfileMenu(props: {open: boolean; videoID: string}): JSX.Element {
     React.useEffect(() => {
         if (props.open) {
             const channelInfo = Video.getChannelIDInfo();
-            if (!channelInfo) {
+            if (!channelInfo.id) {
                 if (Video.isOnYTTV()) {
                     alert(chrome.i18n.getMessage("yttvNoChannelWhitelist"));
                 } else {
