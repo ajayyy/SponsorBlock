@@ -625,7 +625,6 @@ export function generateDebugDetails(): string {
     output.config.serverAddress = (output.config.serverAddress === CompileConfig.serverAddress)
         ? "Default server address" : "Custom server address";
     output.config.invidiousInstances = output.config.invidiousInstances.length;
-    output.config.skipRules = output.config.skipRules.length;
 
     return JSON.stringify(output, null, 4);
 }
