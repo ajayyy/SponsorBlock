@@ -1,6 +1,7 @@
 import { ActionType, Category, SponsorSourceType, SponsorTime, VideoID } from "../types";
 import { getFormattedTimeToSeconds } from "../../maze-utils/src/formating";
 import { getSkipProfileBool } from "./skipProfiles";
+import { getActiveVideoService } from "../videoServices";
 
 export function getControls(): HTMLElement {
     const controlsSelectors = [
@@ -13,7 +14,8 @@ export function getControls(): HTMLElement {
         // Vorapis v3
         ".html5-player-chrome",
         // tv.youtube.com
-        ".ypcs-control-buttons-right"
+        ".ypcs-control-buttons-right",
+        ...(getActiveVideoService()?.selectors?.controls ?? [])
     ];
 
     for (const controlsSelector of controlsSelectors) {
