@@ -3,6 +3,7 @@ import { getChannelIDInfo, getVideoDuration } from "../../maze-utils/src/video";
 import Config from "../config";
 import {ActionType, ActionTypes, CategorySelection, CategorySkipOption, SponsorSourceType, SponsorTime} from "../types";
 import { getSkipProfile, getSkipProfileBool } from "./skipProfiles";
+import { hasAutoSkippedOnce } from "./skipOnce";
 import { VideoLabelsCacheData } from "./videoLabels";
 import * as CompileConfig from "../../config.json";
 import { AdvancedSkipCheck, AdvancedSkipPredicate, AdvancedSkipRule, PredicateOperator, SkipRuleAttribute, SkipRuleOperator } from "./skipRule.type";
@@ -28,6 +29,19 @@ const OPERATOR_EXTRA_CHARACTER = /[<>=!~*&|-]/;
 const ANY_EXTRA_CHARACTER = /[a-zA-Z0-9<>=!~*&|.-]/;
 
 export function getCategorySelection(segment: SponsorTime | VideoLabelsCacheData): CategorySelection {
+    const selection = getRawCategorySelection(segment);
+    if (selection.option === CategorySkipOption.SkipOnce) {
+        const UUID = (segment as SponsorTime).UUID;
+        return {
+            name: selection.name,
+            option: UUID && hasAutoSkippedOnce(UUID) ? CategorySkipOption.ManualSkip : CategorySkipOption.AutoSkip
+        } as CategorySelection;
+    }
+
+    return selection;
+}
+
+export function getRawCategorySelection(segment: SponsorTime | VideoLabelsCacheData): CategorySelection {
     // First check skip rules
     for (const rule of Config.local.skipRules) {
         if (isSkipPredicatePassing(segment, rule.predicate)) {
@@ -174,7 +188,7 @@ export function getCategoryDefaultSelection(category: string): CategorySelection
 
 type TokenType =
     | "if" // Keywords
-    | "disabled" | "show overlay" | "manual skip" | "auto skip" // Skip option
+    | "disabled" | "show overlay" | "manual skip" | "auto skip" | "auto skip once" // Skip option
     | `${SkipRuleAttribute}` // Segment attributes
     | `${SkipRuleOperator}` // Segment attribute operators
     | "and" | "or" | "not" // Expression operators
@@ -383,7 +397,7 @@ class Lexer {
             }
         } else {
             const keyword2 = this.expectKeyword(
-                [ "disabled", "show overlay", "manual skip", "auto skip" ], false);
+                [ "disabled", "show overlay", "manual skip", "auto skip once", "auto skip" ], false);
 
             if (keyword2 !== null) {
                 kind = "word";
@@ -731,7 +745,7 @@ class Parser {
         this.expect(["if"], rule.comments.length !== 0 ? "expected `if` after `comment`" : "expected `if`", true);
         rule.predicate = this.parsePredicate();
 
-        this.expect(["disabled", "show overlay", "manual skip", "auto skip"], "expected skip option after condition", true);
+        this.expect(["disabled", "show overlay", "manual skip", "auto skip", "auto skip once"], "expected skip option after condition", true);
         switch (this.previous.type) {
             case "disabled":
                 rule.skipOption = CategorySkipOption.Disabled;
@@ -744,6 +758,9 @@ class Parser {
                 break;
             case "auto skip":
                 rule.skipOption = CategorySkipOption.AutoSkip;
+                break;
+            case "auto skip once":
+                rule.skipOption = CategorySkipOption.SkipOnce;
                 break;
             default:
             // Ignore, should have already errored
@@ -881,6 +898,9 @@ export function configToText(config: AdvancedSkipRule[]): string {
                 break;
             case CategorySkipOption.AutoSkip:
                 result += "\nAuto Skip";
+                break;
+            case CategorySkipOption.SkipOnce:
+                result += "\nAuto Skip Once";
                 break;
             default:
                 return null; // Invalid skip option
