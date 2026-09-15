@@ -34,7 +34,8 @@ export enum CategorySkipOption {
     Disabled = -1,
     ShowOverlay,
     ManualSkip,
-    AutoSkip
+    AutoSkip,
+    SkipOnce
 }
 
 export interface CategorySelection {
@@ -90,6 +91,8 @@ export interface SponsorTime extends SegmentContainer {
     hidden?: SponsorHideType;
     source: SponsorSourceType;
     videoDuration?: number;
+
+    autoSkippedOnce?: boolean;
 }
 
 export interface ScheduledTime extends SponsorTime {

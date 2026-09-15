@@ -39,6 +39,8 @@ export function CategorySkipOptionsComponent(props: CategorySkipOptionsProps): R
                 return "showOverlay";
             case CategorySkipOption.ManualSkip:
                 return "manualSkip";
+            case CategorySkipOption.SkipOnce:
+                return "skipOnce";
             case CategorySkipOption.AutoSkip:
                 return "autoSkip";
             case CategorySkipOption.FallbackToDefault:
@@ -155,6 +157,16 @@ function skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>,
         case "manualSkip":
             option = CategorySkipOption.ManualSkip;
             break;
+        case "skipOnce":
+            option = CategorySkipOption.SkipOnce;
+
+            if (category === "filler" && !Config.config.isVip) {
+                if (!confirm(chrome.i18n.getMessage("FillerWarning"))) {
+                    event.target.value = "disable";
+                }
+            }
+
+            break;
         case "autoSkip":
             option = CategorySkipOption.AutoSkip;
 
@@ -173,7 +185,7 @@ function skipOptionSelected(event: React.ChangeEvent<HTMLSelectElement>,
 function getCategorySkipOptions(category: Category, isDefaultConfig: boolean): JSX.Element[] {
     const elements: JSX.Element[] = [];
 
-    let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+    let optionNames = ["disable", "showOverlay", "manualSkip", "skipOnce", "autoSkip"];
     if (category === "chapter") optionNames = ["disable", "showOverlay"]
     else if (category === "exclusive_access") optionNames = ["disable", "showOverlay"];
 
