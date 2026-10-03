@@ -14,6 +14,7 @@ import { injectUpdatedScripts } from "../maze-utils/src/cleanup";
 import { logWarn } from "./utils/logger";
 import { chromeP } from "../maze-utils/src/browserApi";
 import { getHash } from "../maze-utils/src/hash";
+import { ScriptingApi, syncFastSkipRegistration } from "./sabr/background/registration";
 const utils = new Utils({
     registerFirefoxContentScript,
     unregisterFirefoxContentScript
@@ -24,9 +25,24 @@ const popupPort: Record<string, chrome.runtime.Port> = {};
 // Used only on Firefox, which does not support non persistent background pages.
 const contentScriptRegistrations = {};
 
+// The page script of the experimental "Faster skipping" option only exists while the option is on
+function updateFastSkipRegistration(): void {
+    syncFastSkipRegistration({
+        enabled: Config.config.experimentalFastSkip,
+        supported: !isFirefoxOrSafari(),
+        api: "scripting" in chrome ? chromeP.scripting as unknown as ScriptingApi : null,
+        log: logWarn
+    }).catch(logWarn);
+}
+
 // Register content script if needed
 utils.wait(() => Config.isReady()).then(function() {
     if (Config.config.supportInvidious) utils.setupExtraSiteContentScripts();
+
+    updateFastSkipRegistration();
+    Config.configSyncListeners.push((changes) => {
+        if (changes.experimentalFastSkip) updateFastSkipRegistration();
+    });
 });
 
 setupBackgroundRequestProxy();

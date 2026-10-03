@@ -425,7 +425,8 @@ function createStickyHeader() {
  */
 async function shouldHideOption(element: Element): Promise<boolean> {
     return (element.getAttribute("data-private-only") === "true" && !(await isIncognitoAllowed()))
-            || (element.getAttribute("data-no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.");
+            || (element.getAttribute("data-no-safari") === "true" && navigator.vendor === "Apple Computer, Inc.")
+            || (element.getAttribute("data-chromium-only") === "true" && isFirefoxOrSafari());
 }
 
 /**
