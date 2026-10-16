@@ -2861,7 +2861,7 @@ function checkForPreloadedSegment() {
     if (Array.isArray(segments)) {
         for (const segment of segments) {
             if (Array.isArray(segment.segment)) {
-                if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === s.segment[1])) {
+                if (!sponsorTimesSubmitting.some((s) => s.segment[0] === segment.segment[0] && s.segment[1] === segment.segment[1])) {
                     sponsorTimesSubmitting.push({
                         segment: segment.segment,
                         UUID: generateUserID() as SegmentUUID,
