@@ -51,7 +51,8 @@ import { isMobileControlsOpen } from "./utils/mobileUtils";
 import { defaultPreviewTime } from "./utils/constants";
 import { onVideoPage } from "../maze-utils/src/pageInfo";
 import { getSegmentsForVideo } from "./utils/segmentData";
-import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
+import { getCategoryDefaultSelection, getCategorySelection, getRawCategorySelection } from "./utils/skipRule";
+import { hasAutoSkippedOnce, markAutoSkippedOnce, resetAutoSkippedOnce } from "./utils/skipOnce";
 import { getSkipProfileBool, getSkipProfileIDForTab, hideTooShortSegments, setCurrentTabSkipProfile } from "./utils/skipProfiles";
 import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
 
@@ -220,7 +221,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             sendResponse({
                 found: sponsorDataFound,
                 status: lastResponseStatus,
-                sponsorTimes: sponsorTimes.filter((segment) => getCategorySelection(segment).option !== CategorySkipOption.Disabled),
+                sponsorTimes: getSegmentsForPopup(),
                 time: getCurrentTime() ?? 0,
                 onMobileYouTube: isOnMobileYouTube(),
                 videoID: getVideoID(),
@@ -371,6 +372,7 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
                 updateVisibilityOfPlayerControlsButton()
                 break;
             case "categorySelections":
+                resetAutoSkippedOnce();
                 channelIDChange();
                 break;
             case "barTypes":
@@ -390,6 +392,7 @@ function contentLocalConfigUpdateListener(changes: StorageChangesObject) {
             case "skipProfiles":
             case "skipProfileTemp":
             case "skipRules":
+                resetAutoSkippedOnce();
                 channelIDChange();
                 break;
         }
@@ -416,6 +419,7 @@ function resetValues() {
     existingChaptersImported = false;
     sponsorSkipped = [];
     loopedChapter = null;
+    resetAutoSkippedOnce();
     lastResponseStatus = 0;
     shownSegmentFailedToFetchWarning = false;
 
@@ -734,6 +738,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                     && segment.actionType !== ActionType.Chapter
                     && segment.hidden === SponsorHideType.Visible))) {
             if (forceVideoTime >= skipTime[0] - skipBuffer && (forceVideoTime < skipTime[1] || skipTime[1] < skipTime[0])) {
+                const skippedAutomatically = getCategorySelection(currentSkip)?.option === CategorySkipOption.AutoSkip;
                 skipToTime({
                     v: getVideo(),
                     skipTime,
@@ -754,7 +759,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
                     }
                 }
 
-                if (getCategorySelection(currentSkip)?.option === CategorySkipOption.ManualSkip
+                if (!skippedAutomatically
                         || currentSkip.actionType === ActionType.Mute) {
                     forcedSkipTime = skipTime[0] + 0.001;
                 } else {
@@ -1274,13 +1279,20 @@ async function sponsorsLookup(keepOldSubmissions = true, ignoreCache = false) {
     }
 }
 
+function getSegmentsForPopup(): SponsorTime[] {
+    return sponsorTimes?.filter((segment) => getCategorySelection(segment).option !== CategorySkipOption.Disabled)
+        .map((segment) => getRawCategorySelection(segment).option === CategorySkipOption.SkipOnce
+            ? { ...segment, autoSkippedOnce: hasAutoSkippedOnce(segment.UUID) }
+            : segment) ?? [];
+}
+
 function notifyPopupOfSegments(): void {
     // notify popup of segment changes
     chrome.runtime.sendMessage({
         message: "infoUpdated",
         found: sponsorDataFound,
         status: lastResponseStatus,
-        sponsorTimes: sponsorTimes.filter((segment) => getCategorySelection(segment).option !== CategorySkipOption.Disabled),
+        sponsorTimes: getSegmentsForPopup(),
         time: getCurrentTime() ?? 0,
         onMobileYouTube: isOnMobileYouTube(),
         videoID: getVideoID(),
@@ -1766,6 +1778,15 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
 
     if ((autoSkip || isSubmittingSegment)
             && getCurrentTime() !== skipTime[1]) {
+        let anySkippedOnce = false;
+        for (const segment of skippingSegments) {
+            if (getRawCategorySelection(segment)?.option === CategorySkipOption.SkipOnce && segment.UUID) {
+                markAutoSkippedOnce(segment.UUID);
+                anySkippedOnce = true;
+            }
+        }
+        if (anySkippedOnce) notifyPopupOfSegments();
+
         switch(skippingSegments[0].actionType) {
             case ActionType.Poi:
             case ActionType.Chapter:
