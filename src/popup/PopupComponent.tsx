@@ -385,9 +385,26 @@ function sendMessage(request: Message): Promise<MessageResponse> {
 }
 
 function setupComPort(props: SegmentsLoadedProps): void {
-    const port = chrome.runtime.connect({ name: "popup" });
-    port.onDisconnect.addListener(() => setupComPort(props));
-    port.onMessage.addListener((msg) => onMessage(props, msg));
+    let reconnected = false;
+    const connect = () => {
+        const port = chrome.runtime.connect({ name: "popup" });
+        port.onDisconnect.addListener(() => {
+            reconnected = true;
+            connect();
+        });
+        port.onMessage.addListener((msg) => onMessage(props, msg));
+
+        // Updates may have been missed while the port was down (e.g. the video
+        // changed in the meantime), so resync instead of trusting stale state
+        if (reconnected) {
+            loadSegments({
+                ...props,
+                updating: true
+            });
+        }
+    };
+
+    connect();
 }
 
 function onMessage(props: SegmentsLoadedProps, msg: PopupMessage) {
