@@ -7,6 +7,7 @@ import { getHashParams } from "./pageUtils";
 import { asyncRequestToServer } from "./requests";
 import { extensionUserAgent } from "../../maze-utils/src";
 import { logRequest, serializeOrStringify } from "../../maze-utils/src/background-request-proxy";
+import { getActiveVideoService } from "../videoServices";
 
 const segmentDataCache = new DataCache<VideoID, SegmentResponse>(() => {
     return {
@@ -55,6 +56,31 @@ export async function getSegmentsForVideo(videoID: VideoID, ignoreCache: boolean
 }
 
 async function fetchSegmentsForVideo(videoID: VideoID): Promise<SegmentResponse> {
+    const activeVideoService = getActiveVideoService();
+    if (activeVideoService?.getSegments) {
+        const response = await activeVideoService.getSegments(videoID);
+        if (response.ok && response.segments?.length) {
+            const result = {
+                segments: response.segments,
+                status: response.status
+            };
+
+            segmentDataCache.setupCache(videoID).segments = result.segments;
+            return result;
+        }
+
+        if (response.ok || response.status === 404) {
+            segmentDataCache.setupCache(videoID);
+        } else {
+            logRequest(response, "SB", `${activeVideoService.id} skip segments`);
+        }
+
+        return {
+            segments: null,
+            status: response.status
+        };
+    }
+
     const extraRequestData: Record<string, unknown> = {};
     const hashParams = getHashParams();
     if (hashParams.requiredSegment) extraRequestData.requiredSegment = hashParams.requiredSegment;
