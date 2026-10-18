@@ -82,6 +82,9 @@ let loopedChapter :SponsorTime = null;
 // List of open skip notices
 const skipNotices: SkipNotice[] = [];
 let upcomingNotice: UpcomingNotice | null = null;
+// Element that the skip keybind currently acts on (e.g. an open skip notice).
+// Cleared once that element is no longer visible, so the keybind doesn't
+// silently act on a notice the user can no longer see (see #clearActiveSkipKeybindElement).
 let activeSkipKeybindElement: ToggleSkippable = null;
 let shownSegmentFailedToFetchWarning = false;
 let selectedSegment: SegmentUUID | null = null;
@@ -183,6 +186,7 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     skipNotices,
     sponsorVideoID: getVideoID(),
     reskipSponsorTime,
+    clearActiveSkipKeybindElement,
     updatePreviewBar,
     onMobileYouTube: isOnMobileYouTube(),
     sponsorSubmissionNotice: submissionNotice,
@@ -441,6 +445,7 @@ function resetValues() {
 
     skipButtonControlBar?.disable();
     categoryPill?.setVisibility(false);
+    activeSkipKeybindElement = null;
 
     for (let i = 0; i < skipNotices.length; i++) {
         skipNotices.pop()?.close();
@@ -1836,7 +1841,12 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                 createSkipNotice(skippingSegments, autoSkip, unskipTime, false);
             } else if (autoSkip) {
                 activeSkipKeybindElement?.setShowKeybindHint(false);
-                activeSkipKeybindElement = {
+
+                // No notice is shown here for the keybind hint to attach to, so there's
+                // nothing whose close() will clear activeSkipKeybindElement afterwards.
+                // Expire it manually after the same duration a visible notice would have
+                // stayed actionable for, so the keybind doesn't act on this indefinitely.
+                const silentSkipElement: ToggleSkippable = {
                     setShowKeybindHint: () => {}, //eslint-disable-line @typescript-eslint/no-empty-function
                     toggleSkip: () => {
                         unskipSponsorTime(skippingSegments[0], unskipTime);
@@ -1844,6 +1854,10 @@ function skipToTime({v, skipTime, skippingSegments, openNotice, forceAutoSkip, u
                         createSkipNotice(skippingSegments, autoSkip, unskipTime, true);
                     }
                 };
+                activeSkipKeybindElement = silentSkipElement;
+
+                setTimeout(() => clearActiveSkipKeybindElement(silentSkipElement),
+                    Config.config.skipNoticeDuration * 1000);
             }
         }
     }
@@ -1872,6 +1886,18 @@ function createSkipNotice(skippingSegments: SponsorTime[], autoSkip: boolean, un
 
     activeSkipKeybindElement?.setShowKeybindHint(false);
     activeSkipKeybindElement = newSkipNotice;
+}
+
+/**
+ * Clears activeSkipKeybindElement, but only if it still points at the given
+ * element. Called when a skip notice (or similar) disappears, so that a later
+ * press of the skip keybind can't act on something the user can no longer see.
+ * The reference check avoids clearing a newer element that was set in the meantime.
+ */
+function clearActiveSkipKeybindElement(element: ToggleSkippable): void {
+    if (activeSkipKeybindElement === element) {
+        activeSkipKeybindElement = null;
+    }
 }
 
 function createUpcomingNotice(skippingSegments: SponsorTime[], timeLeft: number, autoSkip: boolean): void {

@@ -72,6 +72,9 @@ class SkipNotice {
 
         const skipNotices = this.contentContainer().skipNotices;
         skipNotices.splice(skipNotices.indexOf(this), 1);
+
+        // Once this notice is gone, the skip keybind should no longer act on it
+        this.contentContainer().clearActiveSkipKeybindElement(this);
     }
 
     toggleSkip(): void {

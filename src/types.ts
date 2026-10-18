@@ -12,6 +12,7 @@ export interface ContentContainer {
         skipNotices: SkipNotice[];
         sponsorVideoID;
         reskipSponsorTime: (segment: SponsorTime, forceSeek?: boolean) => void;
+        clearActiveSkipKeybindElement: (element: ToggleSkippable) => void;
         updatePreviewBar: () => void;
         onMobileYouTube: boolean;
         sponsorSubmissionNotice: SubmissionNotice;
