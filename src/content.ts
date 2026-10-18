@@ -54,10 +54,25 @@ import { getSegmentsForVideo } from "./utils/segmentData";
 import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
 import { getSkipProfileBool, getSkipProfileIDForTab, hideTooShortSegments, setCurrentTabSkipProfile } from "./utils/skipProfiles";
 import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
+import { BridgeWindow, createSabrBridge } from "./sabr/content/sabrBridge";
+import { NextSkip, SkipTargetContext, collectCandidates, deriveShapingDecision } from "./sabr/content/skipTarget";
 
 cleanPage();
 
 const utils = new Utils();
+
+// Talks to the page-side script of the experimental "Faster skipping" option (inactive unless it is on)
+const sabrBridge = createSabrBridge({
+    win: window as unknown as BridgeWindow,
+    newSessionId: () => (typeof crypto?.randomUUID === "function" ? crypto.randomUUID() : `${Date.now().toString(36)}${Math.random().toString(36).slice(2)}`),
+    log: { debug: logDebug, warn: logWarn },
+    timers: { set: (callback, ms) => window.setTimeout(callback, ms), clear: (handle) => window.clearTimeout(handle as number) }
+});
+
+// The page-side script is only registered for the top frame of www.youtube.com, in Chromium
+const supportsFastSkip = (): boolean => window === window.top
+    && window.location.hostname === "www.youtube.com"
+    && !isFirefoxOrSafari();
 
 utils.wait(() => Config.isReady(), 5000, 10).then(() => {
     // Hack to get the CSS loaded on permission-based sites (Invidious)
@@ -65,6 +80,11 @@ utils.wait(() => Config.isReady(), 5000, 10).then(() => {
     setCategoryColorCSSVariables();
 
     runCompatibilityChecks();
+
+    if (supportsFastSkip()) {
+        sabrBridge.init(Config.config.experimentalFastSkip);
+        addCleanupListener(() => sabrBridge.dispose());
+    }
 });
 
 const skipBuffer = 0.003;
@@ -277,6 +297,7 @@ function messageListener(request: Message, sender: unknown, sendResponse: (respo
             utils.getSponsorTimeFromUUID(sponsorTimes, request.UUID).hidden = request.type;
             utils.addHiddenSegment(getVideoID(), request.UUID, request.type);
             updatePreviewBar();
+            refreshSabrShaping();
 
             if (skipButtonControlBar?.isEnabled()
                 && sponsorTimesSubmitting.every((s) => s.hidden !== SponsorHideType.Visible || s.actionType !== ActionType.Poi)) {
@@ -373,6 +394,10 @@ function contentConfigUpdateListener(changes: StorageChangesObject) {
             case "categorySelections":
                 channelIDChange();
                 break;
+            case "experimentalFastSkip":
+                sabrBridge.setEnabled(!!changes[key].newValue && supportsFastSkip());
+                refreshSabrShaping();
+                break;
             case "barTypes":
                 setCategoryColorCSSVariables();
                 break;
@@ -452,6 +477,8 @@ function resetValues() {
     }
 
     hideDeArrowPromotion();
+
+    sabrBridge.reset("videoChange");
 }
 
 function videoIDChange(): void {
@@ -658,6 +685,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
         lastCheckVideoTime = -1;
         lastCheckTime = 0;
         logDebug("[SB] Ad playing, pausing skipping");
+        sabrBridge.update({ kind: "disarm", reason: "ad" });
 
         return;
     }
@@ -675,6 +703,7 @@ async function startSponsorSchedule(includeIntersectingSegments = false, current
     clearWaitingTime();
 
     updateActiveSegment(currentTime);
+    refreshSabrShaping(currentTime);
 
     if ((getVideo().paused && getCurrentTime() !== 0) // Allow autoplay disabled videos to skip before playing
         || (getCurrentTime() >= getVideoDuration() - 0.01 && getVideoDuration() > 1)) return;
@@ -1493,6 +1522,7 @@ async function channelIDChange() {
     updatePreviewBar();
     updateCategoryPill();
     notifyPopupOfSegments();
+    refreshSabrShaping();
 }
 
 function videoElementChange(newVideo: boolean, video: HTMLVideoElement): void {
@@ -1956,6 +1986,56 @@ function createButton(baseID: string, title: string, callback: () => void, image
     return newButton;
 }
 
+/** SponsorBlock's own "what is scheduled next" answer, shaped for the "Faster skipping" decision. */
+function sabrNextSkip(afterSec: number): NextSkip | null {
+    const skipInfo = getNextSkipIndex(afterSec, false, true);
+    const entry = skipInfo.array[skipInfo.index];
+    const lastOfChain = skipInfo.array[skipInfo.endIndex];
+    if (!entry || !lastOfChain) return null;
+
+    return {
+        scheduledTimeSec: entry.scheduledTime,
+        candidate: {
+            startSec: entry.scheduledTime,
+            endSec: lastOfChain.segment[1],
+            isSkipAction: entry.actionType === ActionType.Skip,
+            autoSkip: shouldAutoSkip(entry),
+            shouldSkip: shouldSkip(entry),
+            visible: entry.hidden === SponsorHideType.Visible,
+            isStartEntry: entry.scheduledTime === entry.segment[0],
+            fromUnsubmitted: !skipInfo.openNotice
+        }
+    };
+}
+
+function sabrContext(): SkipTargetContext {
+    const video = getVideo();
+
+    return {
+        enabled: Config.config.experimentalFastSkip && supportsFastSkip(),
+        videoID: getVideoID(),
+        durationSec: getVideoDuration(),
+        isSupportedPage: supportsFastSkip()
+            && !window.location.pathname.startsWith("/embed")
+            && !window.location.pathname.startsWith("/shorts")
+            && !isOnInvidious() && !isOnYTTV() && !isOnYouTubeMusic() && !isOnMobileYouTube(),
+        isLive: getIsLivePremiere(),
+        isInline: getIsInline(),
+        isAdPlaying: getIsAdPlaying(),
+        hasTimeOffset: !!video && video.currentTime !== getCurrentTime(),
+        channelKnown: getChannelIDInfo().status === ChannelIDStatus.Found,
+        skippingDisabled: Config.config.disableSkipping,
+        isLoopedChapter: loopedChapter !== null
+    };
+}
+
+/** Tells the page-side script of "Faster skipping" which segment to prepare for (does nothing when the option is off). */
+function refreshSabrShaping(currentTime?: number): void {
+    if (!sabrBridge.isActive()) return;
+
+    sabrBridge.update(deriveShapingDecision(sabrContext(), collectCandidates(currentTime ?? getVirtualTime(), sabrNextSkip)));
+}
+
 function shouldAutoSkip(segment: SponsorTime): boolean {
     const canSkipNonMusic = !Config.config.skipNonMusicOnlyOnYoutubeMusic || isOnYouTubeMusic();
     if (segment.category === "music_offtopic" && !canSkipNonMusic) {
@@ -2393,6 +2473,7 @@ async function voteAsync(type: number, UUID: SegmentUUID, category?: Category): 
                     }
 
                     updatePreviewBar();
+                    refreshSabrShaping();
                 }
             }
 
