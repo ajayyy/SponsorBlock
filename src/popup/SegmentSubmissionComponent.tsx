@@ -30,9 +30,12 @@ export const SegmentSubmissionComponent = (props: SegmentSubmissionComponentProp
                         className="sbMediumButton"
                         style={{ marginRight: "8px" }}
                         onClick={() => {
+                            let response: MessageResponse | undefined;
                             props.sendMessage({
                                 from: "popup",
                                 message: "sponsorStart"
+                            }).then((res) => {
+                                response = res;
                             });
 
                             setShowStartSegment(!showStartSegment);
@@ -41,9 +44,19 @@ export const SegmentSubmissionComponent = (props: SegmentSubmissionComponentProp
                             // Once data is saved, make sure it is correct
                             setTimeout(() => {
                                 const segments = Config.local.unsubmittedSegments[props.videoID];
-                                setShowStartSegment(!segments || segments[segments.length - 1].segment.length === 2);
+                                if ((!segments || segments.length === 0) && response && "creatingSegment" in response) {
+                                    // Nothing is stored under this videoID, which
+                                    // happens when this popup's videoID is stale.
+                                    // The content script answered for the video it
+                                    // is actually on, so trust its report instead
+                                    // of snapping back to the pre-click state.
+                                    setShowStartSegment(!response.creatingSegment);
+                                    setShowSubmitButton(true);
+                                } else {
+                                    setShowStartSegment(!segments || segments[segments.length - 1].segment.length === 2);
 
-                                setShowSubmitButton(segments && segments.length > 0);
+                                    setShowSubmitButton(segments && segments.length > 0);
+                                }
                             }, 200);
                         }}>
                     {showStartSegment ? chrome.i18n.getMessage("sponsorStart") : chrome.i18n.getMessage("sponsorEnd")}
