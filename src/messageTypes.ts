@@ -11,13 +11,13 @@ interface BaseMessage {
 
 interface DefaultMessage {
     message:
-        "update"
-        | "sponsorStart"
-        | "getChannelID"
-        | "submitTimes"
-        | "refreshSegments"
-        | "closePopup"
-        | "getLogs";
+    "update"
+    | "sponsorStart"
+    | "getChannelID"
+    | "submitTimes"
+    | "refreshSegments"
+    | "closePopup"
+    | "getLogs";
 }
 
 interface IsInfoFoundMessage {
@@ -74,7 +74,15 @@ interface SetCurrentTabSkipProfileResponse {
     configID: ConfigurationID | null;
 }
 
-export type Message = BaseMessage & (DefaultMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage | SetCurrentTabSkipProfileResponse);
+export interface UpdateSegmentMessage {
+    message: "updateSegment";
+    videoID: VideoID;
+    oldUUID: SegmentUUID;
+    newSegment: SponsorTime;
+    videoDuration: number;
+}
+
+export type Message = BaseMessage & (DefaultMessage | IsInfoFoundMessage | SkipMessage | SubmitVoteMessage | HideSegmentMessage | CopyToClipboardMessage | ImportSegmentsMessage | KeyDownMessage | LoopChapterMessage | SetCurrentTabSkipProfileResponse | UpdateSegmentMessage);
 
 export interface IsInfoFoundMessageResponse {
     found: boolean;
@@ -83,6 +91,7 @@ export interface IsInfoFoundMessageResponse {
     time: number;
     onMobileYouTube: boolean;
     videoID: VideoID;
+    videoDuration: number;
     loopedChapter: SegmentUUID | null;
     channelID: string;
     channelAuthor: string;

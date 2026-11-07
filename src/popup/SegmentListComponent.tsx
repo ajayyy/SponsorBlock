@@ -3,7 +3,7 @@ import { ActionType, SegmentListDefaultTab, SegmentUUID, SponsorHideType, Sponso
 import Config from "../config";
 import { waitFor } from "../../maze-utils/src";
 import { shortCategoryName } from "../utils/categoryUtils";
-import { formatJSErrorMessage, getFormattedTime, getShortErrorMessage } from "../../maze-utils/src/formating";
+import { formatJSErrorMessage, getFormattedTime, getFormattedTimeToSeconds, getShortErrorMessage } from "../../maze-utils/src/formating";
 import { AnimationUtils } from "../../maze-utils/src/animationUtils";
 import { asyncRequestToServer } from "../utils/requests";
 import { Message, MessageResponse, VoteResponse } from "../messageTypes";
@@ -19,6 +19,7 @@ interface SegmentListComponentProps {
     status: LoadingStatus;
     segments: SponsorTime[];
     loopedChapter: SegmentUUID | null;
+    videoDuration: number;
 
     sendMessage: (request: Message) => Promise<MessageResponse>;
 }
@@ -29,7 +30,7 @@ enum SegmentListTab {
 }
 
 interface SegmentWithNesting extends SponsorTime {
-    innerChapters?: (SegmentWithNesting|SponsorTime)[];
+    innerChapters?: (SegmentWithNesting | SponsorTime)[];
 }
 
 function isSegment(segment) {
@@ -81,7 +82,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
         const result: SegmentWithNesting[] = [];
         const chapterStack: SegmentWithNesting[] = [];
         for (let seg of props.segments) {
-            seg = {...seg};
+            seg = { ...seg };
             // non-chapter, do not nest
             if (seg.actionType !== ActionType.Chapter) {
                 result.push(seg);
@@ -130,10 +131,10 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
                 </span>
             </div>
             <div id="issueReporterTimeButtons"
-                    onMouseLeave={() => selectSegment({
-                        segment: null,
-                        sendMessage: props.sendMessage
-                    })}>
+                onMouseLeave={() => selectSegment({
+                    segment: null,
+                    sendMessage: props.sendMessage
+                })}>
                 {
                     segmentsWithNesting.map((segment) => (
                         <SegmentListItem
@@ -143,6 +144,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
                             currentTime={props.currentTime}
                             isVip={isVip}
                             loopedChapter={props.loopedChapter} // UUID instead of boolean so it can be passed down to nested chapters 
+                            videoDuration={props.videoDuration}
 
                             tabFilter={tab === SegmentListTab.Chapter ? isChapter : isSegment}
                             sendMessage={props.sendMessage}
@@ -150,7 +152,7 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
                     ))
                 }
             </div>
-            
+
             <ImportSegments
                 status={props.status}
                 segments={props.segments}
@@ -160,13 +162,14 @@ export const SegmentListComponent = (props: SegmentListComponentProps) => {
     );
 };
 
-function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
+function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, videoDuration, tabFilter, sendMessage }: {
     segment: SegmentWithNesting;
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
     loopedChapter: SegmentUUID;
-    
+    videoDuration: number;
+
     tabFilter: (segment: SponsorTime) => boolean;
     sendMessage: (request: Message) => Promise<MessageResponse>;
 }) {
@@ -199,21 +202,94 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
             extraInfo = "";
     }
 
+    const [isEditing, setIsEditing] = React.useState(false);
+    const [editStart, setEditStart] = React.useState(getFormattedTime(segment.segment[0]));
+    const [editEnd, setEditEnd] = React.useState(getFormattedTime(segment.segment[1]));
+    const [editCategory, setEditCategory] = React.useState(segment.category);
+
+    const handleSave = async () => {
+        const start = getFormattedTimeToSeconds(editStart);
+        const end = getFormattedTimeToSeconds(editEnd);
+
+        if (start === null || end === null) {
+            alert("Invalid time format");
+            return;
+        }
+
+        const newSegment = { ...segment };
+        newSegment.category = editCategory;
+        newSegment.segment = [start, end];
+
+        // Use chrome.runtime.sendMessage to send directly to background script
+        const response: any = await new Promise((resolve) => {
+            chrome.runtime.sendMessage({
+                message: "updateSegment",
+                videoID: videoID,
+                oldUUID: segment.UUID,
+                newSegment: newSegment,
+                videoDuration: Number(videoDuration || 0)
+            }, resolve);
+        });
+
+        // Check for success (ok property or status 200)
+        if (response && ("ok" in response && response.ok || (response as any).status === 200)) {
+            setIsEditing(false);
+            sendMessage({ message: "refreshSegments" });
+        } else {
+            alert("Error updating segment: " + ((response as any).responseText || (response as any).error || "Unknown error"));
+        }
+    };
+
+    if (isEditing) {
+        return (
+            <div className={"segmentWrapper " + (!tabFilter(segment) ? "hidden" : "")}>
+                <div style={{ padding: "5px", display: "flex", flexDirection: "column", gap: "5px", backgroundColor: "rgba(0,0,0,0.1)" }}>
+                    <div style={{ display: "flex", gap: "5px" }}>
+                        <input className="sponsorTimeEdit"
+                            value={editStart}
+                            onChange={(e) => setEditStart(e.target.value)}
+                            style={{ width: "60px" }}
+                        />
+                        <span>to</span>
+                        <input className="sponsorTimeEdit"
+                            value={editEnd}
+                            onChange={(e) => setEditEnd(e.target.value)}
+                            style={{ width: "60px" }}
+                        />
+                    </div>
+                    <select className="sponsorTimeEditSelector"
+                        value={editCategory}
+                        onChange={(e) => setEditCategory(e.target.value as any)}>
+                        {
+                            Object.keys(Config.config.barTypes).map(cat => (
+                                <option key={cat} value={cat}>{chrome.i18n.getMessage("category_" + cat)}</option>
+                            ))
+                        }
+                    </select>
+                    <div style={{ display: "flex", gap: "10px", marginTop: "5px" }}>
+                        <button onClick={handleSave} title="Save">Save</button>
+                        <button onClick={() => setIsEditing(false)} title="Cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className={"segmentWrapper " + (!tabFilter(segment) ? "hidden" : "")}>
             <details data-uuid={segment.UUID}
-                    onDoubleClick={() => skipSegment({
+                onDoubleClick={() => skipSegment({
+                    segment,
+                    sendMessage
+                })}
+                onMouseEnter={() => {
+                    selectSegment({
                         segment,
                         sendMessage
-                    })}
-                    onMouseEnter={() => {
-                        selectSegment({
-                            segment,
-                            sendMessage
-                        });
-                    }}
-                    className={"votingButtons"}
-                    >
+                    });
+                }}
+                className={"votingButtons"}
+            >
                 <summary className={"segmentSummary " + (
                     currentTime >= segment.segment[0] ? (
                         currentTime < segment.segment[1] ? "segmentActive" : "segmentPassed"
@@ -230,10 +306,10 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                     <div style={{ margin: "5px" }}>
                         {
                             segment.actionType === ActionType.Full ? chrome.i18n.getMessage("full") :
-                            (getFormattedTime(segment.segment[0], true) +
-                                (segment.actionType !== ActionType.Poi
-                                    ? " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segment.segment[1], true)
-                                    : ""))
+                                (getFormattedTime(segment.segment[0], true) +
+                                    (segment.actionType !== ActionType.Poi
+                                        ? " " + chrome.i18n.getMessage("to") + " " + getFormattedTime(segment.segment[1], true)
+                                        : ""))
                         }
                     </div>
                 </summary>
@@ -250,7 +326,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 setVoteMessage: setVoteMessage,
                                 sendMessage
                             });
-                        }}/>
+                        }} />
                     <img
                         className="voteButton"
                         title="Downvote"
@@ -262,7 +338,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 setVoteMessage: setVoteMessage,
                                 sendMessage
                             });
-                        }}/>
+                        }} />
                     <img
                         className="voteButton"
                         title="Copy Segment ID"
@@ -290,7 +366,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 stopAnimation();
                             }
 
-                        }}/>
+                        }} />
                     {
                         segment.actionType === ActionType.Chapter &&
                         <img
@@ -313,7 +389,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                 }
 
                                 setIsLooped(!isLooped);
-                            }}/>
+                            }} />
                     }
                     {
                         (segment.actionType === ActionType.Skip || segment.actionType === ActionType.Mute
@@ -334,7 +410,7 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                     type: newState,
                                     UUID: segment.UUID
                                 });
-                            }}/>
+                            }} />
                     }
                     {
                         segment.actionType !== ActionType.Full &&
@@ -348,8 +424,16 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                                     element: e.currentTarget,
                                     sendMessage
                                 });
-                            }}/>
+                            }} />
                     }
+
+                    <img
+                        className="voteButton"
+                        title={chrome.i18n.getMessage("edit")}
+                        src={chrome.runtime.getURL("icons/pencil.svg")}
+                        onClick={(e) => {
+                            setIsEditing(true);
+                        }} />
                 </div>
 
                 <div className={"sponsorTimesVoteStatusContainer " + (voteMessage ? "" : "hidden")}>
@@ -367,6 +451,8 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
                     currentTime={currentTime}
                     isVip={isVip}
                     loopedChapter={loopedChapter}
+                    videoDuration={videoDuration}
+
                     tabFilter={tabFilter}
                     sendMessage={sendMessage}
                 />
@@ -375,12 +461,13 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
     );
 }
 
-function InnerChapterList({ chapters, videoID, currentTime, isVip, loopedChapter, tabFilter, sendMessage }: {
+function InnerChapterList({ chapters, videoID, currentTime, isVip, loopedChapter, videoDuration, tabFilter, sendMessage }: {
     chapters: (SegmentWithNesting)[];
     videoID: VideoID;
     currentTime: number;
     isVip: boolean;
     loopedChapter: SegmentUUID;
+    videoDuration: number;
 
     tabFilter: (segment: SponsorTime) => boolean;
     sendMessage: (request: Message) => Promise<MessageResponse>;
@@ -402,6 +489,7 @@ function InnerChapterList({ chapters, videoID, currentTime, isVip, loopedChapter
                         currentTime={currentTime}
                         isVip={isVip}
                         loopedChapter={loopedChapter}
+                        videoDuration={videoDuration}
 
                         tabFilter={tabFilter}
                         sendMessage={sendMessage}
@@ -440,7 +528,7 @@ async function vote(props: {
             props.setVoteMessage(chrome.i18n.getMessage("voted"));
         } else {
             // Error
-            logRequest({headers: null, ...response}, "SB", "vote on segment");
+            logRequest({ headers: null, ...response }, "SB", "vote on segment");
             props.setVoteMessage(getShortErrorMessage(response.status, response.responseText));
             messageDuration = 10_000;
         }
@@ -514,15 +602,15 @@ function ImportSegments(props: ImportSegmentsProps) {
     return (
         <div id="issueReporterImportExport" className={props.status === LoadingStatus.Loading ? "hidden" : ""}>
             <div id="importExportButtons">
-            <button id="importSegmentsButton"
+                <button id="importSegmentsButton"
                     className={props.status === LoadingStatus.SegmentsFound || props.status === LoadingStatus.NoSegmentsFound ? "" : "hidden"}
                     title={chrome.i18n.getMessage("importSegments")}
                     onClick={() => {
                         setImportMenuVisible(!importMenuVisible);
                     }}>
-                <img src="/icons/import.svg" alt="Import icon" id="importSegments" />
-            </button>
-            <button id="exportSegmentsButton"
+                    <img src="/icons/import.svg" alt="Import icon" id="importSegments" />
+                </button>
+                <button id="exportSegmentsButton"
                     className={props.segments.length === 0 ? "hidden" : ""}
                     title={chrome.i18n.getMessage("exportSegments")}
                     onClick={(e) => {
@@ -531,7 +619,7 @@ function ImportSegments(props: ImportSegmentsProps) {
                         const stopAnimation = AnimationUtils.applyLoadingAnimation(e.currentTarget, 0.3);
                         stopAnimation();
                         new GenericNotice(null, "exportCopied", {
-                            title:  chrome.i18n.getMessage(`CopiedExclamation`),
+                            title: chrome.i18n.getMessage(`CopiedExclamation`),
                             timed: true,
                             maxCountdownTime: () => 0.6,
                             referenceNode: e.currentTarget.parentElement,
@@ -548,25 +636,25 @@ function ImportSegments(props: ImportSegmentsProps) {
                             hideRightInfo: true
                         });
                     }}>
-                <img src="/icons/export.svg" alt="Export icon" id="exportSegments" />
-            </button>
+                    <img src="/icons/export.svg" alt="Export icon" id="exportSegments" />
+                </button>
             </div>
 
             <span id="importSegmentsMenu" className={importMenuVisible ? "" : "hidden"}>
                 <textarea id="importSegmentsText" rows={5} style={{ width: "80%" }} ref={textArea}></textarea>
 
                 <button id="importSegmentsSubmit"
-                        title={chrome.i18n.getMessage("importSegments")}
-                        onClick={() => {
-                            const text = textArea.current.value;
+                    title={chrome.i18n.getMessage("importSegments")}
+                    onClick={() => {
+                        const text = textArea.current.value;
 
-                            props.sendMessage({
-                                message: "importSegments",
-                                data: text
-                            });
+                        props.sendMessage({
+                            message: "importSegments",
+                            data: text
+                        });
 
-                            setImportMenuVisible(false);
-                        }}>
+                        setImportMenuVisible(false);
+                    }}>
                     {chrome.i18n.getMessage("Import")}
                 </button>
             </span>
