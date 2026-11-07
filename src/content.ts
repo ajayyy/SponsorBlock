@@ -53,6 +53,7 @@ import { onVideoPage } from "../maze-utils/src/pageInfo";
 import { getSegmentsForVideo } from "./utils/segmentData";
 import { getCategoryDefaultSelection, getCategorySelection } from "./utils/skipRule";
 import { getSkipProfileBool, getSkipProfileIDForTab, hideTooShortSegments, setCurrentTabSkipProfile } from "./utils/skipProfiles";
+import { addRateChangeListener } from "./utils/rateChangeListener";
 import { FetchResponse, logRequest } from "../maze-utils/src/background-request-proxy";
 
 cleanPage();
@@ -937,7 +938,7 @@ function setupVideoListeners(video: HTMLVideoElement) {
 
             startSponsorSchedule();
         };
-        video.addEventListener('ratechange', rateChangeListener);
+        const removeRateChangeListener = addRateChangeListener(video, rateChangeListener);
         // Used by videospeed extension (https://github.com/igrigorik/videospeed/pull/740)
         video.addEventListener('videoSpeed_ratechange', rateChangeListener);
 
@@ -1102,7 +1103,7 @@ function setupVideoListeners(video: HTMLVideoElement) {
                 video.removeEventListener('play', playListener);
                 video.removeEventListener('playing', playingListener);
                 video.removeEventListener('seeking', seekingListener);
-                video.removeEventListener('ratechange', rateChangeListener);
+                removeRateChangeListener();
                 video.removeEventListener('videoSpeed_ratechange', rateChangeListener);
                 video.removeEventListener('pause', pauseListener);
                 video.removeEventListener('waiting', waitingListener);
