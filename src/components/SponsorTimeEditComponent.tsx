@@ -678,7 +678,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
                 // Only start time is valid, still an incomplete segment
                 sponsorTimesSubmitting[this.props.index].segment[0] = startTime;
             }
-        } else if (this.state.sponsorTimeEdits[1] === null && category === "outro" && !sponsorTimesSubmitting[this.props.index].segment[1]) {
+        } else if (category === "outro" && !sponsorTimesSubmitting[this.props.index].segment[1]) {
             sponsorTimesSubmitting[this.props.index].segment[1] = getVideoDuration();
             this.props.contentContainer().updateEditButtonsOnPlayer();
         }
