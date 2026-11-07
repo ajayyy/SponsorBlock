@@ -1,7 +1,10 @@
 {
   "host_permissions": [
     "https://*.youtube.com/*",
-    "https://sponsor.ajay.app/*"
+    "https://sponsor.ajay.app/*",
+    "https://rutube.ru/*",
+    "https://*.rutube.ru/*",
+    "https://sponsorblock.futuba.ru/*"
   ],
   "optional_host_permissions": [
     "*://*/*"
@@ -96,7 +99,9 @@
       ],
       "matches": [
           "https://*.youtube.com/*",
-          "https://www.youtube-nocookie.com/embed/*"
+          "https://www.youtube-nocookie.com/embed/*",
+          "https://rutube.ru/*",
+          "https://*.rutube.ru/*"
       ],
       "exclude_matches": [
         "https://accounts.youtube.com/RotateCookiesPage*"
