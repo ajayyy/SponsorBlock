@@ -199,6 +199,10 @@ function SegmentListItem({ segment, videoID, currentTime, isVip, loopedChapter, 
             extraInfo = "";
     }
 
+    if (segment.autoSkippedOnce !== undefined) {
+        extraInfo += " (" + chrome.i18n.getMessage(segment.autoSkippedOnce ? "alreadySkippedOnce" : "willSkipOnce") + ")";
+    }
+
     return (
         <div className={"segmentWrapper " + (!tabFilter(segment) ? "hidden" : "")}>
             <details data-uuid={segment.UUID}
