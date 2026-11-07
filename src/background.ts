@@ -55,18 +55,32 @@ chrome.runtime.onMessage.addListener(function (request, sender, callback) {
             unregisterFirefoxContentScript(request.id)
             return false;
         case "tabs": {
-            chrome.tabs.query({
-                active: true,
-                currentWindow: true
-            }, tabs => {
+            // A popup hosted inside a tab (e.g. the in-page popup, which has no
+            // chrome.tabs of its own on Firefox) is identified by the sender's
+            // tab, even when that tab is not the currently active one. Only fall
+            // back to the active tab for popups that are not hosted in a tab.
+            if (sender.tab?.id !== undefined) {
                 chrome.tabs.sendMessage(
-                    tabs[0].id,
+                    sender.tab.id,
                     request.data,
                     (response) => {
                         callback(response);
                     }
                 );
-            });
+            } else {
+                chrome.tabs.query({
+                    active: true,
+                    currentWindow: true
+                }, tabs => {
+                    chrome.tabs.sendMessage(
+                        tabs[0].id,
+                        request.data,
+                        (response) => {
+                            callback(response);
+                        }
+                    );
+                });
+            }
             return true;
         }
         case "time":
@@ -101,12 +115,34 @@ chrome.runtime.onMessageExternal.addListener((request, sender, callback) => {
 
 chrome.runtime.onConnect.addListener((port) => {
     if (port.name === "popup") {
-        chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        }, tabs => {
-            popupPort[tabs[0].id] = port;
-        });
+        // When the popup is hosted inside a tab (the in-page popup), the sender
+        // identifies that tab directly. Guessing the active tab instead breaks
+        // whenever the port reconnects while a different tab is active: updates
+        // meant for the popup's real tab then get posted to a dead port and the
+        // popup silently stops tracking video changes.
+        const tabID = port.sender?.tab?.id;
+        if (tabID !== undefined) {
+            popupPort[tabID] = port;
+
+            port.onDisconnect.addListener(() => {
+                if (popupPort[tabID] === port) {
+                    delete popupPort[tabID];
+                }
+            });
+        } else {
+            chrome.tabs.query({
+                active: true,
+                currentWindow: true
+            }, tabs => {
+                popupPort[tabs[0].id] = port;
+
+                port.onDisconnect.addListener(() => {
+                    if (popupPort[tabs[0].id] === port) {
+                        delete popupPort[tabs[0].id];
+                    }
+                });
+            });
+        }
     }
 });
 
