@@ -67,6 +67,32 @@ export interface NoticeState {
 
 // Limits for dragging notice around
 const bounds = [10, 100, 10, 10];
+const timeUnits = [
+    {
+        // key of the string to use
+        translationKey: "NoticeTimeAfterSkip",
+        // placeholder in the string to replace
+        variable: "{seconds}",
+        // what to divide by to get the next unit
+        nextDiv: 60,
+    },
+    {
+        translationKey: "NoticeTimeAfterSkipMinutes",
+        variable: "{minutes}",
+        nextDiv: 60,
+    },
+    {
+        translationKey: "NoticeTimeAfterSkipHours",
+        variable: "{hours}",
+        nextDiv: 24,
+    },
+    {
+        translationKey: "NoticeTimeAfterSkipDays",
+        variable: "{days}",
+        nextDiv: 10,
+    },
+]
+type TimeUnit = typeof timeUnits extends (infer T)[] ? T : never;
 
 class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     countdownInterval: NodeJS.Timeout;
@@ -249,12 +275,21 @@ class NoticeComponent extends React.Component<NoticeProps, NoticeState> {
     }
 
     getCountdownElements(): React.ReactElement[] {
+        let number = Math.ceil(this.state.countdownTime);
+        let finalUnit: TimeUnit;
+        for (const unit of timeUnits) {
+            if (unit.nextDiv > number) {
+                finalUnit = unit;
+                break;
+            }
+            number = Math.floor(number / unit.nextDiv);
+        }
         return [(
                     <span 
                         id={"skipNoticeTimerText" + this.idSuffix}
                         key="skipNoticeTimerText"
                         className={this.state.countdownMode !== CountdownMode.Timer ? "sbhidden" : ""} >
-                            {chrome.i18n.getMessage("NoticeTimeAfterSkip").replace("{seconds}", Math.ceil(this.state.countdownTime).toString())}
+                            {finalUnit === undefined ? "∞" : chrome.i18n.getMessage(finalUnit.translationKey).replace(finalUnit.variable, number.toString())}
                     </span>
                 ),(
                     <img 
