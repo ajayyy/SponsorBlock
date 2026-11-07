@@ -133,7 +133,9 @@ class PreviewBar {
         // YT, Vorapis, unknown, YTTV
         const tooltipTextWrapper = document.querySelector(".ytp-tooltip-text-wrapper, .ytp-progress-tooltip-text-container, .yssi-slider .ys-seek-details .time-info-bar") ?? document.querySelector("#progress-bar-container.ytk-player > #hover-time-info");
         const defaultTooltipSelector = ".ytp-tooltip-title:not(.sponsorCategoryTooltip), .ytp-tooltip-title:not(.sponsorCategoryTooltip) span, .ytp-progress-tooltip-text:not(.sponsorCategoryTooltip), .current-time:not(.sponsorCategoryTooltip)";
-        const originalTooltip = findNonEmptyElement([
+        // Looked up on each hover, since the tooltips are empty until hovered and the
+        // new player shows chapter names in the pill title instead of the default title
+        const getOriginalTooltip = () => findNonEmptyElement([
             defaultTooltipSelector,
             ".ytp-tooltip-progress-bar-pill-title"
         ]) ?? document.querySelector(defaultTooltipSelector);
@@ -172,6 +174,7 @@ class PreviewBar {
         seekBar.addEventListener("mousemove", (e: MouseEvent) => {
             if (!mouseOnSeekBar || !this.categoryTooltip || !this.categoryTooltipContainer || !chrome.runtime?.id) return;
 
+            const originalTooltip = getOriginalTooltip();
             let noYoutubeChapters = !!tooltipTextWrapper.querySelector(".ytp-tooltip-text.ytp-tooltip-text-no-title, .ytp-progress-tooltip-timestamp");
             const timeInSeconds = this.decimalToTime((e.clientX - seekBar.getBoundingClientRect().x) / seekBar.clientWidth);
 
