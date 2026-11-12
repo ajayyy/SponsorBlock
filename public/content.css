@@ -31,6 +31,10 @@
 	transition: transform .1s cubic-bezier(0,0,0.2,1);
 }
 
+.ytp-delhi-modern #previewbar {
+	transform: scaleY(0.667);
+}
+
 /* Prevent bar from covering highlights on YTTV */
 #previewbar.sponsorblock-yttv-container  {
 	z-index: unset;
