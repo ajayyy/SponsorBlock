@@ -112,9 +112,34 @@ function getSkipCheckValue(segment: SponsorTime | VideoLabelsCacheData, rule: Ad
             return getVideoDuration();
         case SkipRuleAttribute.Title:
             return getCurrentPageTitle() || "";
+        case SkipRuleAttribute.PageDomain:
+            return getPageDomain();
         default:
             return undefined;
     }
+}
+
+/**
+ * The domain of the page in the address bar, which is the site the video is embedded on for embeds
+ */
+function getPageDomain(): string {
+    if (window.self === window.top) {
+        return location.hostname;
+    }
+
+    try {
+        const ancestorOrigins = location.ancestorOrigins;
+        if (ancestorOrigins?.length > 0) {
+            return new URL(ancestorOrigins[ancestorOrigins.length - 1]).hostname;
+        } else if (document.referrer) {
+            // Older browsers without ancestorOrigins
+            return new URL(document.referrer).hostname;
+        }
+    } catch (e) {
+        console.error("[SB] Failed to get page domain", e);
+    }
+
+    return "";
 }
 
 function isSkipCheckPassing(segment: SponsorTime | VideoLabelsCacheData, rule: AdvancedSkipCheck): boolean {
