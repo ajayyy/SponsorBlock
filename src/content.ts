@@ -86,6 +86,8 @@ let activeSkipKeybindElement: ToggleSkippable = null;
 let shownSegmentFailedToFetchWarning = false;
 let selectedSegment: SegmentUUID | null = null;
 let previewedSegment = false;
+// Segments removed from the time shown with skips removed
+let skippedTimestamps: number[][] = [];
 
 // JSON video info
 let videoInfo: VideoInfo = null;
@@ -413,6 +415,8 @@ function resetValues() {
     firstPlay = true;
 
     sponsorTimes = [];
+    skippedTimestamps = [];
+    showCurrentTimeWithoutSkips();
     existingChaptersImported = false;
     sponsorSkipped = [];
     loopedChapter = null;
@@ -916,11 +920,13 @@ function setupVideoListeners(video: HTMLVideoElement) {
     //wait until it is loaded
     video.addEventListener('loadstart', videoOnReadyListener)
     video.addEventListener('durationchange', durationChangeListener);
+    video.addEventListener('timeupdate', showCurrentTimeWithoutSkips);
 
     if (setupVideoListenersFirstTime) {
         addCleanupListener(() => {
             video.removeEventListener('loadstart', videoOnReadyListener);
             video.removeEventListener('durationchange', durationChangeListener);
+            video.removeEventListener('timeupdate', showCurrentTimeWithoutSkips);
         });
     }
 
@@ -1466,11 +1472,13 @@ function updatePreviewBar(): void {
     if (getVideo()) updateActiveSegment(getCurrentTime());
 
     if (Config.config.showTimeWithSkips) {
-        const skippedDuration = utils.getTimestampsDuration(previewBarSegments
+        skippedTimestamps = previewBarSegments
             .filter(({actionType}) => ![ActionType.Mute, ActionType.Chapter].includes(actionType))
-            .map(({segment}) => segment));
+            .map(({segment}) => segment);
+        const skippedDuration = utils.getTimestampsDuration(skippedTimestamps);
 
         showTimeWithoutSkips(skippedDuration);
+        showCurrentTimeWithoutSkips();
     }
 }
 
@@ -2848,6 +2856,36 @@ function showTimeWithoutSkips(skippedDuration: number): void {
     const durationAfterSkips = getFormattedTime(getVideoDuration() - skippedDuration);
 
     duration.innerText = (durationAfterSkips == null || skippedDuration <= 0) ? "" : " (" + durationAfterSkips + ")";
+}
+
+function showCurrentTimeWithoutSkips(): void {
+    const currentTimeID = "sponsorBlockCurrentTimeAfterSkips";
+    if (!Config.config.showTimeWithSkips || !Config.config.showCurrentTimeWithSkips) {
+        // In case it was just turned off
+        document.getElementById(currentTimeID)?.remove();
+        return;
+    }
+
+    // YouTube desktop player only
+    const currentTimeDisplay = document.querySelector(".ytp-time-display.notranslate .ytp-time-wrapper .ytp-time-current");
+    if (!currentTimeDisplay) return;
+
+    let currentTimeAfterSkips = document.getElementById(currentTimeID);
+    if (currentTimeAfterSkips === null) {
+        currentTimeAfterSkips = document.createElement("span");
+        currentTimeAfterSkips.id = currentTimeID;
+        currentTimeDisplay.after(currentTimeAfterSkips);
+    }
+
+    // Ignore segments that only have a start time so far
+    const timestamps = skippedTimestamps.filter((segment) => segment.length === 2);
+    const currentTime = getCurrentTime() ?? 0;
+    const skippedDuration = utils.getTimestampsDuration(timestamps
+        .filter((segment) => segment[0] < currentTime)
+        .map((segment) => [segment[0], Math.min(segment[1], currentTime)]));
+
+    const showTime = utils.getTimestampsDuration(timestamps) > 0 && !getIsAdPlaying();
+    currentTimeAfterSkips.innerText = showTime ? " (" + getFormattedTime(currentTime - skippedDuration) + ")" : "";
 }
 
 function checkForPreloadedSegment() {
