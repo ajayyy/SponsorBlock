@@ -2568,6 +2568,12 @@ async function sendSubmitMessage(): Promise<boolean> {
         } else {
             logRequest(response, "SB", "segment submission");
             alert(getLongErrorMessage(response.status, response.responseText));
+
+            if (response.status === 403) {
+                // Rejected submissions (such as for a locked category) can mean that there
+                // are segments on the server that are not shown yet
+                sponsorsLookup(true, true);
+            }
         }
     }
 
