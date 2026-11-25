@@ -18,6 +18,7 @@ interface SBConfig {
     sponsorTimesContributed: number;
     submissionCountSinceCategories: number; // New count used to show the "Read The Guidelines!!" message
     showTimeWithSkips: boolean;
+    showCurrentTimeWithSkips: boolean;
     disableSkipping: boolean;
     muteSegments: boolean;
     fullVideoSegments: boolean;
@@ -387,6 +388,7 @@ const syncDefaults = {
     sponsorTimesContributed: 0,
     submissionCountSinceCategories: 0,
     showTimeWithSkips: true,
+    showCurrentTimeWithSkips: false,
     disableSkipping: false,
     muteSegments: true,
     fullVideoSegments: true,
