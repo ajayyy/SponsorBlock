@@ -21,7 +21,8 @@ export enum SkipRuleAttribute {
     ChannelID = "channel.id",
     ChannelName = "channel.name",
     VideoDuration = "video.duration",
-    Title = "video.title"
+    Title = "video.title",
+    PageDomain = "page.domain"
 }
 
 // Note that operators that are prefixes of other attributes (like `<`) need to be ordered *after* the longer
