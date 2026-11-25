@@ -18,6 +18,8 @@ export interface ContentContainer {
         resetSponsorSubmissionNotice: (callRef?: boolean) => void;
         updateEditButtonsOnPlayer: () => void;
         previewTime: (time: number, unpause?: boolean) => void;
+        inspectSegment: (segment: number[]) => void;
+        stopInspectingSegment: () => void;
         videoInfo: VideoInfo;
         getRealCurrentTime: () => number;
         lockedCategories: string[];

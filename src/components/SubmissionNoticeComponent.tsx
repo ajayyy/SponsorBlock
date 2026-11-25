@@ -83,6 +83,8 @@ class SubmissionNoticeComponent extends React.Component<SubmissionNoticeProps, S
         if (this.videoObserver) {
             this.videoObserver.disconnect();
         }
+
+        this.contentContainer().stopInspectingSegment();
     }
 
     componentDidUpdate() {

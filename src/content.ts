@@ -86,6 +86,8 @@ let activeSkipKeybindElement: ToggleSkippable = null;
 let shownSegmentFailedToFetchWarning = false;
 let selectedSegment: SegmentUUID | null = null;
 let previewedSegment = false;
+// Removes the listeners that pause at the end of the segment being inspected
+let inspectSegmentCleanup: (() => void) | null = null;
 
 // JSON video info
 let videoInfo: VideoInfo = null;
@@ -189,6 +191,8 @@ const skipNoticeContentContainer: ContentContainer = () => ({
     resetSponsorSubmissionNotice,
     updateEditButtonsOnPlayer,
     previewTime,
+    inspectSegment,
+    stopInspectingSegment,
     videoInfo,
     getRealCurrentTime: getRealCurrentTime,
     lockedCategories,
@@ -410,6 +414,7 @@ function resetValues() {
     lastCheckTime = 0;
     lastCheckVideoTime = -1;
     previewedSegment = false;
+    stopInspectingSegment();
     firstPlay = true;
 
     sponsorTimes = [];
@@ -1721,6 +1726,51 @@ function previewTime(time: number, unpause = true) {
     if (unpause && getVideo().paused){
         getVideo().play();
     }
+}
+
+/**
+ * Seeks to the start of a segment and pauses the video once the end of the segment is reached
+ */
+function inspectSegment(segment: number[]): void {
+    stopInspectingSegment();
+
+    const [startTime, endTime] = segment;
+    previewTime(startTime + 0.0001, false);
+
+    // Only a start time, or a highlight
+    if (!(endTime > startTime)) return;
+
+    const video = getVideo();
+    const seekingListener = () => {
+        const currentTime = getCurrentTime();
+        if (currentTime < startTime || currentTime >= endTime) {
+            // Moved somewhere else
+            stopInspectingSegment();
+        }
+    };
+    const timeUpdateListener = () => {
+        if (getCurrentTime() >= endTime) {
+            stopInspectingSegment();
+
+            video.pause();
+            // Time updates are not precise, so go back to the exact end
+            if (getCurrentTime() > endTime) {
+                setCurrentTime(endTime);
+            }
+        }
+    };
+
+    video.addEventListener("seeking", seekingListener);
+    video.addEventListener("timeupdate", timeUpdateListener);
+    inspectSegmentCleanup = () => {
+        video.removeEventListener("seeking", seekingListener);
+        video.removeEventListener("timeupdate", timeUpdateListener);
+    };
+}
+
+function stopInspectingSegment(): void {
+    inspectSegmentCleanup?.();
+    inspectSegmentCleanup = null;
 }
 
 //send telemetry and count skip

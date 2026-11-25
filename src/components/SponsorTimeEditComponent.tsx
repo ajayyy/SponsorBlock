@@ -731,9 +731,7 @@ class SponsorTimeEditComponent extends React.Component<SponsorTimeEditProps, Spo
         const sponsorTimes = this.props.contentContainer().sponsorTimesSubmitting;
         const index = this.props.index;
 
-        const skipTime = sponsorTimes[index].segment[0];
-
-        this.props.contentContainer().previewTime(skipTime + 0.0001, false);
+        this.props.contentContainer().inspectSegment(sponsorTimes[index].segment);
     }
 
     deleteTime(): void {
